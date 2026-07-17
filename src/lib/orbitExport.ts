@@ -57,18 +57,37 @@ export interface OrbitPayload {
   counts: { subjects: number; items: number; cards: number }
 }
 
+// When `includeAll`, unfinished topics come over too — but staggered, so they
+// don't all land "due now" and flood the review queue. This many surface per
+// day, in curriculum order, turning the backlog into a paced study plan.
+const NEW_PER_DAY = 8
+const DAY_MS = 86_400_000
+
 /**
- * Only finished topics are exported. Orbit schedules REVIEWS of things you've
- * learned; handing it the untouched backlog would bury the planner in reviews
- * for material never opened.
+ * Build the study-items payload for Orbit.
+ *
+ * Default (`includeAll` false): only FINISHED topics — Orbit schedules reviews
+ * of what you've learned, so the untouched backlog is left out.
+ *
+ * `includeAll` true: the whole curriculum. Finished topics are due now;
+ * unfinished ones are dripped in at NEW_PER_DAY per day (a study plan, not a
+ * flood). Flashcards still ride along only for units you've actually started.
  *
  * `now` is injected rather than read off the clock so this stays testable.
  */
-export function buildOrbitPayload({ now = new Date() }: { now?: Date } = {}): OrbitPayload {
+export function buildOrbitPayload(
+  { now = new Date(), includeAll = false }: { now?: Date; includeAll?: boolean } = {},
+): OrbitPayload {
   const done = getDone()
   const stamp = now.toISOString()
   const out: OrbitSubject[] = []
   let cards = 0
+
+  // Global across the whole export, so the daily new-item load is capped
+  // overall — not per subject.
+  let newIdx = 0
+  const staggeredReview = () =>
+    new Date(now.getTime() + Math.floor(newIdx++ / NEW_PER_DAY) * DAY_MS).toISOString()
 
   // CRUX is a HashRouter app, so a link back is origin + path + #/route.
   // This resolves to localhost in dev and the deployed URL in production —
@@ -80,7 +99,7 @@ export function buildOrbitPayload({ now = new Date() }: { now?: Date } = {}): Or
 
     for (const unit of subject.units) {
       const finished = unit.topics.filter((t) => done[t.id])
-      if (!finished.length) continue
+      const unitStarted = finished.length > 0
 
       for (const topic of finished) {
         items.push({
@@ -88,7 +107,7 @@ export function buildOrbitPayload({ now = new Date() }: { now?: Date } = {}): Or
           // CRUX records when a topic was actually ticked off, so this is the
           // real date rather than "whenever the export ran".
           lastStudied: new Date(done[topic.id]).toISOString(),
-          nextReview: stamp,
+          nextReview: stamp, // finished → due for review now
           easeFactor: 2.5,
           reviewCount: 0,
           comprehensionHistory: [],
@@ -97,22 +116,41 @@ export function buildOrbitPayload({ now = new Date() }: { now?: Date } = {}): Or
         })
       }
 
+      if (includeAll) {
+        for (const topic of unit.topics.filter((t) => !done[t.id])) {
+          items.push({
+            name: `U${unit.unit} · ${topic.title}`,
+            lastStudied: stamp,
+            nextReview: staggeredReview(), // never studied → dripped into the plan
+            easeFactor: 2.5,
+            reviewCount: 0,
+            comprehensionHistory: [],
+            sourceApp: 'crux',
+            sourceUrl: `${base}#/s/${subject.id}/u/${unit.unit}/t/${topic.slug}`,
+          })
+        }
+      }
+
       // Flashcards for a unit you've started — question/answer is what SM-2
-      // actually wants, and Orbit's StudyTopic already has both fields.
-      for (const card of getCards(subject.id, unit.unit)) {
-        items.push({
-          name: `U${unit.unit} · ${card.front.slice(0, 70)}`,
-          lastStudied: stamp,
-          nextReview: stamp,
-          easeFactor: 2.5,
-          reviewCount: 0,
-          comprehensionHistory: [],
-          question: card.front,
-          answer: card.back,
-          sourceApp: 'crux',
-          sourceUrl: `${base}#/s/${subject.id}/u/${unit.unit}/cards`,
-        })
-        cards += 1
+      // actually wants, and Orbit's StudyTopic already has both fields. Kept to
+      // started units even under includeAll, so a fresh subject isn't a wall of
+      // hundreds of cards for material never opened.
+      if (unitStarted) {
+        for (const card of getCards(subject.id, unit.unit)) {
+          items.push({
+            name: `U${unit.unit} · ${card.front.slice(0, 70)}`,
+            lastStudied: stamp,
+            nextReview: stamp,
+            easeFactor: 2.5,
+            reviewCount: 0,
+            comprehensionHistory: [],
+            question: card.front,
+            answer: card.back,
+            sourceApp: 'crux',
+            sourceUrl: `${base}#/s/${subject.id}/u/${unit.unit}/cards`,
+          })
+          cards += 1
+        }
       }
     }
 

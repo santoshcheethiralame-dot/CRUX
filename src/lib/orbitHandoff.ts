@@ -50,7 +50,9 @@ export function handleOrbitHandoff(): boolean {
   }
 
   try {
-    const payload = buildOrbitPayload()
+    // scope=all pulls the whole curriculum (staggered); default is finished only.
+    const includeAll = params.get('scope') === 'all'
+    const payload = buildOrbitPayload({ includeAll })
     opener.postMessage(payload, target)
     render(
       `<div><div style="font-size:36px;margin-bottom:12px">✅</div>
