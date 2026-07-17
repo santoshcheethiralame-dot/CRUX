@@ -34,7 +34,10 @@ interface OrbitItem {
   question?: string
   answer?: string
   sourceApp: 'crux'
-  sourcePath: string
+  // Absolute URL back to this exact page in CRUX, so Orbit can render a working
+  // "open in CRUX" link during review. Uses the app's real HashRouter routes
+  // (/s/:subject/u/:unit/t/:slug and .../cards) — see src/App.tsx.
+  sourceUrl: string
 }
 
 interface OrbitSubject {
@@ -67,6 +70,11 @@ export function buildOrbitPayload({ now = new Date() }: { now?: Date } = {}): Or
   const out: OrbitSubject[] = []
   let cards = 0
 
+  // CRUX is a HashRouter app, so a link back is origin + path + #/route.
+  // This resolves to localhost in dev and the deployed URL in production —
+  // wherever CRUX is actually being served from.
+  const base = `${window.location.origin}${window.location.pathname}`
+
   for (const subject of subjects) {
     const items: OrbitItem[] = []
 
@@ -85,7 +93,7 @@ export function buildOrbitPayload({ now = new Date() }: { now?: Date } = {}): Or
           reviewCount: 0,
           comprehensionHistory: [],
           sourceApp: 'crux',
-          sourcePath: `#/${subject.id}/u${unit.unit}/${topic.slug}`,
+          sourceUrl: `${base}#/s/${subject.id}/u/${unit.unit}/t/${topic.slug}`,
         })
       }
 
@@ -102,7 +110,7 @@ export function buildOrbitPayload({ now = new Date() }: { now?: Date } = {}): Or
           question: card.front,
           answer: card.back,
           sourceApp: 'crux',
-          sourcePath: `#/${subject.id}/u${unit.unit}/flashcards`,
+          sourceUrl: `${base}#/s/${subject.id}/u/${unit.unit}/cards`,
         })
         cards += 1
       }
@@ -121,7 +129,7 @@ export function buildOrbitPayload({ now = new Date() }: { now?: Date } = {}): Or
         {
           id: `crux-${subject.id}`,
           title: `Open ${subject.name} in CRUX`,
-          url: `${window.location.origin}${window.location.pathname}#/${subject.id}`,
+          url: `${base}#/s/${subject.id}`,
           type: 'link',
           priority: 'required',
         },
