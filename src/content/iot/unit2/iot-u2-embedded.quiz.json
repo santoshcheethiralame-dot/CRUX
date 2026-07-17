@@ -1,0 +1,202 @@
+{
+  "subject": "iot",
+  "unit": 2,
+  "title": "Unit 2 — MCU, ESP32 & Interfacing MCQs",
+  "items": [
+    {
+      "id": "iot-u2-emb-001",
+      "topic": "esp32",
+      "q": "What single feature most distinguishes the ESP32 from a classic STM32 for connected IoT?",
+      "options": [
+        "It has more GPIO pins",
+        "Built-in Wi-Fi and Bluetooth/BLE on the chip — no external radio module needed",
+        "It runs full Linux",
+        "It is the only MCU with an ADC"
+      ],
+      "answer": 1,
+      "explain": "The ESP32 integrates Wi-Fi + Bluetooth/BLE on-chip (a SoC), making it a single-chip path to the cloud. An STM32 needs an external radio wired over UART.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-002",
+      "topic": "esp32",
+      "q": "For a hard real-time, safety-critical industrial controller, which is often the better choice and why?",
+      "options": [
+        "ESP32 — because it has Wi-Fi",
+        "STM32 — for deterministic timing and rich industrial peripherals (CAN, advanced timers)",
+        "Neither can do control",
+        "Always whichever is cheapest"
+      ],
+      "answer": 1,
+      "explain": "The ESP32 excels at low-cost wireless connectivity, but for deterministic, safety-critical control the STM32's predictable timing and industrial peripherals (CAN, advanced timers, FPU/DSP) usually win.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-003",
+      "topic": "esp32",
+      "q": "Which toolchains/languages can program an ESP32?",
+      "options": [
+        "Only assembly",
+        "Arduino IDE, ESP-IDF (native SDK), and MicroPython",
+        "Only Java",
+        "Only SQL"
+      ],
+      "answer": 1,
+      "explain": "The ESP32 has a broad ecosystem: Arduino (C/C++), Espressif's native ESP-IDF, and MicroPython — a key reason for its popularity.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-004",
+      "topic": "arm-cortex",
+      "q": "What is the fundamental difference between ARM Cortex-A and Cortex-M processors?",
+      "options": [
+        "Cortex-A is slower than Cortex-M",
+        "Cortex-A (with an MMU) runs full OSes like Linux (gateways/phones); Cortex-M is a bare-metal/RTOS microcontroller (sensors/real-time)",
+        "Cortex-M runs Android; Cortex-A is for microcontrollers",
+        "They are identical"
+      ],
+      "answer": 1,
+      "explain": "Cortex-A ('Application') has an MMU and runs full operating systems — gateways, phones, Raspberry Pi. Cortex-M ('Microcontroller') is low-power, deterministic, bare-metal/RTOS — sensors and end nodes.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-005",
+      "topic": "arm-cortex",
+      "q": "The presence of which hardware unit most directly enables a processor to run a full multi-process OS?",
+      "options": ["ADC", "MMU (Memory Management Unit)", "PWM timer", "UART"],
+      "answer": 1,
+      "explain": "An MMU provides virtual memory and process isolation, which a full OS (Linux) requires. Cortex-A has one; Cortex-M does not (only an optional MPU), so it runs bare-metal/RTOS.",
+      "difficulty": "hard",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-006",
+      "topic": "arm-cortex",
+      "q": "A Raspberry Pi acting as an IoT gateway and an STM32 sensor node typically use which cores, respectively?",
+      "options": [
+        "Cortex-M and Cortex-A",
+        "Cortex-A (runs Linux) and Cortex-M (bare-metal/RTOS)",
+        "Both Cortex-A",
+        "Both Cortex-M"
+      ],
+      "answer": 1,
+      "explain": "The Pi gateway runs Linux on a Cortex-A; the STM32 sensor node runs bare-metal/RTOS on a Cortex-M. This maps to the gateway/fog vs perception/edge layers.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-007",
+      "topic": "embedded-c-python",
+      "q": "Why is Embedded C usually preferred for production/real-time firmware over MicroPython?",
+      "options": [
+        "It is easier to write",
+        "It compiles to native machine code — faster, smaller footprint, and more deterministic",
+        "It cannot access hardware",
+        "It needs no compiler"
+      ],
+      "answer": 1,
+      "explain": "Embedded C compiles to efficient native code with a tiny footprint and predictable timing — ideal for constrained, real-time production firmware. MicroPython is interpreted on-device (slower, heavier).",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-008",
+      "topic": "embedded-c-python",
+      "q": "The biggest advantage of MicroPython for IoT development is:",
+      "options": [
+        "Smallest possible memory footprint",
+        "Fast, readable, interactive development (REPL) — great for prototyping and teaching",
+        "Hard real-time determinism",
+        "It runs without any microcontroller"
+      ],
+      "answer": 1,
+      "explain": "MicroPython trades some speed/memory for fast, readable, interactive development (a live REPL on the device) — excellent for prototyping and learning, then often rewritten in C for production.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-009",
+      "topic": "serial-interfaces",
+      "q": "Which serial bus is asynchronous (no shared clock) and point-to-point, commonly used for debug consoles and modems?",
+      "options": ["I²C", "SPI", "UART", "Ethernet"],
+      "answer": 2,
+      "explain": "UART is asynchronous (both ends agree on a baud rate, no clock line) and point-to-point (TX↔RX). Used for serial debug and talking to GPS/BLE/Wi-Fi/cellular modems.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-010",
+      "topic": "serial-interfaces",
+      "q": "You need to connect many sensors using as few wires as possible, each individually addressable. Which bus fits best?",
+      "options": [
+        "SPI (4+ wires, per-device select)",
+        "I²C (2 wires shared, devices have addresses)",
+        "UART (point-to-point only)",
+        "Ethernet"
+      ],
+      "answer": 1,
+      "explain": "I²C uses just two shared wires (SDA + SCL) for a whole bus of addressed devices — ideal for many sensors on minimal wiring. SPI is faster but needs a select line per device.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-011",
+      "topic": "serial-interfaces",
+      "q": "Which bus offers the HIGHEST data rate (full-duplex), at the cost of more wires (MOSI, MISO, SCLK, SS)?",
+      "options": ["UART", "I²C", "SPI", "PLC"],
+      "answer": 2,
+      "explain": "SPI is the fastest of the three (full-duplex, tens of MHz) using 4 wires plus a per-device chip-select — used for displays, SD cards, and high-rate sensors.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-012",
+      "topic": "serial-interfaces",
+      "q": "Why are interrupts preferred over polling for battery-powered IoT devices?",
+      "options": [
+        "Polling is more accurate",
+        "Interrupts let the CPU sleep and wake only when an event occurs — saving power and reacting fast",
+        "Interrupts use more energy than polling",
+        "Polling cannot detect events"
+      ],
+      "answer": 1,
+      "explain": "Polling wastes cycles constantly checking (can't sleep). Interrupts let the MCU sleep until hardware signals an event (then runs a short ISR) — saving power and giving fast, event-driven response.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-013",
+      "topic": "serial-interfaces",
+      "q": "A best practice for Interrupt Service Routines (ISRs) is:",
+      "options": [
+        "Make them as long as possible",
+        "Keep them short — do the minimum (set a flag/read a register) and handle heavy work in the main loop",
+        "Never use them",
+        "Always do network requests inside them"
+      ],
+      "answer": 1,
+      "explain": "ISRs should be short and fast; long ISRs block other interrupts. Do minimal work (set a flag) and defer heavy processing to the main loop. Protect shared data (e.g., mark volatile).",
+      "difficulty": "hard",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-emb-014",
+      "topic": "serial-interfaces",
+      "q": "Which correctly pairs each bus with its wire count?",
+      "options": [
+        "UART = 4 wires, I²C = 2 wires, SPI = 2 wires",
+        "UART = 2 wires (TX/RX), I²C = 2 wires (SDA/SCL), SPI = 4 wires (MOSI/MISO/SCLK/SS)",
+        "All three use exactly 3 wires",
+        "UART = 2, I²C = 4, SPI = 2"
+      ],
+      "answer": 1,
+      "explain": "UART: 2 wires (TX, RX). I²C: 2 wires (SDA, SCL) shared across addressed devices. SPI: 4 wires (MOSI, MISO, SCLK, SS) plus a select line per extra device.",
+      "difficulty": "medium",
+      "source": "original"
+    }
+  ]
+}

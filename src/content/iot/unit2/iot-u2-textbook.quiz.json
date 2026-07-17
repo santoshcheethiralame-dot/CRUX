@@ -1,0 +1,252 @@
+{
+  "subject": "iot",
+  "unit": 2,
+  "title": "Unit 2 — Textbook-style MCQs",
+  "items": [
+    {
+      "id": "iot-u2-tb-001",
+      "topic": "sensor-types",
+      "q": "An ultrasonic distance sensor works in complete darkness, whereas an LDR does not. The fundamental reason is:",
+      "options": [
+        "The LDR is more expensive",
+        "The ultrasonic sensor is active (emits its own energy and measures the echo); the LDR is passive (depends on ambient light)",
+        "Both are passive but the LDR is broken in the dark",
+        "Ultrasonic sensors are always digital"
+      ],
+      "answer": 1,
+      "explain": "Active sensors emit energy and measure the return, so they don't depend on ambient conditions. Passive sensors like the LDR only detect existing natural energy (light), so they fail in darkness.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-002",
+      "topic": "static-metrics",
+      "q": "A sensor consistently reads 2°C higher than the true temperature across its whole range. This is best described and fixed as:",
+      "options": [
+        "Random noise — fixed by averaging",
+        "A systematic offset — fixed by calibration (subtracting the bias)",
+        "Poor resolution — fixed by a faster ADC",
+        "Low sensitivity — unfixable"
+      ],
+      "answer": 1,
+      "explain": "A constant shift across the range is a systematic offset/bias (the sensor is precise but inaccurate). Calibration removes it by subtracting the known offset.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-003",
+      "topic": "static-metrics",
+      "q": "A temperature sensor outputs 10 mV per °C. This figure is the sensor's:",
+      "options": ["Resolution", "Sensitivity", "Accuracy", "Range"],
+      "answer": 1,
+      "explain": "Sensitivity is the ratio of output change to input change (the slope) — here 10 mV/°C. Resolution would be the smallest temperature step it can distinguish.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-004",
+      "topic": "dynamic-metrics",
+      "q": "An accelerometer for engine-vibration monitoring fails to capture high-frequency vibrations faithfully. The most likely deficiency is:",
+      "options": [
+        "Insufficient bandwidth / frequency response",
+        "Excessive resolution",
+        "Too large a measurement range",
+        "Too high an SNR"
+      ],
+      "answer": 0,
+      "explain": "Tracking fast oscillations requires wide bandwidth and a flat frequency response across those frequencies. Beyond its bandwidth, the sensor attenuates/distorts the signal.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-005",
+      "topic": "actuators",
+      "q": "A smart thermostat that keeps adjusting heating based on the measured room temperature is an example of:",
+      "options": [
+        "Open-loop control",
+        "Closed-loop control (sensor feedback drives the actuator)",
+        "No control system",
+        "A purely mechanical actuator"
+      ],
+      "answer": 1,
+      "explain": "It uses sensor feedback (measured temperature) to continuously adjust the actuator (heater) toward a setpoint — the definition of closed-loop control.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-006",
+      "topic": "actuators",
+      "q": "Which actuator parameter is MOST critical when designing a battery-powered IoT device?",
+      "options": ["Color", "Power consumption", "Brand name", "Number of pins"],
+      "answer": 1,
+      "explain": "Actuators (especially motors) can dominate energy use. For battery systems, power consumption is critical to lifetime, alongside response time, force/torque, durability, and control interface.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-007",
+      "topic": "smart-sensors",
+      "q": "Moving signal conditioning and calibration INTO the sensor (a smart sensor) primarily benefits the system by:",
+      "options": [
+        "Increasing wire length tolerance only",
+        "Delivering a clean, calibrated digital value and pushing edge intelligence to the lowest layer, reducing noise and upstream load",
+        "Removing the need for any microcontroller in the system",
+        "Making the sensor analog-only"
+      ],
+      "answer": 1,
+      "explain": "Conditioning at the source avoids noise accumulating over wires, provides ready-to-use digital data, and offloads the host — effectively edge intelligence at the sensing element.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-008",
+      "topic": "smart-objects",
+      "q": "Which distinguishes a 'smart object' from a plain sensor?",
+      "options": [
+        "A smart object cannot communicate",
+        "A smart object adds unique network identity, embedded application logic, and actuation — acting autonomously",
+        "A smart object only measures temperature",
+        "A plain sensor has more processing power"
+      ],
+      "answer": 1,
+      "explain": "A smart object has identity, processing, communication, and actuation with embedded logic — it senses AND acts autonomously, unlike a plain sensor that only measures.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-009",
+      "topic": "mems",
+      "q": "MEMS technology was a key enabler of mass-market IoT because it made sensors:",
+      "options": [
+        "Larger and more power-hungry",
+        "Tiny, cheap, low-power, and integrable with electronics on one silicon die",
+        "Purely mechanical with no electronics",
+        "Usable only in laboratories"
+      ],
+      "answer": 1,
+      "explain": "Silicon microfabrication made high-quality accelerometers, gyroscopes, and microphones small, inexpensive, and low-power enough to embed in phones, wearables, and billions of IoT nodes.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-010",
+      "topic": "sensor-fusion",
+      "q": "Combining two cameras to compute 3D depth that neither camera alone provides is which fusion category?",
+      "options": ["Competitive (redundant)", "Cooperative", "Complementary", "No fusion"],
+      "answer": 1,
+      "explain": "Cooperative fusion combines sensors to derive information none could produce alone — stereo cameras yielding depth is the classic example.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-011",
+      "topic": "sensor-fusion",
+      "q": "A complementary filter for an IMU typically:",
+      "options": [
+        "High-passes the gyroscope (fast changes) and low-passes the accelerometer (slow correction), then combines them",
+        "Uses only the gyroscope and ignores the accelerometer",
+        "Averages all sensors equally regardless of trust",
+        "Requires a supercomputer to run"
+      ],
+      "answer": 0,
+      "explain": "The complementary filter trusts the gyro for short-term motion (high-pass) and the accelerometer for long-term reference (low-pass), summing them — lightweight enough for microcontrollers.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-012",
+      "topic": "self-calibration",
+      "q": "An unattended soil sensor in a field gradually loses accuracy over a season. The most practical IoT remedy is:",
+      "options": [
+        "Send a technician to recalibrate it daily",
+        "Self-calibration — built-in references / auto-zero / temperature compensation that correct drift automatically",
+        "Replace the sensor every week",
+        "Ignore the drift entirely"
+      ],
+      "answer": 1,
+      "explain": "Manual recalibration is impractical at field scale. Self-calibration (internal references, auto-zero, temperature compensation, algorithmic correction) compensates drift automatically, keeping data reliable.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-013",
+      "topic": "wsn",
+      "q": "A WSN node transmits only when soil moisture crosses a threshold. This communication pattern is:",
+      "options": ["Periodic", "Event-driven", "Continuous streaming", "Broadcast flooding"],
+      "answer": 1,
+      "explain": "Transmitting only on an event/threshold is the event-driven pattern (energy-efficient). Periodic transmission would send at fixed time intervals regardless of events.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-014",
+      "topic": "wsn",
+      "q": "WSN nodes that automatically form ad-hoc mesh or tree topologies are described as:",
+      "options": ["Self-organizing", "Mains-powered", "Cloud-hosted", "Single-purpose proxies"],
+      "answer": 0,
+      "explain": "Self-organizing nodes form mesh/tree topologies without manual configuration — a core WSN characteristic alongside low power and unattended operation.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-015",
+      "topic": "embedded-systems",
+      "q": "Why do most microcontroller programs follow a 'setup once, then loop forever' structure?",
+      "options": [
+        "Because the CPU can only run one instruction",
+        "Embedded devices run a continuous sense→process→act cycle with no 'exit'; setup configures hardware once, the super-loop runs until power-off",
+        "Because they always run a desktop OS",
+        "To save flash memory exclusively"
+      ],
+      "answer": 1,
+      "explain": "An embedded device performs its dedicated task continuously. Setup configures clocks/peripherals once; the infinite super-loop repeats the sense-process-act cycle (Arduino's setup()/loop() is this pattern).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-016",
+      "topic": "stm32-architecture",
+      "q": "Compared with a Raspberry Pi Pico W, an STM32F4's main advantage for deterministic industrial control is:",
+      "options": [
+        "More total RAM",
+        "Richer integrated real-world peripherals (hardware FPU/DSP, advanced timers, CAN, Ethernet, analog blocks)",
+        "A faster web browser",
+        "A larger physical size"
+      ],
+      "answer": 1,
+      "explain": "Though the Pico has more RAM and a faster dual core, the STM32F4 offers integrated control-oriented peripherals (FPU/DSP, advanced timers, CAN, Ethernet, op-amps) that matter more for real-time industrial signal processing.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-017",
+      "topic": "stm32-architecture",
+      "q": "Place the embedded toolchain stages in order: source code →",
+      "options": [
+        "Flasher → Compiler → Linker → Debugger",
+        "Compiler/assembler → Linker → Programmer/flasher → (Debugger)",
+        "Linker → Compiler → Debugger → IDE",
+        "Debugger → Linker → Compiler → Flasher"
+      ],
+      "answer": 1,
+      "explain": "Source is compiled/assembled to object code, the linker combines objects + libraries into a firmware binary, the flasher loads it into the MCU, and the debugger inspects execution.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u2-tb-018",
+      "topic": "stm32-iot-app",
+      "q": "Trace the correct end-to-end loop of an STM32 IoT node:",
+      "options": [
+        "Transmit → Act → Sense → Process",
+        "Sense (ADC/I²C) → Process (Cortex-M core) → Act (GPIO/PWM) → Transmit (UART→modem) → repeat",
+        "Process → Transmit → Sense → Act",
+        "Act → Transmit → Process → Sense"
+      ],
+      "answer": 1,
+      "explain": "The node reads a sensor (ADC/I²C), processes locally, drives an actuator (GPIO/PWM), and transmits results over UART to a comms module — the physical realisation of sense→analyse→act, repeated forever.",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

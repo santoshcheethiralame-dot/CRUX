@@ -1,0 +1,307 @@
+{
+  "subject": "ml",
+  "unit": 1,
+  "title": "Unit 1 — MCQ Quiz",
+  "items": [
+    {
+      "id": "ml-u1-001",
+      "topic": "introduction",
+      "q": "In Mitchell's definition, a learning task is well-defined by the triple:",
+      "options": ["<P, T, E>", "<X, Y, h>", "<bias, variance, noise>", "<TP, FP, FN>"],
+      "answer": 0,
+      "explain": "Performance measure P, Task T, and Experience E. Performance at T (measured by P) improves with E.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-002",
+      "topic": "types-of-ml",
+      "q": "An automated (self-driving) vehicle that learns from recorded human-driver images and steering commands is primarily an example of:",
+      "options": ["Unsupervised learning", "Supervised learning", "Active learning", "Reinforcement learning"],
+      "answer": 1,
+      "explain": "It learns a mapping from labelled input (images) to outputs (steering) — supervised learning. (A classic slide-marked answer.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-003",
+      "topic": "types-of-ml",
+      "q": "Which paradigm is also called 'exploratory learning'?",
+      "options": ["Supervised learning", "Unsupervised learning", "Active learning", "Reinforcement learning"],
+      "answer": 1,
+      "explain": "Unsupervised learning explores unlabelled data for hidden structure — no target variable to aim at.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-004",
+      "topic": "types-of-ml",
+      "q": "Customer segmentation and market segmentation are applications of:",
+      "options": ["Unsupervised – Association", "Unsupervised – Clustering", "Supervised – Classification", "Reinforcement learning"],
+      "answer": 1,
+      "explain": "Grouping customers by similarity with no labels is clustering.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-005",
+      "topic": "types-of-ml",
+      "q": "A generative model learns which distribution?",
+      "options": ["The conditional $p(y\\mid x)$", "The joint $p(x,y)$", "The marginal $p(y)$ only", "No distribution at all"],
+      "answer": 1,
+      "explain": "Generative models learn the joint $p(x,y)$ and can generate samples; discriminative models learn $p(y\\mid x)$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-006",
+      "topic": "concept-learning",
+      "q": "For 4 binary features, the number of distinct instances and the number of possible concepts are:",
+      "options": ["8 instances, 16 concepts", "16 instances, $2^{16}$ concepts", "4 instances, 16 concepts", "16 instances, 16 concepts"],
+      "answer": 1,
+      "explain": "Instances $=2^4=16$; concepts $=2^{(2^4)}=2^{16}$ — every labelling of the 16 instances.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "ml-u1-007",
+      "topic": "concept-learning",
+      "q": "Two attributes with 2 values each. How many semantically distinct conjunctive hypotheses (including '?' and reject-all)?",
+      "options": ["4", "9", "10", "16"],
+      "answer": 2,
+      "explain": "$(2+1)(2+1)+1 = 9+1 = 10$. The +1 collapses all reject-all (∅) hypotheses into one.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-008",
+      "topic": "concept-learning",
+      "q": "The correct nesting of spaces is:",
+      "options": ["Version ⊇ Hypothesis ⊇ Concept", "Concept ⊇ Hypothesis ⊇ Version", "Hypothesis ⊇ Concept ⊇ Version", "They are all equal"],
+      "answer": 1,
+      "explain": "Inductive bias shrinks Concept→Hypothesis; consistency with data shrinks Hypothesis→Version.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-009",
+      "topic": "find-s",
+      "q": "Find-S learns using:",
+      "options": ["Only positive examples", "Only negative examples", "Both, equally", "Neither — it is unsupervised"],
+      "answer": 0,
+      "explain": "Find-S ignores negatives and generalises the most specific hypothesis over positive examples only.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-010",
+      "topic": "find-s",
+      "q": "Which is NOT a limitation of Find-S?",
+      "options": ["It ignores negative examples", "It cannot detect whether the data is inconsistent/noisy", "It performs no backtracking", "It always finds the globally optimal decision tree"],
+      "answer": 3,
+      "explain": "Find-S has nothing to do with decision trees. Its real limitations: ignores negatives, no noise handling, no backtracking, outputs just one hypothesis.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "ml-u1-011",
+      "topic": "decision-trees",
+      "q": "A decision tree represents a target concept as a:",
+      "options": ["Single conjunction of attributes", "Disjunction of conjunctions", "Conjunction of disjunctions", "Linear combination of features"],
+      "answer": 1,
+      "explain": "Each root-to-leaf path is a conjunction; the tree ORs the paths together — a disjunction of conjunctions.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-012",
+      "topic": "id3-entropy-gain",
+      "q": "The entropy of a node containing 9 'yes' and 5 'no' (out of 14) is closest to:",
+      "options": ["0.00", "0.50", "0.94", "1.00"],
+      "answer": 2,
+      "explain": "$-\\tfrac{9}{14}\\log_2\\tfrac{9}{14}-\\tfrac{5}{14}\\log_2\\tfrac{5}{14}\\approx 0.94$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-013",
+      "topic": "id3-entropy-gain",
+      "q": "The entropy of a perfectly pure node (all one class) is:",
+      "options": ["0", "0.5", "1", "$\\log_2 c$"],
+      "answer": 0,
+      "explain": "With $p=1$, $-1\\log_2 1 = 0$. No uncertainty.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "ml-u1-014",
+      "topic": "id3-entropy-gain",
+      "q": "ID3 selects the attribute that:",
+      "options": ["Has the most values", "Maximises information gain", "Minimises information gain", "Appears first in the table"],
+      "answer": 1,
+      "explain": "Gain = entropy before − expected entropy after. ID3 greedily maximises it.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-015",
+      "topic": "inductive-bias-issues",
+      "q": "ID3's inductive bias is best described as:",
+      "options": ["A restriction bias from an incomplete hypothesis space", "A preference bias for shorter trees (Occam's razor)", "No bias at all", "A bias toward deeper trees"],
+      "answer": 1,
+      "explain": "ID3 searches the complete space of trees but PREFERS short trees with high-gain attributes near the root — a preference (search) bias.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-016",
+      "topic": "overfitting-pruning",
+      "q": "A hypothesis h overfits if, compared to some h′, it has:",
+      "options": ["Higher train error and higher true error", "Lower train error but higher true error", "Lower train error and lower true error", "Higher train error but lower true error"],
+      "answer": 1,
+      "explain": "Overfitting: better on training data but worse over the full distribution than an alternative h′.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-017",
+      "topic": "overfitting-pruning",
+      "q": "In reduced-error pruning, a node is removed only if the pruned tree:",
+      "options": ["Has fewer nodes", "Performs no worse on the validation set", "Has higher training accuracy", "Reduces entropy"],
+      "answer": 1,
+      "explain": "Validation accuracy is the gate — prune while it does not decrease; stop when further pruning hurts.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-018",
+      "topic": "continuous-missing",
+      "q": "When choosing a threshold for a continuous attribute, candidate thresholds are placed:",
+      "options": ["At every observed value", "At midpoints where the class label changes", "At the mean of the attribute", "Randomly"],
+      "answer": 1,
+      "explain": "Sort by the attribute, find adjacent pairs whose label differs, and test the midpoints — pick max gain.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-019",
+      "topic": "bias-variance",
+      "q": "A model with low training error but high test error most likely has:",
+      "options": ["High bias", "High variance", "High irreducible error", "Low variance"],
+      "answer": 1,
+      "explain": "A large train→test gap signals high variance (overfitting).",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "ml-u1-020",
+      "topic": "bias-variance",
+      "q": "Total expected error decomposes as:",
+      "options": ["Bias + Variance", "Bias² + Variance + Irreducible error", "Bias + Variance² + Noise", "Variance − Bias²"],
+      "answer": 1,
+      "explain": "$\\text{Error} = \\text{Bias}^2 + \\text{Variance} + \\sigma^2$. The $\\sigma^2$ term is irreducible.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-021",
+      "topic": "logistic-regression",
+      "q": "A logistic-regression output $h_\\theta(x)=0.2$ implies (select all that apply):",
+      "options": ["$P(y=1\\mid x)=0.8$", "$P(y=0\\mid x)=0.8$", "$P(y=1\\mid x)=0.2$", "$P(y=0\\mid x)=0.2$"],
+      "answer": [1, 2],
+      "explain": "$h_\\theta(x)=P(y=1\\mid x)=0.2$, so $P(y=0\\mid x)=0.8$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-022",
+      "topic": "logistic-regression",
+      "q": "Squared-error cost is avoided in logistic regression because it becomes:",
+      "options": ["Convex", "Non-convex (many local minima)", "Undefined", "Linear"],
+      "answer": 1,
+      "explain": "With the sigmoid inside, squared error is non-convex; the log-loss restores convexity.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-023",
+      "topic": "eager-vs-lazy",
+      "q": "Which pairing is correct?",
+      "options": ["Decision Tree = lazy, KNN = eager", "Decision Tree = eager, KNN = lazy", "Both eager", "Both lazy"],
+      "answer": 1,
+      "explain": "Decision trees build a global model (eager); KNN defers all work to query time (lazy).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-024",
+      "topic": "knn",
+      "q": "For KNN regression, the prediction for a query is the ___ of its k neighbours; for classification it is the ___.",
+      "options": ["mode; mean", "mean; mode", "max; min", "sum; product"],
+      "answer": 1,
+      "explain": "Regression → mean of neighbours' values; classification → mode (majority class).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-025",
+      "topic": "knn",
+      "q": "Setting k very large in KNN tends to cause:",
+      "options": ["High variance / overfitting", "High bias / underfitting", "Zero training error", "Faster predictions"],
+      "answer": 1,
+      "explain": "Large k averages over many points → predicts the majority class → high bias (underfitting).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-026",
+      "topic": "knn",
+      "q": "Why must features be normalised before KNN?",
+      "options": ["To make training faster", "So large-range attributes don't dominate the distance", "To reduce the number of neighbours", "To convert regression to classification"],
+      "answer": 1,
+      "explain": "Distance is scale-sensitive; an attribute like income (large magnitude) would swamp age unless standardised.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-027",
+      "topic": "performance-metrics",
+      "q": "On a 99% / 1% imbalanced fraud dataset, a classifier predicting 'not fraud' for everything achieves high accuracy but is useless. The better metric is:",
+      "options": ["Accuracy", "Recall (for the fraud class)", "Specificity only", "Training error"],
+      "answer": 1,
+      "explain": "Recall captures how many actual frauds are caught; accuracy is misleading under class imbalance.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "ml-u1-028",
+      "topic": "performance-metrics",
+      "q": "Precision is defined as:",
+      "options": ["$TP/(TP+FN)$", "$TP/(TP+FP)$", "$TN/(TN+FP)$", "$(TP+TN)/N$"],
+      "answer": 1,
+      "explain": "Precision = TP / (TP+FP): of those predicted positive, how many truly are. (TP/(TP+FN) is recall.)",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-029",
+      "topic": "performance-metrics",
+      "q": "The F1 score is the:",
+      "options": ["Arithmetic mean of precision and recall", "Harmonic mean of precision and recall", "Product of precision and recall", "Difference of precision and recall"],
+      "answer": 1,
+      "explain": "$F1 = 2PR/(P+R)$ — the harmonic mean, which punishes a low value in either.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-030",
+      "topic": "performance-metrics",
+      "q": "An ROC AUC of 0.5 means the classifier:",
+      "options": ["Is perfect", "Cannot distinguish the classes (random)", "Is perfectly wrong", "Has zero false positives"],
+      "answer": 1,
+      "explain": "AUC 0.5 sits on the diagonal — no discriminative power. AUC 1 is perfect, 0 is perfectly inverted.",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

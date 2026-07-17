@@ -1,0 +1,307 @@
+{
+  "subject": "dbms",
+  "unit": 1,
+  "title": "Unit 1 — Flashcards",
+  "cards": [
+    {
+      "id": "dbms-u1-c01",
+      "topic": "intro-dbms",
+      "front": "Data vs Information",
+      "back": "**Data** = raw, unorganised facts. **Information** = data processed/organised/given context to be useful. *Information depends on data; data does not depend on information.*"
+    },
+    {
+      "id": "dbms-u1-c02",
+      "topic": "intro-dbms",
+      "front": "Database vs DBMS",
+      "back": "**Database** = a logically-coherent collection of *related* data about a mini-world (UoD). **DBMS** = software that **defines, constructs, manipulates & shares** databases. (Catalog stores **metadata**.)"
+    },
+    {
+      "id": "dbms-u1-c03",
+      "topic": "intro-dbms",
+      "front": "The 4 DBMS functions",
+      "back": "**Defining** (types/structures/constraints → metadata), **Constructing** (store data), **Manipulating** (query/update/report), **Sharing** (concurrent multi-user access)."
+    },
+    {
+      "id": "dbms-u1-c04",
+      "topic": "file-systems-purpose",
+      "front": "7 problems of file-processing systems",
+      "back": "① redundancy & inconsistency ② difficulty accessing data ③ data isolation ④ integrity problems ⑤ **atomicity** problems ⑥ concurrent-access anomalies ⑦ security problems. Each = a *purpose of a DBMS*."
+    },
+    {
+      "id": "dbms-u1-c05",
+      "topic": "file-systems-purpose",
+      "front": "4 kinds of data integrity",
+      "back": "**Entity** (unique ID), **Referential** (FK refers to existing PK), **Domain** (valid value range), **User-defined** (business rules)."
+    },
+    {
+      "id": "dbms-u1-c06",
+      "topic": "file-systems-purpose",
+      "front": "OLTP vs OLAP",
+      "back": "**OLTP** = many users, small frequent retrievals/updates (banking, airlines). **OLAP** = analytical processing for decisions/predictive models, uses **data mining** (AI + statistics)."
+    },
+    {
+      "id": "dbms-u1-c07",
+      "topic": "data-abstraction-schema",
+      "front": "3 levels of data abstraction",
+      "back": "**Physical/internal** (how stored) → **Logical/conceptual** (what data + relationships) → **View/external** (part a user sees). Lowest = physical, highest = view."
+    },
+    {
+      "id": "dbms-u1-c08",
+      "topic": "data-abstraction-schema",
+      "front": "Physical vs Logical data independence",
+      "back": "**Physical** = change storage/indexes without changing the logical schema. **Logical** = change the logical schema without affecting applications (**harder** to achieve)."
+    },
+    {
+      "id": "dbms-u1-c09",
+      "topic": "data-abstraction-schema",
+      "front": "Schema vs Instance (State)",
+      "back": "**Schema** = the design (≈ variable declarations); changes rarely. **Instance/state/snapshot** = the data at a moment (≈ variable values); changes often. Many states per schema."
+    },
+    {
+      "id": "dbms-u1-c10",
+      "topic": "data-abstraction-schema",
+      "front": "Three-schema (ANSI) architecture",
+      "back": "**External** (user views) ↔ **Conceptual** (logical) ↔ **Internal** (physical storage). The mappings give logical (ext↔conc) and physical (conc↔int) data independence."
+    },
+    {
+      "id": "dbms-u1-c11",
+      "topic": "design-architecture-users",
+      "front": "4 database-design phases",
+      "back": "**Requirements** → **Conceptual** (ER model) → **Logical** (relational + normalization) → **Physical** (indexes/storage). Abstract → concrete."
+    },
+    {
+      "id": "dbms-u1-c12",
+      "topic": "design-architecture-users",
+      "front": "Two-tier vs Three-tier",
+      "back": "**2-tier:** Client (UI) ↔ Server (DB) via ODBC/JDBC. **3-tier:** Client ↔ App/Web server (business logic) ↔ DB server — common for web, **more secure** (clients can't reach the DB directly)."
+    },
+    {
+      "id": "dbms-u1-c13",
+      "topic": "design-architecture-users",
+      "front": "4 database user types",
+      "back": "**Naïve/parametric** (canned interface, e.g. ticket booking), **Application programmers** (back-end), **Sophisticated** (write own SQL), **DBA** (schema, access, backup/recovery)."
+    },
+    {
+      "id": "dbms-u1-c14",
+      "topic": "design-architecture-users",
+      "front": "Database architectures",
+      "back": "**Centralized** (one server), **Client-server**, **Parallel** (cluster, analytics), **Distributed** (multi-location: scalable, fault-tolerant via replication)."
+    },
+    {
+      "id": "dbms-u1-c15",
+      "topic": "er-entities-attributes",
+      "front": "E-R model & entity set",
+      "back": "A **conceptual** modeling technique; ER diagrams show **entities/attributes/relationships**. **Entity** = a distinct object; **entity set** = entities of the same type; **extension** = the actual collection."
+    },
+    {
+      "id": "dbms-u1-c16",
+      "topic": "er-entities-attributes",
+      "front": "Attribute types + ER symbols",
+      "back": "**Simple** (ellipse), **Composite** (sub-parts), **Multivalued** (**double ellipse**), **Derived** (**dashed ellipse**), **Key** (**underlined**), Complex (composite+multivalued nesting)."
+    },
+    {
+      "id": "dbms-u1-c17",
+      "topic": "er-entities-attributes",
+      "front": "Descriptive attribute & Null",
+      "back": "**Descriptive attribute** = an attribute of a *relationship* (e.g. `grade` on `enrolls`), not an entity. **Null** = not applicable / missing / unknown."
+    },
+    {
+      "id": "dbms-u1-c18",
+      "topic": "er-relationships-cardinality",
+      "front": "Relationship, degree, recursive",
+      "back": "**Relationship** = association among entities (diamond). **Degree** = # participating entity sets (binary=2, ternary=3). **Recursive** = same entity set participates twice (needs **role names**)."
+    },
+    {
+      "id": "dbms-u1-c19",
+      "topic": "er-relationships-cardinality",
+      "front": "Mapping cardinalities",
+      "back": "**1:1**, **1:N**, **N:1**, **M:N** — how many of B one A can relate to. e.g. works_for = 1:N (dept→employees); works_on = M:N (employee↔project)."
+    },
+    {
+      "id": "dbms-u1-c20",
+      "topic": "er-relationships-cardinality",
+      "front": "Total vs Partial participation",
+      "back": "**Total** = every entity must participate (**double line**); **Partial** = some may not (single line). Independent of cardinality (how-many vs whether-all)."
+    },
+    {
+      "id": "dbms-u1-c21",
+      "topic": "er-relationships-cardinality",
+      "front": "(Min, Max) notation",
+      "back": "Line carries **(l, h)**: l = minimum, h = maximum. **l=1 ⇒ total participation**; h=1 ⇒ at most one; h=N ⇒ no limit. (2,5) = between 2 and 5 relationships."
+    },
+    {
+      "id": "dbms-u1-c22",
+      "topic": "er-keys-weak-entities",
+      "front": "Superkey / Candidate / Primary key",
+      "back": "**Superkey** = uniquely identifies (may have extras). **Candidate key** = minimal superkey. **Primary key** = the chosen candidate key."
+    },
+    {
+      "id": "dbms-u1-c23",
+      "topic": "er-keys-weak-entities",
+      "front": "Relationship PK by cardinality",
+      "back": "**1:1** → PK of either entity. **1:N/N:1** → PK of the **many side**. **M:N** → **union** of both PKs. (Descriptive attrs like grade are NOT in the PK.)"
+    },
+    {
+      "id": "dbms-u1-c24",
+      "topic": "er-keys-weak-entities",
+      "front": "Weak entity set",
+      "back": "Existence-dependent on an **identifying (owner) entity**; **no PK of its own** → PK = owner PK + **discriminator**. Identifying relationship is **many-to-one + total participation**, no descriptive attrs."
+    },
+    {
+      "id": "dbms-u1-c25",
+      "topic": "er-keys-weak-entities",
+      "front": "Weak entity ER notation",
+      "back": "Weak entity = **double rectangle**; identifying relationship = **double diamond**; discriminator (partial key) = **dashed underline**."
+    },
+    {
+      "id": "dbms-u1-c26",
+      "topic": "er-to-relational",
+      "front": "ER → Relational: entities",
+      "back": "**Strong entity** → table, PK = entity PK. **Weak entity** → table with owner's PK; PK = owner PK + discriminator."
+    },
+    {
+      "id": "dbms-u1-c27",
+      "topic": "er-to-relational",
+      "front": "ER → Relational: the 2 golden rules",
+      "back": "**1:N → foreign key on the many side.** **M:N → a new junction table** (both PKs as composite PK + relationship attrs). 1:1 → FK on either side."
+    },
+    {
+      "id": "dbms-u1-c28",
+      "topic": "er-to-relational",
+      "front": "ER → Relational: attributes",
+      "back": "**Composite** → flatten to leaf columns. **Derived** → not stored. **Multivalued** → its own table (attr + entity PK), to satisfy **1NF**."
+    },
+    {
+      "id": "dbms-u1-c29",
+      "topic": "ra-unary-operators",
+      "front": "Relational algebra — basics",
+      "back": "**Procedural**, **closed** (every result is a relation → composable). Unary: **σ select, ∏ project, ρ rename**. Binary: **∪ ∩ − × ⋈ ÷**."
+    },
+    {
+      "id": "dbms-u1-c30",
+      "topic": "ra-unary-operators",
+      "front": "Select (σ) vs Project (∏)",
+      "back": "**σ_p(r)** = filter **rows** by predicate p (horizontal). **∏_{cols}(r)** = keep **columns** + **remove duplicates** (vertical). |result| ≤ |R| for both."
+    },
+    {
+      "id": "dbms-u1-c31",
+      "topic": "ra-unary-operators",
+      "front": "Rename (ρ) & Assignment (←)",
+      "back": "**ρ** renames a relation and/or attributes (needed for set ops & self-joins): ρ_{Old→New}(R). **←** names an intermediate result (step-by-step query)."
+    },
+    {
+      "id": "dbms-u1-c32",
+      "topic": "ra-set-operations",
+      "front": "Union-compatibility",
+      "back": "Required for ∪, ∩, −: **(1) same arity** (# attributes) **(2) compatible domains** (matching column types)."
+    },
+    {
+      "id": "dbms-u1-c33",
+      "topic": "ra-set-operations",
+      "front": "Set-operation properties",
+      "back": "**∪ and ∩** are commutative **and** associative. **Set difference is NOT commutative** (R−S ≠ S−R). And r∩s = r−(r−s)."
+    },
+    {
+      "id": "dbms-u1-c34",
+      "topic": "ra-set-operations",
+      "front": "Division (÷) — the 'for all' operator",
+      "back": "**R(Z) ÷ S(X)** returns tuples of R (on Y=Z−X) that pair with **every** tuple of S. *Sailors who reserved **every** boat* = (∏sid,bid Reserves) ÷ (∏bid Boats)."
+    },
+    {
+      "id": "dbms-u1-c35",
+      "topic": "ra-joins-aggregates",
+      "front": "Cartesian product (×)",
+      "back": "Every tuple of R × every tuple of S. **Degree = n+m, size = |R|·|S|.** Usually meaningless until filtered by a selection (σ on matching keys)."
+    },
+    {
+      "id": "dbms-u1-c36",
+      "topic": "ra-joins-aggregates",
+      "front": "Natural join (⋈)",
+      "back": "Cartesian product **+ select on common-named compatible columns + drop the duplicate column**. The everyday way to follow a foreign key without cross-product redundancy."
+    },
+    {
+      "id": "dbms-u1-c37",
+      "topic": "ra-joins-aggregates",
+      "front": "Aggregates & grouping",
+      "back": "**ℱ**: SUM, AVG, MAX, MIN, COUNT. Grouping attribute on the **left** of ℱ, aggregates on the right: `rating ℱ AVG(age)(Sailors)` = SQL **GROUP BY**."
+    },
+    {
+      "id": "dbms-u1-c38",
+      "topic": "ra-joins-aggregates",
+      "front": "RA query strategy",
+      "back": "**Select rows (σ) → join tables (⋈) → project columns (∏).** 'every/all' → **division**; 'not/without' → **set difference**; 'total/avg per' → **ℱ + grouping**."
+    },
+    {
+      "id": "dbms-u1-c39",
+      "topic": "sql-overview-datatypes",
+      "front": "SQL & its 4 sub-languages",
+      "back": "SQL = ex-**SEQUEL** (Chamberlin & Boyce, IBM). **DDL** (CREATE/ALTER/DROP), **DML** (INSERT/SELECT/UPDATE/DELETE), **DCL** (GRANT/REVOKE), **TCL** (COMMIT/ROLLBACK)."
+    },
+    {
+      "id": "dbms-u1-c40",
+      "topic": "sql-overview-datatypes",
+      "front": "CHAR vs VARCHAR; BLOB vs CLOB",
+      "back": "**CHAR(n)** = fixed length (pads spaces); **VARCHAR(n)** = variable. **BLOB** = binary LOB (images/video); **CLOB** = character LOB (text). DATE = `YYYY-MM-DD`."
+    },
+    {
+      "id": "dbms-u1-c41",
+      "topic": "sql-ddl",
+      "front": "DROP vs TRUNCATE vs DELETE",
+      "back": "**DROP** = removes data **+ structure** (DDL). **TRUNCATE** = removes all rows, **keeps structure** (DDL, resets AUTO_INCREMENT). **DELETE** = removes rows, **WHERE-filterable**, undoable (DML)."
+    },
+    {
+      "id": "dbms-u1-c42",
+      "topic": "sql-ddl",
+      "front": "ALTER TABLE",
+      "back": "Changes table **structure**: `ADD` / `MODIFY` / `DROP COLUMN` / `RENAME COLUMN`, and add/drop constraints. (`CREATE…AS SELECT` copies structure+data; `CREATE…LIKE` copies structure only.)"
+    },
+    {
+      "id": "dbms-u1-c43",
+      "topic": "sql-constraints",
+      "front": "3 basic relational constraints",
+      "back": "**Key** (PK not duplicated), **Entity integrity** (PK not NULL), **Referential integrity** (FK matches an existing PK or is NULL)."
+    },
+    {
+      "id": "dbms-u1-c44",
+      "topic": "sql-constraints",
+      "front": "PRIMARY KEY vs UNIQUE",
+      "back": "**PRIMARY KEY** = UNIQUE **+** NOT NULL, only one per table. **UNIQUE** = a candidate/alternate key, allows one NULL."
+    },
+    {
+      "id": "dbms-u1-c45",
+      "topic": "sql-constraints",
+      "front": "FK referential actions",
+      "back": "On parent DELETE/UPDATE: **NO ACTION** (reject, default), **CASCADE** (propagate), **SET NULL** (FK→NULL, must be nullable), **SET DEFAULT** (FK→default)."
+    },
+    {
+      "id": "dbms-u1-c46",
+      "topic": "sql-dml",
+      "front": "SELECT-FROM-WHERE ≡ relational algebra",
+      "back": "**SELECT** clause = ∏ (project, columns); **FROM** = relation(s)/joins; **WHERE** = σ (select, rows). `SELECT name FROM r WHERE p` ≡ ∏name(σp(r))."
+    },
+    {
+      "id": "dbms-u1-c47",
+      "topic": "sql-dml",
+      "front": "DML commands",
+      "back": "**INSERT INTO … VALUES** / **INSERT … SELECT** · **SELECT … FROM … WHERE** · **UPDATE … SET … WHERE** · **DELETE FROM … WHERE** (no WHERE → all rows!)."
+    },
+    {
+      "id": "dbms-u1-c48",
+      "topic": "sql-dml",
+      "front": "SQL keyword SELECT vs algebra σ",
+      "back": "Beware: SQL's **`SELECT`** keyword does **projection (∏, columns)**; relational algebra's **`σ` select** picks **rows** — that's SQL's **`WHERE`**. Opposite meanings!"
+    },
+    {
+      "id": "dbms-u1-c49",
+      "topic": "er-to-relational",
+      "front": "M:N mapping — 3 rules",
+      "back": "**1)** new bridge table for the relationship. **2)** both entities' PKs become FKs whose **combination is the composite PK**. **3)** relationship attributes (e.g. Date_of_assignment) move into the bridge table. e.g. `Advisor(Instructor_ID, Student_ID, Date_of_assignment)`."
+    },
+    {
+      "id": "dbms-u1-c50",
+      "topic": "sql-ddl",
+      "front": "ALTER TABLE — add FK & MODIFY vs CHANGE",
+      "back": "Add FK: `ALTER TABLE t ADD CONSTRAINT fk FOREIGN KEY(col) REFERENCES p(col)` (column must exist). **MODIFY** col newtype = retype only; **CHANGE** old new type = rename **and** retype. `AFTER col`/`FIRST` set position."
+    }
+  ]
+}

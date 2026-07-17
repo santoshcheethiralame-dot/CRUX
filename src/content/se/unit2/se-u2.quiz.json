@@ -1,0 +1,507 @@
+{
+  "subject": "se",
+  "unit": 2,
+  "title": "Unit 2 — MCQ Quiz",
+  "items": [
+    {
+      "id": "se-u2-001",
+      "topic": "intro-spm",
+      "q": "Software project management is best described as:",
+      "options": ["A pure science with guaranteed outcomes", "The art and science of planning and leading software projects — a sub-discipline of project management", "Only the act of writing project code", "A synonym for software architecture"],
+      "answer": 1,
+      "explain": "SPM is the 'art and science of planning and leading software projects', a sub-discipline of general project management where software projects are planned, implemented, monitored and controlled.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-002",
+      "topic": "intro-spm",
+      "q": "Which is NOT one of the three roles of a software project manager?",
+      "options": ["Leader", "Liaison", "Mentor", "Compiler"],
+      "answer": 3,
+      "explain": "The three roles are Leader (direction/vision), Liaison (communication bridge), and Mentor (guidance). 'Compiler' is not a PM role.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-003",
+      "topic": "intro-spm",
+      "q": "In the project management triangle, what sits at the centre, affected by every scope/time/cost decision?",
+      "options": ["Risk", "Quality", "Scope", "The budget"],
+      "answer": 1,
+      "explain": "Quality sits at the centre of the triangle. The three 'triple constraints' — Scope, Time, Cost — all affect quality, and no corner can change without trade-offs with the other two.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-004",
+      "topic": "intro-spm",
+      "q": "The five phases of the SPM lifecycle, in order, are:",
+      "options": ["Initiation → Planning → Execution → Monitoring & Control → Closure", "Planning → Coding → Testing → Release → Support", "Requirements → Design → Implementation → Testing → Deploy", "Initiation → Execution → Planning → Closure → Review"],
+      "answer": 0,
+      "explain": "Initiation → Planning → Execution → Monitoring & Control → Closure. (The third option is the SDLC, which the management lifecycle wraps.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-005",
+      "topic": "agile-planning",
+      "q": "The two levels of agile planning are:",
+      "options": ["Strategic and tactical planning", "Release planning (months) and iteration planning (2–4 weeks)", "Annual and quarterly planning", "Waterfall and spiral planning"],
+      "answer": 1,
+      "explain": "Release planning looks ahead several months at features; iteration planning has a 2–4 week horizon, planning the next increment in detail.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-006",
+      "topic": "agile-planning",
+      "q": "A team's 'velocity' in agile planning is:",
+      "options": ["The CPU speed of the build server", "The number of effort points completed per iteration, used to forecast", "How fast developers type", "The deadline for the release"],
+      "answer": 1,
+      "explain": "Velocity = effort points implemented per iteration. It lets the team estimate total effort and choose how many stories fit in an iteration.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-007",
+      "topic": "agile-planning",
+      "q": "In agile delivery, if the planned features can't be completed within an iteration:",
+      "options": ["The deadline is extended", "The scope is reduced — the schedule is never extended", "The team works unpaid overtime", "The iteration is cancelled"],
+      "answer": 1,
+      "explain": "Agile uses a fixed timebox with variable scope: a working increment ships every iteration, and if features don't fit, scope is reduced rather than extending the delivery date.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-008",
+      "topic": "agile-planning",
+      "q": "A single development task in agile task allocation should take roughly:",
+      "options": ["1–2 minutes", "4–16 hours", "2–3 months", "Exactly one week"],
+      "answer": 1,
+      "explain": "Developers break stories into tasks of 4–16 hours and then volunteer (sign up) for them, creating ownership.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-009",
+      "topic": "estimation-cocomo",
+      "q": "COCOMO estimates project effort primarily from:",
+      "options": ["The number of developers", "Size in Lines of Code (KLOC)", "The number of meetings", "The marketing budget"],
+      "answer": 1,
+      "explain": "COCOMO is an algorithmic/regression model based on size in KLOC. Its outputs are Effort (person-months) and Time (months).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-010",
+      "topic": "estimation-cocomo",
+      "q": "In Basic COCOMO, effort is computed as:",
+      "options": ["E = a × (KLOC)^b person-months", "E = KLOC ÷ team-size", "E = a + b × KLOC", "E = c × (Time)^d"],
+      "answer": 0,
+      "explain": "Effort E = a × (KLOC)^b person-months; then Time = c × (Effort)^d months; Persons = Effort/Time.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-011",
+      "topic": "estimation-cocomo",
+      "q": "A project with a small team, a well-understood/familiar problem and a stable environment is COCOMO-classified as:",
+      "options": ["Embedded", "Semi-detached", "Organic", "Detached"],
+      "answer": 2,
+      "explain": "Organic = small team, familiar/well-understood problem, stable environment (constants a=2.4, b=1.05). Embedded = highest complexity/tight constraints; semi-detached is in between.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-012",
+      "topic": "estimation-cocomo",
+      "q": "The key advantage of Function Point Analysis over Lines of Code is that it is:",
+      "options": ["Always smaller", "Language-independent (measures functionality, not code volume)", "Free to compute", "Only for embedded systems"],
+      "answer": 1,
+      "explain": "Function points size a project by functional requirements (inputs, outputs, inquiries, files, interfaces), making them language-independent, unlike LOC.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-013",
+      "topic": "scheduling-gantt",
+      "q": "A Gantt chart primarily shows:",
+      "options": ["The class hierarchy of the system", "Activities plotted against a time scale — what is to be done and when", "The network security boundaries", "The cost of quality"],
+      "answer": 1,
+      "explain": "A Gantt chart plots activities (vertical) against a time scale (horizontal) with duration bars, dependencies, progress and milestones — showing what is done and when.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-014",
+      "topic": "scheduling-gantt",
+      "q": "The critical path of a project is:",
+      "options": ["The shortest path with the most slack", "The longest sequence of dependent activities, with zero slack, setting the minimum duration", "The path with the cheapest tasks", "Any path chosen by the manager"],
+      "answer": 1,
+      "explain": "The critical path is the longest path of dependent activities; its tasks have zero slack, so any delay there delays the whole project. It determines the minimum project duration.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-015",
+      "topic": "scheduling-gantt",
+      "q": "To finish a project earlier, you must shorten tasks on the:",
+      "options": ["Non-critical path", "Critical path", "Longest-slack path", "Gantt legend"],
+      "answer": 1,
+      "explain": "Only shortening critical-path tasks (which have zero slack) reduces the minimum duration. Speeding up non-critical tasks just adds more slack and doesn't help.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-016",
+      "topic": "risk-management",
+      "q": "A risk that affects the project schedule or resources (e.g. staff turnover) is classified as a:",
+      "options": ["Product risk", "Business risk", "Project risk", "Technical debt"],
+      "answer": 2,
+      "explain": "Project risks affect schedule/resources (staff turnover, hardware unavailability). Product risks affect software quality/performance; business risks affect the organisation.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-017",
+      "topic": "risk-management",
+      "q": "Risk Exposure is calculated as:",
+      "options": ["Probability + Impact", "Probability × Impact (cost)", "Impact ÷ Probability", "Number of risks × team size"],
+      "answer": 1,
+      "explain": "Risk Exposure = Probability × Impact. It lets you rank risks so attention goes to the highest-exposure ones first.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-018",
+      "topic": "risk-management",
+      "q": "Buying insurance to shift a risk's responsibility to another party is which response strategy?",
+      "options": ["Avoidance", "Mitigation", "Transfer", "Acceptance"],
+      "answer": 2,
+      "explain": "Transfer shifts responsibility to another party (insurance, contracts). Avoidance eliminates the source; mitigation reduces probability/impact; acceptance plans a contingency.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-019",
+      "topic": "risk-management",
+      "q": "The four steps of the risk management process are:",
+      "options": ["Identification → Analysis → Planning → Monitoring", "Plan → Do → Check → Act", "Detect → Patch → Deploy → Audit", "Avoid → Transfer → Accept → Ignore"],
+      "answer": 0,
+      "explain": "Risk identification → analysis (likelihood × consequence) → planning (response strategies) → monitoring (track indicators throughout).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-020",
+      "topic": "raci-teamwork",
+      "q": "In a RACI matrix, how many people can be 'Accountable' (A) for a given task?",
+      "options": ["As many as needed", "Exactly one", "At least two", "Zero"],
+      "answer": 1,
+      "explain": "Only ONE 'A' per task — the single person ultimately answerable ('you can't have two people driving the bus'). Multiple 'R's (Responsible doers) are allowed.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-021",
+      "topic": "raci-teamwork",
+      "q": "In RACI, 'Consulted' (C) versus 'Informed' (I) differ in that:",
+      "options": ["C and I are identical", "Consulted is two-way communication before completion; Informed is one-way after", "Informed people do the work", "Consulted people are only notified afterward"],
+      "answer": 1,
+      "explain": "Consulted = two-way communication before a task (their input is needed). Informed = one-way communication after a decision/action is taken.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-022",
+      "topic": "raci-teamwork",
+      "q": "A major advantage of a cohesive software team is:",
+      "options": ["No need for testing", "Knowledge sharing and continuity (shared knowledge survives departures)", "Eliminating all communication", "Guaranteed zero defects"],
+      "answer": 1,
+      "explain": "Cohesive teams develop shared quality standards, share knowledge (reducing silos), maintain continuity when members leave, and foster continuous improvement.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-023",
+      "topic": "software-architecture",
+      "q": "The use of different city maps (pincodes, BBMP wards, BESCOM, BWSSB) for Bengaluru is an analogy for:",
+      "options": ["Technical debt", "Architectural views — each shows specific information for a specific stakeholder", "The critical path", "Coupling"],
+      "answer": 1,
+      "explain": "Architecture uses multiple views; like different city maps of the same city, each view conveys specific information for a purpose and hides irrelevant detail.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-024",
+      "topic": "software-architecture",
+      "q": "A key architectural lesson from the Therac-25 disaster is:",
+      "options": ["Use more global variables", "Safety-critical functions must be architecturally isolated (separation of concerns, fault isolation)", "Reuse all legacy code without review", "Remove all logging"],
+      "answer": 1,
+      "explain": "Therac-25 failed from tight coupling (shared global memory), race conditions, unreviewed legacy reuse and no fault isolation. Lesson: isolate safety-critical functions, fail-safe design, defensive programming.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-025",
+      "topic": "software-architecture",
+      "q": "Which question is an ARCHITECTURE-level (not design-level) concern?",
+      "options": ["How do I add a menu item to the app?", "Which sorting algorithm should this function use?", "How does the system scale to millions of users and how is security implemented across it?", "What colour should this button be?"],
+      "answer": 2,
+      "explain": "Architecture is system-level (scaling, subsystem communication, system-wide security, deployment). Adding a menu item or picking an algorithm is component-level design.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-026",
+      "topic": "architectural-patterns",
+      "q": "A compiler organised as lexing → parsing → code generation is a classic example of which pattern?",
+      "options": ["Pipes and Filters", "Client-Server", "Blackboard", "MVC"],
+      "answer": 0,
+      "explain": "Pipes and filters: data flows through independent filters (stages) connected by pipes, each doing a local transformation — exactly a compiler's pipeline.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-027",
+      "topic": "architectural-patterns",
+      "q": "The TCP/IP protocol stack is the standard example of which architectural pattern?",
+      "options": ["Event-driven", "Layered", "Blackboard", "Pipes and filters"],
+      "answer": 1,
+      "explain": "Layered architecture: each layer provides services to the layer above and uses the one below, communicating only with adjacent layers — like the TCP/IP / OSI stack.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-028",
+      "topic": "architectural-patterns",
+      "q": "In MVC, which component manages application data and business logic?",
+      "options": ["View", "Controller", "Model", "Router"],
+      "answer": 2,
+      "explain": "Model = data + business logic; View = presentation + input capture; Controller = mediates, handling user actions and updating the model.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-029",
+      "topic": "cohesion-coupling-security",
+      "q": "The strongest (best) form of cohesion is:",
+      "options": ["Coincidental cohesion", "Logical cohesion", "Temporal cohesion", "Functional cohesion"],
+      "answer": 3,
+      "explain": "Functional cohesion (all elements contribute to a single well-defined function) is strongest/best. Coincidental (arbitrary grouping) is weakest/worst.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-030",
+      "topic": "cohesion-coupling-security",
+      "q": "Two modules that communicate by reading and writing the same global variables exhibit:",
+      "options": ["Data coupling", "Common coupling", "Stamp coupling", "Message coupling"],
+      "answer": 1,
+      "explain": "Common coupling = modules share global data, creating hidden dependencies and side effects. Data coupling (simple parameters) is the loosest/best; content coupling is the tightest/worst.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-031",
+      "topic": "cohesion-coupling-security",
+      "q": "A trust boundary in security architecture is:",
+      "options": ["A firewall brand", "An architectural line separating components with different security assumptions/access levels", "The maximum number of users", "A type of encryption key"],
+      "answer": 1,
+      "explain": "A trust boundary separates components with different security assumptions. Within it, components are mutually trusted; crossing it requires authentication, authorization and secure communication.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-032",
+      "topic": "microservices",
+      "q": "A defining characteristic of microservices versus a monolith is:",
+      "options": ["All services share one database", "Each service is independently deployable with its own database, communicating via network APIs", "Everything is deployed as a single unit", "Only one technology stack is allowed"],
+      "answer": 1,
+      "explain": "Microservices are small, independently deployable services, each with its own database, communicating only through well-defined network APIs (decentralized data).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-033",
+      "topic": "microservices",
+      "q": "In SOA, services typically communicate through a central:",
+      "options": ["Enterprise Service Bus (ESB)", "Single shared memory block", "Git repository", "RACI matrix"],
+      "answer": 0,
+      "explain": "Service-Oriented Architecture often uses an Enterprise Service Bus (ESB) as central communication infrastructure. Microservices instead use lightweight point-to-point protocols (HTTP/REST, gRPC).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-034",
+      "topic": "microservices",
+      "q": "Gradually replacing a monolith by routing requests through a facade while old and new coexist is the:",
+      "options": ["Anti-corruption layer pattern", "Strangler fig pattern", "Big-bang rewrite", "Blackboard pattern"],
+      "answer": 1,
+      "explain": "The Strangler Fig pattern migrates functionality piece by piece through a facade/API gateway, with the monolith and microservices coexisting until the monolith is fully replaced.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-035",
+      "topic": "component-diagrams",
+      "q": "In a UML component diagram, a 'provided' interface is drawn as a ___ and a 'required' interface as a ___:",
+      "options": ["socket; lollipop", "lollipop (ball); socket (cup)", "arrow; box", "circle; triangle"],
+      "answer": 1,
+      "explain": "Provided interface = 'lollipop' (ball) extending out; required interface = 'socket' (cup). An assembly connector joins a ball to a matching socket.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-036",
+      "topic": "component-diagrams",
+      "q": "A UML component is best described as:",
+      "options": ["A single line of code", "A replaceable, executable, black-box unit interacting only through well-defined interfaces", "A database table", "A user role"],
+      "answer": 1,
+      "explain": "A component is modular, replaceable, black-box (internals hidden), executable, and interface-driven — shown with the <<component>> stereotype.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-037",
+      "topic": "design-principles-uml",
+      "q": "Bundling data with the methods that operate on it and exposing only a controlled interface is:",
+      "options": ["Encapsulation / information hiding", "Coincidental cohesion", "Content coupling", "Polymorphism"],
+      "answer": 0,
+      "explain": "Encapsulation (information hiding) bundles data + methods, exposes controlled access, and hides internal representation — reducing coupling and improving maintainability.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-038",
+      "topic": "design-principles-uml",
+      "q": "Which UML diagram shows object interactions over time using lifelines, messages and activation boxes?",
+      "options": ["Class diagram", "Sequence diagram", "Component diagram", "Use-case diagram"],
+      "answer": 1,
+      "explain": "A sequence diagram models dynamic interactions over time: lifelines (object existence), messages (arrows), activation boxes (active processing), return messages and alt fragments.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-039",
+      "topic": "api-abi-errors",
+      "q": "The key difference between an API and an ABI is:",
+      "options": ["They are identical", "An API is a source-level contract; an ABI is a binary/compiled-level contract with the OS/platform", "An ABI is only for Python", "An API is hardware, an ABI is software"],
+      "answer": 1,
+      "explain": "An API is a source-level contract between components; an ABI defines the binary-level interface (data sizes, calling conventions, registers, file formats). ABI breakage breaks compiled binaries even if source is unchanged.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-040",
+      "topic": "api-abi-errors",
+      "q": "A synchronous API call differs from an asynchronous one in that the synchronous caller:",
+      "options": ["Never returns a value", "Blocks until the operation completes", "Always runs on a GPU", "Cannot report errors"],
+      "answer": 1,
+      "explain": "Synchronous calls block until done (simple model, e.g. requests.get()). Asynchronous calls return immediately and deliver results via callbacks/promises/events — better for high concurrency.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-041",
+      "topic": "api-abi-errors",
+      "q": "The 'fail-fast' principle in defensive programming means:",
+      "options": ["Crash the program for any reason", "Detect and report errors as early as possible (validate inputs/preconditions immediately)", "Never validate input", "Retry failed operations forever"],
+      "answer": 1,
+      "explain": "Fail-fast detects/reports errors as early as possible — validating inputs on receipt and checking preconditions — so bugs surface immediately rather than propagating.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-042",
+      "topic": "usability-engineering",
+      "q": "'Dogfooding' in software testing means:",
+      "options": ["Outsourcing testing to users abroad", "The team uses its own product internally before public release", "Testing only with automated scripts", "Releasing without any testing"],
+      "answer": 1,
+      "explain": "Dogfooding ('eating your own dog food') = the development team uses its own product internally before release, catching usability/performance/practical issues before real users do.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-043",
+      "topic": "usability-engineering",
+      "q": "Testing an interface concept by having a human secretly simulate the system's responses is called:",
+      "options": ["A/B testing", "Wizard of Oz testing", "Lab study", "Dogfooding"],
+      "answer": 1,
+      "explain": "Wizard of Oz testing has humans simulate system responses while users interact with a mockup — ideal for testing conversational/AI interfaces before the real system is built.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-044",
+      "topic": "quality-management",
+      "q": "The Heartbleed (2014) vulnerability in OpenSSL was fundamentally caused by:",
+      "options": ["A stolen private key", "Missing validation that the heartbeat length field matched the actual payload size (a buffer over-read)", "A denial-of-service flood", "An expired certificate"],
+      "answer": 1,
+      "explain": "OpenSSL didn't validate the TLS heartbeat length field against the real payload, so a client could request up to 64KB and read excess server memory (private keys, tokens). It reflected weak QA — no fuzzing/boundary tests, no formal review.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-045",
+      "topic": "quality-management",
+      "q": "'Number of defects' is a measure; 'defects per KLOC' is a:",
+      "options": ["Measure", "Metric (a relationship between measures)", "Attribute", "Requirement"],
+      "answer": 1,
+      "explain": "A measure is a raw quantity (number of defects); a metric is a calculated relationship between measures (defects per KLOC combines defect count with size).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-046",
+      "topic": "quality-management",
+      "q": "In the Cost of Quality framework, code reviews and testing are which kind of cost?",
+      "options": ["External failure cost", "Internal failure cost", "Appraisal cost (Cost of Good Quality)", "Prevention cost"],
+      "answer": 2,
+      "explain": "Appraisal costs assess conformance — code reviews, testing at all levels, audits, metrics. Prevention stops problems before they occur (training, design reviews); failure costs are incurred when quality is poor.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-047",
+      "topic": "technical-debt-tdd",
+      "q": "Technical debt is best defined as:",
+      "options": ["Any bug in the code", "Expedient short-term design/implementation choices that make future changes more costly (affecting maintainability/evolvability)", "Money owed to a software vendor", "A security vulnerability"],
+      "answer": 1,
+      "explain": "Technical debt = constructs expedient in the short term that make future changes costlier — a contingent liability on internal qualities (maintainability, evolvability). It's a conscious trade-off, distinct from plain defects.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-048",
+      "topic": "technical-debt-tdd",
+      "q": "The Knight Capital (2012) disaster — losing $460M in 45 minutes — was caused largely by:",
+      "options": ["A phishing attack", "A deployment error: new code on only 7 of 8 servers, obsolete code left running, no circuit breakers", "A database backup failure", "A leaked password"],
+      "answer": 1,
+      "explain": "Knight Capital deployed to only 7 of 8 servers (one ran obsolete test code), left legacy code in production, used manual deployment, and had no circuit breakers — a technical-debt/deployment failure.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-049",
+      "topic": "technical-debt-tdd",
+      "q": "The correct order of the TDD cycle is:",
+      "options": ["Refactor → Red → Green", "Red (failing test) → Green (minimal code to pass) → Refactor", "Green → Red → Refactor", "Write all code → write all tests → refactor"],
+      "answer": 1,
+      "explain": "Red-Green-Refactor: write a failing test (Red), write the simplest code to pass it (Green), then improve structure without changing behaviour (Refactor) — keeping all tests green.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u2-050",
+      "topic": "technical-debt-tdd",
+      "q": "Which is a genuine benefit of Test-Driven Development?",
+      "options": ["It eliminates the need for any design", "Comprehensive test coverage and tests acting as living documentation", "It guarantees high performance", "It removes the need for refactoring"],
+      "answer": 1,
+      "explain": "TDD yields comprehensive coverage (every line has a test), simplified debugging (failures localise to recent code), living documentation (tests as executable specs), and more testable/modular design.",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

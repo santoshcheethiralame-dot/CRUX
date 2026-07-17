@@ -1,0 +1,982 @@
+{
+  "subject": "dbms",
+  "unit": 2,
+  "title": "Unit 2 — MCQ Quiz",
+  "items": [
+    {
+      "id": "dbms-u2-001",
+      "topic": "additional-sql-operations",
+      "q": "In what order is a SELECT-FROM-WHERE block conceptually evaluated?",
+      "options": [
+        "SELECT, then FROM, then WHERE",
+        "FROM (form the product), then WHERE (filter rows), then SELECT (pick columns)",
+        "WHERE, then SELECT, then FROM",
+        "All three simultaneously"
+      ],
+      "answer": 1,
+      "explain": "Although SELECT is written first, evaluation is FROM → WHERE → SELECT: form the working table, filter rows, then project/derive the surviving columns.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-002",
+      "topic": "additional-sql-operations",
+      "q": "By default, a SQL SELECT returns a:",
+      "options": [
+        "Set (no duplicates)",
+        "Multiset (duplicates allowed) — use DISTINCT to remove them",
+        "Sorted set",
+        "Single row"
+      ],
+      "answer": 1,
+      "explain": "SQL relations are multisets; duplicates are kept (this is ALL). DISTINCT forces set semantics by eliminating duplicate rows.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-003",
+      "topic": "additional-sql-operations",
+      "q": "In a LIKE pattern, what do `%` and `_` match?",
+      "options": [
+        "% = one char, _ = any number of chars",
+        "% = any number of chars (incl. zero), _ = exactly one char",
+        "Both match exactly one char",
+        "% = digits, _ = letters"
+      ],
+      "answer": 1,
+      "explain": "`%` matches any substring (zero or more characters); `_` matches exactly one character. So `'___'` matches strings of exactly 3 characters.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-004",
+      "topic": "additional-sql-operations",
+      "q": "Which clause sorts query output, and what is its default direction?",
+      "options": [
+        "GROUP BY, descending",
+        "ORDER BY, ascending (ASC) by default",
+        "SORT BY, ascending",
+        "ORDER BY, descending by default"
+      ],
+      "answer": 1,
+      "explain": "ORDER BY sorts the result; ASC (ascending) is the default. Multiple keys are applied left-to-right, the later key breaking ties of the earlier.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-005",
+      "topic": "set-operations",
+      "q": "What is required for two queries to be combined with UNION/INTERSECT/EXCEPT?",
+      "options": [
+        "They must query the same table",
+        "They must be union-compatible: same number of columns with compatible types",
+        "They must each return one row",
+        "They must have ORDER BY"
+      ],
+      "answer": 1,
+      "explain": "Set operators need union-compatible inputs: identical column counts and type-compatible columns in matching positions.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-006",
+      "topic": "set-operations",
+      "q": "How do UNION and UNION ALL differ?",
+      "options": [
+        "No difference",
+        "UNION removes duplicate rows; UNION ALL keeps all duplicates",
+        "UNION ALL removes duplicates; UNION keeps them",
+        "UNION sorts, UNION ALL does not"
+      ],
+      "answer": 1,
+      "explain": "Plain set operators eliminate duplicates. The ALL variants preserve duplicates (and are faster since no de-duplication is needed).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-007",
+      "topic": "set-operations",
+      "q": "If a tuple appears 5 times in A and 2 times in B, how many times does it appear in A INTERSECT ALL B and A EXCEPT ALL B?",
+      "options": [
+        "7 and 3",
+        "2 and 3",
+        "2 and 0",
+        "5 and 2"
+      ],
+      "answer": 1,
+      "explain": "INTERSECT ALL gives min(c1,c2)=min(5,2)=2; EXCEPT ALL gives max(c1−c2,0)=max(5−2,0)=3. (UNION ALL would give 5+2=7.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-008",
+      "topic": "set-operations",
+      "q": "On a MySQL version before 8.0.31, how can `A INTERSECT B` be simulated?",
+      "options": [
+        "It cannot be simulated",
+        "With a subquery using IN / EXISTS",
+        "With UNION ALL",
+        "With a CROSS JOIN"
+      ],
+      "answer": 1,
+      "explain": "INTERSECT and EXCEPT arrived in MySQL 8.0.31. Earlier, intersection is written with IN/EXISTS and difference with NOT IN/NOT EXISTS.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-009",
+      "topic": "null-values",
+      "q": "What is the result of the comparison `salary = NULL`?",
+      "options": [
+        "TRUE if salary is null",
+        "FALSE",
+        "UNKNOWN",
+        "An error"
+      ],
+      "answer": 2,
+      "explain": "Any comparison involving NULL yields UNKNOWN — even NULL = NULL. That is why = can never test for null; you must use IS NULL.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-010",
+      "topic": "null-values",
+      "q": "A row is kept by a WHERE clause only when the predicate evaluates to:",
+      "options": [
+        "TRUE (rows giving FALSE or UNKNOWN are discarded)",
+        "TRUE or UNKNOWN",
+        "anything but FALSE",
+        "UNKNOWN"
+      ],
+      "answer": 0,
+      "explain": "WHERE keeps a row only if the predicate is TRUE. Both FALSE and UNKNOWN cause the row to be dropped — so `WHERE salary > 50000` silently excludes NULL salaries.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-011",
+      "topic": "null-values",
+      "q": "In three-valued logic, what is `TRUE AND UNKNOWN`?",
+      "options": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "NULL"
+      ],
+      "answer": 2,
+      "explain": "TRUE AND UNKNOWN = UNKNOWN (the unknown operand decides). By contrast FALSE AND UNKNOWN = FALSE, and TRUE OR UNKNOWN = TRUE.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-012",
+      "topic": "null-values",
+      "q": "For DISTINCT and GROUP BY, how are two NULL values treated?",
+      "options": [
+        "As unequal (like in comparisons)",
+        "As equal / duplicates of each other",
+        "As errors",
+        "They are ignored entirely"
+      ],
+      "answer": 1,
+      "explain": "Deliberately inconsistent with comparison: for DISTINCT, GROUP BY and UNION, two NULLs are treated as equal, so SELECT DISTINCT collapses them into a single NULL row.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-013",
+      "topic": "aggregate-functions",
+      "q": "What is the difference between COUNT(*) and COUNT(salary)?",
+      "options": [
+        "No difference",
+        "COUNT(*) counts all rows; COUNT(salary) counts only rows where salary IS NOT NULL",
+        "COUNT(*) ignores nulls; COUNT(salary) counts nulls",
+        "COUNT(salary) counts distinct values"
+      ],
+      "answer": 1,
+      "explain": "COUNT(*) counts every row including nulls; COUNT(attr) counts non-null values of that attribute. COUNT(DISTINCT attr) counts distinct non-null values.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-014",
+      "topic": "aggregate-functions",
+      "q": "How do SUM, AVG, MAX and MIN treat NULL inputs?",
+      "options": [
+        "They return NULL if any value is null",
+        "They ignore NULLs (compute over non-null values only)",
+        "They treat NULL as 0",
+        "They raise an error"
+      ],
+      "answer": 1,
+      "explain": "All aggregates except COUNT(*) ignore NULLs. So AVG averages only the non-null values. If a group is entirely NULL, SUM/AVG/MAX/MIN return NULL but COUNT(col) returns 0.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-015",
+      "topic": "aggregate-functions",
+      "q": "Why use `WHERE salary = (SELECT MAX(salary) FROM instructor)` instead of ORDER BY ... LIMIT 1?",
+      "options": [
+        "It is faster",
+        "It returns ALL instructors tied for the maximum, not just one",
+        "LIMIT is invalid SQL",
+        "There is no difference"
+      ],
+      "answer": 1,
+      "explain": "Comparing to the MAX returns every row that ties for the highest value; ORDER BY ... LIMIT 1 would arbitrarily return only one of the tied rows.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-016",
+      "topic": "grouping-having",
+      "q": "In a GROUP BY query, a column in the SELECT list that is not inside an aggregate must:",
+      "options": [
+        "Be omitted",
+        "Appear in the GROUP BY clause",
+        "Be wrapped in DISTINCT",
+        "Be the primary key"
+      ],
+      "answer": 1,
+      "explain": "Each group yields one row, so every selected non-aggregated column must be a grouping key — otherwise it is ambiguous which value to display.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-017",
+      "topic": "grouping-having",
+      "q": "Which clause filters GROUPS (and may reference aggregate values)?",
+      "options": [
+        "WHERE",
+        "HAVING",
+        "ORDER BY",
+        "FROM"
+      ],
+      "answer": 1,
+      "explain": "HAVING is a filter applied after grouping, so it can use aggregates (e.g. HAVING AVG(salary) > 42000). WHERE filters rows before grouping and cannot use aggregates.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-018",
+      "topic": "grouping-having",
+      "q": "Which lists the correct conceptual evaluation order of a full query?",
+      "options": [
+        "SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY",
+        "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY",
+        "FROM → GROUP BY → WHERE → SELECT → HAVING → ORDER BY",
+        "WHERE → FROM → SELECT → GROUP BY → HAVING → ORDER BY"
+      ],
+      "answer": 1,
+      "explain": "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY. This is why a SELECT alias can be used in ORDER BY (runs last) but usually not in WHERE (runs early).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-019",
+      "topic": "join-expressions",
+      "q": "A NATURAL JOIN matches rows on which columns and keeps how many copies of them?",
+      "options": [
+        "On the primary key; two copies",
+        "On all commonly-named columns; one copy each",
+        "On all columns; no copies",
+        "On explicitly listed columns only; two copies"
+      ],
+      "answer": 1,
+      "explain": "Natural join equates all attributes that share a name in both tables and keeps a single copy of each common column.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-020",
+      "topic": "join-expressions",
+      "q": "A LEFT OUTER JOIN of A and B returns:",
+      "options": [
+        "Only matching rows",
+        "All rows of A, with NULLs where B has no match",
+        "All rows of B, with NULLs where A has no match",
+        "The Cartesian product"
+      ],
+      "answer": 1,
+      "explain": "LEFT OUTER JOIN preserves every row of the left table; unmatched right-side columns are padded with NULL. (RIGHT keeps all of B; FULL keeps both.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-021",
+      "topic": "join-expressions",
+      "q": "MySQL lacks FULL OUTER JOIN. How is it typically emulated?",
+      "options": [
+        "With a CROSS JOIN",
+        "LEFT JOIN UNION RIGHT JOIN",
+        "INNER JOIN twice",
+        "It is impossible"
+      ],
+      "answer": 1,
+      "explain": "Combine a LEFT JOIN and a RIGHT JOIN with UNION; UNION (not UNION ALL) removes the duplicated matched rows.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-022",
+      "topic": "join-expressions",
+      "q": "A CROSS JOIN of relations with |A|=4 and |B|=3 produces how many rows?",
+      "options": [
+        "7",
+        "12",
+        "4",
+        "1"
+      ],
+      "answer": 1,
+      "explain": "A cross join is the Cartesian product: |A| × |B| = 4 × 3 = 12 rows, with degree = sum of the two column counts.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-023",
+      "topic": "nested-subqueries",
+      "q": "The SQL operator that tests set membership (value present in a subquery's result) is:",
+      "options": [
+        "EXISTS",
+        "IN",
+        "LIKE",
+        "ALL"
+      ],
+      "answer": 1,
+      "explain": "IN returns TRUE if the value occurs in the set returned by the subquery; NOT IN is its negation.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-024",
+      "topic": "nested-subqueries",
+      "q": "`= SOME` (= ANY) is equivalent to which operator?",
+      "options": [
+        "NOT IN",
+        "IN",
+        "ALL",
+        "EXISTS"
+      ],
+      "answer": 1,
+      "explain": "= SOME / = ANY is equivalent to IN. Correspondingly, <> ALL is equivalent to NOT IN.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-025",
+      "topic": "nested-subqueries",
+      "q": "`Salary > ALL (SELECT Salary FROM EMPLOYEE WHERE Dno=5)` is equivalent to:",
+      "options": [
+        "Salary > MIN(dept-5 salaries)",
+        "Salary > MAX(dept-5 salaries)",
+        "Salary IN (dept-5 salaries)",
+        "Salary = AVG(dept-5 salaries)"
+      ],
+      "answer": 1,
+      "explain": "> ALL means greater than every value in the set, i.e. greater than the maximum. Likewise > SOME means greater than the minimum.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-026",
+      "topic": "nested-subqueries",
+      "q": "A subquery used in the FROM clause must always have:",
+      "options": [
+        "A WHERE clause",
+        "An alias (a name)",
+        "An ORDER BY",
+        "Exactly one column"
+      ],
+      "answer": 1,
+      "explain": "A derived table in FROM must be given an alias so the outer query can reference it as a relation.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-027",
+      "topic": "cte-recursive",
+      "q": "How long does a Common Table Expression (CTE) defined with WITH exist?",
+      "options": [
+        "Permanently, until dropped",
+        "Only for the duration of the single statement it is part of",
+        "Until the session ends",
+        "Until the table is updated"
+      ],
+      "answer": 1,
+      "explain": "A CTE is a temporary, named result set that lives only for the one query — unlike a view, which persists in the schema.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-028",
+      "topic": "cte-recursive",
+      "q": "Which is the correct syntax for two CTEs at the same query level?",
+      "options": [
+        "WITH cte1 AS (...) WITH cte2 AS (...)",
+        "WITH cte1 AS (...), cte2 AS (...)",
+        "WITH cte1, cte2 AS (...)",
+        "WITH (cte1, cte2) AS (...)"
+      ],
+      "answer": 1,
+      "explain": "Only one WITH keyword is allowed per level; separate multiple CTEs with commas.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-029",
+      "topic": "cte-recursive",
+      "q": "A recursive CTE consists of which two parts, combined by UNION ALL?",
+      "options": [
+        "A SELECT and an INSERT",
+        "An anchor member (base case) and a recursive member that references the CTE",
+        "A view and a trigger",
+        "A WHERE and a HAVING"
+      ],
+      "answer": 1,
+      "explain": "The anchor runs once to seed the result; the recursive member repeatedly references the CTE, adding rows until none are new. Used for hierarchies.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-030",
+      "topic": "cte-recursive",
+      "q": "In a recursive CTE, the column data types are determined by:",
+      "options": [
+        "The recursive member",
+        "The anchor (non-recursive) member — the recursive part must match",
+        "The outer query",
+        "Always VARCHAR"
+      ],
+      "answer": 1,
+      "explain": "Types are fixed by the anchor SELECT; the recursive part must conform. Columns are nullable by default, and mismatches may need an explicit CAST.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-031",
+      "topic": "case-expressions",
+      "q": "In a CASE expression with multiple WHEN conditions and no matching branch and no ELSE, the result is:",
+      "options": [
+        "0",
+        "An empty string",
+        "NULL",
+        "An error"
+      ],
+      "answer": 2,
+      "explain": "Conditions are tested top-down and the first match wins; if none match and there is no ELSE, CASE returns NULL.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-032",
+      "topic": "case-expressions",
+      "q": "When bucketing scores into grades with CASE (F if <40, C if <60, ...), why must `score < 40` come before `score < 60`?",
+      "options": [
+        "Alphabetical order",
+        "Because the first matching WHEN wins, so the most specific bound must be tested first",
+        "CASE evaluates bottom-up",
+        "It does not matter"
+      ],
+      "answer": 1,
+      "explain": "CASE returns on the first TRUE condition. Testing the lowest bound first ensures a score of 35 hits 'F' rather than falling through to a broader later condition.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-033",
+      "topic": "correlated-subqueries-exists",
+      "q": "What makes a subquery 'correlated'?",
+      "options": [
+        "It returns more than one row",
+        "Its WHERE clause references an attribute of the outer query, so it is re-evaluated per outer row",
+        "It uses GROUP BY",
+        "It appears in the FROM clause"
+      ],
+      "answer": 1,
+      "explain": "A correlated subquery depends on the current outer-query row and is therefore evaluated once for each outer tuple.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-034",
+      "topic": "correlated-subqueries-exists",
+      "q": "`EXISTS (subquery)` returns TRUE when:",
+      "options": [
+        "The subquery returns no rows",
+        "The subquery returns at least one row",
+        "The subquery returns exactly one row",
+        "The subquery returns only NULLs"
+      ],
+      "answer": 1,
+      "explain": "EXISTS is TRUE if the subquery yields one or more rows; NOT EXISTS is TRUE if it yields none. Only existence matters, so the body is usually SELECT *.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-035",
+      "topic": "correlated-subqueries-exists",
+      "q": "To find employees who work on EVERY project of department 4 (a 'for all'/division query), the standard technique is:",
+      "options": [
+        "A single IN subquery",
+        "Double NOT EXISTS (or NOT EXISTS with EXCEPT)",
+        "A LEFT OUTER JOIN",
+        "GROUP BY with HAVING COUNT"
+      ],
+      "answer": 1,
+      "explain": "SQL has no universal quantifier, so 'works on all X' is rewritten as 'there is no X the employee does not work on' — double NOT EXISTS, or NOT EXISTS over a set difference.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-036",
+      "topic": "correlated-subqueries-exists",
+      "q": "'Employees who have NO dependents' is best written with:",
+      "options": [
+        "Double NOT EXISTS",
+        "A single NOT EXISTS correlated subquery",
+        "INTERSECT",
+        "> ALL"
+      ],
+      "answer": 1,
+      "explain": "'No dependents' / 'not any' is a simple single NOT EXISTS. The double-negation pattern is only needed for 'every/all' (division) queries.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-037",
+      "topic": "views",
+      "q": "A view is:",
+      "options": [
+        "A copy of the table's data",
+        "A virtual table that stores a query, computed from base tables on demand",
+        "An index",
+        "A backup table"
+      ],
+      "answer": 1,
+      "explain": "A view stores only a query definition, not data; its rows are derived from the underlying base tables whenever the view is used.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-038",
+      "topic": "views",
+      "q": "Which view is NOT updatable through INSERT/UPDATE/DELETE?",
+      "options": [
+        "A view selecting some columns of a single table",
+        "A view built on a JOIN of two tables",
+        "A view with a simple WHERE filter on one table",
+        "A view renaming columns of one table"
+      ],
+      "answer": 1,
+      "explain": "A multi-table (join) view is read-only. Updatable views must be on a single table with no aggregates, DISTINCT, GROUP BY, joins, or subqueries.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-039",
+      "topic": "views",
+      "q": "A key difference between a View and a CTE is:",
+      "options": [
+        "CTEs are faster",
+        "A view persists in the schema and is reusable; a CTE exists only within one query",
+        "Views cannot be queried",
+        "CTEs are stored permanently"
+      ],
+      "answer": 1,
+      "explain": "A view is a persistent, reusable schema object; a CTE is local to a single statement. Neither stores data, but only the view survives the query.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-040",
+      "topic": "views",
+      "q": "Changes made through a valid (single-table) updatable view are:",
+      "options": [
+        "Discarded",
+        "Reflected in the underlying base table",
+        "Stored only in the view",
+        "Applied only after COMMIT VIEW"
+      ],
+      "answer": 1,
+      "explain": "Because a view has no data of its own, an insert/update/delete through an updatable view modifies the base table itself.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-041",
+      "topic": "users-roles-privileges",
+      "q": "A role in SQL is best described as:",
+      "options": [
+        "A single user account",
+        "A named group of privileges that users inherit when granted the role",
+        "A type of view",
+        "A backup of permissions"
+      ],
+      "answer": 1,
+      "explain": "A role bundles privileges under a name; granting the role to users gives them all its privileges, simplifying bulk permission management. Roles can be nested.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-042",
+      "topic": "users-roles-privileges",
+      "q": "In `GRANT SELECT ON school.* TO 'bob'@'localhost'`, what does `school.*` specify?",
+      "options": [
+        "All databases and tables",
+        "All tables in the school database",
+        "Only the table named star",
+        "The school table only"
+      ],
+      "answer": 1,
+      "explain": "Scope db.* means all tables in that database. *.* = all databases/tables; db.table = one specific table.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-043",
+      "topic": "users-roles-privileges",
+      "q": "Which privilege allows a user to grant privileges to other users?",
+      "options": [
+        "SELECT",
+        "GRANT OPTION",
+        "ALL PRIVILEGES",
+        "INDEX"
+      ],
+      "answer": 1,
+      "explain": "GRANT OPTION is the administrative privilege that lets a recipient pass privileges on to others.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-044",
+      "topic": "triggers",
+      "q": "A trigger is defined by which three components?",
+      "options": [
+        "Table, column, constraint",
+        "Event, condition, action",
+        "Index, key, view",
+        "Begin, middle, end"
+      ],
+      "answer": 1,
+      "explain": "The event-condition-action (ECA) model: an event (INSERT/UPDATE/DELETE) checks the trigger, a condition must hold, and then the action executes.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-045",
+      "topic": "triggers",
+      "q": "In a row-level trigger, what do NEW and OLD refer to?",
+      "options": [
+        "The new and old tables",
+        "NEW = the inserted/updated row's values; OLD = the deleted/pre-update row's values",
+        "New and old databases",
+        "The next and previous triggers"
+      ],
+      "answer": 1,
+      "explain": "NEW holds the values of the row being inserted/updated; OLD holds the prior values for an updated/deleted row. FOR EACH ROW runs the body per affected row.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-046",
+      "topic": "triggers",
+      "q": "To validate and reject invalid data before it is stored, which trigger timing is appropriate?",
+      "options": [
+        "AFTER INSERT",
+        "BEFORE INSERT",
+        "AFTER DELETE",
+        "INSTEAD OF SELECT"
+      ],
+      "answer": 1,
+      "explain": "A BEFORE trigger runs before the modification, so it can validate (e.g. SIGNAL SQLSTATE '45000') and prevent a bad row from ever being inserted.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-047",
+      "topic": "triggers",
+      "q": "Why might a CheckMarks BEFORE INSERT trigger that rejects marks <0 or >100 still allow a NULL marks value?",
+      "options": [
+        "NULL equals 0",
+        "NULL < 0 and NULL > 100 both evaluate to UNKNOWN, so the IF condition is not TRUE",
+        "Triggers ignore NULL",
+        "The trigger has a bug in syntax"
+      ],
+      "answer": 1,
+      "explain": "Three-valued logic: comparisons with NULL give UNKNOWN, so neither condition is TRUE and no error is signalled — the NULL row passes through.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-048",
+      "topic": "functions-procedures",
+      "q": "A key distinction between a function and a stored procedure is:",
+      "options": [
+        "Functions cannot use parameters",
+        "A function must return a value and is used inside an expression; a procedure is CALLed and need not return anything",
+        "Procedures are faster",
+        "Functions can have OUT parameters"
+      ],
+      "answer": 1,
+      "explain": "Functions return exactly one value (or table) and appear in expressions; procedures are invoked with CALL, support IN/OUT/INOUT parameters, and need not return a value.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-049",
+      "topic": "functions-procedures",
+      "q": "Which procedure parameter mode passes a value in, lets the procedure modify it, and returns the new value?",
+      "options": [
+        "IN",
+        "OUT",
+        "INOUT",
+        "RETURN"
+      ],
+      "answer": 2,
+      "explain": "INOUT combines IN and OUT: the caller supplies a value, the procedure changes it, and the updated value is returned. IN is input-only (default); OUT is output-only.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-050",
+      "topic": "functions-procedures",
+      "q": "A MySQL function is DETERMINISTIC when:",
+      "options": [
+        "It always returns the same result for the same inputs (and functions are NON-deterministic by default)",
+        "It returns a random value",
+        "It modifies tables",
+        "It has no parameters"
+      ],
+      "answer": 0,
+      "explain": "DETERMINISTIC means identical inputs always yield identical outputs; it must be declared explicitly because functions are NON-DETERMINISTIC by default.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-051",
+      "topic": "functions-procedures",
+      "q": "How is a stored procedure invoked?",
+      "options": [
+        "By referencing it in a SELECT list",
+        "With the CALL statement",
+        "With EXISTS",
+        "By a trigger only"
+      ],
+      "answer": 1,
+      "explain": "Procedures are run with CALL procedure_name(args). They can also be invoked from triggers, other procedures, or applications — but not used inside an expression like a function.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-052",
+      "topic": "window-functions",
+      "q": "How do window functions differ from GROUP BY aggregates?",
+      "options": [
+        "They are slower",
+        "They compute across a window of rows WITHOUT collapsing them — every input row is retained",
+        "They cannot use PARTITION BY",
+        "They only work on one column"
+      ],
+      "answer": 1,
+      "explain": "GROUP BY collapses each group to one row; a window function keeps every row and attaches the computed value, so you can show a value and its group average side by side.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-053",
+      "topic": "window-functions",
+      "q": "After two rows tie for rank 1, what rank does the next row get under RANK() vs DENSE_RANK()?",
+      "options": [
+        "2 and 2",
+        "3 and 2",
+        "2 and 3",
+        "3 and 3"
+      ],
+      "answer": 1,
+      "explain": "RANK() skips after ties → the next rank is 3 (gap). DENSE_RANK() leaves no gap → the next rank is 2.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-054",
+      "topic": "window-functions",
+      "q": "Which window function assigns a unique sequential number to every row with no ties?",
+      "options": [
+        "RANK()",
+        "DENSE_RANK()",
+        "ROW_NUMBER()",
+        "NTILE()"
+      ],
+      "answer": 2,
+      "explain": "ROW_NUMBER() numbers rows 1,2,3,... uniquely, breaking ties arbitrarily. RANK/DENSE_RANK give equal values the same rank.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-055",
+      "topic": "window-functions",
+      "q": "The LAG() window function returns:",
+      "options": [
+        "The next row's value",
+        "The previous row's value within the ordered partition",
+        "The maximum value",
+        "A running total"
+      ],
+      "answer": 1,
+      "explain": "LAG(col, offset, default) returns the value from a preceding row; LEAD does the same for following rows. Useful for comparing a row to its neighbour.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-056",
+      "topic": "window-functions",
+      "q": "Why can't you put a window function directly in a WHERE clause?",
+      "options": [
+        "Syntax forbids any function in WHERE",
+        "Window functions are evaluated after WHERE; to filter on one, wrap the query and filter in an outer query/CTE",
+        "WHERE only accepts aggregates",
+        "They are too slow"
+      ],
+      "answer": 1,
+      "explain": "Windowing happens after FROM/WHERE/GROUP BY/HAVING, so a window result isn't available to WHERE. Compute it in a subquery/CTE, then filter outside (e.g. top-N).",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-057",
+      "topic": "full-text-search",
+      "q": "What must be created before using MATCH(...) AGAINST(...) for full-text search?",
+      "options": [
+        "A primary key",
+        "A FULLTEXT index on the searched columns",
+        "A trigger",
+        "A view"
+      ],
+      "answer": 1,
+      "explain": "FTS requires a FULLTEXT index on the column(s); the columns inside MATCH() must match those covered by the index.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-058",
+      "topic": "full-text-search",
+      "q": "In Boolean-mode full-text search, what do the `+` and `-` operators mean?",
+      "options": [
+        "Add and subtract relevance",
+        "+word = word must be present; -word = word must not be present",
+        "Sort ascending/descending",
+        "Include/exclude columns"
+      ],
+      "answer": 1,
+      "explain": "In BOOLEAN MODE: + requires a word, - excludes it, \"...\" is an exact phrase, and * is a prefix wildcard.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-059",
+      "topic": "full-text-search",
+      "q": "Compared with LIKE/REGEXP, a major advantage of full-text search is:",
+      "options": [
+        "It is always exact-substring",
+        "It uses an index and ranks results by relevance with accurate word-boundary detection",
+        "It needs no index",
+        "It only works on numbers"
+      ],
+      "answer": 1,
+      "explain": "FTS uses a full-text index (fast), ranks by relevance, detects word boundaries (so 'cat' won't match 'concatenate'), and supports boolean/phrase queries — none of which LIKE does well.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-060",
+      "topic": "full-text-search",
+      "q": "Which full-text search mode is the default and ignores stopwords like 'a' and 'the'?",
+      "options": [
+        "Boolean Mode",
+        "Natural Language Mode",
+        "Query Expansion Mode",
+        "Phrase Mode"
+      ],
+      "answer": 1,
+      "explain": "Natural Language Mode is the default; it returns a relevance score and ignores common stopwords. Boolean Mode adds operators; Query Expansion broadens the search using top matches.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-061",
+      "topic": "views",
+      "q": "What does WITH CHECK OPTION do on an updatable view defined with a WHERE filter?",
+      "options": [
+        "Makes the view read-only",
+        "Rejects any insert/update through the view that would violate the view's WHERE condition",
+        "Speeds up the view",
+        "Allows joins in the view"
+      ],
+      "answer": 1,
+      "explain": "WITH CHECK OPTION forbids inserting/updating rows that fall outside the view's defining condition (which would otherwise enter the base table but vanish from the view). CASCADED also enforces underlying views' conditions.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-062",
+      "topic": "correlated-subqueries-exists",
+      "q": "'Find employees earning more than the average salary of THEIR OWN department' is written with `WHERE salary > (SELECT AVG(salary) FROM employees WHERE department_id = outer.department_id)`. This is a:",
+      "options": [
+        "Plain nested subquery (runs once)",
+        "Correlated subquery (re-evaluated once per outer row)",
+        "Cross join",
+        "Set operation"
+      ],
+      "answer": 1,
+      "explain": "Because the subquery references outer.department_id, it must be recomputed for each employee using that employee's department — a correlated subquery. A plain subquery (no outer reference) would run only once.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-063",
+      "topic": "correlated-subqueries-exists",
+      "q": "How does a plain (nested) subquery differ from a correlated subquery in execution?",
+      "options": [
+        "No difference",
+        "A plain subquery is independent and runs once; a correlated subquery references the outer row and runs once per candidate row",
+        "A correlated subquery runs once; a plain one runs per row",
+        "Both always run once"
+      ],
+      "answer": 1,
+      "explain": "A plain subquery is evaluated a single time and its value feeds the outer query. A correlated subquery depends on each outer row, so it executes repeatedly — which can make it slow.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-064",
+      "topic": "triggers",
+      "q": "In a `BEFORE INSERT ... FOR EACH ROW` trigger, what does `SET NEW.salary = 25000` accomplish?",
+      "options": [
+        "Nothing — NEW is read-only",
+        "It rewrites the value that will actually be stored for that row",
+        "It updates all rows",
+        "It raises an error"
+      ],
+      "answer": 1,
+      "explain": "A BEFORE trigger can modify NEW, so the stored value is changed (here, capping/resetting the salary). Only BEFORE triggers can rewrite NEW; by AFTER the row is already written.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u2-065",
+      "topic": "cte-recursive",
+      "q": "In a recursive CTE building an org chart from employee(ssn, superssn), what identifies the anchor (base) rows, and why must UNION ALL be used?",
+      "options": [
+        "superssn = 0; UNION is fine",
+        "superssn IS NULL marks the root(s); UNION ALL is required because plain UNION would de-duplicate and break the recursion",
+        "The highest ssn; either UNION works",
+        "superssn = ssn; UNION ALL optional"
+      ],
+      "answer": 1,
+      "explain": "Employees with superssn IS NULL are the roots (anchor). Each recursive step finds subordinates (e.superssn = OH.ssn). UNION ALL (not UNION) is mandatory so rows aren't removed during iteration.",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

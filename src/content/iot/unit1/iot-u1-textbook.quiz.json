@@ -1,0 +1,252 @@
+{
+  "subject": "iot",
+  "unit": 1,
+  "title": "Unit 1 — Textbook-style MCQs",
+  "items": [
+    {
+      "id": "iot-u1-tb-001",
+      "topic": "what-is-iot",
+      "q": "An IoT 'sense → analyse → act' loop breaks if analytics is removed because:",
+      "options": [
+        "Sensors stop functioning physically",
+        "Collected data remains raw and unactionable — no insight is produced to drive decisions",
+        "The device loses power",
+        "The network bandwidth doubles"
+      ],
+      "answer": 1,
+      "explain": "Without analytics, sensor data is just raw, unstructured noise. Analytics is the pillar that converts data into the insight that closes the loop into action.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-002",
+      "topic": "history-of-iot",
+      "q": "The original motivation behind Kevin Ashton's 'Internet of Things' was that computers of the era:",
+      "options": [
+        "Were too expensive for businesses",
+        "Knew only what humans manually entered, so giving objects (via RFID) the ability to gather their own data would cut waste and cost",
+        "Could not connect to the internet at all",
+        "Lacked graphical user interfaces"
+      ],
+      "answer": 1,
+      "explain": "Ashton's insight: if objects could capture their own data automatically (RFID), systems could track everything without error-prone human data entry — reducing waste and cost.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-003",
+      "topic": "iot-connectivity",
+      "q": "A factory wants very high data rate and very high reliability for a fixed, mains-powered control system. Which connectivity is most appropriate?",
+      "options": ["LoRaWAN", "NB-IoT", "Ethernet (wired)", "BLE"],
+      "answer": 2,
+      "explain": "For a static, powered, critical industrial system needing very high throughput and reliability, wired Ethernet is the natural choice (power and short range are non-issues).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-004",
+      "topic": "iot-connectivity",
+      "q": "Match the gateway function to its description: 'collects data from many devices and sends it upstream efficiently' is:",
+      "options": ["Protocol translation", "Data aggregation", "Network bridging", "Device management"],
+      "answer": 1,
+      "explain": "Data aggregation gathers many devices' data and forwards it as fewer, larger, efficient transmissions — distinct from protocol translation (format conversion) and bridging (non-IP↔IP).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-005",
+      "topic": "iot-architecture-drivers",
+      "q": "Which architectural response is NOT primarily a scalability mechanism?",
+      "options": [
+        "Microservices that scale independently",
+        "Message queuing/streaming (MQTT, Kafka) to decouple producers and consumers",
+        "DTLS/TLS encryption of payloads",
+        "Horizontal scaling by adding nodes"
+      ],
+      "answer": 2,
+      "explain": "Encryption (DTLS/TLS) is a security mechanism. Microservices, message queues, and horizontal scaling are the standard architectural answers to the scalability driver.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-006",
+      "topic": "iot-architecture-drivers",
+      "q": "The delay between a controller issuing a command and the physical action occurring is which type of latency?",
+      "options": ["Network latency", "Processing latency", "Actuation latency", "Storage latency"],
+      "answer": 2,
+      "explain": "Actuation latency is the lag from command issuance to physical actuation. Network latency is travel time; processing latency is analysis time; end-to-end is the total.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-007",
+      "topic": "layered-architectures",
+      "q": "In the 5-layer model, the layer often called the 'cognition' or 'brain' layer — performing filtering, aggregation, and decision-making — is the:",
+      "options": ["Perception layer", "Network layer", "Data-processing / middleware layer", "Business layer"],
+      "answer": 2,
+      "explain": "The data-processing/middleware layer is the 'brain' — filtering, aggregating, contextual processing, and triggering decisions, often hosting edge/fog nodes.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-008",
+      "topic": "iotwf-model",
+      "q": "In the canonical Cisco IoTWF 7-layer model, which layer is responsible for converting data 'in motion' (streams) into data 'at rest' (storage)?",
+      "options": [
+        "Connectivity (Layer 2)",
+        "Edge Computing (Layer 3)",
+        "Data Accumulation (Layer 4)",
+        "Collaboration & Processes (Layer 7)"
+      ],
+      "answer": 2,
+      "explain": "Data Accumulation (Layer 4) stores streaming data so non-real-time applications can query it. Data Abstraction (Layer 5) then reconciles/normalises it for apps.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-009",
+      "topic": "iotwf-model",
+      "q": "Place these IoTWF layers in bottom-to-top order: Application, Physical Devices & Controllers, Data Abstraction, Connectivity, Data Accumulation, Edge Computing, Collaboration & Processes.",
+      "options": [
+        "Physical Devices → Connectivity → Edge Computing → Data Accumulation → Data Abstraction → Application → Collaboration & Processes",
+        "Application → Physical Devices → Connectivity → Edge Computing → Data Abstraction → Data Accumulation → Collaboration & Processes",
+        "Connectivity → Physical Devices → Application → Edge Computing → Data Accumulation → Data Abstraction → Collaboration & Processes",
+        "Physical Devices → Edge Computing → Connectivity → Application → Data Abstraction → Data Accumulation → Collaboration & Processes"
+      ],
+      "answer": 0,
+      "explain": "Data rises and refines: devices (1) → connectivity (2) → edge computing (3) → data accumulation (4) → data abstraction (5) → application (6) → collaboration & processes (7).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-010",
+      "topic": "core-functional-stack",
+      "q": "Which Communications-Network sublayer carries application-messaging protocols such as CoAP and MQTT between head-end apps and sensors?",
+      "options": [
+        "Access network sublayer",
+        "Gateways & backhaul sublayer",
+        "Network transport sublayer (IP/UDP)",
+        "IoT network management sublayer"
+      ],
+      "answer": 3,
+      "explain": "The IoT network management sublayer adds application-messaging protocols (CoAP, MQTT). Network transport handles IP/UDP; the access network is the last physical hop.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-011",
+      "topic": "core-functional-stack",
+      "q": "Classifying a smart object as 'battery-powered, mobile, low reporting frequency, simple data, long range' most strongly suggests which connectivity family?",
+      "options": ["Wired Ethernet", "LPWAN (e.g., LoRaWAN/NB-IoT)", "High-bandwidth Wi-Fi 6", "Fiber optic"],
+      "answer": 1,
+      "explain": "Battery + mobile + low-frequency + simple data + long range is the LPWAN profile — exactly what LoRaWAN/NB-IoT are optimised for.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-012",
+      "topic": "edge-fog-cloud",
+      "q": "Which statement about the edge–fog–cloud hierarchy is FALSE?",
+      "options": [
+        "Edge offers the lowest latency and can operate during network disruption",
+        "Fog sits at the LAN level, aggregating data from multiple edge devices",
+        "Cloud provides massive scalability and advanced AI/ML analytics",
+        "Real systems must pick exactly one tier and never combine them"
+      ],
+      "answer": 3,
+      "explain": "Real systems are hybrid — edge for reflexes, fog for site coordination, cloud for heavy analytics. The skill is placing each function at the right tier, not choosing only one.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-013",
+      "topic": "onem2m",
+      "q": "A key reason oneM2M is described as a 'horizontal' architecture is that:",
+      "options": [
+        "It only works for smart homes",
+        "Its common service layer (CSE) is reused across many verticals instead of each industry building its own silo",
+        "It requires vertical scaling of servers",
+        "It runs exclusively on the device"
+      ],
+      "answer": 1,
+      "explain": "oneM2M defines one standardised service layer shared by all verticals, avoiding per-industry silos and vendor lock-in — the essence of a horizontal architecture.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-014",
+      "topic": "value-chain-standards",
+      "q": "Along the IoT value chain (silicon → device → connectivity → platform → analytics → service), value and margin tend to concentrate:",
+      "options": [
+        "At the silicon/hardware end, furthest from the customer",
+        "Toward the analytics/service end, closest to the customer's actual problem",
+        "Evenly with no difference",
+        "Only in the connectivity stage"
+      ],
+      "answer": 1,
+      "explain": "Raw sensor data is nearly worthless; value accrues as data is connected, stored, analysed, and packaged into outcomes — so margins concentrate toward the service end (services over hardware).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-015",
+      "topic": "value-chain-standards",
+      "q": "Which standards body is correctly paired with its IoT contribution?",
+      "options": [
+        "3GPP — Wi-Fi physical layer",
+        "IETF — CoAP and 6LoWPAN",
+        "IEEE — cellular NB-IoT",
+        "oneM2M — fiber-optic cabling"
+      ],
+      "answer": 1,
+      "explain": "IETF defines internet protocols for constrained devices (CoAP, 6LoWPAN, RPL). 3GPP does cellular (NB-IoT/LTE-M/5G); IEEE does 802.11/802.15.4 radios; oneM2M is the service layer.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-016",
+      "topic": "value-chain-standards",
+      "q": "What is the most common non-technical reason IoT projects fail?",
+      "options": [
+        "Using too few sensors",
+        "Starting from the technology instead of a measurable use case and KPI",
+        "Choosing wired over wireless",
+        "Encrypting too much data"
+      ],
+      "answer": 1,
+      "explain": "Projects that begin with 'sensors looking for a problem' — no defined use case or KPI — drown in data-overload and cost. Start from the business goal and metric.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-017",
+      "topic": "iot-challenges",
+      "q": "Why are the major IoT challenges described as 'interlocking' rather than independent?",
+      "options": [
+        "They are actually unrelated",
+        "Fixing one often pressures another — e.g., tight power budgets push devices to skimp on encryption (security) and send less data (reliability)",
+        "They only occur in smart homes",
+        "They disappear once devices scale up"
+      ],
+      "answer": 1,
+      "explain": "Power limits force weaker crypto and sparser data; device scale worsens the data deluge; missing standards complicate securing and scaling — the challenges trade off against one another.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u1-tb-018",
+      "topic": "architecture-types",
+      "q": "A self-driving deployment needs both instant local reactions and global fleet learning. The most realistic architecture is:",
+      "options": [
+        "Purely cloud-centric",
+        "Purely edge-centric",
+        "A hybrid edge + cloud (often with fog) — edge for reflexes, cloud for heavy learning",
+        "Three-layer only, with no analytics"
+      ],
+      "answer": 2,
+      "explain": "Edge handles millisecond safety reactions and offline operation; the cloud aggregates fleet data for heavy ML. Most production IoT is hybrid, placing each function at the right tier.",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

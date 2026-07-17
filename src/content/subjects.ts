@@ -1,0 +1,124 @@
+// ============================================================================
+//  SUBJECT REGISTRY  —  the ONE place to register subjects & their unit titles.
+//  Topic bodies, quizzes, flashcards and PYQs are auto-discovered from files
+//  (see src/lib/registry.ts). To add a new subject or unit, just add an entry
+//  here and drop the matching content files under src/content/<subject>/unitN/.
+// ============================================================================
+
+export interface UnitMeta {
+  unit: number
+  title: string
+  subtitle?: string
+}
+
+export interface SubjectMeta {
+  id: string
+  name: string
+  code?: string
+  color: string // accent used across the UI for this subject
+  icon?: string // emoji
+  description?: string
+  units: UnitMeta[]
+}
+
+export const SUBJECTS: SubjectMeta[] = [
+  {
+    id: 'ml',
+    name: 'Machine Learning',
+    code: 'CS352A',
+    color: '#818cf8',
+    icon: 'ML',
+    description:
+      'Modern ML: well-posed learning problems, concept learning, decision trees, KNN, bias–variance and performance metrics.',
+    units: [
+      {
+        unit: 1,
+        title: 'Introduction, Performance Metrics, Decision Trees & KNN',
+        subtitle:
+          'ML models · concept learning · Find-S · version space · decision trees (ID3) · overfitting · logistic regression · KNN · bias–variance · metrics (ROC/AUC)',
+      },
+      { unit: 2, title: 'ANN, SVM, Boosting', subtitle: 'Perceptrons · backprop · activations · optimizers · SVM · kernels · gradient boost · random forest' },
+      { unit: 3, title: 'Bayesian Learning, HMM', subtitle: 'Bayes theorem · MLE · Bayes optimal · Naïve Bayes · EM & GMM · Hidden Markov Models' },
+      { unit: 4, title: 'Unsupervised Learning, Dimensionality Reduction & Intro to Deep Learning', subtitle: 'Clustering · K-means · PCA & SVD · RL · CNNs · Transformers · LLMs' },
+    ],
+  },
+  {
+    id: 'se',
+    name: 'Software Engineering',
+    code: 'UE23CS341A',
+    color: '#6fc6f5',
+    icon: 'SE',
+    description:
+      'Engineering software at scale: SDLCs, agile, requirements engineering, architecture & design, testing, SCM and DevOps.',
+    units: [
+      {
+        unit: 1,
+        title: 'Introduction to Software Engineering & Requirements Engineering',
+        subtitle:
+          'what is SE · software crisis · SDLCs (waterfall/V/spiral) · Security DLC · agile & Scrum · XP · requirements (FR/NFR/security) · SRS · RTM · UML use cases · testing & test planning',
+      },
+      { unit: 2, title: 'Software Project Management, Architecture, Design & Quality', subtitle: 'PM role · estimation · scheduling · risk · architecture views · design patterns · modularity · TDD · technical debt' },
+      { unit: 3, title: 'AI, Implementation, SCM & DevOps', subtitle: 'AI for SE · secure/testable coding · code reviews · CI/CD · DevSecOps · testing types · SCM · versioning · defect & release management' },
+      { unit: 4, title: 'Quality, System Validation, Security & Ethics', subtitle: 'quality metrics & ISO 9126 · function points · open source & licensing · software patents · system & acceptance testing · penetration testing · fuzzing · security & privacy (LINDDUN) · code coverage · ethics' },
+    ],
+  },
+  {
+    id: 'dbms',
+    name: 'Database Management Systems',
+    code: 'UE23CS351A',
+    color: '#34d399',
+    icon: 'DB',
+    description:
+      'Designing and querying databases: the relational model, ER design, relational algebra, SQL, normalization, transactions, and modern NoSQL/graph/vector databases.',
+    units: [
+      {
+        unit: 1,
+        title: 'Introduction to Database Management and SQL',
+        subtitle:
+          'data & DBMS · file-system problems · data abstraction & 3-schema architecture · E-R model · reducing ER to relational · relational algebra · SQL (DDL, constraints, DML)',
+      },
+      { unit: 2, title: 'Advanced SQL in Database Design', subtitle: 'set operations · null values · nested subqueries · joins · views · triggers · functions & procedures · CTEs · window & full-text functions' },
+      { unit: 3, title: 'Design Concepts and Implementation', subtitle: 'query processing & optimization · functional dependencies · inference rules · normalization (1NF/2NF/3NF/BCNF) · higher normal forms' },
+      { unit: 4, title: 'Next-Gen Data Management', subtitle: 'transactions · concurrency control & locking · NoSQL · key-value (Redis) · graph (Neo4j) · vector databases · DB application connectivity' },
+    ],
+  },
+  {
+    id: 'iot',
+    name: 'Internet of Things',
+    code: 'UE23CS342AA3',
+    color: '#fb923c',
+    icon: 'IoT',
+    description:
+      'Connecting the physical world: IoT architecture & verticals, sensors & embedded systems, wired/wireless/cellular connectivity, application protocols (MQTT/CoAP), and edge/fog/cloud analytics, security & privacy.',
+    units: [
+      {
+        unit: 1,
+        title: 'Introduction to IoT & Architecture',
+        subtitle:
+          'what is IoT · history · traffic model · connectivity & gateways · digitization · verticals & use cases · challenges · architecture drivers · 3/5-layer · oneM2M · Cisco IoTWF · core functional stack · edge/fog/cloud · value chain & standards',
+      },
+      {
+        unit: 2,
+        title: 'IoT Sensors & Embedded Systems',
+        subtitle:
+          'sensors & metrics · selection · smart sensors · MEMS · sensor fusion · self-calibration · embedded C & MicroPython · STM32 · ESP32 · ARM Cortex-A/M · I²C/SPI/UART & interrupts',
+      },
+      {
+        unit: 3,
+        title: 'IoT Protocols & Connectivity',
+        subtitle:
+          'wired (Ethernet, TSN, PoE, PLC) · wireless (Zigbee, BLE, WiFi, LoRaWAN, Matter/Thread) · cellular (NB-IoT, LTE-M) · CoAP & MQTT · SCADA · lightweight crypto (ASCON) · network obfuscation',
+      },
+      {
+        unit: 4,
+        title: 'IoT Analytics, Security & Privacy',
+        subtitle:
+          'analytics & data pipeline · ML, decision trees & TinyML · InfluxDB/Grafana · predictive maintenance · cloud (AWS/Azure, ThingSpeak/thinger.io) · security: OWASP Top 10, Zero Trust, threat modelling, firmware/Binwalk, X.509/PKI · privacy · blockchain',
+      },
+    ],
+  },
+  // ── Add the remaining subjects here as their material arrives ──
+  // { id: 'xxx', name: '...', code: '...', color: '#...', icon: '...', units: [...] },
+]
+
+export const subjectById = (id: string) => SUBJECTS.find((s) => s.id === id)

@@ -1,0 +1,115 @@
+{
+  "subject": "dbms",
+  "unit": 4,
+  "title": "Unit 4 — Past-Year Questions (PES ESA)",
+  "items": [
+    {
+      "id": "dbms-u4-pyq-01",
+      "topic": "transactions-acid",
+      "year": "ESA Jan 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Expand and explain the **ACID properties** of transactions. Why are they required?",
+      "answer": "**Atomicity** — all operations happen or none (all-or-none); enforced by the recovery system via the log. **Consistency** — a transaction takes the DB from one valid state to another, preserving constraints. **Isolation** — concurrent transactions appear to run one at a time; intermediate results hidden (concurrency-control system). **Durability** — once committed, changes persist despite crashes (recovery system). **Required** to keep data correct under failures and concurrency — e.g. a fund transfer must not lose money if it fails midway, and concurrent transfers must not corrupt balances."
+    },
+    {
+      "id": "dbms-u4-pyq-02",
+      "topic": "transaction-states",
+      "year": "ESA Dec 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain the **states of a transaction** with the help of a diagram, and list the **ACID** properties.",
+      "answer": "**States:** **Active** (executing reads/writes) → **Partially committed** (after the last operation; checks run) → **Committed** (checks pass, reaches commit point, changes permanent). From active a transaction may go to **Failed** (a check fails / abort) → **Aborted** (rolled back, DB restored) → **Terminated**. An aborted transaction may restart (external failure) or be killed (internal error). **ACID** = Atomicity, Consistency, Isolation, Durability."
+    },
+    {
+      "id": "dbms-u4-pyq-03",
+      "topic": "precedence-graph",
+      "year": "ESA Jul 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Given a schedule, check whether it is **conflict serializable** by listing all the conflicting operations and drawing the **precedence graph**.",
+      "answer": "**Method:** (1) List **conflicting** operation pairs — different transactions, same item, ≥1 write (R-W, W-R, W-W). (2) For each pair where $T_j$'s op follows $T_i$'s, add edge $T_i \\to T_j$. (3) **Cycle ⟹ NOT conflict serializable; acyclic ⟹ conflict serializable**, and a topological sort (repeatedly remove an in-degree-0 node) gives the equivalent serial order. e.g. if conflicts give T2→T1 and T1→T2, the cycle means it is not conflict serializable."
+    },
+    {
+      "id": "dbms-u4-pyq-04",
+      "topic": "two-phase-locking",
+      "year": "ESA Jan 2024",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Explain the **two-phase locking (2PL) protocol** used for concurrency control.",
+      "answer": "**2PL** has two phases per transaction: a **growing phase** (acquire locks, release none) and a **shrinking phase** (release locks, acquire none). Once a transaction releases any lock it cannot acquire new ones; the **lock point** is the end of the growing phase. **2PL guarantees conflict-serializable schedules** (transactions serialize in lock-point order) but does **not** guarantee freedom from deadlock. **Strict 2PL** holds exclusive locks till commit (no cascading rollback); **rigorous 2PL** holds all locks till commit (serialize in commit order)."
+    },
+    {
+      "id": "dbms-u4-pyq-05",
+      "topic": "lock-based-protocols",
+      "year": "ESA Jul 2023",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "How are **deadlocks identified** in concurrent transactions? What are the **two schemes for preventing deadlocks**?",
+      "answer": "**Detection:** build a **wait-for graph** (an edge Ti→Tj if Ti waits for a lock held by Tj); a **cycle** in this graph indicates a deadlock, and one transaction (the victim) is rolled back. **Two timestamp-based prevention schemes:** **Wait-die** — an older transaction requesting a lock held by a younger one **waits**; a younger one requesting an older one's lock is **rolled back (dies)**. **Wound-wait** — an older transaction **wounds (rolls back)** the younger holder; a younger requester **waits**. Both use timestamps to ensure no cyclic wait can form."
+    },
+    {
+      "id": "dbms-u4-pyq-06",
+      "topic": "lock-based-protocols",
+      "year": "ESA Jan 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Describe (a) **2-phase locking protocol** (b) **Wait-die** deadlock prevention scheme (c) **Wound-wait** deadlock prevention scheme.",
+      "answer": "**(a) 2PL** — a growing phase (only acquire locks) then a shrinking phase (only release); guarantees conflict serializability. **(b) Wait-die** (non-preemptive) — if an **older** Ti requests a lock held by a **younger** Tj, Ti **waits**; if a **younger** Ti requests an **older** Tj's lock, Ti is **rolled back (dies)** and restarts with the same timestamp. **(c) Wound-wait** (preemptive) — if an **older** Ti requests a lock held by a **younger** Tj, Tj is **wounded (rolled back)**; if a **younger** Ti requests an **older** Tj's lock, Ti **waits**. Both prevent deadlock and avoid starvation (timestamps preserved on restart)."
+    },
+    {
+      "id": "dbms-u4-pyq-07",
+      "topic": "concurrency-problems",
+      "year": "ESA Jul 2023",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Explain **concurrency issues** and the techniques to address them.",
+      "answer": "**Issues from uncontrolled interleaving:** **lost update** (one write overwrites another), **dirty read** (read uncommitted data later rolled back), **incorrect summary** (aggregate over mid-update data), **unrepeatable read** (two reads differ). **Techniques:** **lock-based protocols** (shared/exclusive locks + **2PL**), **timestamp ordering**, **multiversion** concurrency control, **snapshot isolation**, and **SQL isolation levels** (READ UNCOMMITTED → SERIALIZABLE) — all restrict interleavings to **serializable** ones."
+    },
+    {
+      "id": "dbms-u4-pyq-08",
+      "topic": "nosql-cap",
+      "year": "ESA Dec 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain the **categories of NoSQL databases** with an example for each.",
+      "answer": "**Document** — JSON-like documents, e.g. **MongoDB**, CouchDB. **Key-value** — key→value lookups, e.g. **Redis**, DynamoDB. **Wide-column (column-family)** — vertical partitioning into column families, e.g. **Cassandra**, HBase. **Graph** — nodes + edges traversed by paths, e.g. **Neo4j**. NoSQL systems are schema-less, distributed, and emphasise scalability/availability over strong consistency (eventual consistency, CAP A+P)."
+    },
+    {
+      "id": "dbms-u4-pyq-09",
+      "topic": "nosql-cap",
+      "year": "ESA Jan 2024",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Describe **NoSQL characteristics related to distributed databases and distributed systems**.",
+      "answer": "① **Scalability** — horizontal scale-out (add nodes while running). ② **Availability, replication & eventual consistency** — data replicated across nodes (master-slave or master-master) so a node failure doesn't lose data. ③ **Sharding** — partition records across nodes for load balancing. ④ **High-performance access** — via **hashing** h(K) or **range partitioning** on keys. Together these favour availability + partition tolerance over immediate consistency (CAP)."
+    },
+    {
+      "id": "dbms-u4-pyq-10",
+      "topic": "nosql-cap",
+      "year": "ESA Jul 2024",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Differentiate between **SQL and NoSQL** databases.",
+      "answer": "**SQL** — relational, **fixed schema** (tables/rows), strong **ACID** consistency, powerful **SQL** query language, scales **vertically**, best for structured data + complex queries/transactions. **NoSQL** — non-relational (document/key-value/column/graph), **schema-less**, **eventual** consistency (CAP A+P), API/limited query language, scales **horizontally**, best for huge unstructured/semi-structured data with high availability. SQL = consistency & structure; NoSQL = scalability & flexibility."
+    },
+    {
+      "id": "dbms-u4-pyq-11",
+      "topic": "nosql-cap",
+      "year": "ESA Jul 2024",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Write the following queries using **MongoDB**: (i) create a collection 'Student'; (ii) retrieve students whose branch is CSE and semester is 5; (iii) retrieve students whose branch is ECE OR semester is 7; (iv) delete all documents from Student.",
+      "answer": "**(i)** `db.createCollection(\"Student\")`. **(ii)** `db.Student.find({ branch: \"CSE\", semester: 5 })`. **(iii)** `db.Student.find({ $or: [ { branch: \"ECE\" }, { semester: 7 } ] })`. **(iv)** `db.Student.deleteMany({})`. (MongoDB is a **document** NoSQL store; queries are JSON-like documents.)"
+    },
+    {
+      "id": "dbms-u4-pyq-12",
+      "topic": "neo4j",
+      "year": "ESA Jul 2024",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "Explain the **Neo4j data model** and write Cypher queries: (i) create a node labelled 'Book' with properties title:'DBMS', edition:'seven', publisher:'pearson'; (ii) update the title from 'DBMS' to 'Database Management system'; (iii) remove the node with title 'Database Management system'.",
+      "answer": "**Data model:** a graph of **nodes** (entities, with **labels** and **properties**) connected by **directed relationships** (each with a type); properties are key-value pairs on nodes *and* relationships. **Cypher:** **(i)** `CREATE (b:Book {title:'DBMS', edition:'seven', publisher:'pearson'})`. **(ii)** `MATCH (b:Book {title:'DBMS'}) SET b.title='Database Management system' RETURN b`. **(iii)** `MATCH (b:Book {title:'Database Management system'}) DELETE b`."
+    }
+  ]
+}

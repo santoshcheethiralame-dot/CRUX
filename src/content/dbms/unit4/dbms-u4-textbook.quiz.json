@@ -1,0 +1,267 @@
+{
+  "subject": "dbms",
+  "unit": 4,
+  "title": "Unit 4 — Textbook Exercises (Elmasri/Navathe Ch20–24, Silberschatz Ch17–18)",
+  "items": [
+    {
+      "id": "dbms-u4-tb-01",
+      "topic": "view-serializability",
+      "q": "**(Silberschatz, Practice Ex. 17.5)** Since every conflict-serializable schedule is view-serializable, why do we emphasise conflict serializability rather than view serializability?",
+      "options": ["View serializability is incorrect", "Conflict serializability can be tested efficiently (precedence-graph cycle check), whereas testing view serializability is NP-complete", "View serializability covers fewer schedules", "They are equally hard"],
+      "answer": 1,
+      "explain": "View serializability captures more schedules but testing it is NP-complete; conflict serializability is a cheap cycle check, so practical protocols (2PL) enforce it.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-02",
+      "topic": "transactions-acid",
+      "q": "**(Silberschatz, Ex. 17.12 / Elmasri Review 20.6)** Which set correctly lists the ACID properties of a transaction?",
+      "options": ["Access, Concurrency, Indexing, Durability", "Atomicity, Consistency, Isolation, Durability", "Atomicity, Caching, Isolation, Distribution", "Availability, Consistency, Integrity, Durability"],
+      "answer": 1,
+      "explain": "ACID = Atomicity (all-or-none), Consistency (valid state to valid state), Isolation (appear to run alone), Durability (committed changes persist).",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-03",
+      "topic": "transaction-states",
+      "q": "**(Silberschatz, Ex. 17.13)** A transaction passes through several states until it commits or aborts. Which is a valid state sequence?",
+      "options": ["active → committed → aborted", "active → partially committed → committed", "committed → active → failed", "aborted → active → committed"],
+      "answer": 1,
+      "explain": "A successful transaction goes active → partially committed (checks run) → committed. A failing one goes active → failed → aborted → terminated.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-04",
+      "topic": "schedules-conflict-serializability",
+      "q": "**(Silberschatz, Ex. 17.14 / Elmasri Review 20.9)** What distinguishes a serial schedule from a serializable schedule?",
+      "options": ["They are identical", "A serial schedule has NO interleaving (one transaction at a time); a serializable schedule interleaves but is equivalent to some serial schedule", "A serializable schedule is always inconsistent", "A serial schedule allows concurrency"],
+      "answer": 1,
+      "explain": "Serial = no concurrency. Serializable = concurrent but equivalent in effect to a serial schedule, giving the same consistency with better throughput.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-05",
+      "topic": "transaction-states",
+      "q": "**(Silberschatz, Ex. 17.17)** A recoverable schedule is one in which:",
+      "options": ["No transaction ever aborts", "A transaction commits only after every transaction whose changes it read has committed", "All transactions are serial", "Locks are never used"],
+      "answer": 1,
+      "explain": "Recoverability ensures a committed transaction never needs to be undone: if Tj read from Ti, then Ti must commit before Tj. Otherwise Ti's abort would force undoing a committed Tj.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-06",
+      "topic": "transaction-states",
+      "q": "**(Silberschatz, Ex. 17.7)** A cascadeless schedule is desirable because:",
+      "options": ["It runs faster", "Transactions read only committed values, so an abort never forces other transactions to abort (no cascading rollback)", "It needs no log", "It avoids deadlock"],
+      "answer": 1,
+      "explain": "In a cascadeless schedule every read is of committed data, so aborting one transaction cannot cascade aborts to others that read its uncommitted writes.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-07",
+      "topic": "concurrency-problems",
+      "q": "**(Silberschatz, Ex. 17.18)** Why do database systems support concurrent execution despite the extra effort to keep it correct?",
+      "options": ["To use more memory", "For improved throughput/resource utilisation and reduced waiting time", "Because serial execution is impossible", "To avoid using a log"],
+      "answer": 1,
+      "explain": "Concurrency improves CPU and disk utilisation (one transaction uses the CPU while another waits on I/O) and reduces average response time — worth the cost of concurrency control.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-08",
+      "topic": "concurrency-problems",
+      "q": "**(Silberschatz, Ex. 17.8)** The lost update anomaly occurs when Tj reads an item, Tk writes it, and then:",
+      "options": ["Tk reads it again", "Tj writes the item (ignoring Tk's value), so Tk's update is lost", "Both commit successfully with no conflict", "Tj aborts"],
+      "answer": 1,
+      "explain": "Lost update: Tj's later write, based on the value it read before Tk's update, overwrites Tk's update, which is lost. It is possible under READ COMMITTED but not REPEATABLE READ.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-09",
+      "topic": "transactions-acid",
+      "q": "**(Silberschatz, Ex. 17.3)** Why have database-system implementers paid much more attention to the ACID properties than file-system implementers?",
+      "options": ["Files are larger", "Databases manage shared, concurrent, critical data where partial updates and concurrency anomalies would corrupt integrity, so atomicity/isolation/durability are essential", "File systems have no storage", "ACID does not apply to files"],
+      "answer": 1,
+      "explain": "Databases serve many concurrent users updating interrelated, critical data; without ACID, concurrent or partial updates would violate integrity. File systems handle mostly independent, less-constrained data.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-10",
+      "topic": "transactions-acid",
+      "q": "**(Silberschatz, Ex. 17.1)** Is a recovery manager required for a database system that NEVER fails?",
+      "options": ["Yes, always", "No — recovery (atomicity/durability via undo/redo) is needed precisely to cope with failures; with no failures it would be unnecessary", "Yes, for indexing", "Yes, for concurrency"],
+      "answer": 1,
+      "explain": "The recovery manager exists to restore consistency after failures. If a system genuinely never failed, recovery would not be needed (concurrency control still would, for isolation).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-11",
+      "topic": "isolation-levels",
+      "q": "**(Silberschatz, Ex. 17.19)** Why does the READ COMMITTED isolation level ensure schedules are cascade-free?",
+      "options": ["It uses serial execution", "Because transactions read only committed data, so no transaction reads another's uncommitted write — so an abort cannot cascade", "It forbids writes", "It holds all locks till commit"],
+      "answer": 1,
+      "explain": "READ COMMITTED never reads uncommitted data, so no transaction depends on another's uncommitted writes; aborting one cannot force cascading aborts of others.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-12",
+      "topic": "precedence-graph",
+      "q": "**(Elmasri & Navathe, Ex. 20.22)** To determine whether a schedule like `r1(X); r3(X); w1(X); r2(X); w3(X)` is conflict serializable, you:",
+      "options": ["Count the operations", "Build the precedence graph from conflicts and check for a cycle (acyclic ⇒ serializable, with serial order from a topological sort)", "Check if it is serial", "Sum the timestamps"],
+      "answer": 1,
+      "explain": "List conflicts, draw edges Ti→Tj, and test for cycles. No cycle ⇒ conflict serializable, and the topological order gives the equivalent serial schedule.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-13",
+      "topic": "precedence-graph",
+      "q": "**(Elmasri & Navathe, Ex. 20.23)** When you draw the serializability (precedence) graph for a schedule and it contains a cycle, the schedule is:",
+      "options": ["Conflict serializable", "NOT conflict serializable", "Always serial", "View serializable but not conflict serializable"],
+      "answer": 1,
+      "explain": "A cycle in the precedence graph means no consistent serial order exists, so the schedule is not conflict serializable. An acyclic graph yields the equivalent serial schedule(s).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-14",
+      "topic": "view-serializability",
+      "q": "**(Elmasri & Navathe, Review 20.8)** What is the difference between conflict equivalence and view equivalence of schedules?",
+      "options": ["They are identical", "Conflict equivalence requires the same order of conflicting operations; view equivalence requires the same initial reads, read-from relationships, and final writes", "View equivalence is stricter", "Conflict equivalence ignores writes"],
+      "answer": 1,
+      "explain": "Conflict equivalence is based on the relative order of conflicting operations; view equivalence is based on read-from relationships and final writes. Conflict-equivalent ⇒ view-equivalent, not vice-versa.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-15",
+      "topic": "isolation-levels",
+      "q": "**(Elmasri & Navathe, Review 20.13)** A phantom violation specifically refers to:",
+      "options": ["Reading uncommitted data", "Re-reading a row and getting a different value", "A newly inserted row appearing in a re-executed range/WHERE query that was not there before", "A lost write"],
+      "answer": 2,
+      "explain": "A phantom is a new row (matching a WHERE condition) inserted by another transaction, appearing in a re-run query. Dirty read = uncommitted data; non-repeatable read = a changed value.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-16",
+      "topic": "transactions-acid",
+      "q": "**(Elmasri & Navathe, Ex. 20.20)** Why does SQL need an explicit transaction END (COMMIT/ROLLBACK) statement but not an explicit BEGIN?",
+      "options": ["BEGIN is illegal", "A transaction begins implicitly with the first executable statement, but the system needs an explicit COMMIT/ROLLBACK to know when the unit of work is finished", "END is optional", "SQL has no transactions"],
+      "answer": 1,
+      "explain": "The first statement implicitly starts a transaction, so no BEGIN is required; but the DBMS cannot guess where the transaction ends, so an explicit COMMIT or ROLLBACK is mandatory.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-17",
+      "topic": "two-phase-locking",
+      "q": "**(Elmasri & Navathe, Review 21.1)** How does the two-phase locking protocol guarantee serializability?",
+      "options": ["By using timestamps", "By splitting locking into a growing phase (acquire only) and a shrinking phase (release only), so transactions serialize in lock-point order", "By forbidding all writes", "By committing in order"],
+      "answer": 1,
+      "explain": "2PL's two-phase rule (all locks acquired before any is released) makes the precedence graph acyclic — transactions serialize in the order of their lock points — guaranteeing conflict serializability.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-18",
+      "topic": "two-phase-locking",
+      "q": "**(Elmasri & Navathe, Review 21.2)** Why is strict or rigorous two-phase locking often preferred over basic 2PL?",
+      "options": ["It is faster", "It additionally guarantees recoverable, cascadeless (strict) schedules by holding locks until commit/abort", "It prevents all deadlocks", "It needs no lock table"],
+      "answer": 1,
+      "explain": "Basic 2PL gives conflict serializability but can allow cascading rollback. Strict 2PL (hold X-locks till commit) / rigorous 2PL (hold all locks till commit) ensure recoverable, cascadeless schedules.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-19",
+      "topic": "two-phase-locking",
+      "q": "**(Elmasri & Navathe, Ex. 21.20)** The proof that basic 2PL guarantees conflict serializability uses the idea that if the serializability graph had a cycle, then:",
+      "options": ["A transaction committed twice", "At least one transaction must have acquired a lock AFTER releasing one — violating the two-phase rule", "The schedule is serial", "No locks were used"],
+      "answer": 1,
+      "explain": "A cycle would require a transaction to lock after unlocking, contradicting 2PL's growing-then-shrinking rule. Hence 2PL schedules have acyclic graphs and are conflict serializable.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-20",
+      "topic": "lock-based-protocols",
+      "q": "**(Elmasri & Navathe, Review 21.3)** Deadlock and starvation are two problems with locking. Deadlock is when:",
+      "options": ["A transaction waits forever for a continuous stream of other locks", "Two or more transactions each wait for a lock held by another, so none can proceed", "A lock is never requested", "A read blocks a read"],
+      "answer": 1,
+      "explain": "Deadlock = a cycle of waiting (each transaction waits for a lock another holds). Starvation = a transaction is repeatedly bypassed and never gets its lock; both are distinct locking problems.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-21",
+      "topic": "lock-based-protocols",
+      "q": "**(Elmasri & Navathe, Ex. 21.4)** Why are shared/exclusive locks preferable to simple binary locks?",
+      "options": ["They use less memory", "They allow multiple readers concurrently (shared mode), increasing concurrency, while still serialising writers (exclusive mode)", "They never deadlock", "They are simpler"],
+      "answer": 1,
+      "explain": "A binary lock allows only one transaction per item (read or write). Shared/exclusive locks let many transactions read concurrently and restrict only writing — much higher concurrency.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-22",
+      "topic": "lock-based-protocols",
+      "q": "**(Elmasri & Navathe, Ex. 21.5)** The wait-die and wound-wait protocols are techniques for:",
+      "options": ["Query optimization", "Deadlock prevention (using transaction timestamps to decide whether a transaction waits or is rolled back)", "Index creation", "Replication"],
+      "answer": 1,
+      "explain": "Wait-die and wound-wait are timestamp-based deadlock-PREVENTION schemes: based on which transaction is older, a requesting transaction either waits or is aborted, ensuring no cyclic wait can form.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-23",
+      "topic": "nosql-cap",
+      "q": "**(Elmasri & Navathe, Review 24.2)** Which correctly pairs a NoSQL category with an example system?",
+      "options": ["Document → Redis", "Key-value → DynamoDB; Graph → Neo4j; Document → MongoDB; Wide-column → Cassandra", "Graph → MongoDB", "Wide-column → Neo4j"],
+      "answer": 1,
+      "explain": "The four categories and examples: document (MongoDB, CouchDB), key-value (Redis, DynamoDB), wide-column (Cassandra, HBase), graph (Neo4j).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-24",
+      "topic": "nosql-cap",
+      "q": "**(Elmasri & Navathe, Review 24.5)** Of the three CAP properties, which two are typically emphasised by NoSQL systems?",
+      "options": ["Consistency and Atomicity", "Availability and Partition tolerance (accepting eventual consistency)", "Consistency and Isolation", "Partition tolerance and Consistency"],
+      "answer": 1,
+      "explain": "NoSQL systems usually favour Availability + Partition tolerance, relaxing strong consistency to eventual consistency. Traditional SQL/ACID systems emphasise Consistency.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-25",
+      "topic": "nosql-cap",
+      "q": "**(Elmasri & Navathe, Review 24.6)** How does 'consistency' in CAP differ from 'consistency' in ACID?",
+      "options": ["They are the same", "CAP consistency = all replicas show the same value; ACID consistency = a transaction preserves integrity constraints", "CAP is about transactions; ACID about replicas", "Both refer to replication"],
+      "answer": 1,
+      "explain": "CAP-consistency concerns agreement among replicated copies; ACID-consistency concerns a single transaction keeping the database's integrity constraints valid. Same word, different meanings.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u4-tb-26",
+      "topic": "neo4j",
+      "q": "**(Elmasri & Navathe, Review 24.14–24.15)** In the graph-oriented NoSQL system Neo4j, data is modelled with nodes and relationships, and its query language is:",
+      "options": ["SQL", "Cypher", "MongoQL", "Gremlin only"],
+      "answer": 1,
+      "explain": "Neo4j models entities as nodes (with labels and properties) connected by directed relationships; queries use the Cypher (CQL) declarative pattern-matching language (CREATE/MATCH/RETURN).",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

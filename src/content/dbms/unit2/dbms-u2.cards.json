@@ -1,0 +1,367 @@
+{
+  "subject": "dbms",
+  "unit": 2,
+  "title": "Unit 2 — Flashcards",
+  "cards": [
+    {
+      "id": "dbms-u2-c01",
+      "topic": "additional-sql-operations",
+      "front": "SELECT-FROM-WHERE evaluation order",
+      "back": "**FROM** (form product) → **WHERE** (filter rows) → **SELECT** (project columns). Written SELECT-first, but evaluated FROM-first."
+    },
+    {
+      "id": "dbms-u2-c02",
+      "topic": "additional-sql-operations",
+      "front": "DISTINCT vs ALL",
+      "back": "SQL keeps duplicates by default (**ALL** = multiset). **DISTINCT** removes duplicate rows (set semantics)."
+    },
+    {
+      "id": "dbms-u2-c03",
+      "topic": "additional-sql-operations",
+      "front": "LIKE wildcards",
+      "back": "**`%`** = any substring (0+ chars); **`_`** = exactly one char. `'___'` = exactly 3 chars; `'a%'` = starts with a. Use `lower()` for case-insensitive matching."
+    },
+    {
+      "id": "dbms-u2-c04",
+      "topic": "additional-sql-operations",
+      "front": "ORDER BY default direction",
+      "back": "**ASC** (ascending) is default; use **DESC** for descending. Multiple keys sort left-to-right (later key breaks ties)."
+    },
+    {
+      "id": "dbms-u2-c05",
+      "topic": "set-operations",
+      "front": "UNION / INTERSECT / EXCEPT",
+      "back": "Combine **union-compatible** queries: UNION (A∪B), INTERSECT (A∩B), EXCEPT (A−B). All **remove duplicates** by default."
+    },
+    {
+      "id": "dbms-u2-c06",
+      "topic": "set-operations",
+      "front": "ALL-variant multiset counts (tuple in A: c1×, in B: c2×)",
+      "back": "**UNION ALL** → c1+c2 · **INTERSECT ALL** → min(c1,c2) · **EXCEPT ALL** → max(c1−c2, 0)."
+    },
+    {
+      "id": "dbms-u2-c07",
+      "topic": "set-operations",
+      "front": "INTERSECT/EXCEPT in MySQL",
+      "back": "Native only from **MySQL 8.0.31+**. Before that: intersect via **IN/EXISTS**, difference via **NOT IN/NOT EXISTS**."
+    },
+    {
+      "id": "dbms-u2-c08",
+      "topic": "null-values",
+      "front": "NULL in arithmetic vs comparison",
+      "back": "Arithmetic with NULL → **NULL** (5+NULL=NULL). Comparison with NULL → **UNKNOWN** (even NULL=NULL is UNKNOWN)."
+    },
+    {
+      "id": "dbms-u2-c09",
+      "topic": "null-values",
+      "front": "Three-valued logic key cases",
+      "back": "`F AND U = F`, `T AND U = U`; `T OR U = T`, `F OR U = U`; `NOT U = U`. The unknown operand decides only when the other can't settle it."
+    },
+    {
+      "id": "dbms-u2-c10",
+      "topic": "null-values",
+      "front": "WHERE + UNKNOWN",
+      "back": "A row survives WHERE **only if the predicate is TRUE**. FALSE *and* UNKNOWN both drop the row — so `salary > 50000` excludes NULL salaries."
+    },
+    {
+      "id": "dbms-u2-c11",
+      "topic": "null-values",
+      "front": "Testing for null + DISTINCT quirk",
+      "back": "Use **IS NULL / IS NOT NULL** (never `= NULL`). For DISTINCT/GROUP BY, two NULLs count as **equal** (one NULL row) — opposite of the comparison rule."
+    },
+    {
+      "id": "dbms-u2-c12",
+      "topic": "aggregate-functions",
+      "front": "COUNT(*) vs COUNT(attr) vs COUNT(DISTINCT)",
+      "back": "**COUNT(*)** = all rows (incl. nulls). **COUNT(attr)** = non-null values. **COUNT(DISTINCT attr)** = distinct non-null values."
+    },
+    {
+      "id": "dbms-u2-c13",
+      "topic": "aggregate-functions",
+      "front": "Aggregates & NULL",
+      "back": "All aggregates **except COUNT(*)** ignore NULLs. On an all-NULL/empty group: SUM/AVG/MAX/MIN → **NULL**, COUNT(col) → **0**."
+    },
+    {
+      "id": "dbms-u2-c14",
+      "topic": "aggregate-functions",
+      "front": "Find-all-maxima pattern",
+      "back": "`WHERE salary = (SELECT MAX(salary) FROM ...)` returns **every** tied top value — unlike `ORDER BY ... LIMIT 1`."
+    },
+    {
+      "id": "dbms-u2-c15",
+      "topic": "grouping-having",
+      "front": "GROUP BY rule",
+      "back": "Every **non-aggregated** column in SELECT must appear in **GROUP BY** (each group = one output row)."
+    },
+    {
+      "id": "dbms-u2-c16",
+      "topic": "grouping-having",
+      "front": "WHERE vs HAVING",
+      "back": "**WHERE** filters rows *before* grouping (no aggregates). **HAVING** filters groups *after* grouping (aggregates allowed)."
+    },
+    {
+      "id": "dbms-u2-c17",
+      "topic": "grouping-having",
+      "front": "Full query evaluation order",
+      "back": "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY. (Explains why SELECT aliases work in ORDER BY but not WHERE.)"
+    },
+    {
+      "id": "dbms-u2-c18",
+      "topic": "join-expressions",
+      "front": "Natural join",
+      "back": "Joins on **all commonly-named columns**, keeping **one copy** of each. Risk: an unintended shared column name silently drops rows — prefer `JOIN ... USING`."
+    },
+    {
+      "id": "dbms-u2-c19",
+      "topic": "join-expressions",
+      "front": "Outer joins",
+      "back": "**LEFT** keeps all left rows, **RIGHT** all right rows, **FULL** all rows of both; unmatched side padded with **NULL**."
+    },
+    {
+      "id": "dbms-u2-c20",
+      "topic": "join-expressions",
+      "front": "FULL OUTER JOIN in MySQL",
+      "back": "Not supported — emulate with `LEFT JOIN ... UNION RIGHT JOIN ...` (UNION removes the duplicated matched rows)."
+    },
+    {
+      "id": "dbms-u2-c21",
+      "topic": "join-expressions",
+      "front": "Cross join",
+      "back": "Cartesian product: every A row × every B row, no condition. Rows = |A|×|B|, degree = n+m. `FROM A,B WHERE ...` = cross join + filter = inner join."
+    },
+    {
+      "id": "dbms-u2-c22",
+      "topic": "nested-subqueries",
+      "front": "IN / NOT IN",
+      "back": "Set-membership test: `value IN (subquery)` is TRUE if value is in the result set. NOT IN is its negation."
+    },
+    {
+      "id": "dbms-u2-c23",
+      "topic": "nested-subqueries",
+      "front": "ANY/SOME/ALL equivalences",
+      "back": "**= SOME ≡ IN**, **<> ALL ≡ NOT IN**. Against aggregates: **> ALL ≡ > MAX**, **> SOME ≡ > MIN**."
+    },
+    {
+      "id": "dbms-u2-c24",
+      "topic": "nested-subqueries",
+      "front": "FROM-clause subquery rule",
+      "back": "A subquery (derived table) in FROM **must have an alias**. Lets you filter on an aggregate without HAVING."
+    },
+    {
+      "id": "dbms-u2-c25",
+      "topic": "cte-recursive",
+      "front": "CTE (WITH clause)",
+      "back": "A **temporary named result set** living for **one statement**. `WITH name AS (query) SELECT ...`. Multiple CTEs: one WITH, comma-separated."
+    },
+    {
+      "id": "dbms-u2-c26",
+      "topic": "cte-recursive",
+      "front": "Recursive CTE structure",
+      "back": "`WITH RECURSIVE`: **anchor** (base, runs once) `UNION ALL` **recursive member** (references the CTE, repeats until no new rows). For hierarchies/graphs."
+    },
+    {
+      "id": "dbms-u2-c27",
+      "topic": "cte-recursive",
+      "front": "Recursive CTE column types",
+      "back": "Types fixed by the **anchor** SELECT; recursive part must match (nullable by default). Use **CAST** to avoid silent coercion/truncation."
+    },
+    {
+      "id": "dbms-u2-c28",
+      "topic": "case-expressions",
+      "front": "CASE expression",
+      "back": "SQL's if/else. **Searched**: `CASE WHEN cond THEN ... ELSE ... END`. **Simple**: `CASE expr WHEN val THEN ...`. **First match wins**; no match + no ELSE → **NULL**."
+    },
+    {
+      "id": "dbms-u2-c29",
+      "topic": "correlated-subqueries-exists",
+      "front": "Correlated subquery",
+      "back": "Subquery whose WHERE references the **outer** query's row → re-evaluated **once per outer tuple**. Often paired with EXISTS."
+    },
+    {
+      "id": "dbms-u2-c30",
+      "topic": "correlated-subqueries-exists",
+      "front": "EXISTS / NOT EXISTS",
+      "back": "**EXISTS** = TRUE if subquery returns ≥1 row. **NOT EXISTS** = TRUE if it returns none. Body is usually `SELECT *` (only existence matters)."
+    },
+    {
+      "id": "dbms-u2-c31",
+      "topic": "correlated-subqueries-exists",
+      "front": "Division / 'for all' pattern",
+      "back": "'Works on **all** X' = 'no X the row does **not** cover' → **double NOT EXISTS**, or `NOT EXISTS ((all X) EXCEPT (covered X))`. *all* ⇒ two negations; *any* ⇒ one."
+    },
+    {
+      "id": "dbms-u2-c32",
+      "topic": "views",
+      "front": "View",
+      "back": "A **virtual table** storing a query (not data); rows computed from base tables on demand. Uses: hide complexity, security, logical data independence."
+    },
+    {
+      "id": "dbms-u2-c33",
+      "topic": "views",
+      "front": "Updatable-view criteria",
+      "back": "Updatable only if: **single table**, no aggregates, no DISTINCT/GROUP BY/HAVING/UNION, no joins/subqueries, not recursive. A **join view is read-only**."
+    },
+    {
+      "id": "dbms-u2-c34",
+      "topic": "views",
+      "front": "View vs CTE",
+      "back": "**View** persists in schema, reusable across queries, globally scoped, sometimes updatable. **CTE** lives one query, local, never updatable."
+    },
+    {
+      "id": "dbms-u2-c35",
+      "topic": "users-roles-privileges",
+      "front": "User vs Role",
+      "back": "**User** = an account that connects (username + host + password). **Role** = a named bundle of privileges; users granted a role **inherit** its privileges (roles can nest)."
+    },
+    {
+      "id": "dbms-u2-c36",
+      "topic": "users-roles-privileges",
+      "front": "GRANT / REVOKE & scope",
+      "back": "`GRANT priv ON db.table TO 'user'@'host'`. Scope: `*.*` (all), `db.*` (one DB), `db.tbl` (one table). **GRANT OPTION** lets the user grant to others."
+    },
+    {
+      "id": "dbms-u2-c37",
+      "topic": "users-roles-privileges",
+      "front": "Privilege categories",
+      "back": "**Data**: SELECT/INSERT/UPDATE/DELETE. **Structure**: CREATE/ALTER/DROP/INDEX. **Admin**: GRANT OPTION, SUPER, ALL PRIVILEGES."
+    },
+    {
+      "id": "dbms-u2-c38",
+      "topic": "triggers",
+      "front": "Trigger (ECA model)",
+      "back": "A statement run **automatically** on a data change. Define **Event** (INSERT/UPDATE/DELETE) + **Condition** + **Action**. Enforces constraints SQL can't, maintains derived data."
+    },
+    {
+      "id": "dbms-u2-c39",
+      "topic": "triggers",
+      "front": "BEFORE vs AFTER + NEW/OLD",
+      "back": "**BEFORE** = validate/fix before the change (can reject). **AFTER** = react to a done change. **NEW** = inserted/updated values; **OLD** = deleted/pre-update values."
+    },
+    {
+      "id": "dbms-u2-c40",
+      "topic": "triggers",
+      "front": "FOR EACH ROW & DELIMITER",
+      "back": "**FOR EACH ROW** = body runs once per affected row. **DELIMITER //** changes the terminator so inner `;` isn't read as end of CREATE TRIGGER."
+    },
+    {
+      "id": "dbms-u2-c41",
+      "topic": "triggers",
+      "front": "Trigger vs Assertion",
+      "back": "**Assertion** = passive declarative constraint that must always hold. **Trigger** = active procedural rule that fires an action on an event (ECA)."
+    },
+    {
+      "id": "dbms-u2-c42",
+      "topic": "functions-procedures",
+      "front": "Function vs Procedure",
+      "back": "**Function**: returns one value, used in an expression, IN params only. **Procedure**: CALLed, may return via OUT, supports IN/OUT/INOUT, need not return. Proc can call a function, not vice-versa."
+    },
+    {
+      "id": "dbms-u2-c43",
+      "topic": "functions-procedures",
+      "front": "Parameter modes",
+      "back": "**IN** (default) caller→proc, protected. **OUT** proc→caller (initial value invisible inside). **INOUT** both ways."
+    },
+    {
+      "id": "dbms-u2-c44",
+      "topic": "functions-procedures",
+      "front": "DETERMINISTIC",
+      "back": "A function is DETERMINISTIC if same inputs always give same output. Functions are **NON-DETERMINISTIC by default** — declare it explicitly."
+    },
+    {
+      "id": "dbms-u2-c45",
+      "topic": "functions-procedures",
+      "front": "Invoking a procedure",
+      "back": "`CALL proc_name(args)`. Drop with `DROP PROCEDURE [IF EXISTS] name`. Supports control flow: IF/ELSEIF, WHILE, REPEAT, CASE."
+    },
+    {
+      "id": "dbms-u2-c46",
+      "topic": "window-functions",
+      "front": "Window function vs GROUP BY",
+      "back": "Window functions compute over a **window of rows without collapsing** them — every row stays, value attached. `func(...) OVER (PARTITION BY ... ORDER BY ...)`."
+    },
+    {
+      "id": "dbms-u2-c47",
+      "topic": "window-functions",
+      "front": "ROW_NUMBER vs RANK vs DENSE_RANK",
+      "back": "**ROW_NUMBER** = unique, no ties. **RANK** = ties share rank, **skips** next (1,1,3). **DENSE_RANK** = ties share rank, **no gap** (1,1,2)."
+    },
+    {
+      "id": "dbms-u2-c48",
+      "topic": "window-functions",
+      "front": "LAG / LEAD / FIRST_VALUE / NTILE",
+      "back": "**LAG/LEAD(col, offset, default)** = previous/next row value. **FIRST_VALUE** = first in frame. **NTILE(n)** = split into n buckets."
+    },
+    {
+      "id": "dbms-u2-c49",
+      "topic": "window-functions",
+      "front": "Window function restrictions",
+      "back": "Allowed only in **SELECT and ORDER BY** (not WHERE — windowing runs after WHERE). For top-N, compute rank in a CTE, then filter outside."
+    },
+    {
+      "id": "dbms-u2-c50",
+      "topic": "window-functions",
+      "front": "Common window use-cases",
+      "back": "Running total `SUM() OVER(ORDER BY ...)`; top-N per group (RANK in CTE, WHERE r≤N); moving average (ROWS BETWEEN ...); compare-to-group-avg (AVG() OVER(PARTITION BY))."
+    },
+    {
+      "id": "dbms-u2-c51",
+      "topic": "full-text-search",
+      "front": "Full-Text Search basics",
+      "back": "`CREATE FULLTEXT INDEX ...` then `WHERE MATCH(cols) AGAINST('terms')`. Ranks by **relevance**; accurate word boundaries; over CHAR/VARCHAR/TEXT."
+    },
+    {
+      "id": "dbms-u2-c52",
+      "topic": "full-text-search",
+      "front": "FTS modes",
+      "back": "**Natural Language** (default, relevance, ignores stopwords) · **Boolean** (operators) · **Query Expansion** (broadens via top matches)."
+    },
+    {
+      "id": "dbms-u2-c53",
+      "topic": "full-text-search",
+      "front": "Boolean-mode operators",
+      "back": "**+**word (must have), **−**word (must not), **\"phrase\"** (exact), **word*** (prefix wildcard), **( )** (group)."
+    },
+    {
+      "id": "dbms-u2-c54",
+      "topic": "full-text-search",
+      "front": "FTS vs LIKE/REGEXP",
+      "back": "FTS uses an **index** (fast), **ranks by relevance**, detects word boundaries (won't match 'cat' in 'concatenate'), supports boolean/phrase. LIKE does none of these well."
+    },
+    {
+      "id": "dbms-u2-c55",
+      "topic": "full-text-search",
+      "front": "Relevance score factors",
+      "back": "Higher with: **term frequency** in the row, **rarity** of the term across rows, and **shorter document length** for the same match."
+    },
+    {
+      "id": "dbms-u2-c56",
+      "topic": "correlated-subqueries-exists",
+      "front": "'any' vs 'all' in SQL",
+      "back": "'has no X' / 'not any' → **single NOT EXISTS**. 'has every X' / 'for all' → **double NOT EXISTS** (division). Don't confuse the two."
+    },
+    {
+      "id": "dbms-u2-c57",
+      "topic": "views",
+      "front": "WITH CHECK OPTION",
+      "back": "On a filtered updatable view, **rejects inserts/updates that violate the view's WHERE** (which would otherwise enter the base table but disappear from the view). **CASCADED** (default) also checks underlying views; **LOCAL** checks only this one."
+    },
+    {
+      "id": "dbms-u2-c58",
+      "topic": "correlated-subqueries-exists",
+      "front": "Plain vs correlated subquery",
+      "back": "**Plain/nested**: independent, runs **once**, value feeds outer query. **Correlated**: references the outer row (e.g. `WHERE dept_id = e.dept_id`), runs **once per outer row** → can be slow. Classic: 'earns more than own-department average'."
+    },
+    {
+      "id": "dbms-u2-c59",
+      "topic": "triggers",
+      "front": "BEFORE trigger rewrites NEW",
+      "back": "A **BEFORE** trigger can `SET NEW.col = ...` to change the value actually stored (validate-and-fix). Only BEFORE can modify NEW — AFTER is too late. Can also `CALL` a procedure to enforce complex rules."
+    },
+    {
+      "id": "dbms-u2-c60",
+      "topic": "cte-recursive",
+      "front": "Recursive org-hierarchy pattern",
+      "back": "Anchor = roots (`WHERE superssn IS NULL`); recursive = `JOIN cte ON e.superssn = cte.ssn`, `level+1`. **UNION ALL mandatory** (UNION would de-dup and break recursion)."
+    }
+  ]
+}

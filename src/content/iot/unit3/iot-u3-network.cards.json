@@ -1,0 +1,18 @@
+{
+  "subject": "iot",
+  "unit": 3,
+  "title": "Unit 3 — Matter/Thread, Crypto & Obfuscation Flashcards",
+  "cards": [
+    { "id": "iot-u3-net-c01", "topic": "matter-thread", "front": "What is Thread?", "back": "A low-power **IPv6 mesh** protocol on **802.15.4** (same radio as Zigbee), but devices are **natively IP-addressable** (6LoWPAN) — no translating hub. Self-healing mesh; reaches the LAN via a **Thread Border Router**." },
+    { "id": "iot-u3-net-c02", "topic": "matter-thread", "front": "What is Matter?", "back": "An **application-layer** interoperability standard (over IP) giving smart-home devices a **common data model** so they work across **Apple/Google/Amazon/Samsung**. Runs on Thread, Wi-Fi, or Ethernet; local-first, certificate-based." },
+    { "id": "iot-u3-net-c03", "topic": "matter-thread", "front": "Matter vs Thread — the relationship?", "back": "**Complementary layers**: **Matter = the language** (app layer, what data means); **Thread = a road** (low-power IPv6 mesh transport). A Matter device runs over Thread OR Wi-Fi/Ethernet. (Matter ≈ HTTP of the smart home.)" },
+    { "id": "iot-u3-net-c04", "topic": "lightweight-crypto", "front": "Why lightweight cryptography for IoT?", "back": "Constrained devices have little CPU/RAM and tight **energy** budgets (every cycle = battery). Standard crypto (AES) can be too costly/energy-hungry on tiny MCUs. Lightweight crypto = strong security at minimal resource/energy cost." },
+    { "id": "iot-u3-net-c05", "topic": "lightweight-crypto", "front": "What is ASCON?", "back": "The **NIST (2023) lightweight cryptography standard** for constrained devices. Provides **AEAD** (authenticated encryption = confidentiality + integrity) **and hashing** in one compact, efficient, side-channel-resistant design." },
+    { "id": "iot-u3-net-c06", "topic": "lightweight-crypto", "front": "ASCON vs AES?", "back": "**ASCON**: small footprint, low energy on tiny MCUs, AEAD by design → built for constrained IoT. **AES**: general-purpose, often hardware-accelerated → great on servers/phones. Same strength; ASCON is a better *fit* for sensors." },
+    { "id": "iot-u3-net-c07", "topic": "lightweight-crypto", "front": "Does 'lightweight' mean weak?", "back": "**No.** Lightweight = **resource-light** (gates, RAM, energy), NOT security-light. ASCON was chosen via a rigorous multi-year NIST competition for security AND efficiency." },
+    { "id": "iot-u3-net-c08", "topic": "network-obfuscation", "front": "What is network obfuscation?", "back": "Reducing a device's **visibility/discoverability** so attackers can't easily find/reach it: **gateway/NAT** (no public exposure), **segmentation/VLAN**, **non-standard ports**. A defense-in-depth *layer*." },
+    { "id": "iot-u3-net-c09", "topic": "network-obfuscation", "front": "Why does hiding devices behind NAT help?", "back": "Devices get private, non-routable IPs and only make **outbound** connections, so internet scanners (e.g., **Shodan**) can't reach them — 'you can't attack what you can't see.' The gateway is shield + translator." },
+    { "id": "iot-u3-net-c10", "topic": "network-obfuscation", "front": "Non-standard ports — value and limit?", "back": "**Security through obscurity**: cuts opportunistic/automated default-port scanning, but a determined attacker scans all ports. **Never** a substitute for authentication + encryption." },
+    { "id": "iot-u3-net-c11", "topic": "network-obfuscation", "front": "Obfuscation's place in security?", "back": "The **outer fence, not the vault door** — one layer of defense-in-depth. Stack it: hide (obfuscation) → authenticate → encrypt (ASCON) → verify every request (Zero Trust). Each layer assumes the prior may fail." }
+  ]
+}

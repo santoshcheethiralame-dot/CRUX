@@ -1,0 +1,272 @@
+{
+  "subject": "iot",
+  "unit": 3,
+  "title": "Unit 3 — Textbook-style MCQs",
+  "items": [
+    {
+      "id": "iot-u3-tb-001",
+      "topic": "connectivity-criteria",
+      "q": "An industrial motion controller needs latency under 10 ms while a smart-agriculture soil sensor tolerates a 2–5 s delay. This contrast best illustrates which criterion driving connectivity choice?",
+      "options": ["Cost", "Latency", "Topology", "Interoperability"],
+      "answer": 1,
+      "explain": "Latency requirements differ by orders of magnitude across use cases; real-time control demands very low latency, while non-critical telemetry can tolerate seconds — a primary selection criterion.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-002",
+      "topic": "wired-ethernet",
+      "q": "A router differs from a switch in an Ethernet IoT network primarily because the router:",
+      "options": [
+        "Forwards frames using MAC addresses at Layer 2",
+        "Operates at Layer 3, performs NAT, and acts as the gateway between the LAN and the WAN/internet",
+        "Generates the sensor data",
+        "Cannot connect to the internet"
+      ],
+      "answer": 1,
+      "explain": "The switch is a Layer-2 device forwarding by MAC within the LAN. The router is a Layer-3 device performing NAT (private↔public IP) and routing to the WAN — the gateway to the internet.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-003",
+      "topic": "ethernet-tsn",
+      "q": "Which TSN mechanism allows an urgent sensor frame to interrupt a lower-priority frame already being transmitted?",
+      "options": [
+        "Time Synchronization (802.1AS)",
+        "Traffic Shaping (802.1Qav)",
+        "Frame Preemption (802.1Qbu / 802.3br)",
+        "Resource Reservation (802.1Qcc)"
+      ],
+      "answer": 2,
+      "explain": "Frame Preemption (802.1Qbu/802.3br) lets urgent/time-critical frames preempt lower-priority ones in transit, so life-critical data is never stuck behind bulk traffic.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-004",
+      "topic": "unlicensed-bands",
+      "q": "The fundamental trade-off accepted by using the unlicensed 2.4 GHz ISM band is:",
+      "options": [
+        "Higher licensing cost",
+        "Interference — it is a crowded 'commons' shared by Wi-Fi, Bluetooth, Zigbee, microwaves, etc.",
+        "No global availability",
+        "Inability to scale to many devices"
+      ],
+      "answer": 1,
+      "explain": "Unlicensed bands are free and global, but everyone uses them, so the price is congestion/interference — which is why robust techniques (DSSS, channel agility) and sub-GHz options exist.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-005",
+      "topic": "zigbee",
+      "q": "Zigbee's network layer routing is described as 'AODV-like (on-demand)'. What does this mean?",
+      "options": [
+        "All routes are pre-computed and fixed",
+        "When a path is unknown, the source floods a Route Request (RREQ) and the destination replies with a Route Reply (RREP); routes are discovered as needed",
+        "Routing is done only by the cloud",
+        "Devices never relay packets"
+      ],
+      "answer": 1,
+      "explain": "On-demand (AODV-like) routing discovers paths only when needed: an RREQ flood finds the destination, which returns an RREP. Route maintenance repairs broken links using neighbour tables/LQI.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-006",
+      "topic": "zigbee",
+      "q": "Which layer of the Zigbee stack is provided by IEEE 802.15.4 (rather than Zigbee itself)?",
+      "options": [
+        "APS (Application Support)",
+        "NWK (Network)",
+        "PHY and MAC",
+        "ZCL application clusters"
+      ],
+      "answer": 2,
+      "explain": "802.15.4 provides the PHY and MAC (radios, channels, CSMA/CA, ACKs). Zigbee adds NWK (routing), APS (security/binding), and the application/ZCL cluster model on top.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-007",
+      "topic": "ble",
+      "q": "In BLE GATT, the difference between a Notification and an Indication is:",
+      "options": [
+        "Notifications are encrypted; Indications are not",
+        "Notifications have no GATT-level acknowledgment; Indications require an acknowledgment (for critical data)",
+        "Indications are faster but unreliable",
+        "They are identical"
+      ],
+      "answer": 1,
+      "explain": "Notifications push data without a GATT-level ACK (efficient telemetry). Indications require an ACK, used for critical changes needing confirmation — a reliability-vs-overhead trade-off.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-008",
+      "topic": "ble",
+      "q": "Why is BLE often called the cheapest IoT gateway option?",
+      "options": [
+        "BLE devices need no power",
+        "Virtually every smartphone already supports BLE, so the user's phone acts as the gateway",
+        "BLE has unlimited range",
+        "BLE requires no software"
+      ],
+      "answer": 1,
+      "explain": "Because nearly all smartphones/tablets speak BLE, the gateway is already in the user's pocket — no extra hub needed (unlike Zigbee, which needs a dedicated coordinator/hub).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-009",
+      "topic": "wifi",
+      "q": "Why is a battery-powered coin-cell sensor rarely built on standard Wi-Fi?",
+      "options": [
+        "Wi-Fi has too little bandwidth",
+        "Standard Wi-Fi is power-hungry, draining small batteries quickly — it suits mains-powered devices",
+        "Wi-Fi cannot reach the internet",
+        "Wi-Fi has no security"
+      ],
+      "answer": 1,
+      "explain": "Standard Wi-Fi's high power consumption makes it ill-suited to coin-cell devices; it shines for plugged-in, high-throughput devices. Wi-Fi HaLow (sub-GHz) addresses low-power IoT.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-010",
+      "topic": "lorawan",
+      "q": "A LoRaWAN gateway is described as 'transparent'. This means it:",
+      "options": [
+        "Decrypts and interprets the application data",
+        "Simply relays LoRa RF packets to the network server as IP without interpreting them; multiple gateways may receive the same message",
+        "Generates the sensor readings",
+        "Acts as the application server"
+      ],
+      "answer": 1,
+      "explain": "Gateways are transparent relays: they convert LoRa RF to IP and forward to the network server without interpreting payloads. Several gateways hearing the same packet provides redundancy (the NS de-duplicates).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-011",
+      "topic": "lorawan",
+      "q": "A mains-powered LoRaWAN actuator must be controllable at ANY moment with minimal downlink latency. Which class fits, and why?",
+      "options": [
+        "Class A — best battery life",
+        "Class C — a permanently open receive window allows downlink at any time (acceptable since it's mains-powered)",
+        "Class B — only beacon-scheduled slots",
+        "No class supports downlink"
+      ],
+      "answer": 1,
+      "explain": "Class C keeps the receiver always open for instant downlink, at the cost of power — fine for mains-powered devices. Class A (battery-optimal) only listens briefly after an uplink.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-012",
+      "topic": "cellular-iot",
+      "q": "For a nationwide fleet of moving vehicle trackers needing carrier coverage with no self-deployed gateways, the best fit is:",
+      "options": [
+        "Zigbee mesh",
+        "LTE-M (cellular, supports mobility/handover, carrier coverage)",
+        "Wired Ethernet",
+        "NFC"
+      ],
+      "answer": 1,
+      "explain": "LTE-M provides mobility (handover) and nationwide carrier coverage with no infrastructure to deploy — ideal for moving asset/vehicle tracking. NB-IoT suits stationary low-rate sensors.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-013",
+      "topic": "app-layer-protocols",
+      "q": "Which transport-layer mapping is correct for IoT application protocols?",
+      "options": [
+        "MQTT over UDP; CoAP over TCP",
+        "MQTT and HTTP over TCP; CoAP and DDS over UDP",
+        "All protocols use UDP",
+        "CoAP over TCP; HTTP over UDP"
+      ],
+      "answer": 1,
+      "explain": "MQTT, HTTP, and AMQP run over TCP (reliable). CoAP and DDS run over UDP (lightweight, lower overhead for constrained/lossy links).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-014",
+      "topic": "mqtt",
+      "q": "Choosing MQTT QoS 0 vs QoS 2 for routine temperature telemetry vs a financial transaction reflects which trade-off?",
+      "options": [
+        "Encryption strength",
+        "Reliability vs overhead/battery — higher QoS costs round-trips, so use the lowest level the data can tolerate",
+        "Range vs power",
+        "Topology vs cost"
+      ],
+      "answer": 1,
+      "explain": "Higher QoS guarantees delivery but adds handshakes (overhead, battery). Routine telemetry can use QoS 0 (fire-and-forget); critical financial/control data warrants QoS 2 (exactly once).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-015",
+      "topic": "mqtt",
+      "q": "An MQTT 'retained message' is useful because it:",
+      "options": [
+        "Encrypts all future messages",
+        "Stores the last value on a topic so a NEW subscriber immediately receives the current state instead of waiting for the next publish",
+        "Deletes old messages permanently",
+        "Doubles throughput"
+      ],
+      "answer": 1,
+      "explain": "A retained message lets the broker hand a newly-connected subscriber the last known value on a topic right away — useful for state (e.g., 'door is closed') rather than waiting for the next update.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-016",
+      "topic": "coap",
+      "q": "How does a CoAP client achieve reliable delivery over unreliable UDP?",
+      "options": [
+        "It switches to TCP automatically",
+        "It uses Confirmable (CON) messages that expect an ACK; if none arrives, the message is retransmitted",
+        "It floods the network with copies",
+        "Reliability is impossible in CoAP"
+      ],
+      "answer": 1,
+      "explain": "CoAP adds optional reliability on top of UDP via Confirmable (CON) messages with ACKs and retransmission. Non-confirmable (NON) messages are fire-and-forget. Message IDs detect duplicates.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-017",
+      "topic": "coap",
+      "q": "A unique capability CoAP has that neither HTTP nor MQTT offers is:",
+      "options": [
+        "TLS encryption",
+        "Multicast support (one request reaching many devices), plus the Observe option for resource subscriptions",
+        "Publish/subscribe via a broker",
+        "Running over TCP"
+      ],
+      "answer": 1,
+      "explain": "Built on UDP, CoAP supports multicast (one-to-many requests) and the Observe option (subscribe to a resource's changes) — capabilities HTTP and MQTT lack in this comparison.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u3-tb-018",
+      "topic": "scada-web",
+      "q": "In a SCADA system, the component that collects field data and executes local control logic at a remote site is the:",
+      "options": [
+        "HMI",
+        "RTU / PLC (Remote Terminal Unit / Programmable Logic Controller)",
+        "MQTT broker",
+        "Network server"
+      ],
+      "answer": 1,
+      "explain": "RTUs/PLCs sit at the field, gathering sensor data and running local control, then communicate with the SCADA master/HMI (operator interface) over a network (Modbus/DNP3/IP).",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

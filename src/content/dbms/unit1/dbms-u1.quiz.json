@@ -1,0 +1,772 @@
+{
+  "subject": "dbms",
+  "unit": 1,
+  "title": "Unit 1 — MCQ Quiz",
+  "items": [
+    {
+      "id": "dbms-u1-001",
+      "topic": "intro-dbms",
+      "q": "Which best captures the relationship between data and information?",
+      "options": [
+        "Data depends on information",
+        "Information is processed/organised data; information depends on data, not vice-versa",
+        "They are identical",
+        "Information is always smaller than data"
+      ],
+      "answer": 1,
+      "explain": "Data = raw unorganised facts; information = data processed/organised/given context. Information depends on data; data does not depend on information.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-002",
+      "topic": "intro-dbms",
+      "q": "A DBMS is a general-purpose software system that facilitates which four processes?",
+      "options": [
+        "Compiling, linking, loading, running",
+        "Defining, constructing, manipulating, and sharing databases",
+        "Sorting, searching, indexing, hashing",
+        "Encrypting, backing up, replicating, auditing"
+      ],
+      "answer": 1,
+      "explain": "A DBMS facilitates DEFINING (types/structures/constraints → metadata), CONSTRUCTING (storing data), MANIPULATING (query/update/report), and SHARING (concurrent multi-user access).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-003",
+      "topic": "intro-dbms",
+      "q": "The real-world domain that a database models is called the:",
+      "options": [
+        "Schema",
+        "Mini-world / Universe of Discourse (UoD)",
+        "Instance",
+        "Catalog"
+      ],
+      "answer": 1,
+      "explain": "A database is a logically coherent collection of related data representing some aspect of the real world — the mini-world or Universe of Discourse (UoD).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-004",
+      "topic": "file-systems-purpose",
+      "q": "In a banking transfer, the requirement that debit and credit must BOTH happen or NEITHER does addresses which file-system problem?",
+      "options": [
+        "Data redundancy",
+        "Atomicity problems",
+        "Security problems",
+        "Data isolation"
+      ],
+      "answer": 1,
+      "explain": "Atomicity ensures all-or-nothing: a failure after debiting A but before crediting B leaves an inconsistent state. The DBMS guarantees atomic transactions with automatic rollback.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-005",
+      "topic": "file-systems-purpose",
+      "q": "Storing a double-major student's details once per department in a file system causes:",
+      "options": [
+        "Atomicity problems",
+        "Data redundancy and inconsistency",
+        "Concurrency anomalies",
+        "Security problems"
+      ],
+      "answer": 1,
+      "explain": "Duplicating data across files wastes space and risks inconsistency when one copy is updated. A DBMS uses a central store to minimise redundancy.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-006",
+      "topic": "file-systems-purpose",
+      "q": "Two modes of database use are OLTP and OLAP. OLTP is characterized by:",
+      "options": [
+        "Complex analytical queries for business decisions",
+        "Many users performing small, frequent retrievals/updates",
+        "Batch data mining",
+        "Predictive modelling only"
+      ],
+      "answer": 1,
+      "explain": "OLTP (Online Transaction Processing) = many users, small retrievals/updates (banking, airlines). OLAP = analytical processing for decisions/predictive models, using data mining.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-007",
+      "topic": "file-systems-purpose",
+      "q": "Ensuring 'every enrolment refers to a valid student' is which kind of data integrity?",
+      "options": [
+        "Entity integrity",
+        "Referential integrity",
+        "Domain integrity",
+        "User-defined integrity"
+      ],
+      "answer": 1,
+      "explain": "Referential integrity = a reference must point to something that exists. Entity = unique ID; domain = valid value range; user-defined = business rules.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-008",
+      "topic": "data-abstraction-schema",
+      "q": "The three levels of data abstraction, from lowest to highest, are:",
+      "options": [
+        "View, logical, physical",
+        "Physical, logical, view",
+        "Internal, external, conceptual",
+        "Schema, instance, state"
+      ],
+      "answer": 1,
+      "explain": "Physical (how data is stored) → Logical/conceptual (what data + relationships) → View/external (part relevant to a user). Lowest = physical, highest = view.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-009",
+      "topic": "data-abstraction-schema",
+      "q": "Modifying the storage/indexes WITHOUT changing the logical schema is enabled by:",
+      "options": [
+        "Logical data independence",
+        "Physical data independence",
+        "Concurrency control",
+        "Normalization"
+      ],
+      "answer": 1,
+      "explain": "Physical data independence = change the physical schema without altering the logical/conceptual schema. Logical data independence (harder) = change logical schema without affecting applications.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-010",
+      "topic": "data-abstraction-schema",
+      "q": "The difference between schema and instance is best described as:",
+      "options": [
+        "Schema is the data; instance is the design",
+        "Schema is the design (changes rarely); instance/state is the data at a moment (changes frequently)",
+        "They are the same",
+        "Instance is the metadata"
+      ],
+      "answer": 1,
+      "explain": "Schema = overall design (like variable declarations). Instance/state = the actual data at a particular moment (like variable values). Many states correspond to one schema.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-011",
+      "topic": "data-abstraction-schema",
+      "q": "The three-schema architecture's three levels are:",
+      "options": [
+        "DDL, DML, DCL",
+        "External, Conceptual, Internal",
+        "Client, Server, Database",
+        "Naive, Sophisticated, DBA"
+      ],
+      "answer": 1,
+      "explain": "ANSI three-schema = External (user views) / Conceptual (logical structure) / Internal (physical storage). The mappings between them provide data independence.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-012",
+      "topic": "design-architecture-users",
+      "q": "The four phases of database design, in order, are:",
+      "options": [
+        "Requirements, Conceptual, Logical, Physical",
+        "Physical, Logical, Conceptual, Requirements",
+        "Conceptual, Requirements, Physical, Logical",
+        "Logical, Physical, Conceptual, Requirements"
+      ],
+      "answer": 0,
+      "explain": "Requirements specification → Conceptual (ER model) → Logical (relational + normalization) → Physical (indexes, storage). Abstract to concrete.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-013",
+      "topic": "design-architecture-users",
+      "q": "A key security advantage of three-tier over two-tier client-server architecture is:",
+      "options": [
+        "It is always faster",
+        "Clients cannot directly access the database server (only via the middle tier)",
+        "It needs no application server",
+        "It removes the need for a database"
+      ],
+      "answer": 1,
+      "explain": "In three-tier, the application/web server holds business logic and clients reach the DB only through it — the DB server is not directly accessible, enhancing security.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-014",
+      "topic": "design-architecture-users",
+      "q": "A user who books a movie ticket through a predefined interface without DB knowledge is a:",
+      "options": [
+        "Sophisticated user",
+        "Naïve / parametric user",
+        "Database administrator",
+        "Application programmer"
+      ],
+      "answer": 1,
+      "explain": "Naïve (parametric) users interact through canned interfaces without knowing the DB internals. Sophisticated users write their own SQL; the DBA manages the database.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-015",
+      "topic": "design-architecture-users",
+      "q": "Which architecture stores data across multiple physical locations for scalability and fault tolerance?",
+      "options": [
+        "Centralized",
+        "Distributed",
+        "Two-tier",
+        "Shared-memory"
+      ],
+      "answer": 1,
+      "explain": "Distributed databases spread data across multiple locations/nodes, providing scalability, fault tolerance (replication), and performance. Centralized = one server.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-016",
+      "topic": "er-entities-attributes",
+      "q": "In an ER diagram, a multivalued attribute is represented by a:",
+      "options": [
+        "Single ellipse",
+        "Double ellipse",
+        "Dashed ellipse",
+        "Diamond"
+      ],
+      "answer": 1,
+      "explain": "Multivalued attribute = double ellipse; derived = dashed ellipse; key = underlined; relationship = diamond.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-017",
+      "topic": "er-entities-attributes",
+      "q": "Age computed from Date_of_Birth is an example of a ___ attribute, shown as a ___:",
+      "options": [
+        "composite; double ellipse",
+        "derived; dashed ellipse",
+        "multivalued; double ellipse",
+        "key; underlined ellipse"
+      ],
+      "answer": 1,
+      "explain": "Age is DERIVED from the stored attribute DoB, so it is not stored. A derived attribute is drawn as a dashed ellipse.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-018",
+      "topic": "er-entities-attributes",
+      "q": "The 'grade' a student earns in a course is best modelled as:",
+      "options": [
+        "An attribute of Student",
+        "An attribute of Course",
+        "A descriptive attribute of the 'enrolls' relationship",
+        "A weak entity"
+      ],
+      "answer": 2,
+      "explain": "Grade exists only when a student enrolls in a course, so it is a descriptive attribute of the 'enrolls' relationship (on the diamond), not of either entity.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-019",
+      "topic": "er-entities-attributes",
+      "q": "An attribute that can be subdivided into smaller parts (e.g. address → street, city, state) is:",
+      "options": [
+        "Simple",
+        "Composite",
+        "Derived",
+        "Key"
+      ],
+      "answer": 1,
+      "explain": "A composite attribute can be split into sub-parts (address, name). A simple/atomic attribute cannot be subdivided.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-020",
+      "topic": "er-relationships-cardinality",
+      "q": "A relationship in which the SAME entity set participates more than once (e.g. course prerequisites) is:",
+      "options": [
+        "A binary relationship",
+        "A recursive (self-referencing) relationship",
+        "A ternary relationship",
+        "A weak relationship"
+      ],
+      "answer": 1,
+      "explain": "A recursive relationship relates an entity set to itself (course→course prereq, employee→supervisor). Role names label the lines to disambiguate.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-021",
+      "topic": "er-relationships-cardinality",
+      "q": "The number of entity sets participating in a relationship set is its:",
+      "options": [
+        "Cardinality",
+        "Degree",
+        "Arity of attributes",
+        "Participation"
+      ],
+      "answer": 1,
+      "explain": "Degree = number of participating entity sets. Binary = degree 2 (most common); ternary = degree 3.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-022",
+      "topic": "er-relationships-cardinality",
+      "q": "Total participation of an entity in a relationship is shown in an ER diagram by:",
+      "options": [
+        "A single line",
+        "A double line",
+        "A dashed line",
+        "A diamond"
+      ],
+      "answer": 1,
+      "explain": "Total participation (every entity must participate) is shown by a double line. Partial participation uses a single line.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-023",
+      "topic": "er-relationships-cardinality",
+      "q": "In (min, max) notation, a line from Student to Enrolls labelled (2, 5) means a student can enroll in:",
+      "options": [
+        "At most 2 and at least 5 courses",
+        "Exactly 5 courses",
+        "A minimum of 2 and a maximum of 5 courses",
+        "Optional enrollment"
+      ],
+      "answer": 2,
+      "explain": "(min, max) = (2, 5) means minimum 2, maximum 5. min=1 would imply total participation; max=N implies no upper limit.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-024",
+      "topic": "er-keys-weak-entities",
+      "q": "A minimal superkey is called a:",
+      "options": [
+        "Primary key",
+        "Candidate key",
+        "Foreign key",
+        "Discriminator"
+      ],
+      "answer": 1,
+      "explain": "A candidate key is a minimal superkey (no attribute removable). The DBA chooses one candidate key as the primary key.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-025",
+      "topic": "er-keys-weak-entities",
+      "q": "For a many-to-many binary relationship set, the primary key is:",
+      "options": [
+        "The PK of either entity",
+        "The PK of the 'many' side",
+        "The union of both entities' primary keys",
+        "A new auto-generated ID only"
+      ],
+      "answer": 2,
+      "explain": "M:N → union of both PKs. 1:1 → either entity's PK; 1:N/N:1 → the 'many' side's PK. (Descriptive attributes like grade are not part of the PK.)",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-026",
+      "topic": "er-keys-weak-entities",
+      "q": "A weak entity set is uniquely identified by:",
+      "options": [
+        "Its own primary key",
+        "The owner's primary key + its own discriminator (partial key)",
+        "A foreign key only",
+        "A multivalued attribute"
+      ],
+      "answer": 1,
+      "explain": "A weak entity has no PK of its own; its PK = identifying (owner) entity's PK + a discriminator. It has total participation in a many-to-one identifying relationship.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-027",
+      "topic": "er-keys-weak-entities",
+      "q": "In an ER diagram, a weak entity set and its identifying relationship are drawn as:",
+      "options": [
+        "Single rectangle and single diamond",
+        "Double rectangle and double diamond",
+        "Dashed rectangle and dashed diamond",
+        "Ellipse and triangle"
+      ],
+      "answer": 1,
+      "explain": "Weak entity = double rectangle; identifying relationship = double diamond; discriminator = dashed underline.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-028",
+      "topic": "er-to-relational",
+      "q": "When mapping a 1:N relationship to a relational schema, you:",
+      "options": [
+        "Create a new junction table",
+        "Put the PK of the 'one' side as a foreign key in the 'many' side's relation",
+        "Merge both entities into one table",
+        "Store a set in one column"
+      ],
+      "answer": 1,
+      "explain": "1:N → foreign key on the MANY side (the 'one' side's PK becomes an FK in the 'many' table). No new table needed.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-029",
+      "topic": "er-to-relational",
+      "q": "A many-to-many (M:N) relationship is mapped to:",
+      "options": [
+        "A foreign key on one side",
+        "A new junction relation containing both entities' primary keys",
+        "A derived attribute",
+        "A view"
+      ],
+      "answer": 1,
+      "explain": "M:N → a brand-new junction table with both PKs (composite PK) + any relationship attributes. A single FK can't capture M:N.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-030",
+      "topic": "er-to-relational",
+      "q": "A multivalued attribute is mapped to a relational schema by:",
+      "options": [
+        "Storing a comma-separated list in one column",
+        "Creating a separate relation holding the attribute plus the entity's PK",
+        "Ignoring it",
+        "Making it a derived attribute"
+      ],
+      "answer": 1,
+      "explain": "A multivalued attribute becomes its own table (attribute + entity PK), because a relation can't hold a set in one cell (1NF). e.g. instructor_phone(ID, phone).",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-031",
+      "topic": "ra-unary-operators",
+      "q": "The relational algebra SELECT operator (σ):",
+      "options": [
+        "Chooses columns",
+        "Chooses rows (tuples) satisfying a predicate",
+        "Renames a relation",
+        "Removes duplicates from columns"
+      ],
+      "answer": 1,
+      "explain": "σ (select) filters ROWS by a predicate (a horizontal partition). ∏ (project) chooses COLUMNS. Note: SQL's keyword SELECT actually does projection.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-032",
+      "topic": "ra-unary-operators",
+      "q": "The PROJECT operator (∏) in relational algebra always:",
+      "options": [
+        "Keeps duplicate tuples",
+        "Removes duplicate tuples (since relations are sets)",
+        "Adds new columns",
+        "Filters rows"
+      ],
+      "answer": 1,
+      "explain": "∏ keeps the listed columns and removes duplicate tuples, because a relation is a set. ∏rating(Sailors) returns each distinct rating once.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-033",
+      "topic": "ra-unary-operators",
+      "q": "Relational algebra is said to be 'closed' because:",
+      "options": [
+        "It cannot be extended",
+        "Every operation produces a relation, which can be input to further operations",
+        "It only works on closed sets",
+        "It has no binary operators"
+      ],
+      "answer": 1,
+      "explain": "Closure: each operation takes relations and produces a relation, so operations compose into expressions. It is a procedural language.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-034",
+      "topic": "ra-set-operations",
+      "q": "Two relations are union-compatible if they have:",
+      "options": [
+        "The same primary key",
+        "The same arity AND compatible attribute domains",
+        "The same number of tuples",
+        "The same name"
+      ],
+      "answer": 1,
+      "explain": "Union-compatible = same number of attributes (arity) and the i-th attributes have compatible domains. Required for UNION, INTERSECTION, DIFFERENCE.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-035",
+      "topic": "ra-set-operations",
+      "q": "Which set operation is NOT commutative?",
+      "options": [
+        "Union",
+        "Intersection",
+        "Set difference",
+        "All are commutative"
+      ],
+      "answer": 2,
+      "explain": "Set difference: R − S ≠ S − R in general. Union and intersection are both commutative and associative.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-036",
+      "topic": "ra-set-operations",
+      "q": "The relational algebra operator used to express 'find sailors who reserved EVERY boat' is:",
+      "options": [
+        "Join",
+        "Division (÷)",
+        "Union",
+        "Projection"
+      ],
+      "answer": 1,
+      "explain": "Division answers 'for all / every' queries: (∏sid,bid Reserves) ÷ (∏bid Boats) gives sailors paired with every boat. Keyword 'all/every' → division.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-037",
+      "topic": "ra-joins-aggregates",
+      "q": "A Cartesian product R × S of relations with n and m attributes produces a relation with:",
+      "options": [
+        "n attributes and |R| tuples",
+        "n + m attributes and |R| × |S| tuples",
+        "max(n,m) attributes",
+        "n × m attributes"
+      ],
+      "answer": 1,
+      "explain": "Cartesian product: degree = n + m, size = |R| × |S| (every tuple of R paired with every tuple of S). Usually meaningless until filtered by a selection.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-038",
+      "topic": "ra-joins-aggregates",
+      "q": "A natural join (⋈) is equivalent to:",
+      "options": [
+        "A union of two relations",
+        "A Cartesian product followed by a selection on common columns (with the duplicate column removed)",
+        "A projection",
+        "A set difference"
+      ],
+      "answer": 1,
+      "explain": "Natural join = Cartesian product internally + automatic match on common-named compatible columns + drop the duplicate column — removing the cross-product's redundancy.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-039",
+      "topic": "ra-joins-aggregates",
+      "q": "To compute 'average age per rating' you use grouping with the grouping attribute placed:",
+      "options": [
+        "To the right of ℱ",
+        "To the left of ℱ, with aggregates to the right",
+        "Inside a selection",
+        "Inside a projection"
+      ],
+      "answer": 1,
+      "explain": "In ℱ notation, the grouping attribute is on the LEFT and aggregate functions on the right: rating ℱ AVG(age)(Sailors). This is SQL's GROUP BY.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-040",
+      "topic": "sql-overview-datatypes",
+      "q": "SQL's four sub-languages are DDL, DML, DCL and TCL. INSERT, UPDATE and DELETE belong to:",
+      "options": [
+        "DDL",
+        "DML",
+        "DCL",
+        "TCL"
+      ],
+      "answer": 1,
+      "explain": "DML (Data Manipulation Language) = INSERT/SELECT/UPDATE/DELETE. DDL = CREATE/ALTER/DROP; DCL = GRANT/REVOKE; TCL = COMMIT/ROLLBACK.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-041",
+      "topic": "sql-overview-datatypes",
+      "q": "The difference between CHAR(10) and VARCHAR(10) is:",
+      "options": [
+        "CHAR is variable-length, VARCHAR is fixed-length",
+        "CHAR is fixed-length (pads with spaces); VARCHAR is variable-length (no padding)",
+        "Both are fixed-length",
+        "VARCHAR can only store numbers"
+      ],
+      "answer": 1,
+      "explain": "CHAR(n) is fixed-length — 'Avi' in CHAR(10) is stored as 'Avi' + 7 spaces. VARCHAR(n) is variable-length — stores just 'Avi'.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-042",
+      "topic": "sql-overview-datatypes",
+      "q": "BLOB and CLOB are large-object types. The difference is:",
+      "options": [
+        "BLOB stores binary data (images/video); CLOB stores large character data (text)",
+        "BLOB stores text; CLOB stores binary",
+        "Both store numbers",
+        "CLOB is for dates"
+      ],
+      "answer": 0,
+      "explain": "BLOB = Binary Large Object (images, audio, video); CLOB = Character Large Object (large text/documents). The DATE format in SQL is YYYY-MM-DD.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-043",
+      "topic": "sql-ddl",
+      "q": "What is the key difference between DROP TABLE and TRUNCATE TABLE?",
+      "options": [
+        "They are identical",
+        "DROP removes data AND the table structure; TRUNCATE removes all rows but keeps the structure",
+        "TRUNCATE removes the structure; DROP keeps it",
+        "DROP can be filtered with WHERE"
+      ],
+      "answer": 1,
+      "explain": "DROP deletes data + structure (constraints/indexes gone); TRUNCATE empties all rows but keeps the table structure (and resets AUTO_INCREMENT). Both are DDL.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-044",
+      "topic": "sql-ddl",
+      "q": "Which command changes the STRUCTURE of an existing table (e.g. add a column)?",
+      "options": [
+        "UPDATE",
+        "ALTER TABLE",
+        "INSERT",
+        "SELECT"
+      ],
+      "answer": 1,
+      "explain": "ALTER TABLE modifies structure (ADD/MODIFY/DROP/RENAME columns, add/drop constraints). UPDATE changes data values, not structure.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-045",
+      "topic": "sql-constraints",
+      "q": "The rule that a primary key value cannot be NULL is the:",
+      "options": [
+        "Referential integrity constraint",
+        "Entity integrity constraint",
+        "Domain constraint",
+        "Key constraint (uniqueness)"
+      ],
+      "answer": 1,
+      "explain": "Entity integrity = PK cannot be NULL. Key constraint = PK cannot be duplicated. Referential integrity = FK must match an existing PK (or be NULL).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-046",
+      "topic": "sql-constraints",
+      "q": "A FOREIGN KEY declared 'ON DELETE CASCADE' means that deleting a parent row:",
+      "options": [
+        "Is rejected",
+        "Sets the child foreign keys to NULL",
+        "Deletes the corresponding child rows",
+        "Sets the child rows to their default value"
+      ],
+      "answer": 2,
+      "explain": "CASCADE propagates the delete to child rows. Other actions: NO ACTION (reject, the default), SET NULL, SET DEFAULT.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-047",
+      "topic": "sql-constraints",
+      "q": "A PRIMARY KEY constraint is equivalent to:",
+      "options": [
+        "UNIQUE only",
+        "NOT NULL only",
+        "UNIQUE + NOT NULL",
+        "CHECK + DEFAULT"
+      ],
+      "answer": 2,
+      "explain": "PRIMARY KEY = UNIQUE + NOT NULL, and only one per table. UNIQUE alone marks a candidate key and allows one NULL.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-048",
+      "topic": "sql-dml",
+      "q": "In an SQL query, the WHERE clause corresponds to which relational algebra operation?",
+      "options": [
+        "Project (∏)",
+        "Select (σ)",
+        "Rename (ρ)",
+        "Union (∪)"
+      ],
+      "answer": 1,
+      "explain": "WHERE = Select (σ, row filter); the SELECT clause = Project (∏, columns); FROM = the relation(s)/joins. SQL's SELECT keyword does projection, not selection.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-049",
+      "topic": "sql-dml",
+      "q": "Executing 'DELETE FROM employee;' (with no WHERE clause) will:",
+      "options": [
+        "Delete one row",
+        "Delete all rows in the table",
+        "Raise an error",
+        "Delete the table structure too"
+      ],
+      "answer": 1,
+      "explain": "DELETE without WHERE removes ALL rows (but keeps the structure — unlike DROP). Always scope DELETE/UPDATE with WHERE unless you mean 'all'.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-050",
+      "topic": "er-to-relational",
+      "q": "When mapping an M:N relationship that has its own attribute (e.g. advisor with Date_of_assignment) to relations, where does that attribute go?",
+      "options": [
+        "In either entity table",
+        "Into the new junction (bridge) table, alongside the two foreign keys",
+        "It is dropped",
+        "In a separate table of its own"
+      ],
+      "answer": 1,
+      "explain": "A relationship attribute describes the pairing, not either entity, so it becomes a column of the junction table whose composite PK is the two entities' PKs (e.g. Advisor(Instructor_ID, Student_ID, Date_of_assignment)).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-051",
+      "topic": "sql-ddl",
+      "q": "Which is the correct way to add a named foreign key to an already-existing column in MySQL?",
+      "options": [
+        "ALTER TABLE student ADD FOREIGN KEY",
+        "ALTER TABLE student ADD CONSTRAINT fk_dept FOREIGN KEY (dept_id) REFERENCES department(dept_id)",
+        "CREATE FOREIGN KEY ON student",
+        "UPDATE student SET FOREIGN KEY"
+      ],
+      "answer": 1,
+      "explain": "ALTER TABLE ... ADD CONSTRAINT name FOREIGN KEY (col) REFERENCES parent(col) adds a named FK to an existing table; the referencing column must already exist. Naming it allows dropping it later and is needed for multi-column FKs.",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

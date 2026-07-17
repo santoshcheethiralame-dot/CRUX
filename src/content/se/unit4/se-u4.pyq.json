@@ -1,0 +1,151 @@
+{
+  "subject": "se",
+  "unit": 4,
+  "title": "Unit 4 — Past-Year Questions",
+  "items": [
+    {
+      "id": "se-u4-pyq-01",
+      "topic": "code-metrics-function-points",
+      "year": "ESA Dec 2023 / Jul 2024 / Jan-May 2024 (all)",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Define and differentiate **Attribute, Measure, and Metric** in software engineering, with an example.",
+      "answer": "**Attribute** = a measurable property of a software entity (physical like LOC, or abstract like complexity). **Measure** = a raw quantitative indication of size/amount — a single number (e.g. *number of defects = 20*). **Metric** = a **calculated relationship between measures** that gives insight (e.g. *defects per KLOC = 20 / 5 = 4*). **Example:** \"number of defects\" is a *measure*; \"defect density (defects per thousand lines)\" is a *metric* — it combines the defect count with system size, letting you compare quality across modules of different sizes."
+    },
+    {
+      "id": "se-u4-pyq-02",
+      "topic": "quality-metrics-iso9126",
+      "year": "ESA Dec 2023 (UE20CS303)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What are the **characteristics of software measures and metrics**? (And why measure?)",
+      "answer": "Good software measures/metrics should be: **simple & computable**, **empirically & intuitively persuasive**, **consistent & objective** (same result regardless of who measures), **consistent in units/dimensions**, **programming-language independent**, and provide **effective feedback** for quality improvement. *Why measure?* — *\"if you can't measure it, you can't improve it\"* (Kelvin): measurement supports decision-making (fund? test more? ship?), quality control via **trend analysis** and **benchmarking**, estimation, and turning software from a craft into engineering. (Beware **Goodhart's law** — a measure made a target gets gamed.)"
+    },
+    {
+      "id": "se-u4-pyq-03",
+      "topic": "system-acceptance-testing",
+      "year": "ESA Jul 2023",
+      "marks": 6,
+      "difficulty": "easy",
+      "q": "Briefly discuss the different **levels of testing**.",
+      "answer": "**Four levels (smallest → largest scope):** **① Unit testing** — an individual unit/function/class in isolation (by programmers; covers logic, boundaries, error handling). **② Integration testing** — the **interfaces** between combined components (big-bang vs incremental: top-down/bottom-up/**sandwich**); *most bugs hide here*. **③ System testing** — the completely integrated system end-to-end against the **SRS** (black-box). **④ Acceptance testing** — the customer/users confirm it meets business needs (the final quality gateway; alpha/beta)."
+    },
+    {
+      "id": "se-u4-pyq-04",
+      "topic": "system-acceptance-testing",
+      "year": "ESA Dec 2023 / Jul 2024 / Jan-May 2024 (all)",
+      "marks": 9,
+      "difficulty": "medium",
+      "q": "Differentiate **Black-box, White-box and Grey-box testing**, and **Static vs Dynamic testing**.",
+      "answer": "**Black-box** = tests derived from the **specification** with no view of code (e.g. equivalence partitioning, BVA) — realistic external view. **White-box** = tests derived from the **internal code structure/paths** (statement/branch coverage) — thorough. **Grey-box** = *partial* knowledge (some internals/credentials) — a hybrid. **Static testing** = examining the artifact **without executing** it (reviews, walkthroughs, inspections, static analysis) — *verification*, cheap & early, prevents defects. **Dynamic testing** = **executing** the program with inputs and comparing outputs to expected — *validation*, detects defects but costs more. Best practice combines both."
+    },
+    {
+      "id": "se-u4-pyq-05",
+      "topic": "system-acceptance-testing",
+      "year": "ESA Jul 2023",
+      "marks": 6,
+      "difficulty": "easy",
+      "q": "Contrast **Manual and Automation testing**.",
+      "answer": "**Manual testing** — humans execute test steps without scripts; flexible and good for **exploratory, usability and acceptance** testing, but **slow, tedious, error-prone**, and hard to get good coverage or repeatability. **Automated testing** — tests are coded and run **without human intervention** (e.g. JUnit, Selenium, PyTest); **fast, repeatable, reliable**, and ideal for **regression** and CI pipelines, but has an upfront cost to write and maintain the test framework. Rule of thumb: automate stable, repetitive tests; do exploratory/UX checks manually."
+    },
+    {
+      "id": "se-u4-pyq-06",
+      "topic": "system-acceptance-testing",
+      "year": "ESA Jul 2024 (UE19CS302)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain the following types of testing: **Sanity, Destructive, Load, Stress, Recovery, Installation**.",
+      "answer": "**Sanity (smoke)** — a quick check that the build's core functions work, deciding if it's fit for further testing. **Destructive** — make the application **fail in an uncontrolled way** to test robustness and find its breaking point. **Load** — apply the **expected** load to see how it performs under normal/above-average use. **Stress** — apply **extreme** load *beyond* design limits to find where it breaks. **Recovery** — test restart/recovery after a crash or disaster. **Installation** — verify the software installs correctly with all components in the target environment (and cleanly uninstalls)."
+    },
+    {
+      "id": "se-u4-pyq-07",
+      "topic": "system-acceptance-testing",
+      "year": "ESA Dec 2023 (UE19CS302)",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "Describe the contents of an **ideal test case** with an example.",
+      "answer": "A **test case** is a documented set of conditions, steps and **expected results** giving a Pass/Fail verdict. **Fields:** Test Case ID · Scenario/Title · Description · **Preconditions/Setup** · **Test Steps** (inputs) · **Expected Result** · Actual Result · Status · Comments. **Example (login):** *TC1 — \"Successful login\"*; Precondition: registered user; Steps: 1. go to login page, 2. enter valid email, 3. enter valid password, 4. click Sign-In; **Expected:** inbox/home page loads. Without a predefined **Expected Result** you can't judge pass/fail. Types: **positive, negative, destructive**."
+    },
+    {
+      "id": "se-u4-pyq-08",
+      "topic": "code-coverage",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 7,
+      "difficulty": "hard",
+      "q": "Describe **condition** and **decision coverage**. For `avgAbs(numbers, count)` — which guards on `numbers==NULL || count==0` and uses `(d<0)?-d:d` in a loop — create test cases for 100% condition and decision coverage and explain.",
+      "answer": "**Decision coverage** = every *decision* (whole boolean expression) takes **true and false** at least once. **Condition coverage** = every *atomic condition* takes **true and false** at least once. Conditions: **A** = `numbers==NULL`, **B** = `count==0`, **C** = loop `i<count`, **D** = `d<0`. **Three test cases give full condition + decision coverage:** ① `avgAbs(NULL, …)` → A=true (guard taken). ② `avgAbs(arr, 0)` → A=false, B=true (guard taken). ③ `avgAbs({-5, 3}, 2)` → A=false, B=false (guard skipped), loop runs, and the mixed array makes **D=true (for −5) and D=false (for 3)** in one call — plus C goes true (iterating) then false (exit). Together every atomic condition and every decision is exercised both ways."
+    },
+    {
+      "id": "se-u4-pyq-09",
+      "topic": "code-coverage",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 4,
+      "difficulty": "hard",
+      "q": "Propose a pragmatic **code-coverage strategy** for mission-critical registration/seat-allocation flows: targets for unit, integration and branch coverage (with justification) and how thresholds are enforced in CI.",
+      "answer": "**Targets:** **Unit ≥ 85–90%** (core business logic is critical and cheaply unit-tested), **Branch ≥ 80%** (ensures both sides of each decision — vital for seat-count edge cases), **Integration ~70%** (end-to-end paths across services are costlier, so a lower bar focusing on critical flows). Justification: chase ~80% overall (diminishing returns past that — Google's target), spending extra effort on **high-risk code** (payments, seat counts) not trivial getters. **CI enforcement:** a coverage tool (JaCoCo/Istanbul) runs in the pipeline and **fails the build** if any module drops below its threshold; coverage is reported on every PR and the gate blocks merge — so coverage can't regress."
+    },
+    {
+      "id": "se-u4-pyq-10",
+      "topic": "penetration-testing",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 4,
+      "difficulty": "hard",
+      "q": "Design a focused **penetration-testing and fuzzing** plan for registration & seat-allocation endpoints: (1) pen-test scope, cadence, attacker profile; (2) how fuzzing integrates into CI/staging and what faults it finds.",
+      "answer": "**(1) Penetration testing** — *Scope:* the registration & seat-allocation REST endpoints (auth, input validation, business logic, race conditions on seat counts). *Cadence:* before every major release **and** quarterly, plus after significant changes. *Attacker profile:* **grey-box** (authorised tester with a normal student account) to model a malicious registered user, escalating toward black-box external attacker. Use OWASP ZAP/SQLMap; check for SQLi, broken auth, IDOR, race conditions. **(2) Fuzzing** — integrate a **coverage-guided fuzzer (AFL/libFuzzer)** in **CI/staging**, run nightly on the request parsers and seat-allocation logic with malformed/boundary inputs. Expected faults: **crashes, memory errors, unhandled exceptions, integer/seat-count overflow, and validation bypasses** — caught before production."
+    },
+    {
+      "id": "se-u4-pyq-11",
+      "topic": "levels-of-testing",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 6,
+      "difficulty": "hard",
+      "q": "For integration-testing the Seat-Allocation component (upstream Registration API, downstream ERP & Notification services): (i) explain **sandwich integration** and why it suits this case; (ii) explain **stub development** and its help here.",
+      "answer": "**(i) Sandwich integration** combines **top-down and bottom-up** — you build a skeleton, connect the top-level (Registration API caller) with the crucial bottom-level (Seat-Allocation core), and add middle layers incrementally. It suits Seat-Allocation because you can test the **central logic early** from both directions without waiting for the full ERP/Notification stacks — the common, agile choice. **(ii) Stubs** are controllable replacements for components that don't yet exist / are slow / have side effects. Here, a **stub ERP** returns fixed eligibility verdicts and a **stub Notification** records calls instead of sending real messages — so Seat-Allocation is tested **in isolation, deterministically, with no external dependency or side effects**, and the stub is designed for easy removal when the real services arrive."
+    },
+    {
+      "id": "se-u4-pyq-12",
+      "topic": "privacy-engineering",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 4,
+      "difficulty": "medium",
+      "q": "List four concrete **privacy-engineering measures** for a system that stores interaction logs, attendance and transcripts for AI personalization (with consent/opt-in and deletion-on-request requirements).",
+      "answer": "**① Consent / opt-in gating** — collect and use personal interaction data for profiling **only** for users who explicitly opt in. **② Data minimization** — collect only what's needed (e.g. email over phone) and **pseudonymize/anonymize** logs and transcripts before storing/training. **③ Deletion-on-request + retention limits** — honour the right to be forgotten (delete and exclude from retraining) and auto-purge data past its retention window. **④ Access control + encryption** — encrypt data at rest/in transit, restrict access via least privilege, and keep audit logs — i.e. **Privacy-by-Design**, building privacy in from the start rather than bolting it on."
+    },
+    {
+      "id": "se-u4-pyq-13",
+      "topic": "ethics-codes-flourishing",
+      "year": "ESA Jul 2024 / Jul 2023",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Discuss the **Software Engineering Code of Ethics**.",
+      "answer": "The **ACM/IEEE-CS Software Engineering Code of Ethics** guides professional conduct. Core commitments (\"As an ACM member I will…\"): contribute to **society & human well-being**, **avoid harm**, be **honest & trustworthy**, be **fair & not discriminate**, **honor property rights** (copyrights/patents), give **proper credit** for IP, **respect privacy**, and honor **confidentiality**. The full code has eight principles — **PUBLIC, CLIENT/EMPLOYER, PRODUCT, JUDGMENT, MANAGEMENT, PROFESSION, COLLEAGUES, SELF** — with PUBLIC interest paramount. *(Caveat: research shows codes alone don't change behaviour — ethics must be practised; cf. Volkswagen, Therac-25.)*"
+    },
+    {
+      "id": "se-u4-pyq-14",
+      "topic": "system-acceptance-testing",
+      "year": "ESA Jul 2024 / Jan-May 2024",
+      "marks": 7,
+      "difficulty": "easy",
+      "q": "Why is **Software Testing important** in the SDLC? (Discuss its importance.)",
+      "answer": "Testing verifies the software meets functional & non-functional requirements and is **reliable, efficient, secure** — *\"testing shows the presence of bugs, but never their absence\"* (Dijkstra). Importance: **finds defects early** (cheaper to fix — cost rises steeply across phases), **prevents costly production failures** (cf. Ariane 5, Therac-25), **validates** the product meets user needs (V&V), builds **confidence & quality**, supports **regression safety** during change, and is often a **compliance/release gate**. It is a *continuous activity*, not a one-off phase."
+    },
+    {
+      "id": "se-u4-pyq-15",
+      "topic": "open-source-ecosystem",
+      "year": "Extension (CMU 17-313 aligned)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Contrast **copyleft and permissive** open-source licenses, and explain why companies often avoid GPL.",
+      "answer": "**Permissive** licenses (**MIT, Apache, BSD**) let you combine the OSS into a product released under a **different (even proprietary) license** — they encourage adoption (must retain credit; provided as-is). **Copyleft** licenses (**GPL**) require all **derivative works to use the same license** and make source available — \"protecting the commons\" but **viral**: linking GPL code into a proprietary codebase can force the *whole product* to become GPL. So companies **vet/avoid GPL** to prevent being forced to open-source proprietary code (the **LGPL** relaxes this for *dynamically-linked* libraries)."
+    },
+    {
+      "id": "se-u4-pyq-16",
+      "topic": "code-metrics-function-points",
+      "year": "Extension (UE23CS341A syllabus)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain **Function Point** analysis. List its five components and outline how the count is computed.",
+      "answer": "**Function Points (FP)** size an application by its **functional view** — *functionality delivered to the user* — making it **language-independent** (unlike LOC) and estimable early. **Five components:** **EI** (External Inputs — input screens), **EO** (External Outputs — reports), **EQ** (External Inquiries — queries), **ILF** (Internal Logical Files — DB tables), **EIF** (External Interface Files — shared data). **Computation:** count each component, multiply by a **complexity weight** (Low/Average/High), and sum to the unadjusted count, then apply a complexity-adjustment factor. *Example:* a 75-FP app at **~10 FP/person-month** ≈ a 7–8 month one-developer project."
+    }
+  ]
+}

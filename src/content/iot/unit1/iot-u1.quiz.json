@@ -1,0 +1,492 @@
+{
+  "subject": "iot",
+  "unit": 1,
+  "title": "Unit 1 MCQs — Introduction to IoT & Architecture",
+  "items": [
+    {
+      "id": "iot-u1-001",
+      "topic": "what-is-iot",
+      "q": "Which set best captures the four core concepts that almost every IoT system rests on?",
+      "options": [
+        "Connectivity, Sensing, Communication, Analytics",
+        "Compilation, Storage, Caching, Rendering",
+        "Authentication, Authorization, Accounting, Auditing",
+        "Mobility, Density, Latency, Throughput"
+      ],
+      "answer": 0,
+      "explain": "The four pillars are connectivity (reach the internet), sensing (capture the physical world), communication (exchange data via MQTT/CoAP/HTTP), and analytics (turn data into decisions).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-002",
+      "topic": "what-is-iot",
+      "q": "A 'smart object' is distinguished from an ordinary electronic device primarily because it can:",
+      "options": [
+        "Run a desktop operating system",
+        "Sense, process, communicate, and (often) actuate — acting on data autonomously",
+        "Only display a numeric reading to a human",
+        "Operate without any power source"
+      ],
+      "answer": 1,
+      "explain": "A smart object adds sensing, embedded processing, network communication, and often actuation — enabling the sense → communicate → analyse → act loop with little human intervention.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-003",
+      "topic": "history-of-iot",
+      "q": "Who coined the term 'Internet of Things', and in what context?",
+      "options": [
+        "Tim Berners-Lee, while inventing the web",
+        "Vint Cerf, while designing TCP/IP",
+        "Kevin Ashton (1999, MIT Auto-ID Center), in the context of RFID supply-chain tracking",
+        "Mark Weiser, in his ubiquitous-computing paper"
+      ],
+      "answer": 2,
+      "explain": "Kevin Ashton coined 'Internet of Things' in 1999 at MIT's Auto-ID Center; the original driver was using RFID to let systems track physical goods without human data entry.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-004",
+      "topic": "history-of-iot",
+      "q": "Which of these is frequently cited as the first internet-connected appliance?",
+      "options": [
+        "A smart thermostat (Nest)",
+        "An internet-connected Coke vending machine (early 1980s)",
+        "The Apple iPhone",
+        "An Amazon Echo"
+      ],
+      "answer": 1,
+      "explain": "The early-1980s Carnegie Mellon Coke machine, wired to the ARPANET so students could check stock and temperature remotely, is widely cited as the first internet-connected appliance.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u1-005",
+      "topic": "iot-traffic-model",
+      "q": "Compared with human-generated internet traffic, IoT-generated traffic is typically:",
+      "options": [
+        "Downlink-heavy and bursty during the day",
+        "Uplink-heavy, event-based or periodic, and mostly stationary",
+        "Always large in volume and highly mobile",
+        "Identical in pattern to human web browsing"
+      ],
+      "answer": 1,
+      "explain": "Humans are data consumers (downlink-heavy, daytime peaks); IoT devices are data producers (uplink-heavy), event-based/periodic, and mostly stationary.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-006",
+      "topic": "iot-traffic-model",
+      "q": "A smoke-detector alarm's traffic is best characterised as:",
+      "options": [
+        "High-volume continuous streaming",
+        "Event-based, low-latency, requiring an acknowledgement (ACK)",
+        "Large periodic downloads",
+        "Command-based only, never transmitting"
+      ],
+      "answer": 1,
+      "explain": "A smoke alarm fires rarely (event-based) but the alert must arrive fast (low latency) and be confirmed (ACK) — small data, high urgency.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-007",
+      "topic": "iot-traffic-model",
+      "q": "Why can a smart meter's tiny power-outage notification be more important than its routine consumption data?",
+      "options": [
+        "Because it is much larger in size",
+        "Because urgency is about latency and reliability, not data volume",
+        "Because it uses more bandwidth",
+        "Because routine data is never transmitted"
+      ],
+      "answer": 1,
+      "explain": "Importance in IoT is driven by latency and reliability requirements, not byte count. A few-byte outage alert is urgent; megabytes of routine telemetry can be best-effort.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u1-008",
+      "topic": "iot-connectivity",
+      "q": "Which technology best fits a long-range, very-low-power, low-data-rate use case such as remote agricultural sensors?",
+      "options": ["Wi-Fi", "Ethernet", "LoRaWAN", "5G"],
+      "answer": 2,
+      "explain": "LoRaWAN (an LPWAN) offers long range and very low power at low data rates — ideal for remote, battery-powered sensors that send small amounts of data.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-009",
+      "topic": "iot-connectivity",
+      "q": "What does LPWAN stand for, and what is its defining trade-off?",
+      "options": [
+        "Low-Power Wide-Area Network — long range and low power at the cost of low data rate",
+        "Local Private Wireless Access Node — high bandwidth, short range",
+        "Low-Priority Wide-Access Network — best-effort cloud access",
+        "Large-Payload Wireless Area Network — high data rate, high power"
+      ],
+      "answer": 0,
+      "explain": "LPWANs (LoRaWAN, NB-IoT, Sigfox) trade bandwidth for long range and multi-year battery life — matching the uplink-light, periodic traffic of most sensors.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-010",
+      "topic": "iot-connectivity",
+      "q": "Why do short-range, non-IP devices (e.g., Zigbee/BLE sensors) require an IoT gateway?",
+      "options": [
+        "Because they generate too little data to be useful",
+        "Because the gateway performs protocol translation to IP-friendly formats, aggregation, edge processing, and security",
+        "Because gateways increase their battery life directly",
+        "Because IP devices are not allowed on the internet"
+      ],
+      "answer": 1,
+      "explain": "Short-range/non-IP devices can't reach the internet alone. The gateway bridges them — translating protocols (to HTTP/MQTT/CoAP), aggregating data, doing edge processing, and enforcing security.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-011",
+      "topic": "iot-connectivity",
+      "q": "Which is NOT a typical function of an IoT gateway?",
+      "options": [
+        "Protocol translation between non-IP and IP networks",
+        "Data aggregation from multiple devices",
+        "Training large deep-learning models on years of historical data",
+        "Edge processing and security enforcement"
+      ],
+      "answer": 2,
+      "explain": "Heavy model training is a cloud function (massive compute, long-term data). Gateways translate protocols, aggregate, do lightweight edge processing, and enforce security.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u1-012",
+      "topic": "iot-digitization",
+      "q": "Which statement correctly distinguishes digitization from digital transformation?",
+      "options": [
+        "They are identical terms",
+        "Digitization converts analog info/processes to digital form; digital transformation is the broader business change it enables",
+        "Digitization is a business strategy; digital transformation is a sensor type",
+        "Digitization only applies to images"
+      ],
+      "answer": 1,
+      "explain": "Digitization = analog → digital (e.g., sensors replacing a paper log). Digital transformation = the resulting business change (predictive maintenance, new business models).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-013",
+      "topic": "iot-digitization",
+      "q": "Most IoT devices predominantly produce which kind of data, well-suited to AI?",
+      "options": ["Relational join tables", "Time-series data", "Compiled binaries", "Vector embeddings only"],
+      "answer": 1,
+      "explain": "IoT sensors emit timestamped readings sampled repeatedly — time-series data — which suits forecasting, anomaly detection, and predictive maintenance.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-014",
+      "topic": "iot-verticals-iiot",
+      "q": "What is the difference between a horizontal IoT platform and an IoT vertical?",
+      "options": [
+        "Horizontal = a single device; vertical = a single sensor",
+        "Horizontal = cross-industry foundation (cloud, analytics, security); vertical = an industry-specific end-use domain",
+        "They mean the same thing",
+        "Horizontal = wireless; vertical = wired"
+      ],
+      "answer": 1,
+      "explain": "Horizontal platforms provide reusable, cross-industry infrastructure; verticals are the industry domains (healthcare, manufacturing…) where tailored solutions create real impact.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-015",
+      "topic": "iot-verticals-iiot",
+      "q": "Industrial IoT (IIoT) is often called the backbone of:",
+      "options": ["Web 2.0", "Industry 4.0", "The metaverse", "Quantum computing"],
+      "answer": 1,
+      "explain": "IIoT integrates sensors, machines, and analytics across manufacturing and utilities — the foundation of Industry 4.0's cyber-physical, data-driven factories.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-016",
+      "topic": "iot-verticals-iiot",
+      "q": "Why is predictive maintenance generally superior to reactive and preventive maintenance?",
+      "options": [
+        "It never uses any sensors",
+        "It repairs equipment exactly when sensor data indicates need — avoiding both breakdowns and unnecessary early servicing",
+        "It schedules repairs on a fixed calendar regardless of condition",
+        "It only fixes machines after they fail"
+      ],
+      "answer": 1,
+      "explain": "Reactive fixes after failure (costly downtime); preventive services on a calendar (often too early/late); predictive uses live data to act exactly when needed — the cost sweet spot.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u1-017",
+      "topic": "iot-verticals-domains",
+      "q": "In smart healthcare, IoMT stands for the Internet of Medical Things, and its key sub-domain RPM means:",
+      "options": [
+        "Rapid Protocol Messaging",
+        "Remote Patient Monitoring — continuous tracking of vitals via wearable/in-home devices",
+        "Real-time Process Management",
+        "Redundant Power Module"
+      ],
+      "answer": 1,
+      "explain": "RPM (Remote Patient Monitoring) uses wearables (ECG, glucometers, SpO₂) to stream vitals to providers, enabling early intervention without hospitalisation.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-018",
+      "topic": "iot-verticals-domains",
+      "q": "The smart-farming 'data → action' loop proceeds in which order?",
+      "options": [
+        "Action → Decision → Diagnostics → Data collection",
+        "Data collection → Diagnostics → Decision-making → Action (then repeat)",
+        "Decision-making → Data collection → Action → Diagnostics",
+        "Diagnostics → Action → Data collection → Decision-making"
+      ],
+      "answer": 1,
+      "explain": "Sensors collect data → the system diagnoses problems → software/human decides actions → actions execute and sensors re-measure, restarting the cycle.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-019",
+      "topic": "iot-verticals-domains",
+      "q": "In connected vehicles, 'V2X' communication includes which of the following?",
+      "options": [
+        "V2V (vehicle-to-vehicle) and V2I (vehicle-to-infrastructure)",
+        "Only Wi-Fi calling",
+        "Vehicle-to-Xbox gaming",
+        "Voice-to-text only"
+      ],
+      "answer": 0,
+      "explain": "V2X ('vehicle-to-everything') spans V2V and V2I, letting cars share location/hazard info so they effectively 'see around corners' before line-of-sight.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u1-020",
+      "topic": "iot-challenges",
+      "q": "The 2016 Mirai incident is a classic example of which IoT challenge?",
+      "options": [
+        "Power management",
+        "Security & privacy — IoT devices with default credentials hijacked into a DDoS botnet",
+        "High initial cost",
+        "Lack of mobility"
+      ],
+      "answer": 1,
+      "explain": "Mirai conscripted IoT devices left on default passwords into a massive DDoS botnet — the textbook example of weak IoT device security endangering whole networks.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-021",
+      "topic": "iot-challenges",
+      "q": "The fact that one device may speak MQTT, another CoAP, and a third a proprietary API illustrates which challenge?",
+      "options": [
+        "Lack of interoperability / standards (leading to vendor lock-in)",
+        "Excessive battery life",
+        "Too much standardisation",
+        "Data scarcity"
+      ],
+      "answer": 0,
+      "explain": "With no universal IoT protocol, multi-vendor devices struggle to interoperate, causing integration complexity, fragmentation, and vendor lock-in.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-022",
+      "topic": "iot-challenges",
+      "q": "For battery-powered sensors in hard-to-reach locations, the central power-management trade-off is between:",
+      "options": [
+        "Screen brightness and color depth",
+        "Data-transmission frequency and battery life",
+        "CPU clock speed and RAM size",
+        "Number of buttons and case color"
+      ],
+      "answer": 1,
+      "explain": "Every transmission drains the battery, so devices balance how often they send against how long they last — often batching and sleeping to extend lifetime.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-023",
+      "topic": "iot-architecture-drivers",
+      "q": "An 'architectural driver' in IoT is best described as:",
+      "options": [
+        "A physical hardware component such as a sensor",
+        "A force, goal, or constraint (technical/economic/user) that shapes the architecture",
+        "A device driver in the operating system",
+        "A type of network cable"
+      ],
+      "answer": 1,
+      "explain": "Drivers are not components but requirements/constraints — e.g., low latency forces edge computing; massive scale forces microservices.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-024",
+      "topic": "iot-architecture-drivers",
+      "q": "Which driver most directly forces the adoption of edge computing?",
+      "options": ["Low latency / real-time response", "High initial cost", "Marketing", "Color of the device"],
+      "answer": 0,
+      "explain": "When milliseconds decide safety, a cloud round-trip is too slow, so processing must move to the edge near the data source.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-025",
+      "topic": "iot-architecture-drivers",
+      "q": "Which correctly distinguishes horizontal from vertical scaling?",
+      "options": [
+        "Horizontal = make one machine bigger; vertical = add more machines",
+        "Horizontal = add more machines/nodes (scale out); vertical = make one machine bigger (scale up)",
+        "They are the same",
+        "Horizontal applies only to databases"
+      ],
+      "answer": 1,
+      "explain": "Horizontal scaling adds nodes (scale out); vertical scaling upgrades a single machine (scale up). IoT favours horizontal scaling for millions of devices.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u1-026",
+      "topic": "layered-architectures",
+      "q": "In the classic 3-layer IoT architecture, which layer contains the sensors and RFID that gather data from the environment?",
+      "options": ["Application layer", "Network layer", "Perception layer", "Business layer"],
+      "answer": 2,
+      "explain": "The perception (physical) layer senses the environment and identifies smart objects; the network layer transports data; the application layer delivers services.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-027",
+      "topic": "layered-architectures",
+      "q": "What does the 5-layer model add over the 3-layer model?",
+      "options": [
+        "It removes the perception layer",
+        "It inserts data-processing (middleware) and service/business layers for finer separation of analytics and logic",
+        "It merges all layers into one",
+        "It only renames the application layer"
+      ],
+      "answer": 1,
+      "explain": "The 5-layer model keeps perception → network → application and inserts a data-processing/middleware layer (the 'brain') and a service/business layer, making analytics and business logic explicit.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-028",
+      "topic": "architecture-types",
+      "q": "Which architecture style is the best fit when interoperability across many vendors is the dominant requirement?",
+      "options": [
+        "Cloud-centric architecture",
+        "Middleware-based architecture (e.g., a common service layer like oneM2M)",
+        "Digital-twin architecture",
+        "Three-layer architecture"
+      ],
+      "answer": 1,
+      "explain": "A middleware layer standardises communication and abstracts hardware so multi-vendor devices interoperate — exactly what oneM2M provides.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-029",
+      "topic": "architecture-types",
+      "q": "A continuously-updated virtual replica of a physical asset, used for simulation and predictive maintenance, is a:",
+      "options": ["Digital twin", "Honeypot", "Load balancer", "Reverse proxy"],
+      "answer": 0,
+      "explain": "A digital twin mirrors a real asset's live sensor data, letting you simulate scenarios and predict failures on the copy without touching the original.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-030",
+      "topic": "onem2m",
+      "q": "In oneM2M, which entity is the core 'common service layer' providing registration, security, and data management?",
+      "options": [
+        "AE — Application Entity",
+        "CSE — Common Services Entity",
+        "NSE — Network Services Entity",
+        "RFID tag"
+      ],
+      "answer": 1,
+      "explain": "The CSE is the heart of oneM2M, offering reusable services; it is deployed as IN-CSE (cloud), MN-CSE (gateway), or on a device node. The AE holds application logic; the NSE interfaces the telecom network.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-031",
+      "topic": "onem2m",
+      "q": "An MN-CSE (Middle Node CSE) in oneM2M is typically deployed at the:",
+      "options": ["Cloud/data centre", "Gateway / fog / edge", "Individual sensor only", "Telecom billing server"],
+      "answer": 1,
+      "explain": "IN-CSE lives in the cloud, MN-CSE at the gateway/fog/edge, and the application/device node on the device itself — the same CSE services at each tier enable interoperability.",
+      "difficulty": "hard",
+      "source": "original"
+    },
+    {
+      "id": "iot-u1-032",
+      "topic": "iotwf-model",
+      "q": "In the Cisco IoTWF reference model, security and management are:",
+      "options": [
+        "A single layer at the very top",
+        "Cross-cutting concerns that span all layers",
+        "Only present in the perception layer",
+        "Not part of the model"
+      ],
+      "answer": 1,
+      "explain": "IoTWF applies security and management across every layer (cross-cutting), not as one isolated layer — protecting and operating the whole device-to-business stack.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-033",
+      "topic": "core-functional-stack",
+      "q": "In the Core IoT Functional Stack's Communications Network layer, which sublayer is the 'final segment' that sensors actually attach to (e.g., 802.15.4g, LoRa)?",
+      "options": [
+        "Access network sublayer",
+        "Network transport sublayer",
+        "IoT network management sublayer",
+        "Application sublayer"
+      ],
+      "answer": 0,
+      "explain": "The access network is the last hop to the device. The gateways/backhaul sublayer aggregates it; network transport runs IP/UDP; IoT network management runs CoAP/MQTT.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-034",
+      "topic": "edge-fog-cloud",
+      "q": "Which placement is correct for an autonomous drone that must avoid obstacles in real time?",
+      "options": [
+        "Cloud — send video to a remote data centre and wait for a decision",
+        "Edge — process locally on-device for ultra-low latency and offline autonomy",
+        "Fog only — rely entirely on a LAN gateway kilometres away",
+        "No computing is needed"
+      ],
+      "answer": 1,
+      "explain": "Obstacle avoidance needs millisecond reactions and must work even without connectivity, so it belongs at the edge (on-device), not via a cloud round-trip.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u1-035",
+      "topic": "edge-fog-cloud",
+      "q": "Which tier of the compute stack is best suited to training a predictive-maintenance ML model on a year of fleet data?",
+      "options": ["Edge", "Fog", "Cloud", "The sensor itself"],
+      "answer": 2,
+      "explain": "Heavy analytics, long-term petabyte-scale storage, and global data fusion are cloud strengths; edge handles real-time reflexes and fog handles site-level aggregation.",
+      "difficulty": "easy",
+      "source": "slide"
+    }
+  ]
+}

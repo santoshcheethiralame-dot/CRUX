@@ -1,0 +1,178 @@
+{
+  "subject": "dbms",
+  "unit": 1,
+  "title": "Unit 1 — Past-Year & Practice Questions",
+  "items": [
+    {
+      "id": "dbms-u1-pyq-01",
+      "topic": "ra-unary-operators",
+      "year": "RA Practice",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "**Schedule(Theatre, MovieTitle, Time)** — Time is stored in 24-hr format (6 pm = 18:00). Write a relational-algebra expression to list the **theatre name and time** where we can watch the movie **\"FindingNemo\" after 3 pm**.",
+      "answer": "$$\\Pi_{Theatre,\\,Time}\\big(\\sigma_{MovieTitle='FindingNemo'\\;\\wedge\\;Time\\ge 15{:}00}(Schedule)\\big)$$ **Select** the rows for FindingNemo at 15:00 or later (σ), then **project** the theatre and time columns (∏)."
+    },
+    {
+      "id": "dbms-u1-pyq-02",
+      "topic": "ra-joins-aggregates",
+      "year": "RA Practice (COMPANY)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Give the relational-algebra expression equivalent to the query tree: project **Pnumber, Dnum, Lname, Address, Bdate** from PROJECTs located in **'Surat'**, joined to their DEPARTMENT and that department's manager EMPLOYEE.",
+      "answer": "$$\\Pi_{Pnumber,\\,Dnum,\\,Lname,\\,Address,\\,Bdate}\\Big(\\big(\\sigma_{Plocation='Surat'}(Project)\\bowtie_{Dnum=Dnumber} Department\\big)\\bowtie_{Mgr\\_ssn=Ssn} Employee\\Big)$$ Filter projects in Surat → **theta-join** to Department on `Dnum=Dnumber` → theta-join to Employee on `Mgr_ssn=Ssn` → project the required columns. (Read a query tree **bottom-up**: leaves are base relations, internal nodes are operations.)"
+    },
+    {
+      "id": "dbms-u1-pyq-03",
+      "topic": "ra-unary-operators",
+      "year": "RA Practice",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "**EMPLOYEE(Emp-ID, Salary, Deduction, Years-of-Service)** — compute a report **Report(Emp-ID, Net_Salary, Bonus, Tax)** where Net_Salary = Salary − Deduction, Bonus = 2000 × Years-of-Service, Tax = Salary × 25%.",
+      "answer": "Use **generalized projection** (arithmetic allowed in the project list): $$Report \\leftarrow \\Pi_{Emp\\text{-}ID,\\;(Salary-Deduction),\\;(2000\\times YearsOfService),\\;(Salary\\times 0.25)}(EMPLOYEE)$$ Generalized projection extends ∏ to allow **arithmetic expressions** over attributes, renamed to Net_Salary, Bonus and Tax."
+    },
+    {
+      "id": "dbms-u1-pyq-04",
+      "topic": "ra-joins-aggregates",
+      "year": "RA Practice",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "**SALESPERSON(SalesPersonID, Name)**, **TRIP(SalesPersonID, From, To, TripID)**, **EXPENSE(TripID, Amount)**. (a) Print the ID & name of salesmen who took trips to **Delhi**. (b) Print the **total trip expenses** of the salesperson whose ID is **504**.",
+      "answer": "**(a)** $t1 \\leftarrow \\sigma_{To='Delhi'}(TRIP)$; $t2 \\leftarrow \\Pi_{SalesPersonID}(t1)$; $Result \\leftarrow \\Pi_{SalesPersonID,Name}(SALESPERSON \\bowtie t2)$ — select Delhi trips, get the salesperson IDs, join to SALESPERSON for names. **(b)** $t1 \\leftarrow \\sigma_{SalesPersonID=504}(TRIP)$; $t2 \\leftarrow \\Pi_{TripID}(t1)$; $t3 \\leftarrow EXPENSE \\bowtie t2$; $Result \\leftarrow \\mathcal{F}_{SUM(Amount)}(t3)$ — find 504's trips, join their expenses, and **aggregate with SUM**."
+    },
+    {
+      "id": "dbms-u1-pyq-05",
+      "topic": "ra-joins-aggregates",
+      "year": "RA Practice",
+      "marks": 4,
+      "difficulty": "medium",
+      "q": "For the schema in the previous question, give the **trip details (incl. amount)** for the trip whose expense **exceeded ₹10,000**.",
+      "answer": "$t1 \\leftarrow \\sigma_{Amount>10000}(EXPENSE)$; $$Result \\leftarrow \\Pi_{SalesPersonID,From,To,TripID,Amount}\\big(TRIP \\bowtie_{TRIP.TripID=t1.TripID} t1\\big)$$ Select the expensive expense rows, then join back to TRIP on `TripID` to recover the full trip details, and project them with the amount."
+    },
+    {
+      "id": "dbms-u1-pyq-06",
+      "topic": "ra-set-operations",
+      "year": "RA Practice (Movie DB)",
+      "marks": 5,
+      "difficulty": "hard",
+      "q": "**Schedule(Theatre, Title, Time)**, **Movies(Title, Director, Actor)**, **Produced(Producer, Title)**, **Watch(Spectator, Title)**, **Liked(Spectator, Title)**. List the **producers who produced a movie that does NOT appear in a theatre**. Also: in which join are the non-matching tuples of both relations ignored?",
+      "answer": "**\"Does not appear\" ⇒ set difference.** Titles not scheduled: $NotShown \\leftarrow \\Pi_{Title}(Produced) - \\Pi_{Title}(Schedule)$. Then $$Result \\leftarrow \\Pi_{Producer}\\big(Produced \\bowtie NotShown\\big)$$ — producers of those unscheduled titles. **Join:** the non-matching tuples of *both* R and S are dropped in the **(inner) join** (an outer join would keep them)."
+    },
+    {
+      "id": "dbms-u1-pyq-07",
+      "topic": "ra-joins-aggregates",
+      "year": "RA Practice (Salon)",
+      "marks": 4,
+      "difficulty": "medium",
+      "q": "**Clients(CID, name, phone)**, **Staff(SID, name)**, **Appointments(CID, SID, date, time, service)**. Find the **appointment time and client name** of all appointments for staff member **\"Anusha\" on Feb 14**.",
+      "answer": "$$\\Pi_{time,\\;Clients.name}\\Big(\\sigma_{Staff.name='Anusha'\\;\\wedge\\;date='Feb\\,14'}\\big(Appointments \\bowtie Clients \\bowtie_{Appointments.SID=Staff.SID} \\rho_{Staff}\\big)\\Big)$$ Join Appointments to Clients (on CID) and Staff (on SID), filter to staff *Anusha* on *Feb 14*, then project the appointment time and the client's name. (Rename is used so the two `name` columns don't clash.)"
+    },
+    {
+      "id": "dbms-u1-pyq-08",
+      "topic": "ra-set-operations",
+      "year": "RA Practice (Account)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "For an Account schema with **Depositor(cust_name, acc_no)**, **Borrower(cust_name, loan_no)** and **Loan(loan_no, branch, amount)**: (a) names of customers with **an account OR a loan**; (b) customers with **an account but no loan**; (c) names of customers with loans at the **Seattle branch** (without using join).",
+      "answer": "**(a) Union:** $\\Pi_{cust\\_name}(Depositor)\\;\\cup\\;\\Pi_{cust\\_name}(Borrower)$. **(b) Set difference:** $\\Pi_{cust\\_name}(Depositor)\\;-\\;\\Pi_{cust\\_name}(Borrower)$ (account **minus** loan). **(c) Without join** — use a selection over the Cartesian product, or nest: $\\Pi_{cust\\_name}\\big(\\sigma_{Borrower.loan\\_no=Loan.loan\\_no\\,\\wedge\\,branch='Seattle'}(Borrower \\times Loan)\\big)$. *Mnemonic: \"or\" → ∪, \"without/not\" → −, \"every/all\" → ÷.*"
+    },
+    {
+      "id": "dbms-u1-pyq-09",
+      "topic": "data-abstraction-schema",
+      "year": "ESA Jul 2024",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "Explain the different **levels of data abstraction** in a database system with a neat diagram (5M). Also state **logical data independence** and **physical data independence** (3M).",
+      "answer": "**Three levels:** **Physical/internal** (how data is stored — files, indexes), **Logical/conceptual** (what data + relationships, hiding storage), **View/external** (the part a user sees). Lowest = physical, highest = view; the DBMS maps between them.\n\n**Physical data independence** — change the storage/internal schema (add an index, change file organisation) **without** altering the logical schema. **Logical data independence** — change the logical schema (add an attribute) **without** changing external views/applications. Logical independence is **harder** to achieve."
+    },
+    {
+      "id": "dbms-u1-pyq-10",
+      "topic": "design-architecture-users",
+      "year": "ESA Jul 2023",
+      "marks": 7,
+      "difficulty": "hard",
+      "q": "Elucidate the **three-schema architecture** with a neat diagram. Explain the levels involved and its advantages.",
+      "answer": "The **ANSI/SPARC three-schema architecture** separates user views from physical storage: **External** (multiple user views), **Conceptual** (the whole DB's logical structure — entities, relationships, constraints), **Internal** (physical storage). Two mappings connect them (external↔conceptual, conceptual↔internal).\n\n**Advantages:** **data independence** (a change at one level doesn't propagate up), **multiple customised views** of the same data, and **security** (users see only their view)."
+    },
+    {
+      "id": "dbms-u1-pyq-11",
+      "topic": "intro-dbms",
+      "year": "ESA Jan 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What is a **database**? Why are databases important in modern applications? Differentiate a **database** from a **DBMS**.",
+      "answer": "A **database** is a logically-coherent collection of *related* data about a mini-world. They matter because modern apps store, query and share **large, interrelated** data **concurrently, consistently and securely** — beyond flat files. **Database vs DBMS:** the database is the **data**; the **DBMS** is the **software** that **defines, constructs, manipulates and shares** it (queries, concurrency, recovery, security)."
+    },
+    {
+      "id": "dbms-u1-pyq-12",
+      "topic": "file-systems-purpose",
+      "year": "ESA Jan 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Define DBMS, and write the **purpose of using a DBMS over File Processing Systems** on four key purposes.",
+      "answer": "A **DBMS** is general-purpose software to define, construct, manipulate and share databases. **Purposes over file systems:** ① **control redundancy** (no duplicated/inconsistent copies); ② **enforce integrity & atomicity** (constraints; all-or-none transactions); ③ **concurrent multi-user access** without anomalies; ④ **security, backup & recovery** plus **program-data independence** (structure in the catalog, not hard-coded). File systems suffer redundancy, isolation, integrity, atomicity, concurrency and security problems."
+    },
+    {
+      "id": "dbms-u1-pyq-13",
+      "topic": "er-relationships-cardinality",
+      "year": "ESA Jul 2023",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "What information is represented by **participation constraint** and **cardinality ratio** in an ER diagram? Illustrate with examples.",
+      "answer": "**Cardinality ratio** = the **maximum** relationship instances an entity can take — **1:1, 1:N, M:N**. e.g. an EMPLOYEE manages ≤1 DEPARTMENT and a DEPARTMENT has one manager → 1:1; a DEPARTMENT has many EMPLOYEEs → 1:N.\n\n**Participation constraint** = the **minimum** participation — **total** (every entity must participate; double line) or **partial**. e.g. every EMPLOYEE must work for a DEPARTMENT → total; not every EMPLOYEE manages → partial."
+    },
+    {
+      "id": "dbms-u1-pyq-14",
+      "topic": "er-keys-weak-entities",
+      "year": "ESA Dec 2023",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "With respect to the ER model, define: (i) Strong entity (ii) Participation constraint (iii) Cardinality ratio (iv) Recursive relationship (v) Weak entity (vi) Composite attribute.",
+      "answer": "**(i) Strong entity** — has its own **key**; exists independently. **(ii) Participation** — minimum: **total** (double line) or **partial**. **(iii) Cardinality ratio** — max instances: 1:1/1:N/M:N. **(iv) Recursive relationship** — a relationship of an entity type **with itself** (role names), e.g. EMPLOYEE *supervises* EMPLOYEE. **(v) Weak entity** — **no key of its own**; identified by an **owner** + a **partial key/discriminator** (double rectangle). **(vi) Composite attribute** — divisible into parts, e.g. `Name → {Fname, Minit, Lname}`."
+    },
+    {
+      "id": "dbms-u1-pyq-15",
+      "topic": "er-to-relational",
+      "year": "ESA Jul 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Mention the **steps in converting an ER diagram to a Relational Schema**.",
+      "answer": "**(1)** Strong entity → relation; key → PK. **(2)** Weak entity → relation with owner's PK as FK; PK = owner PK + discriminator. **(3)** Composite → store leaf parts; **multivalued** → separate relation + entity PK. **(4) 1:1** → one side's PK as FK in the other. **(5) 1:N** → the **1-side's PK** as a **FK on the N-side**. **(6) M:N** → a **junction relation** with both PKs (composite PK) + relationship attributes. **(7) n-ary** → relation with all participants' PKs."
+    },
+    {
+      "id": "dbms-u1-pyq-16",
+      "topic": "ra-set-operations",
+      "year": "ESA Jul 2023",
+      "marks": 7,
+      "difficulty": "hard",
+      "q": "**Person(name,age,gender)**, **Frequents(name,pizzeria)**, **Eats(name,pizza)**, **Serves(pizzeria,pizza,price)**. In Relational Algebra: (a) pizzerias frequented by someone under 18; (b) females who eat **mushroom OR pepperoni**; (c) females who eat **mushroom AND pepperoni**.",
+      "answer": "**(a)** $\\Pi_{pizzeria}\\big(Frequents \\bowtie \\sigma_{age<18}(Person)\\big)$. **(b)** $\\Pi_{name}\\big(\\sigma_{gender='F'}(Person)\\bowtie \\sigma_{pizza='mushroom' \\vee pizza='pepperoni'}(Eats)\\big)$. **(c)** AND across different rows needs **intersection**: $\\Pi_{name}(\\sigma_{gender='F'}(Person)\\bowtie\\sigma_{pizza='mushroom'}(Eats)) \\cap \\Pi_{name}(\\sigma_{gender='F'}(Person)\\bowtie\\sigma_{pizza='pepperoni'}(Eats))$."
+    },
+    {
+      "id": "dbms-u1-pyq-17",
+      "topic": "ra-joins-aggregates",
+      "year": "ESA Jan 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain **equi join** and **natural join** in relational algebra with an example, and justify their usage.",
+      "answer": "An **equi join** $R\\bowtie_{R.A=S.B}S$ matches tuples where the join attributes are **equal**, keeping **both** columns. A **natural join** $R\\bowtie S$ is an equi join on **all common-named attributes** that **drops the duplicate** column. e.g. `EMPLOYEE ⋈ DEPARTMENT` on `Dno=Dnumber`. They are used to **follow foreign-key links** and combine related rows from multiple tables without spurious tuples."
+    },
+    {
+      "id": "dbms-u1-pyq-18",
+      "topic": "sql-constraints",
+      "year": "ESA Jul 2024",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Discuss the **entity integrity** and **referential integrity** constraints. Why is each important?",
+      "answer": "**Entity integrity** — the **primary key cannot be NULL** (and is unique); important because the PK uniquely identifies each tuple, so a null PK makes rows indistinguishable. **Referential integrity** — a **foreign key** must be **NULL or match an existing PK** in the referenced relation; important to keep relationships **consistent** (no FK pointing to a non-existent row)."
+    },
+    {
+      "id": "dbms-u1-pyq-19",
+      "topic": "er-entities-attributes",
+      "year": "ESA Jan 2024",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Enlist **3 different types of attributes** with one example each and the ER notation used.",
+      "answer": "**Composite** — divisible into parts, e.g. `Address → {street, city, pin}` (oval with sub-ovals). **Multivalued** — a set of values, e.g. `PhoneNumbers` (**double oval**). **Derived** — computed from others, e.g. `Age` from `Bdate` (**dashed oval**). (Also: simple = single oval; key = underlined.)"
+    }
+  ]
+}

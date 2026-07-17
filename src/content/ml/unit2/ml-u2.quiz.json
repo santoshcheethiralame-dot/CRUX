@@ -1,0 +1,327 @@
+{
+  "subject": "ml",
+  "unit": 2,
+  "title": "Unit 2 — MCQ Quiz",
+  "items": [
+    {
+      "id": "ml-u2-001",
+      "topic": "mp-neuron",
+      "q": "In an MP neuron, the output is forced to 0 whenever:",
+      "options": ["the weighted sum is positive", "any inhibitory input is active", "the threshold is negative", "all inputs are 1"],
+      "answer": 1,
+      "explain": "An MP neuron outputs $y=0$ if any inhibitory input is on, regardless of the others.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-002",
+      "topic": "mp-neuron",
+      "q": "An MP neuron for an AND of $n$ inputs uses threshold $\\theta =$",
+      "options": ["1", "0", "$n$", "$n/2$"],
+      "answer": 2,
+      "explain": "AND fires only when all inputs are 1, i.e. the sum reaches $n$, so $\\theta = n$. (OR uses $\\theta = 1$.)",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-003",
+      "topic": "mp-neuron",
+      "q": "Which is NOT a limitation of the MP neuron?",
+      "options": ["Inputs must be binary", "All inputs are treated equally (no weights)", "The threshold is hand-coded", "It can represent any non-linearly-separable function"],
+      "answer": 3,
+      "explain": "A single MP neuron handles only linearly-separable Boolean functions — it cannot represent non-separable ones like XOR.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "ml-u2-004",
+      "topic": "perceptron",
+      "q": "What does the perceptron add over the MP neuron?",
+      "options": ["Learnable weights and a learnable bias, plus real-valued inputs", "A second hidden layer", "A smooth sigmoid output", "Kernel functions"],
+      "answer": 0,
+      "explain": "Rosenblatt's perceptron introduces learnable numeric weights/bias and allows real-valued (non-Boolean) inputs.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-005",
+      "topic": "perceptron",
+      "q": "In the perceptron learning rule, a positive example $x$ misclassified as negative triggers the update:",
+      "options": ["$w \\leftarrow w - x$", "$w \\leftarrow w + x$", "$w \\leftarrow w$", "$w \\leftarrow -w$"],
+      "answer": 1,
+      "explain": "For $x\\in P$ with $w\\cdot x < 0$, we add: $w \\leftarrow w + x$, rotating $w$ toward $x$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-006",
+      "topic": "multilayer-xor",
+      "q": "Why can a single perceptron not compute XOR?",
+      "options": ["XOR has too many inputs", "XOR is not linearly separable — the inequalities contradict", "XOR needs real-valued inputs", "The sigmoid is required"],
+      "answer": 1,
+      "explain": "The four XOR truth-table inequalities are mutually contradictory; no single line separates the classes.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-007",
+      "topic": "multilayer-xor",
+      "q": "In an MLP, which layer performs no computation?",
+      "options": ["Input layer", "Hidden layer", "Output layer", "All layers compute"],
+      "answer": 0,
+      "explain": "The input layer just feeds features in; computation happens in hidden and output layers.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-008",
+      "topic": "sigmoid-neuron-loss",
+      "q": "The main reason for replacing the perceptron's step function with a sigmoid is that the step function is:",
+      "options": ["too slow to compute", "not differentiable, blocking gradient descent", "unbounded", "only for regression"],
+      "answer": 1,
+      "explain": "The step function is non-differentiable at the threshold, so gradient-based learning can't be applied; the sigmoid is smooth and differentiable.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-009",
+      "topic": "sigmoid-neuron-loss",
+      "q": "Cross-entropy loss is typically used for ___ and MSE for ___.",
+      "options": ["regression; classification", "classification; regression", "both for regression", "both for classification"],
+      "answer": 1,
+      "explain": "Cross-entropy is for classification (probability outputs); MSE is for regression.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-010",
+      "topic": "forward-propagation",
+      "q": "For a weight matrix between two layers, its shape is:",
+      "options": ["(# current layer neurons) only", "(# previous layer neurons) × (# current layer neurons)", "always square", "(# inputs) × (# outputs of the whole net)"],
+      "answer": 1,
+      "explain": "Shape = (#neurons in previous layer) × (#neurons in current layer).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-011",
+      "topic": "backpropagation",
+      "q": "For an output sigmoid unit, the error term is $\\delta_j =$",
+      "options": ["$(t_j - o_j)$", "$(t_j - o_j)\\,o_j(1-o_j)$", "$o_j(1-o_j)$", "$\\eta(t_j-o_j)$"],
+      "answer": 1,
+      "explain": "$\\delta_j = (t_j-o_j)\\,o_j(1-o_j)$ — the error times the sigmoid derivative.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-012",
+      "topic": "backpropagation",
+      "q": "The vanishing-gradient problem with sigmoid arises because its derivative is at most:",
+      "options": ["1", "0.5", "0.25", "0.1"],
+      "answer": 2,
+      "explain": "$\\sigma'(x)=\\sigma(x)(1-\\sigma(x))$ peaks at 0.25; multiplying many such terms across layers drives gradients toward 0.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-013",
+      "topic": "backpropagation",
+      "q": "Which is a regularization technique that randomly removes neurons during training?",
+      "options": ["Early stopping", "Dropout", "Momentum", "Batch normalization"],
+      "answer": 1,
+      "explain": "Dropout randomly drops neurons, acting like training many sub-networks → reduces overfitting.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-014",
+      "topic": "activation-functions",
+      "q": "Which activation outputs a probability distribution over classes that sums to 1?",
+      "options": ["ReLU", "tanh", "Softmax", "Leaky ReLU"],
+      "answer": 2,
+      "explain": "Softmax normalises scores into probabilities summing to 1 — used in the multi-class output layer.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-015",
+      "topic": "activation-functions",
+      "q": "The 'dying ReLU' problem is best mitigated by:",
+      "options": ["Sigmoid", "Softmax", "Leaky ReLU", "tanh"],
+      "answer": 2,
+      "explain": "Leaky ReLU gives negative inputs a small non-zero slope (e.g. 0.01), so neurons don't get stuck at 0.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-016",
+      "topic": "activation-functions",
+      "q": "The range of tanh is:",
+      "options": ["$[0, 1]$", "$[-1, 1]$", "$[0, \\infty)$", "$(-\\infty, \\infty)$"],
+      "answer": 1,
+      "explain": "tanh maps to $[-1, 1]$ and is zero-centred; its derivative peaks at 1 (vs sigmoid's 0.25).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-017",
+      "topic": "optimizers",
+      "q": "Which gradient-descent variant updates after every single training example?",
+      "options": ["Batch GD", "Stochastic GD", "Mini-batch GD", "Momentum"],
+      "answer": 1,
+      "explain": "SGD updates per example — noisy but fast and able to escape local minima.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-018",
+      "topic": "optimizers",
+      "q": "Adam combines which two ideas?",
+      "options": ["Dropout and early stopping", "Momentum and RMSProp", "Bagging and boosting", "L1 and L2 regularization"],
+      "answer": 1,
+      "explain": "Adam = Momentum (1st moment, EWA of gradients) + RMSProp (2nd moment, EWA of squared gradients) + bias correction.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-019",
+      "topic": "optimizers",
+      "q": "In an exponentially weighted average $V_t = \\beta V_{t-1} + (1-\\beta)O_t$, a larger $\\beta$ gives:",
+      "options": ["a noisier, faster-reacting curve", "a smoother curve that adapts more slowly", "no smoothing at all", "an unstable curve"],
+      "answer": 1,
+      "explain": "Large $\\beta$ weights history heavily → smoother but slower to adapt (averages ~$1/(1-\\beta)$ steps).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-020",
+      "topic": "svm-margin-primal",
+      "q": "The margin width of a hard-margin SVM equals:",
+      "options": ["$\\|W\\|$", "$\\frac{1}{\\|W\\|}$", "$\\frac{2}{\\|W\\|}$", "$2\\|W\\|$"],
+      "answer": 2,
+      "explain": "Width $= 2/\\|W\\|$, so maximising the margin means minimising $\\tfrac12\\|W\\|^2$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-021",
+      "topic": "svm-margin-primal",
+      "q": "The SVM primal objective is:",
+      "options": ["maximize $\\frac12\\|W\\|^2$", "minimize $\\frac12\\|W\\|^2$ s.t. $y_i(W^Tx_i+b)\\ge 1$", "minimize $\\|W\\|$ with no constraints", "maximize $\\sum \\alpha_i$"],
+      "answer": 1,
+      "explain": "Minimise $\\tfrac12\\|W\\|^2$ subject to $y_i(W^Tx_i+b)\\ge1$ — a convex quadratic program.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-022",
+      "topic": "lagrange-kkt",
+      "q": "The KKT complementary-slackness condition states:",
+      "options": ["$g(X) \\ge 0$", "$\\lambda \\ge 0$", "$\\lambda\\, g(X) = 0$", "$\\nabla L = 0$"],
+      "answer": 2,
+      "explain": "Complementary slackness: $\\lambda g(X)=0$ — either the multiplier is 0 or the constraint is active.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-023",
+      "topic": "svm-dual-support-vectors",
+      "q": "In the SVM dual solution $W = \\sum_i \\alpha_i y_i x_i$, the support vectors are the points with:",
+      "options": ["$\\alpha_i = 0$", "$\\alpha_i \\ne 0$ (on the gutter)", "the largest $x_i$", "negative labels"],
+      "answer": 1,
+      "explain": "Only points on the margin have $\\alpha_i \\ne 0$; these support vectors alone define $W$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-024",
+      "topic": "svm-dual-support-vectors",
+      "q": "A key reason to solve the SVM dual rather than the primal is that:",
+      "options": ["it has no constraints", "training points appear only inside dot products, enabling kernels", "it avoids support vectors", "it is always linear"],
+      "answer": 1,
+      "explain": "In the dual, points appear only as dot products $x_i\\cdot x_j$, which kernels can replace — and it's more efficient.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-025",
+      "topic": "kernels-soft-margin",
+      "q": "The polynomial kernel is:",
+      "options": ["$x\\cdot x'$", "$(x\\cdot x' + c)^d$", "$e^{-\\gamma\\|x-x'\\|^2}$", "$\\tanh(x\\cdot x')$"],
+      "answer": 1,
+      "explain": "$K(x,x')=(x\\cdot x'+c)^d$; degree 1 with no constant reduces to the linear kernel.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-026",
+      "topic": "kernels-soft-margin",
+      "q": "In soft-margin SVM, increasing the regularization parameter C:",
+      "options": ["widens the margin (more soft)", "narrows the margin, approaching hard margin (risk of overfitting)", "has no effect on the margin", "removes all support vectors"],
+      "answer": 1,
+      "explain": "Large C penalises violations heavily → narrow margin, approaches hard SVM, can overfit. Small C → wider, softer margin.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-027",
+      "topic": "ensemble-bagging",
+      "q": "Averaging $n$ independent learners each with variance $\\sigma^2$ gives a combined variance of:",
+      "options": ["$\\sigma^2$", "$n\\sigma^2$", "$\\sigma^2/n$", "$\\sigma^2/n^2$"],
+      "answer": 2,
+      "explain": "Variance of the mean of $n$ independent variables is $\\sigma^2/n$ — averaging reduces variance.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-028",
+      "topic": "ensemble-bagging",
+      "q": "Roughly what fraction of the original data appears in a single bootstrap sample?",
+      "options": ["100%", "≈ 63%", "≈ 37%", "≈ 50%"],
+      "answer": 1,
+      "explain": "Since $(1-1/n)^n \\to 1/e \\approx 0.37$ are left out, ~63% of records appear (with duplicates).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-029",
+      "topic": "boosting",
+      "q": "Which statement correctly contrasts bagging and boosting?",
+      "options": ["Both train in parallel", "Bagging is sequential; boosting is parallel", "Bagging trains in parallel with equal weights; boosting trains sequentially with reweighting", "Boosting uses bootstrap samples only"],
+      "answer": 2,
+      "explain": "Bagging = parallel + equal weights (variance↓); boosting = sequential + reweight misclassified (bias↓).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-030",
+      "topic": "boosting",
+      "q": "Gradient Boosting builds each new weak learner to predict the current ensemble's:",
+      "options": ["sample weights", "residuals (errors)", "feature importances", "support vectors"],
+      "answer": 1,
+      "explain": "Gradient Boost fits successive learners to the residuals $y-\\hat y$, updating with a learning rate $\\eta$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-031",
+      "topic": "random-forest",
+      "q": "Beyond bootstrapping, Random Forest de-correlates its trees by:",
+      "options": ["pruning every tree", "using a random subset of R < M features at each tree/split", "training sequentially", "using only one feature for all trees"],
+      "answer": 1,
+      "explain": "Each tree/split considers only R of M features at random, making trees diverse so averaging cuts variance.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-032",
+      "topic": "random-forest",
+      "q": "Out-of-bag (OOB) error is useful because it:",
+      "options": ["requires a large separate test set", "approximates validation error without a separate validation set", "only works for regression", "needs pruning first"],
+      "answer": 1,
+      "explain": "Each point is scored by the trees that didn't train on it (~37% OOB), giving a free validation estimate.",
+      "difficulty": "easy",
+      "source": "slide"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "subject": "se",
+  "unit": 3,
+  "title": "Unit 3 — Textbook Exercises (Sommerville & Pressman)",
+  "items": [
+    {
+      "id": "se-u3-tb-01",
+      "topic": "testing-levels",
+      "q": "**(Sommerville Ch8)** Sommerville divides *development testing* into which three activities?",
+      "options": ["Alpha, beta, acceptance testing", "Unit testing, component testing, system testing", "Static, dynamic, regression testing", "Planning, execution, reporting"],
+      "answer": 1,
+      "explain": "Sommerville Ch8: development testing (by the team developing the system) = unit testing (individual units/objects), component testing (composite components/interfaces), and system testing (the integrated system).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-02",
+      "topic": "test-cases-reliability",
+      "q": "**(Pressman — basis path testing / McCabe)** Cyclomatic complexity gives which of the following?",
+      "options": ["The exact runtime of the program", "The number of independent paths — an upper bound on the tests needed to cover every statement and branch", "The number of lines of code", "The memory usage"],
+      "answer": 1,
+      "explain": "Pressman (McCabe): cyclomatic complexity = the number of linearly independent paths through a program, giving an upper bound on the number of tests required to guarantee every statement and branch is executed.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-03",
+      "topic": "test-cases-reliability",
+      "q": "**(Pressman)** For a control flow graph, cyclomatic complexity V(G) can be computed as all of these EXCEPT:",
+      "options": ["E − N + 2 (edges, nodes)", "Number of predicate (decision) nodes + 1", "Number of regions of the planar graph", "Total lines of code ÷ 10"],
+      "answer": 3,
+      "explain": "Pressman gives three equivalent computations: V(G) = E − N + 2; V(G) = (predicate nodes) + 1; V(G) = number of regions. It has nothing to do with LOC/10.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-04",
+      "topic": "test-design-techniques",
+      "q": "**(Pressman — black-box testing)** Equivalence partitioning and boundary value analysis are examples of:",
+      "options": ["White-box (structural) testing", "Black-box testing — deriving tests from the specification, not the code", "Stress testing", "Mutation testing"],
+      "answer": 1,
+      "explain": "Pressman: equivalence partitioning (divide input into classes) and BVA (test at the edges) are black-box techniques derived from the specification/requirements, with no knowledge of internal code structure.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-05",
+      "topic": "testing-levels",
+      "q": "**(Pressman — unit testing)** In unit testing, a module that simulates a *lower-level* module CALLED by the unit under test is a:",
+      "options": ["Driver", "Stub", "Harness", "Mock server"],
+      "answer": 1,
+      "explain": "Pressman: a stub replaces a subordinate (called) module; a driver replaces a superordinate (calling) module. Stubs are used in top-down integration, drivers in bottom-up.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-06",
+      "topic": "testing-levels",
+      "q": "**(Pressman — integration testing)** Integrating modules from the top of the control hierarchy downward, using stubs for not-yet-integrated modules, is:",
+      "options": ["Bottom-up integration", "Top-down integration", "Big-bang integration", "Regression testing"],
+      "answer": 1,
+      "explain": "Pressman: top-down integration moves from the main control module downward (depth- or breadth-first), replacing subordinate modules with stubs. Bottom-up starts at the leaves using drivers.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-07",
+      "topic": "testing-levels",
+      "q": "**(Pressman/Sommerville)** Alpha testing differs from beta testing in that alpha testing is conducted:",
+      "options": ["By end users at their own site, uncontrolled", "At the developer's site by end users in a controlled environment", "Only by automated tools", "After the product is released"],
+      "answer": 1,
+      "explain": "Alpha testing is performed at the developer's site by end users with the developer observing, in a controlled setting. Beta testing happens at end-user sites, 'live', without the developer present.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-08",
+      "topic": "testing-principles",
+      "q": "**(Sommerville Ch8 — V&V)** The distinction between verification and validation is:",
+      "options": ["They are the same", "Verification: are we building the product right (to spec)? Validation: are we building the right product (to user needs)?", "Verification is done by users", "Validation needs no execution"],
+      "answer": 1,
+      "explain": "Sommerville Ch8 (Boehm): verification checks conformance to specification ('building the product right'); validation checks that the product meets the customer's real needs ('building the right product').",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-09",
+      "topic": "testing-principles",
+      "q": "**(Sommerville Ch8 — testing goals)** Sommerville distinguishes two goals of software testing. They are:",
+      "options": ["Unit and system testing", "Validation testing (show it meets requirements) and defect testing (find incorrect behaviour)", "Alpha and beta testing", "Manual and automated testing"],
+      "answer": 1,
+      "explain": "Sommerville Ch8: the two goals are validation testing (demonstrate the software meets its requirements) and defect testing (find inputs where behaviour is incorrect/undesirable).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-10",
+      "topic": "testing-levels",
+      "q": "**(Sommerville Ch8 — release testing)** Release testing is primarily a form of ___ testing whose goal is to ___:",
+      "options": ["white-box; achieve code coverage", "black-box; convince the supplier the system is good enough to release (not to find defects)", "unit; isolate functions", "regression; re-run old tests"],
+      "answer": 1,
+      "explain": "Sommerville Ch8: release testing is black-box (specification-based) testing of a release by a team separate from developers, aiming to demonstrate the system is good enough for use — a Go/No-Go decision, not primarily defect hunting.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-11",
+      "topic": "performance-chaos-testing",
+      "q": "**(Sommerville/Pressman — stress testing)** Designing tests that deliberately exceed the system's design limits is:",
+      "options": ["Regression testing", "Stress testing", "Unit testing", "Acceptance testing"],
+      "answer": 1,
+      "explain": "Stress testing pushes the system beyond its specified loads/limits to find failure behaviour and check graceful degradation, exposing defects that only appear under overload.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-12",
+      "topic": "scm-fundamentals",
+      "q": "**(Pressman — SCM)** A baseline in software configuration management is best defined as:",
+      "options": ["A developer's working copy", "A specification or product reviewed and agreed upon, that thereafter changes only through formal change control", "The first line of code", "A backup file"],
+      "answer": 1,
+      "explain": "Pressman/IEEE: a baseline is a specification or product formally reviewed and agreed upon, serving as a basis for further development; it can be changed only through formal change-control procedures.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-13",
+      "topic": "change-release-defect-mgmt",
+      "q": "**(Pressman — change control)** In Pressman's change-control process, an approved change is formally authorized by issuing an:",
+      "options": ["SBOM", "Engineering Change Order (ECO)", "SLA", "API key"],
+      "answer": 1,
+      "explain": "Pressman: after a change request is evaluated and the Change Control Authority (CCA/CCB) approves it, an Engineering Change Order (ECO) is generated describing the change, constraints, and review criteria.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-14",
+      "topic": "scm-fundamentals",
+      "q": "**(Pressman — SCM process)** Which is one of the core tasks of the SCM process?",
+      "options": ["Marketing", "Version control, change control, and configuration auditing", "Salary management", "UI design"],
+      "answer": 1,
+      "explain": "Pressman: the SCM process comprises identification, version control, change control, configuration auditing, and reporting — managing change to Software Configuration Items (SCIs).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-15",
+      "topic": "scm-activities",
+      "q": "**(Sommerville Ch25 — version management)** In version management terminology, a 'codeline' is:",
+      "options": ["A single line of source code", "A sequence of versions of a component, with later versions derived from earlier ones", "A bug report", "A build server"],
+      "answer": 1,
+      "explain": "Sommerville Ch25: a codeline is a sequence of versions of source code, with later versions derived from earlier ones; a baseline is a definition of a specific system (a collection of component versions).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-16",
+      "topic": "scm-activities",
+      "q": "**(Sommerville Ch25 — system building)** System building is the process of:",
+      "options": ["Writing requirements", "Compiling and linking components into an executable system", "Interviewing users", "Designing the UI"],
+      "answer": 1,
+      "explain": "Sommerville Ch25: system building creates an executable system by compiling and linking the appropriate versions of components and libraries — ideally automated and reproducible (CI).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-17",
+      "topic": "code-reviews-analysis",
+      "q": "**(Sommerville Ch15 / Fagan — inspections)** Software inspections are a form of ___ that ___:",
+      "options": ["dynamic testing; executes the code", "static verification; examines the source representation without executing it", "performance testing; measures latency", "release testing; ships to users"],
+      "answer": 1,
+      "explain": "Inspections are static verification — people examine the static representation (code/design) to find defects without execution. Studies show high detection rates (e.g. Fagan inspections), and they don't require a runnable system.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-18",
+      "topic": "performance-chaos-testing",
+      "q": "**(Sommerville — TDD/automation)** Regression testing is most practical when:",
+      "options": ["Done manually after each release", "Automated, so the full test set can be re-run cheaply after every change", "Skipped for small changes", "Run once at the end"],
+      "answer": 1,
+      "explain": "Sommerville: regression testing checks that changes haven't broken existing functionality; it's only economically feasible when automated, so the whole suite re-runs quickly after each change (a core CI practice).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-19",
+      "topic": "devops-devsecops",
+      "q": "**(Sommerville — DevOps)** A central principle of DevOps is:",
+      "options": ["Strictly separate development and operations teams", "The same team that develops a system is responsible for deploying and supporting it, with heavy automation", "Manual deployments for control", "Releasing only once a year"],
+      "answer": 1,
+      "explain": "Sommerville's DevOps principles: integrate development and operations into one team responsible for the whole lifecycle, automate everything possible (CI/CD), and measure/monitor in production — enabling frequent, reliable releases.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u3-tb-20",
+      "topic": "coding-standards",
+      "q": "**(Pressman/Sommerville — secure & defensive coding)** Validating all input from untrusted sources and applying least privilege are examples of:",
+      "options": ["Performance optimization", "Defensive/secure programming to reduce vulnerabilities", "Refactoring", "Premature optimization"],
+      "answer": 1,
+      "explain": "Validating untrusted input, default-deny access, least privilege, heeding compiler warnings, and sanitizing data to subsystems are secure/defensive programming practices that prevent vulnerabilities like injection and buffer overflows.",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

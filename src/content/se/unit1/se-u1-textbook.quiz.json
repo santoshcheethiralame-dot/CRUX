@@ -1,0 +1,207 @@
+{
+  "subject": "se",
+  "unit": 1,
+  "title": "Unit 1 — Textbook Exercises (Sommerville & Pressman)",
+  "items": [
+    {
+      "id": "se-u1-tb-01",
+      "topic": "introduction-to-se",
+      "q": "**(Sommerville Ch1)** Why is professional software *not* simply the programs that have been developed?",
+      "options": ["Because programs are always written in C", "Because it also includes the associated documentation, configuration data and libraries needed to operate it correctly", "Because professional software has no source code", "Because it must always be open-source"],
+      "answer": 1,
+      "explain": "Sommerville Ch1: professional software is developed by teams for use by others and is more than the program — it includes documentation, configuration data and supporting libraries/data files required to make the program work correctly.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-02",
+      "topic": "introduction-to-se",
+      "q": "**(Sommerville Ch1, exercise)** Which set lists the *four important attributes* all professional software should have?",
+      "options": ["Speed, size, cost, colour", "Maintainability, dependability & security, efficiency, acceptability", "Portability, popularity, profitability, performance", "Correctness, compilation, concurrency, caching"],
+      "answer": 1,
+      "explain": "Sommerville Ch1 names exactly these four essential attributes of good software: maintainability, dependability & security, efficiency, and acceptability.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-03",
+      "topic": "introduction-to-se",
+      "q": "**(Sommerville Ch1)** Which is a fundamental principle of *professional & ethical responsibility* for software engineers?",
+      "options": ["Maximise personal profit on every project", "Respect the confidentiality of employers/clients and only accept work within your competence", "Always use the newest programming language", "Never write documentation"],
+      "answer": 1,
+      "explain": "Sommerville Ch1 lists professional responsibilities: confidentiality, competence (don't misrepresent your skill / accept work beyond it), intellectual-property rights, and not misusing computers. SE is more than technical skill.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-04",
+      "topic": "sdlc-models",
+      "q": "**(Sommerville Ch2, exercise)** For a safety-critical system to control the *anti-lock braking* in a car, which process model is most appropriate, and why?",
+      "options": ["Agile/XP, because requirements change fast", "A plan-driven waterfall-style model, because requirements are stable and rigorous documentation/verification are essential", "Throwaway prototyping only", "No model is needed"],
+      "answer": 1,
+      "explain": "Sommerville Ch2 reasoning: braking control has stable, well-understood, safety-critical requirements demanding extensive verification and documentation — a plan-driven (waterfall-like) approach fits, not agile.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-05",
+      "topic": "sdlc-models",
+      "q": "**(Sommerville Ch2)** A stated *disadvantage* of incremental development (compared to waterfall) is that:",
+      "options": ["It cannot deliver working software early", "System structure tends to degrade as new increments are added, and the process is less visible", "It makes change more expensive", "It produces too much documentation"],
+      "answer": 1,
+      "explain": "Sommerville Ch2: incremental development reduces change cost and gives early delivery/feedback, BUT the process is less visible (fewer documents) and system structure degrades unless effort is spent on refactoring.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-06",
+      "topic": "sdlc-models",
+      "q": "**(Sommerville Ch2)** In the spiral model, what happens in every loop that distinguishes it from other models?",
+      "options": ["A final product is shipped", "Risks are explicitly identified, analysed and resolved before proceeding", "The customer signs a fixed-price contract", "All code is rewritten from scratch"],
+      "answer": 1,
+      "explain": "Sommerville Ch2 (Boehm's spiral): each loop = objective setting → risk assessment & reduction → development & validation → planning. Explicit, continuous risk management is its defining trait.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-07",
+      "topic": "agile-scrum",
+      "q": "**(Sommerville Ch3)** Which is one of the core *principles of agile methods*?",
+      "options": ["Comprehensive up-front documentation", "Customer involvement and incremental delivery, with people — not process — driving development and embracing change", "Freeze all requirements before coding", "Minimise communication with the customer"],
+      "answer": 1,
+      "explain": "Sommerville Ch3 lists agile principles: customer involvement, incremental delivery, people not process, embrace change, and maintain simplicity.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-08",
+      "topic": "agile-scrum",
+      "q": "**(Sommerville Ch3)** A key problem when applying agile methods to *large, long-lifetime* systems is:",
+      "options": ["Agile produces no working software", "Informal, minimal documentation and the need for up-front architecture/contracts can make scaling and long-term maintenance difficult", "Agile is illegal for large systems", "Agile forbids any testing"],
+      "answer": 1,
+      "explain": "Sommerville Ch3: agile suits small/medium co-located teams; for large systems its light documentation, distributed teams, fixed-price contracts and the need for some up-front design create scaling challenges.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-09",
+      "topic": "user-stories-xp-lean",
+      "q": "**(Sommerville Ch3 / Pressman, XP)** In XP, the practice of *pair programming* primarily provides:",
+      "options": ["Faster typing speed", "Continuous, informal code review and shared knowledge/ownership of the code", "A way to avoid testing", "Twice the number of bugs"],
+      "answer": 1,
+      "explain": "XP pair programming = two developers at one machine; it gives continuous review, spreads knowledge (collective ownership) and tends to improve quality, at the cost of more developer-hours.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-10",
+      "topic": "requirements-elicitation",
+      "q": "**(Sommerville Ch4, exercise)** A frequently cited *problem of using natural language* to specify requirements is:",
+      "options": ["It is too precise", "Ambiguity, over-flexibility and lack of modularisation make requirements easy to misinterpret", "It cannot be read by stakeholders", "It is illegal under IEEE standards"],
+      "answer": 1,
+      "explain": "Sommerville Ch4: natural-language requirements suffer ambiguity (multiple readings), over-flexibility (same thing said many ways) and poor modularisation — hence structured forms, tables and models are added.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-11",
+      "topic": "requirements-elicitation",
+      "q": "**(Sommerville Ch4)** The requirements engineering process is usually described by which four activities?",
+      "options": ["Coding, testing, deployment, maintenance", "Elicitation, analysis, specification and validation (plus management)", "Plan, do, check, act", "Identify, design, build, sell"],
+      "answer": 1,
+      "explain": "Sommerville Ch4 structures RE as elicitation & analysis, specification, and validation, with requirements management running across the project.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-12",
+      "topic": "functional-nonfunctional",
+      "q": "**(Sommerville Ch4)** Which best states the difference between functional and non-functional requirements?",
+      "options": ["FRs are about performance; NFRs are about features", "FRs state services/behaviour the system must provide; NFRs are constraints on those services (e.g. timing, reliability, standards)", "There is no difference", "FRs are written by users; NFRs are written by lawyers"],
+      "answer": 1,
+      "explain": "Sommerville Ch4: functional requirements describe what the system should do (services, reactions); non-functional requirements are constraints/qualities on those services and often apply to the system as a whole.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-13",
+      "topic": "functional-nonfunctional",
+      "q": "**(Sommerville Ch4)** In Sommerville's NFR classification, *regulatory, ethical and legislative* requirements fall under which type?",
+      "options": ["Product requirements", "Organisational requirements", "External requirements", "Functional requirements"],
+      "answer": 2,
+      "explain": "Sommerville Ch4 NFR taxonomy: Product (runtime behaviour), Organisational (org policies/standards), and External (factors outside the system/org — regulatory, ethical, legislative).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-14",
+      "topic": "functional-nonfunctional",
+      "q": "**(Sommerville Ch4)** Why should non-functional requirements be expressed *quantitatively* using a metric?",
+      "options": ["To make the SRS longer", "So they are objectively *verifiable* — vague goals like 'easy to use' cannot be tested", "Because customers like numbers", "To hide the requirement from developers"],
+      "answer": 1,
+      "explain": "Sommerville Ch4 gives a metrics table (speed→transactions/sec, reliability→MTTF, ease of use→training time, etc.) precisely so NFRs become measurable and testable rather than vague goals.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-15",
+      "topic": "srs-rtm-change",
+      "q": "**(Sommerville Ch4)** During requirements *validation*, the check that asks 'can the requirements actually be implemented within budget and technology?' is the:",
+      "options": ["Consistency check", "Completeness check", "Realism check", "Verifiability check"],
+      "answer": 2,
+      "explain": "Sommerville Ch4 validation checks: validity, consistency, completeness, realism (implementable with available budget/technology) and verifiability.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-16",
+      "topic": "uml-use-cases",
+      "q": "**(Pressman, requirements modelling)** A use case primarily describes:",
+      "options": ["The internal class hierarchy", "A sequence of interactions between an actor and the system to achieve a goal", "The database schema", "The deployment hardware"],
+      "answer": 1,
+      "explain": "Pressman: a use case is a scenario describing how an actor (role) interacts with the system to accomplish a goal, including the main success scenario and alternative/exception flows.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-17",
+      "topic": "testing-vv-terminology",
+      "q": "**(Sommerville Ch8)** What is the essential difference between *verification* and *validation*?",
+      "options": ["They are the same activity", "Verification checks the software conforms to its specification; validation checks it meets the customer's real needs", "Verification is done by customers; validation by developers", "Verification needs no execution; validation forbids reviews"],
+      "answer": 1,
+      "explain": "Sommerville Ch8 (Boehm): verification = 'are we building the product right?' (vs specification); validation = 'are we building the right product?' (vs user needs).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-18",
+      "topic": "testing-vv-terminology",
+      "q": "**(Sommerville Ch8)** Sommerville describes development testing as having which stages?",
+      "options": ["Alpha, beta, gamma testing", "Unit testing, component (integration) testing, and system testing", "Only acceptance testing", "Compilation and linking"],
+      "answer": 1,
+      "explain": "Sommerville Ch8 'development testing' = unit testing (individual units), component testing (integrated units/interfaces), and system testing (the whole system). Release & user testing follow.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-19",
+      "topic": "test-cases-planning",
+      "q": "**(Sommerville Ch8 / Pressman)** In test-driven development (TDD), the correct order is:",
+      "options": ["Write code → write test → refactor", "Write a failing test → write minimal code to pass it → refactor", "Write all tests at the end → ship", "Refactor → test → design"],
+      "answer": 1,
+      "explain": "TDD cycle (red-green-refactor): write a failing test first, write just enough code to pass, then refactor. Benefits: code coverage, regression safety, and clearer requirements.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u1-tb-20",
+      "topic": "test-cases-planning",
+      "q": "**(Pressman, black-box testing)** Equivalence partitioning and boundary-value analysis are techniques for:",
+      "options": ["White-box (structural) testing of code paths", "Black-box (functional) testing — choosing inputs from the specification without seeing the code", "Measuring defect density", "Penetration testing only"],
+      "answer": 1,
+      "explain": "Pressman: equivalence partitioning (divide inputs into classes) and boundary-value analysis (test at the edges) are black-box techniques derived from the specification, not the code structure.",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

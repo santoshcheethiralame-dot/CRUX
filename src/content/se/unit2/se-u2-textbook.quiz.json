@@ -1,0 +1,207 @@
+{
+  "subject": "se",
+  "unit": 2,
+  "title": "Unit 2 — Textbook Exercises (Sommerville & Pressman)",
+  "items": [
+    {
+      "id": "se-u2-tb-01",
+      "topic": "risk-management",
+      "q": "**(Sommerville Ch22)** Sommerville classifies risks by what they affect. A risk that *'a competitive product is marketed before the system is completed'* is a:",
+      "options": ["Project risk", "Product risk", "Business risk", "Technology risk"],
+      "answer": 2,
+      "explain": "Sommerville Ch22: business risks affect the organisation developing/procuring the software (e.g. competitor ships first, technology becomes obsolete). Project risks affect schedule/resources; product risks affect software quality/performance.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-02",
+      "topic": "risk-management",
+      "q": "**(Sommerville Ch22)** The risk management process is described as which sequence of activities?",
+      "options": ["Identification, analysis, planning, monitoring", "Plan, design, code, test", "Avoid, transfer, accept, ignore", "Initiate, execute, close, review"],
+      "answer": 0,
+      "explain": "Sommerville Ch22: risk identification → risk analysis (likelihood & consequences) → risk planning (avoidance/minimisation plans) → risk monitoring (throughout the project).",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-03",
+      "topic": "estimation-cocomo",
+      "q": "**(Pressman / Boehm)** In the COCOMO effort equation E = a·(KLOC)^b, the exponent b for most project types is:",
+      "options": ["Exactly 1 (linear)", "Greater than 1, so effort grows more than linearly with size (diseconomy of scale)", "Less than 0", "Always 0.5"],
+      "answer": 1,
+      "explain": "COCOMO exponents are >1 (organic 1.05, semi-detached 1.12, embedded 1.20), so effort grows super-linearly with size — larger projects suffer a diseconomy of scale (communication/coordination overhead).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-04",
+      "topic": "estimation-cocomo",
+      "q": "**(Pressman)** Function Point (FP) metrics are preferred over Lines of Code (LOC) for estimation mainly because FP:",
+      "options": ["Are easier to count from source code", "Are programming-language independent and can be derived early from requirements", "Always give larger numbers", "Only apply to embedded systems"],
+      "answer": 1,
+      "explain": "Pressman: FP is language-independent and derivable from the requirements/spec early, before code exists, whereas LOC is language-dependent and only known later. FP weights inputs, outputs, inquiries, files and external interfaces.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-05",
+      "topic": "scheduling-gantt",
+      "q": "**(Pressman)** In project scheduling, the critical path method identifies tasks that:",
+      "options": ["Have the most slack and can be delayed freely", "Have zero slack/float and directly determine the project's minimum completion time", "Are the cheapest to perform", "Are optional"],
+      "answer": 1,
+      "explain": "Pressman: critical-path tasks have zero slack (float); a delay in any of them delays the whole project. The critical path is the longest path through the task network and sets the minimum duration.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-06",
+      "topic": "raci-teamwork",
+      "q": "**(Sommerville Ch22 — managing people)** Sommerville stresses that, when motivating a team, managers should recognise that people are motivated by:",
+      "options": ["Money alone", "A hierarchy of needs — including social and esteem/self-realization needs, not just basic pay", "Strict surveillance", "Avoiding all social interaction"],
+      "answer": 1,
+      "explain": "Sommerville Ch22 draws on Maslow's hierarchy: beyond physiological/safety (salary, security) people need social belonging, esteem and self-realization. Good managers address higher needs, not just pay.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-07",
+      "topic": "software-architecture",
+      "q": "**(Sommerville Ch6)** Sommerville lists benefits of explicitly designing and documenting software architecture. Which is one of them?",
+      "options": ["It guarantees zero defects", "Stakeholder communication, system analysis, and large-scale reuse", "It removes the need for requirements", "It eliminates the need for testing"],
+      "answer": 1,
+      "explain": "Sommerville Ch6: the three advantages of explicit architecture are stakeholder communication (a focus for discussion), system analysis (feasibility of meeting non-functional requirements), and large-scale reuse (the architecture may be reusable across systems).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-08",
+      "topic": "architectural-patterns",
+      "q": "**(Sommerville Ch6)** In Sommerville's description of the Model-View-Controller (MVC) pattern, the main disadvantage is:",
+      "options": ["It cannot support multiple views", "Extra code and complexity may be unnecessary when the data model and interactions are simple", "The model and view cannot be separated", "It only works for compilers"],
+      "answer": 1,
+      "explain": "Sommerville Ch6: MVC allows data to change independently of representation and supports multiple views, but its disadvantage is added code/complexity that can be overkill when the data model and interactions are simple.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-09",
+      "topic": "architectural-patterns",
+      "q": "**(Sommerville Ch6)** The architectural pattern where each layer may use only the services of the layer immediately below (or adjacent) it, supporting incremental development and replacement, is the:",
+      "options": ["Repository pattern", "Layered architecture", "Pipe and filter pattern", "Client-server pattern"],
+      "answer": 1,
+      "explain": "Sommerville Ch6: the layered architecture organises the system into layers, each providing services to the layer above; it supports incremental development and portability (a layer can be replaced if its interface is unchanged).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-10",
+      "topic": "architectural-patterns",
+      "q": "**(Sommerville Ch6)** A system that maintains all shared data in a central database accessible to all components uses the ___ pattern:",
+      "options": ["Repository", "Pipe and filter", "MVC", "Client-server"],
+      "answer": 0,
+      "explain": "Sommerville Ch6: the Repository pattern centralises shared data in a repository that all components access. Advantage: components are independent (don't need to know of each other); disadvantage: the repository is a single point of failure and a potential bottleneck.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-11",
+      "topic": "cohesion-coupling-security",
+      "q": "**(Pressman — design concepts)** Functional independence is achieved by maximising ___ and minimising ___:",
+      "options": ["coupling; cohesion", "cohesion; coupling", "complexity; abstraction", "size; documentation"],
+      "answer": 1,
+      "explain": "Pressman: functional independence = high cohesion (a module does one thing) + low coupling (minimal interconnection). Independent modules are easier to develop, test and maintain.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-12",
+      "topic": "cohesion-coupling-security",
+      "q": "**(Pressman)** Which represents the *tightest* (worst) form of coupling, where one module alters another's internal data or branches into it?",
+      "options": ["Data coupling", "Stamp coupling", "Control coupling", "Content coupling"],
+      "answer": 3,
+      "explain": "Pressman: content coupling — one module directly modifies or relies on another's internals — is the tightest/worst. Data coupling (simple parameters) is the loosest/best.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-13",
+      "topic": "design-principles-uml",
+      "q": "**(Pressman — design concepts)** The design concept that suppresses low-level detail so the designer can focus on the essential behaviour at a given level is:",
+      "options": ["Refactoring", "Abstraction", "Coupling", "Verification"],
+      "answer": 1,
+      "explain": "Pressman lists abstraction as a fundamental design concept: at each level the designer focuses on essential properties (procedural and data abstraction) while suppressing lower-level detail.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-14",
+      "topic": "design-principles-uml",
+      "q": "**(Pressman / Parnas)** The principle of information hiding states that modules should be designed so that:",
+      "options": ["All modules can see all data globally", "Information (data and procedure) contained within a module is inaccessible to modules that have no need for it", "No module has any interface", "Every module shares one global state"],
+      "answer": 1,
+      "explain": "Pressman (Parnas's information hiding): each module hides its internal design decisions; information is inaccessible to modules with no need for it. This limits the ripple effect of changes and reduces coupling.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-15",
+      "topic": "quality-management",
+      "q": "**(Pressman — McCall's quality factors)** Maintainability, flexibility and testability are McCall quality factors in which category?",
+      "options": ["Product operation", "Product revision", "Product transition", "Product marketing"],
+      "answer": 1,
+      "explain": "McCall (Pressman): Product Operation = correctness, reliability, efficiency, integrity, usability; Product Revision (ability to change) = maintainability, flexibility, testability; Product Transition (adapt to new environments) = portability, reusability, interoperability.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-16",
+      "topic": "quality-management",
+      "q": "**(Pressman — software metrics)** The distinction Pressman draws between a 'measure' and a 'metric' is that a metric:",
+      "options": ["Is always a single raw count", "Relates individual measures in some way (e.g. defects per KLOC)", "Cannot be computed", "Is the same as an attribute"],
+      "answer": 1,
+      "explain": "Pressman: a measure provides a raw quantitative indication (e.g. number of errors); a metric relates measures to give insight (e.g. errors per KLOC, defect density). A measure becomes a metric when normalised/related.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-17",
+      "topic": "technical-debt-tdd",
+      "q": "**(Sommerville Ch3 / Beck — XP)** In test-driven development, what is written before the production code?",
+      "options": ["The user manual", "An automated test that initially fails", "The deployment script", "The final report"],
+      "answer": 1,
+      "explain": "TDD (Sommerville Ch3, from XP): you write an automated test for a new increment first — it fails (red) — then write minimal code to pass it (green), then refactor. Tests drive development.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-18",
+      "topic": "technical-debt-tdd",
+      "q": "**(Sommerville Ch3)** Sommerville lists benefits of test-driven development. Which is one of them?",
+      "options": ["It removes the need for any testing later", "Code coverage — every code segment has at least one associated test", "It guarantees the fastest possible runtime", "It eliminates the need for requirements"],
+      "answer": 1,
+      "explain": "Sommerville Ch3 TDD benefits: code coverage (every segment has a test), regression testing (a test suite that grows), simplified debugging (failures localise to new code), and tests as system documentation.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-19",
+      "topic": "agile-planning",
+      "q": "**(Sommerville Ch23 — agile planning)** In story-based release/iteration planning, a team's 'velocity' is used to:",
+      "options": ["Measure the CPU speed", "Estimate how many stories can be delivered in an iteration and the total effort for the system", "Rank developers by typing speed", "Set the marketing budget"],
+      "answer": 1,
+      "explain": "Sommerville Ch23: effort points are assigned to stories; velocity (points delivered per iteration) guides how many stories fit an iteration and lets the total system effort be estimated.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u2-tb-20",
+      "topic": "intro-spm",
+      "q": "**(Sommerville Ch22)** Which set of factors does Sommerville identify as making software project management distinct from other types of engineering management?",
+      "options": ["Software is tangible and easily measured", "The product is intangible, often uniquely complex, and the software process is not standardised/well-understood", "Software projects never change", "There are no professional standards"],
+      "answer": 1,
+      "explain": "Sommerville Ch22: software is intangible (progress can't be seen), large projects are often 'one-off' and uniquely complex, and the software process is variable and organisation-specific — making management harder than in established engineering disciplines.",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

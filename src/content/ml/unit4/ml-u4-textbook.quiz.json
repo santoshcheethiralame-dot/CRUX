@@ -1,0 +1,147 @@
+{
+  "subject": "ml",
+  "unit": 4,
+  "title": "Unit 4 — Textbook Exercises (Alpaydin & Mitchell)",
+  "items": [
+    {
+      "id": "ml-u4-tb-01",
+      "topic": "kmeans",
+      "q": "Alpaydin Exercise 7.1 uses k-means for **image compression** (vector quantization): the image is split into windows, k-means clusters them, and only the reference vectors + indices are sent. The k centroids act as:",
+      "options": ["the compressed image pixels", "a codebook; each window is encoded by the index of its nearest centroid", "the reconstruction error", "the labels"],
+      "answer": 1,
+      "explain": "K-means is vector quantization: the k centroids form a codebook, and each block is replaced by its nearest centroid's index — compressing the data. (Alpaydin Ex 7.1.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-02",
+      "topic": "kmeans-em",
+      "q": "Alpaydin treats k-means as a special case of the EM algorithm for a mixture model. K-means corresponds to EM with:",
+      "options": ["soft (probabilistic) assignments", "hard (0/1) assignments and equal spherical covariances", "no E-step", "arbitrary full covariances"],
+      "answer": 1,
+      "explain": "K-means = EM with hard assignments and equal spherical covariances (and equal priors); the assignment step is the E-step, the mean update is the M-step. (Alpaydin §7.4.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-03",
+      "topic": "kmeans-em",
+      "q": "Alpaydin Exercise 7.4 asks you to define a **multivariate Bernoulli mixture** (binary inputs) and derive its EM equations. This shows EM/clustering extends to:",
+      "options": ["only Gaussian data", "discrete/binary features via a Bernoulli mixture", "only 2-D data", "supervised data only"],
+      "answer": 1,
+      "explain": "EM is general: with binary inputs you use a Bernoulli mixture (the discrete analogue of a Gaussian mixture) and derive analogous E/M updates. (Alpaydin Ex 7.4.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-04",
+      "topic": "pca",
+      "q": "Alpaydin Exercise 6.2: implementing PCA and reconstructing digit images, the reconstruction error as the number of retained eigenvectors increases:",
+      "options": ["increases", "decreases (more components → better reconstruction)", "stays constant", "becomes negative"],
+      "answer": 1,
+      "explain": "More principal components capture more variance, so reconstruction error falls as you keep more eigenvectors — a principled way to choose k. (Alpaydin Ex 6.2.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-05",
+      "topic": "pca",
+      "q": "In Alpaydin's treatment, the principal components are the eigenvectors of the covariance matrix, ordered so that the FIRST captures:",
+      "options": ["the least variance", "the most variance", "the mean", "the noise only"],
+      "answer": 1,
+      "explain": "PCA projects onto the eigenvectors with the largest eigenvalues; PC1 captures maximum variance, PC2 the next (orthogonal) direction, etc. (Alpaydin §6.3.)",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-06",
+      "topic": "pca",
+      "q": "Alpaydin contrasts feature **selection** (subset selection) with feature **extraction** (PCA). The key difference is that PCA:",
+      "options": ["drops original features entirely", "creates new features that are combinations of the originals", "needs labels", "only works on images"],
+      "answer": 1,
+      "explain": "Subset selection keeps a subset of original features (losing the rest); PCA extracts new features that are linear combinations of all originals, retaining more signal. (Alpaydin Ch 6.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-07",
+      "topic": "rl-foundations",
+      "q": "Mitchell models reinforcement learning as a Markov Decision Process. The agent's goal is to learn a policy π that:",
+      "options": ["minimizes the immediate reward", "maximizes the cumulative discounted reward (return) from every state", "memorizes the training data", "ignores rewards"],
+      "answer": 1,
+      "explain": "The objective is a policy maximizing expected cumulative discounted reward $\\sum \\gamma^t r_t$. (Mitchell Ch 13.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-08",
+      "topic": "rl-value-q",
+      "q": "Mitchell defines the Q function as $Q(s,a) = r(s,a) + \\gamma V^*(\\delta(s,a))$. The optimal policy is then:",
+      "options": ["$\\pi^*(s) = \\min_a Q(s,a)$", "$\\pi^*(s) = \\arg\\max_a Q(s,a)$", "random", "$\\pi^*(s) = V^*(s)$"],
+      "answer": 1,
+      "explain": "Q(s,a) is the value of taking action a then acting optimally; the optimal policy greedily picks $\\arg\\max_a Q(s,a)$, and $V^*(s)=\\max_a Q(s,a)$. (Mitchell §13.3.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-09",
+      "topic": "rl-value-q",
+      "q": "Mitchell Exercise 13.2: in a deterministic grid world with γ=0.8 and Q initialized to 0, after the first episode the Q-learning update modifies:",
+      "options": ["all Q values at once", "mainly the Q value for the transition INTO the goal (then values propagate backward in later episodes)", "no Q values", "only the rewards"],
+      "answer": 1,
+      "explain": "With Q=0 everywhere, only transitions whose successor has non-zero value (i.e. into the goal) get updated first; subsequent episodes propagate value backward one step at a time. (Mitchell Ex 13.2.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-10",
+      "topic": "rl-value-q",
+      "q": "Mitchell Exercise 13.3 formulates Tic-Tac-Toe vs a random opponent as a Q-learning task. Because the opponent is random, the environment is a:",
+      "options": ["deterministic MDP", "non-deterministic (stochastic) MDP", "supervised problem", "fully observable HMM"],
+      "answer": 1,
+      "explain": "A random opponent makes state transitions stochastic → a non-deterministic MDP; states = board positions, rewards on win/lose/draw. (Mitchell Ex 13.3.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-11",
+      "topic": "rl-value-q",
+      "q": "Mitchell Exercise 13.4: even when one policy beats another from some states but loses from others, an MDP always has:",
+      "options": ["no optimal policy", "a single optimal policy π* that maximizes V^π(s) for EVERY state s", "infinitely many equal policies", "only stochastic policies"],
+      "answer": 1,
+      "explain": "A fundamental MDP result: there always exists an optimal policy π* that is simultaneously best from every starting state. (Mitchell Ex 13.4.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-12",
+      "topic": "rl-value-q",
+      "q": "Mitchell's Q-learning is called **model-free** because the agent:",
+      "options": ["knows the transition and reward functions", "learns Q directly from experience without knowing δ(s,a) or r(s,a)", "uses a neural network", "has no states"],
+      "answer": 1,
+      "explain": "Q-learning estimates Q from sampled transitions (s,a,r,s') without an explicit model of transitions/rewards — model-free, off-policy. (Mitchell §13.3.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-13",
+      "topic": "kmeans-evaluation",
+      "q": "Alpaydin Exercise 7.2 warns against doing k-means, partitioning instances, then estimating the covariance Sᵢ separately per group. The problem is that:",
+      "options": ["it is too fast", "the hard partition ignores assignment uncertainty, biasing the estimates (soft EM is preferable)", "covariance can't be computed", "it needs labels"],
+      "answer": 1,
+      "explain": "Hard partitioning then estimating per-cluster covariance ignores the uncertainty in assignments, giving biased estimates; soft EM with responsibilities is more principled. (Alpaydin Ex 7.2.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u4-tb-14",
+      "topic": "svd",
+      "q": "PCA can be computed via SVD of the centered data matrix X, where the principal components are the right singular vectors and the eigenvalues relate to singular values by:",
+      "options": ["$\\lambda_i = \\sigma_i$", "$\\lambda_i = \\sigma_i^2$", "$\\lambda_i = 1/\\sigma_i$", "$\\lambda_i = 2\\sigma_i$"],
+      "answer": 1,
+      "explain": "The covariance ∝ XᵀX, whose eigenvalues are the squares of X's singular values: $\\lambda_i = \\sigma_i^2$. So PCA ≡ SVD of the centered data. (Standard linear-algebra result; Alpaydin Ch 6.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

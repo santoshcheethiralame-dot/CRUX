@@ -1,0 +1,142 @@
+{
+  "subject": "ml",
+  "unit": 1,
+  "title": "Unit 1 — Past-Year Questions",
+  "items": [
+    {
+      "id": "ml-u1-pyq-01",
+      "topic": "introduction",
+      "year": "ESA 2024",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "State Mitchell's definition of Machine Learning.",
+      "answer": "*\"A computer program is said to **learn** from experience **E** with respect to some class of tasks **T** and performance measure **P**, if its performance at tasks in T, as measured by P, improves with experience E.\"* — a well-posed learning problem is the triple $\\langle P, T, E\\rangle$. **Example:** checkers — T = playing checkers, P = % games won, E = games played against itself."
+    },
+    {
+      "id": "ml-u1-pyq-02",
+      "topic": "concept-learning",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "For the EnjoySport dataset (Sky, Temp, Humidity, Wind, Water, Forecast → Enjoy): (i) How many concepts are possible? (ii) Explain the hypothesis ⟨Sunny, Warm, ?, Strong, Cool, Same⟩. (iii) Classify ⟨Sunny, Warm, High, ?, Cool, Change⟩.",
+      "answer": "**(i)** The instance space has $3\\cdot2\\cdot2\\cdot2\\cdot2\\cdot2 = 96$ distinct instances (Sky has 3 values, the rest 2). The number of **possible concepts** = every labelling of those instances = $2^{96}$. *(The number of semantically distinct **conjunctive hypotheses** is $1 + 4\\cdot3^5 = 973$.)*\n\n**(ii)** ⟨Sunny, Warm, ?, Strong, Cool, Same⟩ accepts any instance that is Sky=Sunny **and** Temp=Warm **and** Wind=Strong **and** Water=Cool **and** Forecast=Same, with **Humidity = anything** ('?'). \n\n**(iii)** ⟨Sunny, Warm, High, ?, Cool, Change⟩ — '?' for Wind means any wind. It accepts instances that are Sunny ∧ Warm ∧ High ∧ Cool ∧ Change (any wind), i.e. classifies them **positive (Enjoy = Yes)**."
+    },
+    {
+      "id": "ml-u1-pyq-03",
+      "topic": "concept-learning",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Define: (1) Most specific hypothesis, (2) Most general hypothesis, (3) Version space, (4) Occam's Razor, (5) Inductive bias.",
+      "answer": "**(1) Most specific:** $\\langle\\emptyset,\\dots,\\emptyset\\rangle$ — rejects every instance (accepts nothing). **(2) Most general:** $\\langle?,\\dots,?\\rangle$ — accepts every instance. **(3) Version space** $VS_{H,D}$ = the set of **all hypotheses in H consistent with the training data D**. **(4) Occam's Razor:** prefer the **simplest** hypothesis that fits the data (shortest tree / fewest assumptions). **(5) Inductive bias:** the set of assumptions a learner uses to generalise to unseen instances; without it, no generalisation is possible (futility of bias-free learning)."
+    },
+    {
+      "id": "ml-u1-pyq-04",
+      "topic": "id3-entropy-gain",
+      "year": "ESA 2024",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Explain Entropy and Information Gain in the context of the ID3 algorithm.",
+      "answer": "**Entropy** measures impurity of a set $S$: $H(S) = -\\sum_i p_i\\log_2 p_i$ (0 = pure, 1 = 50/50 for two classes). **Information Gain** of attribute $A$ = expected reduction in entropy from splitting on $A$:\n$$\\text{Gain}(S,A) = H(S) - \\sum_{v\\in\\text{Values}(A)}\\frac{|S_v|}{|S|}H(S_v)$$\nID3 **greedily chooses the attribute with the highest gain** at each node, recursing until each branch is pure (entropy 0 → leaf)."
+    },
+    {
+      "id": "ml-u1-pyq-05",
+      "topic": "id3-entropy-gain",
+      "year": "ESA 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "For a two-class problem with p₁ = p and p₂ = 1−p, write the equations for Entropy, Gini Index, and Misclassification error, and compute each for p = 0.4.",
+      "answer": "**Entropy** $H = -p\\log_2 p - (1-p)\\log_2(1-p) = -0.4\\log_2 0.4 - 0.6\\log_2 0.6 = \\mathbf{0.971}$.\n\n**Gini** $G = 1 - (p^2 + (1-p)^2) = 1 - (0.16 + 0.36) = \\mathbf{0.48}$.\n\n**Misclassification error** $E = 1 - \\max(p, 1-p) = 1 - 0.6 = \\mathbf{0.4}$.\n\nAll three measure node impurity; entropy/Gini are smooth and used to drive splits, misclassification is less sensitive."
+    },
+    {
+      "id": "ml-u1-pyq-06",
+      "topic": "overfitting-pruning",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What is overfitting with respect to decision trees? Explain the techniques to overcome it.",
+      "answer": "**Overfitting:** the tree grows so specific to the training data (capturing noise) that it does **well on training but poorly on test** data. Formally, $h$ overfits if some $h'$ has higher training error but lower true-distribution error. **Fixes:**\n- **Pre-pruning (early stopping):** stop growing when a split's gain falls below a threshold / max depth / min samples.\n- **Post-pruning:** grow the full tree, then cut subtrees back to leaves if validation accuracy doesn't drop — **reduced-error pruning** (subtree → majority-class leaf) and **rule post-pruning** (convert to rules, drop weak preconditions). Post-pruning is generally more effective.\n- Use a separate **validation set**; gather more/cleaner data."
+    },
+    {
+      "id": "ml-u1-pyq-07",
+      "topic": "overfitting-pruning",
+      "year": "ESA 2024",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Differentiate between pre-pruning and post-pruning.",
+      "answer": "| Pre-pruning | Post-pruning |\n|---|---|\n| Stop growing the tree **early** (before it fits perfectly) | Grow the **full** tree, then cut back |\n| Halt when gain < threshold / depth / min samples reached | Replace subtrees with leaves if validation accuracy holds |\n| Faster, but may stop too soon (a weak split might enable a strong one later) | Generally **more effective** (no need to guess when to stop) |"
+    },
+    {
+      "id": "ml-u1-pyq-08",
+      "topic": "knn",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "hard",
+      "q": "Predict whether there is a traffic jam for the query ⟨6,4,4,5⟩ (Fog, #Buses, #Cars, #Lorries) using K-NN with K=3 (Euclidean). Data: (10,10,12,1)Y, (1,2,6,3)N, (4,5,1,4)N, (8,3,7,3)Y, (2,5,4,2)N, (7,3,5,4)Y, (3,2,8,2)N, (9,3,5,4)Y.",
+      "answer": "Euclidean distances from ⟨6,4,4,5⟩:\n- (7,3,5,4): $\\sqrt{1+1+1+1}=\\mathbf{2.00}$ (Y)\n- (9,3,5,4): $\\sqrt{9+1+1+1}=\\mathbf{3.46}$ (Y)\n- (4,5,1,4): $\\sqrt{4+1+9+1}=\\mathbf{3.87}$ (N)\n- (2,5,4,2): $\\sqrt{16+1+0+9}=5.10$ (N); (1,2,6,3): 6.08 (N); (3,2,8,2): 6.16 (N); (10,10,12,1): 11.49 (Y)\n\n**3 nearest:** (7,3,5,4)=Y, (9,3,5,4)=Y, (4,5,1,4)=N → majority **Yes (jam)**."
+    },
+    {
+      "id": "ml-u1-pyq-09",
+      "topic": "knn",
+      "year": "ESA 2024",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "Explain the Minkowski, Manhattan, and Euclidean distances.",
+      "answer": "For points $x, y$ with $d$ attributes:\n- **Minkowski:** $\\big(\\sum_i |x_i-y_i|^q\\big)^{1/q}$ — the general form.\n- **Manhattan** ($q=1$): $\\sum_i |x_i-y_i|$ — city-block / grid path.\n- **Euclidean** ($q=2$): $\\sqrt{\\sum_i (x_i-y_i)^2}$ — straight-line distance.\nManhattan and Euclidean are special cases of Minkowski. All require **feature scaling** so large-range attributes don't dominate."
+    },
+    {
+      "id": "ml-u1-pyq-10",
+      "topic": "performance-metrics",
+      "year": "ESA 2023",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "A spam classifier's confusion matrix is: Actual Spam → (Pred Spam 120, Pred Normal 60); Actual Normal → (Pred Spam 40, Pred Normal 180). Find TP, TN, FP, FN, Accuracy, Precision, Recall, Specificity.",
+      "answer": "Taking Spam as positive: **TP=120, FN=60, FP=40, TN=180** (total 400).\n- **Accuracy** $=\\frac{TP+TN}{N}=\\frac{300}{400}=\\mathbf{0.75}$\n- **Precision** $=\\frac{TP}{TP+FP}=\\frac{120}{160}=\\mathbf{0.75}$\n- **Recall** $=\\frac{TP}{TP+FN}=\\frac{120}{180}=\\mathbf{0.667}$\n- **Specificity** $=\\frac{TN}{TN+FP}=\\frac{180}{220}=\\mathbf{0.818}$"
+    },
+    {
+      "id": "ml-u1-pyq-11",
+      "topic": "performance-metrics",
+      "year": "ESA 2024",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "A 2-class confusion matrix has Predicted-A row = (455, x1) and Predicted-B row = (82, x2). Given accuracy = 82% over 1200 samples, find x1 and x2.",
+      "answer": "Total: $455 + x_1 + 82 + x_2 = 1200 \\Rightarrow x_1 + x_2 = 663$. Correct predictions (diagonal) = accuracy × total = $0.82\\times1200 = 984$. The diagonal is $455 + x_2$ (A predicted A, B predicted B), so $455 + x_2 = 984 \\Rightarrow \\mathbf{x_2 = 529}$, and $x_1 = 663 - 529 = \\mathbf{134}$.\n\n**Check:** $455+134+82+529=1200$ ✓; accuracy $=(455+529)/1200=0.82$ ✓."
+    },
+    {
+      "id": "ml-u1-pyq-12",
+      "topic": "performance-metrics",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "easy",
+      "q": "Briefly explain Accuracy, Precision, Recall, F1-score, and the advantages of the ROC curve.",
+      "answer": "**Accuracy** $=\\frac{TP+TN}{N}$ (overall correctness). **Precision** $=\\frac{TP}{TP+FP}$ (of predicted-positives, how many are right). **Recall** $=\\frac{TP}{TP+FN}$ (of actual positives, how many caught). **F1** $=\\frac{2PR}{P+R}$ (harmonic mean — punishes a low P or R). **ROC advantages:** plots TPR vs FPR across **all thresholds** → threshold-independent comparison; **AUC** summarises it in one number (1 = perfect, 0.5 = random); robust visual for comparing classifiers and choosing an operating point, even on **imbalanced** data."
+    },
+    {
+      "id": "ml-u1-pyq-13",
+      "topic": "logistic-regression",
+      "year": "ESA 2024",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "Explain the procedure for estimating the parameters of Logistic Regression (gradient descent).",
+      "answer": "Model: $h_\\theta(x)=\\sigma(\\theta^Tx)=\\frac{1}{1+e^{-\\theta^Tx}}=P(y=1\\mid x)$. Fit $\\theta$ by **minimising the log-loss (cross-entropy)** cost (convex):\n$$J(\\theta)=-\\tfrac1m\\sum_i\\big[y^{(i)}\\log h_\\theta(x^{(i)})+(1-y^{(i)})\\log(1-h_\\theta(x^{(i)}))\\big]$$\n**Gradient descent:** repeat (simultaneously for all $j$) $\\theta_j := \\theta_j - \\alpha\\sum_i (h_\\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ until convergence. (Squared error is avoided — non-convex with the sigmoid.) Use feature scaling and a vectorised implementation; predict $\\hat y=1$ if $h_\\theta(x)\\ge0.5$ (i.e. $\\theta^Tx\\ge0$)."
+    },
+    {
+      "id": "ml-u1-pyq-14",
+      "topic": "bias-variance",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Define Overfitting & Underfitting, Version Space, and the Bias–Variance Dilemma.",
+      "answer": "**Overfitting:** model captures noise → low train error, high test error (low bias, **high variance**). **Underfitting:** model too simple to capture the pattern → high train & test error (**high bias**, low variance). **Version space:** set of all hypotheses consistent with the training data. **Bias–Variance dilemma:** total error $=\\text{Bias}^2+\\text{Variance}+\\sigma^2$; as model complexity rises, bias falls but variance rises — you cannot minimise both at once, so you trade them off at the complexity that minimises total error."
+    },
+    {
+      "id": "ml-u1-pyq-15",
+      "topic": "id3-entropy-gain",
+      "year": "ESA 2024",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "For a built decision tree, how do you extract decision rules?",
+      "answer": "Each **root-to-leaf path** becomes one **IF–THEN rule**: the conjunction (AND) of the attribute tests along the path forms the antecedent, and the leaf's class is the consequent. e.g. path Outlook=Sunny → Humidity=High → leaf 'No' gives **IF Outlook=Sunny ∧ Humidity=High THEN No**. The whole tree = the disjunction (OR) of all such rules. Rules can then be pruned independently (rule post-pruning)."
+    }
+  ]
+}

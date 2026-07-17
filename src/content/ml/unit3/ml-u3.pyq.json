@@ -1,0 +1,106 @@
+{
+  "subject": "ml",
+  "unit": 3,
+  "title": "Unit 3 — Past-Year Questions",
+  "items": [
+    {
+      "id": "ml-u3-pyq-01",
+      "topic": "bayes-theorem",
+      "year": "ESA 2022",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain Bayes' theorem and outline the classification rule using Bayes' rule.",
+      "answer": "**Bayes' theorem:** $P(h\\mid D)=\\dfrac{P(D\\mid h)\\,P(h)}{P(D)}$ — Posterior = (Likelihood × Prior) / Evidence, with $P(D)=\\sum_j P(D\\mid h_j)P(h_j)$ (total probability).\n\n**Classification rule:** pick the most probable hypothesis/class. **MAP:** $h_{MAP}=\\arg\\max_h P(D\\mid h)P(h)$ (drop $P(D)$, constant). For class labels $v_j$ given attributes, the **Bayes (optimal) classification** chooses $\\arg\\max_{v_j} P(v_j\\mid x)$; the **Naïve Bayes** simplification assumes attribute independence: $\\arg\\max_{v_j} P(v_j)\\prod_i P(a_i\\mid v_j)$."
+    },
+    {
+      "id": "ml-u3-pyq-02",
+      "topic": "naive-bayes",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Using Naïve Bayes, classify the sentence \"A very close game\" as Sports / Not-Sports (apply Laplace smoothing). Training: \"A great game\"=Sports, \"The election was over\"=Not, \"Very clean match\"=Sports, \"A clean but forgettable game\"=Sports, \"It was a close election\"=Not.",
+      "answer": "Priors: P(Sports)=3/5, P(Not)=2/5. Vocabulary size = 14; Sports has 11 words, Not has 9. With **add-1 (Laplace)** smoothing $P(w\\mid c)=\\frac{count+1}{N_c+|V|}$:\n- P(a|S)=3/25, P(very|S)=2/25, P(close|S)=1/25, P(game|S)=3/25\n- P(a|N)=2/23, P(very|N)=1/23, P(close|N)=2/23, P(game|N)=1/23\n\n$P(S)\\!\\cdot\\!\\prod = 0.6\\cdot\\frac{3\\cdot2\\cdot1\\cdot3}{25^4} \\approx 2.76\\times10^{-5}$; $P(N)\\!\\cdot\\!\\prod = 0.4\\cdot\\frac{2\\cdot1\\cdot2\\cdot1}{23^4}\\approx 5.7\\times10^{-6}$.\n→ **Sports** (larger)."
+    },
+    {
+      "id": "ml-u3-pyq-03",
+      "topic": "naive-bayes",
+      "year": "ESA 2023",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "Using the 14-day Play-Tennis dataset, classify x = (Outlook=Sunny, Temp=Cool, Humidity=High, Wind=Strong) with Naïve Bayes.",
+      "answer": "Priors: P(Yes)=9/14, P(No)=5/14. Likelihoods (counts/class size):\n$$P(Yes\\mid x)\\propto \\tfrac{9}{14}\\cdot\\tfrac{2}{9}\\cdot\\tfrac{3}{9}\\cdot\\tfrac{3}{9}\\cdot\\tfrac{3}{9} \\approx 0.0053$$\n$$P(No\\mid x)\\propto \\tfrac{5}{14}\\cdot\\tfrac{3}{5}\\cdot\\tfrac{1}{5}\\cdot\\tfrac{4}{5}\\cdot\\tfrac{3}{5} \\approx 0.0206$$\nSince $0.0206 > 0.0053$ → **PlayTennis = No**. (Normalising gives ≈ 0.20 vs 0.80.)"
+    },
+    {
+      "id": "ml-u3-pyq-04",
+      "topic": "naive-bayes-practice",
+      "year": "ESA 2024",
+      "marks": 8,
+      "difficulty": "easy",
+      "q": "\"Players will play if the weather is sunny\" — is this statement correct? Justify using the Play-Tennis data.",
+      "answer": "Not necessarily — it ignores the **other attributes** and the actual class frequencies. In the data, Outlook=Sunny appears with both Yes and No (e.g. P(Sunny|Yes)=2/9, P(Sunny|No)=3/5), so Sunny actually leans **slightly toward 'No'** on its own. A correct decision uses **all** evidence via Naïve Bayes — $\\arg\\max_v P(v)\\prod_i P(a_i\\mid v)$ — not a single attribute. So the blanket statement is an oversimplification; whether they play depends on Humidity, Wind, etc. too."
+    },
+    {
+      "id": "ml-u3-pyq-05",
+      "topic": "bayes-optimal-gibbs",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "hard",
+      "q": "Differentiate the MAP hypothesis, the Bayes Optimal Classifier, and the Gibbs algorithm.",
+      "answer": "- **MAP hypothesis:** the single most probable hypothesis, $h_{MAP}=\\arg\\max_h P(D\\mid h)P(h)$; classify with that one $h$.\n- **Bayes Optimal Classifier:** classify by the most probable **class**, averaging over **all** hypotheses weighted by posterior: $\\arg\\max_{v_j}\\sum_i P(v_j\\mid h_i)P(h_i\\mid D)$. Achieves the **lowest possible error**, but is computationally infeasible.\n- **Gibbs algorithm:** pick **one** hypothesis at random ∝ $P(h\\mid D)$ and use it. Cheap; expected error $\\le 2\\times$ Bayes optimal."
+    },
+    {
+      "id": "ml-u3-pyq-06",
+      "topic": "hmm",
+      "year": "ESA 2023",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "What are Hidden Markov Models? Explain the parameters λ = {π, A, B}. For an HMM with hidden states ⟨RISE, FALL⟩ and observations ⟨BUY, SELL⟩ (start = {0.5, 0.5}), outline the forward computation of P(⟨SELL, BUY⟩) and compare with brute force.",
+      "answer": "An **HMM** is a Markov process whose **states are hidden**; each state **emits** an observation. **Parameters λ = {π, A, B}:** π = initial state distribution; A = transition matrix $a_{ij}=P(q_{t+1}{=}j\\mid q_t{=}i)$; B = emission matrix $b_j(o)=P(o\\mid q_t{=}j)$.\n\n**Forward algorithm** for $O=\\langle SELL, BUY\\rangle$: $\\alpha_1(j)=\\pi_j b_j(SELL)$; $\\alpha_2(j)=\\big[\\sum_i\\alpha_1(i)a_{ij}\\big]b_j(BUY)$; $P(O\\mid\\lambda)=\\sum_j\\alpha_2(j)$. Complexity $O(N^2T)$.\n\n**Brute force:** sum over all $N^T = 2^2 = 4$ state paths (RR, RF, FR, FF): $P(O)=\\sum_Q P(O\\mid Q)P(Q)$ — same answer, but exponential $O(N^T)$. (Plug in the given A and B values to get the number.)"
+    },
+    {
+      "id": "ml-u3-pyq-07",
+      "topic": "hmm-forward-backward",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What are the three fundamental problems of an HMM and which algorithm solves each?",
+      "answer": "1. **Likelihood (Evaluation):** given $O$ and $\\lambda$, compute $P(O\\mid\\lambda)$ → **Forward** (or Backward) algorithm, $O(N^2T)$.\n2. **Decoding:** given $O$ and $\\lambda$, find the most likely hidden-state sequence $Q^*$ → **Viterbi** algorithm (max instead of sum, with back-pointers).\n3. **Learning:** given $O$, estimate $\\lambda=\\{\\pi,A,B\\}$ → **Baum-Welch** (forward-backward = EM for HMMs)."
+    },
+    {
+      "id": "ml-u3-pyq-08",
+      "topic": "em",
+      "year": "ESA 2023",
+      "marks": 4,
+      "difficulty": "medium",
+      "q": "Explain the Expectation-Maximization (EM) technique.",
+      "answer": "EM finds maximum-likelihood parameters when the data has **latent (hidden) variables**. Starting from an initial guess, it alternates:\n- **E-step:** using current parameters, compute the **expected values / posterior responsibilities** of the hidden variables given the observed data.\n- **M-step:** treat those expectations as known and **re-estimate the parameters** by maximising likelihood.\nRepeat until convergence. Each iteration **never decreases** the likelihood, so it converges — but only to a **local** optimum (sensitive to initialisation). Used for GMM, Baum-Welch, and missing-data problems."
+    },
+    {
+      "id": "ml-u3-pyq-09",
+      "topic": "gmm",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "hard",
+      "q": "What are Gaussian Mixture Models? How is EM applied to find their parameters? What are EM's applications?",
+      "answer": "A **GMM** models data as a mixture of $K$ Gaussians, each with mean $\\mu_k$, covariance $\\Sigma_k$, and weight $\\pi_k$ ($\\sum\\pi_k=1$) — a **soft** clustering (each point belongs to all clusters with probabilities).\n\n**EM for GMM:** **E-step** — responsibility $\\tau_k(x_i)=\\frac{\\pi_k\\mathcal N(x_i;\\mu_k,\\Sigma_k)}{\\sum_j\\pi_j\\mathcal N(x_i;\\mu_j,\\Sigma_j)}$. **M-step** — $\\mu_k$, $\\Sigma_k$ = responsibility-weighted mean/covariance, $\\pi_k=\\frac1n\\sum_i\\tau_k(x_i)$. Iterate to convergence.\n\n**Applications of EM:** clustering (GMM), HMM training (Baum-Welch), missing-data imputation, density estimation, anomaly detection."
+    },
+    {
+      "id": "ml-u3-pyq-10",
+      "topic": "ml-least-squares",
+      "year": "ESA 2024",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Show that minimizing squared error corresponds to the maximum-likelihood hypothesis (under Gaussian noise).",
+      "answer": "Assume targets $d_i=h(x_i)+e_i$ with $e_i\\sim N(0,\\sigma^2)$, so $p(d_i\\mid h)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-(d_i-h(x_i))^2/2\\sigma^2}$. With independent data, $h_{ML}=\\arg\\max_h\\prod_i p(d_i\\mid h)$. Taking $\\log$ (monotonic): $\\ln p = \\sum_i\\big[-\\frac{(d_i-h(x_i))^2}{2\\sigma^2} - \\tfrac12\\ln 2\\pi\\sigma^2\\big]$. Dropping $h$-independent constants, maximising reduces to **minimising** $\\sum_i (d_i-h(x_i))^2$. ∴ **ML hypothesis = least-squared-error hypothesis** under zero-mean Gaussian noise."
+    },
+    {
+      "id": "ml-u3-pyq-11",
+      "topic": "naive-bayes",
+      "year": "ESA 2023",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "What are the three types of Naïve Bayes classifiers and when is each used?",
+      "answer": "- **Gaussian NB** — continuous features; assumes each feature is normally distributed per class.\n- **Multinomial NB** — discrete counts (e.g. word frequencies in text classification).\n- **Bernoulli NB** — binary features (word present/absent). \nAll share the conditional-independence assumption $P(a_1\\dots a_n\\mid v)=\\prod_i P(a_i\\mid v)$ and learn by counting frequencies."
+    }
+  ]
+}

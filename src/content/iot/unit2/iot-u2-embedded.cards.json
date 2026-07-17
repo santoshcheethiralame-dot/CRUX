@@ -1,0 +1,20 @@
+{
+  "subject": "iot",
+  "unit": 2,
+  "title": "Unit 2 — MCU & Interfacing Flashcards",
+  "cards": [
+    { "id": "iot-u2-emb-c01", "topic": "esp32", "front": "What is the ESP32 and why is it popular for IoT?", "back": "A low-cost **SoC** with a **dual-core** processor and **built-in Wi-Fi + Bluetooth/BLE** → single-chip path from sensor to cloud (no external radio). Rich peripherals, cheap, huge ecosystem (Arduino/ESP-IDF/MicroPython)." },
+    { "id": "iot-u2-emb-c02", "topic": "esp32", "front": "ESP32 vs STM32 — when each?", "back": "**ESP32**: connectivity (Wi-Fi/BLE built-in), cheap, prototyping. **STM32**: deterministic real-time/industrial control, rich peripherals (CAN, advanced timers). Match MCU to the job." },
+    { "id": "iot-u2-emb-c03", "topic": "arm-cortex", "front": "ARM Cortex-A vs Cortex-M?", "back": "**Cortex-A** = 'Application', has an **MMU**, runs full OS (Linux) → gateways/phones/Pi. **Cortex-M** = 'Microcontroller', no MMU, **deterministic/low-power**, bare-metal/RTOS → sensors/end nodes." },
+    { "id": "iot-u2-emb-c04", "topic": "arm-cortex", "front": "Which hardware unit lets Cortex-A run a full OS?", "back": "The **MMU (Memory Management Unit)** — provides virtual memory & process isolation. Cortex-M lacks it (only an optional MPU), so it runs one program bare-metal/RTOS with predictable timing." },
+    { "id": "iot-u2-emb-c05", "topic": "arm-cortex", "front": "Map Cortex-A / Cortex-M to IoT layers.", "back": "**Cortex-M** → perception/edge (sensor, real-time control). **Cortex-A** → gateway/fog (runs Linux, aggregates, edge analytics, bridges to cloud). (Cortex-R = hard real-time, automotive.)" },
+    { "id": "iot-u2-emb-c06", "topic": "embedded-c-python", "front": "Embedded C vs MicroPython?", "back": "**C** = compiled→native, fast, tiny, deterministic → production/real-time. **MicroPython** = interpreted on-device, readable, interactive **REPL** → fast prototyping/teaching (slower, more RAM)." },
+    { "id": "iot-u2-emb-c07", "topic": "embedded-c-python", "front": "Common C + MicroPython workflow?", "back": "**Prototype in MicroPython** (fast, interactive) to validate, then **rewrite production/real-time firmware in C** for speed, determinism, and smallest footprint." },
+    { "id": "iot-u2-emb-c08", "topic": "serial-interfaces", "front": "UART — wires, sync, use?", "back": "**2 wires** (TX, RX), **asynchronous** (no clock; agreed baud rate), **point-to-point**. Used for **serial debug** and modems (GPS/BLE/Wi-Fi/cellular)." },
+    { "id": "iot-u2-emb-c09", "topic": "serial-interfaces", "front": "I²C — wires, devices, use?", "back": "**2 shared wires** (**SDA** data + **SCL** clock), synchronous, **many addressed devices** on one bus. Best for **many sensors on minimal wiring**. Speed: 100k–3.4M." },
+    { "id": "iot-u2-emb-c10", "topic": "serial-interfaces", "front": "SPI — wires, speed, use?", "back": "**4 wires** (**MOSI, MISO, SCLK, SS**) + per-device select, synchronous, **fastest** (full-duplex, tens of MHz). Used for displays, SD cards, high-rate sensors." },
+    { "id": "iot-u2-emb-c11", "topic": "serial-interfaces", "front": "Polling vs interrupts?", "back": "**Polling** = CPU repeatedly checks in a loop (wastes cycles, can't sleep). **Interrupts** = hardware signals the CPU → pauses to run a short **ISR** → resumes. Interrupts save power (sleep until event) and react fast." },
+    { "id": "iot-u2-emb-c12", "topic": "serial-interfaces", "front": "ISR best practice?", "back": "Keep **ISRs short** — do the minimum (set a flag / read a register), defer heavy work to the main loop (long ISRs block other interrupts). Protect ISR↔main shared data (`volatile`)." },
+    { "id": "iot-u2-emb-c13", "topic": "serial-interfaces", "front": "Mnemonic for choosing a serial bus?", "back": "**I²C** = fewer wires, more devices (addressed). **SPI** = more wires, more speed (per-device select). **UART** = no clock, point-to-point (debug/modem)." }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "subject": "dbms",
+  "unit": 2,
+  "title": "Unit 2 — Textbook Exercises (Silberschatz Ch3–5, Elmasri/Navathe Ch6–7)",
+  "items": [
+    {
+      "id": "dbms-u2-tb-01",
+      "topic": "aggregate-functions",
+      "q": "**(Silberschatz, Practice Ex. 3.1d)** To 'find all instructors earning the highest salary (there may be several tied)', the robust approach is:",
+      "options": ["ORDER BY salary DESC LIMIT 1", "WHERE salary = (SELECT MAX(salary) FROM instructor)", "SELECT MAX(salary)", "GROUP BY salary"],
+      "answer": 1,
+      "explain": "Comparing each row to the scalar MAX returns every instructor tied for the top salary; ORDER BY ... LIMIT 1 would drop the ties.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-02",
+      "topic": "aggregate-functions",
+      "q": "**(Silberschatz, Practice Ex. 3.2)** Grade points for a section = credits × numeric-points-for-grade. Computing a student's GPA (total grade points ÷ total credits) across courses requires:",
+      "options": ["A single MAX", "Joining takes with grade_points and course, then SUM of (credits×points) divided by SUM of credits", "Only a WHERE clause", "A cross join"],
+      "answer": 1,
+      "explain": "GPA aggregates over the joined takes–course–grade_points rows: SUM(credits×points)/SUM(credits). The exercise also warns to handle NULL grades, which aggregates ignore.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-03",
+      "topic": "case-expressions",
+      "q": "**(Silberschatz, Practice Ex. 3.5)** To assign a letter grade from a numeric score (F if <40, C if <60, B if <80, else A), the natural SQL construct is:",
+      "options": ["A GROUP BY", "A CASE expression with ordered WHEN conditions", "A trigger", "A recursive CTE"],
+      "answer": 1,
+      "explain": "CASE WHEN score<40 THEN 'F' WHEN score<60 THEN 'C' ... ELSE 'A' END. Because the first matching WHEN wins, the bounds must be ordered ascending.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-04",
+      "topic": "additional-sql-operations",
+      "q": "**(Silberschatz, Practice Ex. 3.6)** Since LIKE is case-sensitive in most systems, how do you find departments whose name contains 'sci' regardless of case?",
+      "options": ["Use = instead of LIKE", "Apply lower() to the column: WHERE lower(dept_name) LIKE '%sci%'", "Use BETWEEN", "It is impossible"],
+      "answer": 1,
+      "explain": "Normalise case on both sides with lower() (or upper()) so the pattern match is case-insensitive: WHERE lower(dept_name) LIKE '%sci%'.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-05",
+      "topic": "set-operations",
+      "q": "**(Silberschatz, Practice Ex. 3.8a)** 'Find each customer who has an account but NOT a loan' is most directly expressed with:",
+      "options": ["INTERSECT", "Set difference: (customers with an account) EXCEPT (customers with a loan)", "UNION ALL", "A cross join"],
+      "answer": 1,
+      "explain": "'A but not B' is set difference — depositor IDs EXCEPT borrower IDs (or equivalently NOT IN / NOT EXISTS).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-06",
+      "topic": "null-values",
+      "q": "**(Silberschatz, Ex. 3.19)** Which are valid reasons a NULL value might be introduced into a database?",
+      "options": ["Only programming errors", "The value is unknown, or it is not applicable to that row", "To save storage space", "To speed up indexes"],
+      "answer": 1,
+      "explain": "NULL marks a value that is unknown (not yet known) or inapplicable (does not exist for that entity) — the two canonical reasons given in the text.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-07",
+      "topic": "nested-subqueries",
+      "q": "**(Silberschatz, Ex. 3.20)** The exercise asks you to show that, in SQL, `<> ALL` is identical to:",
+      "options": ["IN", "NOT IN", "= SOME", "EXISTS"],
+      "answer": 1,
+      "explain": "value <> ALL (set) is TRUE exactly when value differs from every element — i.e. it is not in the set — so <> ALL ≡ NOT IN. (Dually, = SOME ≡ IN.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-08",
+      "topic": "correlated-subqueries-exists",
+      "q": "**(Silberschatz, Ex. 3.21b)** 'Find each member who has borrowed EVERY book published by McGraw-Hill' is a division query, best written with:",
+      "options": ["A single IN subquery", "Double NOT EXISTS (no McGraw-Hill book that the member has not borrowed)", "UNION", "GROUP BY only"],
+      "answer": 1,
+      "explain": "'Borrowed every X' = 'there is no X the member did not borrow' — the double-NOT-EXISTS division pattern (or NOT EXISTS over EXCEPT).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-09",
+      "topic": "join-expressions",
+      "q": "**(Silberschatz, Ex. 3.21d)** To find the average books borrowed per member, counting members who borrowed nothing as 0, you must:",
+      "options": ["Use an inner join (ignores zero-borrowers)", "Use an outer join so members absent from 'borrowed' still count, or divide total borrows by total members", "Use INTERSECT", "Filter with HAVING"],
+      "answer": 1,
+      "explain": "An inner join silently drops members with no borrowings, biasing the average upward. An outer join (or total-borrows ÷ total-members) includes the zero-borrowers correctly.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-10",
+      "topic": "cte-recursive",
+      "q": "**(Silberschatz, Ex. 3.23)** A query uses `WITH dept_total AS (...), dept_total_avg AS (...)`. The exercise asks to rewrite it WITHOUT the with construct, by:",
+      "options": ["Using triggers", "Replacing each CTE with an equivalent subquery in the FROM clause", "Using a view only", "Using GROUP BY"],
+      "answer": 1,
+      "explain": "A non-recursive CTE is syntactic sugar for a derived table; each WITH block can be inlined as a subquery in FROM (with an alias).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-11",
+      "topic": "aggregate-functions",
+      "q": "**(Silberschatz, Ex. 3.30)** `SELECT avg(salary) - (sum(salary)/count(*)) FROM instructor` is not always 0. Why?",
+      "options": ["avg is buggy", "When some salary is NULL: avg and sum ignore the nulls, but count(*) counts those rows too", "Integer overflow", "count(*) ignores nulls"],
+      "answer": 1,
+      "explain": "avg(salary) and sum(salary) skip NULL salaries, but count(*) counts all rows including the null ones — so sum/count(*) divides by a larger denominator and differs from avg.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-12",
+      "topic": "join-expressions",
+      "q": "**(Silberschatz, Practice Ex. 4.1)** `instructor NATURAL JOIN teaches NATURAL JOIN section NATURAL JOIN course` returns too few rows. What is wrong?",
+      "options": ["Natural join is invalid syntax", "instructor and course both have dept_name, so the natural join wrongly also equates dept_name, dropping valid rows", "It needs ORDER BY", "teaches has no key"],
+      "answer": 1,
+      "explain": "Natural join equates ALL same-named columns. Since both instructor and course carry dept_name, it adds an unintended equality and removes rows where they differ. Use JOIN ... USING to control the columns.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-13",
+      "topic": "join-expressions",
+      "q": "**(Silberschatz, Ex. 4.16)** 'Find each student who has NEVER taken a course', using no subqueries or set operations, is done with:",
+      "options": ["An inner join", "A LEFT OUTER JOIN of student to takes, keeping rows where the takes columns are NULL", "A cross join", "GROUP BY"],
+      "answer": 1,
+      "explain": "student LEFT OUTER JOIN takes ... WHERE takes.ID IS NULL — the unmatched (NULL-padded) rows are exactly the students with no enrolment. This is the anti-join idiom.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-14",
+      "topic": "join-expressions",
+      "q": "**(Silberschatz, Practice Ex. 4.3)** The exercise shows outer joins can be computed without the outer-join operator. A LEFT OUTER JOIN equals:",
+      "options": ["An inner join", "The inner join UNION the unmatched left rows padded with NULLs", "A cross join", "An INTERSECT"],
+      "answer": 1,
+      "explain": "A left outer join = (inner join result) ∪ (left rows with no match, extended with nulls). This decomposition is what the exercise asks you to write explicitly.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-15",
+      "topic": "users-roles-privileges",
+      "q": "**(Silberschatz, Practice Ex. 4.11)** Why do database systems offer many kinds of authorization, when operating systems usually offer only read and write on files?",
+      "options": ["For marketing", "Because a DBMS must control access at the granularity of operations (select/insert/update/delete) on specific tables, columns, and views", "Because files are larger", "They do not — DBs also offer only two"],
+      "answer": 1,
+      "explain": "A database needs finer control than a file system: distinct privileges per operation and per object (table/column/view), plus the ability to grant on derived data.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-16",
+      "topic": "views",
+      "q": "**(Silberschatz, Practice Ex. 4.13)** If a user is granted only SELECT on a view v (defined over relation r), do they need SELECT on r as well?",
+      "options": ["Yes, always", "No — authorization on the view is sufficient; they need not have access to the base relation r", "Only if r has a primary key", "They need DELETE on r"],
+      "answer": 1,
+      "explain": "A view can grant access to derived data without exposing the base table — a core security use of views. The user queries v without any privilege on r.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-17",
+      "topic": "users-roles-privileges",
+      "q": "**(Silberschatz, Ex. 4.26)** What is the difference between integrity constraints and authorization constraints?",
+      "options": ["They are the same", "Integrity constraints restrict the data values allowed; authorization constraints restrict which users may perform which operations", "Both restrict users", "Both restrict values"],
+      "answer": 1,
+      "explain": "Integrity constraints (keys, checks, referential rules) govern valid data states; authorization constraints (grants/roles) govern who is permitted to access or modify data.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-18",
+      "topic": "functions-procedures",
+      "q": "**(Silberschatz §5.2)** In `create procedure dept_count_proc(in dept_name varchar(20), out d_count integer)`, the in and out keywords indicate:",
+      "options": ["Input file and output file", "in = a parameter given a value by the caller; out = a parameter whose value is set in the procedure to return a result", "Both are return values", "Both are inputs"],
+      "answer": 1,
+      "explain": "IN parameters are supplied by the caller; OUT parameters are assigned inside the procedure and returned. The procedure is invoked with the call statement.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-19",
+      "topic": "triggers",
+      "q": "**(Silberschatz §5.3, Fig. 5.10)** In trigger `credits_earned AFTER UPDATE OF grade ON takes ... referencing new row as nrow`, what does `for each row` ensure?",
+      "options": ["The trigger runs once per SQL statement", "The trigger body executes once for each row affected by the update", "Only the first row is processed", "Nothing"],
+      "answer": 1,
+      "explain": "FOR EACH ROW makes it a row-level trigger: an UPDATE touching many rows fires the body for each one, using nrow/orow (transition variables) for the new/old values.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-20",
+      "topic": "grouping-having",
+      "q": "**(Elmasri/Navathe, Review 7.2)** What is the conceptual order in which the clauses of an SQL retrieval query are executed?",
+      "options": ["SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY", "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY", "WHERE, GROUP BY, FROM, SELECT, ORDER BY, HAVING", "FROM, SELECT, WHERE, HAVING, GROUP BY, ORDER BY"],
+      "answer": 1,
+      "explain": "Conceptually: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY. This ordering explains NULL/aggregate behaviour and alias visibility.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-21",
+      "topic": "null-values",
+      "q": "**(Elmasri/Navathe, Review 7.3)** How are NULLs treated by aggregate functions and in grouping?",
+      "options": ["Aggregates count NULLs; grouping ignores them", "Aggregates (except COUNT(*)) ignore NULLs; in grouping, all NULLs form a single group", "NULLs cause aggregates to return NULL always", "NULLs are treated as zero"],
+      "answer": 1,
+      "explain": "Aggregates skip NULLs (COUNT(*) excepted). For GROUP BY, the rows with NULL in the grouping attribute are gathered into one group (NULLs treated as equal).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-22",
+      "topic": "triggers",
+      "q": "**(Elmasri/Navathe, Review 7.4e)** How does an assertion differ from a trigger?",
+      "options": ["They are identical", "An assertion is a passive constraint that must always remain true; a trigger is an active rule that performs an action when an event occurs", "An assertion runs code; a trigger checks a condition", "Triggers cannot modify data"],
+      "answer": 1,
+      "explain": "An assertion declaratively forbids any database state violating a condition; a trigger is procedural (event-condition-action), firing an action on inserts/updates/deletes.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-23",
+      "topic": "grouping-having",
+      "q": "**(Elmasri/Navathe, Ex. 7.5a)** 'For each department whose AVERAGE salary exceeds $30,000, retrieve the department name and number of employees' requires:",
+      "options": ["WHERE avg(salary) > 30000", "GROUP BY Dno with HAVING AVG(Salary) > 30000, selecting COUNT(*)", "A trigger", "ORDER BY salary"],
+      "answer": 1,
+      "explain": "Group employees by department, filter groups with HAVING AVG(Salary) > 30000 (an aggregate condition belongs in HAVING, not WHERE), and report COUNT(*) per surviving group.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-24",
+      "topic": "correlated-subqueries-exists",
+      "q": "**(Elmasri/Navathe, Ex. 7.6a)** 'Retrieve names of straight-A students (grade A in ALL their courses)' is a division query. Contrast it with Ex. 7.6b 'students who do NOT have an A in ANY course':",
+      "options": ["Both use a single IN", "7.6a needs double NOT EXISTS (no course without an A); 7.6b needs a single NOT EXISTS (no course with an A)", "Both need GROUP BY", "7.6a is simpler than 7.6b"],
+      "answer": 1,
+      "explain": "'A in ALL courses' is universal quantification → double NOT EXISTS. 'Not an A in ANY course' is a single negated existential → one NOT EXISTS. 'All' ⇒ two negations; 'any' ⇒ one.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-25",
+      "topic": "nested-subqueries",
+      "q": "**(Elmasri/Navathe, Ex. 7.7a)** 'Retrieve names of employees who work in the department that has the employee with the highest salary in the whole company' is naturally written with:",
+      "options": ["A single join", "Nested subqueries — find the max-salary employee's Dno via a subquery, then select employees of that department", "A trigger", "A cross join"],
+      "answer": 1,
+      "explain": "Use nesting: an inner subquery locates the department of the company-wide highest earner (e.g. Dno of the employee whose Salary = MAX), and the outer query lists that department's employees.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u2-tb-26",
+      "topic": "views",
+      "q": "**(Elmasri/Navathe, Ex. 7.9)** On `DEPT_SUMMARY(D, C, Total_s, Average_s)` defined with GROUP BY Dno and aggregates COUNT/SUM/AVG, which operations are allowed?",
+      "options": ["All queries and updates", "SELECT queries on the view are allowed, but UPDATE/DELETE are not (it is a non-updatable, aggregated view)", "Only updates", "Nothing"],
+      "answer": 1,
+      "explain": "Because the view uses GROUP BY and aggregate functions, each view row summarises many base rows and cannot be mapped back to one — so it is read-only: queries work, modifications are rejected.",
+      "difficulty": "hard",
+      "source": "textbook"
+    }
+  ]
+}

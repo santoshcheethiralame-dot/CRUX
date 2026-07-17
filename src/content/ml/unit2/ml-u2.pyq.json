@@ -1,0 +1,133 @@
+{
+  "subject": "ml",
+  "unit": 2,
+  "title": "Unit 2 — Past-Year Questions",
+  "items": [
+    {
+      "id": "ml-u2-pyq-01",
+      "topic": "perceptron",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain the components of a perceptron. Can the boolean function Y (00→0, 11→0, 10→1, 01→0) be represented by a single logistic threshold unit? If yes, give the weights.",
+      "answer": "**Components:** inputs $x_1\\dots x_n$ each with a weight $w_i$; a **bias** $w_0$ (with $x_0=1$); a summation $\\sum w_ix_i$; and a **threshold/activation** that fires if the weighted sum $\\ge 0$.\n\nThe function is $Y = A \\wedge \\neg B$ (only $(1,0)\\to1$). It **is linearly separable**, so a single unit works. Need $w_0+w_1A+w_2B$: $(0,0)<0$, $(1,0)\\ge0$, $(0,1)<0$, $(1,1)<0$.\n**Solution:** $w_0=-0.5,\\ w_1=1,\\ w_2=-1$ → $(0,0){=}{-}0.5$, $(1,0){=}0.5$, $(0,1){=}{-}1.5$, $(1,1){=}{-}0.5$ ✓."
+    },
+    {
+      "id": "ml-u2-pyq-02",
+      "topic": "perceptron",
+      "year": "ESA 2023",
+      "marks": 8,
+      "difficulty": "easy",
+      "q": "Apply the perceptron model for the AND logic gate.",
+      "answer": "AND truth table: only $(1,1)\\to1$. Choose weights so $w_0+w_1x_1+w_2x_2\\ge0$ **only** for $(1,1)$. **Solution:** $w_0=-1.5,\\ w_1=1,\\ w_2=1$:\n- $(0,0): -1.5 <0 → 0$ ✓\n- $(0,1): -0.5 <0 → 0$ ✓\n- $(1,0): -0.5 <0 → 0$ ✓\n- $(1,1): 0.5 \\ge0 → 1$ ✓\nThe decision boundary is $x_1+x_2=1.5$. (AND is linearly separable, so a single perceptron suffices.)"
+    },
+    {
+      "id": "ml-u2-pyq-03",
+      "topic": "backpropagation",
+      "year": "ESA 2022",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "Outline the backpropagation algorithm used to compute the weights for a general neural network.",
+      "answer": "**1. Forward pass:** propagate inputs through the net; at each unit compute net $=\\sum w_{ji}x_{ji}$ then output $o=\\sigma(\\text{net})$. **2. Compute error** at the output: $E=\\tfrac12\\sum_k(t_k-o_k)^2$. **3. Backward pass — error terms δ:**\n- Output unit: $\\delta_j=(t_j-o_j)\\,o_j(1-o_j)$\n- Hidden unit: $\\delta_j=o_j(1-o_j)\\sum_{k\\in Downstream(j)}\\delta_k w_{kj}$\n\n**4. Update weights** (gradient descent, optionally with momentum $\\alpha$): $\\Delta w_{ji}=\\eta\\,\\delta_j\\,x_{ji}$. Repeat over all training examples until convergence. Modifications flow **backward** from output to first hidden layer (hence 'backpropagation')."
+    },
+    {
+      "id": "ml-u2-pyq-04",
+      "topic": "backpropagation",
+      "year": "ESA 2024",
+      "marks": 10,
+      "difficulty": "hard",
+      "q": "For a 2-input network with hidden + output sigmoid units, weights given and learning rate η=0.1, execute one iteration of backpropagation (method).",
+      "answer": "**Procedure (apply the given weights/inputs):** \n1. **Forward:** hidden net $a_h=\\sum w\\cdot I$, $h=\\sigma(a_h)$; output net $a_o=\\sum w\\cdot h$, $o=\\sigma(a_o)$.\n2. **Output δ:** $\\delta_o=(T-o)\\,o(1-o)$.\n3. **Hidden δ:** $\\delta_h=h(1-h)\\,(\\delta_o\\,w_{oh})$ for each hidden unit.\n4. **Update** every weight: $w \\leftarrow w + \\eta\\,\\delta\\,(\\text{input to that weight})$.\nKey formulas: $\\sigma(x)=\\frac1{1+e^{-x}}$, $\\sigma'=o(1-o)$. Substitute the given $W_1\\dots W_6$, $I_1, I_2$, $T$, $\\eta=0.1$ into these to get the updated weights."
+    },
+    {
+      "id": "ml-u2-pyq-05",
+      "topic": "optimizers",
+      "year": "ESA 2024",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Explain Stochastic Gradient Descent. How is it different from (batch) Gradient Descent?",
+      "answer": "**Batch GD** computes the gradient over the **entire** training set before each weight update — stable but slow and memory-heavy. **Stochastic GD (SGD)** updates the weights after **each single example**: $w \\leftarrow w - \\eta\\nabla J_i(w)$.\n\n| | Batch GD | SGD |\n|---|---|---|\n| Update after | all examples | each example |\n| Gradient | exact, smooth | noisy estimate |\n| Speed/memory | slow, needs all data | fast, online |\n| Local minima | can get stuck | noise helps escape |\n\n**Mini-batch GD** (update per small batch) is the practical middle ground."
+    },
+    {
+      "id": "ml-u2-pyq-06",
+      "topic": "svm-margin-primal",
+      "year": "ESA 2023",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "Explain the SVM algorithm for linear classification: hyperplanes, maximum margin, and support vectors.",
+      "answer": "SVM finds the **separating hyperplane** $W^Tx+b=0$ that **maximises the margin** — the gap between the two classes. Two parallel **support planes** $W^Tx+b=+1$ and $=-1$ bound the margin; its width is $\\frac{2}{\\|W\\|}$.\n\n**Optimisation (primal):** $\\min_{W,b}\\tfrac12\\|W\\|^2$ subject to $y_i(W^Tx_i+b)\\ge1\\ \\forall i$.\n\n**Support vectors** are the training points lying exactly on the support planes (the closest points); they alone define the hyperplane (they have non-zero Lagrange multipliers $\\alpha_i$). A wider margin ⇒ better generalisation. *(Plot: two classes separated by the boundary, with parallel dashed margin lines through the support vectors.)*"
+    },
+    {
+      "id": "ml-u2-pyq-07",
+      "topic": "svm-dual-support-vectors",
+      "year": "ESA 2023",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "Write the primal and dual forms of SVM with constraints, and describe the KKT conditions.",
+      "answer": "**Primal:** $\\min_{W,b}\\tfrac12\\|W\\|^2$ s.t. $y_i(W^Tx_i+b)\\ge1$.\n\n**Dual** (maximise over $\\alpha$): $\\max_\\alpha \\sum_i\\alpha_i - \\tfrac12\\sum_i\\sum_j\\alpha_i\\alpha_j y_iy_j(x_i\\cdot x_j)$ s.t. $\\alpha_i\\ge0$, $\\sum_i\\alpha_iy_i=0$. Then $W=\\sum_i\\alpha_iy_ix_i$.\n\n**KKT conditions:**\n- **Stationarity:** $\\nabla L=0$ ⇒ $W=\\sum\\alpha_iy_ix_i$, $\\sum\\alpha_iy_i=0$.\n- **Primal feasibility:** $y_i(W^Tx_i+b)\\ge1$.\n- **Dual feasibility:** $\\alpha_i\\ge0$.\n- **Complementary slackness:** $\\alpha_i[y_i(W^Tx_i+b)-1]=0$ → only **support vectors** (on the margin) have $\\alpha_i>0$."
+    },
+    {
+      "id": "ml-u2-pyq-08",
+      "topic": "kernels-soft-margin",
+      "year": "ESA 2024",
+      "marks": 15,
+      "difficulty": "hard",
+      "q": "8 vectors: (1,1),(−1,1),(−1,−1),(1,−1) class 1; (2,2),(−2,2),(−2,−2),(2,−2) class 2. (i) Is it linearly separable? (ii) Suggest a kernel to make it separable. (iii) Identify the support vectors and the separating surface.",
+      "answer": "**(i)** No — class 1 is an **inner square** (distance $\\sqrt2$ from origin) and class 2 an **outer square** (distance $2\\sqrt2$). Concentric ⇒ **not linearly separable** by a straight line.\n\n**(ii)** Map to a feature based on **radius**: e.g. RBF kernel, or the explicit map $\\phi(x)=x_1^2+x_2^2$. Then class 1 → value 2, class 2 → value 8 — linearly separable in this feature.\n\n**(iii)** The separating surface is a **circle** $x_1^2+x_2^2 = r^2$ with $2 < r^2 < 8$ (e.g. $x_1^2+x_2^2=5$). All 8 points are equidistant within their class, so **all are support vectors**."
+    },
+    {
+      "id": "ml-u2-pyq-09",
+      "topic": "kernels-soft-margin",
+      "year": "ESA 2024",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Explain the kernel trick.",
+      "answer": "Many datasets aren't linearly separable in their original space but become separable in a **higher-dimensional** feature space $\\phi(x)$. Computing $\\phi$ explicitly is expensive. The **kernel trick** exploits that the SVM dual uses data **only as dot products**: replace $\\phi(x_i)\\cdot\\phi(x_j)$ with a **kernel** $K(x_i,x_j)$ that returns this inner product **without ever computing $\\phi$**. Examples: linear $x\\cdot x'$, polynomial $(x\\cdot x'+c)^d$, RBF $e^{-\\gamma\\|x-x'\\|^2}$. Cost drops from $O(\\text{high-dim})$ to $O(\\text{input-dim})$."
+    },
+    {
+      "id": "ml-u2-pyq-10",
+      "topic": "svm-margin-primal",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Why is SVM called a large-margin classifier, and what loss function does it use?",
+      "answer": "SVM doesn't just separate the classes — it picks the boundary that **maximises the margin** ($\\frac{2}{\\|W\\|}$) to the nearest points, which minimises generalisation error (structural risk minimisation). Hence 'large-margin classifier'. **Loss:** the **hinge loss** $L = \\max(0,\\ 1 - y_i(W^Tx_i+b))$ — zero when a point is correctly classified beyond the margin, growing linearly as it violates the margin. Soft-margin SVM minimises $\\tfrac12\\|W\\|^2 + C\\sum_i\\max(0,1-y_i(W^Tx_i+b))$."
+    },
+    {
+      "id": "ml-u2-pyq-11",
+      "topic": "kernels-soft-margin",
+      "year": "ESA 2024",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "State Cover's theorem and explain one application in SVM.",
+      "answer": "**Cover's theorem:** a complex pattern-classification problem that is **not** linearly separable in the input space becomes, with high probability, **linearly separable** when **cast nonlinearly into a sufficiently high-dimensional** feature space (provided the space is not densely populated).\n\n**Application in SVM:** this is the theoretical justification for the **kernel trick** — by mapping inputs $\\phi(x)$ into a higher-dimensional space (via a polynomial/RBF kernel), originally non-separable data (e.g. XOR, concentric classes) becomes linearly separable, so a linear SVM can find a max-margin hyperplane there."
+    },
+    {
+      "id": "ml-u2-pyq-12",
+      "topic": "boosting",
+      "year": "ESA 2023",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "Explain how a set of weak learners serves as a strong learner. In an AdaBoost setup with binary decision stumps, what determines a learner's weight α?",
+      "answer": "**Boosting** trains weak learners (e.g. decision stumps, accuracy just above 50%) **sequentially**: each new learner focuses on the examples the previous ones **misclassified** (by re-weighting them up). Their **weighted vote** combines into a strong classifier. Because errors are progressively corrected, the ensemble's bias drops while staying low-variance.\n\n**Learner weight in AdaBoost:** $\\alpha_t = \\tfrac12\\ln\\!\\frac{1-\\varepsilon_t}{\\varepsilon_t}$, where $\\varepsilon_t$ is the weighted error of learner $t$. Lower error → higher $\\alpha$ (more voting power). Misclassified points are then re-weighted up so the next stump attends to them. *(For a given ratio like $\\alpha_1/\\alpha_2$, compute each $\\varepsilon$ from the stump's weighted errors and substitute.)*"
+    },
+    {
+      "id": "ml-u2-pyq-13",
+      "topic": "random-forest",
+      "year": "ESA 2023",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "In a Random Forest, is the time to build 100 trees and 1000 trees the same? Does n_estimators significantly affect performance?",
+      "answer": "**No** — build time scales roughly **linearly** with the number of trees, so 1000 trees take ~10× longer than 100 (though trees train **independently** and can be parallelised). **n_estimators (number of trees):** more trees **reduce variance** and improve/stabilise accuracy, but with **diminishing returns** — performance plateaus after ~50–100 trees for many problems. Beyond that you pay compute for little gain (and Random Forests don't overfit by adding trees, they just stop improving)."
+    },
+    {
+      "id": "ml-u2-pyq-14",
+      "topic": "optimizers",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "easy",
+      "q": "Write the gradient descent algorithm.",
+      "answer": "Goal: minimise a cost $J(w)$. \n```\n1. Initialise weights w randomly.\n2. Repeat until convergence:\n     compute gradient ∇J(w)\n     w ← w − η · ∇J(w)        (η = learning rate)\n3. Return w.\n```\nThe gradient points in the direction of steepest **increase**, so we step in the **negative** gradient direction. $\\eta$ too small → slow; too large → overshoot/diverge. Variants: batch, stochastic (per example), mini-batch."
+    }
+  ]
+}

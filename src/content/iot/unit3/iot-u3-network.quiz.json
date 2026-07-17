@@ -1,0 +1,182 @@
+{
+  "subject": "iot",
+  "unit": 3,
+  "title": "Unit 3 — Matter/Thread, Crypto & Obfuscation MCQs",
+  "items": [
+    {
+      "id": "iot-u3-net-001",
+      "topic": "matter-thread",
+      "q": "What is Thread, and how does it differ from Zigbee?",
+      "options": [
+        "Thread is a wired protocol; Zigbee is wireless",
+        "Thread is a low-power IPv6 mesh on 802.15.4 — devices are natively IP-addressable (no translating hub), unlike Zigbee",
+        "Thread has no mesh capability",
+        "They are identical"
+      ],
+      "answer": 1,
+      "explain": "Thread uses the same 802.15.4 radio as Zigbee but makes every device natively IPv6-addressable (via 6LoWPAN), so no protocol-translating gateway is needed — it reaches the LAN via a Thread Border Router.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-002",
+      "topic": "matter-thread",
+      "q": "Matter is best described as:",
+      "options": [
+        "A new radio frequency band",
+        "An application-layer interoperability standard (over IP) letting devices work across Apple/Google/Amazon/Samsung ecosystems",
+        "A replacement for electricity",
+        "A type of battery"
+      ],
+      "answer": 1,
+      "explain": "Matter is an application-layer standard defining a common device model so smart-home devices interoperate across ecosystems. It runs over IP — on Thread, Wi-Fi, or Ethernet.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-003",
+      "topic": "matter-thread",
+      "q": "How do Matter and Thread relate?",
+      "options": [
+        "They are competitors solving the same problem",
+        "Complementary layers: Matter is the application 'language'; Thread (or Wi-Fi/Ethernet) is a transport that carries it",
+        "Matter is the radio; Thread is the app layer",
+        "Neither uses IP"
+      ],
+      "answer": 1,
+      "explain": "They are complementary: Thread is networking (low-power IPv6 mesh); Matter is the application-layer standard (common device model). A Matter device can run over Thread OR Wi-Fi/Ethernet. 'Matter = language, Thread = road.'",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-004",
+      "topic": "matter-thread",
+      "q": "A Thread network connects to the wider home LAN/internet through a:",
+      "options": ["Coordinator only", "Thread Border Router", "MQTT broker", "SCADA RTU"],
+      "answer": 1,
+      "explain": "A Thread Border Router (often built into smart speakers/hubs) bridges the low-power Thread mesh to the home LAN/internet. Because Thread devices are natively IP, it's a bridge, not a translating gatekeeper.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-005",
+      "topic": "lightweight-crypto",
+      "q": "Why do constrained IoT devices need lightweight cryptography instead of standard AES?",
+      "options": [
+        "AES is insecure",
+        "Standard crypto can cost too much memory, compute, and especially energy on tiny MCUs — draining batteries",
+        "Lightweight crypto is weaker but faster to break",
+        "IoT devices cannot do any encryption"
+      ],
+      "answer": 1,
+      "explain": "On constrained devices every CPU cycle is battery. Heavy algorithms have large footprints and high energy per operation, so lightweight crypto provides strong security at far lower resource/energy cost.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-006",
+      "topic": "lightweight-crypto",
+      "q": "ASCON is:",
+      "options": [
+        "A wireless protocol",
+        "The algorithm NIST selected (2023) as the lightweight cryptography standard, providing authenticated encryption (AEAD) + hashing",
+        "A heavier replacement for AES on servers",
+        "A type of microcontroller"
+      ],
+      "answer": 1,
+      "explain": "ASCON was chosen by NIST in 2023 as the lightweight crypto standard for constrained devices, offering AEAD (authenticated encryption) and hashing in a compact, efficient design.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-007",
+      "topic": "lightweight-crypto",
+      "q": "How does ASCON differ from AES for IoT?",
+      "options": [
+        "ASCON is cryptographically weaker",
+        "ASCON has a smaller footprint and lower energy cost on tiny MCUs (same security strength, better fit) and is AEAD by design",
+        "ASCON only works on servers",
+        "There is no difference"
+      ],
+      "answer": 1,
+      "explain": "ASCON is 'lightweight' in resource cost, not security strength — smaller gates/RAM/code and lower energy on constrained MCUs, with built-in authenticated encryption. AES remains excellent on powerful (often hardware-accelerated) devices.",
+      "difficulty": "hard",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-008",
+      "topic": "lightweight-crypto",
+      "q": "What does 'lightweight' mean in lightweight cryptography?",
+      "options": [
+        "Weaker security that is easier to break",
+        "Light in resource cost (memory, compute, energy) — NOT light in security strength",
+        "Only used for non-sensitive data",
+        "No encryption at all"
+      ],
+      "answer": 1,
+      "explain": "Lightweight = resource-light, not security-light. ASCON was selected through a rigorous multi-year NIST process for both security and efficiency. (Don't confuse it with rolling your own weak cipher.)",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-009",
+      "topic": "network-obfuscation",
+      "q": "Placing IoT devices behind a gateway/NAT improves security mainly by:",
+      "options": [
+        "Encrypting all data automatically",
+        "Making devices unreachable from the internet (no public ports), so internet-wide scanners like Shodan can't find them",
+        "Increasing the data rate",
+        "Removing the need for passwords"
+      ],
+      "answer": 1,
+      "explain": "Behind NAT, devices have private, non-routable IPs and initiate only outbound connections, so internet scanners can't directly reach them — 'you can't attack what you can't see.' The gateway is a shield as well as a translator.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-010",
+      "topic": "network-obfuscation",
+      "q": "Using non-standard ports to hide a service is an example of:",
+      "options": [
+        "Strong cryptography",
+        "Security through obscurity — a thin layer that stops automated default-port scans but NOT a determined attacker",
+        "Zero Trust",
+        "A replacement for authentication"
+      ],
+      "answer": 1,
+      "explain": "Non-standard ports are security through obscurity: useful against opportunistic/automated scanning, but a determined attacker scans all ports. It is never a substitute for authentication and encryption.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-011",
+      "topic": "network-obfuscation",
+      "q": "What is the correct role of network obfuscation in a security strategy?",
+      "options": [
+        "It is the primary and only defense needed",
+        "It is one outer layer in defense-in-depth — it lowers attack noise but must be backed by authentication and encryption",
+        "It replaces the need for firewalls",
+        "It encrypts firmware"
+      ],
+      "answer": 1,
+      "explain": "Obfuscation raises attack cost and reduces opportunistic noise but is the 'outer fence, not the vault door.' Real security still requires strong authentication, encryption, and (Unit 4) Zero Trust — relying on obscurity alone is the classic mistake.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-net-012",
+      "topic": "network-obfuscation",
+      "q": "Putting IoT devices on a separate VLAN/subnet from laptops and servers primarily provides:",
+      "options": [
+        "Higher data rates",
+        "Segmentation — containing a compromised device so it can't pivot to other systems",
+        "Longer battery life",
+        "Stronger encryption"
+      ],
+      "answer": 1,
+      "explain": "Network segmentation limits the blast radius: if a weak IoT device (e.g., a bulb) is compromised, it can't reach sensitive systems — mitigating the 'one weak device endangers all' problem.",
+      "difficulty": "medium",
+      "source": "original"
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "subject": "ml",
+  "unit": 3,
+  "title": "Unit 3 — MCQ Quiz",
+  "items": [
+    {
+      "id": "ml-u3-001",
+      "topic": "bayesian-foundations",
+      "q": "Two events are **independent** when:",
+      "options": ["$P(A\\cap B) = 0$", "$P(B\\mid A) = P(B)$", "$P(A\\cup B) = 1$", "$P(A\\mid B) = 0$"],
+      "answer": 1,
+      "explain": "Independence means $A$ doesn't change $B$'s probability: $P(B\\mid A)=P(B)$, equivalently $P(A\\cap B)=P(A)P(B)$. ($P(A\\cap B)=0$ is *mutually exclusive*.)",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-002",
+      "topic": "bayesian-foundations",
+      "q": "The Total Probability Theorem expresses $P(B)$ as:",
+      "options": ["$\\prod_i P(B\\mid A_i)$", "$\\sum_i P(A_i)P(B\\mid A_i)$ over a partition $\\{A_i\\}$", "$P(B\\mid A)P(A)$", "$1 - P(\\neg B)$ only"],
+      "answer": 1,
+      "explain": "For a partition $A_1,\\dots,A_n$, $P(B)=\\sum_i P(A_i)P(B\\mid A_i)$ — this becomes the denominator (evidence) in Bayes' theorem.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-003",
+      "topic": "bayes-theorem",
+      "q": "In $P(h\\mid D) = \\frac{P(D\\mid h)P(h)}{P(D)}$, the term $P(D\\mid h)$ is the:",
+      "options": ["prior", "posterior", "likelihood", "evidence"],
+      "answer": 2,
+      "explain": "$P(D\\mid h)$ is the likelihood (how well $h$ explains the data). $P(h)$ = prior, $P(h\\mid D)$ = posterior, $P(D)$ = evidence.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-004",
+      "topic": "bayes-theorem",
+      "q": "An alarm is 99% reliable given a fire, fires occur 1% of days, and the alarm rings 5% of the time overall. P(fire | alarm) ≈",
+      "options": ["0.99", "0.50", "0.20", "0.01"],
+      "answer": 2,
+      "explain": "$P(\\text{fire}\\mid\\text{alarm}) = \\frac{0.99\\times0.01}{0.05} \\approx 0.20$ — a low prior keeps the posterior low despite the reliable alarm.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-005",
+      "topic": "map-ml",
+      "q": "The MAP and ML hypotheses coincide exactly when:",
+      "options": ["the data is noise-free", "the prior $P(h)$ is uniform across all hypotheses", "there is only one hypothesis", "the likelihood is 0 or 1"],
+      "answer": 1,
+      "explain": "$h_{MAP}=\\arg\\max P(D\\mid h)P(h)$; with a uniform prior the $P(h)$ factor is constant and drops, leaving $h_{ML}=\\arg\\max P(D\\mid h)$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-006",
+      "topic": "map-ml",
+      "q": "Under noise-free data, a uniform prior, and target-in-H, the posterior of a hypothesis consistent with D is:",
+      "options": ["$1/|H|$", "$1/|VS_{H,D}|$ (one over the version-space size)", "0", "1"],
+      "answer": 1,
+      "explain": "Brute-force MAP gives $P(h\\mid D)=1/|VS_{H,D}|$ for consistent $h$ (and 0 otherwise) — a Bayesian justification of the version space.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-007",
+      "topic": "naive-bayes",
+      "q": "The 'naïve' assumption in Naïve Bayes is that features are:",
+      "options": ["normally distributed", "conditionally independent given the class", "mutually exclusive", "equally weighted"],
+      "answer": 1,
+      "explain": "It assumes $P(a_1,\\dots,a_n\\mid v_j)=\\prod_i P(a_i\\mid v_j)$ — conditional independence given the class.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-008",
+      "topic": "naive-bayes",
+      "q": "The Naïve Bayes classification rule is:",
+      "options": ["$\\arg\\max_{v_j} P(v_j)$", "$\\arg\\max_{v_j} \\prod_i P(a_i\\mid v_j)$", "$\\arg\\max_{v_j} P(v_j)\\prod_i P(a_i\\mid v_j)$", "$\\arg\\min_{v_j} P(v_j)\\prod_i P(a_i\\mid v_j)$"],
+      "answer": 2,
+      "explain": "$v_{NB}=\\arg\\max_{v_j} P(v_j)\\prod_i P(a_i\\mid v_j)$ — prior times product of per-feature likelihoods.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-009",
+      "topic": "naive-bayes",
+      "q": "Which is NOT a standard type of Naïve Bayes?",
+      "options": ["Gaussian", "Multinomial", "Bernoulli", "Linear"],
+      "answer": 3,
+      "explain": "Gaussian (continuous), Multinomial (counts), Bernoulli (binary) are the three types. 'Linear Naïve Bayes' is not one.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-010",
+      "topic": "naive-bayes-practice",
+      "q": "The zero-frequency problem in Naïve Bayes is fixed by:",
+      "options": ["dropping the feature", "Laplace (add-1) / m-estimate smoothing", "using a larger learning rate", "normalizing the inputs"],
+      "answer": 1,
+      "explain": "A zero count makes the whole product zero; Laplace smoothing $\\frac{c+1}{n+k}$ keeps every probability non-zero.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-011",
+      "topic": "naive-bayes-practice",
+      "q": "To avoid numerical underflow when multiplying many small probabilities, Naïve Bayes is computed in:",
+      "options": ["integer arithmetic", "log space (sum of log-probabilities)", "reverse order", "the frequency domain"],
+      "answer": 1,
+      "explain": "Take logs: $\\arg\\max[\\log P(v_j)+\\sum_i\\log P(a_i\\mid v_j)]$ — products become sums, avoiding underflow.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-012",
+      "topic": "bayes-optimal-gibbs",
+      "q": "The Bayes Optimal Classifier predicts the class maximizing:",
+      "options": ["$P(v_j)$", "$\\sum_{h_i} P(v_j\\mid h_i)P(h_i\\mid D)$", "$\\max_{h_i} P(h_i\\mid D)$", "$\\prod_i P(a_i\\mid v_j)$"],
+      "answer": 1,
+      "explain": "It averages each class's probability over all hypotheses weighted by their posteriors — giving the lowest possible expected error.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-013",
+      "topic": "bayes-optimal-gibbs",
+      "q": "The Gibbs algorithm classifies by:",
+      "options": ["averaging over all hypotheses", "picking the MAP hypothesis", "choosing one hypothesis at random according to the posterior P(h|D)", "majority vote of equal-weight hypotheses"],
+      "answer": 2,
+      "explain": "Gibbs samples a single hypothesis from the posterior and uses it; its expected error is at most 2× the Bayes-optimal error.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-014",
+      "topic": "bayes-optimal-gibbs",
+      "q": "Mitchell's bound on the Gibbs algorithm states its expected error is at most:",
+      "options": ["equal to Bayes optimal", "twice the Bayes-optimal error", "half the Bayes-optimal error", "unbounded"],
+      "answer": 1,
+      "explain": "$E[\\text{error}_{Gibbs}] \\le 2\\,E[\\text{error}_{Bayes\\ optimal}]$ — a single posterior-sampled hypothesis is at most 2× worse.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-015",
+      "topic": "ml-least-squares",
+      "q": "Minimizing the sum of squared errors yields the maximum-likelihood hypothesis **under the assumption that**:",
+      "options": ["the data is binary", "the noise is independent zero-mean Gaussian", "all hypotheses are equally likely", "the features are independent"],
+      "answer": 1,
+      "explain": "With $d_i=h(x_i)+e_i,\\ e_i\\sim N(0,\\sigma^2)$, maximizing the log-likelihood reduces to minimizing $\\sum(d_i-h(x_i))^2$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-016",
+      "topic": "em",
+      "q": "The EM algorithm is used when the data contains:",
+      "options": ["only continuous features", "latent (hidden / missing) variables", "no noise", "linearly separable classes"],
+      "answer": 1,
+      "explain": "EM handles latent variables by alternating an E-step (expected hidden values) and an M-step (re-estimate parameters).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-017",
+      "topic": "em",
+      "q": "In EM, the **E-step** computes:",
+      "options": ["the updated model parameters", "the expected values / posterior responsibilities of the hidden variables", "the gradient of the loss", "the prior probabilities"],
+      "answer": 1,
+      "explain": "E-step: given current parameters, estimate the hidden variables (soft assignments). M-step then maximizes likelihood given those.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-018",
+      "topic": "gmm",
+      "q": "Compared to K-Means, a Gaussian Mixture Model performs:",
+      "options": ["hard clustering with spherical clusters", "soft clustering with elliptical clusters", "no clustering", "hierarchical clustering"],
+      "answer": 1,
+      "explain": "GMM assigns each point a probability of membership in each cluster (soft) and clusters can be any ellipse via the covariance $\\Sigma$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-019",
+      "topic": "gmm",
+      "q": "In EM for a GMM, the responsibility $\\tau_j(x_i)$ computed in the E-step is:",
+      "options": ["the cluster mean", "the posterior probability that point $x_i$ was generated by Gaussian $j$", "the mixing weight $\\pi_j$", "the covariance matrix"],
+      "answer": 1,
+      "explain": "$\\tau_j(x_i)=\\frac{\\pi_j\\mathcal{N}(x_i;\\mu_j,\\Sigma_j)}{\\sum_k \\pi_k\\mathcal{N}(x_i;\\mu_k,\\Sigma_k)}$ — the soft membership of $x_i$ in cluster $j$.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-020",
+      "topic": "markov-models",
+      "q": "The (first-order) Markov property states that the next state depends on:",
+      "options": ["the entire history of states", "only the current state", "only the initial state", "the observations"],
+      "answer": 1,
+      "explain": "$P(q_n\\mid q_1\\dots q_{n-1})=P(q_n\\mid q_{n-1})$ — memoryless: the future depends only on the present.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-021",
+      "topic": "markov-models",
+      "q": "Each row of a Markov transition matrix A must:",
+      "options": ["sum to 0", "sum to 1", "be symmetric", "contain only zeros and ones"],
+      "answer": 1,
+      "explain": "From any state the next-state probabilities must total 1, so every row of A is a probability distribution summing to 1.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-022",
+      "topic": "hmm",
+      "q": "In an HMM, the emission matrix B specifies:",
+      "options": ["$P(q_{t+1}=j\\mid q_t=i)$", "$P(o_t = o_k\\mid q_t = j)$", "$P(q_1 = i)$", "the number of states"],
+      "answer": 1,
+      "explain": "B gives emission probabilities $b_j(o_k)=P(o_t=o_k\\mid q_t=j)$. (A gives transitions, $\\pi$ the initial distribution.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-023",
+      "topic": "hmm",
+      "q": "The two fundamental HMM assumptions are the Markov assumption and:",
+      "options": ["the IID assumption", "output (emission) independence — observation depends only on the current state", "linear separability", "Gaussian noise"],
+      "answer": 1,
+      "explain": "Output independence: $P(o_t\\mid q_{1:t},o_{1:t-1})=P(o_t\\mid q_t)$ — the current observation depends only on the current hidden state.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-024",
+      "topic": "hmm-forward-backward",
+      "q": "A brute-force computation of P(O|λ) for N states and length T requires on the order of:",
+      "options": ["$N^2 T$ operations", "$N^T$ operations (exponential)", "$NT$ operations", "$T^N$ operations"],
+      "answer": 1,
+      "explain": "There are $N^T$ possible state paths to sum over; the forward algorithm reduces this to $O(N^2 T)$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-025",
+      "topic": "hmm-forward-backward",
+      "q": "The forward variable is defined as $\\alpha_t(j) =$",
+      "options": ["$P(o_{t+1}\\dots o_T\\mid q_t=j)$", "$P(o_1\\dots o_t, q_t = j\\mid\\lambda)$", "$P(q_t=j)$", "$P(O\\mid\\lambda)$"],
+      "answer": 1,
+      "explain": "$\\alpha_t(j)=P(o_1\\dots o_t, q_t=j\\mid\\lambda)$ — probability of the observations so far and being in state $j$ at time $t$. ($\\beta$ covers the future.)",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-026",
+      "topic": "hmm-viterbi",
+      "q": "The Viterbi algorithm differs from the Forward algorithm mainly in that it:",
+      "options": ["sums instead of maximizes", "maximizes (and stores back-pointers) instead of summing over previous states", "ignores the emission probabilities", "is exponential time"],
+      "answer": 1,
+      "explain": "Viterbi replaces the forward $\\sum$ with $\\max$ and records back-pointers $\\psi$, recovering the single most-likely state path $Q^*$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-027",
+      "topic": "hmm-viterbi",
+      "q": "Back-pointers $\\psi_t(j)$ in Viterbi are needed to:",
+      "options": ["compute P(O|λ)", "reconstruct the optimal state sequence by backtracking", "normalize the probabilities", "initialize the algorithm"],
+      "answer": 1,
+      "explain": "Without back-pointers you'd know the best score but not the best path; $\\psi$ lets you backtrack from $q_T^*$ to recover $Q^*$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-028",
+      "topic": "hmm-baum-welch",
+      "q": "The Baum-Welch algorithm is a special case of which general method?",
+      "options": ["Gradient descent", "The EM algorithm", "Dynamic programming only", "Naïve Bayes"],
+      "answer": 1,
+      "explain": "Baum-Welch is EM for HMMs: E-step computes $\\gamma$ and $\\xi$ from $\\alpha,\\beta$; M-step re-estimates $\\pi, A, B$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-029",
+      "topic": "hmm-baum-welch",
+      "q": "In Baum-Welch, $\\gamma_t(j) = \\frac{\\alpha_t(j)\\beta_t(j)}{P(O\\mid\\lambda)}$ represents:",
+      "options": ["the transition probability i→j", "the probability of being in state j at time t given the full observation sequence", "the emission probability", "the initial distribution"],
+      "answer": 1,
+      "explain": "$\\gamma_t(j)$ is the posterior probability of being in state $j$ at time $t$ given all of $O$ — the product of forward and backward, normalized.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u3-030",
+      "topic": "hmm-baum-welch",
+      "q": "Which is a real practical issue when training HMMs with Baum-Welch?",
+      "options": ["It always finds the global optimum", "Numerical underflow of α/β products (fixed with log-space) and convergence to local optima", "It needs no initialization", "It cannot handle multiple sequences"],
+      "answer": 1,
+      "explain": "Like all EM it finds only local optima (use restarts), and α·β products underflow — implemented in log space or with scaling.",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

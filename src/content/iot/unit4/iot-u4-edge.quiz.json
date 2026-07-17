@@ -1,0 +1,182 @@
+{
+  "subject": "iot",
+  "unit": 4,
+  "title": "Unit 4 — TinyML, Time-Series & Predictive Maintenance MCQs",
+  "items": [
+    {
+      "id": "iot-u4-edge-001",
+      "topic": "tinyml",
+      "q": "What is TinyML?",
+      "options": [
+        "Training huge models in the cloud",
+        "Running ML inference on microcontrollers / ultra-low-power constrained devices (KB of memory, mW of power)",
+        "A wireless protocol for ML",
+        "A type of time-series database"
+      ],
+      "answer": 1,
+      "explain": "TinyML runs ML inference directly on microcontrollers — pushing intelligence to the edge for low latency, offline operation, bandwidth savings, privacy, and power efficiency.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-002",
+      "topic": "tinyml",
+      "q": "In a TinyML workflow, where do training and inference happen?",
+      "options": [
+        "Both on the microcontroller",
+        "Training in the cloud (heavy); only inference on the device",
+        "Both in the cloud",
+        "Training on the device, inference in the cloud"
+      ],
+      "answer": 1,
+      "explain": "Training is heavy and data-hungry, done in the cloud (TensorFlow/PyTorch). Only the finished, compressed model runs inference on the MCU — you never train on the microcontroller.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-003",
+      "topic": "tinyml",
+      "q": "Which technique shrinks a model (e.g., 32-bit floats → 8-bit integers) so it fits on a microcontroller?",
+      "options": ["Encryption", "Quantization", "Normalization", "Replication"],
+      "answer": 1,
+      "explain": "Quantization reduces weight precision (e.g., to 8-bit ints), shrinking model size and speeding inference with usually small accuracy loss — key to fitting models in KB of memory.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-004",
+      "topic": "tinyml",
+      "q": "A benefit of TinyML over cloud inference is:",
+      "options": [
+        "It requires constant connectivity",
+        "It ships only the result (e.g., 'keyword detected'), giving low latency, offline operation, bandwidth savings, and privacy",
+        "It always uses more bandwidth",
+        "It needs a data center on the device"
+      ],
+      "answer": 1,
+      "explain": "By inferring on-device, TinyML sends conclusions not raw data — fast, works offline, saves bandwidth, and keeps raw data (voice/images) private. Tools include TensorFlow Lite for Microcontrollers and Edge Impulse.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-005",
+      "topic": "timeseries-grafana",
+      "q": "Why is a time-series database (e.g., InfluxDB) preferred over a relational DB for IoT telemetry?",
+      "options": [
+        "It enforces complex joins between entities",
+        "It is optimized for high-rate timestamped writes, native time-range aggregation, and retention/downsampling",
+        "It cannot store numbers",
+        "It only works offline"
+      ],
+      "answer": 1,
+      "explain": "TSDBs specialize in the (timestamp, value, tags) shape: fast high-volume writes, native 'average per interval' queries, and built-in retention/downsampling to keep years of history cheap.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-006",
+      "topic": "timeseries-grafana",
+      "q": "What is Grafana's role in the IoT stack?",
+      "options": [
+        "It stores raw sensor data permanently",
+        "It visualizes time-series data as live dashboards and fires alerts when metrics cross thresholds",
+        "It is a wireless protocol",
+        "It trains ML models"
+      ],
+      "answer": 1,
+      "explain": "Grafana reads from data sources like InfluxDB to build real-time, auto-refreshing dashboards and to alert (email/Slack/webhook) on threshold breaches — implementing the pipeline's visualization + action stages.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-007",
+      "topic": "timeseries-grafana",
+      "q": "The classic open-source IoT monitoring pairing is:",
+      "options": [
+        "MySQL (store) + Excel (visualize)",
+        "InfluxDB (store time-series) + Grafana (visualize + alert)",
+        "Zigbee (store) + MQTT (visualize)",
+        "AES (store) + ASCON (visualize)"
+      ],
+      "answer": 1,
+      "explain": "InfluxDB is the memory (time-series store); Grafana is the eyes (live dashboards + alerting). Devices write to InfluxDB; Grafana reads it back as charts and alerts.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-008",
+      "topic": "timeseries-grafana",
+      "q": "What does 'downsampling' (retention) in a time-series DB achieve?",
+      "options": [
+        "Deletes all data immediately",
+        "Keeps recent raw data but stores only summaries (e.g., hourly averages) long-term, keeping years of history affordable",
+        "Increases the sampling rate of sensors",
+        "Encrypts the database"
+      ],
+      "answer": 1,
+      "explain": "Downsampling stores high-resolution data short-term and aggregated summaries long-term (e.g., raw for a day, hourly averages forever), controlling storage cost while preserving trends.",
+      "difficulty": "hard",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-009",
+      "topic": "predictive-maintenance",
+      "q": "Why is predictive maintenance superior to reactive and preventive maintenance?",
+      "options": [
+        "It never uses sensors",
+        "It fixes equipment exactly when sensor data indicates need — avoiding both unplanned breakdowns and unnecessary early servicing",
+        "It schedules repairs on a fixed calendar",
+        "It only fixes machines after they fail"
+      ],
+      "answer": 1,
+      "explain": "Reactive fixes after failure (downtime); preventive fixes on a calendar (often too early/late); predictive uses live data to act at the optimal moment — the cost/safety sweet spot.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-010",
+      "topic": "predictive-maintenance",
+      "q": "Which ML technique predicts the Remaining Useful Life (RUL) of a component?",
+      "options": [
+        "Clustering",
+        "Regression",
+        "Network obfuscation",
+        "Quantization"
+      ],
+      "answer": 1,
+      "explain": "RUL ('~12 days left') is a continuous value, so it's a regression task. Anomaly detection flags abnormal readings; classification labels states (healthy/degrading/faulty).",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-011",
+      "topic": "predictive-maintenance",
+      "q": "Which sensor signals are most commonly used for predictive maintenance of machinery?",
+      "options": [
+        "Screen brightness and color",
+        "Vibration, temperature, current, and acoustic data",
+        "GPS coordinates only",
+        "Wi-Fi signal strength only"
+      ],
+      "answer": 1,
+      "explain": "Vibration, temperature, current, acoustic, and oil-quality signals reveal mechanical degradation (e.g., a failing bearing) — fed to ML to forecast failure before it happens.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-edge-012",
+      "topic": "predictive-maintenance",
+      "q": "A key ML challenge specific to predictive maintenance is:",
+      "options": [
+        "Too many failure examples",
+        "Data imbalance — failures are rare, so there are few positive examples to learn from (plus model drift over time)",
+        "Sensors are too accurate",
+        "There is never enough storage"
+      ],
+      "answer": 1,
+      "explain": "Failures are rare, creating class imbalance (few positive examples). Combined with model drift (sensor behavior changing), this makes training robust predictive models challenging — addressed via the feedback loop.",
+      "difficulty": "hard",
+      "source": "original"
+    }
+  ]
+}

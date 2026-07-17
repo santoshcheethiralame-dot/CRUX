@@ -1,0 +1,32 @@
+{
+  "subject": "ml",
+  "unit": 1,
+  "title": "Unit 1 — Flashcards",
+  "cards": [
+    { "id": "ml-u1-c01", "topic": "introduction", "front": "Mitchell's definition of learning", "back": "A program learns from experience **E** w.r.t. task **T** and performance measure **P** if its performance at T, measured by P, improves with E. Well-defined task = $\\langle P,T,E\\rangle$." },
+    { "id": "ml-u1-c02", "topic": "introduction", "front": "Role of train / validation / test sets", "back": "**Train** fits parameters; **validation** tunes & prunes (model selection); **test** is touched once for an unbiased final estimate." },
+    { "id": "ml-u1-c03", "topic": "types-of-ml", "front": "Supervised vs Unsupervised vs Reinforcement (feedback)", "back": "Supervised = labelled data (correct answer). Unsupervised = unlabelled (find structure). Reinforcement = reward/punishment from an environment." },
+    { "id": "ml-u1-c04", "topic": "types-of-ml", "front": "Generative vs Discriminative", "back": "Generative learns the **joint** $p(x,y)$ (can generate). Discriminative learns the **conditional** $p(y\\mid x)$ (draws the boundary)." },
+    { "id": "ml-u1-c05", "topic": "concept-learning", "front": "# concepts vs # conjunctive hypotheses", "back": "# concepts $= 2^{(\\text{feature-space size})}$. # conjunctive hypotheses $= \\prod_i (k_i+1) + 1$ (each slot: its values plus '?', +1 for reject-all)." },
+    { "id": "ml-u1-c06", "topic": "concept-learning", "front": "Inductive bias", "back": "An assumption about the form of the target concept that shrinks the concept space to a searchable hypothesis space. Restriction bias (language) vs Preference bias (search)." },
+    { "id": "ml-u1-c07", "topic": "concept-learning", "front": "Version space", "back": "The set of all hypotheses in H consistent with the training data. Nesting: Concept ⊇ Hypothesis ⊇ Version." },
+    { "id": "ml-u1-c08", "topic": "find-s", "front": "Find-S in one line", "back": "Start at the most specific hypothesis; for each **positive** example, relax mismatching attributes to '?'. Ignores negatives. No backtracking, no noise handling." },
+    { "id": "ml-u1-c09", "topic": "decision-trees", "front": "Decision tree expressiveness", "back": "Disjunction of conjunctions: each root→leaf path is an AND of tests, the tree ORs them. More expressive than Find-S." },
+    { "id": "ml-u1-c10", "topic": "decision-trees", "front": "ID3 vs CART", "back": "ID3 → multiway splits, **information gain** (entropy). CART → binary splits, **Gini impurity** (classification) / least squares (regression)." },
+    { "id": "ml-u1-c11", "topic": "id3-entropy-gain", "front": "Entropy formula", "back": "$H(S) = -\\sum_i p_i \\log_2 p_i$. 0 when pure; max $=1$ for a 50/50 binary split; max $=\\log_2 c$ for c classes." },
+    { "id": "ml-u1-c12", "topic": "id3-entropy-gain", "front": "Information gain", "back": "$\\text{Gain}(S,A) = H(S) - \\sum_v \\frac{|S_v|}{|S|}H(S_v)$ = expected entropy reduction. ID3 picks the max-gain attribute." },
+    { "id": "ml-u1-c13", "topic": "inductive-bias-issues", "front": "ID3 vs Find-S bias", "back": "ID3 = **preference** bias from its search (complete space, prefers short trees / Occam). Find-S = **restriction** bias from its space definition (incomplete space)." },
+    { "id": "ml-u1-c14", "topic": "overfitting-pruning", "front": "Overfitting (formal)", "back": "h overfits if some h′ has higher train error but lower true-distribution error: $\\text{err}_{train}(h) < \\text{err}_{train}(h')$ yet $\\text{err}_D(h) > \\text{err}_D(h')$." },
+    { "id": "ml-u1-c15", "topic": "overfitting-pruning", "front": "Reduced-error vs Rule post-pruning", "back": "Reduced-error: prune whole subtrees if validation accuracy doesn't drop. Rule post-pruning: convert to rules, drop individual preconditions. Post-pruning > pre-pruning." },
+    { "id": "ml-u1-c16", "topic": "continuous-missing", "front": "Thresholding a continuous attribute", "back": "Sort by the attribute; candidate thresholds = midpoints where the label changes; pick the one with max information gain." },
+    { "id": "ml-u1-c17", "topic": "bias-variance", "front": "Bias vs Variance", "back": "Bias = error from over-simple assumptions (underfit). Variance = sensitivity to the training set (overfit). High variance ⇒ low train err, high test err." },
+    { "id": "ml-u1-c18", "topic": "bias-variance", "front": "Error decomposition", "back": "$\\text{Error} = \\text{Bias}^2 + \\text{Variance} + \\sigma^2$. Bias & variance are reducible; $\\sigma^2$ (noise) is irreducible." },
+    { "id": "ml-u1-c19", "topic": "logistic-regression", "front": "Sigmoid hypothesis", "back": "$h_\\theta(x) = \\frac{1}{1+e^{-\\theta^\\top x}} = P(y=1\\mid x;\\theta)$. Decision boundary at $\\theta^\\top x = 0$." },
+    { "id": "ml-u1-c20", "topic": "logistic-regression", "front": "Log-loss cost", "back": "$J(\\theta) = -\\frac{1}{m}\\sum [y\\log h_\\theta(x) + (1-y)\\log(1-h_\\theta(x))]$. Convex → gradient descent finds the global min." },
+    { "id": "ml-u1-c21", "topic": "eager-vs-lazy", "front": "Eager vs Lazy", "back": "Eager builds a global model up front (cheap prediction) — e.g. Decision Tree. Lazy stores data, works per query (expensive prediction) — e.g. KNN." },
+    { "id": "ml-u1-c22", "topic": "knn", "front": "KNN prediction rule", "back": "Find k nearest by distance. Classification → mode of neighbours; Regression → mean. Distances: Euclidean (q=2), Manhattan (q=1), Minkowski (general)." },
+    { "id": "ml-u1-c23", "topic": "knn", "front": "KNN: choosing k & curse of dimensionality", "back": "Small k → high variance; large k → high bias. Try $k=\\sqrt{n}$ or elbow method. In high d, neighbours fill the space ($\\ell\\approx(k/n)^{1/d}\\to 1$) → 'nearest' loses meaning." },
+    { "id": "ml-u1-c24", "topic": "performance-metrics", "front": "Precision / Recall / Specificity / F1", "back": "P $=\\frac{TP}{TP+FP}$, R $=\\frac{TP}{TP+FN}$, Spec $=\\frac{TN}{TN+FP}$, F1 $=\\frac{2PR}{P+R}$ (harmonic mean). Precision↔FP cost; Recall↔FN cost." },
+    { "id": "ml-u1-c25", "topic": "performance-metrics", "front": "ROC & AUC", "back": "ROC plots TPR vs FPR across thresholds. (0,1)=perfect, diagonal=random. AUC: 1=perfect, 0.5=random, 0=inverted. Higher AUC = better separation." }
+  ]
+}

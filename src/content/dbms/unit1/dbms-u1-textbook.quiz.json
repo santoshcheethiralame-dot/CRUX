@@ -1,0 +1,207 @@
+{
+  "subject": "dbms",
+  "unit": 1,
+  "title": "Unit 1 — Textbook Exercises (Elmasri/Navathe, Silberschatz, Ramakrishnan)",
+  "items": [
+    {
+      "id": "dbms-u1-tb-01",
+      "topic": "data-abstraction-schema",
+      "q": "**(Elmasri & Navathe, Ch2)** The ANSI/SPARC three-schema architecture separates the user view from the physical storage. The level describing 'what data is stored and the relationships among it' is the:",
+      "options": ["Internal (physical) level", "Conceptual (logical) level", "External (view) level", "Catalog level"],
+      "answer": 1,
+      "explain": "TB1 Ch2: the conceptual level describes the structure of the whole database (entities, relationships, constraints) hiding physical storage; internal = storage; external = user views.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-02",
+      "topic": "data-abstraction-schema",
+      "q": "**(Elmasri & Navathe, Ch2)** 'Program-data independence' — the ability to change a file's storage structure without changing the application programs — is a key characteristic enabled by:",
+      "options": ["Storing the structure description (metadata) in the DBMS catalog, separate from programs", "Hard-coding the structure in each program", "Using one global file", "Disabling constraints"],
+      "answer": 0,
+      "explain": "TB1 Ch2: because the DBMS stores the data definition (metadata) in its catalog separately from access programs, the structure can change without recompiling programs — program-data independence.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-03",
+      "topic": "er-entities-attributes",
+      "q": "**(Elmasri & Navathe, Ch3)** In the EER/ER model, an attribute such as `Name` made up of `Fname, Minit, Lname` is called a:",
+      "options": ["Multivalued attribute", "Composite attribute", "Derived attribute", "Key attribute"],
+      "answer": 1,
+      "explain": "TB1 Ch3: a composite attribute can be divided into smaller subparts (Name → Fname/Minit/Lname; Address → Street/City/State/Zip). Multivalued = double oval; derived = dashed oval.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-04",
+      "topic": "er-keys-weak-entities",
+      "q": "**(Elmasri & Navathe, Ch3)** A weak entity type (e.g. DEPENDENT in the COMPANY database) is identified by:",
+      "options": ["Its own key attribute", "A combination of its partial key and the owner entity's primary key", "A foreign key alone", "A multivalued attribute"],
+      "answer": 1,
+      "explain": "TB1 Ch3: a weak entity has no key of its own; it is identified by its partial key (discriminator) + the identifying owner's primary key. It has total participation in the identifying relationship.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-05",
+      "topic": "er-relationships-cardinality",
+      "q": "**(Elmasri & Navathe, Ch3)** In the COMPANY database, an EMPLOYEE works for exactly one DEPARTMENT but a DEPARTMENT has many employees. The WORKS_FOR relationship has cardinality ratio:",
+      "options": ["1:1", "1:N (DEPARTMENT:EMPLOYEE)", "M:N", "N:1 (DEPARTMENT:EMPLOYEE)"],
+      "answer": 1,
+      "explain": "TB1 Ch3: DEPARTMENT:EMPLOYEE in WORKS_FOR is 1:N — one department relates to many employees, each employee to at most one department. (WORKS_ON, employee↔project, is M:N.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-06",
+      "topic": "er-to-relational",
+      "q": "**(Elmasri & Navathe, Ch9 — ER-to-relational mapping)** When mapping a binary M:N relationship to relations, you:",
+      "options": ["Add a foreign key to one side", "Create a new relation (relationship relation) whose key is the combination of both participating entities' primary keys", "Merge the two entity relations", "Add a multivalued attribute"],
+      "answer": 1,
+      "explain": "TB1 Ch9 mapping step: an M:N relationship becomes a new relation S whose primary key is the combination of the foreign keys referencing the two entities, plus any relationship attributes.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-07",
+      "topic": "er-to-relational",
+      "q": "**(Elmasri & Navathe, Ch9)** A multivalued attribute (e.g. an employee's `Locations`) is mapped to:",
+      "options": ["A column storing a list", "A new relation containing the attribute plus a foreign key to the entity, with both forming the key", "A derived attribute", "A check constraint"],
+      "answer": 1,
+      "explain": "TB1 Ch9: for each multivalued attribute, create a new relation R with the attribute + the owner's PK (as FK); the PK of R is the combination — keeping the schema in 1NF.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-08",
+      "topic": "ra-unary-operators",
+      "q": "**(Silberschatz, Ch6 / Ramakrishnan, Ch4)** The relational-algebra PROJECT operation (∏) eliminates duplicate tuples because:",
+      "options": ["SQL requires it", "A relation is a set, and sets have no duplicate elements", "It is faster", "Projection sorts the data"],
+      "answer": 1,
+      "explain": "TB2 Ch6: the result of relational algebra is a relation (a set), so ∏ removes duplicates. (SQL, in contrast, uses multisets and keeps duplicates unless DISTINCT is specified.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-09",
+      "topic": "ra-set-operations",
+      "q": "**(Ramakrishnan & Gehrke, Ch4)** Over the Sailors(sid,sname,rating,age), Boats(bid,bname,color), Reserves(sid,bid,day) schema, 'find sailors who have reserved EVERY boat' is naturally expressed using:",
+      "options": ["Union", "The division operator (÷)", "Set difference", "A natural join only"],
+      "answer": 1,
+      "explain": "Ramakrishnan Ch4: 'every/all' queries use division — (∏sid,bid Reserves) ÷ (∏bid Boats) returns sids that appear with every bid in Boats.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-10",
+      "topic": "ra-joins-aggregates",
+      "q": "**(Ramakrishnan & Gehrke, Ch4)** To find the **names** of sailors who have reserved a red boat, the correct relational-algebra strategy is:",
+      "options": ["∏sname(Sailors) − ∏sname(Boats)", "∏sname( σcolor='red'(Boats) ⋈ Reserves ⋈ Sailors )", "σsname( Boats × Reserves )", "Boats ÷ Reserves"],
+      "answer": 1,
+      "explain": "Select red boats, join to Reserves (on bid) and Sailors (on sid), then project sname: ∏sname(σcolor='red'(Boats) ⋈ Reserves ⋈ Sailors). Select rows → join → project columns.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-11",
+      "topic": "ra-joins-aggregates",
+      "q": "**(Elmasri & Navathe, Ch8)** The aggregate-function operation ℱ in relational algebra, written `R ℱ COUNT(sid), AVG(age) (Sailors)` with R as a grouping attribute, computes:",
+      "options": ["A single count and average for the whole relation", "The count and average age computed per group of R", "All tuples with rating R", "A Cartesian product"],
+      "answer": 1,
+      "explain": "TB1 Ch8: the grouping attribute(s) on the left of ℱ partition the tuples; the aggregates on the right are computed per group — equivalent to SQL GROUP BY.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-12",
+      "topic": "ra-set-operations",
+      "q": "**(Silberschatz, Ch6)** For r ∪ s, r ∩ s and r − s to be valid, r and s must be:",
+      "options": ["Sorted", "Compatible: same arity (number of attributes) with matching attribute domains", "Indexed on the same key", "Stored in the same file"],
+      "answer": 1,
+      "explain": "TB2 Ch6: union, intersection and set-difference require the relations to have the same number of attributes, with the domains of the i-th attributes matching (union-compatibility).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-13",
+      "topic": "sql-overview-datatypes",
+      "q": "**(Silberschatz, Ch3)** In SQL, `numeric(p, d)` specifies a fixed-point number where:",
+      "options": ["p decimals and d total digits", "p total digits with d digits after the decimal point", "p is precision in bytes", "d is the default value"],
+      "answer": 1,
+      "explain": "TB2 Ch3: numeric(p,d) has p total digits (plus sign) with d to the right of the decimal point. numeric(3,1) stores 44.5 exactly, but not 444.5 or 0.32.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-14",
+      "topic": "sql-constraints",
+      "q": "**(Elmasri & Navathe, Ch6 / Silberschatz Ch3)** The SQL `UNIQUE` clause specifies a(n):",
+      "options": ["Primary key", "Alternate/secondary key (candidate key)", "Foreign key", "Check constraint"],
+      "answer": 1,
+      "explain": "TB1 Ch6: UNIQUE specifies alternate (secondary) keys — what the relational model calls candidate keys. PRIMARY KEY specifies the primary key (and implies NOT NULL).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-15",
+      "topic": "sql-constraints",
+      "q": "**(Elmasri & Navathe, Ch6)** A foreign key declared `ON DELETE SET NULL` requires that:",
+      "options": ["The foreign-key columns are part of the primary key", "The foreign-key columns are nullable", "There is no default value", "The parent table is empty"],
+      "answer": 1,
+      "explain": "TB1 Ch6: ON DELETE SET NULL sets the child FK to NULL when the referenced parent row is deleted — so the FK columns must be allowed to be NULL (cannot also be part of the PK, which is NOT NULL).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-16",
+      "topic": "sql-dml",
+      "q": "**(Silberschatz, Ch3)** The basic SQL query `SELECT A1, A2 FROM r WHERE P` is equivalent to which relational-algebra expression?",
+      "options": ["σ_{A1,A2}( ∏_P (r) )", "∏_{A1,A2}( σ_P (r) )", "r ⋈ P", "∏_P( σ_{A1,A2}(r) )"],
+      "answer": 1,
+      "explain": "TB2 Ch3: SELECT-FROM-WHERE = ∏ (SELECT list) of σ (WHERE predicate) of the FROM relation: ∏_{A1,A2}(σ_P(r)). SQL's SELECT = project; WHERE = select.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-17",
+      "topic": "sql-dml",
+      "q": "**(Silberschatz, Ch3)** Which is true about duplicate handling in SQL vs relational algebra?",
+      "options": ["Both remove duplicates automatically", "Relational algebra removes duplicates (set); SQL keeps them by default (multiset) unless DISTINCT is used", "SQL always removes duplicates", "Neither allows duplicates"],
+      "answer": 1,
+      "explain": "TB2 Ch3: relational algebra uses set semantics (no duplicates); SQL uses multiset semantics and retains duplicates unless you write SELECT DISTINCT.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-18",
+      "topic": "file-systems-purpose",
+      "q": "**(Silberschatz, Ch1)** Which is listed as a major disadvantage of file-processing systems that database systems overcome?",
+      "options": ["Too much data independence", "Data redundancy and inconsistency, difficulty accessing data, and integrity/atomicity/concurrency/security problems", "Excessive query optimization", "Too many users"],
+      "answer": 1,
+      "explain": "TB2 Ch1 lists exactly these drawbacks of file systems: data redundancy & inconsistency, difficulty in accessing data, data isolation, integrity problems, atomicity problems, concurrent-access anomalies, and security problems.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-19",
+      "topic": "ra-unary-operators",
+      "q": "**(Ramakrishnan & Gehrke, Ch4)** Over Sailors(sid,sname,rating,age), the expression ∏sname,rating(σ rating > 8 (Sailors)) returns:",
+      "options": ["All columns of high-rated sailors", "The names and ratings of sailors whose rating exceeds 8", "Only the sids", "Sailors with rating ≤ 8"],
+      "answer": 1,
+      "explain": "σ rating>8 keeps the rows (sailors rated above 8); ∏sname,rating keeps just those two columns. Compose select (rows) then project (columns).",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-tb-20",
+      "topic": "er-relationships-cardinality",
+      "q": "**(Silberschatz, Ch6)** A relationship set where the same entity set participates in different 'roles' (e.g. course as `course_id` and `prereq_id`) is a:",
+      "options": ["Ternary relationship", "Recursive (unary) relationship requiring role names", "Weak relationship", "Total participation"],
+      "answer": 1,
+      "explain": "TB2 Ch6: when an entity set participates more than once in a relationship set, it is recursive and explicit role names label the participation (e.g. prereq: course in role course_id and prereq_id).",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

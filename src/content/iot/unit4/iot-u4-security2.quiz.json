@@ -1,0 +1,247 @@
+{
+  "subject": "iot",
+  "unit": 4,
+  "title": "Unit 4 — Attack Surface, Zero Trust, Firmware & PKI MCQs",
+  "items": [
+    {
+      "id": "iot-u4-sec2-001",
+      "topic": "attack-surface",
+      "q": "Why is the IoT attack surface considered uniquely broad?",
+      "options": [
+        "It only involves the cloud",
+        "It spans physical devices, networks, and cloud simultaneously — and is only as strong as the weakest layer",
+        "It has no network component",
+        "IoT devices cannot be attacked physically"
+      ],
+      "answer": 1,
+      "explain": "IoT can be attacked by holding the device (physical), sniffing its radio (network), or breaching its cloud API — so defenders must secure every layer, not just one.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-002",
+      "topic": "attack-surface",
+      "q": "The OWASP IoT Top 10 is best described as:",
+      "options": [
+        "A ranking of the 10 most secure IoT devices",
+        "A community checklist of the most common, impactful IoT vulnerabilities to fix",
+        "A wireless protocol",
+        "A list of approved IoT vendors"
+      ],
+      "answer": 1,
+      "explain": "The OWASP IoT Top 10 is a practical, beginner-friendly checklist of the most common and impactful IoT weaknesses to prioritize — not a product ranking.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-003",
+      "topic": "attack-surface",
+      "q": "Which vulnerability tops the OWASP IoT Top 10 and enabled the Mirai botnet?",
+      "options": [
+        "Lack of physical hardening",
+        "Weak, guessable, or hardcoded passwords",
+        "Insufficient privacy protection",
+        "Insecure data storage"
+      ],
+      "answer": 1,
+      "explain": "Weak/guessable/hardcoded passwords are OWASP IoT #1 — default credentials let Mirai conscript cameras and gateways into a DDoS botnet.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-004",
+      "topic": "attack-surface",
+      "q": "Which OWASP IoT issue directly explains why the LockState/Jeep firmware problems were so severe?",
+      "options": [
+        "Lack of a secure update mechanism",
+        "Insufficient privacy protection",
+        "Insecure default settings",
+        "Lack of physical hardening"
+      ],
+      "answer": 0,
+      "explain": "Lack of a secure (signed, reliable) update mechanism (OWASP #4) means devices can't be safely patched — a buggy/unsigned update can brick or compromise them, as with LockState and the Jeep hack.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-005",
+      "topic": "zero-trust",
+      "q": "What is the core principle of Zero Trust?",
+      "options": [
+        "Trust everything inside the network",
+        "'Never Trust, Always Verify' — authenticate and authorize every request regardless of network location",
+        "Build a single strong perimeter and trust the interior",
+        "Disable all authentication"
+      ],
+      "answer": 1,
+      "explain": "Zero Trust assumes no implicit trust based on location; every request (inside or outside) is verified explicitly, with least-privilege access and an assume-breach mindset.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-006",
+      "topic": "zero-trust",
+      "q": "What is the fatal flaw of traditional perimeter-based ('castle-and-moat') security for IoT?",
+      "options": [
+        "It is too expensive",
+        "Once an attacker breaches the perimeter, the trusted interior lets them roam freely — and IoT has many weak endpoints to breach",
+        "It uses too much encryption",
+        "It cannot connect to the internet"
+      ],
+      "answer": 1,
+      "explain": "Perimeter security trusts everything inside, so a single breached device (a hacked bulb, a phished laptop) gives an attacker free lateral movement — untenable with countless weak IoT endpoints.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-007",
+      "topic": "zero-trust",
+      "q": "Zero Trust replaces network-based security with identity-based security, meaning trust is based on:",
+      "options": [
+        "Which network/VLAN you are connected to",
+        "Cryptographically verified identity, proven on every request",
+        "How long the device has been online",
+        "The device's physical color"
+      ],
+      "answer": 1,
+      "explain": "Network-based security asks 'are you on the trusted network?' (spoofable, useless once inside). Identity-based security asks 'can you prove who you are?' — every time. Zero Trust uses who you are, not where you are.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-008",
+      "topic": "zero-trust",
+      "q": "Which device-authentication method is the strongest among these for Zero Trust?",
+      "options": [
+        "A shared default password",
+        "Certificate-based (X.509) identity, ideally with a hardware root of trust",
+        "A non-standard port",
+        "An unchangeable hardcoded key"
+      ],
+      "answer": 1,
+      "explain": "Certificate-based (X.509) identity — especially with keys in a hardware secure element/TPM — provides strong cryptographic device authentication, far better than shared or hardcoded passwords.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-009",
+      "topic": "firmware-binwalk",
+      "q": "What is the purpose of Binwalk in IoT security?",
+      "options": [
+        "It encrypts firmware automatically",
+        "It analyzes and extracts the contents of a firmware image (bootloader, kernel, filesystem) by scanning for signatures",
+        "It is a wireless protocol",
+        "It manufactures chips"
+      ],
+      "answer": 1,
+      "explain": "Binwalk scans a firmware binary for signatures of embedded components and extracts/decompresses the filesystem, letting analysts (attackers AND defenders) inspect it for secrets and vulnerabilities.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-010",
+      "topic": "firmware-binwalk",
+      "q": "Why is finding a hardcoded credential or private key in firmware especially dangerous?",
+      "options": [
+        "It only affects one device",
+        "Every device of that model typically shares it — extract it once and you can potentially compromise the entire fleet",
+        "It improves security",
+        "Firmware cannot contain secrets"
+      ],
+      "answer": 1,
+      "explain": "Hardcoded secrets are usually identical across all units of a model, so extracting one from a single device can unlock the whole fleet — a serious, repeated IoT failure (OWASP #1).",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-011",
+      "topic": "firmware-binwalk",
+      "q": "What is the main DEFENSIVE lesson from firmware analysis being possible?",
+      "options": [
+        "Stop shipping firmware",
+        "Assume firmware is extractable: never hardcode secrets, encrypt + sign firmware (secure boot), and use a hardware root of trust",
+        "Make firmware files larger",
+        "Use only non-standard ports"
+      ],
+      "answer": 1,
+      "explain": "Because firmware can be extracted and inspected, secure design assumes it will be: no plaintext secrets, encrypted and signed firmware with secure boot, signed OTA updates, and keys in a hardware secure element.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-012",
+      "topic": "x509-pki",
+      "q": "What does an X.509 certificate fundamentally provide?",
+      "options": [
+        "It speeds up the network",
+        "It binds a public key to an identity, signed by a trusted Certificate Authority (CA) — a cryptographic 'ID card'",
+        "It stores sensor readings",
+        "It is a type of battery"
+      ],
+      "answer": 1,
+      "explain": "An X.509 certificate binds a public key to a subject's identity and is signed by a CA, so others can trust that the public key really belongs to that device/server.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-013",
+      "topic": "x509-pki",
+      "q": "How is a digital signature created?",
+      "options": [
+        "By encrypting the data with the recipient's public key",
+        "By hashing the data and encrypting the hash with the signer's private key (verified with the signer's public key)",
+        "By compressing the data",
+        "By deleting the data"
+      ],
+      "answer": 1,
+      "explain": "The signer hashes the data and encrypts the hash with their private key. Anyone can verify with the public key — giving authenticity, integrity, and non-repudiation. A CA signs certificates this way.",
+      "difficulty": "hard",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-014",
+      "topic": "x509-pki",
+      "q": "In the chain of trust, how is a device certificate ultimately trusted?",
+      "options": [
+        "By trusting any certificate it presents",
+        "By verifying signatures up the chain (device → intermediate CA → root CA) to a root you already trust",
+        "By checking its color",
+        "By its serial number alone"
+      ],
+      "answer": 1,
+      "explain": "Trust flows from a self-signed Root CA → Intermediate CAs → device certificate. Verification walks UP the chain to a trusted root (in your trust store). Break any link and identity can't be verified.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-015",
+      "topic": "x509-pki",
+      "q": "What is PKI (Public Key Infrastructure)?",
+      "options": [
+        "A single password database",
+        "The system of CAs, policies, and procedures that issue, manage, validate, and revoke certificates",
+        "A wireless mesh protocol",
+        "A time-series database"
+      ],
+      "answer": 1,
+      "explain": "PKI is the framework (CAs, registration authorities, revocation via CRL/OCSP) that makes certificates trustworthy at scale — issuing, managing, and revoking them.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-sec2-016",
+      "topic": "x509-pki",
+      "q": "Why is certificate-based (mutual TLS) authentication ideal for IoT and Zero Trust?",
+      "options": [
+        "It is the same as a shared password",
+        "It gives strong cryptographic device identity (both sides prove identity), far better than shared passwords — and underpins 'verify identity, not network'",
+        "It removes the need for any keys",
+        "It only works without the internet"
+      ],
+      "answer": 1,
+      "explain": "Certificate-based identity (mutual TLS, where device and server both present certificates) is the strongest practical device authentication, used by AWS IoT/Azure, and the foundation of Zero Trust's identity-first model.",
+      "difficulty": "hard",
+      "source": "original"
+    }
+  ]
+}

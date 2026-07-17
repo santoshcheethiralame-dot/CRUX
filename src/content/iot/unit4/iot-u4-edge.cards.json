@@ -1,0 +1,17 @@
+{
+  "subject": "iot",
+  "unit": 4,
+  "title": "Unit 4 — TinyML, Time-Series & Predictive Maintenance Flashcards",
+  "cards": [
+    { "id": "iot-u4-edge-c01", "topic": "tinyml", "front": "What is TinyML?", "back": "Running **ML inference on microcontrollers** / ultra-low-power devices (KB memory, mW power). Benefits: **low latency, offline, bandwidth-saving, privacy, low power** — intelligence pushed to the edge." },
+    { "id": "iot-u4-edge-c02", "topic": "tinyml", "front": "TinyML: where do training vs inference happen?", "back": "**Train in the cloud** (heavy, TensorFlow/PyTorch); **infer on the device**. You never train on the MCU — it lacks the compute. TinyML = efficient on-device inference of a compressed model." },
+    { "id": "iot-u4-edge-c03", "topic": "tinyml", "front": "What is quantization (TinyML)?", "back": "Shrinking model weights (e.g., 32-bit floats → **8-bit integers**) + pruning, so the model fits KB of memory and runs fast on an MCU, usually with small accuracy loss. Tools: TF Lite for Microcontrollers, Edge Impulse." },
+    { "id": "iot-u4-edge-c04", "topic": "timeseries-grafana", "front": "Why a time-series DB (InfluxDB) for IoT?", "back": "Optimized for **high-rate timestamped writes**, **native time-range aggregation** ('avg per 5 min'), and **retention/downsampling** (keep raw briefly, summaries forever). Beats relational DBs for the (timestamp, value, tags) firehose." },
+    { "id": "iot-u4-edge-c05", "topic": "timeseries-grafana", "front": "What is Grafana?", "back": "Open-source platform to **visualize time-series** as live dashboards (graphs, gauges) and fire **alerts** on threshold breaches. Data-source agnostic (InfluxDB, Prometheus…). Implements pipeline stages visualize → action." },
+    { "id": "iot-u4-edge-c06", "topic": "timeseries-grafana", "front": "The classic IoT monitoring stack?", "back": "**InfluxDB (store) + Grafana (visualize + alert)**. InfluxDB = memory; Grafana = eyes. Devices write readings to InfluxDB; Grafana charts them live and alerts when something's wrong." },
+    { "id": "iot-u4-edge-c07", "topic": "predictive-maintenance", "front": "Reactive vs preventive vs predictive maintenance?", "back": "**Reactive** = fix after failure (downtime). **Preventive** = fixed calendar (too early/late). **Predictive** = fix exactly when sensor data says — the cost/safety sweet spot (only IoT data enables it)." },
+    { "id": "iot-u4-edge-c08", "topic": "predictive-maintenance", "front": "Predictive maintenance: the full IoT loop?", "back": "**Sense** (vibration/temp/current, U2) → **transmit** (MQTT, U3) → **store** (InfluxDB) → **analyse** (anomaly detection / **RUL regression** / classification, U4) → **act** (auto-schedule, alert). The capstone of the whole course." },
+    { "id": "iot-u4-edge-c09", "topic": "predictive-maintenance", "front": "ML techniques used in predictive maintenance?", "back": "**Anomaly detection** (autoencoder → abnormal vibration), **regression** (predict **RUL** = Remaining Useful Life), **classification** (healthy/degrading/faulty)." },
+    { "id": "iot-u4-edge-c10", "topic": "predictive-maintenance", "front": "Predictive-maintenance ML challenges?", "back": "**Data imbalance** (failures are rare → few positive examples), **model drift** (sensor behaviour changes → retrain via feedback loop), needing enough **historical failure data**." }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "subject": "se",
+  "unit": 1,
+  "title": "Unit 1 — Past-Year Questions",
+  "items": [
+    {
+      "id": "se-u1-pyq-01",
+      "topic": "introduction-to-se",
+      "year": "ESA Jul 2024",
+      "marks": 7,
+      "difficulty": "easy",
+      "q": "Define **Software** and **Software Engineering**. Explain the phases in a typical SDLC process briefly.",
+      "answer": "**Software** = programs **+** associated documentation **+** configuration data needed to make them work (not just code). **Software Engineering** = an *engineering discipline concerned with all aspects of software production*, from specification through to maintenance. **SDLC phases:** Requirements gathering & analysis → Feasibility → Design → Implementation/Coding → Testing → Deployment → Maintenance. Every process has four fundamental activities: **specification, development, validation, evolution**."
+    },
+    {
+      "id": "se-u1-pyq-02",
+      "topic": "sdlc-models",
+      "year": "ESA Jul 2024 (UE21CS341A)",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "Explain the different **SDLC models** and discuss their advantages and disadvantages.",
+      "answer": "**Waterfall** — sequential, frozen phases; +simple/documented, −inflexible, working SW appears late (best for stable requirements). **V-model** — pairs each build phase with a test level; tests designed early. **Incremental** — deliver complete slices; +early delivery & feedback, −structure can degrade. **Iterative** — build a rough whole, refine over passes. **Spiral (Boehm)** — risk-driven loops (objectives → risk analysis → develop & test → plan); for large, high-risk projects. **Prototype** — build a throwaway model to clarify unclear requirements."
+    },
+    {
+      "id": "se-u1-pyq-03",
+      "topic": "sdlc-models",
+      "year": "ESA Dec 2023 (UE21CS341A)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Compare and contrast the **Iterative vs. Incremental** model of software development (with diagrams).",
+      "answer": "**Incremental** = deliver the system in *complete slices* of functionality over time (each slice fully built & usable). **Iterative** = build a *rough version of the whole* system, then refine it over repeated passes. Incremental adds new features; iterative improves existing ones. Real **agile** processes are **both** incremental *and* iterative — they deliver slices *and* refine them each sprint."
+    },
+    {
+      "id": "se-u1-pyq-04",
+      "topic": "sdlc-models",
+      "year": "ESA Dec 2023 (UE21CS341A)",
+      "marks": 7,
+      "difficulty": "medium",
+      "q": "Draw a neatly labelled diagram of an **SDLC Waterfall model**. Describe each stage with entry & exit criteria, deliverables and who is responsible.",
+      "answer": "**Requirements → Design → Implementation → Testing → Deployment & Maintenance**, flowing strictly downward; each phase produces a frozen, signed-off **deliverable** that is the input (entry criterion) to the next. Requirements (analyst → SRS) → Design (architect → design document) → Implementation (developers → code) → Testing (testers → test report) → Deployment (ops → released system). **Exit criterion** of each phase = sign-off/review of its deliverable. Plan-driven and document-driven; best when requirements are stable."
+    },
+    {
+      "id": "se-u1-pyq-05",
+      "topic": "sdlc-models",
+      "year": "ESA Jul 2023",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "Discuss the **V-Model** of the SDLC with its phases, the focus of each phase and the deliverables. How is it **similar to** and **different from** the waterfall model?",
+      "answer": "The **V-model** bends waterfall into a V: the left (descending) arm is decomposition (Requirements → System design → Module design → Coding) and the right (ascending) arm is the matching test levels (**Acceptance ↔ Requirements, System testing ↔ system design, Integration ↔ architecture, Unit ↔ module**). Each test level's cases are designed *during* the corresponding build phase. **Similar to waterfall:** sequential, plan-driven, assumes stable requirements. **Different:** it makes **testing a first-class, parallel activity** — verification & validation are planned early rather than only at the end."
+    },
+    {
+      "id": "se-u1-pyq-06",
+      "topic": "sdlc-models",
+      "year": "ESA Jul 2023",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "Contrast the **Waterfall model and prototype model** in terms of usage. Which model is suitable when the requirements are well understood?",
+      "answer": "**Waterfall** is plan-driven and sequential — it needs requirements fixed up front and handles change poorly. The **prototype model** builds an early throwaway/evolutionary prototype so users can react to something concrete, clarifying *unclear* requirements. → **Waterfall is suitable when the requirements are well understood** (and stable); prototyping suits poorly-understood or volatile requirements."
+    },
+    {
+      "id": "se-u1-pyq-07",
+      "topic": "agile-scrum",
+      "year": "ESA Jan-May 2024 (UE21CS341A)",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "Answer the following on **Scrum**: (1) What is Scrum? (2) Define the roles. (3) What are the artifacts? (4) Who is the Scrum Master and what do they do? (5) What happens in a Sprint Retrospective?",
+      "answer": "**Scrum** is an agile management framework that delivers work in fixed-length **Sprints** (2–4 weeks), each producing a potentially-shippable increment. **Roles:** Product Owner (prioritises the backlog), Scrum Master, Development Team (cross-functional, self-organising). **Artifacts:** Product Backlog, Sprint Backlog, Increment. **Scrum Master** = a *servant-leader/facilitator* who removes impediments, coaches the team and protects it — **not** a boss who assigns work. **Sprint Retrospective** = the team inspects *itself* (process/team) — what went well, what to improve next sprint (vs the Review which inspects the *product*)."
+    },
+    {
+      "id": "se-u1-pyq-08",
+      "topic": "user-stories-xp-lean",
+      "year": "ESA Jan-May 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Bring out the differences between: (1) **Agile and Scrum**, (2) **Product Backlog and Sprint Backlog**, (3) **User stories and Epics**.",
+      "answer": "**Agile** is a *philosophy* (the 4 manifesto values); **Scrum** is one *framework* that implements agile. **Product Backlog** = the ordered master list of *everything* that might be needed (owned by the PO); **Sprint Backlog** = the subset committed to *this sprint* + the plan to deliver it. **User story** = a small feature (\"As a … I want … so that …\") that fits in one sprint; an **Epic** = a large story that must be **broken down** into several smaller stories before it can be built."
+    },
+    {
+      "id": "se-u1-pyq-09",
+      "topic": "agile-scrum",
+      "year": "ESA Jul 2023 / Jul 2024",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "Explain the **AGILE Manifesto** and how it overcomes the issues of legacy (plan-driven) models.",
+      "answer": "The Agile Manifesto (2001) states four values, each preferring the left: **Individuals & interactions** > processes/tools · **Working software** > comprehensive documentation · **Customer collaboration** > contract negotiation · **Responding to change** > following a plan. It overcomes legacy waterfall issues by **welcoming changing requirements**, delivering **working software frequently** in short iterations with **continuous customer involvement** — instead of freezing requirements up front and showing nothing until the end."
+    },
+    {
+      "id": "se-u1-pyq-10",
+      "topic": "requirements-elicitation",
+      "year": "ESA Dec 2023 (UE20CS303)",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "What is meant by **software requirements**? Elaborate on the **Requirement Elicitation Process**.",
+      "answer": "A **requirement** is a statement of a *service* the system must provide or a *constraint* on it — split into **user requirements** (abstract, natural-language, for customers) and **system requirements** (detailed, for developers). **Elicitation** is the RE activity of *discovering* requirements by working with stakeholders. Techniques are **active** (analyst drives: interviews, JAD workshops, brainstorming, prototyping) or **passive** (analyst observes: ethnography/observation, document analysis). It's iterative and the most error-prone phase — mistakes here are the costliest to fix later."
+    },
+    {
+      "id": "se-u1-pyq-11",
+      "topic": "requirements-elicitation",
+      "year": "ESA Jul 2023 (UE19CS302)",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "Briefly explain the **Requirements Engineering Process** with a neat diagram.",
+      "answer": "RE is an iterative cycle of four activities: **Elicitation** (discover requirements with stakeholders) → **Analysis & negotiation** (classify, prioritise, resolve conflicts) → **Specification** (document them in the **SRS**, per IEEE 830) → **Validation** (check validity, consistency, completeness, realism, verifiability). An ongoing fifth activity, **requirements management**, handles change over time. Each pass uncovers more, so the process spirals."
+    },
+    {
+      "id": "se-u1-pyq-12",
+      "topic": "requirements-elicitation",
+      "year": "ESA Jul 2024 (UE19CS302)",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Explain the **approaches on which requirement elicitation techniques depend**, and explain their types.",
+      "answer": "Elicitation techniques split by whether the analyst **intervenes**. **Active approach** (the analyst drives the interaction): **interviews** (open/closed), **JAD workshops**, **brainstorming**, **prototyping**, questionnaires. **Passive approach** (the analyst observes without steering): **ethnography/observation** (captures tacit \"how it's really done\" knowledge), **document/artifact analysis**. Active techniques probe directly; passive ones surface unspoken requirements that interviews miss."
+    },
+    {
+      "id": "se-u1-pyq-13",
+      "topic": "srs-rtm-change",
+      "year": "ESA Jan-May 2024 (UE21CS341A)",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Define the following terms: **Requirement Analysis** and **Requirements Specification**.",
+      "answer": "**Requirement Analysis** = the RE activity of *studying, classifying, prioritising and reconciling* elicited requirements — detecting and resolving conflicts between stakeholders to produce a consistent, agreed set. **Requirements Specification** = *documenting* those requirements in a precise, structured form — the **SRS (Software Requirements Specification)**, the agreed contract stating *what* (not how) the system must do, following **IEEE 830** (complete, consistent, unambiguous, verifiable, traceable)."
+    },
+    {
+      "id": "se-u1-pyq-14",
+      "topic": "uml-use-cases",
+      "year": "ESA Jul 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Write a **use case diagram** for an Online Shopping website, considering any e-commerce application.",
+      "answer": "**Actors:** Customer (primary), Admin, Payment Gateway (secondary system actor). **Use cases:** Browse/Search products, Register/Login, Add to Cart, Checkout, Track Order, Manage Catalogue (Admin). Key relationships: **Checkout «include» Validate Payment** (mandatory, via the Payment Gateway actor) and **Checkout «extend» Apply Coupon** (optional). Actors sit *outside* the system boundary box; ovals (use cases) sit inside. Mnemonic: **«include» = always, «extend» = sometimes.**"
+    },
+    {
+      "id": "se-u1-pyq-15",
+      "topic": "srs-rtm-change",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 5,
+      "difficulty": "hard",
+      "q": "Propose a **lightweight change-management process** for an agile project. Cover: how change requests are raised, who assesses impact, how priority is decided, how changes affect the plan/backlog/schedule, and rollback/monitoring.",
+      "answer": "**(1) Raise:** any stakeholder files a **change request (CR)** as a backlog item/issue with reason & urgency. **(2) Assess impact:** the **Product Owner** (with the tech lead) does impact & cost analysis — effort, affected modules (via traceability), risk. **(3) Prioritise:** the PO ranks the CR against the **Product Backlog** by business value vs cost; the **CCB**/PO approves/defers. **(4) Plan effect:** approved CRs enter the backlog and are pulled into a future **sprint** (fixed timebox → scope flexes, schedule doesn't). **(5) Rollback/monitor:** every change ships behind **version control + CI tests**, with a rollback plan (feature flag / revert tag) and post-release monitoring; the RTM/derivation history keeps traceability."
+    },
+    {
+      "id": "se-u1-pyq-16",
+      "topic": "functional-nonfunctional",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "For an Event Management System, (i) identify the primary stakeholders (≥3) and one high-level goal each, and (ii) write three well-formed **user stories** (As a … I want … so that …) with precise **acceptance criteria**.",
+      "answer": "**Stakeholders & goals:** *Student* — discover & register for events easily; *Club admin* — create/manage events and see registrations; *Placement office* — schedule fairs and verify eligible students. **User stories (with acceptance criteria):** ① *As a student, I want to register for an event so that my seat is reserved* — AC: registration succeeds only if seats remain; confirmation notification sent; duplicate registration blocked. ② *As a club admin, I want to create an event so that students can discover it* — AC: event needs title/time/capacity; appears in the feed within 1 min; invalid dates rejected. ③ *As a student, I want real-time notifications so that I don't miss event changes* — AC: push within 30 s of a change; opt-out respected. (Each story is **INVEST**: independent, small, testable.)"
+    },
+    {
+      "id": "se-u1-pyq-17",
+      "topic": "testing-vv-terminology",
+      "year": "ESA Dec 2023 (UE21CS341A)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Define **Defect, Bug, Failure, Issue** with a line each. Differentiate **Verification and Validation** with an example. What is **ETVX**?",
+      "answer": "**Error** = a human mistake → introduces a **Defect/Bug** (the flaw in the code) → which, when executed, causes a **Failure** (observed deviation at runtime); an **Issue** is any reported problem/ticket (may or may not be a real defect). **Verification** = \"are we building the product **right**?\" (conforms to spec — e.g. spec says sort ascending and it does ✓); **Validation** = \"are we building the **right** product?\" (meets user needs — but the user wanted descending ✗). **ETVX** = **Entry – Task – Verification – eXit**, a process-structuring model defining each activity's entry criteria, the task, its verification, and exit criteria."
+    }
+  ]
+}

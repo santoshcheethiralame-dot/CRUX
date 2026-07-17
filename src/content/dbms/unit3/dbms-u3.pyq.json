@@ -1,0 +1,115 @@
+{
+  "subject": "dbms",
+  "unit": 3,
+  "title": "Unit 3 — Past-Year Questions (PES ESA)",
+  "items": [
+    {
+      "id": "dbms-u3-pyq-01",
+      "topic": "functional-dependencies",
+      "year": "ESA Jan 2024",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "What is a **functional dependency**? Provide an example.",
+      "answer": "An FD $X \\to Y$ is a constraint that for any two tuples, if they agree on $X$ they must agree on $Y$ (X functionally determines Y). It is a property of the *semantics* of attributes, holding on every legal state. e.g. in `EMPLOYEE(Ssn, Ename, ...)`, $Ssn \\to Ename$ — an SSN determines exactly one employee name."
+    },
+    {
+      "id": "dbms-u3-pyq-02",
+      "topic": "inference-rules",
+      "year": "ESA Jan 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain the **Armstrong axioms** — reflexivity, augmentation, and transitivity — in the context of inference rules.",
+      "answer": "Armstrong's axioms are a **sound and complete** set for inferring FDs. **IR1 Reflexive:** if $Y \\subseteq X$ then $X \\to Y$ (trivial FDs). **IR2 Augmentation:** if $X \\to Y$ then $XZ \\to YZ$. **IR3 Transitive:** if $X \\to Y$ and $Y \\to Z$ then $X \\to Z$. Repeatedly applying them yields the entire closure $F^+$. The derived rules (union, decomposition, pseudo-transitivity) all follow from these three."
+    },
+    {
+      "id": "dbms-u3-pyq-03",
+      "topic": "equivalence",
+      "year": "ESA Jul 2023",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "Are these two FD sets on R(A,B,C,D,E) equivalent? **F1 = {A→B, AB→C, D→AC, D→E}**, **F2 = {A→BC, D→AE}**.",
+      "answer": "Check both directions using closures. **F2 covers F1?** Under F2: $A^+=\\{A,B,C\\}$ ⊇ B (A→B ✓), ⊇ C (AB→C ✓); $D^+=\\{D,A,E,B,C\\}$ ⊇ A,C (D→AC ✓), ⊇ E (D→E ✓). So F2 ⊇ F1. **F1 covers F2?** Under F1: $A^+=\\{A,B,C\\}$ ⊇ BC (A→BC ✓); $D^+=\\{D,A,C,E,B\\}$ ⊇ A,E (D→AE ✓). So F1 ⊇ F2. Both hold ⟹ **F1 ≡ F2 (equivalent).**"
+    },
+    {
+      "id": "dbms-u3-pyq-04",
+      "topic": "equivalence",
+      "year": "ESA Jul 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What is the process to determine whether two FD sets F and G are equivalent? For **R(A,B,C,D)** with **FD1 = {A→B, B→C, A→C}** and **FD2 = {A→B, B→C, A→D}**, determine whether FD1 and FD2 are equivalent.",
+      "answer": "**Process:** F ≡ G iff F covers G AND G covers F — for each FD $X\\to Y$ in one set, compute $X^+$ under the other and check $Y \\subseteq X^+$. **Here:** FD2 has $A \\to D$. Under **FD1**, $A^+ = \\{A,B,C\\}$ — does **not** contain D. So FD1 does **not** cover FD2 ⟹ **FD1 and FD2 are NOT equivalent.** (FD1's $A\\to C$ is derivable in FD2 via A→B→C, but FD2's $A\\to D$ is not derivable in FD1.)"
+    },
+    {
+      "id": "dbms-u3-pyq-05",
+      "topic": "bcnf",
+      "year": "ESA Jul 2023",
+      "marks": 7,
+      "difficulty": "hard",
+      "q": "For **R(P,Q,R,S)** with **F = {R→S, R→P, Q→R}**: (i) identify all candidate keys; (ii) which normal form is R in? (iii) decompose R into BCNF.",
+      "answer": "**(i)** Essential attribute (never on a RHS) = **Q**. $Q^+ = \\{Q,R,S,P\\}$ = R, so **Q is the only candidate key.** **(ii)** Prime = {Q}; non-prime = P,R,S. $R \\to S$, $R \\to P$, $Q \\to R$: in $R\\to S$/$R\\to P$, R is **not a superkey** and S,P are non-prime ⟹ transitive ⟹ violates 3NF/BCNF. R is in **1NF** only. **(iii)** Decompose on the violating FDs: **R1(R, S, P)** (key R) and **R2(Q, R)** (key Q) — both in BCNF, lossless on R."
+    },
+    {
+      "id": "dbms-u3-pyq-06",
+      "topic": "bcnf",
+      "year": "ESA Jul 2024",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "For **R(A,B,C,D)** with **F = {C→D, C→A, B→C}**: (i) identify all candidate keys; (ii) which normal form is R in? (iii) decompose R into BCNF.",
+      "answer": "**(i)** Essential = **B** (never on a RHS). $B^+ = \\{B,C,D,A\\}$ = R ⟹ **B is the only candidate key.** **(ii)** Prime = {B}; non-prime = A,C,D. $C\\to D$, $C\\to A$ have C as a non-superkey determining non-prime attrs ⟹ transitive ⟹ violates 3NF/BCNF. R is in **1NF**. **(iii)** Decompose: **R1(C, D, A)** (key C) and **R2(B, C)** (key B) — both BCNF, lossless."
+    },
+    {
+      "id": "dbms-u3-pyq-07",
+      "topic": "candidate-keys",
+      "year": "ESA Dec 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "**StudentPerformance(name, courseNo, rollNo, grade)** with FDs: name,courseNo→grade; rollNo,courseNo→grade; name→rollNo; rollNo→name. Identify the candidate keys and the highest normal form. Justify.",
+      "answer": "Since $name \\leftrightarrow rollNo$ (each determines the other), the candidate keys are **{name, courseNo}** and **{rollNo, courseNo}**. Prime = {name, rollNo, courseNo}; non-prime = **grade**. Check 2NF: is grade fully dependent on each key? $name \\to rollNo$ means **name (part of a key) → rollNo (a prime attr)** — partial dependency of a *prime* attribute, allowed; grade depends on the whole key. No non-prime is partially or transitively dependent ⟹ **R is in 3NF** (and BCNF fails only if a non-superkey determines a prime — here $name \\to rollNo$ has name non-superkey, rollNo prime ⟹ **3NF but not BCNF**)."
+    },
+    {
+      "id": "dbms-u3-pyq-08",
+      "topic": "first-second-normal-form",
+      "year": "ESA Jul 2024",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "Illustrate and explain **1NF**, the **general definition of 2NF**, and the **general definition of 3NF** with an example for each.",
+      "answer": "**1NF** — all attributes **atomic** (no composite/multivalued/nested). e.g. split a multivalued `phones` into one row per phone. **2NF (general)** — in 1NF + every **non-prime** attribute is **fully** dependent on **every** candidate key (no partial dependency). e.g. `EMP_PROJ(Ssn,Pno,Hours,Ename)`: $Ssn\\to Ename$ is partial → split off. **3NF (general)** — for every $X\\to A$, **X is a superkey OR A is prime** (no non-prime transitively depends on a key). e.g. `EMP_DEPT`: $Ssn\\to Dno\\to Dname$ → split off Dept. Mnemonic: the key, the **whole** key, and **nothing but** the key."
+    },
+    {
+      "id": "dbms-u3-pyq-09",
+      "topic": "third-normal-form",
+      "year": "ESA Jan 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Given **R(X,Y,Z)** with **FD = {X→Y, Y→Z}**, determine whether R is in **3NF**. If not, convert it into 3NF.",
+      "answer": "$X^+ = \\{X,Y,Z\\}$ = R ⟹ **X is the candidate key**; prime = {X}, non-prime = Y,Z. $X\\to Y$ is fine (X is the key). $Y \\to Z$: **Y is not a superkey and Z is non-prime** ⟹ **transitive dependency ⟹ violates 3NF.** Decompose: **R1(X, Y)** (for X→Y) and **R2(Y, Z)** (for Y→Z) — both in 3NF, lossless (shared Y is the key of R2)."
+    },
+    {
+      "id": "dbms-u3-pyq-10",
+      "topic": "closure",
+      "year": "ESA Jan 2024",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Given **R(P,Q,R,S,T,U,V)** with **FD = {P→Q, QR→ST, PTU→V}**, determine the closure of **(QR)+** and **(PR)+**.",
+      "answer": "**$(QR)^+$:** start {Q,R}; QR→ST adds S,T ⟹ $\\{Q,R,S,T\\}$. P→Q needs P (absent), PTU→V needs P,U (absent). **$(QR)^+ = \\{Q,R,S,T\\}$.** **$(PR)^+$:** start {P,R}; P→Q adds Q ⟹ {P,Q,R}; QR→ST adds S,T ⟹ {P,Q,R,S,T}; PTU→V needs U (absent). **$(PR)^+ = \\{P,Q,R,S,T\\}$.**"
+    },
+    {
+      "id": "dbms-u3-pyq-11",
+      "topic": "candidate-keys",
+      "year": "ESA Jan 2024",
+      "marks": 3,
+      "difficulty": "easy",
+      "q": "Consider **R(A,B,C,D,E)** with FDs **{A→BC, C→B, D→E, E→D}**. Find the candidate keys.",
+      "answer": "Attributes never on any RHS = **A** and... checking: B,C on RHS (A→BC, C→B), E,D on RHS (D→E, E→D). So **A** is essential; D and E each appear on a RHS but $D\\leftrightarrow E$ form a cycle (neither derivable from outside), so one of them must be in the key. $A^+=\\{A,B,C\\}$ (not all). Add D: $(AD)^+=\\{A,B,C,D,E\\}$=R ✓. Add E: $(AE)^+=\\{A,E,D,B,C\\}$=R ✓. **Candidate keys: {A,D} and {A,E}.**"
+    },
+    {
+      "id": "dbms-u3-pyq-12",
+      "topic": "bcnf",
+      "year": "ESA Dec 2023",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "Explain briefly **3NF & BCNF** with a suitable example. What is the difference between them?",
+      "answer": "**3NF:** for every $X\\to A$, either X is a superkey **or** A is a prime attribute (no non-prime transitively depends on the key). **BCNF:** for every $X\\to A$, **X must be a superkey** (no 'A is prime' escape). **Difference:** BCNF is **strictly stronger** — a relation is *3NF but not BCNF* exactly when some $X\\to A$ has X **not** a superkey and A **prime**. e.g. `TEACH(Student,Course,Instructor)` with $\\{Student,Course\\}\\to Instructor$ and $Instructor\\to Course$: it is 3NF (Course is prime) but **not BCNF** (Instructor isn't a superkey)."
+    }
+  ]
+}

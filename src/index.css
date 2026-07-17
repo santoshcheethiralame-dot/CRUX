@@ -1,0 +1,383 @@
+@import 'tailwindcss';
+@import 'katex/dist/katex.min.css';
+
+/* ============================================================
+   NEOBRUTALISM design system — Study OS
+   thick black borders · hard offset shadows · flat bold colour
+   ============================================================ */
+:root {
+  /* surfaces */
+  --bg: #fff3d6;          /* cream paper */
+  --bg-soft: #ffe9b0;     /* deeper cream (sidebar) */
+  --panel: #fffdf6;       /* near-white cards */
+  --panel-2: #f0e6ff;     /* lilac inset */
+  --border: #000000;
+  --ink: #0a0a0a;
+  --text: #0a0a0a;
+  --muted: #5c5646;       /* warm dark gray */
+
+  /* accents (flat, bold) */
+  --brand: #8b5cf6;       /* grape */
+  --brand-strong: #7c3aed;
+  --accent: #c2f73f;      /* lime */
+  --lime: #c2f73f;
+  --grape: #b18cff;
+  --bubble: #ff95c6;      /* pink */
+  --sun: #ffd23f;         /* yellow */
+  --tang: #ff9a52;        /* orange */
+  --sky: #6fc6f5;         /* blue */
+  --mint: #8be0a4;
+  --warn: #ffd23f;
+  --danger: #ff5d5d;
+
+  /* high-energy extras */
+  --electric: #4d5dfb;   /* electric blue */
+  --hot: #ff2e88;        /* hot magenta */
+  --acid: #d6ff3f;       /* acid lime */
+
+  /* primitives */
+  --sh: 4px 4px 0 #000;
+  --sh-lg: 6px 6px 0 #000;
+  --sh-xl: 8px 8px 0 #000;
+  --r: 14px;
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background-color: var(--bg);
+  /* subtle dotted texture for that printed-paper feel */
+  background-image: radial-gradient(rgba(0,0,0,0.06) 1.4px, transparent 1.4px);
+  background-size: 22px 22px;
+  color: var(--text);
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--lime); color: #000; }
+
+/* chunky black scrollbars */
+* { scrollbar-width: thin; scrollbar-color: #000 transparent; }
+*::-webkit-scrollbar { width: 11px; height: 11px; }
+*::-webkit-scrollbar-thumb { background: #000; border-radius: 0; border: 2px solid var(--bg); }
+
+/* ---------- reusable neobrutalist utilities ---------- */
+.font-display { font-family: 'Space Grotesk', sans-serif; }
+.font-mono2 { font-family: 'Space Mono', ui-monospace, monospace; }
+
+.nb { border: 3px solid #000; box-shadow: var(--sh); border-radius: var(--r); background: var(--panel); }
+.nb-sm { border: 2.5px solid #000; box-shadow: 3px 3px 0 #000; border-radius: 10px; }
+.nb-border { border: 3px solid #000; }
+.nb-shadow { box-shadow: var(--sh); }
+.nb-shadow-lg { box-shadow: var(--sh-lg); }
+
+/* interactive lift / press — springier & deeper for that tactile pop */
+.nb-press { transition: transform .13s cubic-bezier(.2,.85,.25,1), box-shadow .13s cubic-bezier(.2,.85,.25,1); }
+.nb-press:hover { transform: translate(-3px,-3px); box-shadow: var(--sh-xl); }
+.nb-press:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 #000; }
+
+/* eyebrow / chunky label */
+.eyebrow {
+  font-family: 'Space Mono', monospace; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; font-size: .72rem;
+}
+
+/* big page title with a printed look — condensed, punchy, zine-headline tracking */
+.display-title {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  letter-spacing: -0.038em; line-height: .9; color: #000;
+  font-feature-settings: "ss01" 1, "ss02" 1;
+}
+/* fluid mega headline for heroes / section openers */
+.t-mega { font-size: clamp(2.6rem, 7vw, 5rem); line-height: .82; letter-spacing: -0.05em; }
+.t-xl   { font-size: clamp(1.9rem, 4.4vw, 3rem); line-height: .88; letter-spacing: -0.04em; }
+
+/* palette helpers */
+.bg-lime { background: var(--lime); }
+.bg-grape { background: var(--grape); }
+.bg-bubble { background: var(--bubble); }
+.bg-sun { background: var(--sun); }
+.bg-tang { background: var(--tang); }
+.bg-sky { background: var(--sky); }
+.bg-mint { background: var(--mint); }
+
+/* ---------- Prose (markdown article) ---------- */
+.prose { color: var(--text); line-height: 1.72; font-size: 1.02rem; }
+.prose > *:first-child { margin-top: 0; }
+.prose h1, .prose h2, .prose h3, .prose h4 { font-family: 'Space Grotesk', sans-serif; color: #000; font-weight: 700; line-height: 1.18; scroll-margin-top: 90px; }
+.prose h1 { font-size: 2.1rem; margin: 0 0 .55em; letter-spacing: -0.02em; }
+.prose h2 {
+  font-size: 1.5rem; margin: 2em 0 .7em; display: inline-block;
+  background: var(--sun); color: #000; padding: .12em .5em;
+  border: 3px solid #000; box-shadow: 3px 3px 0 #000; border-radius: 8px;
+}
+.prose h3 { font-size: 1.22rem; margin: 1.7em 0 .5em; }
+.prose h3::before { content: '▍'; color: var(--brand); margin-right: .35em; }
+.prose h4 { font-size: .82rem; margin: 1.4em 0 .4em; color: #000; font-family: 'Space Mono', monospace; text-transform: uppercase; letter-spacing: .07em; }
+.prose p { margin: .85em 0; }
+.prose a { color: #000; font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--brand); background: var(--lime); padding: 0 .15em; }
+.prose a:hover { background: var(--sun); }
+.prose strong { color: #000; font-weight: 700; }
+.prose ul, .prose ol { margin: .8em 0; padding-left: 1.4em; }
+.prose li { margin: .35em 0; }
+.prose ul > li::marker { color: var(--brand); content: '▪ '; }
+.prose ol > li::marker { color: #000; font-weight: 700; }
+
+.prose code {
+  background: var(--lime); color: #000; padding: .1em .42em;
+  border: 2px solid #000; border-radius: 6px; font-size: .85em;
+  font-family: 'Space Mono', ui-monospace, monospace; font-weight: 700;
+}
+.prose pre {
+  background: #0a0a0a; border: 3px solid #000; border-radius: 12px;
+  box-shadow: var(--sh); padding: 1em 1.2em; overflow-x: auto; margin: 1.2em 0;
+}
+.prose pre code { background: none; color: #eaffd0; padding: 0; border: none; font-size: .86em; font-weight: 400; }
+
+.prose blockquote {
+  margin: 1.2em 0; padding: .4em 1.1em; border: 3px solid #000;
+  background: var(--panel-2); box-shadow: var(--sh); border-radius: 10px;
+}
+.prose blockquote p { margin: .55em 0; }
+
+/* Tables — heavily used in ML notes. The .table-wrap gives the black frame +
+   horizontal scroll; the <table> itself fills it so header/row colours align
+   with the cell grid (no overhanging colour bars). */
+.prose .table-wrap {
+  margin: 1.3em 0; overflow-x: auto; overflow-y: hidden;
+  border: 3px solid #000; border-radius: 10px; box-shadow: var(--sh);
+}
+.prose table {
+  width: 100%; border-collapse: separate; border-spacing: 0; font-size: .92rem;
+}
+.prose thead { background: var(--grape); }
+.prose th, .prose td { border-right: 2px solid #000; border-bottom: 2px solid #000; padding: .55em .8em; text-align: left; }
+.prose tr > *:last-child { border-right: none; }
+.prose tbody tr:last-child > * { border-bottom: none; }
+.prose th { color: #000; font-weight: 700; font-family: 'Space Grotesk', sans-serif; white-space: nowrap; }
+.prose tbody tr:nth-child(even) { background: rgba(0,0,0,.035); }
+
+.prose hr { border: none; border-top: 3px dashed #000; margin: 2em 0; }
+
+.prose .katex { font-size: 1.05em; }
+.prose .katex-display { margin: 1.2em 0; overflow-x: auto; overflow-y: hidden; padding: .6em .8em; background: var(--panel); border: 2.5px solid #000; border-radius: 10px; box-shadow: 3px 3px 0 #000; }
+
+/* ---------- Callouts ---------- */
+.callout { margin: 1.4em 0; border: 3px solid #000; border-radius: 12px; box-shadow: var(--sh); padding: .85em 1.05em; }
+.callout-title { font-family: 'Space Mono', monospace; font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; display: flex; gap: .5em; align-items: center; margin-bottom: .45em; color: #000; }
+.callout-body > *:last-child { margin-bottom: 0; }
+.callout-body > *:first-child { margin-top: 0; }
+.callout.intuition { background: var(--mint); }
+.callout.exam { background: var(--sun); }
+.callout.trap { background: var(--bubble); }
+.callout.note { background: var(--sky); }
+.callout.derive { background: var(--grape); }
+/* keep code/links readable inside coloured callouts */
+.callout code { background: #fffdf6; }
+.callout a { background: #fffdf6; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.fade-up { animation: fadeUp .3s ease both; }
+
+@keyframes pop { 0% { transform: scale(.96); } 60% { transform: scale(1.02); } 100% { transform: scale(1); } }
+.pop { animation: pop .18s ease both; }
+
+/* ============================================================
+   Patterns & tasteful microanimations
+   ============================================================ */
+
+/* --- neobrutalist repeating patterns (overlay any bg colour) --- */
+.pat-dots    { background-image: radial-gradient(rgba(0,0,0,.16) 2px, transparent 2.2px); background-size: 14px 14px; }
+.pat-grid    { background-image: linear-gradient(rgba(0,0,0,.13) 1.6px, transparent 1.6px), linear-gradient(90deg, rgba(0,0,0,.13) 1.6px, transparent 1.6px); background-size: 16px 16px; }
+.pat-diag    { background-image: repeating-linear-gradient(45deg, rgba(0,0,0,.14) 0 5px, transparent 5px 14px); }
+.pat-diag2   { background-image: repeating-linear-gradient(-45deg, rgba(0,0,0,.14) 0 5px, transparent 5px 14px); }
+.pat-checker { background-image: conic-gradient(rgba(0,0,0,.13) 0 90deg, transparent 0 180deg, rgba(0,0,0,.13) 0 270deg, transparent 0); background-size: 18px 18px; }
+.pat-cross   { background-image: linear-gradient(rgba(0,0,0,.15) 2px, transparent 2px), linear-gradient(90deg, rgba(0,0,0,.15) 2px, transparent 2px); background-size: 22px 22px; }
+.pat-vstripe { background-image: repeating-linear-gradient(90deg, rgba(0,0,0,.13) 0 4px, transparent 4px 13px); }
+/* light-ink variants for dark/coloured surfaces */
+.pat-dots-soft { background-image: radial-gradient(rgba(0,0,0,.10) 1.6px, transparent 1.8px); background-size: 13px 13px; }
+
+/* absolute pattern overlay behind content */
+.pat-host { position: relative; }
+.pat-host > * { position: relative; z-index: 1; }
+.pat-layer { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+
+/* The app-shell header & sidebar carry .pat-host for their texture, but pat-host's
+   position:relative (unlayered, so it beats Tailwind's layered .sticky/.fixed) would
+   clobber their pinned positioning and let them scroll away. Restore it with a
+   higher-specificity (tag+class) rule. */
+header.pat-host { position: sticky; }
+aside.pat-host { position: fixed; }
+@media (min-width: 1024px) { aside.pat-host { position: sticky; } }
+
+/* --- entrance: stagger a grid/list of cards --- */
+@keyframes risein { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
+.stagger > * { animation: risein .4s cubic-bezier(.2,.7,.3,1) both }
+.stagger > *:nth-child(1){animation-delay:.03s} .stagger > *:nth-child(2){animation-delay:.08s}
+.stagger > *:nth-child(3){animation-delay:.13s} .stagger > *:nth-child(4){animation-delay:.18s}
+.stagger > *:nth-child(5){animation-delay:.23s} .stagger > *:nth-child(6){animation-delay:.28s}
+.stagger > *:nth-child(7){animation-delay:.33s} .stagger > *:nth-child(8){animation-delay:.38s}
+.stagger > *:nth-child(n+9){animation-delay:.42s}
+
+/* --- progress fill sheen (subtle, not swingy) --- */
+@keyframes sheen { to { background-position: -200% 0 } }
+.progress-shine { background-image: linear-gradient(100deg, var(--lime) 0%, #eaffb0 45%, var(--lime) 70%); background-size: 220% 100%; animation: sheen 2.6s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger > *, .progress-shine { animation: none !important; }
+}
+
+/* ============================================================
+   v2 "POP" elevation — stickers · tape · halftone · stacked shadows
+   ============================================================ */
+
+/* stacked shadow: black close + saturated colour peeking out behind it */
+.nb-pop       { box-shadow: 5px 5px 0 #000; }
+.nb-pop-color { box-shadow: 5px 5px 0 #000, 10px 10px 0 var(--pop, var(--grape)); }
+.nb-press-pop { transition: transform .14s cubic-bezier(.2,.85,.25,1), box-shadow .14s cubic-bezier(.2,.85,.25,1);
+                box-shadow: 5px 5px 0 #000, 10px 10px 0 var(--pop, var(--grape)); }
+.nb-press-pop:hover  { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 #000, 14px 14px 0 var(--pop, var(--grape)); }
+.nb-press-pop:active { transform: translate(2px,2px);  box-shadow: 3px 3px 0 #000, 6px 6px 0 var(--pop, var(--grape)); }
+
+/* tilt + sticker helpers (hand-placed feel) */
+.tilt-l  { transform: rotate(-3deg); }
+.tilt-r  { transform: rotate(2.5deg); }
+.tilt-l2 { transform: rotate(-1.5deg); }
+.tilt-r2 { transform: rotate(1.5deg); }
+.sticker { display: inline-block; border: 3px solid #000; box-shadow: 3px 3px 0 #000;
+           border-radius: 10px; transform: rotate(-4deg); transition: transform .2s ease; }
+.sticker:hover { animation: wobble .45s ease; }
+@keyframes wobble { 0%,100% { transform: rotate(-4deg) } 30% { transform: rotate(0deg) scale(1.06) } 65% { transform: rotate(-6deg) } }
+
+/* washi-tape strip (decorative) — put on a relatively-positioned host */
+.tape::before {
+  content: ''; position: absolute; top: -10px; left: 50%;
+  width: 78px; height: 21px; transform: translateX(-50%) rotate(-3.5deg);
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,.5) 0 6px, rgba(255,255,255,.28) 6px 12px);
+  border: 2px solid rgba(0,0,0,.32); z-index: 6;
+}
+
+/* halftone comic shading (overlay) */
+.halftone { background-image: radial-gradient(rgba(0,0,0,.22) 28%, transparent 30%); background-size: 7px 7px; }
+
+/* display type treatments */
+.text-stroke  { -webkit-text-stroke: 2.5px #000; color: transparent; paint-order: stroke fill; }
+.text-pop     { text-shadow: 4px 4px 0 #000; }
+.text-pop-sm  { text-shadow: 3px 3px 0 #000; }
+
+/* marquee ticker */
+.marquee { overflow: hidden; white-space: nowrap; }
+.marquee > .marquee-track { display: inline-block; padding-left: 100%; animation: marquee 22s linear infinite; }
+.marquee:hover > .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-100%); } }
+
+/* progress ring (conic) — set --p (0..100) and --ring colour */
+.ring {
+  border-radius: 999px; display: grid; place-items: center;
+  background: conic-gradient(var(--ring, var(--lime)) calc(var(--p, 0) * 1%), rgba(0,0,0,.10) 0);
+  border: 3px solid #000;
+}
+.ring > .ring-hole { background: var(--panel); border: 2px solid #000; border-radius: 999px; display: grid; place-items: center; }
+
+/* chunky stat number */
+.stat-num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; line-height: .95; letter-spacing: -0.02em; }
+
+/* marker highlight (hand-drawn underline behind text) */
+.mark { background: linear-gradient(transparent 58%, var(--sun) 58% 92%, transparent 92%); padding: 0 .08em; }
+.mark-lime  { background: linear-gradient(transparent 58%, var(--lime) 58% 92%, transparent 92%); }
+.mark-pink  { background: linear-gradient(transparent 58%, var(--bubble) 58% 92%, transparent 92%); }
+
+/* count-up entrance for stat tiles */
+@keyframes punch { 0% { transform: scale(.7); opacity: 0 } 60% { transform: scale(1.08) } 100% { transform: scale(1); opacity: 1 } }
+.punch { animation: punch .42s cubic-bezier(.2,.8,.2,1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee > .marquee-track, .sticker:hover, .punch { animation: none !important; }
+}
+
+/* ============================================================
+   Practice screens — 3D flip · shake · grade stamp · confetti · flames
+   ============================================================ */
+
+/* true 3D flashcard flip */
+.flip-scene { perspective: 1600px; }
+.flip-card  { position: relative; min-height: 320px; transition: transform .55s cubic-bezier(.2,.8,.2,1); transform-style: preserve-3d; }
+.flip-card.is-flipped { transform: rotateY(180deg); }
+.flip-face  { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: grid; place-items: center; overflow: auto; }
+.flip-back  { transform: rotateY(180deg); }
+
+/* shake a wrong pick */
+@keyframes shake { 10%,90%{transform:translateX(-2px)} 20%,80%{transform:translateX(4px)} 30%,50%,70%{transform:translateX(-8px)} 40%,60%{transform:translateX(8px)} }
+.shake { animation: shake .5s both; }
+
+/* grade stamp slams in */
+@keyframes stampin { 0%{transform:scale(2.6) rotate(14deg);opacity:0} 55%{transform:scale(.88) rotate(-7deg);opacity:1} 100%{transform:scale(1) rotate(-7deg)} }
+.stamp { animation: stampin .55s cubic-bezier(.2,.8,.2,1) both; }
+
+/* confetti */
+@keyframes confetti-fall { 0% { transform: translateY(-30px) rotate(0); opacity: 1 } 100% { transform: translateY(460px) rotate(620deg); opacity: 0 } }
+.confetti-pc { position: absolute; top: 0; width: 11px; height: 14px; border: 2px solid #000; animation: confetti-fall 1.5s linear forwards; }
+
+/* streak flame pulse */
+@keyframes flamepulse { 0%,100% { transform: scale(1) } 50% { transform: scale(1.18) rotate(-4deg) } }
+.flame { display: inline-block; animation: flamepulse .7s ease-in-out infinite; }
+
+/* answer reveal slide */
+@keyframes revealdown { from { opacity: 0; transform: translateY(-6px) } to { opacity: 1; transform: none } }
+.reveal { animation: revealdown .25s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-card, .shake, .stamp, .confetti-pc, .flame, .reveal { animation: none !important; transition: none !important; }
+}
+
+/* ============================================================
+   DARK "NIGHT-GRIND" THEME — dimmed parchment surfaces on a dark,
+   textured canvas. Black ink/borders/shadows stay (surfaces are light),
+   so every card just works; only the canvas + chrome go dark.
+   ============================================================ */
+:root.dark {
+  --bg: #16171d;        /* near-black desk */
+  --bg-soft: #101116;   /* topbar / sidebar */
+  --panel: #e9e3d1;     /* dim warm parchment (cards) */
+  --panel-2: #cdbdf0;   /* dim lilac inset */
+  --muted: #6b6553;
+  --canvas-ink: #efe9d8;
+}
+:root.dark body {
+  background-color: var(--bg);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1.4px, transparent 1.4px);
+}
+html { transition: background-color .25s ease; }
+
+/* metadata that sits directly on the dark canvas (breadcrumbs, ToC, captions).
+   also reach text descendants — markdown <p>/<li>/etc. carry their own --ink color */
+:root.dark .on-canvas,
+:root.dark .on-canvas p,
+:root.dark .on-canvas li,
+:root.dark .on-canvas strong,
+:root.dark .on-canvas em,
+:root.dark .on-canvas code { color: var(--canvas-ink) !important; }
+/* hairline dividers drawn on the dark canvas (e.g. Home "your subjects" rule) */
+:root.dark .canvas-rule { background: rgba(239, 233, 216, 0.22) !important; }
+
+/* topbar + sidebar plain text → light (they sit on the dark chrome) */
+:root.dark header .text-black { color: var(--canvas-ink); }
+:root.dark header .text-black\/40 { color: rgba(239, 233, 216, 0.45); }
+:root.dark aside > div > .eyebrow,
+:root.dark aside .eyebrow.text-black\/70 { color: rgba(239, 233, 216, 0.65); }
+
+/* long-form article: wrap prose in a parchment "sheet" so black ink stays readable
+   on the dark canvas. In light mode the sheet is invisible. */
+:root.dark .reading-sheet {
+  background: var(--panel);
+  border: 3px solid #000;
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 #000;
+  padding: 1.5rem 1.6rem;
+}
+@media (min-width: 640px) { :root.dark .reading-sheet { padding: 2rem 2.2rem; } }
+
+/* the ToC rail text on the dark canvas */
+:root.dark .toc-rail button { color: rgba(239, 233, 216, 0.6); }
+:root.dark .toc-rail button.toc-active { color: var(--canvas-ink); }
+:root.dark .toc-rail .border-l-\[3px\] { border-color: rgba(239, 233, 216, 0.2); }

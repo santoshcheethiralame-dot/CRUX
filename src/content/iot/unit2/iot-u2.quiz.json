@@ -1,0 +1,482 @@
+{
+  "subject": "iot",
+  "unit": 2,
+  "title": "Unit 2 MCQs — IoT Sensors & Embedded Systems",
+  "items": [
+    {
+      "id": "iot-u2-001",
+      "topic": "introduction-to-sensors",
+      "q": "What is the precise relationship between a sensor, a transducer, and an actuator?",
+      "options": [
+        "They are three names for the same device",
+        "Every sensor and actuator is a transducer; a sensor measures (input), an actuator acts (output)",
+        "A transducer is a type of sensor that cannot be an actuator",
+        "An actuator senses while a sensor acts"
+      ],
+      "answer": 1,
+      "explain": "A transducer converts one energy form to another. A sensor is a transducer on the input/measurement side (physical → electrical); an actuator is one on the output side (electrical → physical action).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-002",
+      "topic": "introduction-to-sensors",
+      "q": "Sensors are often called the '___ of IoT' because they convert physical phenomena into measurable signals.",
+      "options": ["hands", "eyes and ears", "brain", "voice"],
+      "answer": 1,
+      "explain": "Sensors are the eyes and ears of IoT — they perceive the physical world. (Actuators are the 'hands'; the processor is the 'brain'.)",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-003",
+      "topic": "sensor-types",
+      "q": "Which group lists only ACTIVE sensors?",
+      "options": [
+        "Thermocouple, LDR, PIR",
+        "Ultrasonic, radar, LiDAR",
+        "Photodiode, thermocouple, capacitive humidity",
+        "PIR, barometer, strain gauge"
+      ],
+      "answer": 1,
+      "explain": "Active sensors emit energy and measure the reflection: ultrasonic (sound), radar (radio), LiDAR (laser). Thermocouple, LDR, and PIR are passive — they detect existing natural energy.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-004",
+      "topic": "sensor-types",
+      "q": "A PIR (Passive Infrared) sensor detects people because it:",
+      "options": [
+        "Emits an infrared beam and measures the reflection",
+        "Detects the infrared heat naturally radiated by a human body (emits nothing)",
+        "Sends ultrasonic pulses",
+        "Uses a laser to map the room"
+      ],
+      "answer": 1,
+      "explain": "PIR is passive: it detects IR radiation emitted by warm bodies without emitting any energy itself. An active IR proximity sensor, by contrast, emits an IR beam.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-005",
+      "topic": "sensor-types",
+      "q": "A thermocouple inserted into an engine cylinder to read internal temperature is an example of a(n) ___ sensor.",
+      "options": ["non-invasive", "invasive", "passive-only", "no-contact"],
+      "answer": 1,
+      "explain": "It penetrates/embeds into the measured system (invasive) and contacts it directly. An IR thermometer reading surface temperature from a distance would be non-invasive and no-contact.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-006",
+      "topic": "static-metrics",
+      "q": "On a dartboard analogy, darts tightly clustered together but far from the bullseye represent a sensor that is:",
+      "options": [
+        "Accurate but imprecise",
+        "Precise but inaccurate",
+        "Both accurate and precise",
+        "Neither accurate nor precise"
+      ],
+      "answer": 1,
+      "explain": "Tight cluster = high precision (consistent); wrong spot = low accuracy (not close to true value). This is a systematic error that calibration can correct.",
+      "difficulty": "easy",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-007",
+      "topic": "static-metrics",
+      "q": "The smallest change in the measured quantity that a sensor can detect is its:",
+      "options": ["Sensitivity", "Resolution", "Range", "Linearity"],
+      "answer": 1,
+      "explain": "Resolution is the smallest detectable change. Sensitivity is the output change per unit input (slope) — a different property.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-008",
+      "topic": "static-metrics",
+      "q": "A load cell outputs 0.05 V when no load is applied. This non-zero output at zero input is called:",
+      "options": ["Drift", "Offset (bias)", "Hysteresis", "Sensitivity"],
+      "answer": 1,
+      "explain": "Offset (bias) is the baseline output when input is zero. Drift, by contrast, is a slow change over time. Offset is corrected during calibration (auto-zero).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-009",
+      "topic": "static-metrics",
+      "q": "A sensor's reading slowly creeps upward over weeks even though the true input is constant. This is:",
+      "options": ["Drift", "Offset", "Resolution", "Sensitivity"],
+      "answer": 0,
+      "explain": "Drift is a slow change in output over time (ageing/temperature) for a fixed input — the reason sensors need periodic recalibration.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-010",
+      "topic": "dynamic-metrics",
+      "q": "Response time is typically defined as the time for a sensor to reach what fraction of its final value after a step change?",
+      "options": ["10–20%", "50%", "90% or 95%", "100% exactly"],
+      "answer": 2,
+      "explain": "Response time is measured to a defined settling threshold, typically 90% or 95% of the final value after a step input.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-011",
+      "topic": "dynamic-metrics",
+      "q": "Which metric, measured in hertz, is the range of input frequencies a sensor can track without distortion?",
+      "options": ["SNR", "Bandwidth", "Resolution", "Offset"],
+      "answer": 1,
+      "explain": "Bandwidth (Hz) is the usable frequency range. Wide bandwidth is needed for vibration/audio sensing. Frequency response is the fuller amplitude/phase-vs-frequency curve.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-012",
+      "topic": "dynamic-metrics",
+      "q": "Which set are all DYNAMIC performance metrics?",
+      "options": [
+        "Accuracy, precision, offset",
+        "Response time, SNR, bandwidth, frequency response",
+        "Resolution, linearity, range",
+        "Drift, offset, sensitivity"
+      ],
+      "answer": 1,
+      "explain": "Dynamic metrics describe behaviour under change: response time, SNR, bandwidth, frequency response. Accuracy/precision/resolution/linearity/range/offset/drift are static.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-013",
+      "topic": "sensor-selection",
+      "q": "For a solar-powered outdoor smart-parking sensor scaling to 100+ slots, which criterion is MOST decisive in the choice?",
+      "options": [
+        "Maximum possible resolution regardless of cost",
+        "Ultra-low power + low cost + weatherproofing (binary presence is enough)",
+        "Highest bandwidth available",
+        "Largest measurement range"
+      ],
+      "answer": 1,
+      "explain": "The task only needs binary presence, so a low-cost, ultra-low-power, weatherproof IR/ultrasonic sensor fits the solar power, outdoor environment, and large-scale cost constraints.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-014",
+      "topic": "actuators",
+      "q": "What fundamentally distinguishes a sensor from an actuator?",
+      "options": [
+        "A sensor is output (acts); an actuator is input (senses)",
+        "A sensor is input (senses data); an actuator is output (acts on the environment)",
+        "Both only sense; neither acts",
+        "There is no difference"
+      ],
+      "answer": 1,
+      "explain": "A sensor detects changes (input). An actuator converts an electrical signal into a physical action (output) — e.g., a relay switching on a fan.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-015",
+      "topic": "actuators",
+      "q": "Which actuator type uses compressed air to produce motion?",
+      "options": ["Hydraulic", "Pneumatic", "Thermal", "Magnetic"],
+      "answer": 1,
+      "explain": "Pneumatic actuators use compressed air (e.g., pneumatic arms, air valves). Hydraulic uses pressurised fluid; thermal uses heat expansion; magnetic uses magnetic fields.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-016",
+      "topic": "actuators",
+      "q": "The key difference between open-loop and closed-loop actuator control is:",
+      "options": [
+        "Open-loop is always digital; closed-loop is always analog",
+        "Closed-loop uses sensor feedback to self-correct; open-loop has no feedback",
+        "Open-loop is more reliable than closed-loop",
+        "Closed-loop never uses sensors"
+      ],
+      "answer": 1,
+      "explain": "Closed-loop control uses sensor feedback to continuously adjust (e.g., blinds following a light sensor). Open-loop runs a fixed command with no feedback (e.g., a fixed-time sprinkler).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-017",
+      "topic": "smart-sensors",
+      "q": "What makes a 'smart sensor' smart compared to a basic sensor?",
+      "options": [
+        "It is physically larger",
+        "It integrates signal conditioning, a microcontroller, and a comms interface to output a conditioned digital value (often self-calibrating)",
+        "It only outputs raw analog voltage",
+        "It requires an external ADC and manual calibration"
+      ],
+      "answer": 1,
+      "explain": "A smart sensor adds on-board processing (conditioning, ADC, MCU, comms) so it outputs a clean digital value, can self-calibrate and self-diagnose — pushing edge intelligence to the sensing element.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-018",
+      "topic": "smart-sensors",
+      "q": "IEEE 1451's TEDS (Transducer Electronic Data Sheet) primarily enables:",
+      "options": [
+        "Higher transmission power",
+        "Plug-and-play sensors that self-describe their identity and calibration data to any compatible host",
+        "Longer cable lengths",
+        "Cheaper silicon"
+      ],
+      "answer": 1,
+      "explain": "TEDS stores the sensor's identity, calibration, and characteristics in on-board memory, so a sensor can announce itself for true plug-and-play interoperability.",
+      "difficulty": "hard",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-019",
+      "topic": "smart-objects",
+      "q": "Which is NOT one of the defining capabilities of a smart object?",
+      "options": [
+        "Unique identity (identifier/address)",
+        "Sensing and actuation with embedded logic",
+        "Processing (MCU + memory) and communication",
+        "Requiring a continuous human operator to function"
+      ],
+      "answer": 3,
+      "explain": "Smart objects are autonomous. Their defining capabilities are unique identity, sensing, processing, communication, and actuation+logic — they act without constant human control.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-020",
+      "topic": "smart-objects",
+      "q": "A vibration sensor on a machine transmitting at hundreds of Hz is classified as a ___ smart object by reporting frequency.",
+      "options": ["low-reporting", "high-reporting", "static-only", "mobile"],
+      "answer": 1,
+      "explain": "High reporting frequency = rapid, frequent updates (e.g., machine vibration). A rust sensor sending monthly data is low-reporting. (Mobility is a separate axis: static vs mobile.)",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-021",
+      "topic": "mems",
+      "q": "MEMS stands for, and is fabricated using:",
+      "options": [
+        "Multi-Element Memory Systems; assembled by hand",
+        "Micro-Electro-Mechanical Systems; microfabricated on silicon (photolithography)",
+        "Modular Embedded Microcontroller Standard; 3D-printed",
+        "Macro-Electrical Mechanical Sensors; cast in metal"
+      ],
+      "answer": 1,
+      "explain": "MEMS = Micro-Electro-Mechanical Systems — micro/millimetre-scale mechanical+electrical elements built on silicon wafers via photolithography.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-022",
+      "topic": "mems",
+      "q": "A smartphone's screen-rotation and a drone's stabilization rely respectively on MEMS:",
+      "options": [
+        "Accelerometer and gyroscope",
+        "Thermocouple and LDR",
+        "Barometer and microphone",
+        "Hall sensor and strain gauge"
+      ],
+      "answer": 0,
+      "explain": "A MEMS accelerometer senses tilt/linear acceleration (screen rotation); a MEMS gyroscope senses angular rotation rate (drone stabilization). Together they form an IMU.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-023",
+      "topic": "sensor-fusion",
+      "q": "In an IMU, why are an accelerometer and gyroscope fused together?",
+      "options": [
+        "They measure the same thing for redundancy only",
+        "Their flaws are complementary — the accelerometer is noisy but drift-free; the gyroscope is smooth but drifts — so fusing gives a smooth AND stable estimate",
+        "The gyroscope is accurate long-term and the accelerometer short-term",
+        "Neither is useful alone or together"
+      ],
+      "answer": 1,
+      "explain": "Accelerometer: noisy but no long-term drift. Gyroscope: smooth short-term but accumulates drift. Fusion (complementary/Kalman filter) trusts each where it's strong, yielding orientation that's both smooth and stable.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-024",
+      "topic": "sensor-fusion",
+      "q": "Using three temperature sensors and voting out a faulty one is which kind of sensor fusion?",
+      "options": [
+        "Complementary",
+        "Competitive (redundant)",
+        "Cooperative",
+        "No fusion at all"
+      ],
+      "answer": 1,
+      "explain": "Competitive/redundant fusion uses multiple sensors measuring the SAME quantity for fault tolerance and noise reduction. Complementary covers different aspects; cooperative derives new info (e.g., stereo depth).",
+      "difficulty": "hard",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-025",
+      "topic": "sensor-fusion",
+      "q": "Which algorithm is the classic optimal estimator used to fuse noisy sensor data with a predict–correct cycle?",
+      "options": ["Bubble sort", "Kalman filter (and its Extended variant)", "Dijkstra's algorithm", "Round-robin scheduler"],
+      "answer": 1,
+      "explain": "The Kalman filter optimally fuses noisy measurements via predict-then-correct, weighting sensors by trust. The Extended Kalman Filter (EKF) handles non-linear systems (drones, GPS+IMU).",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-026",
+      "topic": "self-calibration",
+      "q": "A two-point calibration (e.g., ice at 0°C and boiling water at 100°C) primarily corrects:",
+      "options": [
+        "Only the offset",
+        "Both offset and gain (scale)",
+        "Only non-linearity",
+        "Only drift"
+      ],
+      "answer": 1,
+      "explain": "One point fixes offset; two points fix both offset and gain (the line y = gain·x + offset). Multi-point calibration also corrects non-linearity.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-027",
+      "topic": "self-calibration",
+      "q": "Why is self-calibration especially valuable in IoT?",
+      "options": [
+        "It increases data transmission speed",
+        "Sensors are deployed at scale, unattended for years, where drift accumulates and manual recalibration is impractical",
+        "It removes the need for any sensors",
+        "It only matters for laboratory equipment"
+      ],
+      "answer": 1,
+      "explain": "Large, unattended, long-lived field deployments can't be hand-recalibrated. Self-calibration (auto-zero, internal references, temperature compensation) keeps data trustworthy without truck-rolls.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-028",
+      "topic": "wsn",
+      "q": "In a Wireless Sensor Network, the base station that collects data from all nodes is also called the:",
+      "options": ["Actuator", "Sink / gateway", "ADC", "Transducer"],
+      "answer": 1,
+      "explain": "The base station is the sink or gateway. Each node (sensor + MCU + radio + battery) forwards its data there, typically in a unidirectional flow.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-029",
+      "topic": "wsn",
+      "q": "Which best captures the WSN-vs-IoT relationship?",
+      "options": [
+        "WSN and IoT are identical",
+        "A WSN is a subset of IoT focused on sensing/forwarding (often unidirectional); IoT is the full ecosystem with processing, actuation, analytics, and bidirectional control",
+        "IoT is a subset of WSN",
+        "WSNs use only wired links"
+      ],
+      "answer": 1,
+      "explain": "A WSN handles sensing and basic data transmission (usually sensor → gateway → app). IoT is the broader, bidirectional ecosystem adding edge intelligence, actuation, analytics, and cloud integration.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-030",
+      "topic": "sensors-of-the-future",
+      "q": "Energy-harvesting sensors are pivotal to 'Green IoT' because they:",
+      "options": [
+        "Transmit at higher data rates",
+        "Scavenge ambient energy (light, vibration, heat) so they need no battery — enabling sustainable, maintenance-free deployment of billions of nodes",
+        "Are physically larger and easier to service",
+        "Eliminate the need for sensing"
+      ],
+      "answer": 1,
+      "explain": "By harvesting ambient energy, these sensors run without batteries, removing IoT's biggest bottleneck (power) and making massive, unattended, sustainable deployments feasible.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u2-031",
+      "topic": "embedded-systems",
+      "q": "How does a microcontroller (MCU) differ from a microprocessor?",
+      "options": [
+        "An MCU is only the CPU core with no memory",
+        "An MCU integrates CPU + memory (flash/RAM) + peripherals on one chip; a microprocessor is just the core needing external support",
+        "A microprocessor is always cheaper and smaller",
+        "They are the same thing"
+      ],
+      "answer": 1,
+      "explain": "A microcontroller is a complete computer-on-a-chip (CPU + flash + SRAM + GPIO/timers/ADC/comms), ideal for embedded/IoT. A microprocessor is just the processing core requiring external RAM, storage, and peripherals.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-032",
+      "topic": "embedded-systems",
+      "q": "Embedded systems are characterised by all of the following EXCEPT:",
+      "options": [
+        "Designed for a specific task and often real-time",
+        "Limited memory and compute, often no OS (or an RTOS)",
+        "Abundant RAM and a full desktop operating system by default",
+        "Tightly coupled to hardware"
+      ],
+      "answer": 2,
+      "explain": "Embedded systems are resource-constrained and usually bare-metal or RTOS-based — not running a full desktop OS with abundant RAM.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-033",
+      "topic": "stm32-architecture",
+      "q": "STM32 microcontrollers are based on which processor architecture?",
+      "options": ["8-bit AVR", "32-bit ARM Cortex-M", "x86", "64-bit RISC-V only"],
+      "answer": 1,
+      "explain": "STM32 (STMicroelectronics) is a family of 32-bit ARM Cortex-M microcontrollers, available in series like F1 (general), L (low-power), and F4 (high-performance).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-034",
+      "topic": "stm32-architecture",
+      "q": "Which STM32 on-chip peripheral is used to read an analog sensor voltage?",
+      "options": ["GPIO", "ADC", "UART", "Flash"],
+      "answer": 1,
+      "explain": "The ADC (Analog-to-Digital Converter) converts an analog sensor voltage into a digital value. GPIO handles digital I/O; UART is serial comms; flash stores firmware.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-035",
+      "topic": "stm32-iot-app",
+      "q": "In the STM32 'blink' example, what do HAL_GPIO_TogglePin() and HAL_Delay() represent?",
+      "options": [
+        "Raw assembly instructions",
+        "HAL (Hardware Abstraction Layer) calls that hide raw register writes behind readable functions",
+        "Cloud API requests",
+        "Operating-system system calls"
+      ],
+      "answer": 1,
+      "explain": "HAL functions abstract the underlying register manipulation; combined with CubeMX-generated setup code, they let you focus on logic in the super-loop.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u2-036",
+      "topic": "stm32-iot-app",
+      "q": "UART on an STM32 is commonly used to:",
+      "options": [
+        "Render graphics on a display",
+        "Provide serial debug output and communicate with modules like GPS, Bluetooth, or a Wi-Fi modem",
+        "Store the firmware permanently",
+        "Perform analog-to-digital conversion"
+      ],
+      "answer": 1,
+      "explain": "UART (serial) is used for debug consoles and to talk to external modules (GPS, BT, modems) — often the bridge that connects a standalone MCU to the network.",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

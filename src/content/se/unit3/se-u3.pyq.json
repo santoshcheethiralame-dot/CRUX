@@ -1,0 +1,160 @@
+{
+  "subject": "se",
+  "unit": 3,
+  "title": "Unit 3 — Past-Year Questions",
+  "items": [
+    {
+      "id": "se-u3-pyq-01",
+      "topic": "scm-fundamentals",
+      "year": "ESA Dec 2023 / Jan-May 2024 (UE21CS341A)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What is **SCM** and what does it involve? Name its benefits (≥6). Explain **SCM activities**.",
+      "answer": "**Software Configuration Management (SCM)** is the discipline of systematically **controlling and tracking changes** to software artifacts — identifying **Configuration Items (CIs)**, tracking who/why/when via **versioning, branching, merging**, and providing **baselines** and staged promotion. **Activities:** CI identification, version management, baselining, branch management, build/release/install/promotion management, change & defect management. **Benefits:** reproducible builds, audit trails/traceability, concurrent work without lost changes, controlled releases, faster error recovery (rollback), accountability, and support for multiple release lines."
+    },
+    {
+      "id": "se-u3-pyq-02",
+      "topic": "scm-activities",
+      "year": "ESA Dec 2023 / Jan-May 2024 (UE21CS341A)",
+      "marks": 7,
+      "difficulty": "medium",
+      "q": "Write a note on the following SCM terms with an example: **Configuration Items, Baselines, SCM Directories, System Building**.",
+      "answer": "**Configuration Item (CI)** = any artifact under SCM control — anything needed to *reproduce the product* (source, build scripts, test data, infra-as-code; e.g. `payment.py`). **Baseline** = an agreed, **frozen snapshot** of CIs, changed only via formal change control (functional / development / release baseline). **SCM Directories:** **Programmer** (each dev's working copy), **Software Repository** (historical artifacts), **Master** (controlled production-ready baselines). **System Building** = compiling and linking the right versions of components & libraries into an **executable system** (automated, reproducible — the heart of CI)."
+    },
+    {
+      "id": "se-u3-pyq-03",
+      "topic": "scm-activities",
+      "year": "ESA Dec 2023 (UE19CS302)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Match the SCM terms: Baseline, Codeline, Version, Workspace, Release, System building — to their definitions.",
+      "answer": "**Baseline** = a collection of component versions that make up a system; *controlled* (versions can't change), so a baseline can always be recreated. **Codeline** = a set of versions of a component and the configuration items it depends on. **Version** = an instance of a configuration item that differs in some way from other instances. **Workspace** = a private work area where software can be modified without affecting other developers. **Release** = a version of a system released to customers/users for use. **System building** = creating an executable system by compiling and linking the appropriate versions of components and libraries."
+    },
+    {
+      "id": "se-u3-pyq-04",
+      "topic": "scm-tools-sbom",
+      "year": "ESA Dec 2023 / Jul 2024 / Jan-May 2024 (all)",
+      "marks": 6,
+      "difficulty": "easy",
+      "q": "Highlight the key points / importance of **GitHub** in Software Engineering.",
+      "answer": "**GitHub** is a development platform built on **Git** for distributed version control + project management. Key points: create **repositories** and add contributors; access via SSH/HTTPS; changes are pushed as **commits** (each logged with a unique hash + message); the **main/master branch** holds the stable version while **feature branches** isolate new work; the contribution flow is **fork → make changes → open a pull request → review → merge**. It enables **code review** (PRs), traceability, concurrent collaboration, **CI/CD integration** (e.g. GitHub Actions), issue tracking, and is central to modern SCM workflows."
+    },
+    {
+      "id": "se-u3-pyq-05",
+      "topic": "devops-devsecops",
+      "year": "ESA Dec 2023 / Jul 2023 (all)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What are the **four pillars of DevOps**? Write a note on Jenkins.",
+      "answer": "The **four pillars of DevOps**: **① Collaboration** (shared responsibility, reduced silos between Dev & Ops), **② Affinity** (strength of relationships/trust between teams, co-owned metrics), **③ Tools** (automation enablers — version control, CI/CD, containers, monitoring), **④ Scaling** (extending DevOps across org/infrastructure/process/team as it grows). **Jenkins** is an open-source **CI/CD automation server** that builds, tests, and deploys code automatically on every commit — orchestrating the pipeline via plugins, so integration problems are caught early and releases become fast and repeatable."
+    },
+    {
+      "id": "se-u3-pyq-06",
+      "topic": "cicd-pipelines",
+      "year": "ESA Dec 2023 / Jul 2024 / Jan-May 2024 (all)",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Elaborate on **Continuous Integration (CI), Continuous Build, and Continuous Deployment (CD)**.",
+      "answer": "**Continuous Integration (CI)** = developers frequently merge code into a shared main branch; each merge triggers **automated builds + tests**, catching integration problems early. **Continuous Build** = compiling source, resolving dependencies, and producing **artifacts** (.jar/.war/.exe) on each change, with static analysis & sanity checks (build systems use a **DAG** for task order). **Continuous Deployment (CD)** = automatically deploying **validated** builds straight to production with no manual approval (needs strong monitoring + rollback). *(Continuous Delivery is the milder cousin — always deployable, released on demand.)*"
+    },
+    {
+      "id": "se-u3-pyq-07",
+      "topic": "devops-devsecops",
+      "year": "ESA Dec 2023 (UE21CS341A)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Draw a neatly labelled diagram of the **DevOps Pipeline** and write 1–2 lines about each stage. What are the four pillars of DevOps?",
+      "answer": "**DevOps pipeline (5 stages):** **① Continuous Integration** (merge + auto build/test on each commit) → **② Continuous Build** (compile, resolve deps, produce artifacts; static analysis) → **③ Continuous Testing** (automated unit/integration/regression; any failure stops the pipeline) → **④ Continuous Delivery** (always in a deployable state; release on demand) → **⑤ Continuous Deployment** (auto-deploy validated builds to production). The loop feeds back via monitoring. **Four pillars:** Collaboration, Affinity, Tools, Scaling."
+    },
+    {
+      "id": "se-u3-pyq-08",
+      "topic": "devops-devsecops",
+      "year": "ESA Jul 2024 / Jan-May 2024 (UE20CS303/UE21CS341A)",
+      "marks": 9,
+      "difficulty": "medium",
+      "q": "Explain **DevOps** and its significance, key principles, benefits, and challenges (or the **DevOps Lifecycle**).",
+      "answer": "**DevOps** combines **Development + Operations** into one culture/practice/toolset for high-velocity delivery — an extension of agile that automates build/test/deploy/monitor (Amazon deploys every ~11.7 s). **Lifecycle (continuous loop):** Plan → Code → Build → Test → Release → Deploy → Operate → Monitor → (back to Plan). **Principles:** collaboration, automation, CI/CD, measurement/monitoring, shared ownership. **Benefits:** faster, more reliable releases; early defect detection; better collaboration. **Challenges:** cultural change, toolchain complexity, security integration (→ DevSecOps), and scaling across teams. **DevSecOps** adds **'shift-left' security** — integrating automated security at every pipeline stage."
+    },
+    {
+      "id": "se-u3-pyq-09",
+      "topic": "coding-standards",
+      "year": "ESA Dec 2023 (UE21CS341A)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What is **Testable Programming**? Write seven techniques.",
+      "answer": "**Testable programming** means writing code that is *easy to test*, so bugs are found & fixed quickly. **Seven techniques:** **① Assertions** (catch out-of-range values), **② Test Points** (set/read a module's state for testing), **③ Scaffolding** (throwaway code that supports a test), **④ Test Harness** (stubs + drivers + data to automate execution), **⑤ Test Stubs** (fixed-value replacements for not-yet-built called modules — top-down testing), **⑥ Instrumenting** (logging/\"I got here\" messages to trace flow), **⑦ Building Test Data Sets** (comprehensive valid + invalid data)."
+    },
+    {
+      "id": "se-u3-pyq-10",
+      "topic": "implementation-code-quality",
+      "year": "ESA Dec 2023 / Jan-May 2024 (UE21CS341A)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What is **Refactoring** code? Name the goals of refactoring. Why is **Defensive Programming** important?",
+      "answer": "**Refactoring** = improving the **internal structure** of code **without changing its external behaviour** (e.g. rename, extract method, remove duplication). **Goals:** improve readability & maintainability, reduce complexity & duplication, make code easier to extend and test, and pay down technical debt — *all while keeping behaviour identical* (verified by the test suite). **Defensive programming** (guided by **Murphy's Law** — \"if anything can go wrong, it will\") anticipates and handles invalid inputs, errors, and unexpected states (redundant checks, validating assumptions), making software **robust and stable** against failures and attacks."
+    },
+    {
+      "id": "se-u3-pyq-11",
+      "topic": "code-reviews-analysis",
+      "year": "ESA Dec 2023 (UE21CS341A)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What is **Code Inspection**? Write the steps of the inspection procedure in sequence.",
+      "answer": "**Code inspection** (Fagan inspection) is a formal, **static** peer review of code to find defects *without executing* it — far more effective than testing (inspections catch **55–90%** of defects). **Steps:** ① **Planning** (select code, roles, schedule) → ② **Overview** (author briefs the team) → ③ **Preparation** (reviewers study the code individually) → ④ **Inspection Meeting** (team examines code, logs defects — *find* not *fix*) → ⑤ **Rework** (author fixes logged defects) → ⑥ **Follow-up** (moderator verifies fixes). Roles: moderator, author, reader, recorder/scribe. Errors don't mask each other (static), and incomplete code can be inspected."
+    },
+    {
+      "id": "se-u3-pyq-12",
+      "topic": "coding-standards",
+      "year": "ESA Jul 2024 (UE19CS302)",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "What is **Secure Programming**? Explain: (1) Adhere to the principle of least privilege, (2) Sanitize data sent to other systems.",
+      "answer": "**Secure programming** develops software to guard against the *accidental introduction of vulnerabilities* — its principles include validate input, heed compiler warnings, default-deny, least privilege, and sanitize data. **(1) Principle of Least Privilege:** every process/user runs with the **minimum set of privileges** needed to do its job, for the **shortest time** — so a compromised component can do limited damage (e.g. a service that only reads the DB shouldn't have write/admin rights). **(2) Sanitize data sent to other systems:** validate/escape all data passed to complex subsystems (command shells, databases, browsers) to prevent **injection attacks** (SQL injection, command injection, XSS)."
+    },
+    {
+      "id": "se-u3-pyq-13",
+      "topic": "code-reviews-analysis",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 4,
+      "difficulty": "hard",
+      "q": "Identify at least 3 issues in this C snippet and provide fixes: `void copy_string(char *dest, const char *src, int maxlen){ strncpy(dest,src,maxlen); dest[maxlen-1]='\\0'; printf(\"Copied string: %s\\n\",dest); }`",
+      "answer": "**Issues:** ① **No null-pointer / input validation** — `dest` or `src` could be NULL, and `maxlen` could be ≤ 0 (then `dest[maxlen-1]` is an out-of-bounds write). ② **`strncpy` may not null-terminate** if `src` is longer than `maxlen` — handled here, but the size contract is fragile. ③ **Mixing logic with I/O** (`printf` inside a utility) — a side effect that hurts testability. **Fixes:** add guards `if (!dest || !src || maxlen <= 0) return;`, copy at most `maxlen-1` bytes and force `dest[maxlen-1]='\\0'`, prefer **`snprintf`** over `strncpy`, and **remove the `printf`** (separate logic from I/O so the function is pure and testable). This is exactly what *defensive + secure + testable programming* prescribes."
+    },
+    {
+      "id": "se-u3-pyq-14",
+      "topic": "test-cases-reliability",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 4,
+      "difficulty": "hard",
+      "q": "Compute the **cyclomatic complexity** for the insertion-sort snippet (two `for` loops and a `while`). Draw the CFG and use it.",
+      "answer": "**Cyclomatic complexity** $V(G) = E - N + 2P$, or simply **= number of decisions + 1**. The snippet has **3 decision points** (the two `for` loops and the inner `while`), so $V(G) = 3 + 1 = \\mathbf{4}$. The CFG has one node per basic block and edges for each branch; counting edges/nodes gives the same result ($E - N + 2 = 4$). Interpretation: **4 linearly independent paths** → at least **4 test cases** are needed for full path coverage, and a value in the **1–10 'low risk'** band means the code is simple and well-structured."
+    },
+    {
+      "id": "se-u3-pyq-15",
+      "topic": "se4ai-mlops",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 4,
+      "difficulty": "hard",
+      "q": "For an AI recommendation service (SmartRecommend) trained on student interactions: (1) two privacy/compliance steps, (2) one approach to provide **explainability** for recommendations.",
+      "answer": "**(1) Privacy/compliance:** ① **Opt-in consent + data minimization** — only train on data of consenting users; anonymise/pseudonymise interaction logs (de-identify before training). ② **Deletion-on-request + retention limits** — honour 'right to be forgotten' (delete user data and retrain/exclude), and store only what's needed (purpose-driven), with access controls. **(2) Explainability:** provide a **\"because you …\" rationale** with each recommendation (e.g. *\"recommended because you attended similar tech events and follow the Coding Club\"*) — surfacing the top contributing features (past attendance, interests) so the recommendation is transparent and trustworthy, rather than an opaque black box."
+    },
+    {
+      "id": "se-u3-pyq-16",
+      "topic": "devops-devsecops",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 5,
+      "difficulty": "hard",
+      "q": "For a microservices system with K8s staging/production and a model-training pipeline: (i) design a CI/CD pipeline covering app code + AI model artifacts and a deployment strategy; (ii) list two **DevSecOps** security gates.",
+      "answer": "**(i) Pipeline:** *App code* — commit → build → unit/integration tests → containerise → push to artifact registry → deploy to staging → acceptance tests → production. *AI models* — a **separate MLOps pipeline** trains on versioned data, validates accuracy on a held-out set, and publishes a **versioned model artifact** the inference service pulls. **Deployment strategy:** **canary / blue-green** release to production — roll out to a small ring first, watch metrics, then widen; this contains blast radius during **event peaks** and allows instant rollback. **(ii) DevSecOps gates:** ① **Dependency/vulnerability scanning (SAST + SCA)** in CI — fail the build on high-severity CVEs (runs at build stage). ② **Nightly DAST / container image scan** in staging — block promotion to production if critical vulnerabilities are found."
+    },
+    {
+      "id": "se-u3-pyq-17",
+      "topic": "scm-fundamentals",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 4,
+      "difficulty": "hard",
+      "q": "Propose a compact **SCM strategy** for a multi-team microservices project: (1) branching & release workflow; (2) traceability (commits → build artifacts → release notes → CR/issue).",
+      "answer": "**(1) Branching & release:** **trunk-based** development with short-lived feature branches + **pull requests** (mandatory review + passing CI before merge); cut **release branches** for stabilisation and **hotfix branches** from a release tag for urgent peak-time fixes (merged back to release *and* main). Use **semantic versioning** (MAJOR.MINOR.PATCH) and **signed tags** for release artifacts. **(2) Traceability:** require every commit message to reference a **CR/issue ID**; CI stamps the **commit hash + build number** into each artifact; auto-generate **release notes** from the merged PRs/issues — giving an end-to-end chain **CR → commit → build artifact → release**, satisfying the audit/signed-artifact requirement."
+    }
+  ]
+}

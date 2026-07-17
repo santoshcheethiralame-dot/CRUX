@@ -1,0 +1,557 @@
+{
+  "subject": "iot",
+  "unit": 4,
+  "title": "Unit 4 MCQs — IoT Analytics, Security & Privacy",
+  "items": [
+    {
+      "id": "iot-u4-001",
+      "topic": "iot-analytics-intro",
+      "q": "Which classification of data distinguishes a tabular temperature reading from a video clip?",
+      "options": [
+        "Data in motion vs data at rest",
+        "Structured vs unstructured data",
+        "Edge vs cloud data",
+        "Public vs private data"
+      ],
+      "answer": 1,
+      "explain": "Structured data fits a schema/RDBMS (e.g., a temperature value in a known field); unstructured data (text, speech, images, video) has no schema. ~80% of business data is unstructured.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-002",
+      "topic": "iot-analytics-intro",
+      "q": "From an IoT perspective, sensor data travelling through the network toward its destination is:",
+      "options": [
+        "Data at rest",
+        "Data in motion (often processed at the edge via fog computing)",
+        "Structured-only data",
+        "Always discarded"
+      ],
+      "answer": 1,
+      "explain": "Smart-object data is 'data in motion' as it transits the network; it's often processed at the edge (fog), then filtered/dropped or forwarded for storage. Data saved to disk/DB is 'at rest'.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-003",
+      "topic": "types-of-analytics",
+      "q": "Which analytics type answers 'Why did it happen?'",
+      "options": ["Descriptive", "Diagnostic", "Predictive", "Prescriptive"],
+      "answer": 1,
+      "explain": "Diagnostic analytics finds the cause of events (via correlation/comparison). Descriptive = what is happening; predictive = what might happen next; prescriptive = what to do about it.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-004",
+      "topic": "types-of-analytics",
+      "q": "Recommending 'schedule an oil change and upgrade the cooling system to minimize cost' is which analytics type?",
+      "options": ["Descriptive", "Diagnostic", "Predictive", "Prescriptive"],
+      "answer": 3,
+      "explain": "Prescriptive analytics goes beyond prediction to recommend optimal actions, weighing cost/benefit/risk. It sits at the top of the complexity/value ladder.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-005",
+      "topic": "types-of-analytics",
+      "q": "As you move from descriptive to prescriptive analytics, generally:",
+      "options": [
+        "Both complexity and value decrease",
+        "Both complexity and value increase (predictive/prescriptive rely on ML)",
+        "Complexity increases but value stays flat",
+        "They are unrelated"
+      ],
+      "answer": 1,
+      "explain": "The four types form a rising ladder of complexity AND value. Descriptive/diagnostic use statistics; predictive/prescriptive rely on machine learning and optimization.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-006",
+      "topic": "data-pipeline",
+      "q": "What is the correct order of the IoT analytics pipeline?",
+      "options": [
+        "Storage → Generation → Analytics → Collection → Processing → Action",
+        "Generation → Collection → Storage → Processing → Analytics → Visualization/Action",
+        "Collection → Generation → Processing → Storage → Action → Analytics",
+        "Analytics → Visualization → Storage → Collection → Generation → Processing"
+      ],
+      "answer": 1,
+      "explain": "The six stages: data generation (sensing) → collection (transmission) → storage → processing (clean/transform) → analytics (insight) → visualization & action (decision).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-007",
+      "topic": "data-pipeline",
+      "q": "Which best distinguishes stream processing from batch processing?",
+      "options": [
+        "Stream is for data at rest; batch is for data in motion",
+        "Stream processes data in motion in real time (e.g., Spark Streaming/Kafka); batch runs periodic jobs on stored data (e.g., Hadoop)",
+        "They are identical",
+        "Batch is always faster than stream"
+      ],
+      "answer": 1,
+      "explain": "Stream processing handles real-time data in motion for immediate reaction; batch processing runs periodic jobs over stored data at rest for deep historical analysis. Many systems use both.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-008",
+      "topic": "data-pipeline",
+      "q": "Which storage type is specifically well-suited to IoT's timestamped sensor readings?",
+      "options": [
+        "Time-series databases (InfluxDB, TimescaleDB)",
+        "A single flat text file",
+        "Registers on the microcontroller",
+        "Email inboxes"
+      ],
+      "answer": 0,
+      "explain": "Time-series databases (InfluxDB, TimescaleDB) are optimized for timestamped data. NoSQL (MongoDB, Cassandra) suits unstructured data; cloud object stores (S3) handle large-scale archives.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-009",
+      "topic": "ml-for-iot",
+      "q": "Machine Learning is best described as:",
+      "options": [
+        "Explicitly programming every rule by hand",
+        "A branch of AI that learns patterns from data to make predictions/decisions without explicit programming",
+        "A type of database",
+        "A wireless protocol"
+      ],
+      "answer": 1,
+      "explain": "ML lets computers learn patterns from data and improve with more data, rather than following fixed hand-coded rules — 'learning from experience.'",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-010",
+      "topic": "ml-for-iot",
+      "q": "Why is the feedback loop important in ML for IoT?",
+      "options": [
+        "It is decorative and optional",
+        "Sensors drift and conditions change (model drift), so the model must keep learning from new data to stay accurate",
+        "It permanently freezes the model",
+        "It removes the need for any data"
+      ],
+      "answer": 1,
+      "explain": "ML for IoT isn't train-once. The feedback loop continuously refines the model with fresh data to counter model drift (sensor behavior changing over time) across long deployments.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-011",
+      "topic": "ml-types",
+      "q": "Which ML paradigm learns from labeled input-output pairs?",
+      "options": ["Supervised learning", "Unsupervised learning", "Reinforcement learning", "No learning"],
+      "answer": 0,
+      "explain": "Supervised learning trains on labeled examples (features → known target) for classification/regression. Unsupervised finds patterns in unlabeled data; reinforcement learns via rewards/penalties.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-012",
+      "topic": "ml-types",
+      "q": "Detecting an unusual vibration surge in a factory machine WITHOUT labeled fault data is an example of:",
+      "options": [
+        "Supervised classification",
+        "Unsupervised anomaly detection",
+        "Reinforcement learning",
+        "Linear regression"
+      ],
+      "answer": 1,
+      "explain": "With no labels, anomaly detection (an unsupervised task) flags data points far from normal patterns — ideal for spotting faults/intrusions in raw IoT data. Clustering and dimensionality reduction are the other unsupervised tasks.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-013",
+      "topic": "ml-types",
+      "q": "How does an autoencoder detect anomalies in IoT data?",
+      "options": [
+        "It needs labeled fault data for every anomaly type",
+        "Trained on normal data, it reconstructs normal patterns with low error; abnormal inputs produce HIGH reconstruction error → anomaly alert",
+        "It increases the data rate",
+        "It encrypts the sensor data"
+      ],
+      "answer": 1,
+      "explain": "An autoencoder learns to compress/reconstruct normal data. Abnormal inputs reconstruct poorly (high error), flagging anomalies without any fault labels — unsupervised anomaly detection.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-014",
+      "topic": "ml-types",
+      "q": "An autonomous robot learning navigation by trial and error through rewards and penalties uses:",
+      "options": ["Supervised learning", "Unsupervised learning", "Reinforcement learning", "Dimensionality reduction"],
+      "answer": 2,
+      "explain": "Reinforcement learning learns by interaction — rewards for good outcomes, penalties for bad — suited to sequential decision-making like robot navigation, grid optimization, and drone control.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-015",
+      "topic": "decision-tree",
+      "q": "In a decision tree, the final classification (e.g., 'Faulty Device') is represented by the:",
+      "options": ["Root node", "Internal/decision node", "Branch", "Leaf node"],
+      "answer": 3,
+      "explain": "Leaf nodes hold the final classification/prediction. The root is the first question, internal nodes are decisions on attributes, and branches are the outcomes of those decisions.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-016",
+      "topic": "decision-tree",
+      "q": "A decision tree splits data at each node to maximize:",
+      "options": [
+        "Random variety",
+        "Information gain (equivalently, minimize impurity/entropy)",
+        "The number of branches",
+        "Battery usage"
+      ],
+      "answer": 1,
+      "explain": "Trees split on the feature giving maximum information gain (largest reduction in entropy/impurity), recursively separating the classes. Entropy measures how 'mixed up' the data is.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-017",
+      "topic": "decision-tree",
+      "q": "What is 'pruning' in a decision tree, and why do it?",
+      "options": [
+        "Adding more branches to fit training data exactly",
+        "Trimming branches to keep the tree from getting too complex — fighting overfitting",
+        "Encrypting the leaf nodes",
+        "Renaming the root node"
+      ],
+      "answer": 1,
+      "explain": "Pruning trims branches to prevent the tree from becoming overly complex and memorizing noise (overfitting), keeping it general and interpretable.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-018",
+      "topic": "iot-cloud",
+      "q": "Which is the key trade-off between cloud-based and edge-based IoT architectures?",
+      "options": [
+        "Cloud-based is local and low-latency; edge-based is centralized",
+        "Cloud-based = centralized, scalable, but latency-bound; edge-based = local, low-latency, offline-resilient, bandwidth-thrifty",
+        "They are identical in all respects",
+        "Edge-based cannot process any data"
+      ],
+      "answer": 1,
+      "explain": "Cloud-based processes centrally (scalable, global, but round-trip latency, fails offline). Edge-based processes locally (low latency, works offline, saves bandwidth). Most systems are hybrid.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-019",
+      "topic": "iot-cloud",
+      "q": "Which is a key benefit of IoT cloud integration?",
+      "options": [
+        "Eliminates the need for any sensors",
+        "Elastic scalability, real-time visibility, predictive analytics, and centralized management with OTA updates",
+        "Guarantees zero latency for all devices",
+        "Removes the need for security"
+      ],
+      "answer": 1,
+      "explain": "Cloud integration provides horizontal scalability, real-time data visibility, AI/ML-driven predictive analytics, and secure centralized device management (dashboards, OTA updates, RBAC).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-020",
+      "topic": "aws-azure",
+      "q": "Which AWS service provides edge computing — local compute and ML inference even when offline?",
+      "options": ["AWS IoT Core", "AWS IoT Greengrass", "Amazon QuickSight", "Amazon SageMaker"],
+      "answer": 1,
+      "explain": "AWS IoT Greengrass runs local computation, ML inference, and analytics at the edge (offline-capable). IoT Core handles device connectivity (MQTT/HTTP/WebSockets); QuickSight visualizes; SageMaker builds ML models.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-021",
+      "topic": "aws-azure",
+      "q": "Which pairing of AWS and Azure equivalents is correct?",
+      "options": [
+        "AWS IoT Core ≈ Azure IoT Hub (connectivity); AWS Greengrass ≈ Azure IoT Edge (edge compute)",
+        "AWS IoT Core ≈ Azure IoT Edge; AWS Greengrass ≈ Azure IoT Hub",
+        "Both AWS services are visualization tools",
+        "They have no equivalents"
+      ],
+      "answer": 0,
+      "explain": "IoT Core ≈ IoT Hub for cloud device connectivity; Greengrass ≈ IoT Edge for local/edge compute. Both clouds offer the same cloud-based vs edge-based modes under different names.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-022",
+      "topic": "thingspeak-thinger",
+      "q": "What most distinguishes ThingSpeak (MathWorks) as an IoT platform?",
+      "options": [
+        "It is only for enterprise-scale deployments",
+        "Real-time data collection/visualization via channels, with built-in MATLAB analytics — ideal for academic/prototyping projects",
+        "It is a wireless protocol",
+        "It replaces all sensors"
+      ],
+      "answer": 1,
+      "explain": "ThingSpeak collects, analyzes, and visualizes sensor data using channels (8 fields each) and integrates MATLAB analytics in the cloud — a favorite for academic and prototyping IoT projects.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-023",
+      "topic": "thingspeak-thinger",
+      "q": "thinger.io is best characterized as a platform focused on:",
+      "options": [
+        "Only offline spreadsheet analysis",
+        "Device connectivity/management with live read-write of device resources and drag-and-drop dashboards",
+        "Manufacturing silicon chips",
+        "Cellular spectrum licensing"
+      ],
+      "answer": 1,
+      "explain": "thinger.io centers on device connectivity and management, bidirectional access to device resources/functions, data buckets, and drag-and-drop dashboards — scalable from prototype to production.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-024",
+      "topic": "iot-security-intro",
+      "q": "Which security goal is protected primarily by ENCRYPTION?",
+      "options": ["Availability", "Confidentiality", "Non-repudiation", "Integrity"],
+      "answer": 1,
+      "explain": "Encryption protects confidentiality (keeping data content unreadable to attackers). Integrity uses hashing; non-repudiation uses digital signatures; availability uses anti-DoS measures.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-025",
+      "topic": "iot-security-intro",
+      "q": "Non-repudiation in IoT security ensures that:",
+      "options": [
+        "Data cannot be read by attackers",
+        "A party cannot deny having sent a message or the validity of data (primary tool: digital signatures)",
+        "The system is always available",
+        "Devices use the least power"
+      ],
+      "answer": 1,
+      "explain": "Non-repudiation prevents a party from denying their action/signature — essential in transactions. Digital signatures combined with other measures provide it.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-026",
+      "topic": "availability-attacks",
+      "q": "A Denial-of-Sleep Attack (DoSA) is IoT-specific because it:",
+      "options": [
+        "Floods a DNS server with traffic",
+        "Keeps battery-powered devices awake to drain their power, attacking the power supply and reducing device lifetime until unavailable",
+        "Encrypts the device firmware",
+        "Steals login credentials"
+      ],
+      "answer": 1,
+      "explain": "DoSA targets the power budget of battery devices — preventing sleep (e.g., via a fake device that keeps them transmitting) drains batteries and makes devices unavailable. It exploits IoT's low-power design.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-027",
+      "topic": "availability-attacks",
+      "q": "What makes IoT especially dangerous as a vector for DDoS attacks?",
+      "options": [
+        "IoT devices have unlimited compute",
+        "There are billions of often-insecure IoT devices (default credentials) that attackers can compromise into a distributed army of 'zombies'",
+        "IoT devices cannot connect to networks",
+        "DDoS is impossible with IoT"
+      ],
+      "answer": 1,
+      "explain": "The massive number of low-security IoT devices can be compromised and coordinated (zombies) to saturate a target simultaneously — the Mirai botnet demonstrated exactly this.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-028",
+      "topic": "iot-vulnerabilities",
+      "q": "In a 'black hole attack', the threat actor:",
+      "options": [
+        "Encrypts all network traffic",
+        "Uses a fake device advertising the shortest path, then redirects or silently drops the redirected packets",
+        "Drains device batteries",
+        "Adds physical noise to a chip"
+      ],
+      "answer": 1,
+      "explain": "A black hole attack is a routing attack: a fake node claims the shortest path to attract traffic, then drops or redirects it. Defenses include secure L3/L4 protocols (IPSec) and firewalls.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-029",
+      "topic": "iot-vulnerabilities",
+      "q": "Zapping a chip's power supply or applying electrostatics to force an insecure boot state is called:",
+      "options": ["Phishing", "Glitch injection", "Repudiation", "Clustering"],
+      "answer": 1,
+      "explain": "Glitch injection adds noise/disturbance (voltage spikes, electrostatics) to push a device outside its safe operating range into an insecure state. Chip makers must add countermeasures (e.g., secure boot).",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-030",
+      "topic": "iot-vulnerabilities",
+      "q": "Why can data that seems harmless in isolation still pose a privacy risk?",
+      "options": [
+        "It always contains passwords",
+        "When integrated with information from other systems, it may enable identifying or profiling a person",
+        "It uses too much bandwidth",
+        "It cannot be stored"
+      ],
+      "answer": 1,
+      "explain": "Non-sensitive data can become a serious privacy concern once combined with other datasets, enabling re-identification or misuse — which is why de-identification can be undone by integration.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-031",
+      "topic": "threat-modeling",
+      "q": "What does the DREAD risk model stand for?",
+      "options": [
+        "Detect, Respond, Encrypt, Authenticate, Defend",
+        "Damage, Reproducibility, Exploitability, Affected users, Discoverability",
+        "Data, Routing, Encryption, Access, Disposal",
+        "Device, Risk, Edge, Analytics, Defense"
+      ],
+      "answer": 1,
+      "explain": "DREAD (Microsoft) rates a threat on Damage, Reproducibility, Exploitability, Affected users, and Discoverability; averaging the scores gives a comparable risk number to prioritize threats.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-032",
+      "topic": "threat-modeling",
+      "q": "Which is the correct order of the threat-modeling process?",
+      "options": [
+        "Rate threats → identify assets → identify message flow → identify threat types",
+        "Identify assets → identify message flow → identify threat types → rate threats & calculate risk",
+        "Identify threat types → rate threats → identify assets → identify message flow",
+        "Identify message flow → rate threats → identify assets → identify threat types"
+      ],
+      "answer": 1,
+      "explain": "Threat modeling: identify assets (and their security needs) → identify message flow → identify threat types → rate threats and calculate risk (e.g., with DREAD).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-033",
+      "topic": "threat-modeling",
+      "q": "An attacker installing a rootkit to gain higher-privilege access to a backend system is which threat type?",
+      "options": ["Identity spoofing", "Data tampering", "Escalation of privilege", "Information disclosure"],
+      "answer": 2,
+      "explain": "Escalation of privilege exploits a bug/flaw (e.g., a hidden rootkit) to gain elevated access reserved for higher-privilege users/systems. Spoofing = fake identity; tampering = modify data; disclosure = breach confidentiality.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-034",
+      "topic": "regulations-privacy",
+      "q": "A Privacy Impact Assessment (PIA) is best described as:",
+      "options": [
+        "A one-time marketing review",
+        "A dynamic expert review process to identify, evaluate, and control privacy risks BEFORE issues arise",
+        "A wireless protocol for privacy",
+        "A type of encryption algorithm"
+      ],
+      "answer": 1,
+      "explain": "A PIA proactively protects personal information a system collects; it is performed by privacy experts and updated dynamically whenever the system changes. Principles: minimize collection, consent, opt-out, delete when done.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-035",
+      "topic": "regulations-privacy",
+      "q": "The IoT Cybersecurity Improvement Act (2020) requires vendors to ensure devices:",
+      "options": [
+        "Use the cheapest possible components",
+        "Have no known vulnerabilities, use advanced protocols, contain NO hard-coded credentials, and provide incident notifications",
+        "Never connect to the internet",
+        "Collect as much data as possible"
+      ],
+      "answer": 1,
+      "explain": "The CSIA (for US federal buildings) mandates no known vulnerabilities, advanced protocols, no hard-coded credentials, and security-incident notifications — legislating against the weaknesses that enabled attacks like Mirai.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-036",
+      "topic": "security-examples",
+      "q": "The 2016 Mirai botnet attack primarily violated which security goal, and how?",
+      "options": [
+        "Confidentiality — by stealing encrypted data",
+        "Availability — by infecting default-credential IoT devices and using them as a DDoS army against Dyn",
+        "Non-repudiation — by forging signatures",
+        "Integrity — by editing firmware"
+      ],
+      "answer": 1,
+      "explain": "Mirai compromised IoT devices with hard-coded/default credentials (cameras, gateways) into a botnet, launching a DDoS that disrupted Dyn's DNS and 13,000+ domains — an attack on availability.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-037",
+      "topic": "security-examples",
+      "q": "The TRENDnet webcam incident (sending login info unencrypted, storing it in clear text) is a classic violation of:",
+      "options": ["Availability", "Confidentiality", "Non-repudiation", "Reproducibility"],
+      "answer": 1,
+      "explain": "Transmitting credentials without encryption and storing them in clear text (plus a bug exposing video) violated confidentiality — anyone knowing the IP could view the feed.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u4-038",
+      "topic": "iot-blockchain",
+      "q": "Which blockchain property most directly addresses IoT data-tampering (integrity) concerns?",
+      "options": [
+        "High energy consumption",
+        "Immutability — hash-linked blocks make any tampering with past records evident",
+        "Centralized control",
+        "Low device cost"
+      ],
+      "answer": 1,
+      "explain": "Blockchain's immutability (each block cryptographically links to the previous) means altering past data breaks the hash chain and is detectable — directly countering tampering and providing auditable provenance.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-039",
+      "topic": "iot-blockchain",
+      "q": "What is the fundamental tension between blockchain and IoT devices?",
+      "options": [
+        "Blockchains are too simple for IoT",
+        "Blockchains are compute-, storage-, and energy-hungry (esp. Proof-of-Work), while IoT devices are constrained, low-power, and battery-limited",
+        "IoT devices cannot send transactions",
+        "There is no tension"
+      ],
+      "answer": 1,
+      "explain": "Classic blockchains demand heavy compute/storage/energy and have low throughput/high latency — a poor fit for constrained, battery-powered IoT nodes. This drives lightweight, IoT-tailored ledgers and offloading to gateways/cloud.",
+      "difficulty": "hard",
+      "source": "original"
+    },
+    {
+      "id": "iot-u4-040",
+      "topic": "iot-blockchain",
+      "q": "How does blockchain help remove a single point of failure in IoT?",
+      "options": [
+        "By adding one powerful central server",
+        "Its decentralized ledger is replicated across many nodes, so there is no central server to attack or take down",
+        "By disabling all devices",
+        "By encrypting nothing"
+      ],
+      "answer": 1,
+      "explain": "Decentralization replicates the ledger across nodes, eliminating reliance on a single central cloud/server — improving availability and letting devices verify data among themselves without a trusted middleman.",
+      "difficulty": "medium",
+      "source": "original"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "subject": "ml",
+  "unit": 1,
+  "title": "Unit 1 — Textbook Exercises (Mitchell)",
+  "items": [
+    {
+      "id": "ml-u1-tb-01",
+      "topic": "concept-learning",
+      "q": "In Mitchell's *EnjoySport* task, **Sky** has 3 values and **AirTemp, Humidity, Wind, Water, Forecast** each have 2. How many **semantically distinct** hypotheses does the conjunctive space contain?",
+      "options": ["$4 \\cdot 3^5 = 972$", "$1 + 4\\cdot 3^5 = 973$", "$3 \\cdot 2^5 = 96$", "$2^{96}$"],
+      "answer": 1,
+      "explain": "Each attribute can take its values **or** '?' → $(k_i+1)$ choices: Sky $4$, the other five $3$ each, giving $4\\cdot3^5=972$, plus **1** for all the reject-all ($\\emptyset$) hypotheses = **973**. (Mitchell, Exercise 2.1.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-02",
+      "topic": "concept-learning",
+      "q": "Adding a new attribute $A$ with $k$ possible values to a conjunctive learning task multiplies the number of possible **instances** by $k$ and the number of **hypotheses** by:",
+      "options": ["$k$", "$k+1$", "$2^k$", "$k-1$"],
+      "answer": 1,
+      "explain": "An extra attribute adds a slot that can be any of its $k$ values **or** '?', i.e. $(k+1)$ choices — so the hypothesis count scales by $k+1$. (Mitchell, Exercise 2.1.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-03",
+      "topic": "concept-learning",
+      "q": "With an **unbiased** hypothesis space (the full power set of instances), an unseen instance $x$ matches what fraction of the version space — and what does this imply?",
+      "options": ["All of it; perfect generalization", "Exactly half; the learner cannot generalize to unseen instances (futility of bias-free learning)", "None of it; the learner memorizes", "A quarter; weak generalization"],
+      "answer": 1,
+      "explain": "For the power-set hypothesis space, exactly half the version-space hypotheses label $x$ positive and half negative — so an unbiased learner has **no basis to classify unseen data**. This is Mitchell's *futility of bias-free learning*. (Exercise 2.8.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-04",
+      "topic": "find-s",
+      "q": "The Find-S algorithm outputs:",
+      "options": ["the most general hypothesis consistent with the data", "the most specific hypothesis consistent with the positive examples", "all consistent hypotheses", "a random consistent hypothesis"],
+      "answer": 1,
+      "explain": "Find-S walks the general-to-specific lattice upward, returning the **maximally specific** hypothesis consistent with the positive examples. (Mitchell §2.4.)",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-05",
+      "topic": "concept-learning",
+      "q": "In Mitchell's general-to-specific ordering, $\\langle ?,?,?,?,?,?\\rangle$ is the ___ hypothesis and $\\langle\\emptyset,\\emptyset,\\dots\\rangle$ is the ___ one.",
+      "options": ["most specific; most general", "most general (accepts all); most specific (rejects all)", "inconsistent; consistent", "both equally general"],
+      "answer": 1,
+      "explain": "All-'?' accepts every instance (most general); all-$\\emptyset$ rejects every instance (most specific). The *more-general-than* relation partially orders the hypothesis space. (Mitchell §2.3.)",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-06",
+      "topic": "decision-trees",
+      "q": "Which of these Boolean functions **can** be represented exactly by a decision tree?",
+      "options": ["Only linearly-separable ones", "$A \\wedge \\neg B$ only", "$A \\oplus B$ (XOR) only", "All of them — including $A\\wedge\\neg B$, $A\\vee(B\\wedge C)$, and $A\\oplus B$"],
+      "answer": 3,
+      "explain": "A decision tree is a disjunction of conjunctions and can represent **any** Boolean function (unlike a single perceptron, which fails on XOR). (Mitchell, Exercise 3.1.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-07",
+      "topic": "id3-entropy-gain",
+      "q": "A collection has 9 positive and 9 negative examples. Its entropy is:",
+      "options": ["0", "0.5", "1.0", "0.94"],
+      "answer": 2,
+      "explain": "A perfectly balanced 50/50 binary split has entropy $-\\tfrac12\\log_2\\tfrac12-\\tfrac12\\log_2\\tfrac12 = 1.0$ — maximal uncertainty. (Mitchell §3.4, Exercise 3.2.)",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-08",
+      "topic": "inductive-bias-issues",
+      "q": "ID3 differs from the Candidate-Elimination algorithm in that ID3:",
+      "options": ["finds all hypotheses consistent with the data", "searches a complete hypothesis space but outputs a single tree (incomplete search, preference bias)", "uses a restriction bias on an incomplete space", "cannot represent disjunctions"],
+      "answer": 1,
+      "explain": "ID3 searches the *complete* space of trees but greedily commits to **one** hypothesis (preference bias). Candidate-Elimination searches an *incomplete* space but finds **all** consistent hypotheses (restriction bias). (Mitchell, Exercise 3.4 & §3.6.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-09",
+      "topic": "id3-entropy-gain",
+      "q": "Information gain of attribute $A$ on set $S$ is defined as:",
+      "options": ["$H(S) + \\sum_v \\frac{|S_v|}{|S|}H(S_v)$", "$H(S) - \\sum_v \\frac{|S_v|}{|S|}H(S_v)$", "$\\sum_v H(S_v)$", "$H(S)\\cdot H(S_v)$"],
+      "answer": 1,
+      "explain": "Gain = entropy before the split minus the **expected** entropy after: $H(S)-\\sum_v\\frac{|S_v|}{|S|}H(S_v)$. (Mitchell §3.4.1.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-10",
+      "topic": "overfitting-pruning",
+      "q": "Mitchell's definition: hypothesis $h$ overfits the training data if there is an alternative $h'$ such that:",
+      "options": ["$h$ has higher training error than $h'$", "$h$ has lower training error but higher error over the full distribution than $h'$", "$h$ and $h'$ have equal error", "$h'$ is simpler than $h$"],
+      "answer": 1,
+      "explain": "Overfitting: $\\text{err}_{train}(h)<\\text{err}_{train}(h')$ yet $\\text{err}_{D}(h)>\\text{err}_{D}(h')$ — better on training, worse on the true distribution. (Mitchell §3.7.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-11",
+      "topic": "overfitting-pruning",
+      "q": "In **rule post-pruning** (Mitchell), the decision tree is first converted to rules, then each rule is pruned by:",
+      "options": ["removing whole subtrees", "removing any precondition whose removal does not worsen estimated accuracy", "adding more preconditions", "merging leaves"],
+      "answer": 1,
+      "explain": "Rule post-pruning drops individual antecedents (preconditions) when doing so doesn't hurt estimated accuracy, then sorts the rules — finer-grained than subtree pruning. (Mitchell §3.7.2.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-12",
+      "topic": "continuous-missing",
+      "q": "To let ID3 handle a continuous attribute, Mitchell suggests creating a Boolean test $A < c$ where the threshold $c$ is chosen at:",
+      "options": ["the mean of all values", "midpoints between adjacent examples whose class label differs, picking the max-gain one", "every observed value", "a random value"],
+      "answer": 1,
+      "explain": "Sort by the attribute, find adjacent pairs with differing labels, take the **midpoints** as candidate thresholds, and pick the one with highest information gain. (Mitchell §3.7.2.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-13",
+      "topic": "id3-entropy-gain",
+      "q": "Mitchell notes information gain is **biased toward attributes with many values**. The standard fix is:",
+      "options": ["use entropy instead of Gini", "use the **gain ratio** (normalize gain by the attribute's split information)", "always pick the fewest-valued attribute", "prune afterwards"],
+      "answer": 1,
+      "explain": "Gain favours high-arity attributes (they shatter the data). C4.5 divides gain by *split information* to get the **gain ratio**, penalizing many-valued attributes. (Mitchell §3.7.3.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-14",
+      "topic": "knn",
+      "q": "k-Nearest-Neighbour is described as an **instance-based / lazy** learner because it:",
+      "options": ["builds a global model at training time", "defers all computation until a query arrives, storing the training examples", "cannot do regression", "requires no distance metric"],
+      "answer": 1,
+      "explain": "Lazy/instance-based methods store the examples and only compute (find neighbours) at query time — no global model is built. (Mitchell Ch. 8.)",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-15",
+      "topic": "bias-variance",
+      "q": "Mitchell/Alpaydin: a very flexible model that fits the training set almost perfectly but varies wildly across datasets exhibits:",
+      "options": ["high bias, low variance", "low bias, high variance", "high bias, high variance", "low bias, low variance"],
+      "answer": 1,
+      "explain": "Over-flexible models track noise → low bias but **high variance** (overfitting). The remedy is to trade a little bias for much less variance.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-tb-16",
+      "topic": "performance-metrics",
+      "q": "For a heavily imbalanced problem, Alpaydin/Mitchell recommend reporting precision–recall (and ROC/AUC) rather than accuracy because:",
+      "options": ["accuracy is hard to compute", "a trivial majority-class classifier can score high accuracy while catching none of the minority class", "accuracy needs probabilities", "ROC is always 1.0"],
+      "answer": 1,
+      "explain": "On skewed data, predicting the majority class everywhere yields high accuracy yet zero recall on the class of interest — so accuracy is misleading; use precision/recall/AUC.",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

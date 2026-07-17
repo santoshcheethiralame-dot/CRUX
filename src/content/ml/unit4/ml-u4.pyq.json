@@ -1,0 +1,178 @@
+{
+  "subject": "ml",
+  "unit": 4,
+  "title": "Unit 4 — Past-Year Questions",
+  "items": [
+    {
+      "id": "ml-u4-pyq-01",
+      "topic": "clustering-intro",
+      "year": "ESA 2023",
+      "marks": 8,
+      "difficulty": "easy",
+      "q": "What is clustering? Mention the different types of clustering and explain each with an example.",
+      "answer": "**Clustering** = unsupervised grouping of unlabelled data so that intra-cluster similarity is high and inter-cluster similarity is low. **Types:**\n- **Hierarchical** — builds a tree/dendrogram (e.g. agglomerative grouping of species by similarity).\n- **Partitional** — flat $k$ clusters (e.g. **K-means** on customer segments).\n- **Density-based** — clusters = dense regions (DBSCAN finds arbitrary shapes, marks outliers).\n- **Grid-based** — quantise space into a grid.\n- **Model-based** — fit a probabilistic model (GMM via EM, soft assignments).\n- **Fuzzy** — each point belongs to clusters with degrees of membership."
+    },
+    {
+      "id": "ml-u4-pyq-02",
+      "topic": "kmeans",
+      "year": "ESA 2024",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "For x = {2,4,8,9,10,12,15,20}, perform K-means with k=2, initial centroids m1=8, m2=15, until the clusters stabilize.",
+      "answer": "**Iteration 1** (assign to nearer of 8/15): 2,4,8,9,10 → m1; 12,15,20 → m2.\nC1={2,4,8,9,10}, C2={12,15,20}. New means: m1=(2+4+8+9+10)/5=**6.6**, m2=(12+15+20)/3=**15.67**.\n\n**Iteration 2** (assign to nearer of 6.6/15.67): 2,4,8,9,10 → C1; 12,15,20 → C2 (12 is closer to 15.67 than 6.6). **No change → stable.**\n\n**Final:** C1={2,4,8,9,10} (mean 6.6), C2={12,15,20} (mean 15.67)."
+    },
+    {
+      "id": "ml-u4-pyq-03",
+      "topic": "kmeans",
+      "year": "ESA 2023",
+      "marks": 5,
+      "difficulty": "hard",
+      "q": "Apply 2-means on (0,0),(0,1),(1,0),(1,1),(4,5),(5,4),(5,5),(7,4); the two points farthest from the origin are the initial centroids. What is the inter-cluster Euclidean distance at the end?",
+      "answer": "Distances from origin: (5,5)=7.07 and (7,4)=8.06 are farthest → initial centroids **c1=(7,4), c2=(5,5)**. The data clearly splits into a near-origin group and a far group; after convergence:\n- **C1 = {(0,0),(0,1),(1,0),(1,1)}**, centroid **(0.5, 0.5)**\n- **C2 = {(4,5),(5,4),(5,5),(7,4)}**, centroid **(5.25, 4.5)**\n\n**Inter-cluster distance** $=\\sqrt{(5.25-0.5)^2+(4.5-0.5)^2}=\\sqrt{4.75^2+4^2}=\\sqrt{38.56}\\approx\\mathbf{6.21}$."
+    },
+    {
+      "id": "ml-u4-pyq-04",
+      "topic": "kmeans",
+      "year": "ESA 2023",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "Explain the K-Means algorithm with an example. How is it different from KNN?",
+      "answer": "**K-Means:** pick K + random centroids → assign each point to nearest centroid → recompute centroids as means → repeat to convergence (e.g. segment customers into K groups).\n\n| K-Means | KNN |\n|---|---|\n| **Unsupervised** clustering | **Supervised** classification/regression |\n| K = number of **clusters** | K = number of **neighbours** |\n| Iterative (centroids update) | Lazy (no training; per-query) |\n| Output: cluster assignments | Output: class/value of a query |\n\nBoth use a 'K' and distances, but K-means **groups unlabelled** data while KNN **labels a new point** from labelled neighbours."
+    },
+    {
+      "id": "ml-u4-pyq-05",
+      "topic": "kmeans-evaluation",
+      "year": "ESA 2024",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "How do you determine the optimal value of k in K-means clustering?",
+      "answer": "**Elbow method:** run K-means for K=1…10, plot **SSE (within-cluster sum of squares) vs K**. SSE always decreases with K, but the rate drops sharply at the right K — the **'elbow'** point. Pick K at the elbow (diminishing returns). Alternatives: **silhouette score** (maximise), **gap statistic**, or domain knowledge. (You can't just minimise SSE — it reaches 0 at K=n.)"
+    },
+    {
+      "id": "ml-u4-pyq-06",
+      "topic": "kmeans-evaluation",
+      "year": "ESA 2023",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "Mention the weaknesses and applications of the K-Means algorithm.",
+      "answer": "**Weaknesses:** must pre-specify K; sensitive to **random initialisation** (local optima); sensitive to **outliers**; assumes **spherical, equal-size** clusters (fails on differing sizes/densities/non-globular shapes); only numeric data; slow on very large data. **Applications:** customer/market segmentation, image compression (vector quantization), document clustering, anomaly detection, colour quantization, and as a pre-processor to seed other algorithms."
+    },
+    {
+      "id": "ml-u4-pyq-07",
+      "topic": "hierarchical",
+      "year": "ESA 2023",
+      "marks": 7,
+      "difficulty": "medium",
+      "q": "Explain hierarchical clustering with the help of a dendrogram, and the different types of hierarchical clustering.",
+      "answer": "**Hierarchical clustering** builds a nested hierarchy of clusters. **Agglomerative (bottom-up):** start with each point as a cluster, repeatedly **merge the two closest** clusters until one remains. **Divisive (top-down):** start with one cluster and repeatedly **split**. \n\nA **dendrogram** is the resulting tree; the **height** of each merge = the distance between the merged clusters. **Cutting** the dendrogram at a chosen height yields a flat clustering with any desired number of clusters — no need to pre-specify K. Cluster distance is defined by the **linkage** (single/MIN, complete/MAX, average, centroid, Ward)."
+    },
+    {
+      "id": "ml-u4-pyq-08",
+      "topic": "hierarchical",
+      "year": "ESA 2024",
+      "marks": 8,
+      "difficulty": "easy",
+      "q": "Define: Scree graph, Single link, Complete link, Dendrogram.",
+      "answer": "- **Scree graph:** a plot of eigenvalues (variance explained) vs component number in PCA; the 'elbow' indicates how many components to keep.\n- **Single link (MIN):** inter-cluster distance = distance of the **closest** pair of points (can chain).\n- **Complete link (MAX):** inter-cluster distance = distance of the **farthest** pair (compact clusters).\n- **Dendrogram:** the tree diagram from hierarchical clustering showing merge order and heights; cut it to get flat clusters."
+    },
+    {
+      "id": "ml-u4-pyq-09",
+      "topic": "pca",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Find the eigenvalues and eigenvectors for the covariance matrix A = [[3,2],[1,4]].",
+      "answer": "**Eigenvalues:** $\\det(A-\\lambda I)=(3-\\lambda)(4-\\lambda)-2 = \\lambda^2-7\\lambda+10=(\\lambda-5)(\\lambda-2)=0 \\Rightarrow \\lambda=\\mathbf{5,\\ 2}$.\n\n**Eigenvector for λ=5:** $(3-5)x+2y=0 \\Rightarrow -2x+2y=0 \\Rightarrow x=y \\Rightarrow \\mathbf{[1,1]^T}$.\n\n**Eigenvector for λ=2:** $(3-2)x+2y=0 \\Rightarrow x+2y=0 \\Rightarrow x=-2y \\Rightarrow \\mathbf{[2,-1]^T}$ (or [−2,1]).\n\nThe eigenvector with the larger eigenvalue (λ=5, [1,1]) is **PC1**."
+    },
+    {
+      "id": "ml-u4-pyq-10",
+      "topic": "pca",
+      "year": "ESA 2024",
+      "marks": 9,
+      "difficulty": "hard",
+      "q": "Perform dimensionality reduction using PCA for the data: x1 = (4,8,13,7), x2 = (11,4,5,14) (four examples).",
+      "answer": "Examples: (4,11),(8,4),(13,5),(7,14). **Mean** = (8, 8.5). **Centered:** (−4,2.5),(0,−4.5),(5,−3.5),(−1,5.5).\n\n**Covariance** (÷(n−1)=3): $C_{11}=\\frac{16+0+25+1}{3}=14$; $C_{22}=\\frac{6.25+20.25+12.25+30.25}{3}=23$; $C_{12}=\\frac{-10+0-17.5-5.5}{3}=-11$. So $C=\\begin{bmatrix}14&-11\\\\-11&23\\end{bmatrix}$.\n\n**Eigenvalues:** $\\lambda^2-37\\lambda+201=0 \\Rightarrow \\lambda\\approx \\mathbf{30.4,\\ 6.6}$. PC1 = eigenvector of λ≈30.4. **Project** each centered point onto PC1 → 1-D representation (keeps ~82% of variance: 30.4/37)."
+    },
+    {
+      "id": "ml-u4-pyq-11",
+      "topic": "pca",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Write the steps for computing Principal Components as eigenvectors of the covariance matrix.",
+      "answer": "1. **Standardise** the data — subtract the mean (centre at origin); optionally divide by std.\n2. **Compute the covariance matrix** $C$ (d×d) of the centered data.\n3. **Find eigenvalues and eigenvectors** of $C$ (solve $\\det(C-\\lambda I)=0$, then $Cw=\\lambda w$).\n4. **Sort** eigenvectors by **descending eigenvalue** — eigenvectors = principal components, eigenvalues = variance explained.\n5. **Select top-k** eigenvectors → projection matrix $W$.\n6. **Project:** $Z = X_{centered}\\,W$ → reduced-dimension data."
+    },
+    {
+      "id": "ml-u4-pyq-12",
+      "topic": "pca",
+      "year": "ESA 2024",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Differentiate between PCA and LDA.",
+      "answer": "| PCA | LDA |\n|---|---|\n| **Unsupervised** (ignores labels) | **Supervised** (uses class labels) |\n| Maximises **total variance** | Maximises **between-class separation** / minimises within-class scatter |\n| Components = eigenvectors of the covariance matrix | Directions = eigenvectors of $S_W^{-1}S_B$ |\n| Up to d components | At most (#classes − 1) components |\n| Goal: compression / de-correlation | Goal: class **discrimination** |\n\nBoth are linear projections; PCA finds directions of spread, LDA finds directions that best separate classes."
+    },
+    {
+      "id": "ml-u4-pyq-13",
+      "topic": "svd",
+      "year": "ESA 2024",
+      "marks": 10,
+      "difficulty": "hard",
+      "q": "Find the SVD of A = [[3,1,1],[−1,3,1]] (method).",
+      "answer": "$A$ is 2×3, so use $AA^T$ (2×2): $AA^T=\\begin{bmatrix}11&1\\\\1&11\\end{bmatrix}$. **Eigenvalues:** $(11-\\lambda)^2-1=0 \\Rightarrow \\lambda=\\mathbf{12,\\ 10}$ → singular values $\\sigma_1=\\sqrt{12}=2\\sqrt3,\\ \\sigma_2=\\sqrt{10}$.\n**U** = eigenvectors of $AA^T$: λ=12 → $\\tfrac1{\\sqrt2}[1,1]^T$; λ=10 → $\\tfrac1{\\sqrt2}[1,-1]^T$.\n**V** = right singular vectors via $v_i=\\tfrac1{\\sigma_i}A^Tu_i$ (3-D, plus a 3rd vector orthogonal to them for the null space).\n**Result:** $A=U\\Sigma V^T$ with $\\Sigma=\\begin{bmatrix}2\\sqrt3&0&0\\\\0&\\sqrt{10}&0\\end{bmatrix}$."
+    },
+    {
+      "id": "ml-u4-pyq-14",
+      "topic": "svd",
+      "year": "ESA 2023",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Mention the applications of SVD.",
+      "answer": "- **Dimensionality reduction** (PCA via SVD; latent semantic analysis in NLP).\n- **Recommender systems** (matrix factorisation of the user–item ratings matrix).\n- **Image compression** (keep top-k singular values → low-rank approximation).\n- **Noise reduction / denoising** (drop small singular values).\n- **Pseudo-inverse** and solving least-squares / ill-conditioned linear systems.\n- **Data/feature extraction** and collaborative filtering."
+    },
+    {
+      "id": "ml-u4-pyq-15",
+      "topic": "rl-foundations",
+      "year": "ESA 2022",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "Define a Markov Decision Process (MDP). What are the differences between model-based and model-free learning? Name one algorithm of each.",
+      "answer": "**MDP** = $\\langle S, A, P, R, \\gamma\\rangle$: states $S$, actions $A$, transition probabilities $P(s'\\mid s,a)$, reward $R(s,a)$, discount $\\gamma$. The Markov property holds: the next state depends only on the current state & action.\n\n| Model-based | Model-free |\n|---|---|\n| Agent **knows/learns** the model (P, R) | No model — learns from **experience** |\n| **Plans** by simulating outcomes | Learns value/policy directly from samples |\n| e.g. **Value Iteration / Policy Iteration** | e.g. **Q-Learning** (also SARSA) |"
+    },
+    {
+      "id": "ml-u4-pyq-16",
+      "topic": "rl-foundations",
+      "year": "ESA 2022",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "What is Reinforcement Learning? Give one application, stating why RL is needed. A gambler plays 5 slot machines one at a time — identify the agent and the bandit.",
+      "answer": "**RL:** an agent learns by **trial-and-error interaction** with an environment to **maximise cumulative reward**; feedback is a scalar reward, often delayed.\n\n**Application:** game playing (e.g. AlphaGo) / robot navigation. **Why RL:** there are no labelled input→output pairs — decisions are **sequential**, rewards are **delayed**, and the agent's actions **change** the states it later sees, which supervised learning can't handle.\n\n**Slot-machines (multi-armed bandit):** the **agent** = the gambler (decision-maker choosing which machine to play); the **bandit** = the set of 5 slot machines (the environment), each arm with an unknown reward distribution — the agent must balance **exploration vs exploitation**."
+    },
+    {
+      "id": "ml-u4-pyq-17",
+      "topic": "rl-value-q",
+      "year": "ESA 2023",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Distinguish between positive and negative reward signals in reinforcement learning.",
+      "answer": "A **reward** is the scalar feedback the environment gives after an action. A **positive reward** **reinforces** the action — the agent learns to **repeat** behaviours that led to it (e.g. +1 for reaching a goal). A **negative reward (penalty)** **discourages** the action — the agent learns to **avoid** it (e.g. −1 per step, or a large penalty for a crash). The policy is shaped to **maximise total (discounted) cumulative reward**, so it seeks positive and avoids negative signals over the long run."
+    },
+    {
+      "id": "ml-u4-pyq-18",
+      "topic": "cnn",
+      "year": "ESA 2024",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "Explain the methodology of a Convolutional Neural Network. (Also: how can a digital image be converted into a format for a traditional ML model?)",
+      "answer": "**CNN methodology:** Input image → **Convolution layers** (filters/kernels slide over the image, computing local weighted sums → feature maps; **weight sharing** + local connectivity) → **ReLU** non-linearity → **Pooling** (max/avg) to down-sample → stack more conv+pool to learn a **feature hierarchy** (edges → parts → objects) → **Flatten** → **Fully-connected** layers → **Softmax** → class probabilities. Output size $O=\\frac{n-f+2p}{s}+1$.\n\n**For a traditional ML model:** **flatten** the 2-D image (and its channels) into a 1-D feature vector (e.g. a 5×6 binary image → a 30-length vector), optionally extract features (edges, HOG) or reduce dimensions (PCA), then feed to an SVM/decision tree, etc."
+    },
+    {
+      "id": "ml-u4-pyq-19",
+      "topic": "kmeans-evaluation",
+      "year": "ESA 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Use cosine similarity to find which of C1, C2, C3 is closest to C4. C1=(4,1,3,2,4), C2=(3,2,4,4,2), C3=(3,3,4,4,4), C4=(3,3,2,3,3).",
+      "answer": "Cosine similarity $\\cos(u,v)=\\dfrac{u\\cdot v}{\\|u\\|\\,\\|v\\|}$. $\\|C4\\|=\\sqrt{9+9+4+9+9}=\\sqrt{40}=6.32$.\n- $C1\\!\\cdot\\!C4=12+3+6+6+12=39$; $\\|C1\\|=\\sqrt{46}=6.78$ → $\\cos=\\frac{39}{42.9}=\\mathbf{0.909}$.\n- $C2\\!\\cdot\\!C4=9+6+8+12+6=41$; $\\|C2\\|=\\sqrt{49}=7$ → $\\cos=\\frac{41}{44.3}=\\mathbf{0.926}$.\n- $C3\\!\\cdot\\!C4=9+9+8+12+12=50$; $\\|C3\\|=\\sqrt{66}=8.12$ → $\\cos=\\frac{50}{51.3}=\\mathbf{0.975}$.\n**Highest cosine → C3 is closest to C4.**"
+    }
+  ]
+}

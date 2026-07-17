@@ -1,0 +1,147 @@
+{
+  "subject": "ml",
+  "unit": 3,
+  "title": "Unit 3 — Textbook Exercises (Mitchell & Alpaydin)",
+  "items": [
+    {
+      "id": "ml-u3-tb-01",
+      "topic": "map-ml",
+      "q": "Mitchell Exercise 6.1: after a first positive cancer test gives P(cancer|+) ≈ 0.21, a **second independent** positive test is run. To update, the correct Bayesian move is to:",
+      "options": ["ignore the first test", "use the first posterior (0.21) as the new prior and apply Bayes again", "average the two test results", "subtract the priors"],
+      "answer": 1,
+      "explain": "Bayesian updating is sequential: yesterday's posterior becomes today's prior. With two independent positives the posterior for cancer rises well above 0.5. (Mitchell, Exercise 6.1.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-02",
+      "topic": "bayes-theorem",
+      "q": "Mitchell Exercise 6.2 asks you to justify normalizing $P(+|cancer)P(cancer)$ and $P(+|¬cancer)P(¬cancer)$ so they sum to 1. This is valid because:",
+      "options": ["the prior is uniform", "by the theorem of total probability the denominator $P(+)$ equals their sum", "the likelihood is always 1", "cancer and ¬cancer are independent"],
+      "answer": 1,
+      "explain": "$P(+) = P(+|cancer)P(cancer)+P(+|¬cancer)P(¬cancer)$ (total probability), so dividing each term by their sum gives the true posteriors. (Mitchell, Exercise 6.2.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-03",
+      "topic": "map-ml",
+      "q": "Mitchell Exercise 6.3 concerns Find-G (outputs a maximally *general* consistent hypothesis). Under a uniform prior and consistency likelihood, Find-G is guaranteed to output:",
+      "options": ["never a MAP hypothesis", "a MAP hypothesis (every consistent hypothesis is equally probable)", "the single ML but never MAP hypothesis", "an inconsistent hypothesis"],
+      "answer": 1,
+      "explain": "With a uniform prior and 0/1 consistency likelihood, all consistent hypotheses share the maximum posterior, so any version-space member — including Find-G's output — is a MAP hypothesis. (Mitchell, Exercise 6.3.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-04",
+      "topic": "ml-least-squares",
+      "q": "Mitchell §6.4 proves that under zero-mean Gaussian noise, the maximum-likelihood hypothesis is the one that minimizes:",
+      "options": ["the sum of absolute errors $\\sum|d_i - h(x_i)|$", "the sum of squared errors $\\sum (d_i - h(x_i))^2$", "the entropy", "the number of misclassifications"],
+      "answer": 1,
+      "explain": "Taking $\\log$ of the Gaussian product likelihood and dropping $h$-independent constants leaves $-\\sum(d_i-h(x_i))^2$ to maximize, i.e. minimize SSE. (Mitchell §6.4.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-05",
+      "topic": "map-ml",
+      "q": "Mitchell §6.6 (Minimum Description Length) interprets the MAP hypothesis as minimizing:",
+      "options": ["only the training error", "the description length: bits to encode the hypothesis + bits to encode the data given the hypothesis", "the number of hypotheses", "the prior entropy"],
+      "answer": 1,
+      "explain": "Taking $-\\log_2$ of $P(D|h)P(h)$ turns MAP into minimizing $L(h)+L(D|h)$ — encode the hypothesis, then the data given it. (Mitchell §6.6, Exercise 6.5.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-06",
+      "topic": "naive-bayes",
+      "q": "Mitchell Exercise 6.6 notes the Naïve Bayes classifier corresponds to a Bayesian belief network in which:",
+      "options": ["every feature node is a parent of the class node", "the class node is the single parent of every feature node (features independent given class)", "all nodes are mutually independent", "there are no edges"],
+      "answer": 1,
+      "explain": "Naïve Bayes' conditional-independence structure is exactly a belief net with the class as the lone parent of each attribute. (Mitchell, Exercise 6.6.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-07",
+      "topic": "bayes-optimal-gibbs",
+      "q": "Mitchell §6.7: the Bayes optimal classifier is described as optimal because:",
+      "options": ["it is the fastest classifier", "no other method using the same hypothesis space and prior can achieve lower expected error", "it never needs training data", "it ignores the prior"],
+      "answer": 1,
+      "explain": "Averaging predictions over the full posterior yields the minimum possible expected error for the given H and priors — though it is computationally infeasible. (Mitchell §6.7.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-08",
+      "topic": "em",
+      "q": "The EM algorithm (Dempster, Laird & Rubin 1977; Mitchell §6.12) is guaranteed to:",
+      "options": ["find the global maximum likelihood", "monotonically increase (never decrease) the likelihood each iteration, converging to a local optimum", "converge in one step", "decrease the likelihood"],
+      "answer": 1,
+      "explain": "Each EM iteration provably does not decrease the data likelihood, so it converges — but only to a local maximum, hence multiple restarts. (Mitchell §6.12.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-09",
+      "topic": "markov-models",
+      "q": "Alpaydin Exercise 13.4: any second- (or higher-) order Markov model can be:",
+      "options": ["never simplified", "converted into an equivalent first-order model by defining new states from tuples of original states", "converted only if observable", "made non-Markovian"],
+      "answer": 1,
+      "explain": "Define states as pairs (or k-tuples) of original states; the higher-order dependence becomes a first-order dependence among the new states. (Alpaydin, Exercise 13.4.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-10",
+      "topic": "markov-models",
+      "q": "Alpaydin Exercises 13.1–13.2: given an *observable* Markov model, estimating π and A from generated sequences is done by:",
+      "options": ["gradient descent", "counting — start-state frequencies for π and transition frequencies for A", "the Viterbi algorithm", "EM"],
+      "answer": 1,
+      "explain": "For a fully observable chain, ML estimates are simple counts: $\\pi_i$ from how often sequences start in $i$, $a_{ij}$ from observed $i\\to j$ transitions. (Alpaydin, Exercises 13.1–13.2.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-11",
+      "topic": "hmm-forward-backward",
+      "q": "Alpaydin calls Problem 1 (computing P(O|λ)) the **Evaluation Problem**, solved efficiently by:",
+      "options": ["the Viterbi algorithm", "the forward (forward-backward) procedure in O(N²T)", "Baum-Welch", "brute-force enumeration"],
+      "answer": 1,
+      "explain": "The forward procedure computes P(O|λ) in $O(N^2T)$, avoiding the $O(N^T)$ enumeration of all state paths. (Alpaydin §13.4.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-12",
+      "topic": "hmm-viterbi",
+      "q": "Alpaydin §13.5: the Viterbi algorithm (the Decoding Problem) and the forward procedure share the same complexity because they differ only by:",
+      "options": ["using emissions vs not", "replacing the summation with a maximization (plus back-pointers)", "the number of states", "the initial distribution"],
+      "answer": 1,
+      "explain": "Both are $O(N^2T)$ dynamic programs; Viterbi takes the max over predecessors (and stores back-pointers) where forward takes the sum. (Alpaydin §13.5.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-13",
+      "topic": "hmm-baum-welch",
+      "q": "Alpaydin Exercise 13.6: as you increase the number of hidden states N (training on the same data), the **training** likelihood tends to rise, but you should pick N by:",
+      "options": ["always choosing the largest N", "comparing the likelihood on a separate validation set (to avoid overfitting)", "minimizing the number of states to 1", "the transition matrix size only"],
+      "answer": 1,
+      "explain": "More states fit the training data better but can overfit; choose N by validation likelihood (or domain knowledge). (Alpaydin, Exercise 13.6.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u3-tb-14",
+      "topic": "hmm-baum-welch",
+      "q": "Alpaydin §13.6: Baum-Welch is the application to HMMs of which general principle?",
+      "options": ["gradient boosting", "the EM algorithm (expected counts in the E-step, re-estimation in the M-step)", "support vector optimization", "k-nearest neighbours"],
+      "answer": 1,
+      "explain": "Baum-Welch = EM for HMMs: the forward-backward variables give expected state/transition counts (E-step), which re-estimate π, A, B (M-step). (Alpaydin §13.6.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

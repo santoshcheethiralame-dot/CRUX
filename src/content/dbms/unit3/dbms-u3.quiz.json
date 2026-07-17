@@ -1,0 +1,607 @@
+{
+  "subject": "dbms",
+  "unit": 3,
+  "title": "Unit 3 — MCQ Quiz",
+  "items": [
+    {
+      "id": "dbms-u3-001",
+      "topic": "design-guidelines",
+      "q": "Which is NOT one of the four informal measures of a good relation schema?",
+      "options": ["Clear attribute semantics", "Minimizing redundancy / update anomalies", "Maximizing the number of NULL values", "Disallowing spurious tuples"],
+      "answer": 2,
+      "explain": "The four measures are: clear semantics, reduce redundancy/anomalies, REDUCE (not maximize) NULLs, and avoid spurious tuples.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-002",
+      "topic": "design-guidelines",
+      "q": "Being unable to add a project until an employee is assigned to it (because the PK can't be NULL) is which anomaly?",
+      "options": ["Modification anomaly", "Insertion anomaly", "Deletion anomaly", "Join anomaly"],
+      "answer": 1,
+      "explain": "Insertion anomaly: you can't insert valid data because unrelated required (key) data is missing. Deletion loses data; modification requires many redundant updates.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-003",
+      "topic": "design-guidelines",
+      "q": "If only 15% of employees have an office, the best design per Guideline 3 is to:",
+      "options": ["Add Office_number to EMPLOYEE (mostly NULL)", "Put Office_number in a separate relation EMP_OFFICES(Essn, Office_number) for only those who have one", "Store offices as a multivalued attribute", "Forbid offices entirely"],
+      "answer": 1,
+      "explain": "Guideline 3: minimize NULLs. An attribute NULL for most rows belongs in a separate relation keyed by the PK, holding only the applicable tuples.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-004",
+      "topic": "design-guidelines",
+      "q": "Spurious tuples on a join are avoided by Guideline 4 by:",
+      "options": ["Joining on any common attribute", "Joining only on (primary key, foreign key) pairs", "Always using outer joins", "Removing all foreign keys"],
+      "answer": 1,
+      "explain": "Joining on non-key matching attributes produces spurious tuples. Designing so joins occur on PK-FK pairs guarantees the lossless (non-additive) join property.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-005",
+      "topic": "functional-dependencies",
+      "q": "The functional dependency X → Y means:",
+      "options": ["X and Y are keys", "For any two tuples, if they agree on X they must agree on Y", "Y determines X", "X and Y have the same values"],
+      "answer": 1,
+      "explain": "X → Y: whenever t1[X] = t2[X], then t1[Y] = t2[Y]. X functionally determines Y; the X-value pins down the Y-value.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-006",
+      "topic": "functional-dependencies",
+      "q": "Can a functional dependency be proven to hold by examining one relation state?",
+      "options": ["Yes, if it holds in that state it always holds", "No — a state can only DISPROVE (rule out) an FD, never prove one", "Yes, but only for keys", "Only for relations with no NULLs"],
+      "answer": 1,
+      "explain": "An FD is a semantic constraint on ALL legal states. One state satisfying it doesn't guarantee it always will; but a counterexample (same X, different Y) rules it out.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-007",
+      "topic": "functional-dependencies",
+      "q": "A candidate key differs from a superkey in that a candidate key is:",
+      "options": ["Larger", "A MINIMAL superkey (no removable attribute)", "Always a single attribute", "Not unique"],
+      "answer": 1,
+      "explain": "A superkey uniquely identifies rows but may carry extra attributes; a candidate key is a minimal superkey — removing any attribute breaks uniqueness.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-008",
+      "topic": "functional-dependencies",
+      "q": "A prime attribute is one that:",
+      "options": ["Is the primary key", "Is a member of some candidate key", "Appears on the RHS of an FD", "Is always NULL"],
+      "answer": 1,
+      "explain": "A prime attribute belongs to at least one candidate key. A non-prime attribute is in no candidate key. (Distinct from being THE primary key.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-009",
+      "topic": "fd-types",
+      "q": "`{Ssn, Pnumber} → Hours` where neither Ssn nor Pnumber alone determines Hours is a:",
+      "options": ["Partial dependency", "Full functional dependency", "Transitive dependency", "Trivial dependency"],
+      "answer": 1,
+      "explain": "Full FD: removing any attribute from the LHS breaks it. Since neither part alone determines Hours, the whole key is required — a full dependency.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-010",
+      "topic": "fd-types",
+      "q": "A partial dependency (the 2NF killer) can only occur when:",
+      "options": ["The relation has one attribute", "The primary/candidate key is composite (multiple attributes)", "There are no FDs", "All attributes are prime"],
+      "answer": 1,
+      "explain": "A partial dependency is a non-prime attribute depending on PART of a key — only possible if the key has multiple attributes. Single-attribute keys can't have partial dependencies.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-011",
+      "topic": "fd-types",
+      "q": "The dependency pattern that violates 3NF (transitive dependency) is:",
+      "options": ["prime → prime", "key → non-prime → non-prime", "key → prime", "trivial dependencies"],
+      "answer": 1,
+      "explain": "A transitive dependency is key → (non-prime) → (non-prime). If the middle attribute is a candidate key, it's allowed; the forbidden case is a non-prime determining a non-prime.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-012",
+      "topic": "fd-types",
+      "q": "`ABC → BC` is an example of a:",
+      "options": ["Full dependency", "Trivial dependency (RHS ⊆ LHS)", "Transitive dependency", "Multivalued dependency"],
+      "answer": 1,
+      "explain": "A trivial FD has Y ⊆ X. Here BC ⊆ ABC, so ABC → BC holds automatically (reflexive rule) and conveys no real constraint.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-013",
+      "topic": "inference-rules",
+      "q": "Which are Armstrong's three axioms?",
+      "options": ["Union, decomposition, pseudo-transitivity", "Reflexive, augmentation, transitive", "Closure, cover, minimal", "Insert, update, delete"],
+      "answer": 1,
+      "explain": "Armstrong's axioms: IR1 Reflexive (Y⊆X ⟹ X→Y), IR2 Augmentation (X→Y ⟹ XZ→YZ), IR3 Transitive (X→Y, Y→Z ⟹ X→Z). The others are derived.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-014",
+      "topic": "inference-rules",
+      "q": "Armstrong's axioms being 'sound and complete' means they:",
+      "options": ["Are fast to compute", "Generate only valid FDs (sound) AND all valid FDs (complete)", "Work only for keys", "Never produce trivial FDs"],
+      "answer": 1,
+      "explain": "Sound = every inferred FD actually holds; complete = every FD that holds can be inferred. Hence repeatedly applying them yields the full closure F+.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-015",
+      "topic": "inference-rules",
+      "q": "Which is a VALID inference?",
+      "options": ["XY → A implies X → A", "X → A and Y → B implies XY → AB", "X → A and X → B implies X → AB (union)", "X → AB implies XA → B only"],
+      "answer": 2,
+      "explain": "Union (same LHS): X→A and X→B give X→AB. You may split/combine the RHS, but you cannot split the LHS, and you cannot union FDs with different LHSs.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-016",
+      "topic": "inference-rules",
+      "q": "The proposed rule 'if α→β and γ→β then α→γ' is:",
+      "options": ["Sound", "NOT sound — two determinants of β need not determine each other", "An Armstrong axiom", "The union rule"],
+      "answer": 1,
+      "explain": "This rule is unsound (Silberschatz 7.26): two different attribute sets can both determine β without determining each other. A counterexample relation disproves it.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-017",
+      "topic": "closure",
+      "q": "If the closure X⁺ equals all attributes of R, then X is:",
+      "options": ["A non-prime attribute", "A superkey of R", "Extraneous", "In BCNF"],
+      "answer": 1,
+      "explain": "X⁺ = R means X determines every attribute, so X is a superkey. This is the standard test for keys.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-018",
+      "topic": "closure",
+      "q": "For R(A,B,C,D,E,F,G) with F = {A→BC, BC→DE, D→F, CF→G}, what is {B,C}⁺?",
+      "options": ["{B,C}", "{B,C,D,E}", "{B,C,D,E,F,G}", "{A,B,C,D,E,F,G}"],
+      "answer": 2,
+      "explain": "BC → DE adds D,E; D→F adds F; CF→G adds G. BC⁺ = {B,C,D,E,F,G}. A is not added (nothing determines A).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-019",
+      "topic": "closure",
+      "q": "To check whether an FD X → Y holds under F, you:",
+      "options": ["Compute F⁺ fully", "Compute X⁺ and check if Y ⊆ X⁺", "Check if X is a key", "Count the attributes"],
+      "answer": 1,
+      "explain": "X → Y holds iff Y is a subset of X⁺. Computing the attribute closure is far cheaper than enumerating F⁺.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-020",
+      "topic": "closure",
+      "q": "Why do we use attribute closures and minimal covers instead of listing F⁺ directly?",
+      "options": ["F⁺ is always empty", "F⁺ can be enormous — up to 2^(2^n) FDs for n attributes", "F⁺ is illegal", "Closures are inaccurate"],
+      "answer": 1,
+      "explain": "For n attributes there are up to 2^n · 2^n = 2^(2^n) possible FDs, so F⁺ is impractical to list. Closures and covers capture the same information compactly.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-021",
+      "topic": "equivalence",
+      "q": "F covers E means:",
+      "options": ["E and F are disjoint", "Every FD in E can be inferred from F (E ⊆ F⁺)", "F has more FDs than E", "F is minimal"],
+      "answer": 1,
+      "explain": "F covers E if every dependency in E is in F⁺ — F can reproduce all of E's constraints.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-022",
+      "topic": "equivalence",
+      "q": "Two FD sets E and F are equivalent when:",
+      "options": ["They have the same number of FDs", "F covers E AND E covers F (E⁺ = F⁺)", "They share one FD", "Only F covers E"],
+      "answer": 1,
+      "explain": "Equivalence requires mutual cover: every FD of E inferable from F and vice versa, so E⁺ = F⁺. Checking only one direction is a common error.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-023",
+      "topic": "equivalence",
+      "q": "To test whether F covers G, for each FD X→Y in G you:",
+      "options": ["Compare strings", "Compute X⁺ using F and check Y ⊆ X⁺", "Compute X⁺ using G", "Check if X is essential"],
+      "answer": 1,
+      "explain": "Take each FD of G, compute the closure of its LHS using F, and verify the RHS is contained. If all pass, F covers G.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-024",
+      "topic": "minimal-cover",
+      "q": "Which is NOT a condition of a minimal cover?",
+      "options": ["Every FD has a single attribute on the RHS", "No FD has an extraneous LHS attribute", "No FD is redundant", "Every FD has two attributes on the LHS"],
+      "answer": 3,
+      "explain": "The three conditions are: single-attribute RHS, no extraneous LHS attribute, no redundant FD. There is no requirement about LHS size.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-025",
+      "topic": "minimal-cover",
+      "q": "An attribute is extraneous in an FD if:",
+      "options": ["It is a key", "Removing it doesn't change the closure of the FD set", "It is on the RHS", "It is prime"],
+      "answer": 1,
+      "explain": "An extraneous attribute can be removed without changing F⁺ (the set's meaning). Removing extraneous LHS attributes is step 2 of the minimal-cover algorithm.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-026",
+      "topic": "minimal-cover",
+      "q": "The correct order of the minimal-cover algorithm is:",
+      "options": ["Remove redundant → split RHS → reduce LHS", "Split RHS (canonical) → reduce LHS extraneous → remove redundant FDs", "Reduce LHS → remove redundant → split RHS", "Any order works"],
+      "answer": 1,
+      "explain": "First put FDs in canonical form (single RHS), then remove extraneous LHS attributes, then remove redundant FDs — using the current reduced set at each closure check.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-027",
+      "topic": "minimal-cover",
+      "q": "Is the minimal cover of a set of FDs unique?",
+      "options": ["Yes, always unique", "No — a set can have several minimal covers depending on reduction order", "Only for keys", "Only if there are no transitive FDs"],
+      "answer": 1,
+      "explain": "Different reduction orders can yield different (but equivalent) minimal covers. Hence we say 'a' minimal cover, not 'the'.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-028",
+      "topic": "candidate-keys",
+      "q": "An 'essential' attribute when finding candidate keys is one that:",
+      "options": ["Appears on the RHS of every FD", "Appears on the RHS of NO FD (so must be in every candidate key)", "Is the primary key", "Is non-prime"],
+      "answer": 1,
+      "explain": "An attribute on no RHS cannot be determined by anything else, so it must belong to every candidate key. Start key-finding from the essential attributes.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-029",
+      "topic": "candidate-keys",
+      "q": "R(A,B,C,D,E,F), F = {C→F, E→A, EC→D, A→B}. The candidate key is:",
+      "options": ["AC", "CE", "AE", "CD"],
+      "answer": 1,
+      "explain": "Essential attributes (on no RHS) are C and E. CE⁺ = {C,E,F,A,D,B} = R, so CE is the (only) candidate key.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-030",
+      "topic": "candidate-keys",
+      "q": "If R has n attributes and a single candidate key of size x, the number of superkeys is:",
+      "options": ["2^n", "2^(n−x)", "n − x", "2^x"],
+      "answer": 1,
+      "explain": "The key must be in every superkey; the remaining n−x attributes are each independently in or out, giving 2^(n−x) superkeys. E.g. n=6, x=2 → 16.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-031",
+      "topic": "candidate-keys",
+      "q": "The key-finding algorithm (start K = R, remove attributes while closure still = R) returns:",
+      "options": ["All candidate keys", "One candidate key (which one depends on removal order)", "The primary key only", "All superkeys"],
+      "answer": 1,
+      "explain": "It returns a single key; the result depends on the order attributes are removed. To get all candidate keys, use the essential-attributes method.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-032",
+      "topic": "first-second-normal-form",
+      "q": "First Normal Form (1NF) requires that:",
+      "options": ["There are no transitive dependencies", "Every attribute holds only atomic (single) values — no composite/multivalued/nested", "Every determinant is a superkey", "The key is composite"],
+      "answer": 1,
+      "explain": "1NF disallows composite attributes, multivalued attributes, and nested relations — each cell must be a single atomic value.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-033",
+      "topic": "first-second-normal-form",
+      "q": "Denormalization is:",
+      "options": ["Skipping normalization entirely", "Deliberately adding redundancy (storing a join) AFTER normalizing, to speed up reads", "A synonym for 1NF", "Removing all keys"],
+      "answer": 1,
+      "explain": "Denormalization is an optimization applied after normalizing: accept some redundancy to avoid costly joins. Pros: faster reads; cons: costly updates, inconsistency risk, more storage.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-034",
+      "topic": "first-second-normal-form",
+      "q": "A relation is in 2NF if it is in 1NF and:",
+      "options": ["Every determinant is a superkey", "Every non-prime attribute is fully functionally dependent on the (whole) primary key", "There are no transitive dependencies", "It has no NULLs"],
+      "answer": 1,
+      "explain": "2NF = 1NF + no partial dependencies (every non-prime attribute depends on the whole key, not part of it).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-035",
+      "topic": "first-second-normal-form",
+      "q": "R(P,Q,R,S,T), F = {PQ→R, S→T}, candidate key PQS. This relation is:",
+      "options": ["In 2NF", "Not in 2NF — PQ→R and S→T are partial dependencies on the key PQS", "In BCNF", "In 3NF"],
+      "answer": 1,
+      "explain": "CK = PQS. PQ→R (R depends on part PQ) and S→T (T depends on part S) are partial dependencies of non-prime attributes → violates 2NF.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-036",
+      "topic": "third-normal-form",
+      "q": "A relation in 2NF is in 3NF if:",
+      "options": ["It has a composite key", "No non-prime attribute is transitively dependent on the primary key", "Every determinant is a superkey", "It has no multivalued dependencies"],
+      "answer": 1,
+      "explain": "3NF = 2NF + no transitive dependency of a non-prime attribute on the key (no key → non-prime → non-prime chain).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-037",
+      "topic": "third-normal-form",
+      "q": "The general definition of 3NF says whenever X → A holds, then:",
+      "options": ["X is a superkey AND A is prime", "X is a superkey OR A is a prime attribute", "A is non-prime", "X is a single attribute"],
+      "answer": 1,
+      "explain": "General 3NF: for every X→A, either X is a superkey or A is a prime attribute. The 'A is prime' clause is what BCNF later removes.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-038",
+      "topic": "third-normal-form",
+      "q": "The mnemonic 'the key, the whole key, and nothing but the key' refers to:",
+      "options": ["1NF, 2NF, 3NF respectively", "BCNF only", "4NF and 5NF", "Superkeys"],
+      "answer": 0,
+      "explain": "1NF = there is a key (atomic values); 2NF = depend on the WHOLE key (no partial dep); 3NF = depend on NOTHING BUT the key (no transitive dep).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-039",
+      "topic": "third-normal-form",
+      "q": "In a 3NF check, a transitive chain prime → non-prime → prime is:",
+      "options": ["Always a violation", "Allowed (the final attribute is prime)", "A partial dependency", "Only allowed in 1NF"],
+      "answer": 1,
+      "explain": "3NF's escape clause (b) allows X→A when A is prime. Only prime → non-prime → NON-prime (final attribute non-prime) violates 3NF.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-040",
+      "topic": "bcnf",
+      "q": "A relation is in BCNF if whenever X → A holds:",
+      "options": ["A is prime", "X is a superkey (no exceptions)", "X is a single attribute", "A is non-prime"],
+      "answer": 1,
+      "explain": "BCNF requires EVERY determinant to be a superkey — it drops 3NF's 'A is prime' allowance, making it strictly stronger.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-041",
+      "topic": "bcnf",
+      "q": "A relation is in 3NF but NOT in BCNF exactly when there is an FD X → A with:",
+      "options": ["X a superkey and A prime", "X NOT a superkey and A a prime attribute", "X and A both non-prime", "A trivial dependency"],
+      "answer": 1,
+      "explain": "Such an FD satisfies 3NF (via 'A is prime') but violates BCNF (X is not a superkey). This is the only 3NF-not-BCNF situation.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-042",
+      "topic": "bcnf",
+      "q": "TEACH(Student, Course, Instructor) with {Student,Course}→Instructor and Instructor→Course is in 3NF but not BCNF because:",
+      "options": ["It has a multivalued dependency", "Instructor→Course has a non-superkey determinant but Course is prime", "It is not in 1NF", "Student is not a key"],
+      "answer": 1,
+      "explain": "Instructor is not a superkey (violates BCNF), but Course is prime (so 3NF is satisfied). Classic 3NF-but-not-BCNF example.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-043",
+      "topic": "bcnf",
+      "q": "Any relation with exactly two attributes is:",
+      "options": ["Never in BCNF", "Always in BCNF regardless of its FDs", "Only in 1NF", "Always in 4NF but not BCNF"],
+      "answer": 1,
+      "explain": "With two attributes, any nontrivial FD's determinant must be a superkey, so a 2-attribute relation is always in BCNF (Elmasri 14.22, Silberschatz 7.36).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-044",
+      "topic": "decomposition-lossless-join",
+      "q": "Between lossless join and dependency preservation, which MUST always be satisfied?",
+      "options": ["Dependency preservation", "Lossless (non-additive) join", "Both equally", "Neither"],
+      "answer": 1,
+      "explain": "Losslessness is non-negotiable — a lossy decomposition corrupts data. Dependency preservation is desirable but may be sacrificed (e.g. in BCNF).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-045",
+      "topic": "decomposition-lossless-join",
+      "q": "The NJB test says a binary decomposition {R1,R2} of R is lossless iff:",
+      "options": ["R1 and R2 are disjoint", "(R1∩R2)→(R1−R2) OR (R1∩R2)→(R2−R1) is in F⁺", "R1 = R2", "R1∪R2 ≠ R"],
+      "answer": 1,
+      "explain": "The shared attributes (R1∩R2) must functionally determine all of one of the pieces — i.e. be a key of at least one piece — for a lossless join.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-046",
+      "topic": "decomposition-lossless-join",
+      "q": "Dependency preservation is guaranteed achievable up to which normal form?",
+      "options": ["Only 1NF", "3NF (BCNF and higher may lose dependencies)", "BCNF always", "5NF always"],
+      "answer": 1,
+      "explain": "3NF synthesis can preserve all dependencies AND be lossless. BCNF decomposition guarantees losslessness but may not preserve every FD.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-047",
+      "topic": "decomposition-lossless-join",
+      "q": "Spurious tuples after joining a decomposition indicate:",
+      "options": ["A lossless join", "A lossy join — the shared column wasn't a key of either piece", "Good normalization", "Dependency preservation"],
+      "answer": 1,
+      "explain": "Extra wrong rows mean the join didn't line up correctly — the common attribute didn't uniquely identify rows in either piece, so the decomposition is lossy.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-048",
+      "topic": "higher-normal-forms",
+      "q": "A multivalued dependency X ↠ Y holds when:",
+      "options": ["X determines exactly one Y", "For each X, the set of Y values is independent of the remaining attributes", "Y is a subset of X", "X is a foreign key"],
+      "answer": 1,
+      "explain": "An MVD models two independent multivalued facts: for a given X, Y values are independent of Z = R−(X∪Y), forcing every combination to appear.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-049",
+      "topic": "higher-normal-forms",
+      "q": "A relation is in 4NF if, for every nontrivial MVD X ↠ Y:",
+      "options": ["Y is prime", "X is a superkey", "X is a single attribute", "Y ⊆ X"],
+      "answer": 1,
+      "explain": "4NF requires the determinant of every nontrivial MVD to be a superkey — analogous to BCNF but for multivalued dependencies.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-050",
+      "topic": "higher-normal-forms",
+      "q": "An MVD is a special case of a join dependency with:",
+      "options": ["n = 1", "n = 2 (two projections)", "n = 3", "no projections"],
+      "answer": 1,
+      "explain": "A JD(R1,...,Rn) means R = R1 ⋈...⋈ Rn. An MVD X↠Y corresponds to decomposing into (X,Y) and (X,Z) — a JD with n=2.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-051",
+      "topic": "higher-normal-forms",
+      "q": "Why is 5NF rarely used in practice?",
+      "options": ["It causes data loss", "Join dependencies are extremely hard to detect in real schemas", "It is illegal", "It is the same as 1NF"],
+      "answer": 1,
+      "explain": "JDs are nearly impossible to detect among hundreds of relations, so 5NF is mostly theoretical. Most commercial designs target 3NF/BCNF.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-052",
+      "topic": "query-processing",
+      "q": "The correct order of the query-processing pipeline is:",
+      "options": ["Optimize → parse → scan → execute", "Scan → parse → validate → build query tree → optimize → execute", "Execute → optimize → parse", "Validate → execute → scan"],
+      "answer": 1,
+      "explain": "Scanner (tokens) → parser (syntax) → validation (names) → query tree → optimizer (plan) → code gen → runtime execution.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-053",
+      "topic": "query-processing",
+      "q": "A semi-join (used to unnest EXISTS/IN) returns a left row:",
+      "options": ["For every match in the right table", "As soon as it finds ONE match in the right table", "Only if no match exists", "Never"],
+      "answer": 1,
+      "explain": "A semi-join returns a left row on the first match (no duplicates, no searching for all matches) — exactly EXISTS/IN semantics. NOT EXISTS maps to anti-join.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-054",
+      "topic": "query-processing",
+      "q": "Which SELECT search method works only when the file is physically ordered on the key?",
+      "options": ["Linear search", "Binary search", "Hash key", "Full scan"],
+      "answer": 1,
+      "explain": "Binary search needs an equality on a key the file is ordered by. Linear search always works; hash/primary index need those structures.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-055",
+      "topic": "query-processing",
+      "q": "Which join algorithm sorts both inputs on the join attribute and merges them in a single pass?",
+      "options": ["Nested-loop join", "Sort-merge join (O(m+n) after sorting)", "Index nested-loop join", "Cross join"],
+      "answer": 1,
+      "explain": "Sort-merge join sorts both relations on the join attribute then scans both once with two pointers — O(m+n) after the sort, avoiding nested loops.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-056",
+      "topic": "query-processing",
+      "q": "The partition-hash join works by:",
+      "options": ["Scanning every pair of rows", "Hashing both tables into buckets (partition phase), then joining only matching buckets (probe phase)", "Sorting both tables", "Using no hashing at all"],
+      "answer": 1,
+      "explain": "J4 partitions both relations with the same hash on the join attribute, then probes: only rows in the same bucket are compared, avoiding full-table comparison.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-057",
+      "topic": "query-optimization",
+      "q": "Why does `WHERE YEAR(order_date) = 2024` typically prevent index use?",
+      "options": ["YEAR is invalid SQL", "Wrapping an indexed column in a function means the stored index values no longer match the comparison, forcing a full scan", "Indexes only work on text", "It uses too much memory"],
+      "answer": 1,
+      "explain": "A function on an indexed column defeats the index (the index stores raw column values, not function outputs), so the engine must scan the whole table.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-058",
+      "topic": "query-optimization",
+      "q": "The MySQL EXPLAIN statement is used to:",
+      "options": ["Execute a query faster automatically", "Show how the engine plans to run a query (access order, index usage)", "Create an index", "Delete slow queries"],
+      "answer": 1,
+      "explain": "EXPLAIN reveals the chosen execution plan — table access order, indexes used, estimated rows — so you can spot bottlenecks (e.g. full scans).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-059",
+      "topic": "query-optimization",
+      "q": "Adding a B-tree index on a filtered column typically changes a SELECT's cost from:",
+      "options": ["O(log n) to O(n)", "O(n) full scan to O(log n) index lookup", "O(1) to O(n)", "No change"],
+      "answer": 1,
+      "explain": "Without an index the engine scans every row (O(n)); a B-tree index lets it jump to qualifying rows (O(log n)) — the biggest lever for SELECT performance on large tables.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u3-060",
+      "topic": "query-optimization",
+      "q": "Which is a recommended query-optimization technique?",
+      "options": ["Always use SELECT *", "Filter early with WHERE to limit rows before joins/aggregation", "Avoid all indexes", "Wrap columns in functions"],
+      "answer": 1,
+      "explain": "Filtering early (and retrieving only needed columns, indexing join/filter columns, using LIMIT) reduces the rows every later step must process.",
+      "difficulty": "easy",
+      "source": "slide"
+    }
+  ]
+}

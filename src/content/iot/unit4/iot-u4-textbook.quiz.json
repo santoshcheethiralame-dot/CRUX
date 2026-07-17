@@ -1,0 +1,272 @@
+{
+  "subject": "iot",
+  "unit": 4,
+  "title": "Unit 4 — Textbook-style MCQs",
+  "items": [
+    {
+      "id": "iot-u4-tb-001",
+      "topic": "iot-analytics-intro",
+      "q": "An estimated ~80% of business data is unstructured. Why does this drive interest in machine learning?",
+      "options": [
+        "Because unstructured data is easy to store in an RDBMS",
+        "Because unstructured data (text, images, video) has no schema, so ML/cognitive computing are needed to extract meaning",
+        "Because ML only works on tabular data",
+        "Because structured data cannot be analyzed"
+      ],
+      "answer": 1,
+      "explain": "Unstructured data lacks a logical schema, so traditional query tools fail. ML and cognitive computing are the practical way to derive insight from text, speech, images, and video.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-002",
+      "topic": "types-of-analytics",
+      "q": "A wind-farm operator wants to estimate each turbine's remaining useful life from vibration trends. This is which analytics type?",
+      "options": ["Descriptive", "Diagnostic", "Predictive", "Prescriptive"],
+      "answer": 2,
+      "explain": "Forecasting future outcomes (remaining useful life) from historical/real-time data using ML/statistical models is predictive analytics. Prescriptive would then recommend the optimal maintenance action.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-003",
+      "topic": "data-pipeline",
+      "q": "In a smart factory, Spark cleans noise and computes hourly summaries before ML runs. Which pipeline stage is this?",
+      "options": [
+        "Data generation",
+        "Data processing (cleaning, normalization, aggregation)",
+        "Visualization & action",
+        "Data collection"
+      ],
+      "answer": 1,
+      "explain": "Cleaning, normalizing, and aggregating raw data into usable form is the data-processing (transformation) stage, sitting between storage and analytics. Stream/batch tools (Spark, Kafka, Hadoop) operate here.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-004",
+      "topic": "ml-types",
+      "q": "When should you prefer supervised over unsupervised learning for an IoT task?",
+      "options": [
+        "When you have no labels and just want to explore structure",
+        "When you can define 'success' precisely, obtain labels at reasonable cost, and need measurable, SLA-grade accuracy",
+        "Always, regardless of labels",
+        "Only for clustering tasks"
+      ],
+      "answer": 1,
+      "explain": "Supervised learning fits when success is precisely definable, labels are obtainable, and you need measurable accuracy (e.g., false negatives <1%). Unsupervised suits unlabeled exploration (clustering, anomaly detection).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-005",
+      "topic": "ml-types",
+      "q": "A semi-supervised IoT workflow typically:",
+      "options": [
+        "Uses only labeled data end to end",
+        "Uses unsupervised learning to find clusters/anomalies, partially labels the results, then trains a supervised model — combining discovery with prediction accuracy",
+        "Avoids all neural networks",
+        "Requires no data at all"
+      ],
+      "answer": 1,
+      "explain": "Hybrid/semi-supervised approaches first cluster or detect anomalies (unsupervised), label those results, then feed them to a supervised model — blending pattern discovery with prediction accuracy (e.g., labeling energy clusters then classifying).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-006",
+      "topic": "decision-tree",
+      "q": "Why are decision trees particularly favored for IoT classification despite more accurate models existing?",
+      "options": [
+        "They require no data",
+        "They are highly interpretable — you can read off exactly why a device was classified 'faulty'",
+        "They never overfit",
+        "They only work on images"
+      ],
+      "answer": 1,
+      "explain": "Decision trees are flowchart-like and transparent: each decision is explicit, so engineers can trace the exact reasoning (e.g., temperature>30 AND vibration>X → faulty) — valuable for trust and debugging in IoT.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-007",
+      "topic": "decision-tree",
+      "q": "A wearable classifies accelerometer/gyroscope data into Walking/Running/Sleeping. The leaf nodes represent:",
+      "options": [
+        "The raw sensor inputs",
+        "The final activity classes",
+        "The information gain values",
+        "The pruning thresholds"
+      ],
+      "answer": 1,
+      "explain": "Leaf nodes hold the final predicted classes (Walking/Running/Sleeping). Internal nodes test features (e.g., acceleration magnitude), and branches are the outcomes leading toward a leaf.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-008",
+      "topic": "iot-cloud",
+      "q": "A remote oil rig needs sub-second control decisions and must keep operating when its satellite link drops. The best architecture is:",
+      "options": [
+        "Purely cloud-based",
+        "Edge-based (local processing for low latency and offline resilience), syncing to the cloud periodically",
+        "No processing at all",
+        "Cloud-based with no edge"
+      ],
+      "answer": 1,
+      "explain": "Low-latency, offline-resilient requirements favor edge-based processing at a local gateway, with periodic cloud sync for storage/analytics — a hybrid leaning edge, mirroring the Unit 1 edge/fog/cloud trade-off.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-009",
+      "topic": "aws-azure",
+      "q": "AWS IoT Core securely connects devices using which protocols?",
+      "options": [
+        "Only Zigbee",
+        "MQTT, HTTP, and WebSockets",
+        "Only Modbus",
+        "Only LoRaWAN"
+      ],
+      "answer": 1,
+      "explain": "AWS IoT Core handles device connectivity over MQTT, HTTP, and WebSockets. Greengrass adds edge compute; SageMaker adds ML; QuickSight adds visualization.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-010",
+      "topic": "iot-security-intro",
+      "q": "Confidentiality must be protected in which states of data?",
+      "options": [
+        "Only data at rest",
+        "Data at rest, data in use, and data in motion",
+        "Only data in motion",
+        "Only data being displayed"
+      ],
+      "answer": 1,
+      "explain": "Confidentiality of content must hold whether data is stored (at rest), being processed (in use), or transmitted (in motion). Encryption is the primary tool across all three.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-011",
+      "topic": "iot-security-intro",
+      "q": "Match the security goal to its primary protection tool: integrity is primarily protected by ___.",
+      "options": [
+        "Encryption",
+        "Hash algorithms",
+        "Digital signatures",
+        "Rate limiting"
+      ],
+      "answer": 1,
+      "explain": "Integrity (detecting/preventing unauthorized modification) is primarily protected by hash algorithms. Encryption protects confidentiality; digital signatures provide non-repudiation.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-012",
+      "topic": "availability-attacks",
+      "q": "How does a Denial-of-Sleep attack exploit IoT's own design philosophy?",
+      "options": [
+        "It exploits high-bandwidth video streams",
+        "Low-power IoT depends on devices sleeping to save battery; denying sleep drains their batteries flat, killing a long deployment without crashing the network",
+        "It exploits wired Ethernet only",
+        "It only affects mains-powered devices"
+      ],
+      "answer": 1,
+      "explain": "IoT's low-power model relies on devices sleeping most of the time. A DoSA keeps them awake (e.g., a fake node forcing constant transmission), draining batteries and making devices unavailable — a DoS on the power budget.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-013",
+      "topic": "iot-vulnerabilities",
+      "q": "An attacker obtains a home Wi-Fi password because a device's companion smartphone app stored it insecurely. This is which vulnerability category?",
+      "options": [
+        "Glitch injection",
+        "Insecure mobile connection",
+        "Black hole attack",
+        "Configuration logging"
+      ],
+      "answer": 1,
+      "explain": "Insecure mobile connection: setup apps request Wi-Fi credentials and, if stored insecurely, let attackers who access that storage authenticate as legitimate users and enter the IoT system.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-014",
+      "topic": "threat-modeling",
+      "q": "In the DREAD model, 'Exploitability' measures:",
+      "options": [
+        "How catastrophic the attack is",
+        "The complexity, skill set, and time needed to launch the attack",
+        "How many users are affected",
+        "How easy the threat is to discover"
+      ],
+      "answer": 1,
+      "explain": "Exploitability captures the difficulty (complexity, skills, time) of launching the attack. Damage = how catastrophic; Affected users = scope; Discoverability = how easily found; Reproducibility = how repeatable.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-015",
+      "topic": "threat-modeling",
+      "q": "In the smart EV charging-station example, which were identified as the highest-value data assets?",
+      "options": [
+        "The ground sensor's vacancy bit only",
+        "Payment data, license-plate data, and raw video footage",
+        "The Wi-Fi channel number",
+        "The gateway's firmware version"
+      ],
+      "answer": 1,
+      "explain": "The threat model flagged payment data, license-plate data, and raw IP-camera video as the highest-value assets — the most attractive targets requiring the strongest protection.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-016",
+      "topic": "regulations-privacy",
+      "q": "Why can 'de-identified' data still be a privacy risk?",
+      "options": [
+        "It is always encrypted",
+        "It can be re-identified when combined with other datasets — true de-identification means NO possibility of identifying an individual",
+        "It cannot be stored anywhere",
+        "It is the same as personal data by law"
+      ],
+      "answer": 1,
+      "explain": "Removing obvious identifiers isn't enough; integrating de-identified data with other sources can re-identify a person. Legally, data is de-identified only when there is no possibility of identifying an individual.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-017",
+      "topic": "security-examples",
+      "q": "The 2015 Jeep hack and 2017 St. Jude cardiac-device findings share which lesson?",
+      "options": [
+        "IoT security failures are only financial",
+        "Integrity/availability failures in IoT can be life-threatening (steering a car off the road; wrong cardiac pacing/shocks)",
+        "Encryption is unnecessary",
+        "Only confidentiality matters"
+      ],
+      "answer": 1,
+      "explain": "Both showed that compromising IoT integrity/availability has physical, life-or-death stakes — controlling a vehicle or a pacemaker — underscoring that IoT security is a safety issue, not just data protection.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "iot-u4-tb-018",
+      "topic": "iot-blockchain",
+      "q": "A vaccine cold-chain wants tamper-proof, sensor-by-sensor provenance across many handlers. Why is blockchain a good fit, and what's the catch?",
+      "options": [
+        "Fit: centralized control; Catch: none",
+        "Fit: immutable, decentralized, auditable provenance with no single point of failure; Catch: constrained IoT devices struggle with blockchain's compute/storage/energy and low throughput",
+        "Fit: it speeds up sensors; Catch: it needs no nodes",
+        "Fit: it eliminates sensors; Catch: it is illegal"
+      ],
+      "answer": 1,
+      "explain": "Blockchain gives an immutable, decentralized, auditable record ideal for multi-party provenance. The catch is the tension with constrained, low-power IoT devices and blockchain's heavy compute/storage/energy and limited throughput — addressed with lightweight ledgers and gateway/cloud offload.",
+      "difficulty": "hard",
+      "source": "textbook"
+    }
+  ]
+}

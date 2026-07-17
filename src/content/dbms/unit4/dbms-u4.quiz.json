@@ -1,0 +1,597 @@
+{
+  "subject": "dbms",
+  "unit": 4,
+  "title": "Unit 4 — MCQ Quiz",
+  "items": [
+    {
+      "id": "dbms-u4-001",
+      "topic": "database-connectivity",
+      "q": "JDBC and ODBC are:",
+      "options": ["Query languages", "Standard call-level APIs that let an application connect to a DBMS", "NoSQL databases", "Isolation levels"],
+      "answer": 1,
+      "explain": "JDBC (Java) and ODBC (Open Database Connectivity) are standard APIs for embedding database access in application programs. Python uses a DB-API driver like mysql.connector.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-002",
+      "topic": "database-connectivity",
+      "q": "Why use parameterised queries (e.g. `cur.execute(sql, (101, 'Riya'))`) instead of string concatenation?",
+      "options": ["They run faster", "They prevent SQL injection", "They avoid using a cursor", "They auto-commit"],
+      "answer": 1,
+      "explain": "Placeholders (%s) keep data separate from SQL code, preventing SQL injection. The lifecycle is connect → cursor → execute → commit/rollback → fetch → close.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-003",
+      "topic": "database-connectivity",
+      "q": "In the Python–MySQL pattern, what persists a change to the database?",
+      "options": ["cur.execute()", "conn.commit()", "conn.connect()", "cur.fetchall()"],
+      "answer": 1,
+      "explain": "execute() sends the statement; conn.commit() makes the change permanent. conn.rollback() undoes it on error — wrapping the work in a transaction.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-004",
+      "topic": "transactions-acid",
+      "q": "A database transaction is best described as:",
+      "options": ["A single SQL statement", "A unit of work that is either fully completed or fully rolled back (all-or-nothing)", "A read-only query", "A backup operation"],
+      "answer": 1,
+      "explain": "A transaction is the smallest unit of work — a collection of operations that either all occur or none occur, ensuring data integrity.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-005",
+      "topic": "transactions-acid",
+      "q": "Which ACID property ensures that once a transaction completes, its changes persist even after a system crash?",
+      "options": ["Atomicity", "Consistency", "Isolation", "Durability"],
+      "answer": 3,
+      "explain": "Durability guarantees committed changes survive failures. It is enforced by the recovery system (via the log), which also enforces atomicity.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-006",
+      "topic": "transactions-acid",
+      "q": "In a transfer of $50 from A to B, a crash after updating A but before updating B is prevented from corrupting the DB by which property?",
+      "options": ["Atomicity (all-or-none)", "Durability", "Isolation", "Consistency only"],
+      "answer": 0,
+      "explain": "Atomicity ensures all-or-none: if the transaction fails midway, the recovery system uses the log to undo the partial change, so no money is lost.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-007",
+      "topic": "transactions-acid",
+      "q": "Which ACID property is the responsibility of the concurrency-control system?",
+      "options": ["Atomicity", "Durability", "Isolation", "Consistency"],
+      "answer": 2,
+      "explain": "Isolation (concurrent transactions appear to run one at a time) is enforced by the concurrency-control system. Atomicity and durability are handled by the recovery system via the log.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-008",
+      "topic": "transactions-acid",
+      "q": "What does the read_item(X) operation do?",
+      "options": ["Writes X to disk immediately", "Copies data item X from the database into a main-memory buffer variable", "Deletes X", "Locks X exclusively"],
+      "answer": 1,
+      "explain": "read(X) transfers X from the database (disk) into a buffer variable belonging to the transaction. write(X) copies the variable's value back to X (possibly buffered, flushed later).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-009",
+      "topic": "transaction-states",
+      "q": "Immediately after a transaction executes its final operation (but before commit checks pass), it is in which state?",
+      "options": ["Active", "Partially committed", "Committed", "Aborted"],
+      "answer": 1,
+      "explain": "After the last operation the transaction is partially committed; concurrency/recovery checks run here. If they pass it reaches the commit point and becomes committed.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-010",
+      "topic": "transaction-states",
+      "q": "The system log is used primarily for:",
+      "options": ["Query optimization", "Recovery — recording old/new values so changes can be undone or redone after a failure", "Indexing", "User authentication"],
+      "answer": 1,
+      "explain": "The log records each write's old and new values plus commit/abort markers, enabling the recovery system to undo uncommitted transactions and redo committed ones after a crash.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-011",
+      "topic": "transaction-states",
+      "q": "An aborted transaction is RESTARTED (as a new transaction) rather than killed when:",
+      "options": ["It had an internal logic error", "The abort was due to an external cause (hardware/system error)", "The input was bad", "The data was not found"],
+      "answer": 1,
+      "explain": "External failures (hardware/system) are transient, so the transaction is restarted as new. Internal logic errors / bad input would just fail again, so the transaction is killed.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-012",
+      "topic": "concurrency-problems",
+      "q": "When one transaction's write is overwritten by another that read the old value, the anomaly is:",
+      "options": ["Dirty read", "Lost update", "Phantom", "Incorrect summary"],
+      "answer": 1,
+      "explain": "Lost update: two transactions interleave so one's update overwrites the other's, which is lost. e.g. T1 writes X=3 but T2 (which read old X) writes X=8 over it.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-013",
+      "topic": "concurrency-problems",
+      "q": "A dirty read (temporary update problem) occurs when:",
+      "options": ["A transaction reads committed data", "A transaction reads an uncommitted value that is later rolled back", "Two transactions deadlock", "An aggregate is computed"],
+      "answer": 1,
+      "explain": "A dirty read happens when T2 reads data written but not yet committed by T1; if T1 rolls back, T2 has read a value that never validly existed.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-014",
+      "topic": "concurrency-problems",
+      "q": "The incorrect summary problem arises when:",
+      "options": ["A transaction reads its own writes", "A transaction computes an aggregate while another updates items mid-scan", "Two transactions write the same item", "A transaction never commits"],
+      "answer": 1,
+      "explain": "Incorrect summary: an aggregate (sum/avg) is computed while another transaction updates some of the items being summed, so the result mixes old and new values.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-015",
+      "topic": "concurrency-problems",
+      "q": "The unrepeatable read problem is when a transaction:",
+      "options": ["Cannot read any data", "Reads the same item twice and gets different values because another transaction changed it in between", "Reads uncommitted data", "Loses its update"],
+      "answer": 1,
+      "explain": "Unrepeatable read: T reads an item twice; another transaction modifies it between the two reads, so T sees two different values for the same item.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-016",
+      "topic": "isolation-levels",
+      "q": "Which isolation level prevents dirty reads but still allows non-repeatable reads and phantoms?",
+      "options": ["READ UNCOMMITTED", "READ COMMITTED", "REPEATABLE READ", "SERIALIZABLE"],
+      "answer": 1,
+      "explain": "READ COMMITTED reads only committed data (no dirty reads) but a re-read can still see updated values (non-repeatable) and newly inserted rows (phantoms).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-017",
+      "topic": "isolation-levels",
+      "q": "Which isolation level avoids all three anomalies and is the SQL standard default?",
+      "options": ["READ UNCOMMITTED", "READ COMMITTED", "REPEATABLE READ", "SERIALIZABLE"],
+      "answer": 3,
+      "explain": "SERIALIZABLE is the strongest level, preventing dirty reads, non-repeatable reads, and phantoms. It is the SQL default (though many systems default to READ COMMITTED for speed).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-018",
+      "topic": "isolation-levels",
+      "q": "A phantom occurs when, between two reads of a transaction:",
+      "options": ["A value is updated", "Another transaction INSERTS a new row matching the query's WHERE condition", "A deadlock happens", "The transaction aborts"],
+      "answer": 1,
+      "explain": "A phantom is a new row (inserted by another transaction) that satisfies a WHERE condition and appears in a re-run of the query — distinct from a non-repeatable read (a changed value).",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-019",
+      "topic": "isolation-levels",
+      "q": "REPEATABLE READ prevents non-repeatable reads but still permits:",
+      "options": ["Dirty reads", "Phantoms", "Lost updates only", "Nothing"],
+      "answer": 1,
+      "explain": "REPEATABLE READ stops dirty and non-repeatable reads, but phantoms (newly inserted rows in a range query) can still occur; only SERIALIZABLE prevents those too.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-020",
+      "topic": "schedules-conflict-serializability",
+      "q": "Two operations in a schedule conflict if and only if:",
+      "options": ["They are both reads", "They belong to different transactions, access the same item, and at least one is a write", "They belong to the same transaction", "They access different items"],
+      "answer": 1,
+      "explain": "All three conditions must hold: different transactions, same data item, and at least one write. So R-W, W-R, W-W conflict; R-R never conflicts.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-021",
+      "topic": "schedules-conflict-serializability",
+      "q": "A serializable schedule is one that:",
+      "options": ["Runs transactions one at a time", "Is a non-serial schedule equivalent to some serial schedule", "Always causes inconsistency", "Has no writes"],
+      "answer": 1,
+      "explain": "A serializable schedule allows concurrency but is equivalent in effect to some serial schedule, so it is consistent — combining correctness with better throughput.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-022",
+      "topic": "schedules-conflict-serializability",
+      "q": "A schedule is conflict serializable if it can be transformed into a serial schedule by:",
+      "options": ["Swapping adjacent non-conflicting operations", "Deleting all writes", "Reordering conflicting operations", "Adding more transactions"],
+      "answer": 0,
+      "explain": "Conflict serializability: a series of swaps of adjacent NON-conflicting operations turns the schedule into a serial one. Swapping non-conflicting ops never changes the result.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-023",
+      "topic": "schedules-conflict-serializability",
+      "q": "Which pair does NOT conflict?",
+      "options": ["W1(A), R2(A)", "R1(A), W2(A)", "R1(A), R2(A)", "W1(A), W2(A)"],
+      "answer": 2,
+      "explain": "Two reads never conflict (neither is a write). The other pairs each have a write on the same item from different transactions, so they conflict.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-024",
+      "topic": "precedence-graph",
+      "q": "In a precedence graph, an edge Ti → Tj is drawn when:",
+      "options": ["Ti and Tj are the same", "Tj performs a conflicting operation AFTER Ti on the same item (W-R, R-W, or W-W)", "Ti reads any item", "Tj commits first"],
+      "answer": 1,
+      "explain": "An edge Ti → Tj means a conflicting operation of Tj follows one of Ti on the same data item (e.g. wi(X) then rj(X)), forcing Ti before Tj in any equivalent serial order.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-025",
+      "topic": "precedence-graph",
+      "q": "A schedule is conflict serializable if and only if its precedence graph:",
+      "options": ["Has a cycle", "Has no cycle (is acyclic)", "Has more than 3 nodes", "Is fully connected"],
+      "answer": 1,
+      "explain": "Acyclic ⇒ conflict serializable (and a topological sort gives the equivalent serial order). A cycle ⇒ NOT conflict serializable.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-026",
+      "topic": "precedence-graph",
+      "q": "For an acyclic precedence graph, the equivalent serial order is found by:",
+      "options": ["Finding the node with most edges", "Topological sort — repeatedly removing a node with in-degree 0", "Reversing all edges", "Counting writes"],
+      "answer": 1,
+      "explain": "A topological sort gives the serial order: repeatedly pick a node with in-degree 0, output it, and remove it. That removal order is the equivalent serial schedule.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-027",
+      "topic": "precedence-graph",
+      "q": "Why is serializability testing (precedence graph) not used at runtime by the DBMS?",
+      "options": ["It is always wrong", "It requires the whole schedule after the fact; instead a protocol (like 2PL) guarantees only serializable schedules are produced", "It is illegal", "Graphs cannot be built"],
+      "answer": 1,
+      "explain": "Testing needs the complete schedule. Instead the DBMS uses a protocol such as two-phase locking that guarantees conflict-serializable schedules by construction. The graph is for proving protocols and solving problems.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-028",
+      "topic": "view-serializability",
+      "q": "Two schedules are view equivalent if they have the same initial reads, the same read-from relationships, and:",
+      "options": ["The same number of operations", "The same final write (last writer) of each data item", "The same transactions committing", "No conflicts"],
+      "answer": 1,
+      "explain": "View equivalence requires all three: same initial reads, same read-from (who-reads-whose-write), and same final writer of each item.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-029",
+      "topic": "view-serializability",
+      "q": "The relationship between conflict- and view-serializable schedules is:",
+      "options": ["They are identical", "Every conflict-serializable schedule is view-serializable, but not vice-versa", "Every view-serializable schedule is conflict-serializable", "They are disjoint"],
+      "answer": 1,
+      "explain": "Conflict-serializable ⊂ view-serializable. View-serializable schedules that aren't conflict-serializable always contain a blind write. Hierarchy: serial ⊂ conflict-SR ⊂ view-SR ⊂ all.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-030",
+      "topic": "view-serializability",
+      "q": "A blind write is:",
+      "options": ["A write that fails", "A write to an item with no prior read of that item by the same transaction", "A read with no write", "A write during recovery"],
+      "answer": 1,
+      "explain": "A blind write writes an item the transaction never read. Blind writes are what make some schedules view-serializable but not conflict-serializable.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-031",
+      "topic": "view-serializability",
+      "q": "Why is conflict serializability emphasised over view serializability in practice?",
+      "options": ["It captures more schedules", "Testing conflict serializability is a cheap cycle check, whereas testing view serializability is NP-complete", "View serializability is incorrect", "They are the same difficulty"],
+      "answer": 1,
+      "explain": "Conflict serializability is tested with a simple precedence-graph cycle check; view serializability testing is NP-complete. Protocols enforce the easier-to-guarantee conflict serializability.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-032",
+      "topic": "lock-based-protocols",
+      "q": "A shared (S) lock allows the holder to:",
+      "options": ["Read and write the item", "Only read the item", "Only write the item", "Delete the item"],
+      "answer": 1,
+      "explain": "A shared lock permits reading only; many transactions can hold S-locks on an item simultaneously. An exclusive (X) lock permits read AND write, held by one transaction.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-033",
+      "topic": "lock-based-protocols",
+      "q": "In the lock-compatibility matrix, which combination is compatible (can be held concurrently)?",
+      "options": ["X and X", "S and X", "X and S", "S and S"],
+      "answer": 3,
+      "explain": "Only Shared–Shared is compatible (many readers). Any combination involving an exclusive lock is incompatible, so a writer must wait for all other locks to release.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-034",
+      "topic": "lock-based-protocols",
+      "q": "Deadlock between two transactions is resolved by:",
+      "options": ["Granting both locks", "Rolling back one of the transactions", "Waiting indefinitely", "Deleting the data"],
+      "answer": 1,
+      "explain": "When two transactions each wait for a lock the other holds, one must be rolled back to break the cycle. MySQL detects deadlocks automatically and rolls back a victim.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-035",
+      "topic": "lock-based-protocols",
+      "q": "A transaction waiting for an exclusive lock being repeatedly overtaken by shared-lock grants is an example of:",
+      "options": ["Deadlock", "Starvation", "A phantom", "A dirty read"],
+      "answer": 1,
+      "explain": "Starvation: a continuous stream of compatible shared-lock requests can indefinitely delay an exclusive-lock request. FIFO granting in the lock table prevents it.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-036",
+      "topic": "two-phase-locking",
+      "q": "In two-phase locking (2PL), the two phases are:",
+      "options": ["Read phase and write phase", "Growing phase (acquire locks, no release) and shrinking phase (release locks, no acquire)", "Commit phase and abort phase", "Lock phase and log phase"],
+      "answer": 1,
+      "explain": "Growing: only acquire locks. Shrinking: only release. Once a transaction releases any lock it cannot acquire new ones. The lock point is the end of the growing phase.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-037",
+      "topic": "two-phase-locking",
+      "q": "What does basic 2PL guarantee — and not guarantee?",
+      "options": ["Guarantees deadlock-freedom but not serializability", "Guarantees conflict serializability but NOT freedom from deadlock", "Guarantees both", "Guarantees neither"],
+      "answer": 1,
+      "explain": "2PL guarantees conflict-serializable schedules (serialized in lock-point order) but transactions following 2PL can still deadlock, which must be handled separately.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-038",
+      "topic": "two-phase-locking",
+      "q": "How does rigorous 2PL differ from strict 2PL?",
+      "options": ["No difference", "Strict holds all EXCLUSIVE locks till commit; rigorous holds ALL locks (S and X) till commit", "Rigorous releases locks earlier", "Strict allows deadlock, rigorous doesn't"],
+      "answer": 1,
+      "explain": "Strict 2PL holds exclusive locks until commit/abort (recoverable, no cascading rollback). Rigorous 2PL holds ALL locks until commit, serializing transactions in commit order. Most DBs use rigorous 2PL.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-039",
+      "topic": "two-phase-locking",
+      "q": "In 2PL, upgrading a shared lock to an exclusive lock (S → X) is allowed only in the:",
+      "options": ["Shrinking phase", "Growing phase", "Commit phase", "Either phase"],
+      "answer": 1,
+      "explain": "Upgrading (S→X) acquires more locking power, so it's a growing-phase action. Downgrading (X→S) releases power, so it's a shrinking-phase action.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-040",
+      "topic": "two-phase-locking",
+      "q": "Why does 2PL guarantee conflict serializability (proof idea)?",
+      "options": ["It uses timestamps", "If the precedence graph had a cycle, some transaction must have acquired a lock after releasing one — violating the two-phase rule", "It forbids all writes", "It serializes by commit time"],
+      "answer": 1,
+      "explain": "A cycle in the precedence graph would require a transaction to lock after unlocking, which 2PL forbids. Hence 2PL schedules are acyclic, i.e. conflict serializable.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-041",
+      "topic": "nosql-cap",
+      "q": "NoSQL stands for and emphasises:",
+      "options": ["No SQL allowed; tabular data", "Not Only SQL; schema-less, scalable, available storage of unstructured data", "New SQL; faster joins", "Network SQL; distributed joins"],
+      "answer": 1,
+      "explain": "NoSQL = Not Only SQL — non-tabular, schema-less databases emphasising scalability, availability, replication and performance over immediate consistency and rich query languages.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-042",
+      "topic": "nosql-cap",
+      "q": "Which is the correct NoSQL category for Neo4j?",
+      "options": ["Document-based", "Key-value store", "Wide-column", "Graph-based"],
+      "answer": 3,
+      "explain": "Neo4j is a graph database. The four categories: document (MongoDB), key-value (Redis, DynamoDB), wide-column (Cassandra, HBase), graph (Neo4j).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-043",
+      "topic": "nosql-cap",
+      "q": "The CAP theorem states that a distributed system with replication can guarantee at most how many of Consistency, Availability, Partition tolerance?",
+      "options": ["All three", "Two of the three", "One of the three", "None"],
+      "answer": 1,
+      "explain": "CAP: you cannot guarantee all three simultaneously — at most two. Since partitions are unavoidable, the practical choice is between consistency and availability.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-044",
+      "topic": "nosql-cap",
+      "q": "Most NoSQL systems, in CAP terms, choose to favour:",
+      "options": ["Consistency over availability (strong consistency)", "Availability + partition tolerance, accepting eventual consistency", "Neither", "Partition intolerance"],
+      "answer": 1,
+      "explain": "NoSQL systems typically prioritise availability and partition tolerance (A+P), adopting eventual consistency, whereas traditional SQL/ACID systems prioritise consistency.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-045",
+      "topic": "nosql-cap",
+      "q": "Sharding in NoSQL systems refers to:",
+      "options": ["Encrypting data", "Partitioning records across multiple nodes to distribute load", "Replicating the whole database", "Compressing files"],
+      "answer": 1,
+      "explain": "Sharding partitions the records across nodes for load balancing; combined with replication it improves both availability and load distribution.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-046",
+      "topic": "redis",
+      "q": "Redis is best described as:",
+      "options": ["A relational database", "An in-memory key-value store", "A graph database", "A vector database"],
+      "answer": 1,
+      "explain": "Redis is an open-source, in-memory key-value store (RAM for speed, disk for persistence) — a persisted hash map, schema-less and very fast.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-047",
+      "topic": "redis",
+      "q": "Which Redis data structure is ideal for a real-time leaderboard?",
+      "options": ["String", "List", "Sorted Set (Zset)", "Hash"],
+      "answer": 2,
+      "explain": "A Sorted Set keeps members ordered by a score (ties broken lexicographically) — perfect for leaderboards/rankings via ZADD/ZRANGE/ZREVRANGE/ZRANK.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-048",
+      "topic": "redis",
+      "q": "Which Redis command sets a timeout after which a key is automatically deleted?",
+      "options": ["DEL", "EXPIRE", "PERSIST", "TTL"],
+      "answer": 1,
+      "explain": "EXPIRE key seconds sets a timeout (used for caching/sessions). TTL reads the remaining time; PERSIST removes the timeout; DEL deletes immediately.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-049",
+      "topic": "redis",
+      "q": "Which is a limitation of Redis?",
+      "options": ["It is too slow", "Data is held in RAM (expensive, risk of loss on crash) and it's not suited to complex joins/aggregations", "It cannot store strings", "It has no commands"],
+      "answer": 1,
+      "explain": "Redis keeps everything in RAM (expensive, possible data loss on crash, manual eviction) and is optimised for key lookups, not complex joins or aggregations.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-050",
+      "topic": "redis",
+      "q": "In a Redis key like `user:101`, the colon (`:`) is used to:",
+      "options": ["Separate data types", "Denote hierarchy / namespacing of keys", "End the command", "Indicate expiry"],
+      "answer": 1,
+      "explain": "The colon conventionally denotes hierarchy/namespacing (e.g. PES:Department, user:session:123), helping organise the flat key space. Keys must be unique.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-051",
+      "topic": "neo4j",
+      "q": "In Neo4j, what do nodes and relationships represent?",
+      "options": ["Tables and rows", "Nodes = entities (people, things); relationships = directed connections between them", "Keys and values", "Documents and collections"],
+      "answer": 1,
+      "explain": "Neo4j's storage model is nodes + relationships. Nodes represent entities (with labels and properties); directed relationships (with a type) connect them.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-052",
+      "topic": "neo4j",
+      "q": "The key advantage of Neo4j over a relational database is:",
+      "options": ["Faster disk I/O", "Efficient handling of highly connected data (fast traversals vs costly JOINs)", "Better SQL support", "Smaller storage"],
+      "answer": 1,
+      "explain": "Graph traversals follow direct relationship pointers, so relationship-heavy queries (friends-of-friends, recommendations) are far faster than rebuilding many relational JOINs.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-053",
+      "topic": "neo4j",
+      "q": "Neo4j's query language is:",
+      "options": ["SQL", "Cypher (with CREATE, MATCH, RETURN)", "MongoQL", "SPARQL only"],
+      "answer": 1,
+      "explain": "Cypher (CQL) is Neo4j's declarative pattern-matching language: CREATE for nodes/relationships, MATCH ... RETURN for queries; → shows relationship direction.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-054",
+      "topic": "neo4j",
+      "q": "A difference between Neo4j and the ER model is:",
+      "options": ["ER relationships are directed; Neo4j's are not", "In Neo4j relationships are directed and a node may have NO label; in ER every entity must have a type", "They are identical", "Neo4j is only a design tool"],
+      "answer": 1,
+      "explain": "Neo4j relationships are directed and a node may have zero labels; in ER, relationships are undirected and every entity belongs to an entity type. Neo4j is a real DBMS; ER is a design tool.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-055",
+      "topic": "vector-databases",
+      "q": "A vector database primarily retrieves data by:",
+      "options": ["Exact key match", "Similarity (semantic meaning) between high-dimensional vectors", "Foreign keys", "Sorting by timestamp"],
+      "answer": 1,
+      "explain": "Vector databases store high-dimensional embeddings and retrieve by similarity (semantic meaning), enabling semantic search, recommendations, and RAG — beyond exact matching.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-056",
+      "topic": "vector-databases",
+      "q": "An embedding is:",
+      "options": ["A foreign key", "A vector produced by a model that captures the semantic meaning of text/image/audio", "A SQL index", "A hash of a row"],
+      "answer": 1,
+      "explain": "An embedding is a numerical vector generated by an embedding model (e.g. OpenAI, Google) that captures semantic meaning, so similar objects map to nearby vectors.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-057",
+      "topic": "vector-databases",
+      "q": "Which metric measures similarity by the cosine of the angle between two vectors (1 = very similar, 0 = unrelated)?",
+      "options": ["Euclidean distance", "Cosine similarity", "Hamming distance", "TF-IDF"],
+      "answer": 1,
+      "explain": "Cosine similarity = cosine of the angle between vectors: 1 (same direction) = very similar, 0 (orthogonal) = unrelated, −1 = opposite. Euclidean distance is the other common metric.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-058",
+      "topic": "vector-databases",
+      "q": "HNSW is an example of a(n):",
+      "options": ["Relational join algorithm", "Approximate Nearest Neighbour (ANN) vector index using a hierarchical graph", "Lock mode", "Isolation level"],
+      "answer": 1,
+      "explain": "HNSW (Hierarchical Navigable Small World) builds a hierarchical graph for fast, memory-efficient approximate nearest-neighbour search. IVFPQ is another (inverted file + product quantization).",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u4-059",
+      "topic": "vector-databases",
+      "q": "How does vector (semantic) search differ from full-text search (FTS)?",
+      "options": ["FTS is semantic; vector is lexical", "FTS matches words via an inverted index; vector search matches meaning via embeddings and a vector index", "They are identical", "Vector search only works on numbers"],
+      "answer": 1,
+      "explain": "FTS matches tokens/stems using an inverted index and ranks by TF-IDF/BM25; vector search matches semantic meaning using embeddings and a vector index (HNSW/IVF), handling synonyms and context.",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

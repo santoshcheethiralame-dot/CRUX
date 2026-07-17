@@ -1,0 +1,517 @@
+{
+  "subject": "se",
+  "unit": 3,
+  "title": "Unit 3 — MCQ Quiz",
+  "items": [
+    {
+      "id": "se-u3-001",
+      "topic": "ai-ml-for-se",
+      "q": "Machine Learning is best defined as systems that:",
+      "options": ["Follow explicit hand-written rules for every case", "Learn automatically from data and improve with experience without explicit programming", "Only work on labeled data", "Replace the entire SDLC"],
+      "answer": 1,
+      "explain": "ML is a branch of AI where systems learn from data patterns instead of explicit instructions, improving with experience.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-002",
+      "topic": "ai-ml-for-se",
+      "q": "Using AI tools (like Copilot) to improve software-engineering tasks is called:",
+      "options": ["SE4AI", "AI4SE", "MLOps", "DevSecOps"],
+      "answer": 1,
+      "explain": "AI4SE = AI *for* Software Engineering (AI tools improving SE tasks). SE4AI = applying SE principles to build reliable AI systems.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-003",
+      "topic": "ai-ml-for-se",
+      "q": "A key contrast between ML and traditional SE is that ML output is:",
+      "options": ["Deterministic and predictable", "Probabilistic and data-driven", "Always correct", "Written by hand"],
+      "answer": 1,
+      "explain": "SE produces predictable, deterministic code; ML produces a probabilistic, data-driven model. ML is data-driven, SE is process-driven.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-004",
+      "topic": "ai-ml-for-se",
+      "q": "According to the key takeaways, when using AI in software engineering:",
+      "options": ["The SDLC becomes obsolete", "Human oversight is non-negotiable — every AI suggestion must be validated", "Developers no longer need engineering fundamentals", "AI fully replaces testing"],
+      "answer": 1,
+      "explain": "The SDLC still governs the process; AI accelerates subtasks but human oversight is non-negotiable — engineers must validate AI output. You need new skills, not new fundamentals.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-005",
+      "topic": "se4ai-mlops",
+      "q": "The difference between an ML model and an ML system is that the ML system:",
+      "options": ["Is just the trained weights", "Is the complete ecosystem (data, deployment, monitoring, scaling) around the model", "Cannot make predictions", "Is always smaller"],
+      "answer": 1,
+      "explain": "An ML model is a mathematical construct that predicts; an ML system is the whole ecosystem — data, deployment, monitoring, scaling (e.g. Apollo integrates many models).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-006",
+      "topic": "se4ai-mlops",
+      "q": "How does MLOps differ from DevOps?",
+      "options": ["They are identical", "MLOps also versions data and models and adds continuous training/retraining", "MLOps ignores deployment", "DevOps versions models, MLOps versions code"],
+      "answer": 1,
+      "explain": "DevOps versions code and focuses on software deployment; MLOps additionally versions data and models and adds continuous training, validation and retraining.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-007",
+      "topic": "se4ai-mlops",
+      "q": "In the smart-toaster example, the safest design for the 'max toasting time' guarantee is:",
+      "options": ["Trust the ML model alone", "Use a non-ML code check and a hardware thermal fuse outside the model", "Remove all sensors", "Increase model size"],
+      "answer": 1,
+      "explain": "ML models are unreliable, so safety comes from layers OUTSIDE the model: a simple non-ML code check plus a hardware thermal fuse — fault-tolerant design that assumes the model can be wrong.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-008",
+      "topic": "se4ai-mlops",
+      "q": "Guardrails in ML systems primarily protect against:",
+      "options": ["Slow training", "Prompt injection/jailbreaks, adversarial inputs, and PII exposure", "Large model size", "High accuracy"],
+      "answer": 1,
+      "explain": "Guardrails protect against threats like prompt injection/jailbreaks, adversarial inputs that manipulate behavior, and sensitive-information (PII) exposure.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-009",
+      "topic": "implementation-code-quality",
+      "q": "The input to the implementation phase is the ___, and its output is ___:",
+      "options": ["test report; bug list", "design document; executable software", "requirements; UML diagrams", "source code; design"],
+      "answer": 1,
+      "explain": "Implementation takes the design document as input and produces executable software (the input to the testing phase).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-010",
+      "topic": "implementation-code-quality",
+      "q": "By the slides' naming conventions, classes use ___ and methods use ___:",
+      "options": ["camelCase; PascalCase", "PascalCase; camelCase", "snake_case; PascalCase", "ALLCAPS; camelCase"],
+      "answer": 1,
+      "explain": "PascalCasing for classes, camelCasing for methods; identifiers should be 2–3 to 30 characters and avoid keyword-like names.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-011",
+      "topic": "implementation-code-quality",
+      "q": "A 'dangling else' is a problem because:",
+      "options": ["It runs too slowly", "An else could pair with more than one preceding if, causing wrong interpretation", "It uses too much memory", "It is a compiler error"],
+      "answer": 1,
+      "explain": "A dangling else is an ambiguity where the else could logically pair with more than one if; the compiler pairs it with the nearest if, which may not be intended. Use braces to disambiguate.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-012",
+      "topic": "coding-standards",
+      "q": "Defensive programming is guided by which principle?",
+      "options": ["Occam's Razor", "Murphy's Law — 'If anything can go wrong, it will'", "Moore's Law", "Conway's Law"],
+      "answer": 1,
+      "explain": "Defensive programming follows Murphy's Law: anticipate and handle potential errors, invalid inputs, and unexpected conditions, including redundant state checks.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-013",
+      "topic": "coding-standards",
+      "q": "The secure-programming principle that every process should run with the minimum rights needed is:",
+      "options": ["Default Deny", "Principle of Least Privilege", "Heed compiler warnings", "Validate input"],
+      "answer": 1,
+      "explain": "Least Privilege: every process executes with the minimum set of privileges necessary, for the shortest possible time. (Default Deny is about basing access on explicit permission.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-014",
+      "topic": "coding-standards",
+      "q": "A test stub is used in top-down testing to:",
+      "options": ["Drive the component from above", "Temporarily replace a called lower-level module, returning fixed values", "Compile the code", "Profile performance"],
+      "answer": 1,
+      "explain": "A stub temporarily replaces a called (lower-level) module, returning known fixed values to simulate components not yet integrated (top-down testing). A driver calls the component from above (bottom-up).",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-015",
+      "topic": "code-reviews-analysis",
+      "q": "According to the empirical data, design/code inspections detect roughly what fraction of defects vs unit testing (25%)?",
+      "options": ["5–10%", "55–60% (much higher than unit testing)", "Exactly the same as unit testing", "0%"],
+      "answer": 1,
+      "explain": "Inspections detect 55–60% of defects vs integration testing 45% and unit testing 25%. After AT&T introduced reviews: +14% productivity, −90% defects.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-016",
+      "topic": "code-reviews-analysis",
+      "q": "A characteristic of STATIC analysis (vs dynamic) is that it:",
+      "options": ["Requires executing the program", "Reasons about all possible paths without execution, but may report false positives", "Only finds real, witnessed problems", "Needs test inputs"],
+      "answer": 1,
+      "explain": "Static analysis examines source without execution, reasoning about all paths (may have false positives). Dynamic analysis executes the program — findings are real but limited to what test inputs exercise (false negatives).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-017",
+      "topic": "code-reviews-analysis",
+      "q": "NASA's Mars Climate Orbiter ($327M) was lost due to:",
+      "options": ["A cyber-attack", "An undetected unit mismatch — the kind of bug type/static checking catches", "A hardware failure", "A power outage"],
+      "answer": 1,
+      "explain": "The orbiter was lost to an undetected unit mismatch (pound-force vs newton) — exactly the class of defect that stronger typing and static analysis are designed to detect.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-018",
+      "topic": "cicd-pipelines",
+      "q": "Of the developer's post-coding tasks (build, test, deploy, monitor…), which should be manual?",
+      "options": ["All of them", "None — automate everything to prevent human error", "Only deployment", "Only testing"],
+      "answer": 1,
+      "explain": "None! Manual processes are error-prone, slow and inconsistent. Automation prevents human errors, ensures repeatability, and catches mistakes before production.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-019",
+      "topic": "cicd-pipelines",
+      "q": "Build systems determine task order using a:",
+      "options": ["Random shuffle", "Directed Acyclic Graph (DAG) of task dependencies", "Stack", "Hash table"],
+      "answer": 1,
+      "explain": "Build systems use a DAG so a task runs only after the tasks it depends on finish (e.g. deploy only after build and test), enabling correct, incremental builds.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-020",
+      "topic": "cicd-pipelines",
+      "q": "A stated disadvantage of continuous integration is that:",
+      "options": ["It never catches bugs", "For very large systems, building and testing on every commit can take a long time", "It prevents collaboration", "It requires no tools"],
+      "answer": 1,
+      "explain": "CI's con: large systems may take long to build and test on each merge, and if the dev platform differs from the target, system tests may not run in the developer's workspace.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-021",
+      "topic": "devops-devsecops",
+      "q": "The four pillars of DevOps are:",
+      "options": ["Plan, Build, Test, Release", "Collaboration, Affinity, Tools, Scaling", "People, Process, Product, Project", "Dev, Sec, Ops, QA"],
+      "answer": 1,
+      "explain": "The four pillars: Collaboration (the heart of DevOps), Affinity (relationships/trust between teams), Tools (automation enablers), and Scaling (org/infra/process/team).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-022",
+      "topic": "devops-devsecops",
+      "q": "The difference between Continuous Delivery and Continuous Deployment is:",
+      "options": ["They are identical", "Delivery keeps software always deployable and releases on demand; Deployment auto-ships every validated change to production with no manual approval", "Deployment never reaches production", "Delivery skips testing"],
+      "answer": 1,
+      "explain": "Continuous Delivery = always deployable, release on demand (human approves). Continuous Deployment = every validated build auto-deploys to production with no manual gate (needs mature monitoring/rollback).",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-023",
+      "topic": "devops-devsecops",
+      "q": "DevSecOps is best summarized by which principle?",
+      "options": ["Test everything at the end", "'Shift left' — integrate security early and continuously across the SDLC", "Security is a separate silo", "Deploy without testing"],
+      "answer": 1,
+      "explain": "DevSecOps 'shifts security left', integrating it at every SDLC phase as a shared responsibility — 'software, safer, sooner' — so weaknesses are found and fixed as code is written.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-024",
+      "topic": "testing-principles",
+      "q": "Dijkstra's famous statement about testing is that testing can show the:",
+      "options": ["Absence of bugs", "Presence of bugs, but never their absence", "Performance of code", "Cost of a project"],
+      "answer": 1,
+      "explain": "'Program testing can be used to show the presence of bugs, but never to show their absence!' — testing finds defects, it cannot prove correctness.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-025",
+      "topic": "testing-principles",
+      "q": "The 'Pesticide Paradox' principle of testing states that:",
+      "options": ["Tests should never change", "Repeating the same tests stops finding new bugs — vary the techniques", "Testing is always exhaustive", "Bugs cannot be fixed"],
+      "answer": 1,
+      "explain": "The pesticide paradox: the same tests run repeatedly lose effectiveness as bugs 'adapt'; you must vary/rotate techniques (e.g. add fuzzing, mutation) to find new defects.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-026",
+      "topic": "testing-principles",
+      "q": "Verification vs validation: 'Are we building the right product?' refers to:",
+      "options": ["Verification", "Validation", "Regression", "Integration"],
+      "answer": 1,
+      "explain": "Validation = 'building the right product?' (meets user needs). Verification = 'building the product right?' (meets specifications). Mnemonic: V&V = 'Very Very Important'.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-027",
+      "topic": "test-design-techniques",
+      "q": "Boundary Value Analysis focuses test cases on:",
+      "options": ["The center of the input range", "The boundaries (edges) of input domains, where errors cluster", "Random inputs only", "The source code paths"],
+      "answer": 1,
+      "explain": "BVA tests the edges (min, max, just-outside) because errors occur more often at boundaries than in the middle. For [1,100]: test 0, 1, 100, 101.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-028",
+      "topic": "test-design-techniques",
+      "q": "For a password length valid between 8 and 15, BVA test values would be:",
+      "options": ["1, 5, 10, 20", "7, 8, 15, 16", "0, 100", "8 only"],
+      "answer": 1,
+      "explain": "BVA tests min−1, min, max, max+1 → 7 (invalid), 8 (valid min), 15 (valid max), 16 (invalid).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-029",
+      "topic": "test-design-techniques",
+      "q": "Equivalence Partitioning works on the principle that:",
+      "options": ["Every input must be tested", "If one input in a class works, all should work; if one fails, all fail — so test one per class", "Only boundaries matter", "Code paths define classes"],
+      "answer": 1,
+      "explain": "EP divides the input domain into classes the system treats the same; you test one representative per class. e.g. Age 18–65 → classes <18, 18–65, >65.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-030",
+      "topic": "test-design-techniques",
+      "q": "Pairwise (combinatorial) testing reduces test count by ensuring:",
+      "options": ["Every possible combination is tested", "Every pair of parameter values is covered by at least one test (finds 50–90% of defects)", "Only one parameter is tested", "No interactions are tested"],
+      "answer": 1,
+      "explain": "Pairwise testing covers all pairs of parameter values with a minimal test set, catching 50–90% of defects, since most bugs come from one- or two-factor interactions.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-031",
+      "topic": "test-cases-reliability",
+      "q": "Which test-case type verifies the software does NOT do what it shouldn't (e.g. invalid email → error)?",
+      "options": ["Positive", "Negative", "Destructive", "Smoke"],
+      "answer": 1,
+      "explain": "Negative test cases verify the software rejects invalid input/behaviour. Positive verifies correct behaviour; destructive pushes until it breaks (e.g. 1000 logins/sec).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-032",
+      "topic": "test-cases-reliability",
+      "q": "Cyclomatic complexity V(G) is computed as:",
+      "options": ["E + N + P", "E − N + 2P (= number of decisions + 1)", "N − E", "E × N"],
+      "answer": 1,
+      "explain": "V(G) = E − N + 2P (edges − nodes + 2×connected components), equivalently decisions + 1. It equals the number of independent paths / minimum test cases for path coverage.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-033",
+      "topic": "test-cases-reliability",
+      "q": "A control flow graph with E=8 edges, N=7 nodes, P=1 has cyclomatic complexity:",
+      "options": ["1", "3", "8", "15"],
+      "answer": 1,
+      "explain": "V(G) = 8 − 7 + 2(1) = 3 → three linearly independent paths to test.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-034",
+      "topic": "test-cases-reliability",
+      "q": "Software reliability is defined as the probability of:",
+      "options": ["Zero lines of code", "Failure-free operation for a specified time in a specified environment", "100% test coverage", "Passing all reviews"],
+      "answer": 1,
+      "explain": "Software reliability = probability of failure-free operation over a specified time in a specified environment. Predictive models estimate MTTF; assessment models measure MTBF/failure rate.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-035",
+      "topic": "testing-levels",
+      "q": "A key advantage of inspections over testing is that:",
+      "options": ["They require running the system", "Errors don't mask each other (static), and incomplete systems can be inspected", "They are always automated", "They find only performance bugs"],
+      "answer": 1,
+      "explain": "Inspections are static, so errors don't mask one another and incomplete code can be inspected without a test harness; they also check standards/portability. Reviews detect 60–90% of defects.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-036",
+      "topic": "testing-levels",
+      "q": "Alpha vs beta testing differ in that alpha testing is:",
+      "options": ["Done by external users at their own site", "Done by internal/friendly users WITH the dev team at the developer's site", "Automated regression", "The final customer sign-off"],
+      "answer": 1,
+      "explain": "Alpha = internal/friendly testers with the dev team at the developer's site (before beta). Beta = external volunteer users in the real environment. Acceptance = customer's go/no-go.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-037",
+      "topic": "testing-levels",
+      "q": "The main difference between release testing and system testing is that release testing:",
+      "options": ["Is done by the development team to find bugs", "Is done by a separate team to validate readiness for external use (a Go/No-Go decision)", "Never uses the specification", "Only tests one unit"],
+      "answer": 1,
+      "explain": "System testing (dev team) aims to find defects; release testing (separate team) validates the release is good enough for external use, yielding a Go/No-Go decision. Release testing is black-box.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-038",
+      "topic": "testing-levels",
+      "q": "The golden rule of regression testing is:",
+      "options": ["Only test changed code", "Re-run all tests on every change; they must pass before committing", "Test manually for speed", "Skip tests for small changes"],
+      "answer": 1,
+      "explain": "Regression testing re-runs ALL tests after any change; tests must pass before the change is committed. It's expensive but essential, so it must be automated.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-039",
+      "topic": "performance-chaos-testing",
+      "q": "Soak (endurance) testing is designed to find:",
+      "options": ["Functional bugs in one run", "Memory leaks, connection leaks, and resource exhaustion over extended runs (8–72h at 70–80% load)", "Compiler errors", "UI color issues"],
+      "answer": 1,
+      "explain": "Soak testing runs under significant load for an extended period (8–72 hours at 70–80% load) to expose slow-building problems like memory leaks that short tests miss.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-040",
+      "topic": "performance-chaos-testing",
+      "q": "Netflix's Chaos Monkey improves resilience by:",
+      "options": ["Disabling all monitoring", "Randomly killing production instances (during business hours) to force fault-tolerant design", "Slowing down releases", "Removing tests"],
+      "answer": 1,
+      "explain": "Chaos Monkey randomly terminates AWS instances in production during business hours, forcing resilience by design; the key metric (Stream Starts per Second) stays flat — 99.99% availability by surviving daily chaos.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-041",
+      "topic": "performance-chaos-testing",
+      "q": "Profiling differs from tracing in that profiling:",
+      "options": ["Tracks the call sequence over time", "Measures performance to find CPU/memory bottlenecks", "Only works on production", "Injects faults"],
+      "answer": 1,
+      "explain": "Profiling analyzes/measures code performance to find CPU/memory bottlenecks; tracing tracks the execution flow and call sequence (useful for deadlocks).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-042",
+      "topic": "performance-chaos-testing",
+      "q": "Mutation testing evaluates the quality of:",
+      "options": ["The production code's performance", "The test suite — mutants (changed code) should all fail the tests", "The hardware", "The documentation"],
+      "answer": 1,
+      "explain": "Mutation testing changes (mutates) source statements; a good test suite should 'kill' all mutants (they should fail), proving the tests are robust enough to catch real faults.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-043",
+      "topic": "scm-fundamentals",
+      "q": "Software Configuration Management primarily provides:",
+      "options": ["Faster CPUs", "Controlled change, traceability, reproducible builds, and concurrent work", "Automatic bug fixing", "Free hosting"],
+      "answer": 1,
+      "explain": "SCM systematically controls/tracks changes to artifacts (CIs), giving reproducible builds, audit trails/traceability, concurrent work, and controlled change.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-044",
+      "topic": "scm-fundamentals",
+      "q": "In SCM, which body reviews and approves high-risk changes?",
+      "options": ["The Configuration Manager alone", "The Change Control Board (CCB)", "The compiler", "The end users"],
+      "answer": 1,
+      "explain": "The Change Control Board (CCB) reviews high-risk changes and approves/rejects promotions. Other roles: Configuration Manager, Developer, Build/Release Engineer, QA, Auditor.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-045",
+      "topic": "scm-activities",
+      "q": "A baseline in SCM is:",
+      "options": ["The newest uncommitted code", "An agreed, frozen snapshot of configuration items", "A list of bugs", "A developer's local copy"],
+      "answer": 1,
+      "explain": "A baseline is an agreed, frozen snapshot (functional, development, or release baseline). Changing it requires formal change control. It's the known-good point you can roll back to.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-046",
+      "topic": "scm-activities",
+      "q": "Semantic versioning uses the format:",
+      "options": ["YEAR.MONTH.DAY", "MAJOR.MINOR.PATCH", "BUILD.HASH", "X.Y only"],
+      "answer": 1,
+      "explain": "Semantic versioning = MAJOR.MINOR.PATCH: bump MAJOR for breaking changes, MINOR for backward-compatible features, PATCH for backward-compatible bug fixes.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-047",
+      "topic": "scm-activities",
+      "q": "Which branching model uses a single main branch with short-lived feature branches to promote CI?",
+      "options": ["Release-per-customer", "Trunk-based", "Gitflow", "No branching"],
+      "answer": 1,
+      "explain": "Trunk-based development keeps one main branch + short-lived feature branches, minimizing merge pain and promoting frequent integration. Gitflow uses feature/release/hotfix branches.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-048",
+      "topic": "change-release-defect-mgmt",
+      "q": "Before approving a change, the CCB weighs all of these EXCEPT:",
+      "options": ["Consequences of not making the change", "The developer's favorite programming language", "Number of users affected and the cost", "Fit with the release cycle"],
+      "answer": 1,
+      "explain": "The five factors: consequences of not changing, benefits, number of users affected, cost (dev/test/docs/training), and fit with the release cycle. The developer's language preference is irrelevant.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-049",
+      "topic": "change-release-defect-mgmt",
+      "q": "In the defect lifecycle, a logged bug that is valid but low-priority is marked:",
+      "options": ["Closed", "Deferred", "Reopened", "Fixed"],
+      "answer": 1,
+      "explain": "During triage a bug can be Rejected (invalid), Duplicate, or Deferred (valid but low priority). Valid bugs go Assigned → In Progress → Fixed → Closed (or Reopened if the fix fails).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-050",
+      "topic": "scm-tools-sbom",
+      "q": "A Software Bill of Materials (SBOM) is most valuable for:",
+      "options": ["Speeding up compilation", "Instantly revealing whether a vulnerable component (e.g. Log4Shell's log4j) is present", "Replacing version control", "Writing documentation"],
+      "answer": 1,
+      "explain": "An SBOM is a machine-readable inventory of all components/versions/licenses. When a CVE like Log4Shell drops, it instantly reveals whether the vulnerable log4j version is present — supply-chain transparency. Standards: SPDX, CycloneDX, SWID.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u3-051",
+      "topic": "scm-tools-sbom",
+      "q": "Maven differs from Make in that Maven:",
+      "options": ["Only works for C/C++", "Uses convention-over-configuration via pom.xml and a standard directory layout (Java)", "Has no dependency management", "Cannot run tests"],
+      "answer": 1,
+      "explain": "Maven (Java) uses convention-over-configuration with a single pom.xml and standard layout (src/main/java, target/). Make is a general dependency-driven tool using explicit Makefile rules (targets/dependencies/commands).",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

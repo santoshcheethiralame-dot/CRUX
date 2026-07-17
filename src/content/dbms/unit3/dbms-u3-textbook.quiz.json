@@ -1,0 +1,267 @@
+{
+  "subject": "dbms",
+  "unit": 3,
+  "title": "Unit 3 — Textbook Exercises (Elmasri/Navathe Ch14–15, Silberschatz Ch7)",
+  "items": [
+    {
+      "id": "dbms-u3-tb-01",
+      "topic": "functional-dependencies",
+      "q": "**(Elmasri & Navathe, Review 14.6)** Why can we NOT infer a functional dependency automatically from a particular relation state?",
+      "options": ["Because relation states have no data", "Because a state satisfying X→Y doesn't guarantee it holds in all legal states — a state can only rule an FD OUT, not prove it", "Because FDs require NULLs", "Because only keys have FDs"],
+      "answer": 1,
+      "explain": "An FD is a semantic constraint on every legal state. One state happening to satisfy X→Y is not proof; but a counterexample (equal X, differing Y) disproves it.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-02",
+      "topic": "design-guidelines",
+      "q": "**(Elmasri & Navathe, Review 14.2)** The three update anomalies that motivate normalization are:",
+      "options": ["Read, write, execute", "Insertion, deletion, and modification anomalies", "Lossy, lossless, partial", "Scan, sort, hash"],
+      "answer": 1,
+      "explain": "Redundant storage causes insertion (can't add without unrelated data), deletion (lose data when removing a row), and modification (must update many copies) anomalies.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-03",
+      "topic": "bcnf",
+      "q": "**(Elmasri & Navathe, Ex. 14.22 / Silberschatz, Ex. 7.36)** Prove or state: any relation schema with exactly two attributes is:",
+      "options": ["Never in BCNF", "Always in BCNF, regardless of its functional dependencies", "Only in 1NF", "Always in 4NF but not BCNF"],
+      "answer": 1,
+      "explain": "With two attributes, any nontrivial FD must have a determinant that is a superkey (it determines the only other attribute), so a 2-attribute relation is always in BCNF.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-04",
+      "topic": "candidate-keys",
+      "q": "**(Elmasri & Navathe, Ex. 14.24)** For R={A,...,J} with F={AB→C, A→DE, B→F, F→GH, D→IJ}, what is the key of R?",
+      "options": ["A", "AB", "ABF", "ABDF"],
+      "answer": 1,
+      "explain": "A and B are essential (never on a RHS). AB⁺ = {A,B,C,D,E,F,G,H,I,J} = R via AB→C, A→DE, B→F, F→GH, D→IJ. So AB is the candidate key.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-05",
+      "topic": "candidate-keys",
+      "q": "**(Elmasri & Navathe, Ex. 14.27)** For R(A,B,C,D,E) with AB→C, CD→E, DE→B, is AB a candidate key? Is ABD?",
+      "options": ["AB is a key", "AB is not a key (AB⁺={A,B,C}); ABD is a key (ABD⁺=R, and minimal)", "Neither is a key", "Both are keys"],
+      "answer": 1,
+      "explain": "AB⁺={A,B,C}≠R, so AB is not a key. ABD⁺={A,B,D,C,E}=R; removing any of A,B,D fails, so ABD is a (minimal) candidate key.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-06",
+      "topic": "first-second-normal-form",
+      "q": "**(Elmasri & Navathe, Ex. 14.30)** CAR_SALE(Car#, Date_sold, Salesperson#, Commission%, Discount_amt) with PK {Car#, Salesperson#}, Date_sold→Discount_amt, Salesperson#→Commission%. Its highest normal form is:",
+      "options": ["3NF", "Only 1NF — Salesperson#→Commission% is a partial dependency violating 2NF", "BCNF", "2NF"],
+      "answer": 1,
+      "explain": "Salesperson# is part of the key and determines the non-prime Commission% — a partial dependency, so the relation violates 2NF and is only in 1NF.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-07",
+      "topic": "higher-normal-forms",
+      "q": "**(Elmasri & Navathe, Review 14.18)** Why do practical database designs typically aim for BCNF and not higher normal forms?",
+      "options": ["Higher forms cause data loss", "4NF/5NF dependencies (MVDs, JDs) are hard to detect, and BCNF already removes FD-based redundancy", "Higher forms are illegal", "BCNF is the weakest form"],
+      "answer": 1,
+      "explain": "BCNF eliminates all FD-based redundancy; MVDs and especially join dependencies are difficult to detect in practice, so 4NF is rare and 5NF mostly theoretical.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-08",
+      "topic": "higher-normal-forms",
+      "q": "**(Elmasri & Navathe, Ex. 14.35)** BOOK(Book, Author, Edition, Year) with the MVD {Book} ↠ {Author} | {Edition, Year} should be decomposed (for 4NF) into:",
+      "options": ["A single relation", "Two relations: (Book, Author) and (Book, Edition, Year)", "(Author, Edition) and (Year)", "It cannot be decomposed"],
+      "answer": 1,
+      "explain": "The MVD says authors are independent of editions/years for a book. 4NF decomposition splits on the MVD into (Book, Author) and (Book, Edition, Year).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-09",
+      "topic": "inference-rules",
+      "q": "**(Elmasri & Navathe, Review 15.1–15.2)** What does it mean that Armstrong's inference rules are sound and complete?",
+      "options": ["They are fast", "Sound = they infer only FDs that truly hold; complete = they can infer every FD that holds", "Sound = complete", "They only work on candidate keys"],
+      "answer": 1,
+      "explain": "Soundness guarantees correctness (no false FDs); completeness guarantees they generate all of F⁺. Together they make IR1–IR3 a complete proof system for FDs.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-10",
+      "topic": "minimal-cover",
+      "q": "**(Elmasri & Navathe, Review 15.5)** Does every set of dependencies have a minimal equivalent set, and is it unique?",
+      "options": ["Yes and it is unique", "Yes a minimal set exists, but it is NOT necessarily unique", "No minimal set exists", "Only keys have minimal sets"],
+      "answer": 1,
+      "explain": "Every FD set has at least one minimal (canonical) cover, but different reduction orders can yield different equivalent minimal covers — so it is not unique.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-11",
+      "topic": "decomposition-lossless-join",
+      "q": "**(Elmasri & Navathe, Ex. 15.9 & Review 15.11)** A dependency-preserving decomposition of a non-BCNF relation:",
+      "options": ["Always yields BCNF relations", "Cannot be guaranteed to yield BCNF — sometimes BCNF and dependency preservation are incompatible", "Is always lossy", "Is impossible"],
+      "answer": 1,
+      "explain": "Some relations (e.g. with X→A where A is prime) cannot be decomposed into BCNF while preserving all dependencies — a known limitation; losslessness, not dependency preservation, is the must-have.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-12",
+      "topic": "decomposition-lossless-join",
+      "q": "**(Elmasri & Navathe, Review 15.11)** Between the dependency-preservation and lossless-join properties, which must DEFINITELY be satisfied?",
+      "options": ["Dependency preservation", "The lossless (non-additive) join property", "Both must always hold", "Neither is required"],
+      "answer": 1,
+      "explain": "Losslessness is non-negotiable — a lossy decomposition cannot reconstruct the original data. Dependency preservation is desirable but may be sacrificed (e.g. for BCNF).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-13",
+      "topic": "bcnf",
+      "q": "**(Elmasri & Navathe, Ex. 15.21)** REFRIG(M,Y,P,MP,C) with F={M→MP, MY→P, MP→C}. Candidate key = MY. Is REFRIG in 3NF/BCNF?",
+      "options": ["In BCNF", "Not in 3NF or BCNF — MP→C has a non-superkey determinant and C is non-prime (transitive)", "In 3NF but not BCNF", "In 2NF only because of MY→P"],
+      "answer": 1,
+      "explain": "CK is MY. M→MP (M not a superkey) and MP→C (MP not a superkey, C non-prime — transitive). The MP→C transitive dependency violates 3NF (and BCNF).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-14",
+      "topic": "decomposition-lossless-join",
+      "q": "**(Silberschatz, Practice Ex. 7.1)** Decomposing R(A,B,C,D,E) into (A,B,C) and (A,D,E) with F={A→BC, CD→E, B→D, E→A} is lossless because the shared attribute A satisfies:",
+      "options": ["Nothing — it is lossy", "A⁺ = R, so A is a key determining (A,D,E) (and (A,B,C)) — the NJB test passes", "A is non-prime", "A appears in both relations only by accident"],
+      "answer": 1,
+      "explain": "Shared = A. A⁺ = {A,B,C,D,E} = R (A→BC, B→D, CD→E), so A is a key; (R1∩R2)=A determines all of R2, satisfying the NJB lossless test.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-15",
+      "topic": "candidate-keys",
+      "q": "**(Silberschatz, Practice Ex. 7.6)** For R(A,B,C,D,E) with F={A→BC, CD→E, B→D, E→A}, the candidate keys include:",
+      "options": ["Only A", "A, E, BC, and CD (each closure = R)", "Only AB", "There are no candidate keys"],
+      "answer": 1,
+      "explain": "A⁺=R (A→BC→D→E). E→A so E⁺=R. BC⁺: B→D, CD→E, E→A → R. CD⁺: CD→E→A→BC → R. So A, E, BC, CD are all candidate keys.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-16",
+      "topic": "fd-types",
+      "q": "**(Silberschatz, Ex. 7.24)** Why are certain functional dependencies called 'trivial'?",
+      "options": ["They involve keys", "Because they hold in every relation — the RHS is a subset of the LHS (Y ⊆ X)", "They are always false", "They have a composite LHS"],
+      "answer": 1,
+      "explain": "A trivial FD X→Y has Y ⊆ X; it is satisfied by every possible relation (follows from the reflexive axiom) and conveys no real constraint.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-17",
+      "topic": "candidate-keys",
+      "q": "**(Silberschatz, Ex. 7.30)** For R(A,B,C,D,E,G) with F={A→BCD, BC→DE, B→D, D→A}, prove AG is a superkey by closure:",
+      "options": ["AG⁺ = {A,G} (not a superkey)", "AG⁺ = {A,B,C,D,E,G} = R, so AG is a superkey", "AG⁺ = {A,B,C}", "AG is a candidate key but not a superkey"],
+      "answer": 1,
+      "explain": "AG⁺: A→BCD gives {A,B,C,D,G}; BC→DE adds E → {A,B,C,D,E,G} = R. Since AG determines all attributes, AG is a superkey.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-18",
+      "topic": "third-normal-form",
+      "q": "**(Silberschatz, Ex. 7.19)** To show every 3NF schema is also in 2NF, the key observation is:",
+      "options": ["3NF has no keys", "Every partial dependency is a kind of transitive dependency, which 3NF already forbids", "2NF is stronger than 3NF", "They are unrelated"],
+      "answer": 1,
+      "explain": "A partial dependency (non-prime on part of a key) is a special transitive dependency; since 3NF forbids transitive dependencies on the key, any 3NF relation has no partial dependencies, hence is in 2NF.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-19",
+      "topic": "higher-normal-forms",
+      "q": "**(Silberschatz, Ex. 7.40)** Given r(A,B,C,D), does the MVD A ↠ BC logically imply A ↠ B and A ↠ C?",
+      "options": ["Yes, always (like the FD decomposition rule)", "No — the FD decomposition rule does not carry over to MVDs in general", "Only if A is a key", "Only for two attributes"],
+      "answer": 1,
+      "explain": "Unlike FDs, an MVD A↠BC does NOT decompose into A↠B and A↠C in general. MVD inference has its own rules; a counterexample relation shows the implication fails.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-20",
+      "topic": "higher-normal-forms",
+      "q": "**(Silberschatz, Ex. 7.41)** Why is 4NF considered more desirable than BCNF?",
+      "options": ["4NF is weaker", "4NF additionally eliminates redundancy caused by multivalued dependencies, which BCNF (an FD-only condition) ignores", "4NF removes all keys", "There is no difference"],
+      "answer": 1,
+      "explain": "BCNF only addresses FD-based redundancy. 4NF further removes the redundancy from nontrivial multivalued dependencies, so it yields a cleaner schema when MVDs are present.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-21",
+      "topic": "decomposition-lossless-join",
+      "q": "**(Silberschatz, Ex. 7.37)** The three design goals for a relational schema are:",
+      "options": ["Speed, size, simplicity", "BCNF (no redundancy/anomalies), lossless join, and dependency preservation", "1NF, 2NF, 3NF", "Indexes, views, triggers"],
+      "answer": 1,
+      "explain": "The three goals: a normal form like BCNF (eliminate redundancy/anomalies), the lossless-join property (no spurious tuples), and dependency preservation (constraints enforceable per relation).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-22",
+      "topic": "minimal-cover",
+      "q": "**(Silberschatz, Ex. 7.14)** Using F = {X→YZ, Y→XZ, Z→XY}, what does this set demonstrate about canonical covers?",
+      "options": ["A canonical cover is always unique", "There can be MORE THAN ONE canonical cover for a given set of dependencies", "Canonical covers do not exist", "It has no canonical cover"],
+      "answer": 1,
+      "explain": "This symmetric set yields several distinct canonical covers depending on which extraneous attributes are removed first — proving the canonical cover is not unique.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-23",
+      "topic": "first-second-normal-form",
+      "q": "**(Elmasri & Navathe, Ex. 14.29)** Joining ORDER(O#, Odate, Cust#, Total_amount) and ORDER_ITEM(O#, I#, ...) gives RES with key {O#, I#}. Since Odate, Cust#, Total_amount depend only on O#, RES is:",
+      "options": ["In 3NF", "Not in 2NF — those attributes are partially dependent on the key {O#, I#} (only on O#)", "In BCNF", "Not even in 1NF"],
+      "answer": 1,
+      "explain": "In the joined relation the key is {O#, I#}, but Odate/Cust#/Total_amount depend on O# alone — a partial dependency, so RES violates 2NF (motivating why the natural join was a bad design).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-24",
+      "topic": "inference-rules",
+      "q": "**(Silberschatz, Ex. 7.4)** Using Armstrong's axioms, the union rule (X→Y and X→Z ⟹ X→YZ) is proven by:",
+      "options": ["It cannot be proven", "Augment X→Y by X to get X→XY, augment X→Z by Y to get XY→YZ, then transitivity ⟹ X→YZ", "Reflexivity alone", "It is itself an axiom"],
+      "answer": 1,
+      "explain": "Soundness of union: X→XY (augment X→Y by X), XY→YZ (augment X→Z by Y), then X→XY→YZ by transitivity gives X→YZ — derived purely from IR1–IR3.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-25",
+      "topic": "equivalence",
+      "q": "**(Elmasri & Navathe, Review 15.4)** Two sets of functional dependencies are equivalent when:",
+      "options": ["They have identical FDs", "Each set covers the other (E covers F and F covers E), i.e. E⁺ = F⁺", "They have the same size", "One is a minimal cover of the other"],
+      "answer": 1,
+      "explain": "Equivalence is mutual cover: every FD of E is inferable from F and vice versa, so their closures are equal. Determined by computing closures both ways.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u3-tb-26",
+      "topic": "bcnf",
+      "q": "**(Silberschatz, Ex. 7.31)** In R(A,B,C,D,E,G) the dependency AB→CD shows R is not in BCNF when:",
+      "options": ["AB is a superkey", "AB is NOT a superkey of R (yet it determines CD), so the BCNF decomposition algorithm is applied starting from AB→CD", "CD is prime", "R has only two attributes"],
+      "answer": 1,
+      "explain": "If AB→CD holds but AB is not a superkey, BCNF is violated. The BCNF algorithm decomposes R using this FD into (A,B,C,D) and (A,B,...rest), repeating until all pieces are BCNF.",
+      "difficulty": "hard",
+      "source": "textbook"
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "subject": "se",
+  "unit": 4,
+  "title": "Unit 4 — MCQ Quiz",
+  "items": [
+    {
+      "id": "se-u4-001",
+      "topic": "quality-metrics-iso9126",
+      "q": "The Ariane 5 disaster (1996) is cited as a quality lesson because:",
+      "options": ["It was a hardware short-circuit", "A 64-bit float to 16-bit integer overflow crashed both primary and backup (identical software fails the same way)", "The rocket ran out of fuel", "It was a cyber-attack"],
+      "answer": 1,
+      "explain": "Reused Ariane-4 inertial software hit a 64→16-bit overflow on Ariane 5's higher velocity — in the backup AND then the primary. Redundant identical software fails identically: software is a single point of failure.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-002",
+      "topic": "quality-metrics-iso9126",
+      "q": "Which is NOT one of the six ISO 9126 quality characteristics?",
+      "options": ["Functionality", "Reliability", "Profitability", "Portability"],
+      "answer": 2,
+      "explain": "ISO 9126's six are Functionality, Reliability, Usability, Efficiency, Maintainability, Portability. Profitability is not one of them.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-003",
+      "topic": "quality-metrics-iso9126",
+      "q": "The IEEE 1061 definition says a software quality metric outputs:",
+      "options": ["A pass/fail flag", "A single numerical value interpreted as the degree to which the software possesses a quality attribute", "A bug report", "A UML diagram"],
+      "answer": 1,
+      "explain": "IEEE 1061: a quality metric is a function whose inputs are software data and whose output is a single numerical value interpreted as the degree to which the software possesses a given quality attribute.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-004",
+      "topic": "code-metrics-function-points",
+      "q": "Function Points measure software size based on:",
+      "options": ["Lines of code", "The functional view — inputs, outputs, queries and files delivered to the user (language-independent)", "Number of developers", "Compilation time"],
+      "answer": 1,
+      "explain": "Function points count EI/EO/EQ/ILF/EIF adjusted for complexity, measuring functionality delivered to the end user — language-independent, unlike LOC.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-005",
+      "topic": "code-metrics-function-points",
+      "q": "In function point analysis, 'ILF' stands for:",
+      "options": ["Internal Logical Files (e.g. database tables)", "Interface Logic Functions", "Inline Library Files", "Integration Load Factor"],
+      "answer": 0,
+      "explain": "The five FP components: External Inputs (EI), External Outputs (EO), External Inquiries (EQ), Internal Logical Files (ILF, e.g. DB tables), External Interface Files (EIF, shared data sources).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-006",
+      "topic": "code-metrics-function-points",
+      "q": "Failure Rate, in the product-related test measures, is defined as:",
+      "options": ["The same as fault density", "The inverse of MTBF (Mean Time Between Failures)", "Defects per KLOC", "The number of tests run"],
+      "answer": 1,
+      "explain": "Failure Rate = 1/MTBF. MTBF is a statistical measure of the probability of failure; its inverse is the failure rate.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-007",
+      "topic": "metrics-pitfalls-goodhart",
+      "q": "Goodhart's Law states that:",
+      "options": ["More tests always mean fewer bugs", "When a measure becomes a target, it ceases to be a good measure", "Coverage equals quality", "Averages are always reliable"],
+      "answer": 1,
+      "explain": "Goodhart's Law: 'When a measure becomes a target, it ceases to be a good measure' — people optimize the number, often by gaming it (e.g. Wells Fargo's 3.5M fake accounts).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-008",
+      "topic": "metrics-pitfalls-goodhart",
+      "q": "The 'Coverage Paradox' warns that:",
+      "options": ["Coverage causes bugs", "Coverage–effectiveness correlation is weak once test-suite size is controlled — diverse tests catch bugs, coverage is a side effect", "100% coverage is always achievable", "Coverage tools are inaccurate"],
+      "answer": 1,
+      "explain": "Studies found only low-to-moderate coverage–effectiveness correlation after controlling for suite size. It's diverse test cases (not the coverage %) that catch bugs; coverage is a side effect, not the cause.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-009",
+      "topic": "metrics-pitfalls-goodhart",
+      "q": "An API with a 500ms average response time can still be problematic because:",
+      "options": ["Averages are always wrong", "The average can hide a long tail (e.g. 1% of requests at 30s) — use percentiles (p50/p95/p99)", "500ms is too fast", "Averages need no context"],
+      "answer": 1,
+      "explain": "Averages hide tail latency — 95% at 200ms but 1% at 30s still averages ~500ms. Always report percentiles, not just the mean.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-010",
+      "topic": "open-source-ecosystem",
+      "q": "Open-Source Software is characterized by:",
+      "options": ["No source code, only a binary", "Source-code availability plus the right to modify and (often) redistribute derivatives", "An EULA prohibiting inspection", "Being always free of cost only"],
+      "answer": 1,
+      "explain": "OSS = source availability + right to modify/create derivatives + (often) redistribute them. Proprietary software is a 'black box' (binary only, EULA may prohibit reverse-engineering).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-011",
+      "topic": "open-source-ecosystem",
+      "q": "Stallman's four software freedoms describe 'free as in':",
+      "options": ["Free as in beer (no cost)", "Free as in speech (liberties: run, study, redistribute, modify)", "Free as in time", "Free as in trial"],
+      "answer": 1,
+      "explain": "'Free as in speech, not as in beer' — the four freedoms (0: run, 1: study/change, 2: redistribute, 3: distribute modifications) are about liberties, not price.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-012",
+      "topic": "open-source-ecosystem",
+      "q": "In the 'Cathedral and the Bazaar', the Bazaar model refers to:",
+      "options": ["Centralized development by a core group, released when complete", "Open, organic development with wide participation (e.g. Linux)", "Proprietary software", "A type of license"],
+      "answer": 1,
+      "explain": "Cathedral = centrally developed by a core group (GNU Emacs, GCC); Bazaar = developed openly/organically with wide participation (Linux). 'The Bazaar won.'",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-013",
+      "topic": "software-licenses",
+      "q": "Which license is copyleft, requiring derivative works to use the same license?",
+      "options": ["MIT", "Apache", "GPL", "BSD"],
+      "answer": 2,
+      "explain": "The GPL is copyleft: modifications must be relicensed under the GPL and source made available ('viral'). MIT, Apache and BSD are permissive.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-014",
+      "topic": "software-licenses",
+      "q": "The LGPL differs from the GPL in that it:",
+      "options": ["Is fully proprietary", "Allows proprietary code to depend on (dynamically link) the library without becoming GPL", "Forbids all linking", "Is for media files"],
+      "answer": 1,
+      "explain": "The LGPL (for libraries) does not treat dynamic binding as a derivative work, so proprietary code may depend on unmodified LGPL libraries — unlike the fully viral GPL.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-015",
+      "topic": "software-licenses",
+      "q": "Copyright vs Intellectual Property/Patents: copyright covers ___ while patents cover ___:",
+      "options": ["ideas; expressions", "the particular expression of a work (and is automatic); ideas for solving a problem (and must be applied for)", "hardware; software", "nothing; everything"],
+      "answer": 1,
+      "explain": "Copyright covers expressions (source code, books) and is automatic; patents/IP cover ideas for solving problems, must be applied for, and have expiry dates.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-016",
+      "topic": "software-patents",
+      "q": "To be patentable, an invention must be:",
+      "options": ["Cheap, fast, small", "New, useful, and non-obvious", "Open-source", "Written in C"],
+      "answer": 1,
+      "explain": "A patent requires the invention be New, Useful, and Non-obvious, with technical details disclosed publicly. It lasts 20 years.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-017",
+      "topic": "software-patents",
+      "q": "A patent grants the holder the right to:",
+      "options": ["Make and sell the invention themselves", "Exclude others from making, using, or selling the invention for the term", "Avoid all lawsuits", "Copyright the source code"],
+      "answer": 1,
+      "explain": "A patent does NOT grant the right to make/use/sell; it grants the right to EXCLUDE others for the patent term (20 years) — enabling lawsuits, licensing, royalties.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-018",
+      "topic": "software-patents",
+      "q": "A 'patent troll' (Non-Practicing Entity) is an organization that:",
+      "options": ["Builds and sells great products", "Acquires vague patents and sues others rather than making products", "Writes open-source software", "Reviews patents for free"],
+      "answer": 1,
+      "explain": "Patent trolls (NPEs) don't build products; they hold vague patents and sue. Because US parties pay their own legal fees, it's often cheaper to settle than fight — a tax on innovation.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-019",
+      "topic": "levels-of-testing",
+      "q": "The four levels of testing, from smallest to largest scope, are:",
+      "options": ["System, Unit, Integration, Acceptance", "Unit, Integration, System, Acceptance", "Acceptance, System, Integration, Unit", "Integration, Unit, System, Acceptance"],
+      "answer": 1,
+      "explain": "Unit (individual unit) → Integration (interfaces between components) → System (whole system) → Acceptance (does it meet user needs?).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-020",
+      "topic": "levels-of-testing",
+      "q": "In top-down integration, you need ___ to stand in for lower-level components not yet built:",
+      "options": ["drivers", "stubs", "compilers", "linters"],
+      "answer": 1,
+      "explain": "Top-down integration starts at the UI and works inward, needing stubs for lower levels. Bottom-up starts at data/logic layers and needs drivers to call them.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-021",
+      "topic": "levels-of-testing",
+      "q": "The 'sandwich' integration approach:",
+      "options": ["Combines everything at once (big-bang)", "Connects top-level UI with crucial bottom components and adds middle layers incrementally (common, agile)", "Tests only the UI", "Skips integration"],
+      "answer": 1,
+      "explain": "Sandwich integration builds a skeleton: connect top-level UI with crucial bottom-level components, then add middle layers incrementally — the most common, agile approach.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-022",
+      "topic": "system-acceptance-testing",
+      "q": "Load testing vs stress testing: stress testing:",
+      "options": ["Applies the expected normal load", "Applies extreme load to find the breaking point where the system fails", "Tests only the UI", "Measures code coverage"],
+      "answer": 1,
+      "explain": "Load testing applies the expected/above-average load; stress testing applies extreme load to determine the point at which the system breaks under high traffic.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-023",
+      "topic": "system-acceptance-testing",
+      "q": "System testing is characterized as:",
+      "options": ["White-box testing of single functions", "Black-box, end-to-end testing of the completely integrated system against the SRS", "Testing one class in isolation", "A code review"],
+      "answer": 1,
+      "explain": "System testing is black-box, end-to-end testing of the fully integrated system for compliance with the Software Requirement Specification.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-024",
+      "topic": "system-acceptance-testing",
+      "q": "Release testing differs from system testing mainly in that release testing:",
+      "options": ["Is done by the dev team to find bugs", "Is done by a separate team to validate the system is good enough for external use", "Tests only one component", "Skips the requirements"],
+      "answer": 1,
+      "explain": "System testing (dev team) is defect testing — find bugs. Release testing (a separate, uninvolved team) is validation testing — confirm the system meets requirements and is good enough for external use.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-025",
+      "topic": "penetration-testing",
+      "q": "Penetration testing is best described as:",
+      "options": ["An accidental crash", "An authorized, simulated cyberattack to find and exploit vulnerabilities before real attackers do", "A code-formatting check", "A performance benchmark"],
+      "answer": 1,
+      "explain": "Pentesting is an authorized, simulated attack using attacker tools/techniques to find and exploit vulnerabilities before real attackers, then report fixes.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-026",
+      "topic": "penetration-testing",
+      "q": "In penetration testing, a 'black-box' test means the tester:",
+      "options": ["Has full source code and architecture", "Knows only public information, like a real external attacker", "Is an internal employee", "Has admin access"],
+      "answer": 1,
+      "explain": "Black-box = only public info (best simulates an external attacker). White-box = full knowledge (most thorough). Gray-box = partial knowledge (hybrid).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-027",
+      "topic": "penetration-testing",
+      "q": "Which is the correct order of the penetration-testing process?",
+      "options": ["Exploit → Report → Scan → Recon", "Reconnaissance → Scanning → Vulnerability Assessment → Exploitation → Reporting", "Report → Recon → Exploit → Scan", "Scan → Exploit → Recon → Report"],
+      "answer": 1,
+      "explain": "The 5-phase process: Reconnaissance (gather info) → Scanning (ports/services) → Vulnerability Assessment (prioritize) → Exploitation (prove impact) → Reporting (findings + fixes).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-028",
+      "topic": "penetration-testing",
+      "q": "Which open-source tool automates SQL injection discovery and exploitation?",
+      "options": ["Nmap", "SQLMap", "Wireshark", "Git"],
+      "answer": 1,
+      "explain": "SQLMap automates SQL injection. Nmap = network scanner; OWASP ZAP = web DAST scanner; Wireshark = packet analyzer; Metasploit = exploitation framework.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-029",
+      "topic": "fuzzing",
+      "q": "Fuzzing is:",
+      "options": ["A static analysis of source code", "Automated dynamic testing feeding random/malformed inputs to trigger crashes and memory errors", "A type of code review", "A UML technique"],
+      "answer": 1,
+      "explain": "Fuzzing is dynamic testing: feed random/malformed/unexpected inputs to trigger crashes, assertion failures, or memory errors — exploring thousands-millions of inputs.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-030",
+      "topic": "fuzzing",
+      "q": "A coverage-guided (gray-box) fuzzer like AFL works by:",
+      "options": ["Only using fixed test cases", "Favoring inputs that exercise new code paths and mutating them further (feedback-driven)", "Reading the spec only", "Testing the UI manually"],
+      "answer": 1,
+      "explain": "Coverage-guided fuzzers use feedback: inputs that hit new branches/coverage are 'favored' and mutated further, steering the fuzzer deeper into the code automatically.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-031",
+      "topic": "fuzzing",
+      "q": "A mutation-based fuzzer generates inputs by:",
+      "options": ["Building from a grammar/spec from scratch", "Starting from valid sample inputs and modifying them (flip bits, alter lengths)", "Reading the database", "Asking the user"],
+      "answer": 1,
+      "explain": "Mutation-based fuzzers mutate valid seed inputs (flip bits, alter lengths). Generation-based fuzzers build new inputs from a model/grammar of the input format.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-032",
+      "topic": "fuzzing",
+      "q": "Google's OSS-Fuzz is notable for:",
+      "options": ["Being a proprietary IDE", "Continuously fuzzing thousands of open-source projects and finding ~10,000 bugs", "Replacing all manual testing", "Only testing Python"],
+      "answer": 1,
+      "explain": "OSS-Fuzz continuously fuzzes thousands of open-source projects, reporting CVEs (e.g. the OpenSSL 2022 Punycode overflows) and finding ~10,000 bugs since launch.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-033",
+      "topic": "security-network-attacks",
+      "q": "A person-in-the-middle (PITM) attacker can:",
+      "options": ["Only read encrypted data", "Intercept traffic and both read AND change messages before forwarding them", "Only attack physical hardware", "Do nothing without a password"],
+      "answer": 1,
+      "explain": "A PITM attacker intercepts network traffic and can read the messages and change them before sending them on (to the correct or incorrect destination).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-034",
+      "topic": "security-network-attacks",
+      "q": "The 'Big-3' of network security are:",
+      "options": ["Speed, size, cost", "Authentication, Authorization, Confidentiality", "Encrypt, decrypt, hash", "Firewall, VPN, antivirus"],
+      "answer": 1,
+      "explain": "The Big-3: Authentication (who you're communicating with), Authorization (privilege to perform an operation), Confidentiality (communicate without others reading/changing it, incl. replay protection).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-035",
+      "topic": "security-network-attacks",
+      "q": "Which of the Big-3 protects against sniffing/eavesdropping?",
+      "options": ["Authentication", "Authorization", "Confidentiality", "Availability"],
+      "answer": 2,
+      "explain": "Confidentiality protects against sniffing (they can intercept, but can't read the content). Spoofing → Authentication; PITM → Authentication + Confidentiality.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-036",
+      "topic": "security-network-attacks",
+      "q": "Cumulative GDPR fines since 2018 (as cited) total roughly:",
+      "options": ["€5 million", "€5.88 billion", "€100", "€746 million only"],
+      "answer": 1,
+      "explain": "Cumulative GDPR fines since 2018 ≈ €5.88 billion (Ireland alone ~€3.5B), including Meta €1.2B, Amazon €746M, TikTok €530M.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-037",
+      "topic": "privacy-engineering",
+      "q": "The two CORE principles of the FTC Fair Information Practice Principles are:",
+      "options": ["Speed and cost", "Notice/Awareness and Choice/Consent", "Encryption and hashing", "Access and Enforcement"],
+      "answer": 1,
+      "explain": "FTC FIPPs: Notice/Awareness and Choice/Consent are the two CORE principles; the others are Access/Participation, Integrity/Security, and Enforcement.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-038",
+      "topic": "privacy-engineering",
+      "q": "Privacy-by-Design (PbD) means:",
+      "options": ["Adding privacy controls just before release", "Building privacy in from the start, not bolting it on late", "Collecting as much data as possible", "Ignoring privacy until a breach"],
+      "answer": 1,
+      "explain": "Privacy-by-Design builds privacy in from the start. Other mechanisms: selective collection, data minimization (pseudonymization/anonymization), retention policies, cryptography, threat modelling.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-039",
+      "topic": "privacy-engineering",
+      "q": "LINDDUN is a taxonomy of:",
+      "options": ["Security threats (like STRIDE)", "Privacy threats (Linkability, Identifiability, Non-repudiation, Detectability, Disclosure, Unawareness, Non-compliance)", "Test cases", "Licenses"],
+      "answer": 1,
+      "explain": "LINDDUN is the privacy-threat taxonomy (mirror of security's STRIDE): Linkability, Identifiability, Non-repudiation, Detectability, Disclosure of information, Unawareness, Non-compliance.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-040",
+      "topic": "privacy-engineering",
+      "q": "Collecting phone numbers when email would suffice is which LINDDUN threat?",
+      "options": ["Linkability", "Disclosure of information (over-collection / lack of data minimization)", "Non-repudiation", "Detectability"],
+      "answer": 1,
+      "explain": "Collecting more data than needed maps to Disclosure of information / poor data minimization in LINDDUN — the question 'are we collecting phone numbers when email would suffice?'",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-041",
+      "topic": "code-coverage",
+      "q": "Statement, decision, and condition coverage differ; condition coverage requires that:",
+      "options": ["Every statement runs once", "Every atomic condition takes both true and false at least once", "Every function is called", "The program never crashes"],
+      "answer": 1,
+      "explain": "Statement coverage = every statement executed once; decision coverage = every decision both true & false; condition coverage = every ATOMIC condition both true & false.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-042",
+      "topic": "code-coverage",
+      "q": "A 'condition' (in coverage terminology) is:",
+      "options": ["A loop", "An atomic boolean expression that cannot be decomposed into simpler boolean expressions", "Any statement", "A function call"],
+      "answer": 1,
+      "explain": "A condition is an atomic boolean expression (can't be decomposed). A decision is a boolean expression composed of conditions joined by logical connectors.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-043",
+      "topic": "code-coverage",
+      "q": "How much code coverage does Google aim for, given diminishing returns?",
+      "options": ["100% always", "Around 80%, focusing extra effort on high-risk code", "Below 50%", "0%"],
+      "answer": 1,
+      "explain": "100% is subject to diminishing returns (the last 10% can need 50% more test code). Google aims for ~80%, documents exceptions, and focuses on high-risk code (security, payments, data).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-044",
+      "topic": "code-coverage",
+      "q": "A key limitation of code coverage is that:",
+      "options": ["It is impossible to measure", "It is not sufficient to ensure correctness (you can have high coverage with wrong outputs or missing requirements)", "It only works for Python", "It requires no tools"],
+      "answer": 1,
+      "explain": "Coverage shows what code ran, not whether outputs are correct or whether required code is missing. It's a guide to test adequacy, not a proof of correctness.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-045",
+      "topic": "ethics-cases",
+      "q": "The Volkswagen emissions scandal involved engineers who:",
+      "options": ["Accidentally miscalibrated a sensor", "Deliberately wrote a 'defeat device' that detected emissions tests and ran clean only during them", "Forgot to test the engine", "Used the wrong programming language"],
+      "answer": 1,
+      "explain": "VW engineers wrote code that detected when the car was being emissions-tested, running clean during tests but emitting up to 40x the legal limit on the road — $30B in fines and criminal charges.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-046",
+      "topic": "ethics-cases",
+      "q": "The Twitter photo-cropping case illustrates the principle that:",
+      "options": ["Bias is impossible to introduce", "Intent doesn't excuse impact — bias from biased data and no fairness testing still causes harm", "Algorithms are always fair", "Only hardware can be biased"],
+      "answer": 1,
+      "explain": "The engineers didn't intend a racist algorithm, but trained on biased data, didn't test for fairness, and deployed to millions. Intent doesn't excuse impact.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-047",
+      "topic": "ethics-codes-flourishing",
+      "q": "A notable research finding about codes of ethics is that:",
+      "options": ["They guarantee ethical behavior", "They do not appear to change the decisions software developers actually make", "They are legally binding everywhere", "They replace the need for laws"],
+      "answer": 1,
+      "explain": "Research shows the code of ethics does not appear to affect developers' actual decisions — knowing principles isn't enough; ethics must be practised and reinforced.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u4-048",
+      "topic": "ethics-codes-flourishing",
+      "q": "The three 'human flourishing' questions to ask of your software include all EXCEPT:",
+      "options": ["Does it respect the humanity of the users?", "Does it amplify positive or negative behavior?", "Will its quality impact the humanity of others?", "Does it maximize ad revenue?"],
+      "answer": 3,
+      "explain": "The three questions: (1) respect users' humanity? (2) amplify positive or negative behavior? (3) will quality impact others' humanity? Maximizing ad revenue is not one of them.",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

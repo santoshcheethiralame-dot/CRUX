@@ -1,0 +1,207 @@
+{
+  "subject": "se",
+  "unit": 4,
+  "title": "Unit 4 — Textbook Exercises (Sommerville & Pressman)",
+  "items": [
+    {
+      "id": "se-u4-tb-01",
+      "topic": "quality-metrics-iso9126",
+      "q": "**(Pressman / ISO 9126)** Which set lists ISO 9126 (product quality) characteristics?",
+      "options": ["Speed, size, cost, colour", "Functionality, Reliability, Usability, Efficiency, Maintainability, Portability", "People, Product, Process, Project", "Plan, Build, Test, Deploy"],
+      "answer": 1,
+      "explain": "ISO 9126 defines six product-quality characteristics: Functionality, Reliability, Usability, Efficiency, Maintainability, Portability (ISO 25010 adds Security & Compatibility).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-02",
+      "topic": "code-metrics-function-points",
+      "q": "**(Pressman — function points)** The adjusted Function Point count is computed by multiplying the unadjusted count by a factor based on:",
+      "options": ["The number of developers", "14 general system characteristics (value adjustment / complexity factors)", "Lines of code", "The compiler version"],
+      "answer": 1,
+      "explain": "Pressman: FP = count-total × [0.65 + 0.01 × Σ(Fi)], where the Fi are 14 value-adjustment factors (general system characteristics) rated 0–5. The unadjusted count sums EI/EO/EQ/ILF/EIF × weights.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-03",
+      "topic": "code-metrics-function-points",
+      "q": "**(Pressman)** A key advantage of Function Points over Lines of Code as a size metric is that FP:",
+      "options": ["Is always larger", "Is language-independent and can be estimated early from the requirements model", "Requires the source code first", "Counts only comments"],
+      "answer": 1,
+      "explain": "Pressman: FP measures functionality delivered, so it is programming-language-independent and can be derived from the requirements/analysis model early, unlike LOC which is language-dependent and known late.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-04",
+      "topic": "code-coverage",
+      "q": "**(Pressman — white-box testing)** Which coverage criterion is the strongest of these, requiring each atomic condition to independently affect the decision outcome?",
+      "options": ["Statement coverage", "Decision (branch) coverage", "Modified Condition/Decision Coverage (MC/DC)", "Function coverage"],
+      "answer": 2,
+      "explain": "Pressman: MC/DC (used in DO-178B/safety-critical avionics) is stronger than statement or branch coverage — every condition must be shown to independently affect the decision's outcome.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-05",
+      "topic": "code-coverage",
+      "q": "**(Pressman)** Basis path testing derives the number of independent paths to test from:",
+      "options": ["The number of comments", "The cyclomatic complexity of the program's flow graph", "The number of variables", "The file size"],
+      "answer": 1,
+      "explain": "Pressman (McCabe): basis path testing uses cyclomatic complexity V(G) = E − N + 2 (or predicate nodes + 1) to determine the number of linearly independent paths — an upper bound on tests for branch coverage.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-06",
+      "topic": "system-acceptance-testing",
+      "q": "**(Pressman — testing strategy)** Validation testing succeeds when software functions in a manner that:",
+      "options": ["Compiles without warnings", "Can be reasonably expected by the customer (meets requirements)", "Has 100% statement coverage", "Uses the least memory"],
+      "answer": 1,
+      "explain": "Pressman: validation testing succeeds when software functions in a manner that can be reasonably expected by the customer — assessed against the requirements (a Configuration review/audit accompanies it).",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-07",
+      "topic": "system-acceptance-testing",
+      "q": "**(Pressman/Sommerville)** Alpha and beta testing differ in that beta testing is:",
+      "options": ["Conducted at the developer's site under controlled conditions", "Conducted at end-user sites, 'live', without the developer present", "Done by the compiler", "A form of unit testing"],
+      "answer": 1,
+      "explain": "Alpha testing is at the developer's site with users in a controlled environment; beta testing is at end-user sites in the real (uncontrolled) environment, with users reporting problems back.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-08",
+      "topic": "system-acceptance-testing",
+      "q": "**(Pressman — system testing types)** Stress testing is designed to:",
+      "options": ["Confirm normal-load behavior", "Execute the system in a manner that demands resources in abnormal quantity, frequency, or volume to find the breaking point", "Check code style", "Measure documentation quality"],
+      "answer": 1,
+      "explain": "Pressman: stress testing executes a system in a way that demands resources in abnormal quantity/frequency/volume — pushing it beyond design limits to observe failure behaviour. (Related: recovery, security, performance testing.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-09",
+      "topic": "levels-of-testing",
+      "q": "**(Pressman — unit testing)** A 'driver' in unit/integration testing is a module that:",
+      "options": ["Replaces a subordinate (called) module", "Replaces a superordinate (calling) module to invoke the unit under test", "Compiles the code", "Reports coverage"],
+      "answer": 1,
+      "explain": "Pressman: a driver is a 'main program' that accepts test data, passes it to the component, and prints results — replacing a calling (superordinate) module. A stub replaces a called (subordinate) module.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-10",
+      "topic": "levels-of-testing",
+      "q": "**(Pressman — integration)** A risk of 'big-bang' (non-incremental) integration is that:",
+      "options": ["It is too slow", "When everything is combined at once, the many faults that surface are very hard to isolate and diagnose", "It needs no stubs", "It produces too much documentation"],
+      "answer": 1,
+      "explain": "Pressman warns against big-bang integration: combining all components at once causes a chaotic set of errors that are extremely difficult to isolate; incremental integration is preferred.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-11",
+      "topic": "quality-metrics-iso9126",
+      "q": "**(Sommerville Ch24 — metrics)** Sommerville distinguishes 'control metrics' from 'predictor metrics'. A predictor metric is one that:",
+      "options": ["Measures the management process (e.g. effort spent)", "Is associated with the software product and helps predict its characteristics (e.g. cyclomatic complexity predicting maintainability)", "Counts meetings", "Tracks the budget"],
+      "answer": 1,
+      "explain": "Sommerville Ch24: predictor metrics are product metrics (e.g. cyclomatic complexity, fan-in/fan-out, depth of inheritance) used to predict quality attributes like maintainability; control (process) metrics support management.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-12",
+      "topic": "code-metrics-function-points",
+      "q": "**(Sommerville Ch24 — static product metrics)** Which is a static software product metric?",
+      "options": ["Number of staff meetings", "Cyclomatic complexity / fan-in–fan-out / depth of conditional nesting", "Calendar time for delivery", "Customer satisfaction survey score"],
+      "answer": 1,
+      "explain": "Sommerville Ch24 lists static metrics measured from the software itself: fan-in/fan-out, length of code, cyclomatic complexity, length of identifiers, depth of conditional nesting — these correlate with quality attributes.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-13",
+      "topic": "system-acceptance-testing",
+      "q": "**(Sommerville Ch8 — release testing)** Sommerville notes release testing is usually a ___ testing process, derived from the system specification:",
+      "options": ["white-box", "black-box", "unit", "static"],
+      "answer": 1,
+      "explain": "Sommerville Ch8: release testing is a form of system testing, normally a black-box process where tests are derived from the system specification, to show the system delivers its specified functionality/performance/dependability.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-14",
+      "topic": "penetration-testing",
+      "q": "**(Sommerville — security testing)** Risk-based security testing and penetration testing aim primarily to:",
+      "options": ["Improve UI aesthetics", "Identify vulnerabilities an attacker could exploit, by simulating attacks and probing the system's defenses", "Measure performance under load", "Count function points"],
+      "answer": 1,
+      "explain": "Sommerville: security testing (including penetration testing) tries to find vulnerabilities by thinking like an attacker — identifying weaknesses that could be exploited, rather than just checking functional requirements.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-15",
+      "topic": "ethics-codes-flourishing",
+      "q": "**(Sommerville Ch1 / ACM-IEEE Code)** Which is a principle of the ACM/IEEE-CS Software Engineering Code of Ethics?",
+      "options": ["Maximize personal profit", "Act consistently with the public interest; produce products that meet the highest professional standards", "Never document code", "Avoid all teamwork"],
+      "answer": 1,
+      "explain": "The ACM/IEEE-CS code's eight principles include PUBLIC (act in the public interest), CLIENT/EMPLOYER, PRODUCT (high standards), JUDGMENT, MANAGEMENT, PROFESSION, COLLEAGUES, and SELF. Sommerville Ch1 echoes these professional responsibilities.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-16",
+      "topic": "ethics-cases",
+      "q": "**(Sommerville Ch1 — professional responsibility)** An engineer who writes code to deceive regulators (e.g. an emissions defeat device) primarily violates which professional responsibility?",
+      "options": ["Confidentiality", "Acting with integrity / in the public interest (not misusing skills to harm society)", "Using version control", "Writing unit tests"],
+      "answer": 1,
+      "explain": "Sommerville Ch1: software engineers must behave honestly and act in the public interest — deliberately deceiving regulators and harming the public (VW emissions) violates integrity and the duty to the public.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-17",
+      "topic": "software-licenses",
+      "q": "**(Sommerville — software reuse/licensing)** Why do companies typically vet or avoid GPL-licensed components in proprietary products?",
+      "options": ["GPL code is always buggy", "GPL is copyleft — linking it can require the whole derivative product to be released under the GPL", "GPL code cannot be compiled", "GPL has no source code"],
+      "answer": 1,
+      "explain": "The GPL's copyleft ('viral') nature can force a derivative work that incorporates GPL code to be licensed under the GPL too — so companies vet third-party dependencies to avoid being forced to open-source proprietary code.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-18",
+      "topic": "metrics-pitfalls-goodhart",
+      "q": "**(Goodhart / measurement theory)** Mandating '100% code coverage' as a hard target often backfires because:",
+      "options": ["Coverage tools don't exist", "When the measure becomes a target, developers write meaningless tests that hit lines without verifying behaviour", "100% coverage is illegal", "It makes code compile slower"],
+      "answer": 1,
+      "explain": "Goodhart's law in practice: making coverage a mandatory target incentivizes gaming — developers write tests that execute code (raising the number) without meaningful assertions, so bugs still slip through.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-19",
+      "topic": "privacy-engineering",
+      "q": "**(Privacy engineering — data minimization)** Pseudonymization and anonymization are techniques that support which privacy principle?",
+      "options": ["Maximizing data collection", "Data minimization — reducing the personal data held/identifiable", "Faster builds", "Higher coverage"],
+      "answer": 1,
+      "explain": "Data minimization reduces the amount and identifiability of personal data via de-identification, pseudonymization and anonymization — a core privacy-engineering mechanism aligned with GDPR/Privacy-by-Design.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "se-u4-tb-20",
+      "topic": "fuzzing",
+      "q": "**(Security testing — fuzzing)** Fuzzing is classified as a ___ analysis technique because it:",
+      "options": ["static; reads source without running it", "dynamic; runs the program on many generated inputs and watches for crashes/faults", "manual; requires human inspection of each input", "formal; proves correctness mathematically"],
+      "answer": 1,
+      "explain": "Fuzzing is a dynamic analysis technique: it executes the target program on large numbers of generated (random/malformed) inputs and monitors for crashes, memory errors, or assertion failures.",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "subject": "se",
+  "unit": 2,
+  "title": "Unit 2 — Past-Year Questions",
+  "items": [
+    {
+      "id": "se-u2-pyq-01",
+      "topic": "intro-spm",
+      "year": "ESA Dec 2023 / Jul 2024 (UE21CS341A)",
+      "marks": 7,
+      "difficulty": "medium",
+      "q": "Explain the steps involved in **project planning** / the phases of the **project management life cycle** and the significance of each.",
+      "answer": "The **PM life cycle** has five phases: **① Initiation** (define project, identify stakeholders, feasibility, charter) → **② Planning** (WBS, scheduling, resource allocation, risk plan) → **③ Execution** (implement, coordinate the team, create deliverables) → **④ Monitoring & Control** (track performance vs baseline, corrective action) → **⑤ Closure** (deliverable acceptance, lessons learned, release resources). Significance: each phase gates the next — good planning sets the baseline that monitoring measures against, ensuring on-time, on-budget delivery."
+    },
+    {
+      "id": "se-u2-pyq-02",
+      "topic": "intro-spm",
+      "year": "ESA Dec 2023 (UE21CS341A)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Draw and describe the **project constraint triangle**. Why must its equilibrium be maintained, and who is mainly responsible?",
+      "answer": "The **project management triangle** balances the *triple constraints* — **Scope, Time (schedule), Cost (budget)** — with **Quality** at the centre. **No corner can change without trade-offs** with the other two (e.g. adding scope forces more time, more cost, or lower quality). The equilibrium must hold because breaking it sacrifices quality or delivery. The **project manager** is mainly responsible for balancing all three to keep the project on budget, on deadline, and within scope."
+    },
+    {
+      "id": "se-u2-pyq-03",
+      "topic": "intro-spm",
+      "year": "ESA Dec 2023 (UE21CS341A)",
+      "marks": 6,
+      "difficulty": "easy",
+      "q": "What is the need for **project management**? List the characteristics of a typical large project.",
+      "answer": "**Need:** software engineering matters most for large projects (many people, many months) needing planning, coordination, and control — *good management can't guarantee success, but poor management always leads to failure.* **Characteristics of a large project:** many team members & stakeholders; long, multi-phase timelines; high technical complexity; significant budget; the **intangible** nature of software (hard to measure progress); changing requirements; and the need for risk management and formal communication."
+    },
+    {
+      "id": "se-u2-pyq-04",
+      "topic": "risk-management",
+      "year": "ESA Dec 2023 (UE21CS341A) / Sample",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "List the issues an effective risk strategy must deal with, and describe the activities to produce a **Risk Mitigation, Monitoring & Management (RMMM)** plan. (Or: build a short risk register.)",
+      "answer": "An effective strategy must address **risk identification, analysis, and response/monitoring**. **Risk process:** ① Identification (project/product/business risks) → ② Analysis (likelihood × impact = **Risk Exposure**; prioritise) → ③ Planning (response: **Avoid, Mitigate, Transfer, Accept**) → ④ Monitoring (track indicators throughout). **Risk register example (4 rows):** *ERP integration fails* (mitigate: early spike + stubs; owner: tech lead); *registration peak overload* (mitigate: load testing + autoscaling; owner: DevOps); *scope creep* (mitigate: CCB + backlog discipline; owner: PO); *key staff leaves* (mitigate: pairing/docs; owner: PM). Each row = risk + mitigation + owner."
+    },
+    {
+      "id": "se-u2-pyq-05",
+      "topic": "architectural-patterns",
+      "year": "ESA Dec 2023 / Jul 2024 / Jan-May 2024 (all)",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "With an example, elaborate on the **Model-View-Controller (MVC)** architectural pattern.",
+      "answer": "**MVC** separates an application into three parts to enforce separation of concerns: **Model** (application data + business logic), **View** (UI presentation + captures input), **Controller** (mediates — handles user actions, updates the model). **Flow:** user interacts with the **View** → View notifies the **Controller** → Controller updates the **Model** → Model notifies the View → View re-renders. **Example:** a web app — the Model is the database/domain objects, the View is the HTML page, the Controller is the request handler (e.g. Spring MVC, ASP.NET MVC). Benefits: multiple views, easier testing & maintenance."
+    },
+    {
+      "id": "se-u2-pyq-06",
+      "topic": "software-architecture",
+      "year": "ESA Jul 2023 / Dec 2023",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "Contrast **Architectural Views, Styles and Patterns**. Give an example for each. Enumerate factors that influence software architecture.",
+      "answer": "**View** = a representation of the system from one stakeholder's perspective (e.g. **Krutchen's 4+1**: logical, process, development, physical + scenarios). **Style** = a named family of architectures sharing principles (e.g. *layered*, *client-server*). **Pattern** = a reusable, proven solution to a recurring structural problem (e.g. *MVC*, *pipes & filters*). **Factors influencing architecture:** functional & non-functional requirements (performance, security, scalability), stakeholders, technology constraints, team/organisation, budget/time, and the operating environment."
+    },
+    {
+      "id": "se-u2-pyq-07",
+      "topic": "software-architecture",
+      "year": "ESA Dec 2023 (UE21CS341A)",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "What is **Krutchen's 4+1 view model**?",
+      "answer": "Krutchen's **4+1 view model** describes a software architecture through **four concurrent views plus scenarios**: **① Logical** view (functionality / object model for end users), **② Process** view (concurrency, performance — for integrators), **③ Development** view (module/package organisation — for programmers), **④ Physical** view (deployment to hardware — for system engineers), **+1 Scenarios** (use cases that tie the four views together and validate them). Each view serves different stakeholders, capturing the principle that *one diagram can't show everything.*"
+    },
+    {
+      "id": "se-u2-pyq-08",
+      "topic": "microservices",
+      "year": "ESA Dec 2023 / Jul 2024 / Jan-May 2024 (all)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What is **Service-Oriented Architecture (SOA)**? Draw a contrast between **SOA and Microservice** architecture.",
+      "answer": "**SOA** structures an application as a set of reusable **services** that communicate through a central **Enterprise Service Bus (ESB)** — designed for large enterprise integration. **Microservices** are small, **independently deployable** services, each with **its own database**, communicating via **lightweight APIs (HTTP/REST, gRPC)** — no central bus. **Contrast:** SOA = ESB-mediated, coarser, shared governance; Microservices = point-to-point, fine-grained, independent scaling & deployment, high fault isolation, but more operational/DevOps complexity. A **monolith** (e.g. MS Word) deploys as one unit with a shared DB."
+    },
+    {
+      "id": "se-u2-pyq-09",
+      "topic": "microservices",
+      "year": "ESA Jan-May 2024 (UE20CS303)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "On **Microservice Architecture**: (1) What is it? (2) Three features. (3) How does it differ from Monolithic architecture?",
+      "answer": "**(1)** Microservices structure an app as a collection of **small, independently deployable services**, each owning a business capability and its own data, talking over network APIs. **(2) Three features:** *service independence* (own DB + deploy cycle), *API/network communication only*, *decentralised data management* (+ independent scaling, high fault isolation). **(3) vs Monolith:** a monolith is a **single deployable unit** with one **shared database** and in-process calls — simple early but hard to scale/iterate; microservices deploy independently, scale per-service, and isolate faults, at the cost of DevOps complexity."
+    },
+    {
+      "id": "se-u2-pyq-10",
+      "topic": "cohesion-coupling-security",
+      "year": "ESA Sample / Jul 2024 (UE20CS303)",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain **high cohesion** and **low coupling**. Give two design decisions to increase cohesion and two to reduce coupling. (Also: name the cohesion type for input routines and for an initialization sequence.)",
+      "answer": "**High cohesion** = a module's elements all serve *one well-defined purpose* (good — functional cohesion is strongest). **Low coupling** = modules depend on each other *minimally* (good — data coupling is loosest). **Increase cohesion:** group only related functions in a module (e.g. an `Auth` module with just login/logout/reset); split a module that does unrelated jobs. **Reduce coupling:** communicate via well-defined **interfaces/APIs** (not shared globals); use **dependency injection** instead of hard-coded references. *Input routines* = **communicational cohesion**; an *initialization sequence* = **temporal cohesion**."
+    },
+    {
+      "id": "se-u2-pyq-11",
+      "topic": "api-abi-errors",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 4,
+      "difficulty": "medium",
+      "q": "Describe the difference between a **synchronous and an asynchronous API** and give one situation where an asynchronous API is a better design choice.",
+      "answer": "A **synchronous** API **blocks** the caller until the operation completes and returns a result (simple model; e.g. a function call or `requests.get()`). An **asynchronous** API **returns immediately** and delivers the result later via a callback/promise/event, letting the caller continue. **Async is better when** the operation is slow or high-latency and you need responsiveness/scalability — e.g. sending **event notifications** or calling an external **payment gateway**: the request is queued and the user isn't blocked waiting, so the system handles many concurrent requests."
+    },
+    {
+      "id": "se-u2-pyq-12",
+      "topic": "technical-debt-tdd",
+      "year": "ESA Sample (SmartCampus)",
+      "marks": 5,
+      "difficulty": "hard",
+      "q": "From a scenario (hard-coded endpoints, disabled validation, bypass flag left on, direct merges to main, skipped tests, exposed logs), list the highest-priority **technical-debt** items and classify them.",
+      "answer": "**Technical debt** = expedient shortcuts that make future change costlier (hurting maintainability/evolvability). Prioritised items & classification (Fowler quadrant **Reckless/Prudent × Deliberate/Inadvertent**): **① Bypass flag + disabled validation** = *reckless/deliberate* — a **security defect**, fix immediately. **② Direct merges to main, skipped automated tests** = *reckless* process debt → reinstate PR reviews + CI gates. **③ Hard-coded ERP endpoints** = *prudent/deliberate* design debt → externalise to config. **④ Exposed sensitive logs** = security/privacy debt → redact + access-control. (Note: security vulnerabilities and exposed PII are **not 'debt'** — they're defects to fix regardless of business reasons.)"
+    },
+    {
+      "id": "se-u2-pyq-13",
+      "topic": "technical-debt-tdd",
+      "year": "ESA Jul 2024 / Jan-May 2024 (UE21CS341A)",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Write a note on **Test-Driven Development (TDD)**.",
+      "answer": "**TDD** writes the **test before** the implementation, so testing *drives* design. The cycle is **Red → Green → Refactor**: ① write a small **failing test** (Red — the feature doesn't exist yet); ② write the **simplest code** to make it pass (Green); ③ **refactor** to improve structure without changing behaviour, keeping all tests green; then repeat. **Benefits:** comprehensive coverage (every line has a test), strong regression safety, tests act as **living documentation**, and it forces clear interfaces & loose coupling. It aligns naturally with agile (tests from user-story acceptance criteria) and CI."
+    },
+    {
+      "id": "se-u2-pyq-14",
+      "topic": "estimation-cocomo",
+      "year": "ESA Jul 2024 (UE19CS302)",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Discuss the various types of **estimation** of tasks/activities during the software-project-planning step.",
+      "answer": "**Estimation techniques:** ① **Algorithmic — COCOMO** (Boehm): from size in KLOC, $E = a\\,(\\text{KLOC})^b$ person-months, then $T = c\\,E^d$ months; organic/semi-detached/embedded set the constants. ② **Function Point Analysis** — size from functional requirements (inputs, outputs, inquiries, files), language-independent. ③ **Analogical** — use historical data from similar past projects. ④ **Expert judgment** — experienced practitioners estimate, often combined with the above. The **WBS** (work breakdown structure) decomposes the project so each work package can be estimated and validated by cross-checking."
+    },
+    {
+      "id": "se-u2-pyq-15",
+      "topic": "software-architecture",
+      "year": "ESA Jan-May 2024 (UE21CS341A)",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "MCQs: (1) Architecture is based on ___? (2) Examples of client-server architecture? (3) What is the 4+1 view model? (4) MS Word is an example of which architecture?",
+      "answer": "**(1)** Architecture is based majorly on **Requirements** (especially non-functional ones). **(2)** Client-server examples: **mail servers, file servers, web servers** (all of them). **(3)** The **4+1 view model** is used to *describe the architecture design of a software-intensive system* (Krutchen's logical/process/development/physical + scenarios). **(4)** **MS Word** = a **Monolithic Architecture** (a single self-contained deployable unit)."
+    },
+    {
+      "id": "se-u2-pyq-16",
+      "topic": "raci-teamwork",
+      "year": "ESA Jul 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Define the following Agile quality/construction metrics: **Sprint Burndown, Team Velocity, Throughput, Cycle Time**.",
+      "answer": "**Sprint Burndown** = a chart of *remaining work* (story points) vs time in a sprint — shows whether the team is on pace to finish. **Team Velocity** = the amount of work (story points) a team completes *per sprint* — used to forecast future capacity. **Throughput** = the total value-added work items completed in a given period. **Cycle Time** = the elapsed time from when work *begins* on an item until it is *completed*. Together they track agile progress and quality."
+    }
+  ]
+}

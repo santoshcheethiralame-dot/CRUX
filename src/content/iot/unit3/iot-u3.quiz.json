@@ -1,0 +1,502 @@
+{
+  "subject": "iot",
+  "unit": 3,
+  "title": "Unit 3 MCQs — IoT Protocols & Connectivity",
+  "items": [
+    {
+      "id": "iot-u3-001",
+      "topic": "connectivity-criteria",
+      "q": "Why are wired connections still preferred in many industrial IoT settings despite wireless dominating consumer IoT?",
+      "options": [
+        "They are always cheaper",
+        "They offer high throughput, deterministic timing, and reliability/security critical for mission-critical systems",
+        "They require no installation",
+        "They have unlimited range"
+      ],
+      "answer": 1,
+      "explain": "Wired links provide determinism, reliability, and security that industrial control needs. Wireless wins on flexibility/cost but can't guarantee timing the way deterministic Ethernet can.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-002",
+      "topic": "connectivity-criteria",
+      "q": "A 'constrained-node network' in IoT refers to:",
+      "options": [
+        "A high-bandwidth fibre backbone",
+        "A network of devices with limited CPU, memory, and battery, plus low bandwidth and high loss",
+        "A network limited to exactly 10 nodes",
+        "A network without any sensors"
+      ],
+      "answer": 1,
+      "explain": "Constrained devices have tight CPU/memory/power limits; constrained-node networks of them have low bandwidth, high loss, and strict power budgets — hence lightweight protocols like CoAP.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-003",
+      "topic": "wired-ethernet",
+      "q": "Ethernet is standardized as ___ and defines which OSI layers?",
+      "options": [
+        "IEEE 802.11; application layer",
+        "IEEE 802.3; physical and data-link layers",
+        "IEEE 802.15.4; network layer",
+        "IEEE 802.1; transport layer"
+      ],
+      "answer": 1,
+      "explain": "Ethernet = IEEE 802.3, defining the physical and data-link layers. (802.11 is Wi-Fi; 802.15.4 underlies Zigbee; 802.1 includes TSN.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-004",
+      "topic": "wired-ethernet",
+      "q": "In an Ethernet IoT LAN, which device operates at Layer 2 using MAC addresses to forward frames only to the intended recipient?",
+      "options": ["Router", "Ethernet switch", "End sensor", "Cloud server"],
+      "answer": 1,
+      "explain": "The switch forwards frames at Layer 2 using MAC addresses (no broadcast flooding). The router operates at Layer 3, performing NAT and routing to the WAN/internet.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-005",
+      "topic": "wired-ethernet",
+      "q": "Which correctly distinguishes a MAC address from an IP address?",
+      "options": [
+        "MAC is logical and routable; IP is a hardware ID",
+        "MAC is a hardware ID for local (Layer-2) delivery; IP is a logical address for routing across networks (Layer 3)",
+        "They are identical",
+        "MAC is only used on the internet; IP only on LANs"
+      ],
+      "answer": 1,
+      "explain": "MAC = unique hardware identifier for delivery within the local network (Layer 2). IP = logical identifier for routing packets across networks/the internet (Layer 3).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-006",
+      "topic": "poe",
+      "q": "What is the primary benefit of Power over Ethernet (PoE)?",
+      "options": [
+        "It doubles the data rate of Ethernet",
+        "A single cable carries both data and electrical power, removing the need for separate power wiring",
+        "It works only with fibre optics",
+        "It eliminates the need for any network connection"
+      ],
+      "answer": 1,
+      "explain": "PoE delivers data + power on one Ethernet cable, so devices like cameras and sensors can be placed where there's no power outlet — one cable, one install.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-007",
+      "topic": "poe",
+      "q": "Order the PoE standards by increasing power: 802.3af, 802.3at, 802.3bt.",
+      "options": [
+        "802.3bt (15 W) < 802.3at (30 W) < 802.3af (90 W)",
+        "802.3af (~15 W) < 802.3at/PoE+ (~30 W) < 802.3bt/PoE++ (~60–90 W)",
+        "802.3at (15 W) < 802.3bt (30 W) < 802.3af (90 W)",
+        "All three supply exactly 15 W"
+      ],
+      "answer": 1,
+      "explain": "802.3af ≈15.4 W → 802.3at (PoE+) ≈30 W → 802.3bt (PoE++) ≈60/90 W. In the device labels: PSE sources power, PD receives it.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-008",
+      "topic": "ethernet-tsn",
+      "q": "Why is plain Ethernet insufficient for cyber-physical systems, motivating TSN?",
+      "options": [
+        "Plain Ethernet has no cables",
+        "Plain Ethernet is best-effort — it cannot guarantee WHEN a packet arrives (no bounded latency/jitter)",
+        "Plain Ethernet is wireless",
+        "Plain Ethernet cannot carry data"
+      ],
+      "answer": 1,
+      "explain": "Standard Ethernet is best-effort, fine for email/video but not for systems needing guaranteed timing. TSN (IEEE 802.1) adds determinism: bounded latency and minimal jitter.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-009",
+      "topic": "ethernet-tsn",
+      "q": "Which TSN feature synchronizes all devices' clocks to sub-microsecond precision?",
+      "options": [
+        "Frame Preemption (802.1Qbu)",
+        "Time Synchronization (802.1AS)",
+        "Traffic Shaping (802.1Qav)",
+        "Resource Reservation (802.1Qcc)"
+      ],
+      "answer": 1,
+      "explain": "802.1AS provides precise time synchronization, enabling coordinated action between sensors and actuators. Qbv schedules traffic, Qbu preempts frames, Qcc reserves bandwidth.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-010",
+      "topic": "plc",
+      "q": "Power Line Communication (PLC) transmits data by:",
+      "options": [
+        "Using a separate fibre-optic cable",
+        "Overlaying high-frequency data signals (kHz–MHz) on existing AC power lines, separated from the 50/60 Hz power by filters",
+        "Broadcasting over the 2.4 GHz band",
+        "Using satellite links only"
+      ],
+      "answer": 1,
+      "explain": "PLC reuses existing electrical wiring: data (kHz–MHz, via OFDM/FSK/PSK) rides on top of the 50/60 Hz power, with filters separating the two. Popular in smart grids/meters.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-011",
+      "topic": "unlicensed-bands",
+      "q": "Why do most consumer IoT technologies use unlicensed frequency bands?",
+      "options": [
+        "They offer the highest possible data rates",
+        "Cost-free access, globally harmonized standards, and scalability — IoT devices can't afford licensed spectrum",
+        "They are immune to interference",
+        "They are reserved exclusively for one vendor"
+      ],
+      "answer": 1,
+      "explain": "Unlicensed bands (e.g., 2.4 GHz ISM) need no licence fee, are globally harmonized, and let billions of cheap devices coexist — though the trade-off is interference in a crowded commons.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-012",
+      "topic": "unlicensed-bands",
+      "q": "Which technology does NOT use unlicensed spectrum?",
+      "options": ["Zigbee", "Wi-Fi", "LoRa", "NB-IoT"],
+      "answer": 3,
+      "explain": "NB-IoT (and LTE-M, 4G/5G) are cellular and use LICENSED spectrum managed by operators. Zigbee, Wi-Fi, and LoRa all use unlicensed bands.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-013",
+      "topic": "unlicensed-bands",
+      "q": "By range, NFC/RFID, Wi-Fi, and LoRa belong respectively to which classes?",
+      "options": [
+        "Long, medium, short",
+        "Short (<10 cm), medium (~100 m–km), long (LPWAN, tens of km)",
+        "All are short-range",
+        "Medium, long, short"
+      ],
+      "answer": 1,
+      "explain": "NFC/RFID is short-range (<10 cm); Wi-Fi is medium-range; LoRa is long-range LPWAN (tens of km). Range trades off against data rate and power.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-014",
+      "topic": "zigbee",
+      "q": "Zigbee is built on which standard and operates mainly in which band?",
+      "options": [
+        "IEEE 802.11; 5 GHz",
+        "IEEE 802.15.4; 2.4 GHz ISM",
+        "IEEE 802.3; wired only",
+        "IEEE 802.1; sub-GHz only"
+      ],
+      "answer": 1,
+      "explain": "Zigbee is built on IEEE 802.15.4 and operates mainly in the 2.4 GHz unlicensed ISM band (with sub-GHz regional variants), using AES-128 and mesh networking.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-015",
+      "topic": "zigbee",
+      "q": "In a Zigbee network, which device starts the PAN, picks the channel/PAN ID, and often acts as the Trust Center?",
+      "options": ["End Device", "Router", "Coordinator", "Gateway sensor"],
+      "answer": 2,
+      "explain": "The Coordinator (one per network) starts the PAN, selects the channel and PAN ID, holds network keys, and often serves as Trust Center and hub. Routers relay; end devices sleep and don't relay.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-016",
+      "topic": "zigbee",
+      "q": "How does a battery-powered Zigbee End Device conserve power yet still receive data?",
+      "options": [
+        "It stays awake continuously",
+        "It sleeps; its router 'parent' buffers downlink frames, and the end device sends a MAC Data Request to pull them when it wakes",
+        "It relays all network traffic",
+        "It uses a permanent mains connection"
+      ],
+      "answer": 1,
+      "explain": "End devices sleep to save power and cannot relay. A parent router buffers their messages; on waking, the end device requests the queued data — enabling years of coin-cell life.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-017",
+      "topic": "ble",
+      "q": "Approximately how much less power does BLE consume compared to Classic Bluetooth, and why?",
+      "options": [
+        "About the same; both stay always on",
+        "~100× less, because BLE stays in sleep mode except during brief connections",
+        "10× more, because BLE streams audio",
+        "BLE uses no power at all"
+      ],
+      "answer": 1,
+      "explain": "BLE consumes roughly 100× less power than Classic Bluetooth because it sleeps most of the time, waking only to send/receive small packets — unlike always-on Classic Bluetooth.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-018",
+      "topic": "ble",
+      "q": "In BLE, the application data model that defines services and characteristics is:",
+      "options": [
+        "GAP (Generic Access Profile)",
+        "GATT (Generic Attribute Profile)",
+        "DSSS",
+        "NAT"
+      ],
+      "answer": 1,
+      "explain": "GATT defines the data model — services (e.g., Heart Rate) and characteristics (values). GAP handles discovery, advertising, connections, and roles (central/peripheral).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-019",
+      "topic": "ble",
+      "q": "In the BLE lifecycle, a peripheral first announces its existence by:",
+      "options": [
+        "Pairing immediately with all devices",
+        "Advertising — sending short packets on channels 37/38/39 with its name and service UUIDs",
+        "Opening a permanent receive window",
+        "Flooding a Route Request"
+      ],
+      "answer": 1,
+      "explain": "The peripheral advertises on channels 37/38/39 ('I exist' + basic info). A central then scans, connects, pairs/bonds, discovers GATT services, and streams data.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-020",
+      "topic": "wifi",
+      "q": "Wi-Fi's biggest advantage for IoT compared to Zigbee/BLE is:",
+      "options": [
+        "It uses the least power of all",
+        "Native IP connectivity over existing infrastructure — no gateway translation needed to reach the cloud",
+        "It has the longest range",
+        "It supports the most devices on a coin cell"
+      ],
+      "answer": 1,
+      "explain": "Wi-Fi devices are natively IP and join existing networks, reaching the cloud without a translating gateway (unlike Zigbee/BLE). Its drawback is high power — hence Wi-Fi HaLow for low-power IoT.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-021",
+      "topic": "wifi",
+      "q": "Wi-Fi HaLow (802.11ah) differs from standard Wi-Fi by:",
+      "options": [
+        "Using 60 GHz for higher speed",
+        "Operating in sub-GHz (~900 MHz) for longer range and lower power, tuned for IoT",
+        "Being a wired protocol",
+        "Removing all security"
+      ],
+      "answer": 1,
+      "explain": "Wi-Fi HaLow uses sub-GHz (~900 MHz) to trade raw speed for much longer range and lower power — letting battery IoT devices use Wi-Fi-family networking.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-022",
+      "topic": "lorawan",
+      "q": "LoRaWAN uses which network topology?",
+      "options": ["Full mesh", "Star-of-stars (devices → gateways → network server)", "Ring", "Point-to-point only"],
+      "answer": 1,
+      "explain": "LoRaWAN uses a star-of-stars: end devices broadcast to all nearby gateways (a star), and gateways relay to one central network server (another star). Gateways are transparent relays.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-023",
+      "topic": "lorawan",
+      "q": "Which LoRaWAN device class offers the BEST battery life by only opening receive windows after an uplink?",
+      "options": ["Class A", "Class B", "Class C", "Class D"],
+      "answer": 0,
+      "explain": "Class A (the default for most sensors) opens two short receive windows only after sending an uplink — maximizing battery life. Class C keeps the receiver always open (mains-powered); Class B uses scheduled slots.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-024",
+      "topic": "lorawan",
+      "q": "In LoRaWAN security, which key ensures data CONFIDENTIALITY between the device and application server?",
+      "options": ["NwkSKey", "AppSKey", "DevEUI", "PAN ID"],
+      "answer": 1,
+      "explain": "The AppSKey ensures confidentiality (prevents eavesdropping) between device and application server. The NwkSKey ensures integrity (anti-tampering) between device and network server.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-025",
+      "topic": "lorawan",
+      "q": "In the LoRaWAN architecture, which component performs de-duplication, device authentication, and Adaptive Data Rate?",
+      "options": ["End device", "Gateway", "Network Server", "Application Server"],
+      "answer": 2,
+      "explain": "The Network Server is the 'brain' — it de-duplicates packets from multiple gateways, authenticates devices, runs ADR, routes data, and manages security. Gateways are transparent relays.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-026",
+      "topic": "cellular-iot",
+      "q": "How does cellular IoT (NB-IoT, LTE-M) fundamentally differ from Zigbee/LoRa?",
+      "options": [
+        "It uses unlicensed spectrum",
+        "It uses LICENSED spectrum operated by telecom carriers (no self-deployed gateways needed)",
+        "It has no security",
+        "It only works wired"
+      ],
+      "answer": 1,
+      "explain": "Cellular IoT runs on licensed, carrier-managed spectrum — giving ubiquitous coverage with no gateway deployment, at the cost of a recurring subscription. Zigbee/LoRa use unlicensed bands.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-027",
+      "topic": "cellular-iot",
+      "q": "Which best contrasts NB-IoT and LTE-M?",
+      "options": [
+        "NB-IoT supports high mobility and voice; LTE-M is stationary only",
+        "NB-IoT = lowest power, deep coverage, stationary low-rate; LTE-M = higher rate, supports mobility and voice",
+        "They are identical",
+        "Both use unlicensed spectrum"
+      ],
+      "answer": 1,
+      "explain": "NB-IoT targets ultra-low-power, deep-indoor, stationary sensors at very low data rates. LTE-M offers more bandwidth plus mobility (handover) and voice — for moving/richer devices.",
+      "difficulty": "hard",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-028",
+      "topic": "app-layer-protocols",
+      "q": "Which pair correctly matches the IoT application-layer communication models to protocols?",
+      "options": [
+        "Publish/Subscribe: HTTP, CoAP; Request/Response: MQTT, AMQP",
+        "Publish/Subscribe: MQTT, AMQP; Request/Response: HTTP, CoAP",
+        "Both models use only MQTT",
+        "Request/Response: MQTT; Publish/Subscribe: HTTP"
+      ],
+      "answer": 1,
+      "explain": "Message-oriented publish/subscribe (broker, decoupled): MQTT, AMQP. Request/response (client-server): HTTP, CoAP.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-029",
+      "topic": "app-layer-protocols",
+      "q": "The key advantage of the publish/subscribe model for scalable IoT is that:",
+      "options": [
+        "Publishers and subscribers must always be online together",
+        "Publishers and subscribers are decoupled via a broker/topics — neither needs to know the other, enabling intermittent, scalable communication",
+        "It requires no network",
+        "It only works for two devices"
+      ],
+      "answer": 1,
+      "explain": "Pub/sub decouples senders from receivers through a broker and topics (like a noticeboard), so thousands of intermittently-connected devices can communicate without direct, simultaneous connections.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-030",
+      "topic": "mqtt",
+      "q": "In MQTT, what is the role of the broker?",
+      "options": [
+        "It generates the sensor data",
+        "It is the central server that routes messages from publishers to all clients subscribed to the matching topic",
+        "It encrypts data using DTLS only",
+        "It replaces the need for any clients"
+      ],
+      "answer": 1,
+      "explain": "The MQTT broker receives messages tagged with a topic from publishers and delivers them to all subscribers of that topic — decoupling the two sides.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-031",
+      "topic": "mqtt",
+      "q": "Which MQTT QoS level guarantees a message is delivered EXACTLY once?",
+      "options": ["QoS 0 (at most once)", "QoS 1 (at least once)", "QoS 2 (exactly once)", "QoS 3 (always twice)"],
+      "answer": 2,
+      "explain": "QoS 2 uses a handshake to deliver exactly once (for financial/control data). QoS 0 is fire-and-forget; QoS 1 guarantees arrival but may duplicate.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-032",
+      "topic": "mqtt",
+      "q": "MQTT's 'Last Will and Testament' (LWT) feature is used to:",
+      "options": [
+        "Encrypt the payload",
+        "Notify other clients with a predefined message if a client disconnects unexpectedly",
+        "Increase the data rate",
+        "Store the device firmware"
+      ],
+      "answer": 1,
+      "explain": "LWT lets the broker publish a predefined 'last will' message when a client drops unexpectedly, so other clients learn of the failure. (Retained messages serve new subscribers the last value.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-033",
+      "topic": "coap",
+      "q": "CoAP is often described as 'HTTP for tiny things' because it:",
+      "options": [
+        "Runs over TCP with large headers",
+        "Uses a RESTful model (GET/POST/PUT/DELETE) but runs primarily over UDP with tiny headers and no TCP handshake",
+        "Only works in web browsers",
+        "Is a publish/subscribe broker protocol"
+      ],
+      "answer": 1,
+      "explain": "CoAP keeps HTTP's RESTful resource model and methods but runs over UDP with compact binary headers and built-in reliability — efficient for constrained devices. It also supports multicast and discovery.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-034",
+      "topic": "coap",
+      "q": "Which row of the CoAP vs HTTP vs MQTT comparison is CORRECT?",
+      "options": [
+        "CoAP: TCP, MQTT: UDP, HTTP: UDP",
+        "CoAP: UDP + DTLS + request/response (with Observe); MQTT: TCP + pub/sub; HTTP: TCP + request/response",
+        "All three use publish/subscribe",
+        "Only HTTP supports multicast"
+      ],
+      "answer": 1,
+      "explain": "CoAP = UDP, DTLS security, request/response + Observe, supports multicast. MQTT = TCP, TLS, publish/subscribe. HTTP = TCP, TLS, request/response, web-focused.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "iot-u3-035",
+      "topic": "scada-web",
+      "q": "SCADA systems are best described as:",
+      "options": [
+        "A wireless protocol for wearables",
+        "Supervisory Control And Data Acquisition — architectures for monitoring/controlling industrial processes (field devices, RTUs/PLCs, network, master/HMI)",
+        "A cloud database",
+        "A type of MQTT broker"
+      ],
+      "answer": 1,
+      "explain": "SCADA = Supervisory Control And Data Acquisition: field sensors/actuators, RTUs/PLCs, a communication network (Modbus/DNP3/IP), and a central master with an HMI for operators — 'industrial IoT before IoT'.",
+      "difficulty": "medium",
+      "source": "original"
+    },
+    {
+      "id": "iot-u3-036",
+      "topic": "scada-web",
+      "q": "A common IoT integration pattern uses lightweight protocols at the edge and converts to ___ at the gateway/cloud for web integration.",
+      "options": ["DTLS", "HTTP/REST", "Zigbee", "Modbus"],
+      "answer": 1,
+      "explain": "Edge devices run CoAP/MQTT (lightweight), and the gateway/cloud converts to HTTP/REST — which every web service, browser, and app already speaks — for easy integration.",
+      "difficulty": "medium",
+      "source": "original"
+    }
+  ]
+}

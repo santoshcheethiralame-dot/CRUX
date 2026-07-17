@@ -1,0 +1,457 @@
+{
+  "subject": "se",
+  "unit": 1,
+  "title": "Unit 1 — MCQ Quiz",
+  "items": [
+    {
+      "id": "se-u1-001",
+      "topic": "introduction-to-se",
+      "q": "According to Sommerville, \"software\" is best defined as:",
+      "options": ["Only the executable program code", "Computer programs and all associated documentation and configuration data", "The hardware plus the operating system", "The user interface and its design"],
+      "answer": 1,
+      "explain": "Software = programs + associated documentation + configuration data needed to make the programs work correctly. It is not just code.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-002",
+      "topic": "introduction-to-se",
+      "q": "The term \"software engineering\" was first coined at the:",
+      "options": ["IEEE conference of 1979", "NATO Software Engineering Conference of 1968", "ACM meeting of 1972", "Agile Manifesto meeting of 2001"],
+      "answer": 1,
+      "explain": "It was coined at the 1968 NATO Software Engineering Conference (Garmisch) in response to the 'software crisis'.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-003",
+      "topic": "introduction-to-se",
+      "q": "Which is NOT one of Sommerville's four essential attributes of good software?",
+      "options": ["Maintainability", "Dependability and security", "Lowest possible source-code line count", "Acceptability"],
+      "answer": 2,
+      "explain": "The four are maintainability, dependability & security, efficiency, and acceptability. Minimising lines of code is not a quality attribute.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-004",
+      "topic": "introduction-to-se",
+      "q": "A bespoke (customised) software product differs from a generic product in that:",
+      "options": ["It is always free to use", "Its specification is controlled by a specific customer who commissioned it", "It cannot be sold on the open market because it is illegal", "It contains no documentation"],
+      "answer": 1,
+      "explain": "Bespoke/customised products are commissioned by a specific customer who owns/controls the specification; generic products are sold to anyone and the developer controls the spec.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-005",
+      "topic": "crowdstrike-case-study",
+      "q": "The July 2024 CrowdStrike global outage was fundamentally caused by:",
+      "options": ["A sophisticated nation-state cyber-attack", "A faulty content/configuration update that crashed the Windows kernel", "A hardware defect in Intel CPUs", "An expired SSL certificate"],
+      "answer": 1,
+      "explain": "It was a quality/process failure: a defective channel-file update caused an out-of-bounds read in a kernel-level driver, producing BSODs worldwide. It was not a cyber-attack.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-006",
+      "topic": "crowdstrike-case-study",
+      "q": "Which deployment practice would most directly have limited the blast radius of the CrowdStrike update?",
+      "options": ["Writing more code comments", "Staged / canary rollout instead of pushing to all machines at once", "Using a faster programming language", "Increasing the marketing budget"],
+      "answer": 1,
+      "explain": "A staged/canary rollout releases to a small ring first and watches for problems before widening — containing the blast radius. The update instead went to everyone simultaneously.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-007",
+      "topic": "sdlc-models",
+      "q": "Which four fundamental activities are common to every software process?",
+      "options": ["Specification, development, validation, evolution", "Planning, coding, marketing, sales", "Design, coding, debugging, shipping", "Requirements, UML, Java, testing"],
+      "answer": 0,
+      "explain": "Every process includes specification (define what), development (design & implement), validation (check it), and evolution (change it).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-008",
+      "topic": "sdlc-models",
+      "q": "The waterfall model is most appropriate when:",
+      "options": ["Requirements change frequently and are poorly understood", "Requirements are stable and well-understood up front", "The customer wants to see working software every two weeks", "Risk must be re-assessed every iteration"],
+      "answer": 1,
+      "explain": "Waterfall is rigid and document-driven; it suits projects where requirements are stable and well-understood. It handles change poorly.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-009",
+      "topic": "sdlc-models",
+      "q": "In the V-model, the test level paired with the 'architectural/system design' phase is:",
+      "options": ["Unit testing", "Integration testing", "Acceptance testing", "Smoke testing"],
+      "answer": 1,
+      "explain": "The V-model pairs each build phase with a test level: requirements↔acceptance, system design↔system testing, architectural design↔integration testing, module design↔unit testing.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-010",
+      "topic": "sdlc-models",
+      "q": "The distinguishing feature of Boehm's Spiral model is:",
+      "options": ["It forbids any documentation", "Explicit, iterative risk assessment and resolution in every loop", "It delivers the entire system only at the very end", "It requires exactly four developers"],
+      "answer": 1,
+      "explain": "Each spiral loop has four quadrants, and the defining one is identifying & resolving risks. Risk is explicitly assessed and resolved throughout the process.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-011",
+      "topic": "sdlc-models",
+      "q": "The key difference between incremental and iterative development is:",
+      "options": ["They are identical terms", "Incremental delivers the system in usable slices; iterative builds a rough whole then refines it repeatedly", "Iterative never involves the customer", "Incremental has no testing"],
+      "answer": 1,
+      "explain": "Incremental = deliver complete slices of functionality over time; iterative = build a version of the whole then refine over passes. Agile is both.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-012",
+      "topic": "lifecycles-secdlc-4ps",
+      "q": "The Secure SDLC (SecDLC) is built around the principle of:",
+      "options": ["Adding security only as a final penetration test", "Shifting security left — building it into every phase", "Outsourcing all security to a third party", "Encrypting the source code"],
+      "answer": 1,
+      "explain": "The SecDLC weaves security into every phase (Investigation, Analysis, Design, Implementation, Maintenance) — 'shifting security left' so flaws are caught early.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-013",
+      "topic": "lifecycles-secdlc-4ps",
+      "q": "Pressman's '4 Ps' of software project management, in order, are:",
+      "options": ["Plan, Program, Process, Product", "People, Product, Process, Project", "People, Planning, Programming, Profit", "Product, Price, Place, Promotion"],
+      "answer": 1,
+      "explain": "People → Product → Process → Project. People are the most important asset; the others build on them. (Don't confuse with the marketing 4 Ps.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-014",
+      "topic": "lifecycles-secdlc-4ps",
+      "q": "Which of the 4 Ps does Pressman identify as the most important?",
+      "options": ["Process", "Product", "People", "Project"],
+      "answer": 2,
+      "explain": "People are the most important asset — software is built by people for people; staffing, skills and communication dominate success.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-015",
+      "topic": "agile-scrum",
+      "q": "Which is one of the four values of the Agile Manifesto?",
+      "options": ["Comprehensive documentation over working software", "Following a plan over responding to change", "Working software over comprehensive documentation", "Contract negotiation over customer collaboration"],
+      "answer": 2,
+      "explain": "The four values prefer the LEFT: individuals & interactions > processes/tools; working software > documentation; customer collaboration > contract negotiation; responding to change > following a plan.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-016",
+      "topic": "agile-scrum",
+      "q": "In Scrum, who is responsible for prioritising the Product Backlog?",
+      "options": ["The Scrum Master", "The Product Owner", "The Development Team", "The CEO"],
+      "answer": 1,
+      "explain": "The Product Owner owns and prioritises the Product Backlog and represents the customer/business — deciding what gets built and in what order.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-017",
+      "topic": "agile-scrum",
+      "q": "The Scrum Master is best described as a:",
+      "options": ["Boss who assigns tasks to developers", "Servant-leader / facilitator who removes impediments", "Customer representative who sets priorities", "QA tester"],
+      "answer": 1,
+      "explain": "The Scrum Master is a servant-leader/facilitator — coaching the team, removing impediments, and ensuring the process is followed. They do NOT assign work like a traditional manager.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-018",
+      "topic": "agile-scrum",
+      "q": "Which Scrum ceremony focuses on inspecting the TEAM and PROCESS (not the product)?",
+      "options": ["Sprint Review", "Sprint Retrospective", "Daily Scrum", "Sprint Planning"],
+      "answer": 1,
+      "explain": "The Sprint Retrospective inspects the team/process (what went well, what to improve). The Sprint Review inspects the product (demo the increment).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-019",
+      "topic": "user-stories-xp-lean",
+      "q": "The standard user-story template is:",
+      "options": ["Given <state>, When <event>, Then <result>", "As a <user>, I want <goal>, so that <benefit>", "Input → Process → Output", "Shall <do> within <time>"],
+      "answer": 1,
+      "explain": "'As a <type of user>, I want <some goal>, so that <reason/benefit>' captures who, what and why. (Given/When/Then is the format for acceptance criteria.)",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-020",
+      "topic": "user-stories-xp-lean",
+      "q": "In the INVEST criteria for a good user story, the 'I' and 'S' stand for:",
+      "options": ["Important and Strategic", "Independent and Small", "Integrated and Scalable", "Iterative and Stable"],
+      "answer": 1,
+      "explain": "INVEST = Independent, Negotiable, Valuable, Estimable, Small, Testable. 'I'=Independent, 'S'=Small (fits in one sprint).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-021",
+      "topic": "user-stories-xp-lean",
+      "q": "In Extreme Programming, writing a failing test BEFORE writing the code is called:",
+      "options": ["Pair programming", "Refactoring", "Test-Driven Development (TDD)", "Continuous integration"],
+      "answer": 2,
+      "explain": "TDD = write the (failing) test first, then write code until it passes. Refactoring improves structure without changing behaviour; pair programming is two devs at one machine.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-022",
+      "topic": "user-stories-xp-lean",
+      "q": "Refactoring is defined as:",
+      "options": ["Adding new features quickly", "Improving the internal structure of code without changing its external behaviour", "Rewriting the program in a new language", "Fixing a production bug"],
+      "answer": 1,
+      "explain": "Refactoring changes internal structure while preserving external behaviour. If behaviour changes, it is not refactoring.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-023",
+      "topic": "requirements-elicitation",
+      "q": "The four activities of the requirements engineering process are:",
+      "options": ["Elicitation, analysis & negotiation, specification, validation", "Plan, design, code, test", "Initiate, execute, monitor, close", "Identify, authenticate, authorise, audit"],
+      "answer": 0,
+      "explain": "RE = elicitation (discovery), analysis & negotiation, specification (documentation/SRS), and validation — often with requirements management as an ongoing fifth.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-024",
+      "topic": "requirements-elicitation",
+      "q": "Which elicitation technique is PASSIVE?",
+      "options": ["Structured interviews", "JAD workshops", "Ethnography / observation", "Brainstorming"],
+      "answer": 2,
+      "explain": "Ethnography/observation is passive — the analyst observes real work without steering it. Interviews, workshops and brainstorming are active (analyst-driven).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-025",
+      "topic": "requirements-elicitation",
+      "q": "User requirements differ from system requirements in that user requirements are:",
+      "options": ["More detailed and mathematical", "Abstract natural-language statements aimed at customers", "Always written in code", "Only about security"],
+      "answer": 1,
+      "explain": "User requirements are abstract natural-language statements for customers/users; system requirements are detailed, structured specifications for developers.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-026",
+      "topic": "functional-nonfunctional",
+      "q": "\"The system shall respond to any search query within 2 seconds\" is an example of a:",
+      "options": ["Functional requirement", "Non-functional (performance) requirement", "User story", "Use case"],
+      "answer": 1,
+      "explain": "It constrains HOW WELL the system performs (response time) rather than WHAT service it provides — a non-functional performance requirement.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-027",
+      "topic": "functional-nonfunctional",
+      "q": "In Sommerville's NFR taxonomy, a requirement that 'the software must be implemented in Java' is a(n):",
+      "options": ["Product requirement", "Organisational requirement", "External requirement", "Functional requirement"],
+      "answer": 1,
+      "explain": "A requirement derived from the developing organisation's policies/standards (e.g. mandated language/process) is an Organisational (development) requirement.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-028",
+      "topic": "functional-nonfunctional",
+      "q": "Why are non-functional requirements often considered more critical than functional ones?",
+      "options": ["They are easier to write", "A single failed NFR can make the entire system unusable even if all features work", "They never conflict with each other", "They do not need to be tested"],
+      "answer": 1,
+      "explain": "NFRs typically apply to the system as a whole; failing one (e.g. security, performance) can render the whole system unusable even when every feature is present.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-029",
+      "topic": "security-requirements",
+      "q": "The CIA triad in security stands for:",
+      "options": ["Control, Identity, Access", "Confidentiality, Integrity, Availability", "Cipher, Integrity, Authentication", "Confidentiality, Identification, Authorisation"],
+      "answer": 1,
+      "explain": "CIA = Confidentiality (disclosure only to authorised), Integrity (no unauthorised modification), Availability (accessible when needed).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-030",
+      "topic": "security-requirements",
+      "q": "When writing security requirements, the 'SMART' criteria require each to be:",
+      "options": ["Specific, Measurable, Achievable, Relevant, Time-bound", "Simple, Modular, Agile, Reliable, Tested", "Secure, Maintainable, Available, Robust, Trusted", "Strategic, Manageable, Auditable, Repeatable, Traceable"],
+      "answer": 0,
+      "explain": "SMART = Specific, Measurable, Achievable, Relevant, Time-bound. (INVEST is for user stories — don't swap them.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-031",
+      "topic": "srs-rtm-change",
+      "q": "The SRS document is best described as:",
+      "options": ["A design document describing how to code the system", "The agreed contract stating what the team should implement", "A marketing brochure", "The test report"],
+      "answer": 1,
+      "explain": "The SRS is the official agreed statement of WHAT to implement (user + system requirements) — the contract between customer and developer. It says what, not how.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-032",
+      "topic": "srs-rtm-change",
+      "q": "The primary purpose of a Requirements Traceability Matrix (RTM) is to:",
+      "options": ["Schedule developer holidays", "Map each requirement forward to design/code/tests (and back) to ensure coverage", "Store user passwords", "Replace the SRS"],
+      "answer": 1,
+      "explain": "The RTM traces every requirement to its design, code and test cases (forward) and traces artifacts back to requirements (backward) — proving coverage and enabling change-impact analysis.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-033",
+      "topic": "uml-use-cases",
+      "q": "A UML class diagram is classified as a:",
+      "options": ["Behavioural diagram", "Structural diagram", "Interaction diagram", "Activity diagram"],
+      "answer": 1,
+      "explain": "Class, object, component and deployment diagrams are structural (static). Use-case, sequence, activity and state diagrams are behavioural (dynamic).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-034",
+      "topic": "uml-use-cases",
+      "q": "In a use-case diagram, the «include» relationship means the included use case is:",
+      "options": ["Optionally executed under certain conditions", "Always executed as part of the base use case", "Never executed", "Executed by a different actor"],
+      "answer": 1,
+      "explain": "«include» = mandatory/always (reusable common behaviour). «extend» = optional/conditional. Mnemonic: include='always', extend='sometimes'.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-035",
+      "topic": "uml-use-cases",
+      "q": "In use-case modelling, an 'actor' is:",
+      "options": ["Always a single human user", "A role external to the system — a user or another system — that interacts with it", "A class inside the system", "The database"],
+      "answer": 1,
+      "explain": "An actor is a ROLE external to the system; it can be a human role or another system (e.g. a payment gateway). One person may play several actors.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-036",
+      "topic": "personas-discovery",
+      "q": "A persona in requirements engineering is:",
+      "options": ["A real named customer who signs the contract", "A fictional but research-based character representing a key user type", "A use-case actor with a UML stereotype", "A test account"],
+      "answer": 1,
+      "explain": "A persona is a fictional, realistic archetype of a user type (with goals, frustrations, context) used to keep design user-centred and fight the 'elastic user' problem.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-037",
+      "topic": "personas-discovery",
+      "q": "Ethnography is especially good at uncovering:",
+      "options": ["Performance benchmarks", "Tacit/implicit requirements that users never think to state", "The exact memory budget", "Legal requirements"],
+      "answer": 1,
+      "explain": "By observing real work in context, ethnography surfaces tacit 'how we really do it' knowledge that interviews miss — e.g. the distrust of online payment that drove Cash-on-Delivery.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-038",
+      "topic": "testing-vv-terminology",
+      "q": "Boehm's distinction: 'Are we building the product right?' refers to ___, and 'Are we building the right product?' refers to ___.",
+      "options": ["Validation; Verification", "Verification; Validation", "Testing; Debugging", "Unit testing; System testing"],
+      "answer": 1,
+      "explain": "Verification = building the product right (conforms to spec). Validation = building the right product (meets user needs).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-039",
+      "topic": "testing-vv-terminology",
+      "q": "Order the terminology chain correctly:",
+      "options": ["Failure → defect → error", "Error (human mistake) → defect/fault in code → failure at runtime", "Defect → error → failure", "Bug → error → fault"],
+      "answer": 1,
+      "explain": "A human commits an ERROR, which introduces a DEFECT/FAULT (bug) in the code, which when executed may cause a FAILURE. A defect does not always cause a failure.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-040",
+      "topic": "testing-vv-terminology",
+      "q": "Testing the interfaces between combined modules is called:",
+      "options": ["Unit testing", "Integration testing", "System testing", "Acceptance testing"],
+      "answer": 1,
+      "explain": "Integration testing checks the interactions/interfaces between modules. Unit = one component; system = the whole integrated system; acceptance = against customer needs.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-041",
+      "topic": "testing-vv-terminology",
+      "q": "Black-box testing designs test cases based on:",
+      "options": ["The internal code structure and paths", "The specification (inputs and expected outputs), without seeing the code", "The compiler warnings", "The git history"],
+      "answer": 1,
+      "explain": "Black-box (functional) testing uses the spec — inputs→expected outputs — without knowledge of the code. White-box uses internal structure (e.g. branch coverage).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-042",
+      "topic": "test-cases-planning",
+      "q": "Without which field can a test case not distinguish pass from fail?",
+      "options": ["Test Case ID", "Expected result (the oracle)", "Author name", "Priority"],
+      "answer": 1,
+      "explain": "The predefined expected result (oracle) is what 'actual result' is compared against. Without it you cannot judge pass/fail.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-043",
+      "topic": "test-cases-planning",
+      "q": "Defect density is calculated as:",
+      "options": ["Number of testers ÷ number of modules", "Number of defects ÷ size (e.g. per KLOC or function point)", "Failures ÷ errors", "Lines of code ÷ defects"],
+      "answer": 1,
+      "explain": "Defect density = defects / size (per 1000 lines of code, KLOC, or per function point). Normalising by size lets you compare quality across modules/releases.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-044",
+      "topic": "test-cases-planning",
+      "q": "Achieving 100% statement coverage guarantees that:",
+      "options": ["The program is bug-free", "Every statement was executed at least once — but outputs may still be wrong and code may be missing", "All requirements are met", "No further testing is needed"],
+      "answer": 1,
+      "explain": "Coverage tells you what code ran, not whether outputs were correct or whether required code is missing. 100% statement coverage ≠ bug-free; branch coverage is stronger.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "se-u1-045",
+      "topic": "test-cases-planning",
+      "q": "Penetration testing and fuzzing are activities found in:",
+      "options": ["Requirements elicitation", "Security validation planning", "Sprint retrospectives", "UML modelling"],
+      "answer": 1,
+      "explain": "Security validation adds misuse cases, penetration testing, vulnerability scanning and fuzzing on top of normal V&V — asking 'can it be made to do what it shouldn't?'.",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

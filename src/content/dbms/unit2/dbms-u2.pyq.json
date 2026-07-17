@@ -1,0 +1,106 @@
+{
+  "subject": "dbms",
+  "unit": 2,
+  "title": "Unit 2 — Past-Year Questions (PES ESA)",
+  "items": [
+    {
+      "id": "dbms-u2-pyq-01",
+      "topic": "set-operations",
+      "year": "ESA Dec 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain any **four set operators in SQL** with examples.",
+      "answer": "**UNION** — rows in A **or** B, duplicates removed: `(SELECT city FROM supplier) UNION (SELECT city FROM customer)`. **UNION ALL** — keeps duplicates. **INTERSECT** — rows in **both**. **EXCEPT** (MINUS) — rows in **A but not B**: `(SELECT sid FROM Reserves) EXCEPT (SELECT sid FROM Sailors WHERE rating<5)`. All need **union-compatible** queries (same column count & compatible types)."
+    },
+    {
+      "id": "dbms-u2-pyq-02",
+      "topic": "grouping-having",
+      "year": "ESA Dec 2023",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "Explain with examples: (i) ORDER BY (ii) GROUP BY and HAVING (iii) SELECT (iv) Project.",
+      "answer": "**(i) ORDER BY** sorts the result (`ORDER BY salary DESC`; ASC default). **(ii) GROUP BY** partitions rows for per-group aggregates; **HAVING** filters those groups: `SELECT dno, AVG(salary) FROM emp GROUP BY dno HAVING AVG(salary)>40000`. **(iii) SELECT** with WHERE chooses **rows** (≈ σ). **(iv) Project** (∏) chooses **columns** — the SELECT list, e.g. `SELECT name, salary`. WHERE = select rows; SELECT-list = project columns."
+    },
+    {
+      "id": "dbms-u2-pyq-03",
+      "topic": "join-expressions",
+      "year": "ESA Dec 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Illustrate any **three types of Joins in SQL** with examples.",
+      "answer": "**Inner join** — matching rows only: `SELECT * FROM emp JOIN dept ON emp.dno=dept.dno`. **Left outer join** — all left rows + matches (NULLs for unmatched right): `emp LEFT JOIN dept ON ...`. **Right outer join** — all right rows + matches. (Full outer = both sides; MySQL emulates it via `LEFT ... UNION RIGHT ...`.)"
+    },
+    {
+      "id": "dbms-u2-pyq-04",
+      "topic": "aggregate-functions",
+      "year": "ESA Jul 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "**Warehouse(code,location,capacity)**, **Boxes(code,contents,value,warehouse_code)**. SQL: (i) warehouses where **average box value > 150**; (ii) boxes with value > 20000; (iii) codes of boxes in **Chicago** using a RIGHT JOIN.",
+      "answer": "**(i)** `SELECT warehouse_code FROM Boxes GROUP BY warehouse_code HAVING AVG(value) > 150;` **(ii)** `SELECT * FROM Boxes WHERE value > 20000;` **(iii)** `SELECT b.code FROM Warehouse w RIGHT JOIN Boxes b ON b.warehouse_code = w.code WHERE w.location = 'Chicago';` (HAVING filters groups by an aggregate; WHERE filters rows.)"
+    },
+    {
+      "id": "dbms-u2-pyq-05",
+      "topic": "nested-subqueries",
+      "year": "ESA Jan 2024",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "**Sailors(Sid,Sname,Rating,Age)**, **Boat(Bid,Bname,Color)**, **Reserves(Sid,Bid,Day)**. SQL: (A) sailors who reserved ≥1 boat; (B) colours of boats reserved by **Lubber**; (C) sailors who reserved **≥2** boats; (D) ages of sailors whose name begins with B, ends with H, ≥4 chars.",
+      "answer": "**(A)** `SELECT DISTINCT s.Sname FROM Sailors s JOIN Reserves r ON s.Sid=r.Sid;` **(B)** `SELECT DISTINCT b.Color FROM Boat b JOIN Reserves r ON b.Bid=r.Bid JOIN Sailors s ON r.Sid=s.Sid WHERE s.Sname='Lubber';` **(C)** `SELECT s.Sname FROM Sailors s JOIN Reserves r ON s.Sid=r.Sid GROUP BY s.Sid,s.Sname HAVING COUNT(DISTINCT r.Bid)>=2;` **(D)** `SELECT Age FROM Sailors WHERE Sname LIKE 'B__%H';` (`B__%H` = B + ≥2 chars + ending H → ≥4 chars)."
+    },
+    {
+      "id": "dbms-u2-pyq-06",
+      "topic": "join-expressions",
+      "year": "ESA Jan 2024",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "**Employee(Emp_no,Name,Emp_city)**, **Company(Emp_no,Company_name,Salary)**. SQL: (i) employee name + company name; (ii) name, city, company, salary where salary > 10000; (iii) names of employees in 'XYZ'.",
+      "answer": "**(i)** `SELECT e.Name, c.Company_name FROM Employee e JOIN Company c ON e.Emp_no=c.Emp_no;` **(ii)** `SELECT e.Name, e.Emp_city, c.Company_name, c.Salary FROM Employee e JOIN Company c ON e.Emp_no=c.Emp_no WHERE c.Salary>10000;` **(iii)** `SELECT e.Name FROM Employee e JOIN Company c ON e.Emp_no=c.Emp_no WHERE c.Company_name='XYZ';`"
+    },
+    {
+      "id": "dbms-u2-pyq-07",
+      "topic": "views",
+      "year": "ESA Jul 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What are **Views (virtual tables)** in SQL? Specify the different ways to handle **view materialization**.",
+      "answer": "A **view** is a **virtual table** defined by a stored query; it holds no data — rows are derived from base tables on use (for complexity-hiding, security, custom interfaces). **Materialization** approaches: ① **query modification** — rewrite the view query against base tables on each access (no storage, always fresh, recomputed every time); ② **materialized view** — physically store the result and **refresh** it (immediate / deferred / periodic) when base tables change. Trade-off: freshness vs recomputation cost."
+    },
+    {
+      "id": "dbms-u2-pyq-08",
+      "topic": "triggers",
+      "year": "ESA Dec 2023",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What are **Triggers** and **stored procedures** in SQL? Explain each with examples.",
+      "answer": "A **trigger** runs **automatically** on an INSERT/UPDATE/DELETE (Event-Condition-Action): `CREATE TRIGGER chk BEFORE INSERT ON Marks FOR EACH ROW BEGIN IF NEW.marks>100 THEN SIGNAL SQLSTATE '45000'; END IF; END;`. A **stored procedure** is a named pre-compiled block **explicitly called** with IN/OUT/INOUT params: `CREATE PROCEDURE getMax(OUT m INT) BEGIN SELECT MAX(marks) INTO m FROM Marks; END;` then `CALL getMax(@x);`. Trigger = automatic on an event; procedure = invoked on demand."
+    },
+    {
+      "id": "dbms-u2-pyq-09",
+      "topic": "users-roles-privileges",
+      "year": "ESA Jul 2023",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "Give SQL commands: (1) all permission to 'john' on table employee; (2) grant INSERT to all users on Department; (3) revoke INSERT from john on department; (4) eliminate all privileges from john on view works_on; (5) undo a transaction's instructions.",
+      "answer": "**(1)** `GRANT ALL PRIVILEGES ON employee TO 'john'@'localhost';` **(2)** `GRANT INSERT ON Department TO PUBLIC;` **(3)** `REVOKE INSERT ON department FROM 'john'@'localhost';` **(4)** `REVOKE ALL PRIVILEGES ON works_on FROM 'john'@'localhost';` **(5)** `ROLLBACK;`"
+    },
+    {
+      "id": "dbms-u2-pyq-10",
+      "topic": "aggregate-functions",
+      "year": "ESA Jul 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Deliberate any **three Aggregate functions in SQL** with suitable queries.",
+      "answer": "**COUNT** — `SELECT COUNT(*) FROM emp;` (all rows) vs `COUNT(salary)` (non-null values). **SUM/AVG** — `SELECT dno, SUM(salary), AVG(salary) FROM emp GROUP BY dno;`. **MAX/MIN** — `SELECT MAX(salary) FROM emp;`. Aggregates except `COUNT(*)` **ignore NULLs**, and non-aggregated SELECT columns must be in GROUP BY."
+    },
+    {
+      "id": "dbms-u2-pyq-11",
+      "topic": "users-roles-privileges",
+      "year": "ESA Jan 2024",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Give SQL commands: (1) create user 'john' password 'pesu'; (2) all permission to john on employee; (3) grant INSERT to all users on Department; (4) start a transaction; (5) eliminate all privileges from john on view works_on; (6) persistently save a transaction.",
+      "answer": "**(1)** `CREATE USER 'john'@'localhost' IDENTIFIED BY 'pesu';` **(2)** `GRANT ALL PRIVILEGES ON employee TO 'john'@'localhost';` **(3)** `GRANT INSERT ON Department TO PUBLIC;` **(4)** `START TRANSACTION;` **(5)** `REVOKE ALL PRIVILEGES ON works_on FROM 'john'@'localhost';` **(6)** `COMMIT;`"
+    }
+  ]
+}

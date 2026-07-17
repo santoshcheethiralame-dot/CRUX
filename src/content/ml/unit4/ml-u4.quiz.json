@@ -1,0 +1,357 @@
+{
+  "subject": "ml",
+  "unit": 4,
+  "title": "Unit 4 — MCQ Quiz",
+  "items": [
+    {
+      "id": "ml-u4-001",
+      "topic": "clustering-intro",
+      "q": "The goal of clustering is to:",
+      "options": ["Maximize intra-cluster distance, minimize inter-cluster distance", "Minimize intra-cluster distance, maximize inter-cluster distance", "Minimize both", "Maximize both"],
+      "answer": 1,
+      "explain": "Good clusters are tight (intra-cluster distance minimized) and well-separated (inter-cluster distance maximized).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-002",
+      "topic": "clustering-intro",
+      "q": "Clustering is a form of:",
+      "options": ["Supervised learning", "Unsupervised learning", "Reinforcement learning", "Semi-supervised regression"],
+      "answer": 1,
+      "explain": "Clustering finds structure in unlabelled data — unsupervised learning.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-003",
+      "topic": "hierarchical",
+      "q": "A key advantage of hierarchical clustering over K-means is that it:",
+      "options": ["Is always faster", "Does not require specifying the number of clusters in advance (cut the dendrogram)", "Never has outlier problems", "Guarantees the global optimum"],
+      "answer": 1,
+      "explain": "Hierarchical clustering outputs a dendrogram; you cut it at any level to get any number of clusters — no need to pre-set k.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-004",
+      "topic": "hierarchical",
+      "q": "In single-link (MIN) agglomerative clustering, the distance between two clusters is the:",
+      "options": ["distance between centroids", "distance of the closest pair of points", "distance of the farthest pair of points", "average of all pairwise distances"],
+      "answer": 1,
+      "explain": "Single link = MIN = the closest pair. (Complete link = MAX = farthest pair; group average = mean of all pairs.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-005",
+      "topic": "hierarchical",
+      "q": "For clusters C1={a,b}, C2={c,d,e} with pairwise distances {3,4,5,2,3,4}, the complete-link distance is:",
+      "options": ["2", "3.5", "5", "21"],
+      "answer": 2,
+      "explain": "Complete link = max{3,4,5,2,3,4} = 5. (Single link would be min = 2.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-006",
+      "topic": "hierarchical",
+      "q": "Agglomerative clustering is ___ while divisive clustering is ___.",
+      "options": ["top-down; bottom-up", "bottom-up; top-down", "both top-down", "both bottom-up"],
+      "answer": 1,
+      "explain": "Agglomerative = bottom-up (merge from singletons); divisive = top-down (split from one big cluster).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-007",
+      "topic": "kmeans",
+      "q": "The two alternating steps of K-means are:",
+      "options": ["Split and merge", "Assignment (to nearest centroid) and Update (recompute centroids as means)", "Forward and backward pass", "Encode and decode"],
+      "answer": 1,
+      "explain": "Assign each point to its nearest centroid, then recompute each centroid as the mean of its points; repeat to convergence.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-008",
+      "topic": "kmeans",
+      "q": "The time complexity of K-means is:",
+      "options": ["$O(n^2)$", "$O(n \\cdot K \\cdot I \\cdot d)$", "$O(2^n)$", "$O(K^n)$"],
+      "answer": 1,
+      "explain": "$O(n K I d)$ — n points, K clusters, I iterations, d attributes.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-009",
+      "topic": "kmeans",
+      "q": "Why do K-means results vary from run to run?",
+      "options": ["The data changes", "Initial centroids are chosen randomly, and it converges to a local optimum", "The distance metric is random", "K changes automatically"],
+      "answer": 1,
+      "explain": "Random initial centroids + convergence to a local (not global) optimum → different runs can give different clusterings.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-010",
+      "topic": "kmeans-evaluation",
+      "q": "Why can't you choose K by simply minimizing SSE?",
+      "options": ["SSE is hard to compute", "SSE always decreases as K increases (reaching 0 at K=n)", "SSE ignores the centroids", "SSE only works for text data"],
+      "answer": 1,
+      "explain": "More clusters always reduce SSE, so minimizing it favours K=n. Use the elbow method instead.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-011",
+      "topic": "kmeans-evaluation",
+      "q": "Bisecting K-means works by repeatedly:",
+      "options": ["merging the two closest clusters", "splitting the cluster with the largest SSE using K-means (K=2)", "removing outliers", "increasing the learning rate"],
+      "answer": 1,
+      "explain": "It starts with one cluster and repeatedly splits the highest-SSE cluster into two (via K-means, K=2) until #clusters = K — less sensitive to initialization.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-012",
+      "topic": "kmeans-evaluation",
+      "q": "For document/text data, the preferred proximity measure in K-means is:",
+      "options": ["Euclidean distance", "Cosine similarity", "Manhattan distance", "Hamming distance"],
+      "answer": 1,
+      "explain": "Text uses cosine similarity (cohesion = similarity to the cluster centroid); Euclidean is a poor measure for sparse high-dim word vectors.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-013",
+      "topic": "kmeans-em",
+      "q": "K-means can be viewed as a special case of EM in which:",
+      "options": ["assignments are soft (probabilistic)", "assignments are hard (each point to one cluster) with equal spherical covariances", "there are no clusters", "the M-step is skipped"],
+      "answer": 1,
+      "explain": "K-means = hard-assignment EM for a Gaussian mixture with equal spherical covariances and equal weights; assignment≈E-step, update≈M-step.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-014",
+      "topic": "pca",
+      "q": "The first principal component is the direction that:",
+      "options": ["minimizes variance", "maximizes the variance of the projected data", "is parallel to the mean", "has the smallest eigenvalue"],
+      "answer": 1,
+      "explain": "PC1 is the direction of maximum variance; PC2 maximizes variance among directions orthogonal to PC1, etc.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-015",
+      "topic": "pca",
+      "q": "In PCA, the eigenvectors and eigenvalues of the covariance matrix represent, respectively:",
+      "options": ["variance and direction", "the principal components (directions) and the variance explained (importance)", "the mean and the std", "the data and the labels"],
+      "answer": 1,
+      "explain": "Eigenvectors = principal components (directions); eigenvalues = variance explained (rank components by descending eigenvalue).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-016",
+      "topic": "pca",
+      "q": "Principal components are always:",
+      "options": ["correlated with each other", "orthogonal (uncorrelated) to each other", "equal in variance", "the original features unchanged"],
+      "answer": 1,
+      "explain": "PCA uses an orthogonal transformation → the components are mutually orthogonal and uncorrelated.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-017",
+      "topic": "svd",
+      "q": "The Singular Value Decomposition factorizes a matrix A as:",
+      "options": ["$A = U + \\Sigma + V$", "$A = U \\Sigma V^T$", "$A = U^T \\Sigma V$", "$A = \\Sigma U V$"],
+      "answer": 1,
+      "explain": "$A = U\\Sigma V^T$ — U (left singular vectors), Σ (singular values), Vᵀ (right singular vectors). Works for non-square matrices.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-018",
+      "topic": "svd",
+      "q": "In SVD, the singular values are obtained from the eigenvalues of $A^TA$ as:",
+      "options": ["$\\sigma_i = \\lambda_i$", "$\\sigma_i = \\sqrt{\\lambda_i}$", "$\\sigma_i = \\lambda_i^2$", "$\\sigma_i = 1/\\lambda_i$"],
+      "answer": 1,
+      "explain": "$\\sigma_i = \\sqrt{\\lambda_i}$ where $\\lambda_i$ are eigenvalues of $A^TA$; the eigenvectors of $A^TA$ are the right singular vectors V.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-019",
+      "topic": "intro-deep-learning",
+      "q": "The main distinction of deep learning vs classical ML is that DL:",
+      "options": ["needs no data", "automatically learns a hierarchy of features (no manual feature engineering)", "is always interpretable", "uses no neural networks"],
+      "answer": 1,
+      "explain": "DL learns features automatically across many layers (a hierarchy of concepts), removing the need for hand-crafted features.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-020",
+      "topic": "cnn",
+      "q": "Why is convolution preferred over fully-connected layers for images?",
+      "options": ["It uses more parameters", "It is sparse (local patches) with weight sharing → far fewer parameters", "It removes all spatial info", "It only works on grayscale"],
+      "answer": 1,
+      "explain": "A dense layer on a 224×224×3 image needs >1M weights; convolution connects only local patches and shares filter weights → sparse and efficient.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-021",
+      "topic": "cnn",
+      "q": "For an n×n input, f×f filter, padding p, stride s, the output spatial size is:",
+      "options": ["$n - f + 1$", "$\\frac{n - f + 2p}{s} + 1$", "$n \\cdot f$", "$\\frac{n}{f}$"],
+      "answer": 1,
+      "explain": "$O = \\frac{n - f + 2p}{s} + 1$. Without padding the image shrinks each convolution.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-022",
+      "topic": "cnn",
+      "q": "The number of parameters in a conv layer with k filters of size f×f over a c-channel input is:",
+      "options": ["$f \\cdot f$", "$f \\cdot f \\cdot c \\cdot k$", "$n \\cdot n \\cdot c$", "$k$"],
+      "answer": 1,
+      "explain": "Each filter is f·f·c weights; with k filters → f·f·c·k (plus k biases).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-023",
+      "topic": "cnn",
+      "q": "Max pooling:",
+      "options": ["has learnable weights", "takes the maximum value of each region to down-sample (no learnable parameters)", "increases the feature map size", "is a type of activation function"],
+      "answer": 1,
+      "explain": "Pooling down-samples feature maps by taking a representative value (max or average) per region; it has no learnable parameters.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-024",
+      "topic": "cnn-examples",
+      "q": "AlexNet input is 227×227×3; Conv1 uses 11×11 filters, stride 4, 96 filters. The output is:",
+      "options": ["55 × 55 × 96", "27 × 27 × 96", "227 × 227 × 96", "96 × 96 × 3"],
+      "answer": 0,
+      "explain": "$(227-11)/4 + 1 = 55$; depth = #filters = 96 → 55×55×96.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-025",
+      "topic": "rl-foundations",
+      "q": "A Markov state is one where:",
+      "options": ["the future depends on the entire history", "the future is independent of the past given the present (sufficient statistic)", "there are no actions", "rewards are always zero"],
+      "answer": 1,
+      "explain": "A Markov (information) state captures all useful history — the future depends only on the present state.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-026",
+      "topic": "rl-foundations",
+      "q": "A fully-observable RL environment is formalized as a/an:",
+      "options": ["HMM", "MDP (S, A, P, R, γ)", "CNN", "GMM"],
+      "answer": 1,
+      "explain": "Full observability (O_t = S_t) → a Markov Decision Process ⟨S, A, P, R, γ⟩. Partial observability → POMDP.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-027",
+      "topic": "rl-value-q",
+      "q": "The discount factor γ in the return $G_t = \\sum \\gamma^k R_{t+k+1}$ controls:",
+      "options": ["the learning rate", "how much future rewards are weighted (γ→0 myopic, γ→1 far-sighted)", "the number of states", "exploration probability"],
+      "answer": 1,
+      "explain": "γ ∈ [0,1] weights future rewards: small γ = myopic; large γ = far-sighted. It also keeps the infinite sum finite.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-028",
+      "topic": "rl-value-q",
+      "q": "The Q-learning update rule is $Q(s,a) \\leftarrow Q(s,a) + \\alpha[\\,?\\,]$. The bracket is:",
+      "options": ["$Q(s,a)$", "$r + \\gamma \\max_{a'} Q(s',a') - Q(s,a)$", "$r - \\gamma Q(s,a)$", "$\\max_a Q(s,a)$"],
+      "answer": 1,
+      "explain": "The bracket is the TD error: target $r+\\gamma\\max_{a'}Q(s',a')$ minus current estimate $Q(s,a)$.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-029",
+      "topic": "rl-value-q",
+      "q": "The exploration–exploitation trade-off means:",
+      "options": ["always pick the best-known action", "always pick a random action", "balance trying new actions (explore) against using best-known actions (exploit)", "ignore rewards"],
+      "answer": 2,
+      "explain": "Exploitation maximizes immediate reward (best-known action); exploration gathers info (new actions). RL must balance the two.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-030",
+      "topic": "transformers",
+      "q": "The scaled dot-product self-attention is computed as:",
+      "options": ["$QK^TV$", "$\\text{softmax}(QK^T/\\sqrt{d_k})\\,V$", "$\\text{softmax}(Q+K+V)$", "$Q \\cdot V^T$"],
+      "answer": 1,
+      "explain": "$\\text{Attention}(Q,K,V)=\\text{softmax}(QK^T/\\sqrt{d_k})V$ — scores from Q·Kᵀ, scaled by √dₖ, softmaxed, then weighting V.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-031",
+      "topic": "transformers",
+      "q": "Why do Transformers need positional encoding?",
+      "options": ["To reduce parameters", "Because they process tokens in parallel and otherwise have no sense of word order", "To normalize gradients", "To mask future tokens"],
+      "answer": 1,
+      "explain": "Unlike RNNs, Transformers process all tokens in parallel, so order info must be injected via positional encodings added to the embeddings.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-032",
+      "topic": "transformers",
+      "q": "Masked (look-ahead) attention in the decoder exists to:",
+      "options": ["speed up training", "prevent each position from attending to future tokens (autoregressive generation)", "reduce vocabulary size", "add positional info"],
+      "answer": 1,
+      "explain": "The decoder generates one token at a time; a look-ahead mask adds −∞ to future positions so each word attends only to itself and earlier words.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-033",
+      "topic": "gpt",
+      "q": "Which advance distinguishes GPT-3.5 (ChatGPT) from GPT-3?",
+      "options": ["First multimodal model", "Instruction-tuning + RLHF for human-aligned dialogue", "First Transformer", "Smallest model"],
+      "answer": 1,
+      "explain": "GPT-3.5 added instruction-tuning and RLHF (Reinforcement Learning from Human Feedback) → aligned conversational ability.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-034",
+      "topic": "llm",
+      "q": "Retrieval-Augmented Generation (RAG) improves an LLM by:",
+      "options": ["retraining all weights", "retrieving relevant external documents and adding them to the input before generation", "removing the Transformer", "shrinking the vocabulary"],
+      "answer": 1,
+      "explain": "RAG retrieves relevant docs from a knowledge source and conditions generation on them — overcoming the knowledge cutoff and improving factual accuracy, without changing weights.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u4-035",
+      "topic": "llm",
+      "q": "Which technique actually updates the model's weights?",
+      "options": ["Prompt engineering", "RAG", "Fine-tuning (incl. LoRA / QLoRA)", "Zero-shot prompting"],
+      "answer": 2,
+      "explain": "Fine-tuning trains the model further on a curated dataset (updating weights). Prompting and RAG change only the input, not the weights.",
+      "difficulty": "easy",
+      "source": "slide"
+    }
+  ]
+}
