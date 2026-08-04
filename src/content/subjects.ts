@@ -25,7 +25,7 @@ export const SUBJECTS: SubjectMeta[] = [
   {
     id: 'ml',
     name: 'Machine Learning',
-    code: 'CS352A',
+    code: 'UE24CS352A',
     color: '#818cf8',
     icon: 'ML',
     description:
@@ -35,7 +35,7 @@ export const SUBJECTS: SubjectMeta[] = [
         unit: 1,
         title: 'Introduction, Performance Metrics, Decision Trees & KNN',
         subtitle:
-          'ML models · concept learning · Find-S · version space · decision trees (ID3) · overfitting · logistic regression · KNN · bias–variance · metrics (ROC/AUC)',
+          'P-T-E & well-posed problems · supervised/unsupervised/RL · generative vs discriminative · concept, hypothesis & version space · Find-S · decision trees & ID3 (entropy, gain) · inductive bias · overfitting & pruning · continuous/missing/costly attributes · bias–variance · logistic regression · eager vs lazy · KNN & weighted KNN · curse of dimensionality · confusion matrix & metrics · ROC/AUC',
       },
       { unit: 2, title: 'ANN, SVM, Boosting', subtitle: 'Perceptrons · backprop · activations · optimizers · SVM · kernels · gradient boost · random forest' },
       { unit: 3, title: 'Bayesian Learning, HMM', subtitle: 'Bayes theorem · MLE · Bayes optimal · Naïve Bayes · EM & GMM · Hidden Markov Models' },

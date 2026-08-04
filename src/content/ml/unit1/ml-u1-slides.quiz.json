@@ -1,0 +1,1032 @@
+{
+  "subject": "ml",
+  "unit": 1,
+  "title": "Unit 1 — Slide-deck MCQs (deep pass)",
+  "items": [
+    {
+      "id": "ml-u1-sl-01",
+      "topic": "introduction",
+      "q": "We feed a learning algorithm a lot of historical weather data and have it learn to predict weather. In this setting, what is **T**?",
+      "options": [
+        "The process of the algorithm examining a large amount of historical weather data",
+        "The probability of it correctly predicting a future date's weather",
+        "The weather prediction task",
+        "None of these"
+      ],
+      "answer": 2,
+      "explain": "**T is the task** — weather prediction. Examining the historical data is the **experience E**; the probability of correct prediction is the **performance measure P**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-02",
+      "topic": "introduction",
+      "q": "For the credit-card fraud problem, what makes the performance measure P unusual?",
+      "options": [
+        "It is measured on the training set rather than the test set",
+        "It applies a **higher penalty when fraud is labelled as not-fraud**",
+        "It is a probability rather than a fraction",
+        "It cannot be computed until the model is deployed"
+      ],
+      "answer": 1,
+      "explain": "The cost is **asymmetric**: a missed fraud (false negative) is far more expensive than a false alarm. This is the same idea that later motivates optimising **recall** and choosing an ROC operating point.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-03",
+      "topic": "introduction",
+      "q": "Which subset of the data is used to **compare models and tune hyper-parameters**?",
+      "options": ["Training set", "Validation set", "Test set", "The full dataset"],
+      "answer": 1,
+      "explain": "Train = **learn** parameters. Validation = **compare/select**. Test = **one unbiased evaluation** at the very end. Tuning on the test set makes its estimate optimistically biased.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-04",
+      "topic": "types-of-ml",
+      "q": "You want to predict the **number of Company-XYZ shares that will be traded tomorrow**. This is:",
+      "options": ["Classification", "Regression", "Clustering", "Association"],
+      "answer": 1,
+      "explain": "The target is a **continuous, ordered quantity** → regression. The fact that share counts are whole numbers doesn't make it categorical.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-05",
+      "topic": "types-of-ml",
+      "q": "Which of the following would you apply **supervised** learning to? (select all that apply)",
+      "options": [
+        "Given genetic (DNA) data from a person, predict the odds of them developing diabetes over the next 10 years",
+        "Examine an audio clip and classify whether or not there are vocals in it",
+        "Given data on how 1000 patients respond to a drug, discover whether there are different *types* of patients",
+        "Group news articles into topics that were not specified in advance"
+      ],
+      "answer": [0, 1],
+      "explain": "(a) and (b) have **labels** (diabetes outcome, vocals present). (c) and (d) ask you to *discover* groups nobody defined → **unsupervised clustering**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-06",
+      "topic": "types-of-ml",
+      "q": "In the slides' three-box diagram, which paradigm has a **critic that supplies a reinforcement signal**?",
+      "options": ["Supervised learning", "Unsupervised learning", "Reinforcement learning", "Semi-supervised learning"],
+      "answer": 2,
+      "explain": "Supervised learning has a critic too — but it supplies the **correct answer**. RL's critic supplies only a **reward or punishment**, never the right action.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-07",
+      "topic": "types-of-ml",
+      "q": "Which learning paradigm **pre-trains on unlabelled data using a *pretext task*** and then transfers to a labelled target task?",
+      "options": ["Semi-supervised learning", "Self-supervised learning", "Reinforcement learning", "Association rule learning"],
+      "answer": 1,
+      "explain": "**Self-supervised**: the pretext task's labels are generated automatically from the data itself. **Semi-supervised** is different — it uses data that is *partially* labelled.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-08",
+      "topic": "types-of-ml",
+      "q": "In the RL comparison table, the 'type of problems' entry for reinforcement learning is:",
+      "options": ["Regression and classification", "Association and clustering", "Exploitation or exploration", "Density estimation"],
+      "answer": 2,
+      "explain": "The **exploration–exploitation dilemma**: the agent must try new states to learn, while also maximising reward using what it already knows. Pacman illustrates it in the deck.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-09",
+      "topic": "generative-vs-discriminative",
+      "q": "A **generative** model learns which distribution?",
+      "options": ["$p(y \\mid x)$", "$p(x \\mid y)$ only", "The joint $p(x, y)$", "$p(x)$ only"],
+      "answer": 2,
+      "explain": "Generative → the **joint** $p(x,y)$, which can be converted to $p(y\\mid x)$ via **Bayes' rule** *and* used to generate new $(x,y)$ pairs. Discriminative → $p(y\\mid x)$ directly.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-10",
+      "topic": "generative-vs-discriminative",
+      "q": "For the dataset $(1,0),(1,0),(2,0),(2,1)$, what is $p(y{=}1 \\mid x{=}2)$?",
+      "options": ["$1/4$", "$1/2$", "$1$", "$0$"],
+      "answer": 1,
+      "explain": "Joint: $p(2,0)=1/4$, $p(2,1)=1/4$, so $p(x{=}2)=1/2$. Then $p(y{=}1\\mid x{=}2) = \\frac{1/4}{1/2} = 1/2$. The **rows of the conditional table each sum to 1**; the four cells of the joint table sum to 1.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-11",
+      "topic": "generative-vs-discriminative",
+      "q": "Which of these is a **generative** model?",
+      "options": ["Logistic regression", "Support Vector Machine", "Decision tree", "Hidden Markov Model"],
+      "answer": 3,
+      "explain": "Generative: Bayesian networks, **HMMs**, autoregressive models, GANs (and Naïve Bayes, GMMs). Discriminative: logistic regression, SVM, decision trees, random forests.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-12",
+      "topic": "concept-learning",
+      "q": "With $d$ **binary** features, how many concepts can be defined over the instance space?",
+      "options": ["$2d$", "$2^d$", "$2^{2^d}$", "$d^2$"],
+      "answer": 2,
+      "explain": "There are $m = 2^d$ instances, and each may independently be labelled + or −, giving $2^m = 2^{2^d}$ concepts — i.e. the **power set** of the instance space.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-13",
+      "topic": "concept-learning",
+      "q": "In the fruit example (Colour ∈ {Red, Green}, Shape ∈ {Round, Long}), the conjunctive bias reduces the space from 16 concepts to how many hypotheses?",
+      "options": ["8", "9", "10", "12"],
+      "answer": 2,
+      "explain": "$(2{+}1)\\times(2{+}1) + 1 = 9 + 1 = \\mathbf{10}$ semantically distinct hypotheses. **Six** concepts are excluded — every one of them needs a disjunction or negation to express.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-14",
+      "topic": "concept-learning",
+      "q": "The bias 'hypotheses must be conjunctions of attribute values' is an example of a:",
+      "options": ["Preference bias (search bias)", "Restriction bias (language bias)", "Estimation bias", "Selection bias"],
+      "answer": 1,
+      "explain": "It is a **categorical restriction on which hypotheses can be expressed** → restriction/language bias. ID3's preference for short trees is the other kind — a **preference/search bias**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-15",
+      "topic": "concept-learning",
+      "q": "For the training rows RR = Yes and RL = No in the fruit example, the version space is:",
+      "options": [
+        "$\\{\\langle R,R\\rangle\\}$",
+        "$\\{\\langle R,R\\rangle, \\langle ?,R\\rangle\\}$",
+        "$\\{\\langle R,?\\rangle, \\langle ?,R\\rangle\\}$",
+        "All 10 hypotheses"
+      ],
+      "answer": 1,
+      "explain": "Only $\\langle R,R\\rangle$ and $\\langle ?,R\\rangle$ accept RR and reject RL. $\\langle R,?\\rangle$ would wrongly accept RL.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-16",
+      "topic": "concept-learning",
+      "q": "Why can't we simply make $H$ the power set of $X$ to guarantee the target concept is representable?",
+      "options": [
+        "It would take too much memory",
+        "The learner could then no longer generalise beyond the observed examples",
+        "The version space would always be empty",
+        "Bayes' rule would no longer apply"
+      ],
+      "answer": 1,
+      "explain": "With an unbiased $H$, $S$ is the disjunction of observed positives and $G$ the negated disjunction of observed negatives — **only the training examples get a unanimous vote**. This is **the futility of bias-free learning**.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-sl-17",
+      "topic": "find-s",
+      "q": "Find-S is initialised to which hypothesis?",
+      "options": [
+        "$\\langle ?, ?, \\dots, ?\\rangle$ — the most general",
+        "$\\langle \\varnothing, \\varnothing, \\dots, \\varnothing\\rangle$ — the most specific",
+        "A randomly chosen hypothesis from $H$",
+        "The first training example, positive or negative"
+      ],
+      "answer": 1,
+      "explain": "Find-S starts at the **most specific** hypothesis (reject everything) and generalises only when forced by a positive example. Starting from ⟨?,…,?⟩ would be the Candidate-Elimination $G$ boundary.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-18",
+      "topic": "find-s",
+      "q": "For the 'buys subscription' table (Teen/Mobile/No/Low→No, Adult/Laptop/Yes/High→Yes, Senior/Laptop/Yes/Medium→Yes, Adult/Tablet/No/Low→No, Teen/Laptop/Yes/High→Yes), the final Find-S hypothesis is:",
+      "options": [
+        "⟨Adult, Laptop, Yes, High⟩",
+        "⟨?, Laptop, Yes, ?⟩",
+        "⟨?, ?, Yes, ?⟩",
+        "⟨?, ?, ?, ?⟩"
+      ],
+      "answer": 1,
+      "explain": "Positives are rows 2, 3 and 5. Start ⟨Ø,Ø,Ø,Ø⟩ → ⟨Adult, Laptop, Yes, High⟩ → ⟨?, Laptop, Yes, ?⟩; row 5 changes nothing.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-19",
+      "topic": "find-s",
+      "q": "Find-S's output is guaranteed consistent with the **negative** examples provided that…",
+      "options": [
+        "the training set is large enough",
+        "the target concept is in $H$ **and** there are no errors in the training examples",
+        "there are more positive than negative examples",
+        "all attributes are binary"
+      ],
+      "answer": 1,
+      "explain": "Both conditions are required. If the true concept is disjunctive (not in a conjunctive $H$), Find-S can output ⟨?,…,?⟩ which accepts the negatives too — as the Low/Medium/High counter-example in the deck shows.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-20",
+      "topic": "find-s",
+      "q": "Which is **NOT** a stated limitation of Find-S?",
+      "options": [
+        "It cannot detect an inconsistent (noisy) training set",
+        "It provides no backtracking to reconsider earlier generalisations",
+        "It requires the attributes to be continuous-valued",
+        "Its output is only one of many hypotheses that fit the data equally well"
+      ],
+      "answer": 2,
+      "explain": "Find-S works on **discrete, categorical** attributes — continuous attributes are a problem for it, not a requirement. The other three are the listed limitations.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-21",
+      "topic": "decision-trees",
+      "q": "A decision tree represents its learned function as a:",
+      "options": [
+        "Single conjunction of attribute values",
+        "Disjunction of conjunctions",
+        "Conjunction of disjunctions",
+        "Linear combination of attributes"
+      ],
+      "answer": 1,
+      "explain": "**Each root-to-leaf path is a conjunction; the set of paths is a disjunction.** This is exactly the expressiveness Find-S lacked, and it makes the tree hypothesis space **complete**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-22",
+      "topic": "decision-trees",
+      "q": "Which pairing is correct?",
+      "options": [
+        "ID3 → Gini impurity, binary tree; CART → information gain, multiway tree",
+        "ID3 → information gain, multiway tree; CART → Gini impurity, binary tree",
+        "Both use information gain; ID3 is binary and CART is multiway",
+        "ID3 → sum of least squares; CART → entropy"
+      ],
+      "answer": 1,
+      "explain": "**ID3** (Quinlan, 1986): information gain, **multiway** splits, categorical features. **CART** (Breiman): **Gini impurity** for classification and **sum of least squares** for regression, **binary** splits.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-23",
+      "topic": "id3-entropy-gain",
+      "q": "In the Job-Acceptance table, why is $|S| = 5$ rather than 6?",
+      "options": [
+        "One row has a missing value",
+        "There is a **duplicate row** that must be removed before computing",
+        "One row is the test example",
+        "Entropy is undefined for 6 rows"
+      ],
+      "answer": 1,
+      "explain": "(Tier 1, HYD, NO) appears twice. **Ensure there are no duplicate rows in your data** — duplicates distort the proportions and every entropy after them.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-24",
+      "topic": "id3-entropy-gain",
+      "q": "$I(A) = \\sum_v \\frac{|S_v|}{|S|} H(S_v)$ is called the:",
+      "options": [
+        "Information gain",
+        "Average (expected) information entropy after the split",
+        "Split information",
+        "Gain ratio"
+      ],
+      "answer": 1,
+      "explain": "$I(A)$ is the **size-weighted average of the subset entropies** — the entropy *after* the split. Gain is then $H(S) - I(A)$. Forgetting the $|S_v|/|S|$ weights is the #1 arithmetic error in this topic.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-25",
+      "topic": "id3-entropy-gain",
+      "q": "A target attribute has 3 classes with counts 3, 2, 3 out of 8. The entropy is 1.56. What is the **maximum** entropy possible for this target?",
+      "options": ["1", "1.56", "$\\log_2 3 \\approx 1.585$", "3"],
+      "answer": 2,
+      "explain": "**If the target can take $c$ values, entropy can be as large as $\\log_2 c$** — reached at a uniform distribution. Assuming the max is always 1 is a classic mistake for multi-class targets.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-26",
+      "topic": "id3-entropy-gain",
+      "q": "In the Play-Tennis example, why does the **Overcast** branch immediately become a leaf?",
+      "options": [
+        "It has the fewest examples",
+        "Its entropy is 0 — it is single-valued, so a conclusion can be reached",
+        "Outlook has already been used",
+        "Information gain is negative below it"
+      ],
+      "answer": 1,
+      "explain": "All 4 overcast days are 'Yes' → $H = 0$ → the node is **pure** → leaf = Yes. A pure branch is never split further.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-27",
+      "topic": "id3-entropy-gain",
+      "q": "Within the Sunny branch of Play-Tennis ($H = 0.971$), Humidity produces $I = 0$. Its gain is therefore:",
+      "options": ["0", "0.571", "0.971", "0.02"],
+      "answer": 2,
+      "explain": "$\\text{Gain} = 0.971 - 0 = \\mathbf{0.971}$ — Humidity separates Sunny perfectly (High→all No, Normal→all Yes), so both children are leaves.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-28",
+      "topic": "inductive-bias-issues",
+      "q": "Mitchell's *closer approximation* to the inductive bias of ID3 is:",
+      "options": [
+        "The target concept is contained in the hypothesis space $H$",
+        "Shorter trees are preferred; trees placing high information gain attributes close to the root are preferred",
+        "Attributes with many values are preferred",
+        "Hypotheses must be conjunctions of attribute values"
+      ],
+      "answer": 1,
+      "explain": "The *approximate* bias is just 'shorter trees are preferred'. The **closer** approximation adds the high-gain-near-the-root clause, which comes from the greedy heuristic. Option (a) is the bias of **Candidate-Elimination**.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-sl-29",
+      "topic": "inductive-bias-issues",
+      "q": "Why is a **preference bias** typically more desirable than a restriction bias?",
+      "options": [
+        "It is computationally cheaper",
+        "The learner works within a complete hypothesis space assured to contain the target function",
+        "It never overfits",
+        "It requires fewer training examples"
+      ],
+      "answer": 1,
+      "explain": "A restriction bias risks **excluding the target function altogether**. A preference bias only *orders* a complete space, so the target is always reachable in principle.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-sl-30",
+      "topic": "inductive-bias-issues",
+      "q": "SplitInformation$(S,A)$ is:",
+      "options": [
+        "The entropy of $S$ with respect to the **target** attribute",
+        "The entropy of $S$ with respect to the **values of $A$**",
+        "The information gain of $A$ divided by $|S|$",
+        "The number of values of $A$"
+      ],
+      "answer": 1,
+      "explain": "That contrast is the whole trick. An attribute like *Date* that splits $n$ examples into singletons has SplitInformation $= \\log_2 n$, a big divisor, so **GainRatio $=$ Gain / SplitInformation** penalises it heavily.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-sl-31",
+      "topic": "inductive-bias-issues",
+      "q": "Which statement about ID3's search is **true**?",
+      "options": [
+        "It maintains the entire version space of consistent trees",
+        "It backtracks when a branch turns out badly",
+        "It uses statistics over **all** examples at a node, making it robust to noisy data",
+        "Its hypothesis space cannot express all discrete-valued functions"
+      ],
+      "answer": 2,
+      "explain": "ID3 keeps a **single** hypothesis, **never backtracks** (so it can hit a local optimum), and its hypothesis space **is** complete. Its robustness comes from using aggregate statistics rather than one example at a time — unlike Find-S.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-sl-32",
+      "topic": "overfitting-pruning",
+      "q": "Hypothesis $h$ overfits the training data if there exists $h'$ such that:",
+      "options": [
+        "$\\text{error}_{train}(h) < \\text{error}_{train}(h')$ and $\\text{error}_{\\mathcal{D}}(h) > \\text{error}_{\\mathcal{D}}(h')$",
+        "$\\text{error}_{train}(h) > \\text{error}_{train}(h')$ and $\\text{error}_{\\mathcal{D}}(h) < \\text{error}_{\\mathcal{D}}(h')$",
+        "$\\text{error}_{train}(h) < \\text{error}_{\\mathcal{D}}(h)$",
+        "$h$ has more nodes than $h'$"
+      ],
+      "answer": 0,
+      "explain": "**Better on the training set, worse over the entire distribution.** Note the definition is a **comparison between two hypotheses**, not a property of one.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-sl-33",
+      "topic": "overfitting-pruning",
+      "q": "In reduced-error pruning, a pruned node is replaced by a leaf labelled with:",
+      "options": [
+        "the class of the first training example at that node",
+        "the **most common classification of the training examples affiliated with that node**",
+        "the majority class of the validation examples at that node",
+        "the overall majority class of the dataset"
+      ],
+      "answer": 1,
+      "explain": "The **label** comes from the training examples at that node; the **decision to keep the prune** comes from the **validation set**. Mixing those two up is a common slip.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-34",
+      "topic": "overfitting-pruning",
+      "q": "Which is a listed **advantage of converting a tree to rules before pruning**?",
+      "options": [
+        "It always produces a smaller model",
+        "It allows different pruning decisions for the different **contexts** in which a node is used",
+        "It removes the need for a validation set",
+        "It guarantees a globally optimal tree"
+      ],
+      "answer": 1,
+      "explain": "The three advantages: (1) each path is a separate rule so pruning decisions can differ per context; (2) it removes the root-vs-leaf distinction and the tree-surgery bookkeeping; (3) **readability**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-35",
+      "topic": "overfitting-pruning",
+      "q": "Which of these is an **early termination (pre-pruning)** criterion?",
+      "options": [
+        "Replace each node with its most popular class and keep the change if accuracy improves",
+        "Halt growth when the goodness of the split falls below a threshold",
+        "Convert the tree to rules and drop preconditions",
+        "Sort pruned rules by estimated accuracy"
+      ],
+      "answer": 1,
+      "explain": "Pre-pruning **stops the tree growing** (minimum information gain, maximum depth). The others are **post-pruning** methods — which the slides say are **found to be more effective**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-36",
+      "topic": "continuous-missing",
+      "q": "For TEMP = 40,48,60,72,80,90 with PlaySport = no,no,yes,yes,yes,no, the candidate thresholds are:",
+      "options": ["44 and 66", "54 and 85", "60 and 80", "every midpoint between consecutive values"],
+      "answer": 1,
+      "explain": "Candidates lie **midway between adjacent examples whose class differs**: $(48{+}60)/2 = 54$ and $(80{+}90)/2 = 85$. Fayyad proved the gain-maximising threshold always lies at such a boundary.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-37",
+      "topic": "continuous-missing",
+      "q": "In that example, $\\text{Gain}(S,\\text{Temp}_{>54}) = 0.4591$ and $\\text{Gain}(S,\\text{Temp}_{>85}) = 0.1908$. Which threshold is chosen and why?",
+      "options": [
+        "85, because it produces a pure subset",
+        "54, because it has the higher information gain",
+        "85, because it is closer to the mean temperature",
+        "Both are used, creating a three-way split"
+      ],
+      "answer": 1,
+      "explain": "**Higher gain wins.** 85 does produce a pure subset — but that subset holds only 1 of 6 examples, so the $|S_v|/|S|$ weight makes it nearly worthless.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-38",
+      "topic": "continuous-missing",
+      "q": "The C4.5 strategy for missing attribute values is to:",
+      "options": [
+        "Delete the row",
+        "Assign the mode at that node",
+        "Assign a probability to each value and send **fractional instances** down each branch",
+        "Treat 'missing' as an extra attribute value"
+      ],
+      "answer": 2,
+      "explain": "If node $n$ has 6 examples with $A{=}1$ and 4 with $A{=}0$, then 0.6 of the instance goes down the $A{=}1$ branch and 0.4 down the other. The simpler strategies (mode at the node, or mode among examples of the same class) are also valid but less refined.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-sl-39",
+      "topic": "continuous-missing",
+      "q": "The Tan & Schlimmer cost-sensitive attribute selection measure is:",
+      "options": [
+        "$\\text{Gain}(S,A) / \\text{Cost}(A)$",
+        "$\\text{Gain}^2(S,A) / \\text{Cost}(A)$",
+        "$(2^{\\text{Gain}(S,A)} - 1)/(\\text{Cost}(A)+1)^w$",
+        "$\\text{Gain}(S,A) \\times \\text{Cost}(A)$"
+      ],
+      "answer": 1,
+      "explain": "**Tan & Schlimmer (1990): $\\text{Gain}^2/\\text{Cost}$** (note the square). Option (c) is **Núñez (1988)**. Neither guarantees an optimal cost-sensitive tree — they only bias the search.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-sl-40",
+      "topic": "bias-variance",
+      "q": "A model has 15% train error and 16% test error. Assuming a Bayes error of ~0, the diagnosis is:",
+      "options": ["High variance", "High bias", "High bias and high variance", "Low bias and low variance"],
+      "answer": 1,
+      "explain": "**High training error → high bias**; the small train→test gap means low variance. Note the caveat: if the **Bayes/base error** were itself 15%, this model would be optimal and *not* high bias.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-41",
+      "topic": "bias-variance",
+      "q": "A model has 15% train error and 30% test error. The diagnosis is:",
+      "options": ["High variance only", "High bias only", "High bias **and** high variance", "Low bias and low variance"],
+      "answer": 2,
+      "explain": "High training error ⇒ **bias**; a large train→test increase ⇒ **variance**. Both problems at once — realistic in high dimensions where a model can underfit in some regions and overfit in others.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-42",
+      "topic": "bias-variance",
+      "q": "As model complexity increases, which is the correct description of the total error curve?",
+      "options": [
+        "It decreases monotonically",
+        "It increases monotonically",
+        "It decreases while the bias drop outweighs the variance rise, then increases — the minimum is the optimal complexity",
+        "It stays flat until variance explodes"
+      ],
+      "answer": 2,
+      "explain": "The classic **U-curve**: Bias² falls, Variance rises, and Total Error $=$ Bias² $+$ Variance $+$ irreducible error bottoms out at the **optimal model complexity**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-43",
+      "topic": "logistic-regression",
+      "q": "Why is the squared-error cost function unsuitable for logistic regression?",
+      "options": [
+        "It is undefined when $y = 0$",
+        "It becomes **non-convex** in $\\theta$ because $h_\\theta(x)$ is a sigmoid, so gradient descent may find a local minimum",
+        "It grows without bound",
+        "It cannot be differentiated"
+      ],
+      "answer": 1,
+      "explain": "**Lots of local minima means gradient descent may not find the global optimum.** The log-loss (cross-entropy) is convex, so gradient descent is guaranteed to reach the global minimum.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-44",
+      "topic": "logistic-regression",
+      "q": "A logistic classifier outputs $h_\\theta(x) = 0.2$. Which statements are true? (select all that apply)",
+      "options": [
+        "Our estimate for $P(y{=}1 \\mid x;\\theta)$ is 0.8",
+        "Our estimate for $P(y{=}0 \\mid x;\\theta)$ is 0.8",
+        "Our estimate for $P(y{=}1 \\mid x;\\theta)$ is 0.2",
+        "Our estimate for $P(y{=}0 \\mid x;\\theta)$ is 0.2"
+      ],
+      "answer": [1, 2],
+      "explain": "$h_\\theta(x)$ **always reports the probability of the positive class**, so $P(y{=}1)=0.2$, and since $P(y{=}1)+P(y{=}0)=1$, $P(y{=}0)=0.8$.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-45",
+      "topic": "logistic-regression",
+      "q": "Predicting $y=1$ when $h_\\theta(x) \\ge 0.5$ is equivalent to predicting $y=1$ when:",
+      "options": ["$\\theta^T x \\ge 0.5$", "$\\theta^T x \\ge 0$", "$\\theta^T x \\ge 1$", "$e^{-\\theta^Tx} \\ge 1$"],
+      "answer": 1,
+      "explain": "$g(z) \\ge 0.5 \\iff z \\ge 0$. This is exactly why the **decision boundary is the surface $\\theta^T x = 0$** — the sigmoid changes confidence, never the location of the boundary.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-46",
+      "topic": "logistic-regression",
+      "q": "With $\\theta_0 = 6, \\theta_1 = 0, \\theta_2 = -1$, the decision boundary of $h_\\theta(x) = g(\\theta_0 + \\theta_1 x_1 + \\theta_2 x_2)$ is:",
+      "options": [
+        "the vertical line $x_1 = 6$, with $y=1$ to the left",
+        "the horizontal line $x_2 = 6$, with $y=1$ **below** it",
+        "the horizontal line $x_2 = 6$, with $y=1$ above it",
+        "the line $x_1 + x_2 = 6$"
+      ],
+      "answer": 1,
+      "explain": "Predict $y=1$ when $6 + 0\\cdot x_1 - x_2 \\ge 0 \\iff x_2 \\le 6$. Since $\\theta_1 = 0$, $x_1$ is irrelevant → a **horizontal** boundary, positive **below** it.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-47",
+      "topic": "logistic-regression",
+      "q": "Which statement is **FALSE**?",
+      "options": [
+        "$J(\\theta)$ for logistic regression trained with $m \\ge 1$ examples is always $\\ge 0$",
+        "The sigmoid function is never greater than one",
+        "Adding polynomial features could increase how well we fit the training data",
+        "For logistic regression, gradient descent sometimes converges to a local minimum instead of the global one"
+      ],
+      "answer": 3,
+      "explain": "Log-loss $J(\\theta)$ is **convex**, so gradient descent always reaches the global minimum. (Advanced optimisers like BFGS/L-BFGS are preferred for **speed**, not to escape local minima.)",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-48",
+      "topic": "logistic-regression",
+      "q": "In **one-vs-all** multi-class classification with 3 classes, how many binary classifiers are trained and how is a prediction made?",
+      "options": [
+        "1 classifier; threshold its output at 1/3",
+        "3 classifiers; pick the class $i$ maximising $h_\\theta^{(i)}(x)$",
+        "3 classifiers; take the majority vote",
+        "$\\binom{3}{2} = 3$ classifiers; run a tournament"
+      ],
+      "answer": 1,
+      "explain": "One classifier **per class** ($i$ vs all others), and the prediction is $\\arg\\max_i h_\\theta^{(i)}(x)$. (Option (d) describes one-vs-one, a different scheme.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-49",
+      "topic": "eager-vs-lazy",
+      "q": "The key *advantage* of lazy learning is that it can:",
+      "options": [
+        "train faster on large datasets",
+        "estimate the target function **locally and differently for each new instance**",
+        "use less memory than an eager learner",
+        "handle irrelevant attributes automatically"
+      ],
+      "answer": 1,
+      "explain": "An eager learner commits to **one global** approximation. A lazy learner builds a **fresh local** approximation per query — ideal when the target is globally complex but locally simple. (Memory is a *dis*advantage — it stores everything.)",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-sl-50",
+      "topic": "knn",
+      "q": "In the Minkowski distance $\\left(\\sum |x_i-y_i|^q\\right)^{1/q}$, which value of $q$ gives the **Manhattan** distance?",
+      "options": ["$q = 0$", "$q = 1$", "$q = 2$", "$q \\to \\infty$"],
+      "answer": 1,
+      "explain": "**$q=1$ → Manhattan** (city-block), **$q=2$ → Euclidean**, $q \\to \\infty$ → Chebyshev.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-51",
+      "topic": "knn",
+      "q": "For the patient risk problem ($x_q = (100,135,12,8)$, $k=3$), the three nearest neighbours are D (5.19), B (11.74), A (15.13) with risks No, Yes, No. The prediction is:",
+      "options": ["Yes", "No", "Undecided — a tie", "The mean of the distances"],
+      "answer": 1,
+      "explain": "Classification takes the **mode**: mode(No, Yes, No) $=$ **No**. (Regression would take the mean — but the target here is categorical.)",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-52",
+      "topic": "knn",
+      "q": "For the weight-prediction problem, the 3 nearest neighbours of ID 11 have weights 60, 72 and 59. The predicted weight is:",
+      "options": ["60", "63.666", "72", "191"],
+      "answer": 1,
+      "explain": "$\\hat f(x_q) = \\frac{60+72+59}{3} = 63.666$ — regression uses the **mean** of the $k$ nearest neighbours.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-53",
+      "topic": "knn",
+      "q": "The decision surface induced by **1-NN** over the whole instance space is called:",
+      "options": ["A Voronoi diagram", "A separating hyperplane", "A Delaunay tree", "A Gaussian mixture"],
+      "answer": 0,
+      "explain": "1-NN produces **convex polyhedra, one around each training example** — the region of space closest to that point. That tiling is the **Voronoi diagram** of the training set.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u1-sl-54",
+      "topic": "knn-design-choices",
+      "q": "According to the slides, a reasonable starting value for $k$ is:",
+      "options": [
+        "$k = 1$ always",
+        "$k = $ number of classes $+\\ 1$, decreasing by 1 in case of a tie",
+        "$k = n/2$",
+        "$k = $ number of features"
+      ],
+      "answer": 1,
+      "explain": "There is **no right value to start with**, but $k = \\#\\text{classes} + 1$ is the recommended start, **decrease $k$ by 1 on a tie**, and $k = \\sqrt{n}$ also performs well experimentally.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-55",
+      "topic": "knn-design-choices",
+      "q": "Setting $k$ **very high** in k-NN risks:",
+      "options": [
+        "High variance / overfitting",
+        "High bias / underfitting — everything gets the majority class of the dataset",
+        "Division by zero in the distance computation",
+        "Making the algorithm eager rather than lazy"
+      ],
+      "answer": 1,
+      "explain": "Large $k$ = a **simpler, smoother** model → **high bias**. Small $k$ (especially $k=1$) copies the nearest point, noise included → **high variance**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-56",
+      "topic": "knn-design-choices",
+      "q": "When you find **noise** in the data, what should you do with $k$ in k-NN?",
+      "options": ["Increase it", "Decrease it", "Set it to 1", "Noise cannot be dependent on the value of $k$"],
+      "answer": 0,
+      "explain": "**Increase $k$** — more votes average out isolated mislabelled points. 'To be more sure of which classifications you make, you can try increasing the value of k.'",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-57",
+      "topic": "knn-design-choices",
+      "q": "With $k=5$ the neighbours are A(red, 2.1), B(red, 1.8), C(red, 2.0), D(blue, 0.7), E(blue, 1.1). What do vanilla and **distance-weighted** ($w=1/d$) k-NN predict?",
+      "options": [
+        "Both predict red",
+        "Both predict blue",
+        "Vanilla predicts red; weighted predicts blue",
+        "Vanilla predicts blue; weighted predicts red"
+      ],
+      "answer": 2,
+      "explain": "Vanilla: 3 reds vs 2 blues → **red**. Weighted: red $= 0.476+0.556+0.5 = 1.532$; blue $= 0.909+1.428 = 2.337$ → **blue**. The two much-closer blue points outweigh three distant reds.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-58",
+      "topic": "knn-design-choices",
+      "q": "In the income/age example, the Euclidean distance between records 1 and 2 falls from 20000 to 1.14 after z-score normalization. What does this demonstrate?",
+      "options": [
+        "Normalization always reduces distances by the same factor",
+        "The high-magnitude income variable was dominating the distance, and normalization gives similar weightage to both variables",
+        "Age is irrelevant to the problem",
+        "The dataset had duplicate rows"
+      ],
+      "answer": 1,
+      "explain": "Before scaling, a ₹20,000 income gap swamps a 5-year age gap. After $x_i = (x_i-\\mu)/\\sigma$, **the distance is no longer biased towards income** and both variables count comparably.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-59",
+      "topic": "knn-design-choices",
+      "q": "In the unit cube $[0,1]^d$ with $n$ uniformly sampled points, the edge length of the smallest hyper-cube containing the $k$ nearest neighbours is approximately:",
+      "options": ["$k/n$", "$(k/n)^{1/d}$", "$(k/n)^d$", "$d\\,k/n$"],
+      "answer": 1,
+      "explain": "$\\ell^d \\approx k/n \\Rightarrow \\ell \\approx (k/n)^{1/d}$. With $n{=}1000, k{=}10$: $d{=}100$ gives $\\ell \\approx 0.955$ — **almost the entire space** is needed to find 10 neighbours.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-60",
+      "topic": "knn-design-choices",
+      "q": "To fix $\\ell = 0.1$ in the curse-of-dimensionality analysis, how must $n$ grow with $d$?",
+      "options": [
+        "Linearly, $n = k\\,d$",
+        "Quadratically, $n = k\\,d^2$",
+        "Exponentially, $n = k \\cdot 10^{\\,d}$",
+        "It does not depend on $d$"
+      ],
+      "answer": 2,
+      "explain": "$n = k/\\ell^d = k\\cdot 10^d$ — **exponential**. For $d > 100$ we would need far more data points than there are electrons in the universe. More data cannot rescue you.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-61",
+      "topic": "knn-design-choices",
+      "q": "An attribute takes the values {Cat, Dog, Zebra} with no natural order. The correct encoding is:",
+      "options": [
+        "Ordinal: 1, 2, 3",
+        "One-hot: (1,0,0), (0,1,0), (0,0,1)",
+        "Binary: 0 and 1",
+        "Leave it as text — k-NN handles strings"
+      ],
+      "answer": 1,
+      "explain": "**No order and > 1 category → one-hot encoding.** Ordinal-encoding an unordered attribute would falsely make Cat 'closer to' Dog than to Zebra under Euclidean distance.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-62",
+      "topic": "knn-design-choices",
+      "q": "Which statements about k-NN are true? (1) it performs much better if all data has the same scale; (2) it works well with few input variables but struggles when the number of inputs is very large; (3) it makes no assumptions about the functional form of the problem.",
+      "options": ["1 and 2 only", "1 and 3 only", "Only 1", "All of the above"],
+      "answer": 3,
+      "explain": "**All three** are true — and they are effectively the assumptions of the algorithm: scaling, low dimensionality, and non-parametric.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-63",
+      "topic": "performance-metrics",
+      "q": "In the term 'False Negative', which word refers to the model's prediction?",
+      "options": [
+        "'False' — the prediction was false",
+        "'Negative' — the model predicted the negative class",
+        "Both words refer to the prediction",
+        "Neither — both refer to the true label"
+      ],
+      "answer": 1,
+      "explain": "**Positive/Negative = the prediction. True/False = whether that prediction was right.** So a False Negative is: the model said Negative, and it was wrong — the truth was positive.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-64",
+      "topic": "performance-metrics",
+      "q": "FP and FN correspond respectively to:",
+      "options": ["Type II and Type I errors", "Type I and Type II errors", "Both Type I errors", "Both Type II errors"],
+      "answer": 1,
+      "explain": "**FP = Type I error** (a false alarm), **FN = Type II error** (a miss) — the same convention as in hypothesis testing.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-65",
+      "topic": "performance-metrics",
+      "q": "In a fraud dataset with 990 normal and 10 fraudulent transactions, a program that calls **everything** normal achieves 98% accuracy on a 100-transaction test set. What does this illustrate?",
+      "options": [
+        "That the model has learned the task well",
+        "That accuracy is not a good measure when the dataset is **imbalanced**",
+        "That the test set is too small",
+        "That precision and recall are equal here"
+      ],
+      "answer": 1,
+      "explain": "Accuracy is a good measure **only when the classes are nearly balanced**. Here it catches zero frauds — which is the entire point of the system. Use recall / precision / F1 / AUC instead.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-66",
+      "topic": "performance-metrics",
+      "q": "TP = 100, FN = 5, FP = 10, TN = 50. What is the **specificity**?",
+      "options": ["0.91", "0.95", "0.83", "0.93"],
+      "answer": 2,
+      "explain": "Specificity $= \\frac{TN}{TN+FP} = \\frac{50}{50+10} = 0.83$. (Accuracy $=0.91$, Precision $=0.91$, Recall $=0.95$, F1 $=0.93$.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-67",
+      "topic": "performance-metrics",
+      "q": "Why is F1 the **harmonic** mean of precision and recall rather than the arithmetic mean?",
+      "options": [
+        "It is easier to compute",
+        "The harmonic mean is dominated by the **smaller** value, so one good score cannot hide one terrible score",
+        "It guarantees a value above 0.5",
+        "It makes F1 equal to accuracy for balanced data"
+      ],
+      "answer": 1,
+      "explain": "Precision 1.0 with recall 0.02 gives an arithmetic mean of 0.51 (looks fine) but **F1 = 0.039** (correctly awful). F1 reaches 1 only when **both** are 100%.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-68",
+      "topic": "performance-metrics",
+      "q": "In a multi-class confusion matrix (rows = actual, columns = predicted), the **False Positives** for class $i$ are:",
+      "options": [
+        "The rest of row $i$",
+        "The rest of column $i$",
+        "The diagonal cell $(i,i)$",
+        "Everything outside row $i$ and column $i$"
+      ],
+      "answer": 1,
+      "explain": "**TP** = cell $(i,i)$; **FN** = rest of **row** $i$; **FP** = rest of **column** $i$; **TN** = everything not in row $i$ or column $i$. Precision divides by the column total, recall by the row total.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-69",
+      "topic": "performance-metrics",
+      "q": "In the 4-class practice matrix, class A has TP = 100, FP = 0, FN = 100. Its precision and recall are:",
+      "options": ["P = 1, R = 0.5", "P = 0.5, R = 1", "P = 1, R = 1", "P = 0.5, R = 0.5"],
+      "answer": 0,
+      "explain": "P $= 100/(100+0) = 1$; R $= 100/(100+100) = 0.5$. The model **never** wrongly calls something an A, but **misses half** the real A's — exactly the gap F1 is designed to expose.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-70",
+      "topic": "performance-metrics",
+      "q": "Spam matrix: Spam→(spam folder 100, inbox 170); Not spam→(spam folder 30, inbox 700). What are precision and recall for the spam class?",
+      "options": [
+        "Precision 37%, Recall 76.9%",
+        "Precision 76.9%, Recall 37%",
+        "Precision 80%, Recall 80%",
+        "Precision 100/270, Recall 100/130"
+      ],
+      "answer": 1,
+      "explain": "Precision $=100/(100+30) = 76.9\\%$ (of everything sent to the spam folder, how much really was spam). Recall $=100/(100+170) = 37\\%$ (of all spam, how much we caught). Accuracy is a misleading 80%.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-71",
+      "topic": "roc-auc",
+      "q": "The axes of an ROC curve are:",
+      "options": [
+        "x = Precision, y = Recall",
+        "x = FPR (1 − specificity), y = TPR (sensitivity)",
+        "x = TPR, y = FPR",
+        "x = threshold, y = accuracy"
+      ],
+      "answer": 1,
+      "explain": "**x-axis = FPR = $1-$specificity = $\\frac{FP}{FP+TN}$; y-axis = TPR = sensitivity = $\\frac{TP}{TP+FN}$.** Putting TPR on the x-axis is a very common and very costly slip.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-72",
+      "topic": "roc-auc",
+      "q": "Lowering the classification threshold of a scoring classifier:",
+      "options": [
+        "Increases TP and decreases FP",
+        "Increases both TP and FP",
+        "Decreases both TP and FP",
+        "Has no effect on the confusion matrix"
+      ],
+      "answer": 1,
+      "explain": "**Lowering the threshold classifies more items as positive**, so both True Positives *and* False Positives increase. You cannot move one without moving the other — that trade-off is the ROC curve.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-73",
+      "topic": "roc-auc",
+      "q": "A classifier plots at (0.7, 0.7) in ROC space. What does this mean?",
+      "options": [
+        "It is a conservative classifier",
+        "Its performance is virtually **random** — it is effectively guessing positive 70% of the time",
+        "It is perfect",
+        "It is worse than random and should be inverted"
+      ],
+      "answer": 1,
+      "explain": "The diagonal $y=x$ is the **random-guessing** line; a random classifier slides along it depending on how often it guesses positive. Points **below** the diagonal are worse than random (and can be inverted).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-74",
+      "topic": "roc-auc",
+      "q": "Which point in ROC space represents perfect classification?",
+      "options": ["(0, 0)", "(1, 1)", "(0, 1)", "(1, 0)"],
+      "answer": 2,
+      "explain": "**(0,1)** — zero FPR, perfect TPR. (0,0) never issues a positive; (1,1) issues positives unconditionally; (1,0) is perfectly wrong. Better points lie to the **northwest**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-75",
+      "topic": "roc-auc",
+      "q": "AUC = 0.5 means:",
+      "options": [
+        "The classifier is perfect",
+        "The classifier cannot distinguish positives from negatives — it predicts randomly or a constant class",
+        "Half of the predictions are correct",
+        "The classifier is perfectly wrong and should be inverted"
+      ],
+      "answer": 1,
+      "explain": "AUC 1 = perfect separation; $0.5 <$ AUC $< 1$ = a high chance of distinguishing the classes; **AUC 0.5 = no discriminative ability**; AUC 0 = perfectly wrong (and therefore invertible).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-76",
+      "topic": "roc-auc",
+      "q": "For $y = [1,0,1,0]$ with predicted scores $[0.8, 0.6, 0.4, 0.2]$, the ROC staircase passes through (0,0.5), (0.5,0.5), (0.5,1). What is the AUC?",
+      "options": ["0.5", "0.625", "0.75", "1.0"],
+      "answer": 2,
+      "explain": "Area $= (0.5\\times0.5) + (0.5\\times1) = 0.25 + 0.5 = \\mathbf{0.75}$. Always divide FPR by the number of **actual negatives** and TPR by the number of **actual positives**, not by $N$.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-77",
+      "topic": "roc-auc",
+      "q": "How can a **decision tree** — a discrete classifier — be made to produce a full ROC curve?",
+      "options": [
+        "It cannot; discrete classifiers give only a single point",
+        "By using the **class proportions at each leaf** as a score, or by bagging an ensemble and using the vote counts",
+        "By re-training it with a different random seed",
+        "By converting it to if-then rules"
+      ],
+      "answer": 1,
+      "explain": "A leaf's class decision is just its most prevalent class — **the underlying proportions can serve as a score**, which a threshold then turns into a family of classifiers. Bagging vote counts work the same way.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u1-sl-78",
+      "topic": "roc-auc",
+      "q": "In the obesity example, moving the threshold from 0.5 to 0.1 changed sensitivity from 0.75 to 1.0 and specificity from 0.75 to 0.5. Which operating point would you choose for **cancer screening**?",
+      "options": [
+        "The 0.9 threshold — maximise specificity",
+        "The 0.1 threshold — maximise sensitivity, since a missed case is catastrophic",
+        "The 0.5 threshold — always balance the two",
+        "Whichever maximises accuracy"
+      ],
+      "answer": 1,
+      "explain": "When a **false negative** is catastrophic, lower the threshold and accept a higher FPR. This is Mitchell's ⟨P,T,E⟩ point in action: the cost asymmetry lives in **P**, and ROC is how you act on it.",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}

@@ -3,112 +3,104 @@ subject: ml
 unit: 1
 order: 1
 slug: introduction
-title: Introduction to Machine Learning
-summary: What ML is, Mitchell's <P, T, E> definition, well-posed learning problems, and the ML pipeline.
-minutes: 12
-tags: [definition, P-T-E, pipeline, 7-steps]
+title: What Machine Learning Is — ⟨P, T, E⟩
+summary: Mitchell's definition, well-posed learning problems, the 6 canonical P-T-E examples, the ML pipeline and the train/validation/test split.
+minutes: 14
+tags: [definition, P-T-E, well-posed, pipeline, train-test-split]
 ---
 
-# Introduction to Machine Learning
+# What Machine Learning Is — ⟨P, T, E⟩
 
-## What is Machine Learning?
+## The two definitions you must be able to quote
 
-A traditional program is a fixed set of rules a human wrote: *input → rules → output*. Machine learning flips this. We feed the computer **data and the desired outputs**, and the algorithm itself discovers the rules: *input + output → rules (a model)*. Those learned rules then generalise to new, unseen inputs.
+**Arthur Samuel (informal, 1959):** machine learning is *the field of study that gives computers the ability to learn **without being explicitly programmed***.
 
-> [!NOTE]
-> Tom Mitchell's textbook definition — memorise it verbatim, it is the single most quoted line in this course:
->
-> *"A computer program is said to **learn** from experience **E** with respect to some class of tasks **T** and performance measure **P**, if its performance at tasks in T, as measured by P, improves with experience E."*
-> — Tom Mitchell, *Machine Learning*, McGraw Hill, 1997.
+**Tom Mitchell (formal, 1997)** — the one the exam wants:
 
-## The `<P, T, E>` framework
+> A computer program is said to **learn** from experience **E** with respect to some class of tasks **T** and performance measure **P**, if its performance at tasks in **T**, as measured by **P**, **improves with experience E**.
 
-Any well-posed learning problem must specify three things:
+The slides also give the one-line version: *"Machine learning is the study of computer algorithms that allow computer programs to automatically improve through experience."* — Tom Mitchell, *Machine Learning*, McGraw Hill, 1997.
 
-| Symbol | Name | Question it answers | Intuition |
-|---|---|---|---|
-| **T** | Task | What is the program trying to *do*? | The job |
-| **P** | Performance measure | How do we *score* it? | The exam |
-| **E** | Experience | What does it *learn from*? | The training data |
+So a **well-posed (well-defined) learning problem** is fully specified by the triple
 
-A learning problem is **well-posed** (or **well-defined**) when all three are stated unambiguously. We write it as the triple **`<P, T, E>`**.
+$$\langle P,\ T,\ E \rangle$$
 
-> [!INTUITION]
-> Think of a student (the program). **T** = the subject they study, **E** = the practice problems they grind, **P** = the marks in the final exam. Learning means: *more practice (E) → better marks (P) on the task (T)*.
-
-## Identifying P, T, E — worked examples
-
-You **will** be asked to write `<P, T, E>` for a scenario in the exam. The trick: the *task* is the prediction itself, the *experience* is the labelled dataset, and the *performance* is almost always a *fraction/accuracy* of correct predictions.
-
-**1. Learning to play Checkers**
-
-- **T:** Playing checkers.
-- **E:** Playing practice games against itself.
-- **P:** Fraction (%) of games won against opponents.
-
-**2. Handwriting recognition**
-
-- **T:** Recognising and classifying handwritten words within images.
-- **E:** A database of handwritten words with given (correct) classifications.
-- **P:** Fraction of words correctly classified.
-
-**3. Self-driving car (robot driving)**
-
-- **T:** Driving on a public highway using vision sensors.
-- **E:** A sequence of images and steering commands recorded while observing a human driver.
-- **P:** Average distance travelled before an error (human takes over).
-
-**4. Email spam filter**
-
-- **T:** Classify an email as spam / not-spam.
-- **E:** A database of emails labelled spam / not-spam (or watching the user sort them).
-- **P:** Fraction of emails correctly classified.
-
-**5. Credit-card fraud detection**
-
-- **T:** Label a transaction as fraud / not-fraud.
-- **E:** Historical transactions labelled fraud / not-fraud.
-- **P:** Accuracy of the classifier — **with a higher penalty when a fraud is missed** (labelled not-fraud).
-
-> [!EXAM]
-> When you design **P**, match it to what actually matters. For fraud or cancer, a missed positive (false negative) is catastrophic, so the performance measure should *weight* those errors more heavily — plain accuracy is the wrong score (see *Performance Metrics*).
-
-## The Machine Learning pipeline
-
-A model is not just "the algorithm." It is the end of a pipeline:
-
-```
-Dataset
-  → Data Preprocessing  (cleaning · transformation · reduction)
-  → Split the data      (training · validation · test)
-  → Training Set → ML Algorithm → Model
-  → Model Evaluation  (using validation/test sets)
-       ├─ not satisfactory → loop back, retrain / tune
-       └─ satisfactory → Predictive Model → Predictions (labels)
-```
-
-- **Training set** — the algorithm learns its parameters from this.
-- **Validation set** — used to tune choices (e.g. tree depth, *k*) and to compare candidate models *without* touching the test set.
-- **Test set** — touched **once**, at the very end, to get an *unbiased* estimate of performance on future unseen data.
+- **T — Task**: what the program is supposed to *do*. Not the algorithm, not the data — the *job*.
+- **P — Performance measure**: the number that says how well it did T.
+- **E — Experience**: the training data / interaction the program improves from.
 
 > [!TRAP]
-> Never tune on the test set. The moment you make a decision based on test performance, the test set is "contaminated" and no longer gives an honest estimate of real-world accuracy.
+> The single most common exam mistake is putting the *data-crunching* into T. In "learn to predict the weather", **T is "the weather prediction task"**, **not** "examining a large amount of historical weather data" (that's E) and **not** "the probability of correctly predicting tomorrow's weather" (that's P). This exact MCQ appears in the slide deck.
 
-## The 7 steps to Machine Learning
+## The six canonical ⟨P, T, E⟩ examples
 
-A clean checklist version of the pipeline:
+Memorise the shape, not the words — you'll be asked to invent one for a fresh scenario.
 
-1. **Data Collection** — gather raw data.
-2. **Data Preparation** — clean, encode, scale, split.
-3. **Choosing a Model** — pick an algorithm suited to the task.
-4. **Training** — fit parameters on the training set.
-5. **Evaluation** — measure performance on held-out data.
-6. **Parameter Tuning** — adjust hyper-parameters to improve it.
-7. **Prediction** — deploy the model on new inputs.
+| # | Problem | **T** — Task | **E** — Experience | **P** — Performance |
+|---|---|---|---|---|
+| 1 | **Checkers** | Playing checkers | Playing practice games **against itself** | Fraction of games won |
+| 2 | **Handwriting recognition** | Recognising & classifying handwritten words within images | Database of handwritten words **with given classification** | Fraction of correct words identified |
+| 3 | **Self-driving car** | Driving on the road using a vision sensor | Sequence of images & steering commands recorded **while observing a human driver** | Average distance travelled **before an error** |
+| 4 | **Text categorisation** | Assigning a document to its content category | Database of pre-classified documents | Fraction of documents correctly tagged |
+| 5 | **Spam filter** | Classifying an email as spam / non-spam | Watching the user label emails; a labelled email database | Fraction of emails correctly classified |
+| 6 | **Credit-card fraud** | Assigning "fraud / not fraud" to a transaction | Historical transactions labelled fraud / not fraud | Accuracy of the classifier, **with a higher penalty when fraud is labelled as not-fraud** |
 
 > [!EXAM]
-> The 7 steps and the `<P, T, E>` triple are classic 2–4 mark warm-up questions. Know them cold; they are free marks.
+> Example 6 is the interesting one. The performance measure is **asymmetric**: a missed fraud (false negative) costs far more than a false alarm (false positive). Whenever a question says "some errors are worse than others", the answer lives in **P**, not in the algorithm. This is the same idea that later justifies caring about **recall** over accuracy, and about **where you put the threshold** on an ROC curve.
+
+> [!INTUITION]
+> Reading a ⟨P,T,E⟩ statement aloud should sound like a job advert: *"You will do **T**. You'll learn on the job from **E**. Your appraisal is **P**."* If any of the three is missing, the learning problem is not well-posed — you literally cannot tell whether the program has learned anything.
+
+## The 7 steps of a machine learning project
+
+From the slides, in order:
+
+```
+STEP 1  Data Collection
+STEP 2  Data Preparation
+STEP 3  Choosing a Model
+STEP 4  Training
+STEP 5  Evaluation
+STEP 6  Parameter Tuning
+STEP 7  Prediction
+```
+
+Note the loop that is implicit between 5 and 6: you evaluate, tune, and re-evaluate. **Step 7 (prediction on genuinely new data) is the only step that happens after the model is frozen.**
+
+## The pipeline and the three-way split
+
+```
+                     ┌──────────── 80% ────────────┐
+   Dataset  ──split──┤        Training data        ├─→ ML algorithm ─→ MODEL
+                     └──────────── 20% ────────────┘                     │
+                                Test data ─────────────────────────────→ ├─→ Prediction
+```
+
+The two-way split (train / test) is the version you'll draw most often, but the honest version is a **three-way split**:
+
+| Subset | What it is used for | Touched during training? |
+|---|---|---|
+| **Training set** | **Learn** — fit the model's parameters | Yes, constantly |
+| **Validation set** | **Compare** — select between models, tune hyper-parameters, decide when to stop / prune | Yes, but only to *choose*, never to fit parameters |
+| **Test set** | **Evaluate** — one unbiased estimate of accuracy on future unseen examples | **No — used exactly once, at the very end** |
+
+> [!TRAP]
+> If you tune on the test set, the test set stops being a test set — its estimate becomes optimistically biased and worthless. That's the whole reason the validation set exists. You'll meet this split again, concretely, in **reduced-error pruning** (the validation set decides which nodes to cut) and in **choosing $k$ for k-NN**.
+
+> [!NOTE]
+> 80:20 is a convention, not a law. Mitchell's common heuristic for the pruning case is to **withhold one third for validation and train on the other two thirds**. With little data you'd instead use cross-validation, which recycles every example as both train and validation.
+
+## Where the rest of the unit hangs off this
+
+Everything else in Unit 1 is one of these three things:
+
+- **A choice of hypothesis space** — conjunctive rules (Find-S), decision trees (ID3), a sigmoid of a linear score (logistic regression), or *no explicit hypothesis at all* (k-NN).
+- **A search strategy through that space** — general-to-specific hill climbing, greedy information-gain splitting, gradient descent, or "just store everything".
+- **A performance measure** — accuracy, precision/recall/F1, specificity, ROC/AUC, MSE.
+
+> [!EXAM]
+> Typical 2–5 mark openers: *"Define machine learning as per Tom Mitchell"*, *"What is a well-posed learning problem?"*, *"Identify T, P and E for &lt;scenario&gt;"*, *"Why do we need a validation set separate from the test set?"* All four are answered by this page.
 
 ---
 
-**Next:** how learning problems are categorised — *supervised, unsupervised, reinforcement*, and the rest.
+**Next:** the taxonomy of learning — supervised, unsupervised, reinforcement, and the semi-/self-supervised middle ground.
