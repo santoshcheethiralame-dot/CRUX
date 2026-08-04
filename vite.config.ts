@@ -6,5 +6,6 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: '/',
   plugins: [react(), tailwindcss()],
-  server: { port: Number(process.env.PORT) || 5173 },
+  // Read PORT off globalThis rather than `process` so this stays typed without @types/node.
+  server: { port: Number((globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env?.PORT) || 5173 },
 })
