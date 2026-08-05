@@ -34,6 +34,10 @@ interface OrbitItem {
   question?: string
   answer?: string
   sourceApp: 'crux'
+  // Estimated minutes for this topic (already scaled — see TIME_SCALE in
+  // registry.ts). Orbit uses it to size a study block and to split a block
+  // across the topics it covers, so the two apps agree on how long work takes.
+  estimatedMinutes?: number
   // Absolute URL back to this exact page in CRUX, so Orbit can render a working
   // "open in CRUX" link during review. Uses the app's real HashRouter routes
   // (/s/:subject/u/:unit/t/:slug and .../cards) — see src/App.tsx.
@@ -111,6 +115,7 @@ export function buildOrbitPayload(
           easeFactor: 2.5,
           reviewCount: 0,
           comprehensionHistory: [],
+          estimatedMinutes: topic.minutes,
           sourceApp: 'crux',
           sourceUrl: `${base}#/s/${subject.id}/u/${unit.unit}/t/${topic.slug}`,
         })
@@ -125,6 +130,7 @@ export function buildOrbitPayload(
             easeFactor: 2.5,
             reviewCount: 0,
             comprehensionHistory: [],
+            estimatedMinutes: topic.minutes,
             sourceApp: 'crux',
             sourceUrl: `${base}#/s/${subject.id}/u/${unit.unit}/t/${topic.slug}`,
           })

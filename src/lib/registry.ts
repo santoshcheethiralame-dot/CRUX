@@ -19,6 +19,14 @@ const quizFiles = import.meta.glob('../content/**/*.quiz.json', { import: 'defau
 const cardFiles = import.meta.glob('../content/**/*.cards.json', { import: 'default', eager: true }) as Record<string, CardSet>
 const pyqFiles = import.meta.glob('../content/**/*.pyq.json', { import: 'default', eager: true }) as Record<string, PYQSet>
 
+/**
+ * Frontmatter `minutes` is a reading estimate, and reading is not studying —
+ * in practice a topic takes about twice as long once you are actually working
+ * through it. Scale once here so the reader, the unit list and the Orbit export
+ * all quote the same realistic number, instead of editing every content file.
+ */
+const TIME_SCALE = 2
+
 function buildTopics(): Topic[] {
   const topics: Topic[] = []
   for (const [path, raw] of Object.entries(rawTopics)) {
@@ -37,7 +45,9 @@ function buildTopics(): Topic[] {
       slug,
       title: String(data.title),
       summary: data.summary ? String(data.summary) : undefined,
-      minutes: data.minutes !== undefined ? Number(data.minutes) : undefined,
+      minutes: data.minutes !== undefined
+        ? Math.round(Number(data.minutes) * TIME_SCALE)
+        : undefined,
       tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
       id: `${subject}/u${unit}/${slug}`,
       body: body.trim(),
