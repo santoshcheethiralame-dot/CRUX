@@ -1,0 +1,807 @@
+{
+  "subject": "arvr",
+  "unit": 2,
+  "title": "Unit 2 MCQs — Graphical System, Programming and 3D Modelling",
+  "items": [
+    {
+      "id": "arvr-u2-001",
+      "topic": "intro-computer-graphics",
+      "q": "In computer graphics, **modelling** and **rendering** refer respectively to:",
+      "options": [
+        "Generating images, and storing them on disk",
+        "Creating/manipulating/storing geometric objects, and generating their images",
+        "Applying textures, and applying lighting",
+        "Defining the camera, and defining the lights"
+      ],
+      "answer": 1,
+      "explain": "**Modelling** = creation, manipulation and storage of geometric objects — defining shape and structure. **Rendering** = transforming those models into visually perceivable images via lighting, shading, texturing and rasterization.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-002",
+      "topic": "programmers-interface",
+      "q": "In the pen plotter model, which pair of functions forms the entire API?",
+      "options": [
+        "`draw()` and `fill()`",
+        "`moveto()` and `lineto()`",
+        "`write_pixel()` and `read_pixel()`",
+        "`glBegin()` and `glEnd()`"
+      ],
+      "answer": 1,
+      "explain": "**`moveto(x,y)`** repositions the pen **without drawing**; **`lineto(x,y)`** draws from the current position to the new one. Note the model is **stateful** — `lineto` draws from *'the current position'*, an idea that survives into OpenGL's state machine.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-003",
+      "topic": "programmers-interface",
+      "q": "Which is a stated **limitation** of the pen plotter model?",
+      "options": [
+        "It cannot draw straight lines",
+        "It does not extend well to 3D graphics and lacks real-time rendering",
+        "It requires a framebuffer",
+        "It cannot preserve accurate dimensions"
+      ],
+      "answer": 1,
+      "explain": "It operates **strictly in 2D**, **lacks real-time rendering**, and is slower and less adaptable than raster displays for complex effects. It is however excellent at precise vector output — hence its survival in CNC plotting and drafting.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-004",
+      "topic": "programmers-interface",
+      "q": "The key function of the raster-based 2D model is:",
+      "options": ["`lineto(x, y)`", "`write_pixel(x, y, color)`", "`glVertex2f(x, y)`", "`setPixelFormat()`"],
+      "answer": 1,
+      "explain": "**`write_pixel(x, y, color)`** sets one pixel in the **framebuffer**. This gives fine-grained control (shading, anti-aliasing, texturing) but loses structural information about objects and is memory-intensive.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-005",
+      "topic": "programmers-interface",
+      "q": "Which four components must a three-dimensional API let you specify?",
+      "options": [
+        "Objects, viewer, light sources, material properties",
+        "Vertices, edges, faces, normals",
+        "Scene, camera, renderer, canvas",
+        "Model, view, projection, viewport"
+      ],
+      "answer": 0,
+      "explain": "**Objects** (sets of vertices), **viewer** (camera position & orientation), **light sources** (directional, spot, point) and **material properties** (absorption, scattering, diffuse/specular). These are the four things needed to answer *'what colour is this pixel?'*",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-006",
+      "topic": "graphics-architectures",
+      "q": "What is a **display list**?",
+      "options": [
+        "A list of connected monitors",
+        "Image instructions stored in memory and executed repeatedly to maintain the display without flicker",
+        "The ordered list of objects sorted by depth",
+        "A queue of pending user input events"
+      ],
+      "answer": 1,
+      "explain": "It frees the CPU from re-describing the picture every refresh — the display processor replays it. The same idea survives as the modern **vertex buffer object (VBO)**: upload once, draw with one call per frame.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-007",
+      "topic": "graphics-architectures",
+      "q": "What is the correct order of the four major steps in the imaging process?",
+      "options": [
+        "Rasterization → Vertex processing → Clipping → Fragment processing",
+        "Vertex processing → Clipping and primitive assembly → Rasterization → Fragment processing",
+        "Clipping → Rasterization → Vertex processing → Fragment processing",
+        "Vertex processing → Rasterization → Clipping → Fragment processing"
+      ],
+      "answer": 1,
+      "explain": "**① Vertex processing** (transform + light per vertex) → **② Clipping and primitive assembly** (cull what's outside the view volume) → **③ Rasterization** (primitives become fragments) → **④ Fragment processing** (texture, depth test, final colour).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-008",
+      "topic": "graphics-architectures",
+      "q": "In the graphics pipeline, a **fragment** is:",
+      "options": [
+        "A finished pixel written to the framebuffer",
+        "A candidate pixel carrying colour, depth and texture data, which may still be discarded",
+        "A partially clipped polygon",
+        "A vertex that failed the clipping test"
+      ],
+      "answer": 1,
+      "explain": "A fragment is a **candidate**. It may be discarded by the depth or alpha test, or blended with others — several fragments can compete for one pixel. Fragment ≠ pixel.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-009",
+      "topic": "graphics-architectures",
+      "q": "Early graphics systems used calligraphic CRT displays, which required:",
+      "options": [
+        "A large framebuffer",
+        "High refresh rates to avoid flicker",
+        "Programmable shaders",
+        "Double buffering"
+      ],
+      "answer": 1,
+      "explain": "A calligraphic (vector) CRT steers the beam **along the lines of the drawing**; the image fades unless retraced, so **high refresh rates were needed to avoid flicker**. The display list was the fix.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-010",
+      "topic": "programmable-pipelines",
+      "q": "Which two pipeline stages are programmable?",
+      "options": [
+        "Clipping and rasterization",
+        "Vertex processing and fragment processing",
+        "Primitive assembly and rasterization",
+        "All four stages"
+      ],
+      "answer": 1,
+      "explain": "**Vertex shaders** replace stage ① and **fragment shaders** replace stage ④. Clipping and rasterization remain **fixed-function** — they are pure geometry with no artistic decisions to make.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-011",
+      "topic": "programmable-pipelines",
+      "q": "A vertex program (vertex shader) is responsible for:",
+      "options": [
+        "Applying textures and transparency to pixels",
+        "Modifying vertex positions, computing vertex colours, and performing custom transformations",
+        "Determining which pixels lie inside a triangle",
+        "Removing primitives outside the clipping volume"
+      ],
+      "answer": 1,
+      "explain": "Vertex shaders handle **morphing/deformation/animation**, **lighting-based vertex colours**, and **custom transformations beyond traditional matrix operations**. Texturing and transparency are the **fragment** shader's job.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-012",
+      "topic": "programmable-pipelines",
+      "q": "Roughly how many times does a fragment shader run compared with a vertex shader, for one full-screen triangle at 1080p?",
+      "options": [
+        "About the same",
+        "About 3× more",
+        "About 1000× more",
+        "Hundreds of thousands of times more"
+      ],
+      "answer": 3,
+      "explain": "3 vertices versus roughly **two million fragments**. This is why work that can be done per-vertex and interpolated is thousands of times cheaper — the single most important optimisation principle in real-time graphics.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-013",
+      "topic": "programming-2d-coordinate-systems",
+      "q": "A 2D point $p = (x,y)$ corresponds to which point in 3D?",
+      "options": ["$(x, y, 1)$", "$(x, y, 0)$", "$(x, y, x+y)$", "$(x/2, y/2, 0)$"],
+      "answer": 1,
+      "explain": "$(x, y, 0)$ — which is why there is no separate 2D graphics system. In homogeneous form it is $(x, y, 0, 1)$: $z=0$ because it lies on the plane, $w=1$ because it is a **point**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-014",
+      "topic": "programming-2d-coordinate-systems",
+      "q": "Normalized Device Coordinates in OpenGL typically span which range?",
+      "options": ["$[0, 1]$", "$[-1, 1]$", "$[0, 255]$", "The screen resolution in pixels"],
+      "answer": 1,
+      "explain": "**$[-1,1]$** — a canonical cube. Being resolution-independent means the same scene renders identically at any resolution, clipping is done against a fixed volume, and a headset can render two viewports from one NDC scene.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-015",
+      "topic": "sierpinski-gasket",
+      "q": "In the Sierpinski gasket's random algorithm, each new point is:",
+      "options": [
+        "A random point inside the triangle",
+        "The midpoint between the current point and a randomly selected vertex",
+        "The centroid of the three vertices",
+        "A reflection of the current point about the nearest edge"
+      ],
+      "answer": 1,
+      "explain": "Pick one of the three vertices **at random**, take the **midpoint** between it and the current point, plot it, and repeat. Despite the randomness the structure converges to a **highly ordered, self-similar fractal**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-016",
+      "topic": "sierpinski-gasket",
+      "q": "Why is the 'use GPU for display' version of the gasket faster than drawing each point immediately?",
+      "options": [
+        "The GPU generates the points itself",
+        "The point data is uploaded once and replayed from GPU memory, instead of the CPU issuing a call per point",
+        "It uses fewer points",
+        "It skips the rasterization stage"
+      ],
+      "answer": 1,
+      "explain": "Immediate mode means the CPU talks to the graphics system **once per point** (100,000 times). Uploading once and drawing from GPU memory replaces that with a **single draw call** — the display-list idea, as a VBO.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-017",
+      "topic": "opengl-api",
+      "q": "Which is **NOT** one of the six categories of API functions?",
+      "options": ["Primitive functions", "Attribute functions", "Compilation functions", "Control functions"],
+      "answer": 2,
+      "explain": "The six are **Primitive, Attribute, Viewing, Transformation, Input and Control**. They answer: what shapes · what do they look like · from where · positioned how · how does the user act · how is the program managed.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-018",
+      "topic": "opengl-api",
+      "q": "What does **GLEW** provide?",
+      "options": [
+        "Window management and input handling",
+        "Management of OpenGL extensions, eliminating platform-specific dependencies",
+        "The core 2D and 3D rendering functions",
+        "Shader compilation"
+      ],
+      "answer": 1,
+      "explain": "**GLEW** = OpenGL **Extension Wrangler** — it manages extensions so you can use modern features without manual extension loading. **GLUT** does windowing and input; **GL** is the core rendering library.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-019",
+      "topic": "opengl-api",
+      "q": "What is the difference between `glColor3d` and `glColor3f`?",
+      "options": [
+        "`glColor3d` sets RGB while `glColor3f` sets RGBA",
+        "`glColor3d` allows 3D colour operations while `glColor3f` allows only 8-bit",
+        "`glColor3d` takes double arguments while `glColor3f` takes float arguments",
+        "`glColor3d` is in real space while `glColor3f` is in integer space"
+      ],
+      "answer": 2,
+      "explain": "The suffix is always **count then type**: `3` = three components, `d` = double, `f` = float. Both set R, G and B. Reading `3d` as '3-dimensional' is the trap.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-020",
+      "topic": "opengl-api",
+      "q": "In `glVertex3fv`, what does the trailing `v` mean?",
+      "options": [
+        "The values are validated",
+        "The arguments are passed as a vector (an array)",
+        "It draws a vertical line",
+        "The values are in view coordinates"
+      ],
+      "answer": 1,
+      "explain": "**`v` = vector form** — the components are passed as an array rather than as separate arguments. Hence `glVertex2dv(array[i])` in the gasket code.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-021",
+      "topic": "primitives-attributes",
+      "q": "Which is a property of **raster** primitives?",
+      "options": [
+        "They have definable points and edges in 3D space",
+        "They exist as arrays of pixels in the framebuffer and undergo no geometric transformation",
+        "They are transformed, clipped, lit and shaded",
+        "They scale without loss of quality"
+      ],
+      "answer": 1,
+      "explain": "Raster primitives **lack geometric structure**, live as pixels in the framebuffer, and follow a **separate rasterization pipeline** concerned with blending, filtering and anti-aliasing — not transformation.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-022",
+      "topic": "primitives-attributes",
+      "q": "Which is the correct list of primitive types available to `glBegin`?",
+      "options": [
+        "GL_QUAD, GL_TRIANGLE, GL_LINE, GL_POINT, GL_POLYGON",
+        "GL_QUADS, GL_TRIANGLES, GL_LINES, GL_LINE_STRIP, GL_QUAD_STRIP, GL_LINE_LOOP, GL_TRIANGLE_STRIP, GL_POINTS, GL_POLYGON",
+        "GL_START, GL_END",
+        "GL_VERTEX, GL_EDGE, GL_FACE"
+      ],
+      "answer": 1,
+      "explain": "The names are **plural** — `GL_POINTS`, `GL_LINES`, `GL_TRIANGLES`, `GL_QUADS`. The singular list is the deliberate distractor.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-023",
+      "topic": "primitives-attributes",
+      "q": "Given vertices $v_0 \\dots v_5$, how many triangles does `GL_TRIANGLE_STRIP` produce?",
+      "options": ["2", "3", "4", "6"],
+      "answer": 2,
+      "explain": "A strip gives $n - 2$ triangles, so $6 - 2 = \\mathbf{4}$. `GL_TRIANGLES` would give only 2 from the same 6 vertices — strips exist precisely to avoid re-sending shared vertices.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-024",
+      "topic": "polygon-rendering",
+      "q": "What primitive polygon is generally used for creating a mesh to represent a complex object?",
+      "options": ["Square", "Circle", "Triangle", "Rectangle"],
+      "answer": 2,
+      "explain": "The **triangle** — it is always **planar** (3 points define a plane), always **convex**, trivial to rasterize, and supports barycentric interpolation naturally. Quads may be non-planar, leaving the surface ill-defined.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-025",
+      "topic": "polygon-rendering",
+      "q": "Which rendering method is described as the **most common in real-time rendering and game graphics**?",
+      "options": [
+        "Render edges only (wireframe)",
+        "Render the interior with solid colour or patterns",
+        "Choose to render or not render edges (cel-shading)",
+        "Render only the silhouette"
+      ],
+      "answer": 1,
+      "explain": "Filling faces with a colour, gradient or texture. **Wireframe** is for debugging and modelling; **selective edges** is for stylised looks like cel-shading.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-026",
+      "topic": "polygon-rendering",
+      "q": "A **simple polygon** is one in which:",
+      "options": [
+        "All sides are equal",
+        "No two non-adjacent edges intersect",
+        "There are at most four vertices",
+        "All interior angles are less than 180°"
+      ],
+      "answer": 1,
+      "explain": "No self-intersection, so the interior is unambiguous. OpenGL assumes polygons are **simple, convex and planar** and does **not check** — feeding it a complex polygon gives undefined behaviour.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-027",
+      "topic": "opengl-programs-callbacks",
+      "q": "`glutInitWindowSize()` sets the window size. What happens if it is not called?",
+      "options": [
+        "OpenGL throws an error",
+        "OpenGL uses the previously set value",
+        "It defaults to 300 × 300",
+        "It defaults to 100 × 100"
+      ],
+      "answer": 2,
+      "explain": "GLUT defaults to **300 × 300**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-028",
+      "topic": "opengl-programs-callbacks",
+      "q": "What happens to code placed **after** `glutMainLoop()`?",
+      "options": [
+        "It runs after the window closes",
+        "It never runs — `glutMainLoop()` does not return",
+        "It runs once before the first frame",
+        "It runs on every frame"
+      ],
+      "answer": 1,
+      "explain": "`glutMainLoop()` **never returns** — control passes permanently to GLUT, which invokes your registered callbacks on events. This inversion of control is what 'event-driven' means.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-029",
+      "topic": "opengl-programs-callbacks",
+      "q": "What is the purpose of `glPushMatrix()` and `glPopMatrix()`?",
+      "options": [
+        "To switch between projection and model-view matrices",
+        "To save and restore the current matrix, giving scoped transformations",
+        "To multiply two matrices together",
+        "To upload a matrix to the GPU"
+      ],
+      "answer": 1,
+      "explain": "`glPushMatrix` saves a copy of the current matrix on a stack; `glPopMatrix` restores it. Changes between them affect only what is drawn inside — preventing transforms from **leaking** into subsequent objects and frames.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-030",
+      "topic": "opengl-programs-callbacks",
+      "q": "To first **rotate** an object and then **move** it to a new position, in what order should the OpenGL calls be issued?",
+      "options": [
+        "`glRotatef` then `glTranslatef`",
+        "`glTranslatef` then `glRotatef`",
+        "Either order — the result is the same",
+        "Both must be inside `glBegin`/`glEnd`"
+      ],
+      "answer": 1,
+      "explain": "With column vectors the **last matrix issued is applied first**. Issuing `glTranslatef` then `glRotatef` builds $T \\cdot R$, so the rotation acts on the object first and the translation afterwards.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-031",
+      "topic": "camera-lights-materials",
+      "q": "What do the nine arguments of `gluLookAt` specify?",
+      "options": [
+        "Three vertices of the near plane",
+        "Eye position, look-at point, and up vector",
+        "Field of view, aspect ratio and clipping planes",
+        "Ambient, diffuse and specular colours"
+      ],
+      "answer": 1,
+      "explain": "**Eye** (where the camera is), **centre** (what it looks at) and **up** (which way is up). Eye fixes position, centre fixes direction, and up pins the remaining **roll** freedom — six degrees of freedom in total.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-032",
+      "topic": "camera-lights-materials",
+      "q": "If you need more **shininess** on an object, which light/material property would you change?",
+      "options": ["Diffuse", "Specularity", "Ambience", "Absorption"],
+      "answer": 1,
+      "explain": "**Specular** scattering produces the mirror-like highlight and depends on the **viewing direction** — which is why the highlight slides across a surface as you move, and why it reads as *shiny*. Diffuse is view-independent and matte.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-033",
+      "topic": "camera-lights-materials",
+      "q": "In the modelling–rendering paradigm, what does the **interface file** contain?",
+      "options": [
+        "Only the mesh vertices",
+        "Object descriptions, light sources and viewer location",
+        "The compiled shader binaries",
+        "The final rendered image"
+      ],
+      "answer": 1,
+      "explain": "The interface file is the seam between modeller and renderer, carrying everything needed to produce the image. Today this is a **glTF file** between **Blender** and **Three.js** — the same architecture, forty years on.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-034",
+      "topic": "parallel-projection",
+      "q": "In an **orthographic** projection, the projectors are:",
+      "options": [
+        "Convergent at the centre of projection",
+        "Perpendicular to the view plane",
+        "At 45° to the view plane",
+        "Parallel to the view plane"
+      ],
+      "answer": 1,
+      "explain": "**Perpendicular** to the view plane, so objects appear without distortion and **actual dimensions are preserved** — hence its use in blueprints and CAD. If the projectors meet the plane at any other angle it is **oblique**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-035",
+      "topic": "parallel-projection",
+      "q": "Which oblique projection **scales depth down** to create a more natural look?",
+      "options": ["Cavalier", "Cabinet", "Isometric", "Dimetric"],
+      "answer": 1,
+      "explain": "**Cabinet** halves the depth; **cavalier** preserves it fully and looks stretched, because the eye expects depth to foreshorten. Cabinet is a deliberate compromise between measurability and realism.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-036",
+      "topic": "perspective-projection",
+      "q": "In perspective projection, the projectors converge at:",
+      "options": ["The vanishing point", "The centre of projection (COP)", "The origin of world coordinates", "The far clipping plane"],
+      "answer": 1,
+      "explain": "The **centre of projection**, mimicking the eye. **Vanishing points** are where *parallel lines in the scene* appear to converge in the image — a different thing.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-037",
+      "topic": "perspective-projection",
+      "q": "Which statement correctly distinguishes parallel from perspective projection?",
+      "options": [
+        "Parallel projection distorts dimensions; perspective preserves them",
+        "In parallel projection the distance from the centre of projection is infinite; in perspective it is finite",
+        "Parallel projection has three types; perspective has two",
+        "Parallel projection creates realistic views; perspective does not"
+      ],
+      "answer": 1,
+      "explain": "This is the row that explains all the others — **parallel projection is perspective projection with the eye moved infinitely far away**, so projectors become parallel and foreshortening vanishes. Parallel has **two** types (orthographic, oblique); perspective has **three** (one-, two-, three-point).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-038",
+      "topic": "perspective-projection",
+      "q": "A drawing of a skyscraper viewed from street level, with vertical edges converging upward, uses:",
+      "options": ["One-point perspective", "Two-point perspective", "Three-point perspective", "Cabinet projection"],
+      "answer": 2,
+      "explain": "**Three-point** — the third vanishing point sits above (or below) the horizon, making the **vertical** edges converge and creating a sense of height. Count vanishing points by counting how many sets of parallel edges recede.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-039",
+      "topic": "perspective-projection",
+      "q": "What is the key difference between `glOrtho()` and `gluPerspective()`?",
+      "options": [
+        "`glOrtho` defines a rectangular box view volume; `gluPerspective` defines a frustum",
+        "`glOrtho` is for 2D only; `gluPerspective` is for 3D only",
+        "`glOrtho` takes four arguments; `gluPerspective` takes six",
+        "`glOrtho` applies lighting; `gluPerspective` does not"
+      ],
+      "answer": 0,
+      "explain": "`glOrtho(l,r,b,t,n,f)` gives a **box** with parallel projectors and no depth effect; `gluPerspective(fovy, aspect, near, far)` gives a **frustum** with converging projectors, so distant objects shrink. ⚠ Never call both without `glLoadIdentity()` between them — they multiply into the same matrix.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u2-040",
+      "topic": "threejs-scene",
+      "q": "Which three objects are mandatory for anything to render in Three.js?",
+      "options": [
+        "Mesh, Material, Texture",
+        "Scene, Camera, Renderer",
+        "Geometry, Light, Canvas",
+        "Loader, Clock, Controls"
+      ],
+      "answer": 1,
+      "explain": "**Scene** (the graph root), **Camera** (the viewer) and **Renderer** (draws scene from camera into a canvas). A visible object additionally needs a **Mesh = Geometry + Material**.",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-041",
+      "topic": "threejs-scene",
+      "q": "`new THREE.PerspectiveCamera(75, aspect, 0.1, 1000)` — these four arguments correspond to which classical OpenGL call?",
+      "options": ["`glOrtho`", "`gluLookAt`", "`gluPerspective`", "`glViewport`"],
+      "answer": 2,
+      "explain": "**`gluPerspective(fovy, aspect, near, far)`** — identical arguments in the same order. Three.js is a layer over WebGL, which is OpenGL ES; the concepts are unchanged.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-042",
+      "topic": "threejs-scene",
+      "q": "A Three.js scene renders as a black screen. Which is **NOT** a likely cause?",
+      "options": [
+        "No light in the scene while using MeshStandardMaterial",
+        "The camera is at the origin, inside the object",
+        "The render loop was never started",
+        "The geometry has too many segments"
+      ],
+      "answer": 3,
+      "explain": "Too many segments costs **performance**, not visibility. The three classic causes are **no light** (with a lit material), **camera inside the object** (both default to the origin), and **no render loop**.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-043",
+      "topic": "threejs-geometries-materials",
+      "q": "Which Three.js material **ignores lights entirely**?",
+      "options": ["MeshLambertMaterial", "MeshBasicMaterial", "MeshPhongMaterial", "MeshStandardMaterial"],
+      "answer": 1,
+      "explain": "**MeshBasicMaterial** is unlit — useful for UI, wireframes and debugging (it always shows, even with no lights). Lambert adds **diffuse**, Phong adds **specular**, Standard is **physically based** (roughness/metalness).",
+      "difficulty": "easy",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-044",
+      "topic": "threejs-geometries-materials",
+      "q": "Which texture maps should be tagged as **sRGB** colour space?",
+      "options": [
+        "All of them",
+        "Only colour maps such as `map` and `emissiveMap`",
+        "Only data maps such as `normalMap` and `roughnessMap`",
+        "None — Three.js handles it automatically"
+      ],
+      "answer": 1,
+      "explain": "**Only colour maps.** Data maps (normal, roughness, metalness, AO) store *numbers*, not colours, and must stay **linear**. Tagging a normal map as sRGB silently corrupts the lighting.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-045",
+      "topic": "threejs-geometries-materials",
+      "q": "Why must `geometry.dispose()` and `material.dispose()` be called?",
+      "options": [
+        "To remove the object from the scene graph",
+        "Because JavaScript's garbage collector cannot free GPU memory",
+        "To recompute vertex normals",
+        "To flush the render queue"
+      ],
+      "answer": 1,
+      "explain": "Removing a mesh frees the JS object but leaves its **buffers and textures resident on the GPU**. In a long AR/VR session that loads and unloads content this is a genuine leak. (React Three Fiber does this automatically on unmount.)",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-046",
+      "topic": "threejs-animation-physics",
+      "q": "Why is `cube.rotation.y += 0.01` inside the render loop considered a bug?",
+      "options": [
+        "Rotation must be set with a quaternion",
+        "The rotation speed depends on the frame rate, so it differs across machines",
+        "It accumulates floating-point error",
+        "It bypasses the scene graph"
+      ],
+      "answer": 1,
+      "explain": "At 60 fps this is 0.6 rad/s; at 144 fps it is 1.44 rad/s. Scale by **delta time** — `+= 1.0 * delta` — to get one radian per **second** regardless of hardware. Critical in VR, where headsets run at 72/90/120 Hz.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-047",
+      "topic": "threejs-animation-physics",
+      "q": "In a Three.js + physics-engine application, what is the correct per-frame order?",
+      "options": [
+        "Render → step physics → copy transforms",
+        "Step physics → copy transforms to meshes → render",
+        "Copy transforms → render → step physics",
+        "Physics and rendering run independently with no copying"
+      ],
+      "answer": 1,
+      "explain": "**Step, copy, render.** The physics world owns position and orientation; Three.js owns appearance; you synchronise them by copying each frame. Almost every physics bug in such an app is a synchronisation mistake.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-048",
+      "topic": "threejs-animation-physics",
+      "q": "Why should a physics engine be stepped at a **fixed** timestep rather than with the raw frame delta?",
+      "options": [
+        "Fixed steps are faster to compute",
+        "Simulations are only stable at a fixed step; variable deltas make behaviour hardware-dependent and can explode",
+        "The GPU requires it",
+        "Fixed steps allow more objects"
+      ],
+      "answer": 1,
+      "explain": "Physics integrators are tuned for a constant step (typically 1/60 s). The standard fix is an **accumulator** that runs zero or more fixed steps per frame — decoupling physics rate from render rate, which matters in VR where the headset dictates the frame rate.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-049",
+      "topic": "working-with-blender",
+      "q": "In the modelling–rendering paradigm applied to modern web AR, which component plays the role of the **interface file**?",
+      "options": ["The Blender .blend file", "The glTF / .glb file", "The JavaScript bundle", "The WebGL context"],
+      "answer": 1,
+      "explain": "**Blender** is the modeller, **glTF/.glb** is the interface file, **Three.js** is the renderer. glTF carries meshes, materials, textures, skeletons and animations — often called 'the JPEG of 3D'.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-050",
+      "topic": "working-with-blender",
+      "q": "Blender is Z-up while glTF and Three.js are Y-up. What is the consequence if this is mishandled?",
+      "options": [
+        "Textures appear inverted",
+        "Models arrive rotated — typically lying on their back",
+        "Animations play in reverse",
+        "Materials lose their colour"
+      ],
+      "answer": 1,
+      "explain": "The glTF exporter converts automatically, but hand-moved data or odd transform handling produces models **lying on their back**. Rotating by −90° about X in Three.js to compensate is a symptom, not a cure — fix it at export.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-051",
+      "topic": "working-with-blender",
+      "q": "What does **UV unwrapping** do?",
+      "options": [
+        "Smooths the mesh surface",
+        "Flattens the 3D surface into a 2D layout so textures can be mapped onto it",
+        "Reduces the polygon count",
+        "Converts quads into triangles"
+      ],
+      "answer": 1,
+      "explain": "It defines the mapping between the 3D surface and the 2D texture image — you mark **seams**, unwrap, and arrange the **UV islands**. **A model with no UVs cannot be textured**, and will render as flat colour whatever maps you assign.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-052",
+      "topic": "react-three-fiber",
+      "q": "In React Three Fiber, what does the `args` prop do?",
+      "options": [
+        "Sets properties on the instance after creation",
+        "Passes arguments to the underlying Three.js **constructor**",
+        "Declares the component's children",
+        "Specifies animation parameters"
+      ],
+      "answer": 1,
+      "explain": "`args={[1,1,1]}` on `<boxGeometry>` means `new THREE.BoxGeometry(1,1,1)`. Ordinary props (`position`, `color`) are **set on the instance**. That is the whole convention.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-053",
+      "topic": "react-three-fiber",
+      "q": "Why should you never call `setState` inside `useFrame`?",
+      "options": [
+        "`useFrame` does not have access to state",
+        "It triggers a React re-render up to 120 times a second, destroying performance",
+        "State updates are ignored during animation",
+        "It would break the scene graph"
+      ],
+      "answer": 1,
+      "explain": "Mutate through a **ref** instead (`ref.current.rotation.y += delta`). React state is for things that change **occasionally** (hovered, selected); refs are for things that change **every frame**.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-054",
+      "topic": "react-three-fiber",
+      "q": "Which statement about React Three Fiber is correct?",
+      "options": [
+        "It is a re-implementation of Three.js in React",
+        "It is a React renderer that builds real Three.js objects from a declarative component tree",
+        "It replaces WebGL with the DOM",
+        "It only supports a fixed set of predefined components"
+      ],
+      "answer": 1,
+      "explain": "R3F is **not a wrapper or a rewrite** — it constructs genuine Three.js objects. The **entire Three.js namespace** is available as lower-case JSX elements automatically, so everything you know still applies.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-055",
+      "topic": "webxr",
+      "q": "When entering an immersive WebXR session, `requestAnimationFrame` must be replaced by:",
+      "options": [
+        "`setInterval`",
+        "`renderer.setAnimationLoop`",
+        "`useFrame`",
+        "`session.requestFrame`"
+      ],
+      "answer": 1,
+      "explain": "The **headset** drives frame timing (72/90/120 Hz), independently of the browser's display refresh. Keeping `requestAnimationFrame` means the loop stops or runs at the wrong rate — the most common WebXR porting mistake.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-056",
+      "topic": "webxr",
+      "q": "Which WebXR **reference space** should a standing, room-scale experience use so that $y = 0$ is the real floor?",
+      "options": ["`viewer`", "`local`", "`local-floor`", "`unbounded`"],
+      "answer": 2,
+      "explain": "**`local-floor`** puts the origin at floor level, so real-world scale is correct. With `local` the system does not know where the floor is, and avatars float or sink — the usual cause of 'everything is the wrong height'.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-057",
+      "topic": "webxr",
+      "q": "What does WebXR **hit testing** provide?",
+      "options": [
+        "Collision detection between virtual objects",
+        "Where a ray from the device intersects the device's model of the real world",
+        "Whether the user's controller button was pressed",
+        "The frame rate of the headset"
+      ],
+      "answer": 1,
+      "explain": "It reports where a ray lands on a detected real surface — floor, table, wall — and is the mechanism behind every 'tap to place' AR app. It depends on the device's **SLAM-based world model**, which Unit 4 explains.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u2-058",
+      "topic": "webxr",
+      "q": "Why does an `immersive-ar` session require a transparent clear colour?",
+      "options": [
+        "To save GPU memory",
+        "So the real world remains visible behind the virtual content",
+        "Because AR devices cannot render backgrounds",
+        "To enable anti-aliasing"
+      ],
+      "answer": 1,
+      "explain": "In AR the real world shows through, so an opaque background or skybox would hide it. This is Unit 3's **AR vs VR** distinction expressed as a rendering setting.",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}
