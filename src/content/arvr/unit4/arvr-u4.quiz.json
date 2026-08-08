@@ -1,0 +1,832 @@
+{
+  "subject": "arvr",
+  "unit": 4,
+  "title": "Unit 4 MCQs — IO Modalities, AI and Behaviour",
+  "items": [
+    {
+      "id": "arvr-u4-001",
+      "topic": "computer-vision-for-ar",
+      "q": "In the realm of tracking methods for AR, what distinguishes **sparse** tracking from **dense** tracking?",
+      "options": [
+        "Sparse tracking primarily captures individual points, while dense tracking involves continuous tracking of body parts",
+        "Sparse tracking restricts interaction to a few points, while dense tracking relies on a detailed understanding of the environment",
+        "Sparse tracking is suitable for arbitrary changes in the environment, while dense tracking focuses on capturing specific body parts",
+        "Sparse tracking deals with discrete points, whereas dense tracking utilizes rich sensory input for continuous tracking of body parts"
+      ],
+      "answer": 3,
+      "explain": "**Sparse** operates on **discrete interest points** and deliberately discards most of the image, which is what makes it fast. **Dense** uses **rich sensory input** — typically a depth sensor — to track every pixel, enabling continuous body-part tracking, reconstruction and **occlusion handling**.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-002",
+      "topic": "computer-vision-for-ar",
+      "q": "Why is computer vision essential to AR, given that headsets already have IMUs?",
+      "options": [
+        "IMUs cannot measure rotation",
+        "IMUs cannot supply position — a bias double-integrates into quadratic error, so an absolute spatial reference is needed",
+        "Cameras are cheaper than IMUs",
+        "IMUs only work outdoors"
+      ],
+      "answer": 1,
+      "explain": "Unit 3 ended at exactly this wall. Inertial sensing gives orientation but **never position**; outside a prepared room the only sensor that supplies an absolute spatial reference is the **camera**. Vision closes the loop inertial sensing cannot.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-003",
+      "topic": "marker-tracking",
+      "q": "Why do the four corners of a square marker yield a full 6DOF pose from a single image?",
+      "options": [
+        "Because four points is the minimum for any pose estimate",
+        "Because the marker's 3D geometry is known, giving four 3D↔2D correspondences — a Perspective-n-Point problem",
+        "Because the camera must be perpendicular to the marker",
+        "Because the marker encodes its pose in its pattern"
+      ],
+      "answer": 1,
+      "explain": "**Known geometry converts a single image into an absolute pose.** The marker is a square of known size, so you know the corners' 3D coordinates; observing their 2D projections gives a small **PnP** problem. The interior pattern supplies **identity** and resolves the 90° rotational ambiguity.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-004",
+      "topic": "marker-tracking",
+      "q": "Which advantage of marker tracking is **impossible** for a single camera tracking natural features?",
+      "options": [
+        "Working in low light",
+        "Recovering absolute metric scale",
+        "Running in real time",
+        "Detecting corners"
+      ],
+      "answer": 1,
+      "explain": "A monocular camera cannot distinguish a doll's house from a real house — identical images. Because you **told the system the marker is 8 cm across**, marker tracking gets absolute scale for free. This is why markers are still used to **bootstrap SLAM maps with correct scale**.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-005",
+      "topic": "multi-camera-infrared-tracking",
+      "q": "In the stereo camera tracking pipeline for rigid-body marker-based motion tracking, what is the purpose of the step involving **epipolar geometry**?",
+      "options": [
+        "To determine the target's pose using absolute orientation",
+        "To perform blob detection in all images to locate the spheres of the rigid body markers",
+        "To establish point correspondences between blobs",
+        "To match 3D candidate points to 3D target points"
+      ],
+      "answer": 2,
+      "explain": "Camera A sees five bright dots and camera B sees five — **which is which?** The epipolar constraint says a point seen at $\\mathbf x_A$ must lie on a **single line** in camera B, turning a 2D search into a **1D** one. The other options are stages ①, ④ and ⑤ of the pipeline.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-006",
+      "topic": "multi-camera-infrared-tracking",
+      "q": "Why do retro-reflective spheres appear as bright dots on a black background in an IR tracking system?",
+      "options": [
+        "They emit their own infrared light",
+        "Retro-reflective material returns light straight back toward its source, and the cameras are ringed with IR LEDs",
+        "The cameras use long exposures",
+        "The spheres are heated and detected thermally"
+      ],
+      "answer": 1,
+      "explain": "Each camera has an **IR LED ring**; retro-reflective material returns light **back toward its source**, so from the camera's viewpoint the spheres blaze while everything else stays dark. The image becomes trivially easy to process — **engineering the image rather than the algorithm**.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-007",
+      "topic": "multi-camera-infrared-tracking",
+      "q": "The final stage of the multi-camera IR pipeline uses **absolute orientation**. What kind of problem is it?",
+      "options": [
+        "A 3D↔2D correspondence problem, solved iteratively",
+        "A 3D↔3D alignment problem with a closed-form solution",
+        "A 2D↔2D homography estimation",
+        "A non-linear optimisation requiring an initial guess"
+      ],
+      "answer": 1,
+      "explain": "Because triangulation has already produced 3D points, aligning them to the body's known 3D points is **3D↔3D** — solvable in **closed form** (Horn's method / SVD), with no iteration or initial guess. Contrast marker tracking, which is **3D↔2D** (PnP) because it has only one camera.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-008",
+      "topic": "natural-feature-detection",
+      "q": "Why are **corners** preferred over edges or flat regions as interest points?",
+      "options": [
+        "Corners are brighter than other regions",
+        "A flat region gives no information and an edge is ambiguous along its length; only a corner is localisable in both directions",
+        "Corners are rarer, so there are fewer to process",
+        "Edges cannot be detected in colour images"
+      ],
+      "answer": 1,
+      "explain": "Shift a window over a flat region — nothing changes. Shift along an edge — nothing changes (**the aperture problem**). Shift at a corner — it changes in **every** direction. Two dimensions of information means fully localisable.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-009",
+      "topic": "natural-feature-detection",
+      "q": "What makes **FAST** fast?",
+      "options": [
+        "It uses a GPU",
+        "It tests only four compass pixels first and rejects most candidates after four comparisons",
+        "It processes every fourth pixel",
+        "It uses a smaller image resolution"
+      ],
+      "answer": 1,
+      "explain": "For a contiguous arc of 9 out of 16 circle pixels to exist, at least **three of the four compass points** must be consistently brighter or darker. Most pixels fail this and are discarded immediately — which is what makes FAST usable at video rate on a phone.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-010",
+      "topic": "natural-feature-detection",
+      "q": "What does a **descriptor** provide that a **detector** does not?",
+      "options": [
+        "The location of the feature",
+        "A representation of the local appearance, allowing the same point to be matched across images",
+        "The rotation of the camera",
+        "The depth of the feature"
+      ],
+      "answer": 1,
+      "explain": "**Detector finds; descriptor recognises.** Knowing there is a corner at pixel (312, 88) says nothing about **which** corner it is. The descriptor turns a set of points into a set of **identities**, enabling matching across frames or against a map.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-011",
+      "topic": "tracking-by-detection",
+      "q": "In the tracking-by-detection pipeline for sparse interest points, what is the order of the five stages?",
+      "options": [
+        "Descriptor Creation → PnP camera pose determination → Interest Point Detection → Descriptor Matching → Robust Pose Estimation",
+        "Interest Point Detection → Descriptor Creation → Descriptor Matching → Perspective-n-Point camera pose determination → Robust Pose Estimation",
+        "Robust Pose Estimation → Descriptor Matching → Interest Point Detection → PnP camera pose determination → Descriptor Creation",
+        "PnP camera pose determination → Descriptor Creation → Interest Point Detection → Descriptor Matching → Robust Pose Estimation"
+      ],
+      "answer": 1,
+      "explain": "**Detect → describe → match → PnP → robust estimation.** The distractors permute these — most commonly putting pose determination **before** matching, which is impossible: you need **correspondences** before you can solve for pose.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-012",
+      "topic": "tracking-by-detection",
+      "q": "Why is **RANSAC** required in the final stage of tracking by detection?",
+      "options": [
+        "To speed up descriptor matching",
+        "Because descriptor matching always produces outliers, and least-squares fitting is not robust to them",
+        "To detect more interest points",
+        "To compute the camera's intrinsic parameters"
+      ],
+      "answer": 1,
+      "explain": "Repeated textures, similar corners and moving objects guarantee wrong matches. RANSAC **guesses a minimal sample, assumes it is clean, and counts how many others agree** — consensus identifies the good data, and only then do you fit.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-013",
+      "topic": "tracking-by-detection",
+      "q": "What is the key advantage of tracking **by detection** over incremental tracking?",
+      "options": [
+        "It is computationally cheaper",
+        "It is stateless — no drift accumulates and it recovers from tracking loss instantly",
+        "It needs no pre-built map",
+        "It produces smoother pose estimates"
+      ],
+      "answer": 1,
+      "explain": "Each frame is solved **from scratch**, so nothing accumulates and nothing needs recovering. The costs are the opposite of the benefits: it is **expensive every frame** and **requires a pre-built map** of descriptors with 3D positions.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-014",
+      "topic": "incremental-tracking",
+      "q": "In the classic approach to incremental tracking, what is the primary technique employed by the **Kanade-Lucas-Tomasi (KLT)** tracker?",
+      "options": [
+        "KLT uses histogram analysis for feature extraction and rigid body transformations to model image changes",
+        "KLT utilizes blob detection for tracking and non-linear transformations to model image changes",
+        "KLT combines template matching for tracking",
+        "KLT employs feature extraction followed by optical flow tracking"
+      ],
+      "answer": 3,
+      "explain": "**Feature extraction followed by optical flow tracking.** KLT finds corners then solves the optical-flow constraint over a small window — which is solvable precisely where the structure tensor has **two large eigenvalues**, i.e. at a corner. Hence *'Good Features to Track'*.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-015",
+      "topic": "incremental-tracking",
+      "q": "Which camera motion model is the **common default** for active search during incremental tracking?",
+      "options": ["Constant position", "Constant velocity", "Constant acceleration", "Random walk"],
+      "answer": 1,
+      "explain": "**Constant velocity** suits smooth panning and walking. **IMU-driven** prediction is better still when available — the gyroscope reports actual motion at 1000 Hz, telling the vision system exactly where to look. A tighter prediction means a smaller search window: faster, and less likely to latch onto the wrong feature.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-016",
+      "topic": "incremental-tracking",
+      "q": "Which is the principal **drawback** of incremental tracking?",
+      "options": [
+        "It requires a pre-built map",
+        "Drift accumulates without bound, and it cannot recover once lost",
+        "It cannot run in real time",
+        "It only works with markers"
+      ],
+      "answer": 1,
+      "explain": "Small per-frame errors compound — the **same phenomenon as gyroscope drift**, and for the same reason: you are integrating **relative** measurements. The cure is identical too: correct periodically against something **absolute** — tracking by detection, or loop closure.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-017",
+      "topic": "slam-ptam",
+      "q": "In the **PTAM** system, how do the responsibilities of the Tracking Thread and Mapping Thread differ?",
+      "options": [
+        "The Tracking Thread operates at a slow rate adding keyframes, while the Mapping Thread works at full frame rate computing camera poses",
+        "The Tracking Thread runs slowly adding keyframes, while the Mapping Thread operates at full frame rate",
+        "The Tracking Thread operates at full frame rate computing camera poses from correspondences, while the Mapping Thread runs at a much slower rate focusing on adding new keyframes",
+        "Both threads operate at the same frame rate, computing camera poses and searching for correspondences"
+      ],
+      "answer": 2,
+      "explain": "**Tracking feeds the display, so it must never be late; mapping improves the map, so it can afford to think.** The distractors swap the two. Before PTAM both ran in one loop, so every frame paid the cost of map optimisation.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-018",
+      "topic": "slam-ptam",
+      "q": "What problem does **loop closure** solve in SLAM?",
+      "options": [
+        "It detects when the camera has stopped moving",
+        "It recognises a previously-visited place and corrects accumulated drift",
+        "It closes the mapping thread when the map is complete",
+        "It removes dynamic objects from the map"
+      ],
+      "answer": 1,
+      "explain": "Loop closure is the **visual equivalent of an absolute reference**. Incremental tracking drifts as a gyroscope does; recognising a mapped place is a measurement that **does not depend on history**, so it can cancel accumulated error — producing SLAM's characteristic map 'snap'.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-019",
+      "topic": "slam-ptam",
+      "q": "What does **model-free** mean in the definition of SLAM?",
+      "options": [
+        "It does not use a camera model",
+        "It requires no prior knowledge of the environment",
+        "It does not build a map",
+        "It uses no machine learning models"
+      ],
+      "answer": 1,
+      "explain": "Unlike marker-based or model-based tracking, SLAM needs **no prior model of the environment** — walk into an unfamiliar room and it starts working. That is why it powers every modern inside-out headset and phone AR platform.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-020",
+      "topic": "visual-odometry",
+      "q": "Why does the **essential matrix** have only 5 degrees of freedom?",
+      "options": [
+        "Because it is a 3×3 matrix with 4 fixed entries",
+        "3 for rotation + 3 for translation, minus 1 because translation magnitude is unrecoverable from images",
+        "Because it only applies to calibrated stereo pairs",
+        "Because RANSAC discards 4 degrees of freedom"
+      ],
+      "answer": 1,
+      "explain": "Hence the **5-point algorithm**. The missing degree of freedom is **absolute scale** — a large scene far away and a small scene close up produce identical images (the doll's-house problem).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-021",
+      "topic": "visual-odometry",
+      "q": "How does the use of epipolar geometry in **visual odometry** differ from its use in **multi-camera IR tracking**?",
+      "options": [
+        "They use different equations",
+        "In IR tracking the relative pose is known and correspondences are sought; in VO the correspondences are known and the relative pose is sought",
+        "VO does not use epipolar geometry",
+        "IR tracking uses the essential matrix; VO uses the fundamental matrix"
+      ],
+      "answer": 1,
+      "explain": "**Same equation, opposite unknown.** In IR tracking, calibration gives the cameras' relative pose, so epipolar geometry **finds correspondences**. In VO, feature tracking gives correspondences, so epipolar geometry **finds the pose**.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-022",
+      "topic": "visual-odometry",
+      "q": "What distinguishes **visual odometry** from full **SLAM**?",
+      "options": [
+        "VO uses two cameras; SLAM uses one",
+        "VO estimates the trajectory only, with no persistent map or loop closure, so its drift is unbounded",
+        "VO works indoors; SLAM works outdoors",
+        "VO requires markers"
+      ],
+      "answer": 1,
+      "explain": "**VO is the front end of SLAM without the memory.** It answers *'how did I move?'* frame by frame and drifts without bound. SLAM adds a persistent map and **loop closure**, converting unbounded drift into bounded error.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-023",
+      "topic": "outdoor-tracking",
+      "q": "In outdoor AR, what is the division of labour between GPS and vision?",
+      "options": [
+        "GPS handles orientation; vision handles position",
+        "GPS says which building you are near; vision says exactly where on it to draw",
+        "GPS is used indoors; vision is used outdoors",
+        "They are alternatives — only one is used at a time"
+      ],
+      "answer": 1,
+      "explain": "GPS is **1–100 m** accurate — far too coarse for registration, but it **bounds the error globally** so vision needn't search a whole city. Vision then refines to centimetre alignment. Neither could do the job alone.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-024",
+      "topic": "outdoor-tracking",
+      "q": "How does a **bag-of-words** model enable large-scale place recognition?",
+      "options": [
+        "It stores every image in a database and compares them pixel by pixel",
+        "It quantises descriptors into visual words and represents each image as a histogram, searchable via an inverted index",
+        "It uses GPS coordinates as keys",
+        "It compresses images using JPEG"
+      ],
+      "answer": 1,
+      "explain": "**Throw away the geometry, then put it back.** Discarding *where* features are and keeping only *which* are present makes an image a sparse vector searchable in milliseconds — then **geometric verification** with RANSAC confirms the shortlist. Cheap-and-approximate to shortlist; expensive-and-exact to confirm.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-025",
+      "topic": "outdoor-tracking",
+      "q": "What does **GIS data integration** contribute to outdoor tracking?",
+      "options": [
+        "Faster GPS fixes",
+        "Building outlines and elevation models — a prior geometry that constrains pose search and enables occlusion",
+        "Higher camera resolution",
+        "Wireless connectivity"
+      ],
+      "answer": 1,
+      "explain": "**Constraints are information** — the same principle as the skeleton prior in Unit 3. Knowing a building's footprint and height turns an open-ended pose search into fitting the observed skyline to a known model, and supplies the geometry needed to **occlude** virtual content correctly.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-026",
+      "topic": "3d-scanning",
+      "q": "Why does AR need 3D scanning in addition to tracking?",
+      "options": [
+        "To improve GPS accuracy",
+        "Because occlusion, physics, surface placement and realistic lighting all require scene geometry, not just camera pose",
+        "To reduce the polygon count",
+        "To calibrate the IMU"
+      ],
+      "answer": 1,
+      "explain": "Tracking answers *'where is the camera?'*; scanning answers *'what shape is the scene?'*. Without it you get a **floating** object — correctly positioned but passing through furniture and casting no shadow. It is the difference between an overlay and an augmentation.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-027",
+      "topic": "3d-scanning",
+      "q": "Which 3D scanning method fails on **textureless** surfaces such as a plain white wall?",
+      "options": ["Structured light", "Time-of-Flight", "Stereo vision", "LIDAR"],
+      "answer": 2,
+      "explain": "**Stereo** is passive — it matches pixels between two views, and a blank wall offers nothing to match. **Active** methods (structured light, ToF, LIDAR) supply their own light and work fine. The two questions when choosing: *is there texture?* and *is there sunlight?*",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-028",
+      "topic": "3d-scanning",
+      "q": "In the reconstruction pipeline, what is the purpose of fusing depth data into a **TSDF** volume rather than keeping a raw point cloud?",
+      "options": [
+        "To compress the data",
+        "Averaging many noisy observations cancels noise and defines a true surface, which a point cloud cannot",
+        "To convert to colour",
+        "To speed up capture"
+      ],
+      "answer": 1,
+      "explain": "A raw point cloud is noisy and has **no notion of surface** — you cannot tell inside from outside, so you cannot render occlusion or run physics. A **Truncated Signed Distance Field** stores signed distance per voxel; the surface is where it crosses zero. **KinectFusion** was the landmark demonstration.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-029",
+      "topic": "interaction-design",
+      "q": "What is **gorilla arm**?",
+      "options": [
+        "A tracking failure when the arm occludes the sensor",
+        "Fatigue from holding the arm unsupported in mid-air to interact",
+        "A gesture used to summon a menu",
+        "Distortion of the arm in the avatar's inverse kinematics"
+      ],
+      "answer": 1,
+      "explain": "The deltoid is not built for sustained static load — mid-air interfaces feel magical for thirty seconds and exhausting after two minutes. Mitigations: keep interaction **below shoulder height**, prefer **short gestures**, allow the arm to rest, and use **gaze or voice** for frequent actions.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-030",
+      "topic": "interaction-design",
+      "q": "A virtual toolbelt that stays at the user's waist as they walk and turn is an example of:",
+      "options": ["Head-referenced placement", "Torso-referenced placement", "Hand-referenced placement", "World-referenced placement"],
+      "answer": 1,
+      "explain": "**Torso-referenced** — content fixed relative to the body. It is **out of the way** (unlike head-referenced, which always occludes the view) and therefore requires a deliberate look or turn to access. That is the availability-versus-intrusiveness trade.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-031",
+      "topic": "interaction-design",
+      "q": "Which display technology fundamentally limits **physical–virtual coherence** because it cannot occlude the real world?",
+      "options": ["Video see-through", "Optical see-through", "Spatial projection", "Handheld magic lens"],
+      "answer": 1,
+      "explain": "An optical combiner **adds** light and cannot subtract it, so a virtual object can never hide what is behind it. This is a large part of why **video see-through** has gained commercial ground despite adding latency.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-032",
+      "topic": "input-modalities",
+      "q": "Why is **gaze** rarely used as a standalone selection modality?",
+      "options": [
+        "It is too slow",
+        "The Midas touch problem — you cannot look at something without selecting it",
+        "Eye trackers are too expensive",
+        "It cannot be tracked in a headset"
+      ],
+      "answer": 1,
+      "explain": "Gaze is the **fastest** pointing modality — the eye reaches a target before the hand starts moving. But you cannot look without selecting, so the standard fix is **gaze-and-commit**: gaze to point, a separate channel (pinch, dwell, voice) to confirm.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-033",
+      "topic": "input-modalities",
+      "q": "**LucidTouch** is the named example of which input modality?",
+      "options": ["Gestures", "Touch — specifically back-of-device interaction", "Voice commands", "Body tracking"],
+      "answer": 1,
+      "explain": "A **see-through** mobile device sensing touch on its **back**, so the fingers don't obscure the screen. It addresses the **fat finger problem**: on a small display the finger hides the very target it is selecting.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-034",
+      "topic": "input-modalities",
+      "q": "Why do VR controllers persist despite hand tracking being available?",
+      "options": [
+        "Hand tracking does not work in VR",
+        "Controllers give buttons (no Midas touch), haptic feedback, proprioceptive grip and arm support",
+        "Controllers are cheaper than cameras",
+        "Hand tracking cannot achieve 6DOF"
+      ],
+      "answer": 1,
+      "explain": "Controllers solve exactly what free-hand gestures cannot: **unambiguous discrete input**, **felt confirmation**, a physical object your proprioception can locate without looking, and a natural lower hand position that **reduces gorilla arm**.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-035",
+      "topic": "input-modalities",
+      "q": "In multimodal interaction, what is each modality typically best suited to?",
+      "options": [
+        "Speech for pointing; gesture for naming",
+        "Speech for verbs and names; gaze and gesture for deixis (this, that, there)",
+        "Both are equivalent and interchangeable",
+        "Gesture for confirmation; speech for precision"
+      ],
+      "answer": 1,
+      "explain": "The canonical demonstration is **'Put that there'** (Bolt, 1980). Speech cannot say *which* object without a name; pointing cannot express the *action*. Combining them lets you drop the awkward parts of each — and adds robustness, since the channels cover each other's failures.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-036",
+      "topic": "output-modalities-haptics",
+      "q": "What is a **magic lens** in AR?",
+      "options": [
+        "A physical lens that magnifies the display",
+        "A movable window that reveals augmented information about whatever is behind it",
+        "A projector that maps content onto surfaces",
+        "A filter that removes real-world clutter"
+      ],
+      "answer": 1,
+      "explain": "**Augmented browsing overlays** used for navigation and tourism. Rather than augmenting everything (unreadable clutter), you augment **only what is inside the lens**. Every handheld phone AR app is a magic lens — you move the window, not the world.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-037",
+      "topic": "output-modalities-haptics",
+      "q": "The **Phantom Omni** is an example of which kind of haptic device?",
+      "options": [
+        "Tactile — stimulating skin receptors with vibration",
+        "Kinaesthetic — applying forces felt by muscles and joints",
+        "Mid-air ultrasonic haptics",
+        "Thermal feedback"
+      ],
+      "answer": 1,
+      "explain": "An articulated stylus arm that both **tracks** 6DOF pose and **applies forces** back through the linkage — push into a virtual surface and it pushes back. Its tracking is **mechanical**, which is unavoidable: force feedback needs something to brace against.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-038",
+      "topic": "output-modalities-haptics",
+      "q": "Why must haptic force feedback update at around **1000 Hz**?",
+      "options": [
+        "To match the IMU sample rate",
+        "Because touch is far more temporally acute than vision — below that, hard surfaces feel spongy or buzz",
+        "Because the GPU renders at that rate",
+        "To avoid aliasing in the force signal"
+      ],
+      "answer": 1,
+      "explain": "The haptic counterpart of the visual **20 ms** budget. You can feel a discontinuity of a millisecond as a buzz, whereas vision integrates over tens of milliseconds. **A surface updating at 60 Hz does not feel solid — it feels like jelly.**",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-039",
+      "topic": "output-modalities-haptics",
+      "q": "Why is spatial audio disproportionately valuable in AR/VR?",
+      "options": [
+        "It is cheaper to render than graphics",
+        "Hearing is omnidirectional while the visual field of view is narrow, so sound can direct attention outside the display",
+        "It reduces motion sickness",
+        "It replaces the need for haptics"
+      ],
+      "answer": 1,
+      "explain": "A visual cue outside the (narrow) headset field of view is simply invisible; a **sound behind you** is heard immediately and tells you where to look. It is the natural channel for **notification and guidance**.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-040",
+      "topic": "physics-of-sound",
+      "q": "What is the primary mechanism through which sound is produced, and how is the perceptual experience created in human ears?",
+      "options": [
+        "Sound is generated by electromagnetic waves; perception results from variations in electrical charge",
+        "Sound is produced by the displacement of molecules in a medium causing pressure variations; perception arises from displacement of the eardrum, converted into sound pressure levels in decibels",
+        "Sound is generated through movement of particles in a vacuum; perception is facilitated by variations in particle density",
+        "Sound is created by the emission of light waves; perception is achieved through absorption of these light waves"
+      ],
+      "answer": 1,
+      "explain": "Sound is a **longitudinal pressure wave** requiring a **medium** — it cannot travel through a vacuum, because it *is* the motion of the medium. The distractors invoke electromagnetic waves, vacuums and light.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-041",
+      "topic": "physics-of-sound",
+      "q": "The audible frequency range and the speed of sound at 20 °C are:",
+      "options": [
+        "20 Hz – 20 kHz, and 343.2 m/s",
+        "20 Hz – 2 kHz, and 343.2 km/s",
+        "2 Hz – 20 kHz, and 1500 m/s",
+        "200 Hz – 20 kHz, and 331 m/s"
+      ],
+      "answer": 0,
+      "explain": "**Infrasound < 20 Hz · audible 20 Hz – 20 kHz · ultrasound > 20 kHz**, and **343.2 m/s at 20 °C**. That speed is why ultrasonic tracking is slow (a 3 m round trip costs ~9 ms) and why **ITD** works (~640 µs maximum delay between the ears).",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-042",
+      "topic": "physics-of-sound",
+      "q": "Why does audio occlusion behave as a **filter** rather than a binary block, unlike visual occlusion?",
+      "options": [
+        "Because sound travels slower than light",
+        "Because diffraction is frequency-dependent — low frequencies bend around obstacles while high frequencies are blocked",
+        "Because sound reflects more than light",
+        "Because the ear is less sensitive than the eye"
+      ],
+      "answer": 1,
+      "explain": "Audible wavelengths (**1.7 cm to 17 m**) are comparable to doors, furniture and people, so waves diffract strongly around objects of similar size. Light's ~500 nm wavelength never diffracts at human scale. Hence a voice around a corner is **muffled**, not silent.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-043",
+      "topic": "auditory-perception",
+      "q": "Which binaural cue dominates at **low** frequencies, and why?",
+      "options": [
+        "ILD, because the head shadows low frequencies most",
+        "ITD, because above ~1.5 kHz the wavelength is shorter than the ear spacing and phase becomes ambiguous",
+        "ITD, because low frequencies travel faster",
+        "Neither — low frequencies cannot be localised"
+      ],
+      "answer": 1,
+      "explain": "**Duplex theory.** **ITD** compares phase, which wraps ambiguously once the wavelength (~22 cm at 1.5 kHz) drops below the ear spacing. **ILD** needs the head to cast an acoustic shadow, which requires the wavelength to be smaller than the head — long waves simply **diffract around it**.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-044",
+      "topic": "auditory-perception",
+      "q": "What is the **cone of confusion**, and how is it resolved?",
+      "options": [
+        "The region where two speakers interfere; resolved by moving them apart",
+        "A surface of positions giving identical binaural cues; resolved by head movements and pinna filtering",
+        "The frequency band where ITD and ILD overlap; resolved by equalisation",
+        "The area behind the listener where sound cannot be heard"
+      ],
+      "answer": 1,
+      "explain": "A sound directly in front and directly behind give the **same ITD and ILD**. **Head movements** change the cues differently for front and back, resolving it instantly — which is a strong argument for **head-tracked spatial audio** in VR.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-045",
+      "topic": "auditory-perception",
+      "q": "The **precedence effect** states that:",
+      "options": [
+        "Louder sounds are perceived first",
+        "The early-arriving sound dominates perception of direction despite later echoes",
+        "High frequencies are perceived before low frequencies",
+        "The last sound heard determines the perceived location"
+      ],
+      "answer": 1,
+      "explain": "Also the Haas effect or **law of the first wavefront**. It is why you can localise a speaker in a reverberant room at all. For VR audio it means the **direct path must be accurate and low-latency, while reflections can be approximated** — they contribute spaciousness, not direction.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-046",
+      "topic": "auditory-perception",
+      "q": "**Stevens' power law** for loudness implies that:",
+      "options": [
+        "Perceived loudness is proportional to intensity",
+        "Doubling perceived loudness requires roughly ten times the acoustic power",
+        "Loudness is independent of frequency",
+        "The ear responds linearly above 1 kHz"
+      ],
+      "answer": 1,
+      "explain": "$\\psi = k\\phi^{a}$ with $a \\approx 0.67$ for loudness. This is why sound is measured in **decibels** and why **volume controls are logarithmic** — a linear slider driving linear gain feels wrong, since half the travel produces nearly all the perceived change.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-047",
+      "topic": "reactive-ai",
+      "q": "Which reactive AI technique scores every possible action against the current world state and picks the highest?",
+      "options": ["Finite state machine", "Behaviour tree", "Utility AI", "Goal-oriented action planning"],
+      "answer": 2,
+      "explain": "**Utility AI** — $U(a) = \\sum w_i f_i(\\text{state})$. It is the **most adaptable** of the three because behaviour degrades gracefully as the situation changes, at the cost of being **harder to predict and debug**. GOAP is deliberative, not reactive.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-048",
+      "topic": "reactive-ai",
+      "q": "Why did behaviour trees largely replace finite state machines for NPC behaviour?",
+      "options": [
+        "They run faster",
+        "Priority is implicit in the tree structure, so adding a behaviour means inserting one subtree rather than re-wiring n transitions",
+        "They can plan ahead",
+        "They require no authoring"
+      ],
+      "answer": 1,
+      "explain": "FSM transitions grow as $O(n^2)$ — **combinatorial explosion**. Behaviour trees give **modularity**: reusable subtrees, and automatic interruption when a higher-priority branch's condition becomes true, with no explicit transition needed.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-049",
+      "topic": "reactive-ai",
+      "q": "On which of the four properties does reactive AI score **best**?",
+      "options": ["Adaptability", "Universality", "Feasibility", "Complexity handling"],
+      "answer": 2,
+      "explain": "**Feasibility** — trivial runtime cost, **predictable and debuggable**, authorable by designers without programming, and guaranteed to meet frame budgets. It scores poorly on adaptability (bounded by what was authored), universality (doesn't transfer) and complexity (authoring burden grows steeply).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-050",
+      "topic": "deliberative-ai",
+      "q": "Which problem class is **best suited** to deliberative rather than reactive AI?",
+      "options": [
+        "Playing an idle animation",
+        "Resource management, where the best action now depends on future consumption",
+        "Turning to face the player",
+        "Playing a footstep sound"
+      ],
+      "answer": 1,
+      "explain": "The three classes named are **resource management, tactical planning and intelligent exploration** — all share the feature that **the best action now depends on what happens later**, which a reactive rule (a function of the present only) cannot express.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-051",
+      "topic": "deliberative-ai",
+      "q": "What are the two stated trade-offs of deliberative AI?",
+      "options": [
+        "Less accurate and less adaptable",
+        "Less controllable than reactive AI, and computationally intensive (though it can be offloaded offline)",
+        "Slower to author and harder to animate",
+        "Requires more memory and more sensors"
+      ],
+      "answer": 1,
+      "explain": "'Less controllable' is a genuine problem — a planner may find a technically optimal solution that ruins a designed set-piece. 'Offloaded offline' is the mitigation: plan ahead, plan on a **background thread**, or plan coarsely while a reactive layer handles the moment-to-moment.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-052",
+      "topic": "deliberative-ai",
+      "q": "In a hybrid AI architecture, how are the layers arranged?",
+      "options": [
+        "Reactive on top setting goals for a deliberative layer below",
+        "Deliberative on top setting sub-goals for a fast reactive layer below",
+        "Both run at the same rate and vote",
+        "They alternate frame by frame"
+      ],
+      "answer": 1,
+      "explain": "**Fast-and-dumb underneath, slow-and-smart on top** — the same layered, multi-timescale architecture as IMU under vision, incremental tracking under relocalisation, and PTAM's tracking thread under its mapping thread.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-053",
+      "topic": "machine-learning-imitation",
+      "q": "What is the primary mechanism for guiding an agent to learn behaviours in a dynamic and interactive environment?",
+      "options": [
+        "The agent learns through pre-programmed instructions, ensuring a static learning process",
+        "Learning relies on supervised techniques, allowing the agent to learn autonomously without guidance",
+        "The agent is guided through a punishment function, emphasising consequences for incorrect actions",
+        "The agent is guided to the desired behaviour through a reward function, promoting positive outcomes for correct actions"
+      ],
+      "answer": 3,
+      "explain": "**Reinforcement learning** guides behaviour through a **reward function**. Pre-programmed instructions aren't learning; RL is not supervised (there are no labelled correct actions); and while rewards can be negative, the mechanism is framed as a **reward** function.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-054",
+      "topic": "machine-learning-imitation",
+      "q": "An autonomous vehicle is trained to mimic a human expert's driving. Which statement about **imitation learning** is accurate?",
+      "options": [
+        "It learns from pre-recorded scenarios without any human demonstration",
+        "The vehicle observes and mimics the expert's actions, using a dataset of expert demonstrations to acquire a decision-making policy",
+        "It relies exclusively on reinforcement signals from the environment, with no reference to human demonstrations",
+        "Its goal is to let the human expert directly control the vehicle during training"
+      ],
+      "answer": 1,
+      "explain": "Imitation learning acquires a **policy from expert demonstrations** — no reward function required. Option (c) describes plain RL; (a) contradicts the definition; (d) describes teleoperation, not learning.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-055",
+      "topic": "machine-learning-imitation",
+      "q": "What is the principal weakness of **behaviour cloning**?",
+      "options": [
+        "It requires a hand-designed reward function",
+        "Compounding error — trained only on states the expert visited, a small mistake leads to unfamiliar states and the error snowballs",
+        "It cannot be trained on video data",
+        "It is slower than inverse RL"
+      ],
+      "answer": 1,
+      "explain": "The classic illustration: a policy cloned from perfect driving has **never seen the car drifting toward the kerb**, so it never learned to recover. **IRL and GAIL** are more robust because they recover the **intent** rather than copying actions.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-056",
+      "topic": "machine-learning-imitation",
+      "q": "How does **Inverse Reinforcement Learning** differ from behaviour cloning?",
+      "options": [
+        "It uses a larger neural network",
+        "It infers the reward function the expert was optimising, rather than copying the action mapping",
+        "It requires no demonstrations",
+        "It only works for discrete action spaces"
+      ],
+      "answer": 1,
+      "explain": "Behaviour cloning learns *'here, they turned left'*; IRL learns *'they were trying to stay in the lane'*. Because it recovers the **goal**, an IRL agent can act sensibly in situations the expert never demonstrated — including recovering from mistakes.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u4-057",
+      "topic": "machine-learning-imitation",
+      "q": "Which pair of models is named for **object recognition** in AR scene labelling?",
+      "options": ["ResNet and VGG", "YOLO and SSD", "GAN and VAE", "KLT and Harris"],
+      "answer": 1,
+      "explain": "**YOLO and SSD** are **single-pass** detectors — one forward pass produces all boxes and classes at once. Earlier detectors ran a classifier over many candidate regions, which was far too slow for a frame budget.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u4-058",
+      "topic": "machine-learning-imitation",
+      "q": "Which technique is named for **procedural content generation** in VR environment synthesis?",
+      "options": ["Reinforcement learning", "GANs", "Optical flow", "Bag-of-words"],
+      "answer": 1,
+      "explain": "**GANs** for generating textures, terrain and layouts. The five named applications are: object recognition (**YOLO/SSD**), gesture recognition (**optical flow, KLT**), **SLAM with neural nets**, procedural content generation (**GANs**) and adaptive NPCs (**RL**).",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}
