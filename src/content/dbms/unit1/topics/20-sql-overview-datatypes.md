@@ -1,7 +1,7 @@
 ---
 subject: dbms
 unit: 1
-order: 12
+order: 20
 slug: sql-overview-datatypes
 title: SQL Overview & Data Types
 summary: The history and role of SQL, the four sub-languages (DDL/DML/DCL/TCL), and the SQL data types including CHAR vs VARCHAR and the large-object types BLOB and CLOB.

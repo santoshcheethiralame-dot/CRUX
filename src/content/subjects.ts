@@ -65,7 +65,7 @@ export const SUBJECTS: SubjectMeta[] = [
   {
     id: 'dbms',
     name: 'Database Management Systems',
-    code: 'UE23CS351A',
+    code: 'UE24CS351A',
     color: '#34d399',
     icon: 'DB',
     description:
@@ -77,9 +77,9 @@ export const SUBJECTS: SubjectMeta[] = [
         subtitle:
           'data & DBMS · file-system problems · data abstraction & 3-schema architecture · E-R model · reducing ER to relational · relational algebra · SQL (DDL, constraints, DML)',
       },
-      { unit: 2, title: 'Advanced SQL in Database Design', subtitle: 'set operations · null values · nested subqueries · joins · views · triggers · functions & procedures · CTEs · window & full-text functions' },
-      { unit: 3, title: 'Design Concepts and Implementation', subtitle: 'query processing & optimization · functional dependencies · inference rules · normalization (1NF/2NF/3NF/BCNF) · higher normal forms' },
-      { unit: 4, title: 'Next-Gen Data Management', subtitle: 'transactions · concurrency control & locking · NoSQL · key-value (Redis) · graph (Neo4j) · vector databases · DB application connectivity' },
+      { unit: 2, title: 'Relational Model and Database Design', subtitle: 'additional basic operations · set operations · null values · aggregate functions · nested subqueries · database modification · join expressions · views · triggers · functions & procedures · CTEs · window & full-text search functions' },
+      { unit: 3, title: 'Advanced Design Concepts and Implementation', subtitle: 'query processing & optimization strategies · functional dependencies · inference rules · normal forms based on primary keys (1NF/2NF/3NF) · general definitions of 2NF & 3NF · BCNF · higher normal forms' },
+      { unit: 4, title: 'Advanced Databases', subtitle: 'database transactions · concurrency control & locking · NoSQL · key-value (Redis) · graph databases (Neo4j) · vector databases · vector search with relational and NoSQL · web app development with Next.js and SQL' },
     ],
   },
   {

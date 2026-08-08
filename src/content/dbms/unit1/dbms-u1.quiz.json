@@ -80,7 +80,7 @@
     },
     {
       "id": "dbms-u1-006",
-      "topic": "file-systems-purpose",
+      "topic": "database-landscape",
       "q": "Two modes of database use are OLTP and OLAP. OLTP is characterized by:",
       "options": [
         "Complex analytical queries for business decisions",
@@ -95,7 +95,7 @@
     },
     {
       "id": "dbms-u1-007",
-      "topic": "file-systems-purpose",
+      "topic": "dbms-characteristics-advantages",
       "q": "Ensuring 'every enrolment refers to a valid student' is which kind of data integrity?",
       "options": [
         "Entity integrity",
@@ -140,7 +140,7 @@
     },
     {
       "id": "dbms-u1-010",
-      "topic": "data-abstraction-schema",
+      "topic": "schema-state-three-schema",
       "q": "The difference between schema and instance is best described as:",
       "options": [
         "Schema is the data; instance is the design",
@@ -155,7 +155,7 @@
     },
     {
       "id": "dbms-u1-011",
-      "topic": "data-abstraction-schema",
+      "topic": "schema-state-three-schema",
       "q": "The three-schema architecture's three levels are:",
       "options": [
         "DDL, DML, DCL",
@@ -170,7 +170,7 @@
     },
     {
       "id": "dbms-u1-012",
-      "topic": "design-architecture-users",
+      "topic": "database-design-phases",
       "q": "The four phases of database design, in order, are:",
       "options": [
         "Requirements, Conceptual, Logical, Physical",
@@ -230,7 +230,7 @@
     },
     {
       "id": "dbms-u1-016",
-      "topic": "er-entities-attributes",
+      "topic": "er-attributes",
       "q": "In an ER diagram, a multivalued attribute is represented by a:",
       "options": [
         "Single ellipse",
@@ -245,7 +245,7 @@
     },
     {
       "id": "dbms-u1-017",
-      "topic": "er-entities-attributes",
+      "topic": "er-attributes",
       "q": "Age computed from Date_of_Birth is an example of a ___ attribute, shown as a ___:",
       "options": [
         "composite; double ellipse",
@@ -260,7 +260,7 @@
     },
     {
       "id": "dbms-u1-018",
-      "topic": "er-entities-attributes",
+      "topic": "er-degree-ternary",
       "q": "The 'grade' a student earns in a course is best modelled as:",
       "options": [
         "An attribute of Student",
@@ -275,7 +275,7 @@
     },
     {
       "id": "dbms-u1-019",
-      "topic": "er-entities-attributes",
+      "topic": "er-attributes",
       "q": "An attribute that can be subdivided into smaller parts (e.g. address → street, city, state) is:",
       "options": [
         "Simple",
@@ -305,7 +305,7 @@
     },
     {
       "id": "dbms-u1-021",
-      "topic": "er-relationships-cardinality",
+      "topic": "er-degree-ternary",
       "q": "The number of entity sets participating in a relationship set is its:",
       "options": [
         "Cardinality",
@@ -320,7 +320,7 @@
     },
     {
       "id": "dbms-u1-022",
-      "topic": "er-relationships-cardinality",
+      "topic": "er-cardinality-participation",
       "q": "Total participation of an entity in a relationship is shown in an ER diagram by:",
       "options": [
         "A single line",
@@ -335,7 +335,7 @@
     },
     {
       "id": "dbms-u1-023",
-      "topic": "er-relationships-cardinality",
+      "topic": "er-cardinality-participation",
       "q": "In (min, max) notation, a line from Student to Enrolls labelled (2, 5) means a student can enroll in:",
       "options": [
         "At most 2 and at least 5 courses",

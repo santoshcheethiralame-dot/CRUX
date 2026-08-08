@@ -1,0 +1,1027 @@
+{
+  "subject": "dbms",
+  "unit": 1,
+  "title": "Unit 1 — Lecture Deep-Dive MCQs (Lectures 1a, 1b, 2, 3a)",
+  "items": [
+    {
+      "id": "dbms-u1-lec-001",
+      "topic": "intro-dbms",
+      "q": "A database is described as a collection of related data representing some aspect of the real world. What is that slice of the real world called?",
+      "options": [
+        "The domain or value set",
+        "The mini-world, or Universe of Discourse (UoD)",
+        "The conceptual schema",
+        "The extension"
+      ],
+      "answer": 1,
+      "explain": "The portion of the real world a database models is the **mini-world** or **Universe of Discourse (UoD)**. Deciding where its boundary falls is the first act of database design.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-002",
+      "topic": "intro-dbms",
+      "q": "Which is NOT one of the three properties that make a collection of data a database?",
+      "options": [
+        "It is logically coherent, with inherent meaning",
+        "It is designed, built and populated for a specific purpose",
+        "The data within it is related",
+        "It is stored on a single centralised server"
+      ],
+      "answer": 3,
+      "explain": "Storage location is irrelevant to the definition — distributed databases exist. The defining properties are **related** data, **logical coherence**, and being built **for a specific purpose**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-003",
+      "topic": "intro-dbms",
+      "q": "In the DBMS function 'defining', what exactly is produced and where is it kept?",
+      "options": [
+        "The data itself, kept on the storage medium",
+        "Metadata describing types, structures and constraints, kept in the DBMS catalog",
+        "Query execution plans, kept in the buffer pool",
+        "Access permissions, kept in the operating system"
+      ],
+      "answer": 1,
+      "explain": "**Defining** specifies data types, structures and constraints; that description is **metadata** stored in the **DBMS catalog**. This is the self-describing nature of a database system.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-004",
+      "topic": "database-landscape",
+      "q": "A data model is a collection of conceptual tools for describing which four things?",
+      "options": [
+        "Tables, rows, columns and indexes",
+        "Data, data relationships, data semantics and consistency constraints",
+        "Entities, attributes, keys and views",
+        "Schemas, states, instances and snapshots"
+      ],
+      "answer": 1,
+      "explain": "The standard definition names **data, data relationships, data semantics, and consistency constraints**. Dropping semantics or constraints is the usual way marks are lost.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-005",
+      "topic": "database-landscape",
+      "q": "Which workload is characterised by a large number of users performing small retrievals and updates?",
+      "options": [
+        "OLAP",
+        "OLTP",
+        "Data mining",
+        "Batch reporting"
+      ],
+      "answer": 1,
+      "explain": "**OLTP (Online Transaction Processing)** — many users, small reads and writes; typical of banking, universities and airlines. OLAP processes data to draw conclusions and build predictive models.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-006",
+      "topic": "database-landscape",
+      "q": "Loan approval, targeted advertisements and manufacturing decisions are given as examples of which mode of database use?",
+      "options": [
+        "OLTP",
+        "OLAP / data analytics",
+        "Canned transactions",
+        "Concurrent access"
+      ],
+      "answer": 1,
+      "explain": "These are **OLAP / analytics** applications — processing data to draw conclusions and build predictive models. Data mining combines AI and statistical techniques for this.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-007",
+      "topic": "database-landscape",
+      "q": "MongoDB is named as an example of which category of database application?",
+      "options": [
+        "Navigation systems",
+        "Document databases storing semi-structured data",
+        "Parallel data warehousing",
+        "Banking and finance"
+      ],
+      "answer": 1,
+      "explain": "**Document databases** store semi-structured data as JSON/BSON/XML with flexible schemas and horizontal scaling. MongoDB is used by *The New York Times* for news and media content.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-008",
+      "topic": "database-landscape",
+      "q": "According to Ramakrishnan & Gehrke, how does a semantic data model differ from a data model?",
+      "options": [
+        "A semantic data model is what the DBMS implements directly",
+        "A semantic data model is more abstract and higher-level, easing initial description; it is then translated into the DBMS's data model",
+        "A semantic data model describes only physical storage",
+        "There is no difference; the terms are synonyms"
+      ],
+      "answer": 1,
+      "explain": "A **semantic data model** (like the **ER model**) is more abstract, designed for humans to describe an enterprise. A DBMS is typically built around a data model with few basic constructs (relational), so the semantic design is **translated** into it.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-lec-009",
+      "topic": "file-systems-purpose",
+      "q": "In the university scenario, adding a new major requires creating new permanent files AND writing new application programs. What underlying defect does this reveal?",
+      "options": [
+        "Insufficient disk capacity",
+        "The structure of the data lives inside the programs, welding data and programs together",
+        "Lack of a query optimizer",
+        "Absence of backup utilities"
+      ],
+      "answer": 1,
+      "explain": "In a file-processing system the data's structure is embedded in application code, so a change in the mini-world forces a change in program code. The purpose of a DBMS is to separate the two — **program–data independence**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-010",
+      "topic": "file-systems-purpose",
+      "q": "A student enrolled in a double major has their details stored once per department. Which drawback is this, and what problem does it cause beyond wasted space?",
+      "options": [
+        "Data isolation; slow queries",
+        "Data redundancy; possible data inconsistency when one copy changes",
+        "Integrity problems; invalid values",
+        "Security problems; unauthorised access"
+      ],
+      "answer": 1,
+      "explain": "**Data redundancy** wastes storage AND risks **data inconsistency** when only some copies are updated. The DBMS fix is a centralised store so changes are made at a single spot.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-011",
+      "topic": "file-systems-purpose",
+      "q": "Account A holds ₹10,000. Two clerks concurrently deduct ₹500 and ₹100; both read 10,000 before either writes. What are the possible final balances, and what is the correct one?",
+      "options": [
+        "Always 9,400 — the DBMS orders them",
+        "9,500 or 9,900 depending on who writes last; correct is 9,400",
+        "9,400 or 9,500; correct is 9,500",
+        "10,000 — both updates are rejected"
+      ],
+      "answer": 1,
+      "explain": "Both read 10,000, compute 9,500 and 9,900 respectively, and the **last writer wins** — so the balance ends at 9,500 or 9,900 instead of the correct **9,400**. This is the **lost update** anomaly.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-012",
+      "topic": "file-systems-purpose",
+      "q": "Transferring ₹5000 from A to B debits A but crashes before crediting B. Which drawback is this, and which DBMS feature solves it?",
+      "options": [
+        "Concurrent access anomalies; locking",
+        "Atomicity problems; transactions with automatic rollback",
+        "Integrity problems; schema constraints",
+        "Data isolation; unified storage"
+      ],
+      "answer": 1,
+      "explain": "This is the **atomicity** problem: either both steps happen or neither. The DBMS provides **transactions** and **automatic rollback** on failure.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-013",
+      "topic": "file-systems-purpose",
+      "q": "'Each department's research-fund balance must stay above 0' is coded into every application program. Which drawback is this?",
+      "options": [
+        "Atomicity problems",
+        "Integrity problems",
+        "Data redundancy",
+        "Difficulty accessing data"
+      ],
+      "answer": 1,
+      "explain": "**Integrity problems** — the constraint lives in code, so adding a new one means editing every program. The DBMS lets you declare constraints **in the schema**, enforced automatically; adding one means updating the schema only.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-014",
+      "topic": "file-systems-purpose",
+      "q": "Payroll personnel can accidentally see and change academic records because programs accumulated with no central security. Which drawback is this?",
+      "options": [
+        "Data isolation",
+        "Security problems",
+        "Concurrent access anomalies",
+        "Integrity problems"
+      ],
+      "answer": 1,
+      "explain": "**Security problems.** The fix is access controls and permissions defined by an administrator and enforced **at the database level, regardless of which application program is used**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-015",
+      "topic": "dbms-characteristics-advantages",
+      "q": "A business runs separate inventory and order systems; inventory is not updated in real time from sales, so it oversells. The lecture classifies this as which problem type?",
+      "options": [
+        "Concurrent access anomalies",
+        "Data isolation",
+        "Atomicity problems",
+        "Security problems"
+      ],
+      "answer": 1,
+      "explain": "The lecture's answer is **data isolation** — two related systems that are not integrated, so neither sees the other's state. The tell is *'separate systems'*, not *'at the same time'*. Look for the phrase naming the **cause**, not the damage.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-016",
+      "topic": "dbms-characteristics-advantages",
+      "q": "Which characteristic of the database approach means the system stores a complete definition of the database structure and constraints alongside the data?",
+      "options": [
+        "Support for multiple views",
+        "Self-describing nature",
+        "Multi-user transaction processing",
+        "Program–data independence"
+      ],
+      "answer": 1,
+      "explain": "The **self-describing nature** — the system holds the database *and* its complete description (**metadata**) in the catalog. The other three characteristics are built on top of this one.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-017",
+      "topic": "dbms-characteristics-advantages",
+      "q": "'A view may be a subset of the database or it may contain virtual data derived from the database files but not explicitly stored.' Which characteristic is this?",
+      "options": [
+        "Self-describing nature",
+        "Support for multiple views of the data",
+        "Insulation between programs and data",
+        "Sharing of data"
+      ],
+      "answer": 1,
+      "explain": "**Support for multiple views.** The key phrase is **virtual data derived from the files but not explicitly stored** — views are computed on demand.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-018",
+      "topic": "dbms-characteristics-advantages",
+      "q": "Which advantage of database systems refers to making program objects persist beyond program execution?",
+      "options": [
+        "Economies of scale",
+        "Providing persistent storage for program objects",
+        "Controlling redundancy",
+        "Enforcing standards"
+      ],
+      "answer": 1,
+      "explain": "**Providing persistent storage for program objects** — e.g. object-oriented DBMSs make program objects persistent, avoiding the conversion normally needed to save an in-memory object to a file.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-019",
+      "topic": "dbms-characteristics-advantages",
+      "q": "Which kind of integrity guarantees that a reference points to something that actually exists?",
+      "options": [
+        "Entity integrity",
+        "Referential integrity",
+        "Domain integrity",
+        "User-defined integrity"
+      ],
+      "answer": 1,
+      "explain": "**Referential integrity** — every enrolment must refer to a valid student. Entity integrity is unique identifiability; domain integrity is permitted values; user-defined integrity is business rules.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-020",
+      "topic": "data-abstraction-schema",
+      "q": "Why does data abstraction exist at all, according to the lecture's chain of reasoning?",
+      "options": [
+        "To reduce disk usage",
+        "Efficiency forces complex data structures, but many users are not computer trained, so complexity is hidden behind layers",
+        "To comply with the ANSI standard",
+        "To allow multiple users to connect concurrently"
+      ],
+      "answer": 1,
+      "explain": "The chain: retrieval must be **efficient** → efficiency demands **complex data structures** → many users are **not computer trained** → developers **hide the complexity** behind layers of abstraction.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-021",
+      "topic": "data-abstraction-schema",
+      "q": "At which level of abstraction are the RELATIONSHIPS between entities described?",
+      "options": [
+        "Physical level",
+        "Logical level",
+        "View level",
+        "Internal level"
+      ],
+      "answer": 1,
+      "explain": "The **logical level** describes what kind of data is stored **and how different pieces of information are related to each other** — e.g. 'Students belong to Departments'. Omitting relationships is the standard way this definition is under-answered.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-022",
+      "topic": "data-abstraction-schema",
+      "q": "Changing from sequential to random-access files without altering the conceptual schema is an example of what?",
+      "options": [
+        "Logical data independence",
+        "Physical data independence",
+        "View-level abstraction",
+        "Schema evolution"
+      ],
+      "answer": 1,
+      "explain": "**Physical data independence** — modifying the physical schema (storage devices, data structures, indexes, file organisation) without altering the conceptual/logical schema.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-023",
+      "topic": "data-abstraction-schema",
+      "q": "Adding new attributes to the Department entity without changing application programs demonstrates which property?",
+      "options": [
+        "Physical data independence",
+        "Logical data independence",
+        "Atomicity",
+        "Referential integrity"
+      ],
+      "answer": 1,
+      "explain": "**Logical data independence** — modifying the logical schema (inserting/deleting attributes, altering table structures, entities or relationships) without affecting external schemas or applications.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-024",
+      "topic": "data-abstraction-schema",
+      "q": "Which kind of data independence is harder to achieve, and why?",
+      "options": [
+        "Physical, because storage hardware changes frequently",
+        "Logical, because application programs are written directly against the logical structure and name its tables and columns",
+        "Both are equally difficult",
+        "Neither is difficult in a relational DBMS"
+      ],
+      "answer": 1,
+      "explain": "**Logical** data independence is harder. Applications depend heavily on the logical structure, so insulating them from logical change is only ever partially achievable — while physical independence is near-total in modern relational systems.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-lec-025",
+      "topic": "schema-state-three-schema",
+      "q": "In the programming analogy, the database schema corresponds to what?",
+      "options": [
+        "The values of variables at a point in time",
+        "Variable declarations together with their type definitions",
+        "The program's output",
+        "The call stack"
+      ],
+      "answer": 1,
+      "explain": "**Schema ≈ variable declarations + type definitions**; **instance/state ≈ the values of the variables at a particular point in time**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-026",
+      "topic": "schema-state-three-schema",
+      "q": "Immediately after a new database is defined to the DBMS, what is its state?",
+      "options": [
+        "The initial state, containing default rows",
+        "The empty state, with no data",
+        "Undefined until a query is run",
+        "A copy of the previous database's state"
+      ],
+      "answer": 1,
+      "explain": "When we define a new database we specify **only the schema**; the corresponding state is the **empty state**. The **initial state** arrives when the database is first populated or loaded.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-027",
+      "topic": "schema-state-three-schema",
+      "q": "Which statement about the number of schemas in a database is correct?",
+      "options": [
+        "Exactly one of each: conceptual, physical and external",
+        "Exactly one conceptual and one physical schema, but possibly several external schemas",
+        "Several conceptual schemas but one physical schema",
+        "One external schema and many conceptual schemas"
+      ],
+      "answer": 1,
+      "explain": "There is **exactly one conceptual and one physical schema** (there is just one set of stored relations), but **several external schemas**, each tailored to a group of users.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-lec-028",
+      "topic": "schema-state-three-schema",
+      "q": "In the three-schema architecture, which mapping delivers logical data independence?",
+      "options": [
+        "The conceptual/internal mapping",
+        "The external/conceptual mapping",
+        "The internal/stored-database mapping",
+        "No mapping does; it comes from the conceptual schema itself"
+      ],
+      "answer": 1,
+      "explain": "The **external/conceptual mapping** gives **logical** data independence; the **conceptual/internal mapping** gives **physical** data independence. The mappings are the whole point of the architecture.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-029",
+      "topic": "schema-state-three-schema",
+      "q": "Why is a view's data computed on demand rather than stored?",
+      "options": [
+        "Because views are always small",
+        "Because storing it would be redundant, and redundancy invites inconsistency",
+        "Because the SQL standard forbids storing views",
+        "Because views have no primary key"
+      ],
+      "answer": 1,
+      "explain": "Storing a derivable view wastes space and risks inconsistency — e.g. an enrolment could be inserted without incrementing a stored enrolment count. **Derive what you can, store only what you must.**",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "dbms-u1-lec-030",
+      "topic": "database-design-phases",
+      "q": "In the database design diagram, the dashed line separating DBMS-independent from DBMS-specific work falls between which two phases?",
+      "options": [
+        "Requirements collection and conceptual design",
+        "Conceptual design and logical design",
+        "Logical design and physical design",
+        "Physical design and transaction implementation"
+      ],
+      "answer": 1,
+      "explain": "The **conceptual schema is DBMS-independent**; the **logical schema is expressed in the data model of a specific DBMS**. So the dashed line falls between **conceptual design and logical design**.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-031",
+      "topic": "database-design-phases",
+      "q": "Requirements collection and analysis splits into which two streams?",
+      "options": [
+        "Conceptual requirements and physical requirements",
+        "Functional requirements and data requirements",
+        "Logical requirements and internal requirements",
+        "User requirements and system requirements"
+      ],
+      "answer": 1,
+      "explain": "It splits into **functional requirements** (→ functional analysis → transaction specification → application programs) and **data requirements** (→ conceptual → logical → physical design → internal schema).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-032",
+      "topic": "database-design-phases",
+      "q": "Which DBMS module writes metadata into the system catalog?",
+      "options": [
+        "The query optimizer",
+        "The DDL compiler",
+        "The stored data manager",
+        "The runtime database processor"
+      ],
+      "answer": 1,
+      "explain": "The **DDL compiler** processes schema definitions and **stores the metadata in the catalog**. The query optimizer and DML compiler **read** from it — that asymmetry is the self-describing nature turned into wiring.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-033",
+      "topic": "database-design-phases",
+      "q": "Which module extracts DML commands from an application program?",
+      "options": [
+        "The DML compiler",
+        "The pre-compiler",
+        "The query compiler",
+        "The host language compiler"
+      ],
+      "answer": 1,
+      "explain": "The **pre-compiler** extracts DML commands from the application program, passing them to the **DML compiler** and the remainder to the **host language compiler**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-034",
+      "topic": "database-design-phases",
+      "q": "In the component-modules diagram, which class of user reaches compiled transactions WITHOUT passing through a compiler at request time?",
+      "options": [
+        "Casual users",
+        "Parametric (naïve) users",
+        "DBA staff",
+        "Application programmers"
+      ],
+      "answer": 1,
+      "explain": "**Parametric (naïve) users** run **canned transactions** compiled in advance — which is why a booking screen is fast. Casual users pay the compile-and-optimise cost on each interactive query.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-035",
+      "topic": "database-design-phases",
+      "q": "Which database system utility includes data conversion tools from an old format to the new database format?",
+      "options": [
+        "Backup utility",
+        "Loading utility",
+        "Database storage reorganisation",
+        "Performance monitoring"
+      ],
+      "answer": 1,
+      "explain": "The **loading utility** loads existing data files into a database and **includes data conversion tools** from the old format to the new one.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-036",
+      "topic": "database-design-phases",
+      "q": "Which utility monitors database usage and provides statistics to the DBA?",
+      "options": [
+        "Loading",
+        "Backup",
+        "Storage reorganisation",
+        "Performance monitoring"
+      ],
+      "answer": 3,
+      "explain": "**Performance monitoring utilities** monitor usage and provide statistics to the DBA — the input for tuning decisions.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-037",
+      "topic": "design-architecture-users",
+      "q": "A system runs on a tightly-coupled cluster with many cores, shared memory and shared disk, for large-scale data warehousing. Which architecture?",
+      "options": [
+        "Centralized",
+        "Client-server",
+        "Parallel",
+        "Distributed"
+      ],
+      "answer": 2,
+      "explain": "**Parallel** databases run on a cluster of machines with many cores, shared memory and shared disk, for high-performance workloads. NASA's HPC handling of satellite data is the lecture's example.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-038",
+      "topic": "design-architecture-users",
+      "q": "Which architecture stores data across multiple physical or geographic locations, gaining fault tolerance through replication?",
+      "options": [
+        "Parallel",
+        "Distributed",
+        "Centralized",
+        "Two-tier client-server"
+      ],
+      "answer": 1,
+      "explain": "**Distributed.** Parallel is about *one system going faster* in one place; distributed is about *data living in many places*, gaining scalability, fault tolerance and performance.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-039",
+      "topic": "design-architecture-users",
+      "q": "In a two-tier architecture, client programs send query and transaction requests via which standard interfaces?",
+      "options": [
+        "HTTP and REST",
+        "ODBC and JDBC",
+        "TCP and UDP",
+        "SOAP and gRPC"
+      ],
+      "answer": 1,
+      "explain": "**ODBC** (Open Database Connectivity) and **JDBC** (for Java). Both client and server must install the appropriate ODBC/JDBC module.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-040",
+      "topic": "design-architecture-users",
+      "q": "How does the three-tier architecture enhance security relative to two-tier?",
+      "options": [
+        "It encrypts all network traffic",
+        "The database server is accessible only via the middle tier; clients cannot access it directly",
+        "It requires stronger passwords",
+        "It stores no data on the client"
+      ],
+      "answer": 1,
+      "explain": "The **database server is only reachable through the middle tier**. In two-tier every client holds database credentials; in three-tier the client holds application credentials, replacing N trust relationships with one.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-041",
+      "topic": "design-architecture-users",
+      "q": "The three tiers are also named by layer. Which is the correct set?",
+      "options": [
+        "Interface Layer / Logic Layer / Storage Layer",
+        "Presentation Layer / Business Logic Layer / Database Services Layer",
+        "External Layer / Conceptual Layer / Internal Layer",
+        "Client Layer / Network Layer / Server Layer"
+      ],
+      "answer": 1,
+      "explain": "**Presentation Layer / Business Logic Layer / Database Services Layer**, corresponding to Client / Application (Web) Server / Database Server.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-042",
+      "topic": "design-architecture-users",
+      "q": "'Application programmers are responsible for defining storage structures and access methods in the database.' True or false?",
+      "options": [
+        "True — they design the physical layout",
+        "False — the Database Administrator handles this",
+        "True, but only for indexes",
+        "False — sophisticated users handle this"
+      ],
+      "answer": 1,
+      "explain": "**False.** Storage-structure and access-method definition is a **DBA** function. Application programmers write the *programs that use* the database; the DBA defines the *database itself*.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-043",
+      "topic": "design-architecture-users",
+      "q": "Which type of user would most likely use a query language to retrieve specific data from a database?",
+      "options": [
+        "Naïve user",
+        "Application programmer",
+        "Sophisticated user",
+        "Parametric end user"
+      ],
+      "answer": 2,
+      "explain": "**Sophisticated users** possess deep DBMS understanding and are proficient with **DDL and DML** commands — data engineers and developers issuing SQL directly.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-044",
+      "topic": "design-architecture-users",
+      "q": "Booking a movie ticket through an app makes you which kind of database user?",
+      "options": [
+        "Sophisticated user",
+        "Naïve / parametric end user",
+        "Application programmer",
+        "Database administrator"
+      ],
+      "answer": 1,
+      "explain": "A **naïve (parametric end) user** — you interact through a **predefined interface** without needing to know anything about how the database works.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-045",
+      "topic": "design-architecture-users",
+      "q": "Which is NOT one of the five listed functions of a Database Administrator?",
+      "options": [
+        "Schema definition using DDL",
+        "Granting authorization for data access",
+        "Writing the application programs used by end users",
+        "Routine maintenance including backups and performance monitoring"
+      ],
+      "answer": 2,
+      "explain": "Writing application programs is the **application programmer's** job. The DBA's five functions are schema definition; storage structure and access-method definition; schema and physical-organisation modification; granting authorization; and routine maintenance.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-046",
+      "topic": "er-entities-attributes",
+      "q": "Which of these is an entity with CONCEPTUAL (abstract) rather than physical existence?",
+      "options": [
+        "A car",
+        "A house",
+        "A university course",
+        "An employee"
+      ],
+      "answer": 2,
+      "explain": "A **university course** is conceptual, as are a company, a job, a project and a reservation. Cars, persons, employees and houses have **physical** existence. Both kinds serve equally as distinct objects.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-047",
+      "topic": "er-entities-attributes",
+      "q": "What does the EXTENSION of an entity set refer to?",
+      "options": [
+        "The unique identifier for each entity",
+        "The actual collection of entities",
+        "The general set of attributes",
+        "The relationships between entity sets"
+      ],
+      "answer": 1,
+      "explain": "The **extension** is the **actual collection of entities** at a point in time — part of the *state*. The entity **type** (name + attributes) is part of the *schema*.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-048",
+      "topic": "er-attributes",
+      "q": "Formally, an attribute A of entity set E with value set V is defined as a function A : E → P(V). Why the power set P(V) rather than V?",
+      "options": [
+        "To allow attribute names to repeat",
+        "So one definition covers single-valued (singleton), multivalued (larger set) and null (empty set) cases",
+        "Because V is always infinite",
+        "To permit composite attributes only"
+      ],
+      "answer": 1,
+      "explain": "Mapping into **P(V)** lets one formula describe all three cases: single-valued → a **singleton**, multivalued → a set with several elements, null/not applicable → the **empty set**.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-049",
+      "topic": "er-attributes",
+      "q": "When is modelling an attribute as COMPOSITE the right choice?",
+      "options": [
+        "Whenever the attribute is a string",
+        "When a user will sometimes refer to the whole attribute and sometimes to only a component of it",
+        "Only when the attribute is also multivalued",
+        "When the attribute is derived from another"
+      ],
+      "answer": 1,
+      "explain": "The stated design rule: composite is a good choice **if a user will wish to refer to the entire attribute on some occasions, and to only a component on other occasions** — e.g. wanting the postal code alone out of an address.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-050",
+      "topic": "er-attributes",
+      "q": "How is a multivalued attribute drawn in an E-R diagram?",
+      "options": [
+        "A dashed ellipse",
+        "A double ellipse",
+        "An underlined ellipse",
+        "A double rectangle"
+      ],
+      "answer": 1,
+      "explain": "**Double ellipse** = multivalued. **Dashed ellipse** = derived. **Underlined** name = key. **Double rectangle** = weak entity.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-051",
+      "topic": "er-attributes",
+      "q": "In the schema Instructor(ID, Name, Department, Date_of_Birth, Age), what is the design problem?",
+      "options": [
+        "Department should be multivalued",
+        "Age is derivable from Date_of_Birth and should not be stored",
+        "ID is not a valid key",
+        "Name should be simple, not composite"
+      ],
+      "answer": 1,
+      "explain": "**Age is a derived attribute** — computable from Date_of_Birth and the current date. Storing it is not merely redundant; it becomes wrong within a day. R&G call `age` an explicit example of poor design.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-052",
+      "topic": "er-attributes",
+      "q": "In the notation Address_EmPhone({Email}, {Phone}, Address{House, number, street, City, State}), what do the braces around Email and Phone indicate?",
+      "options": [
+        "Composite",
+        "Multivalued",
+        "Derived",
+        "Key"
+      ],
+      "answer": 1,
+      "explain": "**Braces = multivalued.** The grouped component list `Address{...}` is **composite**, and the whole nested structure is a **complex attribute**.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-053",
+      "topic": "er-attributes",
+      "q": "PreviousDegrees of a Student is denoted {PreviousDegrees(College, Year, Degree, Field)}. What type of attribute is it?",
+      "options": [
+        "Simple",
+        "Composite only",
+        "Multivalued only",
+        "Complex — nesting of composite and multivalued"
+      ],
+      "answer": 3,
+      "explain": "Multiple values can exist (**multivalued**) and each has four subcomponents (**composite**) — the nesting of the two makes it a **complex attribute**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-054",
+      "topic": "er-key-attributes-null",
+      "q": "VehicleTagNumber is a key of the CAR entity type with components (Number, State). What does this illustrate?",
+      "options": [
+        "That keys must be simple attributes",
+        "That a key attribute may be composite, and that an entity type may have more than one key",
+        "That keys may be derived",
+        "That keys may be null"
+      ],
+      "answer": 1,
+      "explain": "A **key may be composite** — a plate number alone is not unique across states. CAR also has a second key, **VehicleIdentificationNumber (VIN)**, showing an entity type may have **more than one key**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-055",
+      "topic": "er-key-attributes-null",
+      "q": "How does key underlining differ between an ER diagram and a relational schema?",
+      "options": [
+        "There is no difference",
+        "In an ER diagram EVERY key is underlined; in a relational schema only ONE primary key is underlined",
+        "In an ER diagram no key is underlined",
+        "In a relational schema every candidate key is underlined"
+      ],
+      "answer": 1,
+      "explain": "**Each key is underlined** in an ER diagram — so two underlined attributes on one entity means two candidate keys, not an error. When reducing to a relational schema you must **choose one** primary key.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-056",
+      "topic": "er-key-attributes-null",
+      "q": "A null value for an apartment number could carry which three distinct meanings?",
+      "options": [
+        "Zero, empty string, or absent",
+        "Not applicable; missing (exists but unknown to us); unknown (we don't know whether it exists)",
+        "Invalid, deleted, or archived",
+        "Default, computed, or inherited"
+      ],
+      "answer": 1,
+      "explain": "**Not applicable** (the value does not exist), **missing** (it exists but we lack the information), and **unknown** (we do not know whether it exists). Null is not zero and not the empty string.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-057",
+      "topic": "er-key-attributes-null",
+      "q": "In the Environmental Sensor exercise, a sensor 'collects multiple Data readings, each containing a Date-Time and a Value'. How is Data modelled?",
+      "options": [
+        "A simple stored attribute",
+        "A complex attribute — multivalued (double ellipse) and composite (Date-time, Value)",
+        "A derived attribute",
+        "A separate key attribute"
+      ],
+      "answer": 1,
+      "explain": "*'Multiple'* → **multivalued** (double ellipse); *'each containing'* → **composite** components Date-time and Value. Together: a **complex attribute**. Sensor_ID is the underlined key.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-058",
+      "topic": "er-relationships-cardinality",
+      "q": "Instructor Katz (ID 45565) advising student Shankar (ID 12345) is an example of what?",
+      "options": [
+        "A relationship set",
+        "A relationship instance",
+        "A relationship type",
+        "A descriptive attribute"
+      ],
+      "answer": 1,
+      "explain": "A **relationship instance** — a specific association between **named entities**. The general definition `advisor` relating `instructor` to `student` is the relationship **set/type**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-059",
+      "topic": "er-relationships-cardinality",
+      "q": "Which is an example of a recursive relationship?",
+      "options": [
+        "Course prerequisites",
+        "Instructor-student relationship",
+        "Student-course enrollment",
+        "Student-advisor relationship"
+      ],
+      "answer": 0,
+      "explain": "**Course prerequisites** — the only option where **both ends are the same entity set** (`course` to `course`). The other three join two different entity sets.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-060",
+      "topic": "er-relationships-cardinality",
+      "q": "Why are explicit role names NECESSARY in a recursive relationship set?",
+      "options": [
+        "To satisfy the SQL standard",
+        "Because the same entity set participates more than once, so without labels you cannot tell which end is which",
+        "Because recursive relationships have no key",
+        "Because they must always be ternary"
+      ],
+      "answer": 1,
+      "explain": "The pair `(CS201, CS101)` is meaningless until the lines are labelled `course_id` and `prereq_id`. Roles are optional when entity sets are distinct, but **mandatory** when they are not.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-061",
+      "topic": "er-degree-ternary",
+      "q": "The degree of a relationship set is defined as what?",
+      "options": [
+        "The number of entities participating",
+        "The number of entity sets that participate",
+        "The number of attributes on the relationship",
+        "The maximum cardinality"
+      ],
+      "answer": 1,
+      "explain": "Degree counts **entity sets**: binary = 2 (most relationship sets in a database system), ternary = 3, n-ary in general.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-062",
+      "topic": "er-degree-ternary",
+      "q": "Why can proj_guide (instructor, student, project) NOT be replaced by binary relationships?",
+      "options": [
+        "Because ternary relationships are always more efficient",
+        "Because a student could have different instructors as guides for different projects, which binary relationships cannot capture",
+        "Because project has no key",
+        "Because binary relationships cannot have attributes"
+      ],
+      "answer": 1,
+      "explain": "The stated justification: **a student could have different instructors as guides for different projects**. The three-way fact is not the sum of its two-way projections.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-063",
+      "topic": "er-degree-ternary",
+      "q": "Where should the 'Grade' attribute be placed for a Student–Enrolls–Course relationship?",
+      "options": [
+        "In the Student entity",
+        "In the Course entity",
+        "As a descriptive attribute on the Enrolls relationship (an oval connected to the diamond)",
+        "In both Student and Course"
+      ],
+      "answer": 2,
+      "explain": "A grade exists **only if the student enrolled** in that course, so it belongs to the relationship. Descriptive attributes are drawn as an **oval connected to the diamond**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-064",
+      "topic": "er-degree-ternary",
+      "q": "In the SUPPLY ternary relationship among SUPPLIER, PART and PROJECT, what is 'Quantity'?",
+      "options": [
+        "A key attribute of PART",
+        "A descriptive attribute on the SUPPLY relationship",
+        "A derived attribute of PROJECT",
+        "A multivalued attribute of SUPPLIER"
+      ],
+      "answer": 1,
+      "explain": "**Quantity** is a descriptive attribute on the **SUPPLY** diamond — it only has meaning once a supplier, part and project are connected.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-065",
+      "topic": "er-degree-ternary",
+      "q": "Which test distinguishes a relationship attribute from an entity attribute?",
+      "options": [
+        "Whether the value is numeric",
+        "Whether the value exists for the entity on its own, or only once two entities are connected",
+        "Whether the value is unique",
+        "Whether the value can be null"
+      ],
+      "answer": 1,
+      "explain": "A student has a **name** whether or not they enrol (entity attribute); a **grade** only in the context of a course (relationship attribute). Same for *hours per week* on a project and a manager's *start date*.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-066",
+      "topic": "er-cardinality-participation",
+      "q": "Cardinality and participation differ how?",
+      "options": [
+        "They are two names for the same constraint",
+        "Cardinality says HOW MANY an entity may relate to; participation says WHETHER EVERY entity must relate at all",
+        "Cardinality applies to entities, participation to attributes",
+        "Participation applies only to ternary relationships"
+      ],
+      "answer": 1,
+      "explain": "**Cardinality** = 1:1, 1:N, N:1, M:N. **Participation** = total (double line) or partial (single line). They are independent, and a full specification states **both**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-067",
+      "topic": "er-cardinality-participation",
+      "q": "A line labelled Student—Enrolls (2, 5) means what?",
+      "options": [
+        "Between 2 and 5 students per course",
+        "Each student enrols in a minimum of 2 and a maximum of 5 courses",
+        "The relationship has degree between 2 and 5",
+        "There are 2 total and 5 partial participants"
+      ],
+      "answer": 1,
+      "explain": "In (min, max) notation, l = 2 and h = 5: each student participates in **between 2 and 5** relationship instances. l ≥ 1 also implies **total** participation.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "dbms-u1-lec-068",
+      "topic": "er-cardinality-participation",
+      "q": "Which cardinality ratio MUST become a table of its own when reduced to a relational schema?",
+      "options": [
+        "1:1",
+        "1:N",
+        "N:1",
+        "M:N"
+      ],
+      "answer": 3,
+      "explain": "**M:N** must become its own relation holding both keys. 1:N puts a foreign key on the 'many' side; 1:1 puts a foreign key on either side — preferably the side with **total participation**.",
+      "difficulty": "hard",
+      "source": "textbook"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 subject: dbms
 unit: 1
-order: 8
+order: 16
 slug: er-to-relational
 title: Reducing E-R Diagrams to a Relational Schema
 summary: The rules for mapping an ER design to relations — strong and weak entities, composite/derived/multivalued attributes, and 1:1/1:N/M:N/n-ary relationships.

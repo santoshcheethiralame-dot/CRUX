@@ -1,7 +1,7 @@
 ---
 subject: dbms
 unit: 1
-order: 13
+order: 21
 slug: sql-ddl
 title: SQL DDL — CREATE, ALTER, DROP & TRUNCATE
 summary: Defining and changing the schema with CREATE TABLE, ALTER (add/modify/drop/rename), DROP and TRUNCATE — and the crucial DROP-vs-TRUNCATE distinction.

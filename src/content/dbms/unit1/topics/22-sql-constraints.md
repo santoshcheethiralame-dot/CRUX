@@ -1,7 +1,7 @@
 ---
 subject: dbms
 unit: 1
-order: 14
+order: 22
 slug: sql-constraints
 title: SQL Constraints & Keys
 summary: The three relational integrity constraints, the column constraints (NOT NULL, DEFAULT, CHECK, PRIMARY KEY, UNIQUE, FOREIGN KEY), and the referential actions on DELETE/UPDATE.

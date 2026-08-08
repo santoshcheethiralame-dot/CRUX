@@ -1,7 +1,7 @@
 ---
 subject: dbms
 unit: 1
-order: 15
+order: 23
 slug: sql-dml
 title: SQL DML — INSERT, SELECT, UPDATE & DELETE
 summary: Modifying data with INSERT, UPDATE and DELETE, the structure of a basic SELECT query, and how the SELECT-FROM-WHERE clauses map directly onto relational algebra.

@@ -1,0 +1,367 @@
+{
+  "subject": "dbms",
+  "unit": 1,
+  "title": "Unit 1 — Lecture Deep-Dive Flashcards",
+  "cards": [
+    {
+      "id": "dbms-u1-dc01",
+      "topic": "intro-dbms",
+      "front": "Mini-world / Universe of Discourse",
+      "back": "The **slice of the real world** a database models. A database never models *the world* — it models a deliberately cut-down portion. **Deciding where that boundary falls is the first act of database design.**"
+    },
+    {
+      "id": "dbms-u1-dc02",
+      "topic": "intro-dbms",
+      "front": "The 3 properties in the definition of a database",
+      "back": "1. The data is **related**.\n2. It is **logically coherent** — organised with inherent meaning, not a random assortment.\n3. It is **designed, built and populated for a specific purpose**, with an intended audience and applications.\n\n(Plus: it varies in size and complexity.)"
+    },
+    {
+      "id": "dbms-u1-dc03",
+      "topic": "intro-dbms",
+      "front": "Why 'defining' comes first among the DBMS functions",
+      "back": "Because the description is stored **inside the system** as **metadata in the catalog**. That single choice is what separates a DBMS from a filing cabinet — it enables type checking, constraint enforcement, query optimisation and runtime discovery. Its name: the **self-describing nature**."
+    },
+    {
+      "id": "dbms-u1-dc04",
+      "topic": "intro-dbms",
+      "front": "Database system vs database vs DBMS",
+      "back": "**Database** = the data. **DBMS** = the software that manages it. **Database system = database + DBMS software.**"
+    },
+    {
+      "id": "dbms-u1-dc05",
+      "topic": "database-landscape",
+      "front": "Data model — the 4 things it describes",
+      "back": "A collection of conceptual tools for describing **data**, **data relationships**, **data semantics**, and **consistency constraints**. The structure of a database *is* defined by its data model."
+    },
+    {
+      "id": "dbms-u1-dc06",
+      "topic": "database-landscape",
+      "front": "Data model vs semantic data model (R&G)",
+      "back": "A **data model** (relational) is what the DBMS actually implements. A **semantic data model** is more abstract and higher-level, made for humans to describe an enterprise — the **ER model**. You design in ER, then **translate** into the relational model. That translation = *'reducing ER to a relational schema'*."
+    },
+    {
+      "id": "dbms-u1-dc07",
+      "topic": "database-landscape",
+      "front": "OLTP vs OLAP",
+      "back": "**OLTP** — many users, **small** retrievals and updates; banking, universities, airlines.\n**OLAP / analytics** — processing data to **draw conclusions and build predictive models**; loan approval, targeted ads, manufacturing decisions; uses **data mining** (AI + statistics).\n\nMany small writes vs few enormous reads — they want opposite physical designs."
+    },
+    {
+      "id": "dbms-u1-dc08",
+      "topic": "database-landscape",
+      "front": "The 6 database application domains + their named examples",
+      "back": "1. **Enterprises** — Salesforce CRM\n2. **Manufacturing** — Toyota (JIT)\n3. **Banking & Finance** — JPMorgan Chase\n4. **Web services** — Netflix\n5. **Document databases** — MongoDB (*The New York Times*)\n6. **Navigation** — Google Maps"
+    },
+    {
+      "id": "dbms-u1-dc09",
+      "topic": "file-systems-purpose",
+      "front": "The 7 drawbacks of file-processing systems (in order)",
+      "back": "1. Data **redundancy & inconsistency**\n2. **Difficulty accessing** the data\n3. Data **isolation**\n4. **Integrity** problems\n5. **Atomicity** problems\n6. **Concurrent-access anomalies**\n7. **Security** problems\n\nThe *purpose of a DBMS* = the solution to each."
+    },
+    {
+      "id": "dbms-u1-dc10",
+      "topic": "file-systems-purpose",
+      "front": "The underlying disease behind all 7 drawbacks",
+      "back": "In a file-processing system the **structure of the data lives inside the programs**, so data and programs are welded together. A change in the mini-world forces a change in code. The DBMS's job is to **prise them apart** — program–data independence."
+    },
+    {
+      "id": "dbms-u1-dc11",
+      "topic": "file-systems-purpose",
+      "front": "The lost-update arithmetic",
+      "back": "Balance 10,000; T₁ deducts 500, T₂ deducts 100. Both **read 10,000** before either writes → they compute 9,500 and 9,900 → **last writer wins**.\n\nFinal = **9,500 or 9,900**; correct = **9,400**. Which wrong answer you get depends on **timing** — that is what makes it dangerous."
+    },
+    {
+      "id": "dbms-u1-dc12",
+      "topic": "file-systems-purpose",
+      "front": "Data isolation — the two readings",
+      "back": "**Standard (lead with this):** data scattered across files in **different formats**, so writing a program that combines it is hard.\n\n**The lecture also frames it via** file-level locking/concurrency — but a concurrency scenario in an exam wants **#6 concurrent-access anomalies**, not #3."
+    },
+    {
+      "id": "dbms-u1-dc13",
+      "topic": "dbms-characteristics-advantages",
+      "front": "The 4 characteristics of the database approach",
+      "back": "1. **Self-describing nature** — metadata/catalog\n2. **Insulation between programs and data** — program–data independence\n3. **Support for multiple views** — may be a subset, or **virtual data not explicitly stored**\n4. **Sharing of data & multi-user transaction processing** — controlled concurrency\n\nAll three others rest on #1: *you can only insulate programs from a structure that has been written down.*"
+    },
+    {
+      "id": "dbms-u1-dc14",
+      "topic": "dbms-characteristics-advantages",
+      "front": "The 4 scenario → problem mappings the lecture drills",
+      "back": "• Two simultaneous withdrawals, account overdrawn → **concurrent access anomalies**\n• Each department keeps its own customer spreadsheet, details differ → **data redundancy & inconsistency**\n• Separate inventory and order systems, business oversells → **data isolation**\n• Grades typed incorrectly, no automatic check → **integrity problems**"
+    },
+    {
+      "id": "dbms-u1-dc15",
+      "topic": "dbms-characteristics-advantages",
+      "front": "The 4 kinds of data integrity",
+      "back": "**Entity** — uniquely identifiable (PK exists, not null).\n**Referential** — a reference points at something that exists.\n**Domain** — values lie in their permitted set.\n**User-defined** — business rules hold.\n\nIn SQL: `PRIMARY KEY`, `FOREIGN KEY`, data types, `CHECK`."
+    },
+    {
+      "id": "dbms-u1-dc16",
+      "topic": "data-abstraction-schema",
+      "front": "Why data abstraction exists — the 4-step chain",
+      "back": "1. A DBMS must **retrieve data efficiently**.\n2. Efficiency demands **complex data structures**.\n3. Many users are **not computer trained**.\n4. So developers **hide the complexity** behind layers of abstraction.\n\n*What is fast for a machine is unreadable to a person.*"
+    },
+    {
+      "id": "dbms-u1-dc17",
+      "topic": "data-abstraction-schema",
+      "front": "The 3 levels of abstraction — and what each describes",
+      "back": "**Physical (internal)** — *how* data is actually stored. Lowest.\n**Logical (conceptual)** — *what kind* of data is stored **and how the pieces are related**; the entire DB in a small number of relatively simple structures.\n**View (external)** — *part* of the DB for a particular user. Highest.\n\nTrap: the logical level includes **relationships**."
+    },
+    {
+      "id": "dbms-u1-dc18",
+      "topic": "data-abstraction-schema",
+      "front": "University example at each abstraction level",
+      "back": "Tables: `Department(Dept_ID, Dept_Name, Building)`, `Course(Course_ID, Course_Name, Credits, Dept_ID)`, `Student(SRN, Name, Dept_ID, Total_Credits)`.\n\n**Physical** — how the records sit on disk/in memory.\n**Logical** — entities, attributes, and *'Students belong to Departments'*, *'Courses are taken by Students'*.\n**View** — faculty see their courses + enrolled students; students see their courses + grades."
+    },
+    {
+      "id": "dbms-u1-dc19",
+      "topic": "data-abstraction-schema",
+      "front": "Physical vs logical data independence — one line each",
+      "back": "**Physical** — change *how* data is stored (indexes, sequential→random access, new devices, file organisation) without touching the logical schema.\n**Logical** — change *what* is stored (add/remove attributes, alter tables/relationships) without touching external schemas or applications.\n\n*Physical protects you from the machine changing underneath; logical protects you from the business changing above.*"
+    },
+    {
+      "id": "dbms-u1-dc20",
+      "topic": "data-abstraction-schema",
+      "front": "Which data independence is harder — and why",
+      "back": "**Logical.** Applications are written directly against the logical structure — they **name the tables and columns** — so insulating them from logical change is only partially achievable. Physical independence is near-total in modern relational DBMSs."
+    },
+    {
+      "id": "dbms-u1-dc21",
+      "topic": "schema-state-three-schema",
+      "front": "Schema vs instance — the programming analogy",
+      "back": "**Schema** ≈ **variable declarations + type definitions**. Changes rarely.\n**Instance / state / snapshot** ≈ **the values of the variables** at a point in time. Changes constantly.\n\nInserts change the **state**. Only `CREATE`/`ALTER`/`DROP` change the **schema**."
+    },
+    {
+      "id": "dbms-u1-dc22",
+      "topic": "schema-state-three-schema",
+      "front": "The lifecycle of database states",
+      "back": "1. Define a new database → specify **only the schema**.\n2. Corresponding state = the **empty state**.\n3. First load of data → the **initial state**.\n4. Every update → **another state**.\n5. At any moment there is **one current state**, but **many states can correspond to one schema**."
+    },
+    {
+      "id": "dbms-u1-dc23",
+      "topic": "schema-state-three-schema",
+      "front": "The COMPANY schema (used throughout the unit)",
+      "back": "`EMPLOYEE(Ename, `**`Ssn`**`, Bdate, Address, Dnumber↗)`\n`DEPARTMENT(Dname, `**`Dnumber`**`, Dmgr_ssn↗)`\n\nUnderlined = PK, ↗ = FK. In the sample state, Research's `Dmgr_ssn` 333445555 is Franklin Wong, who is himself in department 5 — **the manager of Research is an employee of Research**."
+    },
+    {
+      "id": "dbms-u1-dc24",
+      "topic": "schema-state-three-schema",
+      "front": "The three-schema architecture — and which mapping gives which independence",
+      "back": "External (views) → **external/conceptual mapping** → Conceptual → **conceptual/internal mapping** → Internal → stored database.\n\n**External/conceptual mapping ⇒ LOGICAL data independence.**\n**Conceptual/internal mapping ⇒ PHYSICAL data independence.**\n\nThe mappings are the whole point; levels alone answer only half the question."
+    },
+    {
+      "id": "dbms-u1-dc25",
+      "topic": "schema-state-three-schema",
+      "front": "How many schemas of each kind can a database have?",
+      "back": "**Exactly one** conceptual and **exactly one** physical schema (there is one set of stored relations), but **several** external schemas, each tailored to a group of users. Each external schema is a collection of **views** and relations from the conceptual schema."
+    },
+    {
+      "id": "dbms-u1-dc26",
+      "topic": "schema-state-three-schema",
+      "front": "Why a view's records are not stored",
+      "back": "A view is conceptually a relation, but its records are **computed on demand** from a definition over stored relations. Storing them would be **redundant** and invite inconsistency — e.g. inserting an enrolment without incrementing a stored enrolment count.\n\n**Derive what you can, store only what you must.**"
+    },
+    {
+      "id": "dbms-u1-dc27",
+      "topic": "database-design-phases",
+      "front": "The database design diagram — the two tracks",
+      "back": "**Miniworld → Requirements Collection & Analysis**, which splits:\n\n**Data track (right):** Conceptual Design → conceptual schema → **Logical Design (data model mapping)** → logical schema → Physical Design → **internal schema**.\n\n**Function track (left):** Functional Analysis → high-level transaction spec → Application Program Design → Transaction Implementation → **application programs**."
+    },
+    {
+      "id": "dbms-u1-dc28",
+      "topic": "database-design-phases",
+      "front": "Where does the DBMS-independent / DBMS-specific line fall?",
+      "back": "**Between conceptual design and logical design.** The **conceptual schema is DBMS-independent**; the **logical schema is in the data model of a specific DBMS**.\n\nKeeping conceptual design DBMS-independent lets you argue about *what the business is* without anyone raising MySQL's limitations."
+    },
+    {
+      "id": "dbms-u1-dc29",
+      "topic": "database-design-phases",
+      "front": "The 4 database design phases",
+      "back": "1. **Requirements collection & analysis** — data needs + operations\n2. **Conceptual design** — high-level model (**ER**) → conceptual schema; review & refine\n3. **Logical design (data model mapping)** — → relational schema (*'reducing ER to relational'*)\n4. **Physical design** — file organisation, indexes, storage structures"
+    },
+    {
+      "id": "dbms-u1-dc30",
+      "topic": "database-design-phases",
+      "front": "DBMS component modules — the catalog's asymmetry",
+      "back": "The **DDL compiler WRITES** metadata to the system catalog. The **query optimizer and DML compiler READ** it.\n\nSchema definitions are compiled **once** into metadata; every query afterwards is compiled **against** it. That is the self-describing nature as a wiring diagram — and why a schema change can invalidate a cached plan."
+    },
+    {
+      "id": "dbms-u1-dc31",
+      "topic": "database-design-phases",
+      "front": "The DBMS modules and their jobs",
+      "back": "**SDM** — controls disk access.\n**DDL compiler** — schema definitions → metadata in catalog.\n**Query compiler** — parses/compiles high-level queries.\n**Query optimizer** — picks an efficient execution plan.\n**Pre-compiler** — extracts DML from application programs.\n**DML compiler** — → compiled transactions.\n**Runtime DB processor** — executes privileged commands, queries, canned transactions."
+    },
+    {
+      "id": "dbms-u1-dc32",
+      "topic": "database-design-phases",
+      "front": "Why parametric users are fast",
+      "back": "They reach **compiled transactions directly**, without a compiler at request time — their operations were compiled **in advance** (*canned transactions*). Casual users pay the compile-and-optimise cost on **every** interactive query."
+    },
+    {
+      "id": "dbms-u1-dc33",
+      "topic": "database-design-phases",
+      "front": "The 4 database system utilities",
+      "back": "**Loading** — import existing files, **includes format-conversion tools**.\n**Backup** — periodic, **incremental or total**.\n**Storage reorganisation** — reorganise file structures, create **new access paths**.\n**Performance monitoring** — usage statistics **for the DBA**."
+    },
+    {
+      "id": "dbms-u1-dc34",
+      "topic": "design-architecture-users",
+      "front": "Parallel vs distributed databases",
+      "back": "**Parallel** — one system going **faster**: a tightly-coupled cluster, many cores, **shared memory and shared disk**, in one place. For warehousing, real-time analytics, high throughput. (NASA HPC.)\n\n**Distributed** — data living in **many places**: multiple physical/geographic locations, **replication**, fault tolerance, scalability.\n\nTell: *cluster/performance* → parallel; *locations/fault tolerance* → distributed."
+    },
+    {
+      "id": "dbms-u1-dc35",
+      "topic": "design-architecture-users",
+      "front": "Two-tier vs three-tier",
+      "back": "**Two-tier:** Client (UI) ↔ Server (DB), via **ODBC/JDBC**.\n**Three-tier:** Client ↔ **Application/Web server** (business logic, web connectivity; a **conduit** for partially processed data) ↔ Database server.\n\nLayers: **Presentation / Business Logic / Database Services**.\n\nSecurity: in three-tier the DB server is reachable **only via the middle tier**."
+    },
+    {
+      "id": "dbms-u1-dc36",
+      "topic": "design-architecture-users",
+      "front": "The real security argument for three tiers",
+      "back": "In two-tier, **every client holds database credentials** — a compromised laptop is a compromised database account. In three-tier the client holds credentials **for the application**, and only the app server speaks to the database. **N trust relationships become one.**"
+    },
+    {
+      "id": "dbms-u1-dc37",
+      "topic": "design-architecture-users",
+      "front": "The 4 user types and what they use",
+      "back": "**Naïve / parametric** — USE **application interfaces** (movie booking).\n**Application programmers** — WRITE **application programs** (back-end devs).\n**Sophisticated users** — USE **query tools**, write their own DDL/DML.\n**DBAs** — USE **administration tools**.\n\nThey are the **four doors into the system**, each with different software behind it."
+    },
+    {
+      "id": "dbms-u1-dc38",
+      "topic": "design-architecture-users",
+      "front": "The 5 DBA functions",
+      "back": "1. **Schema definition** (DDL)\n2. **Storage structure & access-method definition** (physical organisation, indexes)\n3. **Schema & physical-organisation modification**\n4. **Granting authorization** for data access\n5. **Routine maintenance** — backups, disk space, performance monitoring\n\nR&G group these as: conceptual+physical schema design; security & authorization; availability & recovery; **database tuning**."
+    },
+    {
+      "id": "dbms-u1-dc39",
+      "topic": "design-architecture-users",
+      "front": "Application programmer vs DBA — the boundary",
+      "back": "Application programmers write the **programs that use** the database. The DBA defines the **database itself** — schema, storage structures, access methods, authorization.\n\nThe planted exam statement: *'Application programmers are responsible for defining storage structures and access methods'* → **FALSE**."
+    },
+    {
+      "id": "dbms-u1-dc40",
+      "topic": "er-entities-attributes",
+      "front": "Why draw an ER diagram at all — the 4 benefits",
+      "back": "**Simplicity and clarity**; catches **issues, redundancies and inconsistencies before implementation**; leads to more efficient structures, **reducing costly later modifications**; serves as **documentation** of the database's structure.\n\nIt is cheap precisely because it is **not executable**."
+    },
+    {
+      "id": "dbms-u1-dc41",
+      "topic": "er-entities-attributes",
+      "front": "Physical vs conceptual entities",
+      "back": "**Physical / concrete** — car, person, employee, house, book.\n**Conceptual / abstract** — a company, a job, a university course, a project, a reservation.\n\nBoth serve equally as distinct objects in the system."
+    },
+    {
+      "id": "dbms-u1-dc42",
+      "topic": "er-entities-attributes",
+      "front": "Entity type vs entity set vs entity",
+      "back": "**Entity type** — the **definition**: name + attribute list. Part of the **schema**.\n**Entity set / extension** — the **actual collection of entities** now. Part of the **state**.\n**Entity** — one member of that collection.\n\nSame schema-vs-state distinction, applied to the ER model."
+    },
+    {
+      "id": "dbms-u1-dc43",
+      "topic": "er-attributes",
+      "front": "Value set (domain) and its formal definition",
+      "back": "The set of **permitted values** for an attribute — e.g. `Age` ∈ integers 16–70.\n\nFormally $A : E \\to P(V)$ — a function from the entity set to the **power set** of the value set.\n\nThe power set covers all three cases at once: single-valued → **singleton**, multivalued → **larger set**, null → **empty set**."
+    },
+    {
+      "id": "dbms-u1-dc44",
+      "topic": "er-attributes",
+      "front": "The 5 attribute axes",
+      "back": "**Simple / Composite** · **Single-valued / Multivalued** · **Stored / Derived** · **Complex** · **Key**\n\nThey are **independent axes, not one exclusive list** — `Phone_no` is simple, multivalued *and* stored at once. *'Identify the attribute types'* wants **all applicable labels**."
+    },
+    {
+      "id": "dbms-u1-dc45",
+      "topic": "er-attributes",
+      "front": "When should an attribute be composite?",
+      "back": "**If a user will wish to refer to the entire attribute on some occasions, and to only a component of it on other occasions.**\n\nThe motivating failure: address stored as one string, so you **cannot group students by postal code** to allot buses."
+    },
+    {
+      "id": "dbms-u1-dc46",
+      "topic": "er-attributes",
+      "front": "The four ER symbols that earn marks",
+      "back": "**Double ellipse** = multivalued (`Phone_no`)\n**Dashed ellipse** = derived (`Age`)\n**Underlined** name = key\n**Ellipse joined to sub-ellipses** = composite (may form a **hierarchy**: Address → Street → {Street No, Street Name, Apartment No})"
+    },
+    {
+      "id": "dbms-u1-dc47",
+      "topic": "er-attributes",
+      "front": "Stored vs derived — and why storing Age is wrong",
+      "back": "`Date_of_Birth` is **stored**; `Age` is **derived** from it and the current date.\n\nStoring `Age` is not merely redundant — it is **wrong within a day**. R&G: *'you should never create a field such as age, whose value is constantly changing.'*\n\n**Store the invariant, derive the variable.**"
+    },
+    {
+      "id": "dbms-u1-dc48",
+      "topic": "er-attributes",
+      "front": "Complex attribute notation",
+      "back": "`Address_EmPhone({Email}, {Phone}, Address{House, number, street, City, State})`\n\n**{ } braces = multivalued** · **grouped component list = composite** · **the whole nested structure = complex**\n\nAlso: `{PreviousDegrees(College, Year, Degree, Field)}` — multivalued **and** composite ⇒ complex."
+    },
+    {
+      "id": "dbms-u1-dc49",
+      "topic": "er-key-attributes-null",
+      "front": "Key attributes — the 3 refinements",
+      "back": "1. A key **may be composite** — `VehicleTagNumber(Number, State)`; a plate number alone is not unique across states.\n2. An entity type may have **more than one key** — CAR also has `VIN`.\n3. **Each key is underlined** — unlike a relational schema, where only **one** primary key is underlined. Two underlined attributes = two candidate keys, not an error."
+    },
+    {
+      "id": "dbms-u1-dc50",
+      "topic": "er-key-attributes-null",
+      "front": "The 3 meanings of NULL",
+      "back": "**Not applicable** — the value does not exist for this entity.\n**Missing** — it exists, but we do not have the information.\n**Unknown** — we do not know whether or not it exists.\n\nNull is **not** zero and **not** the empty string. Collapsing three situations into one marker is why null behaves awkwardly in SQL."
+    },
+    {
+      "id": "dbms-u1-dc51",
+      "topic": "er-key-attributes-null",
+      "front": "Environmental Sensor — the examinable bit",
+      "back": "*'Collects multiple Data readings, each containing a Date-Time and a Value'*\n\n**multiple** → multivalued (double ellipse); **each containing** → composite ⇒ **`Data` is a complex attribute**. `Sensor_ID` is the underlined key; Type, Location and Last_Calibration_Date are simple.\n\nListen for **'multiple … each containing …'**."
+    },
+    {
+      "id": "dbms-u1-dc52",
+      "topic": "er-relationships-cardinality",
+      "front": "Relationship set as a mathematical object",
+      "back": "A relationship set is a **set of tuples** drawn from the participating entity sets — a subset of $E_1 \\times E_2 \\times \\dots \\times E_n$.\n\nDegree, cardinality and participation are all just **constraints on which tuples are allowed**. Holding this makes the rest of the topic mechanical."
+    },
+    {
+      "id": "dbms-u1-dc53",
+      "topic": "er-relationships-cardinality",
+      "front": "Relationship set vs relationship instance",
+      "back": "**Set/type** — the definition: `advisor` relates `instructor` to `student`.\n**Instance** — one specific pairing between **named entities**: instructor **Katz (45565)** advises student **Shankar (12345)**.\n\nDrawn as a **diamond** connected by lines to entity **rectangles**."
+    },
+    {
+      "id": "dbms-u1-dc54",
+      "topic": "er-relationships-cardinality",
+      "front": "Roles and recursive relationships",
+      "back": "A **role** is the function an entity plays in a relationship. Roles are implicit when entity sets are **distinct**, but **mandatory** when **the same entity set participates more than once** — a **recursive relationship set**.\n\n`prereq` on `course`, labelled `course_id` / `prereq_id`. `SUPERVISES` on `EMPLOYEE`, labelled (AS SUPERVISOR) 1 and (AS SUPERVISEE) N."
+    },
+    {
+      "id": "dbms-u1-dc55",
+      "topic": "er-degree-ternary",
+      "front": "Degree — and why ternary can't always decompose",
+      "back": "**Degree = number of entity sets participating.** Binary = 2 (most common), ternary = 3.\n\n`proj_guide(instructor, student, project)`: *'a student could have different instructors as guides for different projects, which cannot be captured by a binary relationship between students and instructors.'*\n\n**The three-way fact is not the sum of its two-way projections.**"
+    },
+    {
+      "id": "dbms-u1-dc56",
+      "topic": "er-degree-ternary",
+      "front": "Descriptive attribute — and the test for one",
+      "back": "An attribute of a **relationship**, drawn as an oval on the **diamond**. `Grade` on `Enrolls`; `Quantity` on `SUPPLY`; `hours` on `works_on`; manager's `start date` on `manages`.\n\n**Test:** does the value exist for the entity *on its own*, or only once two entities are **connected**?"
+    },
+    {
+      "id": "dbms-u1-dc57",
+      "topic": "er-cardinality-participation",
+      "front": "Cardinality vs participation",
+      "back": "**Cardinality** — *how many?* 1:1, 1:N, N:1, M:N.\n**Participation** — *must every entity relate at all?* **total** (double line) or **partial** (single line).\n\nIndependent constraints — a full specification states **both**. *Total for Student, partial for Instructor* = every student must have an advisor; an instructor need not advise."
+    },
+    {
+      "id": "dbms-u1-dc58",
+      "topic": "er-cardinality-participation",
+      "front": "How each cardinality becomes tables",
+      "back": "**M:N** → **must** become its own table holding both keys.\n**1:N** → key of the *one* side becomes a **foreign key** on the *many* side; no new table.\n**1:1** → foreign key on **either** side — prefer the side with **total participation**.\n\nThis is why getting cardinality right at diagram time matters."
+    },
+    {
+      "id": "dbms-u1-dc59",
+      "topic": "er-cardinality-participation",
+      "front": "(min, max) notation",
+      "back": "A line carries $(l, h)$: $l$ = minimum, $h$ = maximum number of relationship instances that entity participates in.\n\n$l=1$ ⇒ **total**; $l=0$ ⇒ **partial**; $h=1$ ⇒ at most one; $h=N$ ⇒ no limit.\n\n**Student—Enrolls (2,5)** = between 2 and 5 courses. Its strength: it expresses **cardinality and participation in one pair**, and can state *'a team has 5 to 11 players'*, which no ratio can."
+    },
+    {
+      "id": "dbms-u1-dc60",
+      "topic": "er-entities-attributes",
+      "front": "Mapping the COMPANY description to ER constructs",
+      "back": "*'has a name, number'* → **attributes**\n*'an employee who manages'* → **relationship**\n*'start date of the manager'* → **descriptive attribute on the relationship**\n*'several locations'* → **multivalued attribute**\n*'hours per week on each project'* → **descriptive attribute on M:N**\n*'direct supervisor'* → **recursive relationship**\n*'DEPENDENTs'* → **weak entity**"
+    }
+  ]
+}

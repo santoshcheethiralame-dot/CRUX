@@ -29,13 +29,13 @@
     },
     {
       "id": "dbms-u1-c05",
-      "topic": "file-systems-purpose",
+      "topic": "dbms-characteristics-advantages",
       "front": "4 kinds of data integrity",
       "back": "**Entity** (unique ID), **Referential** (FK refers to existing PK), **Domain** (valid value range), **User-defined** (business rules)."
     },
     {
       "id": "dbms-u1-c06",
-      "topic": "file-systems-purpose",
+      "topic": "database-landscape",
       "front": "OLTP vs OLAP",
       "back": "**OLTP** = many users, small frequent retrievals/updates (banking, airlines). **OLAP** = analytical processing for decisions/predictive models, uses **data mining** (AI + statistics)."
     },
@@ -53,19 +53,19 @@
     },
     {
       "id": "dbms-u1-c09",
-      "topic": "data-abstraction-schema",
+      "topic": "schema-state-three-schema",
       "front": "Schema vs Instance (State)",
       "back": "**Schema** = the design (≈ variable declarations); changes rarely. **Instance/state/snapshot** = the data at a moment (≈ variable values); changes often. Many states per schema."
     },
     {
       "id": "dbms-u1-c10",
-      "topic": "data-abstraction-schema",
+      "topic": "schema-state-three-schema",
       "front": "Three-schema (ANSI) architecture",
       "back": "**External** (user views) ↔ **Conceptual** (logical) ↔ **Internal** (physical storage). The mappings give logical (ext↔conc) and physical (conc↔int) data independence."
     },
     {
       "id": "dbms-u1-c11",
-      "topic": "design-architecture-users",
+      "topic": "database-design-phases",
       "front": "4 database-design phases",
       "back": "**Requirements** → **Conceptual** (ER model) → **Logical** (relational + normalization) → **Physical** (indexes/storage). Abstract → concrete."
     },
@@ -95,13 +95,13 @@
     },
     {
       "id": "dbms-u1-c16",
-      "topic": "er-entities-attributes",
+      "topic": "er-attributes",
       "front": "Attribute types + ER symbols",
       "back": "**Simple** (ellipse), **Composite** (sub-parts), **Multivalued** (**double ellipse**), **Derived** (**dashed ellipse**), **Key** (**underlined**), Complex (composite+multivalued nesting)."
     },
     {
       "id": "dbms-u1-c17",
-      "topic": "er-entities-attributes",
+      "topic": "er-key-attributes-null",
       "front": "Descriptive attribute & Null",
       "back": "**Descriptive attribute** = an attribute of a *relationship* (e.g. `grade` on `enrolls`), not an entity. **Null** = not applicable / missing / unknown."
     },
@@ -113,19 +113,19 @@
     },
     {
       "id": "dbms-u1-c19",
-      "topic": "er-relationships-cardinality",
+      "topic": "er-cardinality-participation",
       "front": "Mapping cardinalities",
       "back": "**1:1**, **1:N**, **N:1**, **M:N** — how many of B one A can relate to. e.g. works_for = 1:N (dept→employees); works_on = M:N (employee↔project)."
     },
     {
       "id": "dbms-u1-c20",
-      "topic": "er-relationships-cardinality",
+      "topic": "er-cardinality-participation",
       "front": "Total vs Partial participation",
       "back": "**Total** = every entity must participate (**double line**); **Partial** = some may not (single line). Independent of cardinality (how-many vs whether-all)."
     },
     {
       "id": "dbms-u1-c21",
-      "topic": "er-relationships-cardinality",
+      "topic": "er-cardinality-participation",
       "front": "(Min, Max) notation",
       "back": "Line carries **(l, h)**: l = minimum, h = maximum. **l=1 ⇒ total participation**; h=1 ⇒ at most one; h=N ⇒ no limit. (2,5) = between 2 and 5 relationships."
     },

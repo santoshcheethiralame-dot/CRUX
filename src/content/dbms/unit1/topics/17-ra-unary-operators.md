@@ -1,7 +1,7 @@
 ---
 subject: dbms
 unit: 1
-order: 9
+order: 17
 slug: ra-unary-operators
 title: Relational Algebra — Unary Operators
 summary: Relational algebra as a procedural, closed query language; the unary operators select (σ), project (∏), rename (ρ); composition; and the assignment operator.

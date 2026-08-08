@@ -1,7 +1,7 @@
 ---
 subject: dbms
 unit: 1
-order: 10
+order: 18
 slug: ra-set-operations
 title: Relational Algebra — Set Operations & Division
 summary: Union-compatibility and the set operations union, intersection and set-difference, their algebraic properties, and the division operator for "for all" queries.

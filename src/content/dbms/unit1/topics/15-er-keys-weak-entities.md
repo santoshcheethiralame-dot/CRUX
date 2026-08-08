@@ -1,7 +1,7 @@
 ---
 subject: dbms
 unit: 1
-order: 7
+order: 15
 slug: er-keys-weak-entities
 title: Keys & Weak Entity Sets
 summary: Superkey, candidate key and primary key; choosing the primary key of a relationship set by cardinality; and weak entity sets with their identifying relationship and discriminator.

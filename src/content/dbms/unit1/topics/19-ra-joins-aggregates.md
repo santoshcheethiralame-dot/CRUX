@@ -1,7 +1,7 @@
 ---
 subject: dbms
 unit: 1
-order: 11
+order: 19
 slug: ra-joins-aggregates
 title: Cartesian Product, Joins, Aggregates & Worked Queries
 summary: The Cartesian product and natural/theta join, aggregate functions and grouping, and a set of fully worked relational-algebra queries over the Sailors-Boats-Reserves database.
