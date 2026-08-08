@@ -117,6 +117,41 @@ export const SUBJECTS: SubjectMeta[] = [
       },
     ],
   },
+  {
+    id: 'arvr',
+    name: 'Augmented and Virtual Reality',
+    code: 'UE24CS342AA5',
+    color: '#f472b6',
+    icon: 'AR',
+    description:
+      'The maths and machinery of mixed reality: geometric objects and transformations, graphics programming and 3D modelling, AR/VR hardware, tracking and sensor fusion, and the AI that drives behaviour in virtual worlds.',
+    units: [
+      {
+        unit: 1,
+        title: 'Geometric Objects and Transformations',
+        subtitle:
+          'AR history & applications · scalars, points, vectors · vector/affine/Euclidean spaces · coordinate systems & frames · change of basis · homogeneous coordinates · coordinate-free geometry · the OpenGL frame pipeline · affine sums · convexity & convex hull · affine and homogeneous transformations · concatenation · rotation about an arbitrary axis · quaternions',
+      },
+      {
+        unit: 2,
+        title: 'Graphical System and Programming and 3D Modelling',
+        subtitle:
+          "Sierpinski gasket · programming 2D applications · API categories · the OpenGL API, primitives & attributes · polygons & the coloured cube · parallel and perspective projection · the programmer's interface · camera, lights & materials · graphics architectures · the pipeline & programmable shaders · Three.js scenes, materials, animation & physics · Blender · Three.js with React and WebXR",
+      },
+      {
+        unit: 3,
+        title: 'Augmented and Virtual Reality',
+        subtitle:
+          'AR definition, scope & milestones · requirements & characteristics of augmentation · VR and the modern VR experience · presence & interactivity · spatial display models (OST/VST/projection) · sensors & computing platforms · the Virtual World Generator · eye movement and its implications for VR · tracking technologies · mobile sensors · virtual-world physics · drift, noise & filtering · sensor fusion',
+      },
+      {
+        unit: 4,
+        title: 'IO Modalities, AI and Behaviour in VR',
+        subtitle:
+          'computer vision for AR · marker tracking · multi-camera infrared tracking · natural feature tracking by detection · incremental tracking · SLAM · visual odometry & PTAM · outdoor tracking · 3D scanning of environments · interaction design · input & output modalities · haptics & multimodal interaction · physics of sound & auditory perception · reactive and deliberative AI · reinforcement and imitation learning',
+      },
+    ],
+  },
   // ── Add the remaining subjects here as their material arrives ──
   // { id: 'xxx', name: '...', code: '...', color: '#...', icon: '...', units: [...] },
 ]

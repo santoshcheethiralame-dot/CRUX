@@ -1,0 +1,612 @@
+{
+  "subject": "arvr",
+  "unit": 1,
+  "title": "Unit 1 MCQs — Geometric Objects and Transformations",
+  "items": [
+    {
+      "id": "arvr-u1-001",
+      "topic": "ar-introduction",
+      "q": "Who developed the first head-mounted display, and what was it called?",
+      "options": [
+        "Tom Caudell — the Boeing HMD (1992)",
+        "Ivan Sutherland — the Sword of Damocles (1968)",
+        "Steven Feiner — KARMA (1993)",
+        "Ronald Azuma — the Touring Machine (1997)"
+      ],
+      "answer": 1,
+      "explain": "**1968: Ivan Sutherland's *Sword of Damocles*** — the first HMD. Caudell (with Mizell) **coined the term 'Augmented Reality'** at Boeing in 1992; Feiner's KARMA (1993) was for maintenance guidance; the Touring Machine (1997) was the first *outdoor* AR system.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-002",
+      "topic": "ar-introduction",
+      "q": "The term 'Augmented Reality' was coined in 1992 for which specific application?",
+      "options": [
+        "Fetal observation in medical imaging",
+        "Aircraft wire assembly guidance at Boeing",
+        "Outdoor navigation with GPS",
+        "Collaborative AR in the Studierstube system"
+      ],
+      "answer": 1,
+      "explain": "**Caudell & Mizell at Boeing**, for guiding technicians through **aircraft wire bundle assembly**. Fetal observation was UNC in 1994; GPS navigation was the Touring Machine in 1997; Studierstube (1996) was the first collaborative AR system.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-003",
+      "topic": "ar-introduction",
+      "q": "Which system is credited as the **first outdoor AR game**?",
+      "options": ["Pokémon GO", "ARQuake", "Invisible Trains", "Studierstube"],
+      "answer": 1,
+      "explain": "**ARQuake (1998)** — the first outdoor AR game. *Invisible Trains* (2003) was the first **handheld** AR system; Studierstube (1996) the first **collaborative** one; Pokémon GO is a modern commercial example.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-004",
+      "topic": "ar-introduction",
+      "q": "What was significant about the **Vuforia AR Engine** in 2008?",
+      "options": [
+        "It was the first collaborative AR system",
+        "It was the first AR system to use a head-mounted display",
+        "It was the first practical AR tracking system for smartphones",
+        "It introduced the term 'Mixed Reality'"
+      ],
+      "answer": 2,
+      "explain": "Vuforia brought **natural feature tracking to smartphones**, marking the turning point for AR's commercial adoption — the first practical AR tracking system on consumer phones.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-005",
+      "topic": "scalars-points-vectors",
+      "q": "Two points in Euclidean space are $(4,2)$ and $(6,7)$. What is the **sum of the two points**?",
+      "options": ["$(10, 9)$", "$(24, 14)$", "$(4, 2)$", "None of the above"],
+      "answer": 3,
+      "explain": "**Point + point is not a defined operation.** Points are positional entities, not directional ones — the result would change if you moved the origin, so it carries no geometric meaning. The tempting answer $(10,9)$ is the trap. The only legal way to combine points is an **affine sum**, where the coefficients sum to 1.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-006",
+      "topic": "scalars-points-vectors",
+      "q": "Which operation produces a **vector perpendicular to two given vectors**?",
+      "options": ["Dot product", "Cross product", "Scalar multiplication", "Head-to-tail addition"],
+      "answer": 1,
+      "explain": "The **cross product (outer product)** yields a vector perpendicular to both operands — used for surface normals and rotation axes. The **dot product (inner product)** returns a *scalar* measuring similarity.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-007",
+      "topic": "scalars-points-vectors",
+      "q": "Which of these operations is **NOT** valid in an affine space?",
+      "options": ["point − point", "point + vector", "point + point", "scalar × vector"],
+      "answer": 2,
+      "explain": "**point + point** is invalid. point − point gives a **vector** (displacement); point + vector gives a **point**; scalar × vector gives a **vector**. The test: an operation is meaningful only if its result is unchanged when you move the origin.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-008",
+      "topic": "vector-affine-euclidean-spaces",
+      "q": "Which property states that the **grouping** of vector addition does not affect the result?",
+      "options": ["Closure", "Commutativity", "Associativity", "Linearity"],
+      "answer": 2,
+      "explain": "**Associativity** is about **brackets**: $(\\mathbf u+\\mathbf v)+\\mathbf w = \\mathbf u+(\\mathbf v+\\mathbf w)$. **Commutativity** is about **order**: $\\mathbf u+\\mathbf v = \\mathbf v+\\mathbf u$. **Closure** says results stay inside the space.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-009",
+      "topic": "vector-affine-euclidean-spaces",
+      "q": "What does an **affine space** add to a vector space?",
+      "options": [
+        "Distance and angle measurement",
+        "Points, together with vector–point addition and point–point subtraction",
+        "A privileged origin",
+        "Closure under scalar multiplication"
+      ],
+      "answer": 1,
+      "explain": "Affine space adds **points**. It specifically does **not** add a privileged origin — that's the whole point, and it's why graphics uses it. **Distance and angle** are what the **Euclidean** space adds on top.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-010",
+      "topic": "vector-affine-euclidean-spaces",
+      "q": "Which space is required to compute the **length of a line segment**?",
+      "options": ["Vector space", "Affine space", "Euclidean space", "Any of the above"],
+      "answer": 2,
+      "explain": "**Euclidean space** — it extends the others by **incorporating distance and size measurements**. Affine space can tell you the displacement vector $Q-P$ but has no notion of how long it is.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-011",
+      "topic": "coordinate-systems-frames",
+      "q": "A **frame** consists of:",
+      "options": [
+        "Three basis vectors",
+        "An origin and three basis vectors",
+        "An origin and a scale factor",
+        "Three linearly independent points"
+      ],
+      "answer": 1,
+      "explain": "A frame is $(\\mathbf v_1, \\mathbf v_2, \\mathbf v_3, P_0)$ — **three basis vectors plus an origin**. Basis vectors alone form a *coordinate system*, which suffices for vectors but not for points.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-012",
+      "topic": "coordinate-systems-frames",
+      "q": "Why do **points** require a reference origin while **vectors** do not?",
+      "options": [
+        "Points have more components than vectors",
+        "A vector encodes only displacement, which is unaffected by where the origin sits; a point encodes absolute location",
+        "Vectors are always unit length",
+        "Points cannot be expressed as linear combinations"
+      ],
+      "answer": 1,
+      "explain": "Move the origin and a **vector's** representation is unchanged — it is still the same displacement. A **point's** representation changes, because 'where' is meaningless until you say 'relative to what'.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-013",
+      "topic": "change-of-basis",
+      "q": "Which of the following are **frames in OpenGL**?",
+      "options": ["World coordinates", "Object coordinates", "Window coordinates", "All of the above"],
+      "answer": 3,
+      "explain": "**All of them.** The full pipeline is object → world → eye → clip → normalized device → window coordinates.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-014",
+      "topic": "change-of-basis",
+      "q": "In OpenGL, which matrix manages the transformation from the model frame through the world frame to the camera frame?",
+      "options": ["The projection matrix", "The model-view matrix", "The viewport matrix", "The normal matrix"],
+      "answer": 1,
+      "explain": "The **model-view matrix** fuses the model and view transformations into one, so a vertex goes from object coordinates to eye coordinates in a **single** multiply. This works because matrix multiplication is **associative**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-015",
+      "topic": "homogeneous-coordinates",
+      "q": "In homogeneous coordinates, what distinguishes a point from a vector?",
+      "options": [
+        "Points use 3 components, vectors use 4",
+        "The fourth component: $w = 1$ for a point, $w = 0$ for a vector",
+        "Points are always normalized",
+        "Vectors have a negative fourth component"
+      ],
+      "answer": 1,
+      "explain": "The fourth component is a **type tag**. With $w=0$, a translation matrix's displacement column is multiplied by zero and vanishes — so **directions are correctly left untranslated** with no special-casing.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-016",
+      "topic": "homogeneous-coordinates",
+      "q": "Why can't translation be represented by a $3\\times3$ matrix in 3D?",
+      "options": [
+        "Because it would be too slow",
+        "Because translation is not a linear map — it does not fix the origin",
+        "Because $3\\times3$ matrices cannot be inverted",
+        "Because translation is not an affine transformation"
+      ],
+      "answer": 1,
+      "explain": "A linear map must satisfy $T(\\mathbf 0) = \\mathbf 0$, but translation sends the origin to $\\mathbf d \\ne \\mathbf 0$. Lifting to **4D homogeneous coordinates** turns it into an ordinary matrix multiply. (Translation *is* affine — just not linear.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-017",
+      "topic": "homogeneous-coordinates",
+      "q": "The homogeneous point $(2, 4, 6, 2)$ corresponds to which 3D point?",
+      "options": ["$(2,4,6)$", "$(1,2,3)$", "$(4,8,12)$", "It is a vector, not a point"],
+      "answer": 1,
+      "explain": "Divide by $w$: $(2/2,\\ 4/2,\\ 6/2) = (1,2,3)$. This **perspective divide** is dormant for affine transformations (which keep $w=1$) and is switched on by perspective projection.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u1-018",
+      "topic": "coordinate-free-geometry",
+      "q": "Which property is **NOT** invariant under a change of coordinate frame?",
+      "options": [
+        "The distance between two points",
+        "The angle between two vectors",
+        "The coordinates of a point",
+        "Whether two lines are orthogonal"
+      ],
+      "answer": 2,
+      "explain": "**Coordinates change with the frame** — that is what makes them a *representation* rather than the geometry itself. Distance, angle and orthogonality are the invariants (under rigid changes of frame).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-019",
+      "topic": "opengl-frame-pipeline",
+      "q": "What is the correct order of coordinate systems in the OpenGL pipeline?",
+      "options": [
+        "Object → World → Eye → Clip → NDC → Window",
+        "World → Object → Clip → Eye → Window → NDC",
+        "Object → Eye → World → NDC → Clip → Window",
+        "World → Eye → Object → Clip → Window → NDC"
+      ],
+      "answer": 0,
+      "explain": "**Object (model) → World → Eye (camera) → Clip → Normalized Device → Window (screen).** Each boundary is a separation of concerns bought with one matrix multiply.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-020",
+      "topic": "opengl-frame-pipeline",
+      "q": "Where in the pipeline does the **perspective divide** ($\\div w$) occur?",
+      "options": ["Object → World", "World → Eye", "Clip → NDC", "NDC → Window"],
+      "answer": 2,
+      "explain": "**Clip → NDC.** The projection matrix only *sets up* $w$; the hardware performs the divide afterwards, collapsing 4D homogeneous coordinates into the canonical $[-1,1]$ cube.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-021",
+      "topic": "opengl-frame-pipeline",
+      "q": "What is the purpose of **Normalized Device Coordinates**?",
+      "options": [
+        "To store the final pixel colours",
+        "To allow device-independent rendering before mapping to actual screen pixels",
+        "To define the object's local shape",
+        "To apply lighting calculations"
+      ],
+      "answer": 1,
+      "explain": "NDC maps coordinates to a standard range (**typically $[-1,1]$ in OpenGL**) so the same scene renders identically at any resolution — and so clipping can be done against a fixed canonical cube rather than an arbitrary frustum.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-022",
+      "topic": "geometric-adts-affine-sums",
+      "q": "For the affine sum $P = \\alpha_1 R + \\alpha_2 Q$ to be geometrically valid, what condition must hold?",
+      "options": [
+        "$\\alpha_1 = \\alpha_2$",
+        "$\\alpha_1 + \\alpha_2 = 1$",
+        "$\\alpha_1, \\alpha_2 > 0$",
+        "$\\alpha_1^2 + \\alpha_2^2 = 1$"
+      ],
+      "answer": 1,
+      "explain": "**$\\alpha_1 + \\alpha_2 = 1$.** Then $\\alpha_1 R + \\alpha_2 Q = R + \\alpha_2(Q-R)$, which is **point + (scalar × vector) = point** — every step legal. If both are additionally in $[0,1]$ it is a **convex combination** and the result lies on the segment $RQ$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-023",
+      "topic": "geometric-adts-affine-sums",
+      "q": "Given $P = (0,1)$, $Q = (2,5)$ and $R = (0.5, 2)$ with $R = \\alpha_1 P + \\alpha_2 Q$ and $\\alpha_1 + \\alpha_2 = 1$, find $\\alpha_1$ and $\\alpha_2$.",
+      "options": [
+        "$\\alpha_1 = 0.25,\\ \\alpha_2 = 0.75$",
+        "$\\alpha_1 = 0.75,\\ \\alpha_2 = 0.25$",
+        "$\\alpha_1 = 0.5,\\ \\alpha_2 = 0.5$",
+        "$\\alpha_1 = 1,\\ \\alpha_2 = 0$"
+      ],
+      "answer": 1,
+      "explain": "From the $x$ component: $0.5 = (1-\\alpha_2)(0) + \\alpha_2(2) = 2\\alpha_2 \\Rightarrow \\alpha_2 = 0.25$, so $\\alpha_1 = 0.75$. Verify with $y$: $0.75(1) + 0.25(5) = 0.75+1.25 = 2$ ✔",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-024",
+      "topic": "convexity-convex-hull",
+      "q": "A set is **convex** if:",
+      "options": [
+        "It contains its own centre of mass",
+        "For any two points inside it, the entire segment joining them lies inside it",
+        "It is bounded by straight edges only",
+        "Its boundary has no more than four vertices"
+      ],
+      "answer": 1,
+      "explain": "That is the definition. Equivalently: the set is closed under **convex combinations** — affine sums whose coefficients sum to 1 and lie in $[0,1]$.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-025",
+      "topic": "convexity-convex-hull",
+      "q": "In Graham's scan, a point is **popped** from the stack when the turn is:",
+      "options": ["a left turn", "non-left (right or collinear)", "greater than 90°", "the first turn encountered"],
+      "answer": 1,
+      "explain": "Walking anticlockwise around a convex polygon you **only ever turn left**. A non-left turn means the stack top is a dent and cannot be on the hull, so it is popped — repeatedly, since removing one dent can expose another. The test is the **sign of the cross product**, not an angle computation.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-026",
+      "topic": "convexity-convex-hull",
+      "q": "Which point does Graham's scan choose as its starting anchor $p_0$?",
+      "options": [
+        "The centroid of all points",
+        "The lowermost point (leftmost if there is a tie)",
+        "A randomly chosen point",
+        "The point furthest from the origin"
+      ],
+      "answer": 1,
+      "explain": "The **lowermost point, leftmost on a tie** — it is guaranteed to lie on the hull, which makes it a safe anchor for the polar-angle sort.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-027",
+      "topic": "convexity-convex-hull",
+      "q": "Which of these is **not** one of the convex hull algorithms named in the course?",
+      "options": ["Gift-Wrapping (Jarvis March)", "Quickhull", "Dijkstra's Algorithm", "Chan's Algorithm"],
+      "answer": 2,
+      "explain": "**Dijkstra's** is a shortest-path algorithm, not a hull algorithm. The seven named are: Gift-Wrapping (Jarvis March), Quickhull, Divide and Conquer, Monotone Chain, Incremental, Chan's, and Graham's Scan.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-028",
+      "topic": "affine-transformations",
+      "q": "How many degrees of freedom does an affine transformation of **points** in 3D have?",
+      "options": ["3", "9", "12", "16"],
+      "answer": 2,
+      "explain": "**12** — a $3\\times3$ linear part (9) plus a translation 3-vector (3). **Vectors** have only **9**, since translation does not affect them. In the $4\\times4$ homogeneous matrix these are the 12 free entries of the top three rows; the bottom row is fixed at $[0\\ 0\\ 0\\ 1]$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-029",
+      "topic": "affine-transformations",
+      "q": "Which pair of transformations makes up the **rigid-body** transformations?",
+      "options": [
+        "Scaling and reflection",
+        "Rotation and translation",
+        "Shear and rotation",
+        "Translation and scaling"
+      ],
+      "answer": 1,
+      "explain": "**Rotation and translation** — they **preserve shape and volume** and affect only location and orientation. Scaling and reflection are **non-rigid**. Note that rigid-body transformations **cannot express every affine transformation**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-030",
+      "topic": "affine-transformations",
+      "q": "A scaling factor of $\\beta < 0$ produces:",
+      "options": ["Expansion", "Shrinking", "Reflection", "No change"],
+      "answer": 2,
+      "explain": "$\\beta > 1$ expands, $0 < \\beta < 1$ shrinks, and **$\\beta < 0$ reflects**. Reflection flips handedness, which reverses triangle winding order — the usual cause of a mirrored model rendering inside-out.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-031",
+      "topic": "affine-transformations",
+      "q": "How many degrees of freedom does **scaling** have, per the course?",
+      "options": ["3", "6", "9", "12"],
+      "answer": 1,
+      "explain": "**6** — three coordinates for the **fixed point** plus **three independent scale factors**. If the fixed point is forced to the origin, it drops to 3.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-032",
+      "topic": "homogeneous-transformations",
+      "q": "For a rotation matrix $R$, the inverse $R^{-1}$ equals:",
+      "options": ["$-R$", "$R^{\\mathsf T}$ (its transpose)", "$R$ itself", "The adjugate of $R$ divided by $\\det R$"],
+      "answer": 1,
+      "explain": "Rotation matrices are **orthogonal**, so $R^{-1} = R^{\\mathsf T}$ and $RR^{\\mathsf T} = I$. Undoing a rotation is therefore free — no inversion needed, just read the entries transposed. Also $\\det R = +1$, so rotations never flip handedness.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-033",
+      "topic": "homogeneous-transformations",
+      "q": "A rotation about the **Z-axis**:",
+      "options": [
+        "Changes all three coordinates",
+        "Keeps the Z-coordinate unchanged",
+        "Keeps the X-coordinate unchanged",
+        "Is equivalent to a translation along Z"
+      ],
+      "answer": 1,
+      "explain": "$R_z$ has $[0,0,1]$ in its third row and column, so **$z$ passes through untouched** while $x$ and $y$ mix. In general the **axis of rotation appears as a row and column of the identity** — a useful 2-second check on any rotation matrix.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-034",
+      "topic": "homogeneous-transformations",
+      "q": "To scale an object about an **arbitrary fixed point $F$**, the correct composite is:",
+      "options": [
+        "$S(\\beta)\\,T(F)$",
+        "$T(F)\\,S(\\beta)\\,T(-F)$",
+        "$T(-F)\\,S(\\beta)\\,T(F)$",
+        "$S(\\beta)\\,T(F)\\,S(\\beta)^{-1}$"
+      ],
+      "answer": 1,
+      "explain": "The **sandwich**: read right to left — translate $F$ to the origin, scale, translate back. The same pattern handles rotation about an arbitrary point or axis. Whenever a transformation has a fixed point that is not the origin, expect this.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u1-035",
+      "topic": "concatenation-arbitrary-axis",
+      "q": "In $q = CBAp$ (column-vector convention), which transformation is applied **first**?",
+      "options": ["$C$", "$B$", "$A$", "They are applied simultaneously"],
+      "answer": 2,
+      "explain": "Read **right to left**: $A$ first, then $B$, then $C$. With column vectors the **first-applied transformation is rightmost** — the single most important convention in composite-transformation questions.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-036",
+      "topic": "concatenation-arbitrary-axis",
+      "q": "Why compute $M = CBA$ once rather than evaluating $C(B(Ap))$ for every point?",
+      "options": [
+        "Because matrix multiplication is commutative",
+        "Because for many points, two matrix–matrix products plus one matrix–vector product per point is cheaper than three matrix–vector products per point",
+        "Because the result is different",
+        "Because $M$ requires less memory than $A$, $B$ and $C$"
+      ],
+      "answer": 1,
+      "explain": "Associativity guarantees the **same answer**; the difference is cost. For a 50,000-vertex mesh, precomputing $M$ replaces 150,000 matrix–vector products with 2 matrix–matrix products plus 50,000 matrix–vector products. This is exactly why OpenGL keeps a single **model-view matrix**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-037",
+      "topic": "concatenation-arbitrary-axis",
+      "q": "What is $(CBA)^{-1}$?",
+      "options": ["$C^{-1}B^{-1}A^{-1}$", "$A^{-1}B^{-1}C^{-1}$", "$(ABC)^{-1}$", "$A^{-1}C^{-1}B^{-1}$"],
+      "answer": 1,
+      "explain": "Inverting a product **reverses the order**: $(CBA)^{-1} = A^{-1}B^{-1}C^{-1}$. Writing $C^{-1}B^{-1}A^{-1}$ is a classic lost mark.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u1-038",
+      "topic": "concatenation-arbitrary-axis",
+      "q": "In rotating about an arbitrary axis, what is the role of the first two rotations $R_x$ and $R_y$?",
+      "options": [
+        "They perform the requested rotation in two halves",
+        "They align the arbitrary axis with a principal axis so the rotation becomes trivial",
+        "They scale the axis to unit length",
+        "They convert the axis into a quaternion"
+      ],
+      "answer": 1,
+      "explain": "You only know how to rotate about $x$, $y$ and $z$ — so **move the problem until it is one of those**. $R_x$ brings the axis into the $xz$-plane, $R_y$ aligns it with $z$, then $R_z(\\theta)$ does the actual work, and the inverses put everything back.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-039",
+      "topic": "quaternions-algebra",
+      "q": "Two 2D rotations are represented by the complex numbers $0.86 + 0.5i$ and $0.76 + 0.64i$. What single rotation combines them?",
+      "options": ["80°", "60°", "70°", "90°"],
+      "answer": 2,
+      "explain": "$0.86+0.5i = \\cos 30° + i\\sin 30°$ and $0.76+0.64i \\approx \\cos 40° + i\\sin 40°$. **Multiplying unit complex numbers adds their angles**, so the result is $30° + 40° = \\mathbf{70°}$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-040",
+      "topic": "quaternions-algebra",
+      "q": "What are the correct Hamilton relations for the quaternion imaginary units?",
+      "options": [
+        "$i^2 = j^2 = k^2 = 0$",
+        "$i^2 = j^2 = k^2 = ijk = -1$",
+        "$i^2 = j^2 = k^2 = 1$",
+        "$i^2 = -1,\\ j^2 = k^2 = 0$"
+      ],
+      "answer": 1,
+      "explain": "**$i^2 = j^2 = k^2 = ijk = -1$**, together with the cyclic products $ij=k$, $jk=i$, $ki=j$ (and their negatives in reverse). ⚠ Note the course booklet misprints the squares as **0** — that is an error; if they squared to zero the algebra would collapse and no rotation could be represented.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u1-041",
+      "topic": "quaternions-algebra",
+      "q": "Which product is correct?",
+      "options": ["$ji = k$", "$ij = k$", "$ij = -k$ and $ji = k$", "$ij = ji$"],
+      "answer": 1,
+      "explain": "**$ij = k$**, and $ji = -k$ — quaternion multiplication is **anti-commutative**. That is a feature: 3D rotations do not commute either, so an algebra that *did* commute could not model them.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-042",
+      "topic": "quaternions-algebra",
+      "q": "What is **gimbal lock**, and how do quaternions avoid it?",
+      "options": [
+        "A rounding error in matrix multiplication; quaternions use fewer operations",
+        "Loss of a rotational degree of freedom when two Euler axes align; quaternions use four components instead of three",
+        "A hardware limitation of IMUs; quaternions are computed on the GPU",
+        "An overflow in the trigonometric functions; quaternions avoid trigonometry"
+      ],
+      "answer": 1,
+      "explain": "When the middle Euler rotation hits ±90°, the first and third axes coincide and a degree of freedom is lost. It is a **topological** property of using only three numbers — the escape is to use more, which is exactly what a quaternion's **four components** provide.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-043",
+      "topic": "quaternions-rotations",
+      "q": "To rotate by angle $\\theta$ about unit axis $\\hat{\\mathbf u}$, the quaternion is:",
+      "options": [
+        "$(\\cos\\theta,\\ \\hat{\\mathbf u}\\sin\\theta)$",
+        "$(\\cos\\tfrac{\\theta}{2},\\ \\hat{\\mathbf u}\\sin\\tfrac{\\theta}{2})$",
+        "$(\\sin\\tfrac{\\theta}{2},\\ \\hat{\\mathbf u}\\cos\\tfrac{\\theta}{2})$",
+        "$(\\theta,\\ \\hat{\\mathbf u})$"
+      ],
+      "answer": 1,
+      "explain": "**The half-angle** — $w = \\cos(\\theta/2)$, vector part $= \\hat{\\mathbf u}\\sin(\\theta/2)$. The half appears because the rotation formula applies $q$ **twice** (once on each side of the sandwich $q\\mathbf v q^{-1}$), so each application contributes half.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u1-044",
+      "topic": "quaternions-rotations",
+      "q": "Given the quaternion in $(x,y,z,w)$ form $(0.17, 0.30, 0.02, 0.94)$, what is the **angle** of rotation?",
+      "options": ["19.9°", "39.9°", "80°", "160°"],
+      "answer": 1,
+      "explain": "$\\theta = 2\\arccos(w) = 2\\arccos(0.94) = 2 \\times 19.95° = \\mathbf{39.9°}$. Note the form is $(x,y,z,w)$, so $w = 0.94$ is the **last** component. ⚠ The course's version of this question has duplicated options and a stated angle that does not verify — trust the method.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-045",
+      "topic": "quaternions-rotations",
+      "q": "A rigid body has orientation $q_1 = (0.94, 0.17, 0.17, 0.24)$ in $(w,x,y,z)$ form. Which quaternion rotates it to $q_2 = (0.65, 0.60, 0.25, 0.40)$?",
+      "options": [
+        "$(0.37, 0.68, 0.42, 0.47)$",
+        "$(0.85, 0.44, 0.04, 0.27)$",
+        "$(-0.16, 0.78, 0.325, 0.52)$",
+        "$(0.85, 0.46, 0.20, 0.16)$"
+      ],
+      "answer": 3,
+      "explain": "$\\Delta q = q_2\\,q_1^{-1}$, with $q_1^{-1} = \\bar q_1 = (0.94,-0.17,-0.17,-0.24)$. The Hamilton product gives $w = 0.85$, $x = 0.46$, $y = 0.20$, $z = 0.16$ — **option (d)**, which verifies exactly.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-046",
+      "topic": "quaternions-rotations",
+      "q": "Given $q = (0.40, 0.73, 0.48, 0.23)$, what is $r = q\\,q^{-1}$ in $(w,x,y,z)$ form?",
+      "options": ["$(1,0,0,0)$", "$(0,1,0,0)$", "$(0,0,1,0)$", "$(0,0,0,1)$"],
+      "answer": 0,
+      "explain": "Anything times its own inverse is the **identity**: $(1,0,0,0)$ — a rotation of $\\theta = 2\\arccos(1) = 0°$. **No computation needed**; recognising the structure is the whole question.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-047",
+      "topic": "quaternions-rotations",
+      "q": "Under **double cover**, which statement is true?",
+      "options": [
+        "Each 3D rotation maps to exactly one quaternion",
+        "$q$ and $-q$ represent the same 3D rotation",
+        "Each quaternion represents two different rotations",
+        "Quaternions cannot represent rotations beyond 180°"
+      ],
+      "answer": 1,
+      "explain": "**$q$ and $-q$ give the same rotation** — substitute into the sandwich product and the two minus signs cancel. Rotation *matrices* are single cover (one matrix per rotation). Double cover matters for **slerp**: blending between opposite-signed quaternions takes the long way round.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u1-048",
+      "topic": "quaternions-rotations",
+      "q": "For a **unit** quaternion $q = (w,x,y,z)$, the inverse $q^{-1}$ is:",
+      "options": ["$(w,x,y,z)$", "$(-w,x,y,z)$", "$(w,-x,-y,-z)$", "$(1/w, 1/x, 1/y, 1/z)$"],
+      "answer": 2,
+      "explain": "The **conjugate** $\\bar q = (w,-x,-y,-z)$. For unit quaternions $q^{-1} = \\bar q$, which makes inverting a rotation essentially free — the quaternion counterpart of $R^{-1} = R^{\\mathsf T}$ for rotation matrices.",
+      "difficulty": "medium",
+      "source": "textbook"
+    }
+  ]
+}

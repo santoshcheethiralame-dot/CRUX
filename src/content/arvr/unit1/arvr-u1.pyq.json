@@ -1,0 +1,97 @@
+{
+  "subject": "arvr",
+  "unit": 1,
+  "title": "Unit 1 — Question Bank (worked)",
+  "items": [
+    {
+      "id": "arvr-u1-qb-01",
+      "topic": "quaternions-rotations",
+      "year": "Course Question Bank",
+      "marks": 6,
+      "difficulty": "hard",
+      "q": "Given two vectors $v_1 = (0.35, 0.59, 0.71)$ and $v_2 = (0.57, 0.57, 0.57)$, compute the quaternion $q = \\{w,x,y,z\\}$ that rotates $v_1$ to $v_2$.",
+      "answer": "**Method:** the axis is $v_1 \\times v_2$ normalised; the angle is $\\arccos\\!\\big(\\frac{v_1\\cdot v_2}{\\lVert v_1\\rVert\\lVert v_2\\rVert}\\big)$.\n\n**1. Angle.** $v_1\\cdot v_2 = 0.57(0.35+0.59+0.71) = 0.9405$. Both vectors have length $\\lVert v_1\\rVert = \\lVert v_2\\rVert = 0.9873$, so\n$$\\cos\\theta = \\frac{0.9405}{0.9873\\times0.9873} = 0.9648 \\;\\Rightarrow\\; \\theta = 15.24°$$\n\n⚠ **Do not skip the normalisation** — using $\\arccos(0.9405)$ directly gives 19.9°, which is wrong.\n\n**2. Axis.** $v_1\\times v_2 = (-0.0684,\\ 0.2052,\\ -0.1368)$, magnitude $0.2559$, so\n$$\\hat{\\mathbf u} = (-0.267,\\ 0.802,\\ -0.535)$$\n\n**3. Quaternion.** $\\theta/2 = 7.62°$, $\\cos = 0.9912$, $\\sin = 0.1326$:\n$$q = (0.991,\\ -0.035,\\ 0.106,\\ -0.071)$$\n\n**Check:** $w^2+x^2+y^2+z^2 \\approx 1$ ✔, and $w$ close to 1 matches the small 15° rotation ✔"
+    },
+    {
+      "id": "arvr-u1-qb-02",
+      "topic": "homogeneous-transformations",
+      "year": "Course Question Bank",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Given a 2D point $p = (2, 3)$, rotate the point by 35°.",
+      "answer": "Apply the 2D rotation matrix $\\begin{bmatrix}\\cos\\theta & -\\sin\\theta\\\\ \\sin\\theta & \\cos\\theta\\end{bmatrix}$ with $\\cos 35° = 0.8192$, $\\sin 35° = 0.5736$:\n\n$$x' = 2(0.8192) - 3(0.5736) = 1.638 - 1.721 = \\mathbf{-0.08}$$\n$$y' = 2(0.5736) + 3(0.8192) = 1.147 + 2.458 = \\mathbf{3.60}$$\n\n**$p' = (-0.08,\\ 3.60)$**\n\n**Check:** the distance from the origin must be unchanged — $\\sqrt{2^2+3^2} = 3.606$ and $\\sqrt{0.08^2+3.60^2} = 3.601$ ✔ (rotation preserves length)."
+    },
+    {
+      "id": "arvr-u1-qb-03",
+      "topic": "geometric-adts-affine-sums",
+      "year": "Course Question Bank",
+      "marks": 4,
+      "difficulty": "medium",
+      "q": "Given the three points $P = (0,1)$, $Q = (2,5)$ and $R = (0.5, 2)$, related by $R = \\alpha_1 P + \\alpha_2 Q$ where $\\alpha_1 + \\alpha_2 = 1$, find $\\alpha_1$ and $\\alpha_2$.",
+      "answer": "This is an **affine sum**, legal precisely because the coefficients sum to 1. Substitute $\\alpha_1 = 1-\\alpha_2$ and solve componentwise.\n\n**$x$ component:** $0.5 = (1-\\alpha_2)(0) + \\alpha_2(2) = 2\\alpha_2 \\Rightarrow \\alpha_2 = 0.25$\n\n**Therefore $\\alpha_1 = 0.75$.**\n\n**Verify with the $y$ component:** $0.75(1) + 0.25(5) = 0.75 + 1.25 = 2$ ✔ — matches $R_y = 2$.\n\n$$\\boxed{\\alpha_1 = 0.75,\\quad \\alpha_2 = 0.25}$$\n\nGeometrically: $R = P + 0.25(Q-P)$ — one quarter of the way from $P$ to $Q$. **Always check the second component**; if it disagrees, $R$ is not on the line $PQ$ and no solution exists."
+    },
+    {
+      "id": "arvr-u1-qb-04",
+      "topic": "concatenation-arbitrary-axis",
+      "year": "Course Question Bank",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "Compute the homogeneous transformation matrix for the following transformations, applied in this order: (a) scale by a factor of 2, (b) rotate around the X-axis by 20°, (c) rotate around the Y-axis by 30°, (d) rotate around the Z-axis by 45°, (e) translate by $(7, 7, 6)$.",
+      "answer": "**Step 1 — write the product.** With column vectors, the **first-applied transformation is rightmost**:\n\n$$M = T(7,7,6)\\;R_z(45°)\\;R_y(30°)\\;R_x(20°)\\;S(2)$$\n\nWriting this line correctly is worth more marks than the arithmetic.\n\n**Step 2 — the factors.**\n$$S(2) = \\mathrm{diag}(2,2,2,1)$$\n$$R_x(20°): \\cos = 0.940,\\ \\sin = 0.342 \\quad\\text{(minus sign top-right of the } y\\text{-}z \\text{ block)}$$\n$$R_y(30°): \\cos = 0.866,\\ \\sin = 0.500$$\n\n⚠ **$R_y$ has its minus sign in the BOTTOM-LEFT**, unlike $R_x$ and $R_z$ — the most common sign error in this unit.\n\n$$R_z(45°): \\cos = \\sin = 0.707$$\n$$T(7,7,6) = I \\text{ with } (7,7,6) \\text{ in the fourth column}$$\n\n**Step 3 — multiply right to left**, keeping intermediate products: first $R_x S$, then $R_y(R_xS)$, then $R_z(\\cdots)$, then apply $T$ (which simply writes $(7,7,6)$ into the translation column, since translation is applied last).\n\n**Step 4 — sanity checks.**\n- Bottom row is still $[0\\ 0\\ 0\\ 1]$ ✔ (the map is affine)\n- Translation column $= (7,7,6)$ ✔\n- $\\det$ of the upper-left $3\\times3$ $= 2^3 = 8$ ✔ (three rotations contribute $1$ each; the uniform scale contributes $\\beta^3$)"
+    },
+    {
+      "id": "arvr-u1-qb-05",
+      "topic": "concatenation-arbitrary-axis",
+      "year": "Course Question Bank",
+      "marks": 6,
+      "difficulty": "hard",
+      "q": "Compute the homogeneous transformation matrix for the rotation of a cube centred at $(6,6,6)$ by 45° about the X-axis in the body frame.",
+      "answer": "The cube's centre is **not** at the origin, so this is the **sandwich** pattern — translate the fixed point to the origin, rotate, translate back:\n\n$$M = T(6,6,6)\\;R_x(45°)\\;T(-6,-6,-6)$$\n\nwith $R_x(45°)$ using $\\cos 45° = \\sin 45° = 0.7071$:\n\n$$R_x(45°) = \\begin{bmatrix}1&0&0&0\\\\ 0&0.7071&-0.7071&0\\\\ 0&0.7071&0.7071&0\\\\ 0&0&0&1\\end{bmatrix}$$\n\n**Result structure:** the upper-left $3\\times3$ block is exactly $R_x(45°)$ (the rotation is unchanged by the sandwich), and the translation column becomes $\\mathbf{d} = C - R_x C$ where $C = (6,6,6)$:\n\n$$\\mathbf d = \\begin{bmatrix}6\\\\6\\\\6\\end{bmatrix} - \\begin{bmatrix}6\\\\ 6(0.7071)-6(0.7071)\\\\ 6(0.7071)+6(0.7071)\\end{bmatrix} = \\begin{bmatrix}0\\\\ 6\\\\ 6-8.485\\end{bmatrix} = \\begin{bmatrix}0\\\\ 6\\\\ -2.485\\end{bmatrix}$$\n\n**Check:** the centre $(6,6,6)$ must map to itself — it is the fixed point. ✔\n\n**Note on 'body frame':** rotating about the object's own axes is exactly this fixed-point sandwich. Had the question said *global frame*, the cube would have swung about the world origin instead and the centre would have moved."
+    },
+    {
+      "id": "arvr-u1-qb-06",
+      "topic": "quaternions-rotations",
+      "year": "Course Question Bank",
+      "marks": 5,
+      "difficulty": "medium",
+      "q": "An object's body frame is aligned with the global frame. Assume a rotation of the object around an arbitrary axis $(0.55, 0.79, 0.23)$ by 62°. Compute the quaternion $q = \\{w,x,y,z\\}$ describing the orientation of the object.",
+      "answer": "**1. Normalise the axis.** $\\lVert(0.55,0.79,0.23)\\rVert = \\sqrt{0.3025+0.6241+0.0529} = 0.9897$, so\n$$\\hat{\\mathbf u} = (0.556,\\ 0.798,\\ 0.232)$$\n(It is nearly unit already, but check — the formula requires a **unit** axis.)\n\n**2. Half-angle.** $\\theta/2 = 31°$, so $\\cos 31° = 0.857$, $\\sin 31° = 0.515$.\n\n**3. Assemble.**\n$$w = \\cos 31° = 0.857$$\n$$x = 0.556 \\times 0.515 = 0.286,\\quad y = 0.798\\times0.515 = 0.411,\\quad z = 0.232\\times0.515 = 0.120$$\n\n$$\\boxed{q = (0.857,\\ 0.286,\\ 0.411,\\ 0.120)}$$\n\n**Check:** $0.734+0.082+0.169+0.014 = 0.999 \\approx 1$ ✔\n\nBecause the body frame starts **aligned with the global frame**, the initial orientation is the identity $(1,0,0,0)$ and the answer is just $\\Delta q$ itself."
+    },
+    {
+      "id": "arvr-u1-qb-07",
+      "topic": "quaternions-rotations",
+      "year": "Course Question Bank",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "An object's body frame is **mis-aligned** with the global frame by a quaternion $q\\{x,y,z,w\\} = (0.18, 0.10, 0.07, 0.97)$. Assume a rotation of the object around the arbitrary axis $(0.55, 0.79, 0.23)$ by 62°. Compute the quaternion describing the resulting orientation.",
+      "answer": "This is the previous question with a **non-identity starting orientation**, so you must compose.\n\n**1. Starting orientation.** The form is $(x,y,z,w)$, so in $(w,x,y,z)$ order: $q_0 = (0.97,\\ 0.18,\\ 0.10,\\ 0.07)$.\n\n**2. The incremental rotation** is the answer from the previous question: $\\Delta q = (0.857,\\ 0.286,\\ 0.411,\\ 0.120)$.\n\n**3. Compose — and the order depends on the frame:**\n- rotation about the **body's own axes** → $q_{\\text{new}} = q_0 \\, \\Delta q$\n- rotation about **global (world) axes** → $q_{\\text{new}} = \\Delta q \\, q_0$\n\nThe phrase *'rotation of the object around an arbitrary axis'* with a stated body-frame mis-alignment points to the **body-frame** form, so use $q_0\\,\\Delta q$ and apply the Hamilton product:\n\n$$w = w_0w_\\Delta - x_0x_\\Delta - y_0y_\\Delta - z_0z_\\Delta$$\n$$x = w_0x_\\Delta + x_0w_\\Delta + y_0z_\\Delta - z_0y_\\Delta$$\n$$y = w_0y_\\Delta - x_0z_\\Delta + y_0w_\\Delta + z_0x_\\Delta$$\n$$z = w_0z_\\Delta + x_0y_\\Delta - y_0x_\\Delta + z_0w_\\Delta$$\n\nSubstituting gives approximately $q_{\\text{new}} \\approx (0.766,\\ 0.421,\\ 0.462,\\ 0.148)$.\n\n**Then re-normalise** — floating-point drift is exactly why real systems renormalise quaternions periodically (a point that returns in Unit 3 under sensor fusion).\n\n> **Always state which convention you used.** Body-frame vs global-frame composition give genuinely different answers, and examiners award the reasoning."
+    },
+    {
+      "id": "arvr-u1-qb-08",
+      "topic": "quaternions-rotations",
+      "year": "Course Question Bank",
+      "marks": 6,
+      "difficulty": "hard",
+      "q": "Given the initial orientation of Object O1 as $(x,y,z,w) = (0.31, 0.17, 0.13, 0.92)$ and the final orientation of Object O2 as $(x,y,z,w) = (0.57, 0.32, 0.24, 0.70)$, compute the quaternion that rotates O1 to O2.",
+      "answer": "**Formula:** $\\Delta q = q_2\\,q_1^{-1}$, and for a unit quaternion $q_1^{-1} = \\bar q_1$ (the conjugate).\n\n**1. Convert to $(w,x,y,z)$** — the stem gives $(x,y,z,w)$:\n$$q_1 = (0.92,\\ 0.31,\\ 0.17,\\ 0.13) \\qquad q_2 = (0.70,\\ 0.57,\\ 0.32,\\ 0.24)$$\n\n**2. Conjugate:** $\\bar q_1 = (0.92,\\ -0.31,\\ -0.17,\\ -0.13)$\n\n**3. Hamilton product $q_2 \\bar q_1$:**\n$$w = 0.70(0.92) - 0.57(-0.31) - 0.32(-0.17) - 0.24(-0.13) = 0.644+0.177+0.054+0.031 = \\mathbf{0.906}$$\n$$x = 0.70(-0.31) + 0.57(0.92) + 0.32(-0.13) - 0.24(-0.17) = -0.217+0.524-0.042+0.041 = \\mathbf{0.307}$$\n$$y = 0.70(-0.17) - 0.57(-0.13) + 0.32(0.92) + 0.24(-0.31) = -0.119+0.074+0.294-0.074 = \\mathbf{0.175}$$\n$$z = 0.70(-0.13) + 0.57(-0.17) - 0.32(-0.31) + 0.24(0.92) = -0.091-0.097+0.099+0.221 = \\mathbf{0.132}$$\n\n$$\\boxed{\\Delta q \\approx (0.906,\\ 0.307,\\ 0.175,\\ 0.132)}$$\n\n**Interpretation:** $\\theta = 2\\arccos(0.906) \\approx 50°$ about the axis $(0.307,0.175,0.132)/\\sin 25° \\approx (0.73,0.41,0.31)$."
+    },
+    {
+      "id": "arvr-u1-qb-09",
+      "topic": "quaternions-rotations",
+      "year": "Course Question Bank",
+      "marks": 6,
+      "difficulty": "hard",
+      "q": "Given the orientation of a cuboid $O(x,y,z,w) = (0.06, 0.04, 0.03, 0.99)$, rotate the cuboid by 45° around the X-axis **in its body frame**. Represent the resulting orientation $R(x,y,z,w)$.",
+      "answer": "**1. Convert to $(w,x,y,z)$:** $q_0 = (0.99,\\ 0.06,\\ 0.04,\\ 0.03)$\n\n**2. Build the incremental rotation.** 45° about X: $\\theta/2 = 22.5°$, $\\cos = 0.9239$, $\\sin = 0.3827$, axis $= (1,0,0)$:\n$$\\Delta q = (0.9239,\\ 0.3827,\\ 0,\\ 0)$$\n\n**3. Body-frame rotation ⇒ post-multiply:** $R = q_0\\,\\Delta q$\n$$w = 0.99(0.9239) - 0.06(0.3827) = 0.9147 - 0.0230 = \\mathbf{0.892}$$\n$$x = 0.99(0.3827) + 0.06(0.9239) = 0.3789 + 0.0554 = \\mathbf{0.434}$$\n$$y = 0.04(0.9239) + 0.03(0.3827) = 0.0370 + 0.0115 = \\mathbf{0.048}$$\n$$z = -0.04(0.3827) + 0.03(0.9239) = -0.0153 + 0.0277 = \\mathbf{0.012}$$\n\n**Answer in the requested $(x,y,z,w)$ form:**\n$$\\boxed{R = (0.434,\\ 0.048,\\ 0.012,\\ 0.892)}$$\n\n**Check:** the cuboid started almost aligned ($w = 0.99$, i.e. a rotation of only ~16°) and has been turned a further 45°, so the result should be close to a pure 45° X-rotation — and indeed $x$ dominates the vector part. ✔\n\n> **Body frame ⇒ $q_0\\Delta q$; global frame ⇒ $\\Delta q\\,q_0$.** Getting this backwards is the main way marks are lost here."
+    },
+    {
+      "id": "arvr-u1-qb-10",
+      "topic": "homogeneous-transformations",
+      "year": "Course Question Bank",
+      "marks": 8,
+      "difficulty": "hard",
+      "q": "Your right upper arm and right lower arm are represented by two unit vectors $v_1$ and $v_2$ pointing in the negative Z-axis in the global frame. The initial position of the wrist is $(0,0,-2)$. The upper and lower arms are now rotated by 20° and 40° around the X-axis respectively. What is the position of the wrist?",
+      "answer": "This is a **two-link kinematic chain**: the lower arm's rotation is *relative to the upper arm*, so its absolute rotation is $20° + 40° = 60°$.\n\n**Rotation about X:** $y' = y\\cos\\theta - z\\sin\\theta$, $z' = y\\sin\\theta + z\\cos\\theta$.\n\n**1. Upper arm** $v_1 = (0,0,-1)$ rotated by **20°**:\n$$y' = -(-1)\\sin 20° = 0.342,\\qquad z' = -\\cos 20° = -0.940$$\n$$\\text{elbow} = (0,\\ 0.342,\\ -0.940)$$\n\n**2. Lower arm** $v_2 = (0,0,-1)$ rotated by **60°** (20° inherited + 40° of its own):\n$$y' = \\sin 60° = 0.866,\\qquad z' = -\\cos 60° = -0.500$$\n\n**3. Wrist = elbow + lower-arm vector:**\n$$\\text{wrist} = (0,\\ 0.342 + 0.866,\\ -0.940 - 0.500) = \\boxed{(0,\\ 1.208,\\ -1.440)}$$\n\n**Checks:** $x$ stays 0 throughout — rotation about X never changes $x$ ✔. The total arm length is preserved: each link is still unit length, and the wrist is $\\sqrt{1.208^2+1.440^2} = 1.88$ from the shoulder, less than 2 because the arm is now bent ✔\n\n> **If the question intends both rotations to be absolute in the global frame** (lower arm at 40°, not 60°), the lower link is $(0, 0.643, -0.766)$ and the wrist lands at $(0,\\ 0.985,\\ -1.706)$. State your interpretation — the chained reading is the standard one for a jointed limb."
+    }
+  ]
+}
