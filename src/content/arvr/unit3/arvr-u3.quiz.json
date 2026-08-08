@@ -1,0 +1,682 @@
+{
+  "subject": "arvr",
+  "unit": 3,
+  "title": "Unit 3 MCQs — Augmented and Virtual Reality",
+  "items": [
+    {
+      "id": "arvr-u3-001",
+      "topic": "ar-definition-scope",
+      "q": "What is Augmented Reality?",
+      "options": [
+        "A computer-generated simulation of a three-dimensional environment",
+        "The integration of digital information with the user's real-world environment in real time",
+        "A fully immersive experience in a computer-generated environment",
+        "The use of virtual elements without any connection to the real world"
+      ],
+      "answer": 1,
+      "explain": "AR **enhances** the real world by overlaying digital content **in real time**, and the user **remains connected to reality**. Options (a) and (c) describe **VR**; (d) describes neither.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-002",
+      "topic": "ar-definition-scope",
+      "q": "Which is **NOT** one of the three requirements an AR system must satisfy?",
+      "options": [
+        "Combines real and virtual",
+        "Interactive in real time",
+        "Registered in 3D",
+        "Displayed on a head-mounted display"
+      ],
+      "answer": 3,
+      "explain": "AR is defined by the **three requirements**, not by hardware — phones, tablets and projectors all qualify, and **audio AR** satisfies the definition with no display at all. A CGI film fails *interactive*; a HUD fails *registered in 3D*.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-003",
+      "topic": "ar-definition-scope",
+      "q": "Why is registration harder in AR than in VR?",
+      "options": [
+        "AR displays have lower resolution",
+        "The user sees the real world and virtual content simultaneously, so any misalignment is directly visible",
+        "AR runs at lower frame rates",
+        "AR cannot use quaternions"
+      ],
+      "answer": 1,
+      "explain": "In VR a tracking error shifts the **whole world together** and often goes unnoticed. In AR the virtual object **visibly slides off** the real surface it should sit on. AR has no error budget VR lacks — it just has **nowhere to hide**.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-004",
+      "topic": "ar-history-milestones",
+      "q": "The 'Sword of Damocles' (1968) is significant because it was:",
+      "options": [
+        "The first outdoor AR system",
+        "The first head-mounted display, overlaying wireframe graphics on the real world",
+        "The first system to use natural feature tracking",
+        "The first collaborative AR system"
+      ],
+      "answer": 1,
+      "explain": "Ivan Sutherland's HMD — so heavy it hung from the ceiling. It is simultaneously the **first AR and first VR system**, since the distinction did not yet exist.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-005",
+      "topic": "ar-history-milestones",
+      "q": "What made Vuforia (2008) a turning point for AR?",
+      "options": [
+        "It was the first AR system to use GPS",
+        "It enabled natural feature tracking on smartphones, removing the need to prepare the environment",
+        "It introduced the first AR head-mounted display",
+        "It was the first collaborative AR platform"
+      ],
+      "answer": 1,
+      "explain": "Before this, AR needed **fiducial markers** placed in the scene. Natural feature tracking works on **ordinary images and objects**, which is the difference between a lab demo and something shippable to a million phones.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-006",
+      "topic": "ar-applications",
+      "q": "Which AR application example is associated with **IKEA Place**?",
+      "options": [
+        "Industrial assembly guidance",
+        "Surgical navigation",
+        "Previewing furniture in your own space before buying",
+        "Outdoor navigation overlays"
+      ],
+      "answer": 2,
+      "explain": "**Retail** — customers assess **size, colour and style** before purchasing, improving engagement and **reducing product returns**. The value depends entirely on **correct scale**, i.e. good registration.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-007",
+      "topic": "vr-introduction",
+      "q": "A 360° video that the user can look around but cannot influence is an example of:",
+      "options": [
+        "A closed-loop interactive system",
+        "An open-loop non-interactive system",
+        "Augmented virtuality",
+        "A spatial projection system"
+      ],
+      "answer": 1,
+      "explain": "**Open loop** — there is **no feedback path**; turning your head changes what you look at but not what the system does. **Closed-loop** systems modify the environment in response to user actions, and that is what makes it VR rather than cinema.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-008",
+      "topic": "vr-introduction",
+      "q": "The **uncanny valley** describes:",
+      "options": [
+        "The gap between virtual and real object positions",
+        "The drop in affinity when a virtual character is almost — but not quite — human-like",
+        "The dead zone in a tracking system's working volume",
+        "The mismatch between vergence and accommodation"
+      ],
+      "answer": 1,
+      "explain": "Affinity rises with human likeness, then **collapses just short of realism** because small imperfections read as *wrong*. The practical lesson: a **stylised avatar is often more comfortable than a nearly-photoreal one**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-009",
+      "topic": "vr-core-concepts",
+      "q": "**Presence** in VR is best described as:",
+      "options": [
+        "The frame rate at which the display runs",
+        "The psychological sensation of 'being there' in the virtual environment",
+        "The number of tracked degrees of freedom",
+        "The physical space available for room-scale movement"
+      ],
+      "answer": 1,
+      "explain": "Presence is **psychological**, not technical — which is why it cannot be bought with resolution alone. The test is behavioural: does the user **duck** or **flinch**? The **Birdly** simulator achieves it by adding wind and motion, not pixels.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-010",
+      "topic": "vr-core-concepts",
+      "q": "A VR experience built from 360° video or photogrammetry of a real location is a:",
+      "options": ["Synthetic world", "Captured world", "Augmented virtuality", "Open-loop projection"],
+      "answer": 1,
+      "explain": "**Captured worlds** are reconstructions of real places — photorealistic by construction but often limited in interactivity (360° video has no geometry to interact with). **Synthetic worlds** are entirely computer-generated, offering limitless creativity but requiring everything to be modelled.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-011",
+      "topic": "vr-applications",
+      "q": "**Clouds Over Sidra** is cited as an example of VR used for:",
+      "options": [
+        "Surgical training",
+        "Empathy-building in humanitarian work",
+        "Architectural walkthroughs",
+        "Rhythm-based gaming"
+      ],
+      "answer": 1,
+      "explain": "It places users in the life of a **12-year-old Syrian refugee**. It works because **presence** makes the experience emotionally different from watching a documentary — the strongest practical evidence that presence is real.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-012",
+      "topic": "visual-displays",
+      "q": "How are **Video See-Through** displays in AR distinctively characterized?",
+      "options": [
+        "By strategically placing projectors for spatial projections",
+        "By presenting captured images on head-mounted displays",
+        "By utilizing transparent displays for virtual object augmentation",
+        "By projecting virtual objects onto the physical world"
+      ],
+      "answer": 1,
+      "explain": "VST uses **cameras to capture the real world**, composites virtual content with it, and shows the result on **internal screens**. Option (c) describes **OST**; (a) and (d) describe **spatial projection**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-013",
+      "topic": "visual-displays",
+      "q": "Which is a fundamental limitation of **optical see-through** displays?",
+      "options": [
+        "They add latency to the real-world view",
+        "Virtual content is additive only, so it cannot occlude the real world",
+        "They cannot be used outdoors",
+        "They require external base stations"
+      ],
+      "answer": 1,
+      "explain": "An optical combiner **adds** light and cannot subtract it, so true black is impossible and holograms look **ghostly** — you always see the wall through them. Latency in the real-world view is a **VST** problem; OST is zero-latency because you see reality **directly**.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-014",
+      "topic": "visual-displays",
+      "q": "What is the primary distinction between **world-fixed** and **user-fixed** displays?",
+      "options": [
+        "World-fixed displays are stationary, while user-fixed displays dynamically adjust based on the user's movements",
+        "World-fixed displays are external screens, while user-fixed displays are integrated into eyewear",
+        "World-fixed displays follow the user's viewpoint, while user-fixed displays remain fixed in the physical environment",
+        "World-fixed displays support only 2D projections, while user-fixed displays offer 3D holographic projections"
+      ],
+      "answer": 0,
+      "explain": "**World-fixed content is anchored to the environment** and demands full 6DOF registration; **user-fixed content moves with the user** and needs little world tracking. Option (c) reverses the definitions — the classic distractor.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-015",
+      "topic": "visual-displays",
+      "q": "A CAVE system is an example of:",
+      "options": ["An optical see-through HMD", "A video see-through HMD", "A spatial projection system", "An inside-out tracking system"],
+      "answer": 2,
+      "explain": "**CAVE (Cave Automatic Virtual Environment)** projects visuals onto the walls and floor of a room-sized cube — **no headset needed**, naturally multi-user, but a **fixed, expensive installation** correct from only one tracked viewpoint.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-016",
+      "topic": "sensors-computing",
+      "q": "How does **Differential GPS (D-GPS)** improve a user's position estimate?",
+      "options": [
+        "It relies on satellites measuring atmospheric distortions",
+        "It uses a correction signal from ground stations to compensate for atmospheric distortions",
+        "It uses an outside-in system with signals transmitted from Earth to satellites",
+        "The accuracy of GPS is fixed and does not vary with measurement conditions"
+      ],
+      "answer": 1,
+      "explain": "A **ground station at a precisely known location** derives the current error (mostly atmospheric) and **broadcasts a correction** to nearby receivers, improving accuracy from metres to **sub-metre**. (c) reverses the signal direction; (d) is simply false.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-017",
+      "topic": "sensors-computing",
+      "q": "What is the difference between **outside-in** and **inside-out** tracking?",
+      "options": [
+        "Outside-in uses cameras on the headset; inside-out uses external base stations",
+        "Outside-in uses fixed external sensors watching the headset; inside-out uses the headset's own cameras watching the room",
+        "Outside-in works only outdoors; inside-out works only indoors",
+        "Outside-in is 3DOF; inside-out is 6DOF"
+      ],
+      "answer": 1,
+      "explain": "**Outside-in** (Lighthouse, camera rigs) is very accurate and low-drift because the reference is genuinely fixed — but needs installation. **Inside-out** (Quest, HoloLens) is portable with no setup, but the headset must build its own map — **SLAM**.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-018",
+      "topic": "software-workflow",
+      "q": "What is the primary function of a **Virtual World Generator** in a VR system?",
+      "options": [
+        "To create physical objects within the virtual environment",
+        "To process user inputs and commands for VR interactions",
+        "To manage the state and behaviour of virtual objects and simulate environmental physics",
+        "To convert 3D models into 2D images for the display"
+      ],
+      "answer": 2,
+      "explain": "The VWG is the **core application layer** owning **state, physics and interaction coordination**. Option (d) is the **rendering engine**; (b) is the **input processing system**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-019",
+      "topic": "software-workflow",
+      "q": "Why does a VR rendering engine target **60–120 fps**?",
+      "options": [
+        "To match the refresh rate of desktop monitors",
+        "To minimise latency and prevent motion sickness",
+        "Because stereoscopic rendering cannot run slower",
+        "To reduce GPU power consumption"
+      ],
+      "answer": 1,
+      "explain": "The frame rate exists to keep **motion-to-photon latency** low enough that vision and the vestibular sense agree. Note that a **consistent** rate matters more than a high one — oscillating frame rate is itself a sickness trigger.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-020",
+      "topic": "software-workflow",
+      "q": "**Stereoscopic rendering** means:",
+      "options": [
+        "Rendering at twice the resolution",
+        "Generating separate images for each eye to produce depth",
+        "Using two GPUs in parallel",
+        "Rendering the scene twice for anti-aliasing"
+      ],
+      "answer": 1,
+      "explain": "Two view matrices offset by the user's **inter-pupillary distance**, two viewports, two projection matrices — the whole Unit 2 pipeline **run twice per frame**. This is why the VR polygon budget is roughly half a monitor's.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-021",
+      "topic": "eye-movement",
+      "q": "Which eye movement is essential for maintaining a stable visual field and is particularly relevant to VR hardware design for preventing motion sickness?",
+      "options": ["Saccades", "Microsaccades", "Optokinetic reflex", "Vestibulo-Ocular Reflex"],
+      "answer": 3,
+      "explain": "The **VOR** counter-rotates the eyes against head motion with **~10 ms latency**, and is calibrated to a perfectly stable real world. If the display lags, the eyes compensate correctly but the image hasn't updated — the world **slips across the retina**, producing sensory conflict and sickness.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-022",
+      "topic": "eye-movement",
+      "q": "Roughly how much of the visual field does the **fovea** cover, and why does it matter for VR?",
+      "options": [
+        "About 2°, enabling foveated rendering",
+        "About 20°, enabling wide field-of-view displays",
+        "About 90°, matching headset optics",
+        "The entire field, which is why resolution must be uniform"
+      ],
+      "answer": 0,
+      "explain": "High-acuity vision covers only ~2° of a ~200° field — you see almost nothing sharply. **Foveated rendering** exploits this: full resolution near the gaze point, lower resolution outside, saving **50–70%** of shading cost with eye tracking.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-023",
+      "topic": "eye-movement",
+      "q": "What is the **vergence–accommodation conflict**?",
+      "options": [
+        "The eyes converge on a virtual object at one depth while the lens must focus at the display's fixed distance",
+        "The mismatch between head rotation and eye rotation",
+        "The conflict between visual and vestibular motion cues",
+        "The difference in image between the left and right eye"
+      ],
+      "answer": 0,
+      "explain": "In the real world **vergence and accommodation change together**; in a headset vergence varies with virtual depth while focus is fixed at the screen's optical distance. Result: **eye strain and fatigue** — the deepest unsolved problem in headset design. Option (c) is sensory conflict causing motion sickness, a different problem.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-024",
+      "topic": "eye-movement",
+      "q": "Why do VR headsets use **low-persistence** displays?",
+      "options": [
+        "To save power",
+        "Because while the eye smoothly pursues a moving object, a sample-and-hold image smears across the retina",
+        "To increase perceived brightness",
+        "To reduce the vergence–accommodation conflict"
+      ],
+      "answer": 1,
+      "explain": "Illuminating each frame for only **1–2 ms** gives the eye no time to smear it — the same reason a fast camera shutter freezes motion. Counter-intuitively, the fix for blur is to show the image **less**.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-025",
+      "topic": "eye-movement",
+      "q": "During a **saccade**, vision is largely suppressed. Which VR technique exploits this?",
+      "options": [
+        "Stereoscopic rendering",
+        "Redirected walking — subtly rotating the virtual world mid-saccade",
+        "Low-persistence display timing",
+        "Inter-pupillary distance adjustment"
+      ],
+      "answer": 1,
+      "explain": "**Saccadic suppression** means the user cannot perceive changes made during the jump, so the system can rotate the world imperceptibly — letting them walk in circles in a small room while believing they walk straight.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-026",
+      "topic": "tracking-overview",
+      "q": "What are the **six degrees of freedom** of a tracked rigid body?",
+      "options": [
+        "Six rotation axes",
+        "Three translations (surge, sway, heave) and three rotations (roll, pitch, yaw)",
+        "Three positions and three velocities",
+        "Two for each of x, y and z"
+      ],
+      "answer": 1,
+      "explain": "**3 translation + 3 rotation.** A 3DOF device (Google Cardboard) gives orientation only — you can look around but leaning forward brings you no closer to anything.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-027",
+      "topic": "tracking-overview",
+      "q": "How is the **pose** of a tracked rigid body best represented mathematically?",
+      "options": [
+        "Three Euler angles",
+        "A position vector $\\mathbf p \\in \\mathbb{R}^3$ together with a unit quaternion $q$",
+        "A 3×3 rotation matrix only",
+        "A single scalar distance from the origin"
+      ],
+      "answer": 1,
+      "explain": "**$(\\mathbf p, q)$** — position plus a **unit quaternion**, chosen over Euler angles because it avoids gimbal lock and interpolates smoothly. Equivalently a $4\\times4$ homogeneous matrix, which is the object's frame in world coordinates.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-028",
+      "topic": "tracking-overview",
+      "q": "A tracker reports a pose that is correct on average but varies by 2 mm when nothing is moving. This is a problem of:",
+      "options": ["Poor accuracy", "Poor precision (jitter)", "High latency", "Drift"],
+      "answer": 1,
+      "explain": "Right on average = **good accuracy**; varying reading = **poor precision**. This is the more objectionable failure — humans are far more sensitive to **motion** than to a constant offset, so jitter makes content visibly shake.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-029",
+      "topic": "tracking-technologies",
+      "q": "Which tracking technology requires **no line of sight** between sensor and transmitter?",
+      "options": ["Optical marker-based", "Ultrasonic", "Electromagnetic", "Mechanical"],
+      "answer": 2,
+      "explain": "**EM tracking** measures magnetic field strength and can track **through obstructions** — which is why it survives in **surgical navigation**, where the instrument tip is inside the patient. Its weakness is **metal and electronic interference**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-030",
+      "topic": "tracking-technologies",
+      "q": "**Polhemus** systems are the named example of which tracking technology?",
+      "options": ["Mechanical", "Electromagnetic", "Ultrasonic", "Optical"],
+      "answer": 1,
+      "explain": "**Polhemus** is the classic electromagnetic tracker, widely used in VR and motion capture. **ARToolKit** is the optical marker-based example; medical simulators exemplify mechanical.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-031",
+      "topic": "tracking-technologies",
+      "q": "Why do ultrasonic trackers have slow update rates?",
+      "options": [
+        "Their processors are slow",
+        "Sound travels at ~343 m/s, so a few metres of round trip costs milliseconds before any computation",
+        "They require a magnetic field to stabilise",
+        "They can only sample once per frame"
+      ],
+      "answer": 1,
+      "explain": "A 3 m round trip takes ~9 ms **purely in flight** — most of a 20 ms latency budget. **Reflections** compound it, since an echo is indistinguishable from a farther object.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-032",
+      "topic": "tracking-technologies",
+      "q": "What distinguishes **marker-based** from **markerless (natural feature)** tracking?",
+      "options": [
+        "Marker-based uses cameras; markerless uses magnetic fields",
+        "Marker-based relies on fiducial patterns placed in the scene; markerless tracks natural features like corners and textures",
+        "Marker-based is markerless with more markers",
+        "Marker-based works outdoors only"
+      ],
+      "answer": 1,
+      "explain": "Markers are **guaranteed, high-contrast targets of known geometry** — easy to solve, but someone must place them. Natural features are **already everywhere** but must be found, matched and tracked, and can **drift**. Markers moved AR out of the lab; markerless moved it out of prepared environments.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-033",
+      "topic": "mobile-sensors",
+      "q": "Why does a gyroscope's orientation estimate **drift**?",
+      "options": [
+        "Because it measures acceleration rather than rotation",
+        "Because a constant bias in angular velocity integrates into an error growing linearly with time",
+        "Because magnetic fields distort its reading",
+        "Because it only samples at 30 Hz"
+      ],
+      "answer": 1,
+      "explain": "A gyro reports **angular velocity**, so orientation requires **integration**. A bias $\\epsilon$ becomes an error $\\epsilon t$ — a bias of 0.01°/s reaches **36° after an hour**. Fast and smooth short-term; useless long-term.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-034",
+      "topic": "mobile-sensors",
+      "q": "Why is inertial **position** tracking from an accelerometer alone impossible?",
+      "options": [
+        "Accelerometers cannot measure motion",
+        "Position needs double integration, so a bias produces error growing quadratically with time",
+        "Accelerometers only work when stationary",
+        "Accelerometers measure only vertical acceleration"
+      ],
+      "answer": 1,
+      "explain": "Error $\\propto \\tfrac12\\epsilon t^2$ — a bias of 0.01 m/s² gives **18 cm of error after 6 seconds**. This is exactly why 6DOF headsets need cameras or base stations, and why 3DOF devices are cheap.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-035",
+      "topic": "mobile-sensors",
+      "q": "What is the accelerometer's actual role in orientation tracking?",
+      "options": [
+        "Computing position by double integration",
+        "Providing an absolute reference for roll and pitch by measuring gravity",
+        "Providing absolute heading",
+        "Measuring angular velocity"
+      ],
+      "answer": 1,
+      "explain": "It measures **gravity**, giving an absolute **vertical** reference — hence roll and pitch. It **cannot give yaw**, because rotating about the vertical axis doesn't change how gravity feels; that requires a **magnetometer**.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-036",
+      "topic": "orientation-tracking",
+      "q": "In 3D orientation tracking using quaternions, how is the final orientation computed recursively from a series of delta quaternions?",
+      "options": [
+        "By subtracting each delta quaternion from the final quaternion",
+        "By multiplying each delta quaternion with the running quaternion",
+        "By adding the delta quaternions to the final quaternion",
+        "By dividing the final quaternion by each delta quaternion"
+      ],
+      "answer": 1,
+      "explain": "Quaternions **compose by multiplication**, like rotation matrices — that is what composing rotations means. Adding two unit quaternions does not even give a unit quaternion. Order encodes the frame: $q\\otimes\\Delta q$ is body-frame, $\\Delta q\\otimes q$ is global.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-037",
+      "topic": "orientation-tracking",
+      "q": "1D gyroscope readings over 10 seconds are 8.01, 0.27, 5.04, 5.85, 3.06, 4.05, 2.88, 8.28, 4.59, 2.97 °/s. With the body initially at $(1,0)$ and a 1-second time step, what is the final position?",
+      "options": ["$(0.707, 0.707)$", "$(1.414, 1.414)$", "$(0.866, 0.5)$", "$(1.732, 0)$"],
+      "answer": 0,
+      "explain": "With $\\Delta t = 1$ s the total rotation is just the **sum** = **45.0°**. Rotating $(1,0)$ by 45° gives $(\\cos 45°, \\sin 45°) = (0.707, 0.707)$. Note $(1.414, 1.414)$ is wrong because **rotation preserves length** — the point must stay at radius 1.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-038",
+      "topic": "orientation-tracking",
+      "q": "Given a gyroscope reading $\\boldsymbol\\omega = (5.73, 11.46, 17.19)$ °/s, what is the **axis** of rotation?",
+      "options": ["$(5.73, 11.46, 17.19)$", "$(0.267, 0.535, 0.802)$", "$(1, 2, 3)$", "$(0.333, 0.333, 0.333)$"],
+      "answer": 1,
+      "explain": "The axis is the **normalised** angular-velocity vector: $\\lVert\\boldsymbol\\omega\\rVert = 21.44$, so $\\hat{\\mathbf u} = (5.73, 11.46, 17.19)/21.44 = (0.267, 0.535, 0.802)$. Note the components are in the ratio $1:2:3$ — a useful sanity check.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-039",
+      "topic": "position-attached-bodies",
+      "q": "Why is **position** tracking fundamentally harder than **orientation** tracking?",
+      "options": [
+        "Position needs more sensors",
+        "Orientation has cheap absolute references (gravity, magnetic north) while position has none",
+        "Position changes faster than orientation",
+        "Quaternions cannot represent position"
+      ],
+      "answer": 1,
+      "explain": "Nothing you can *feel* tells you where you are. Orientation is recoverable from a £2 IMU; position requires an **external reference** — cameras, base stations or GPS. This asymmetry is why 3DOF headsets are cheap and 6DOF ones need cameras.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-040",
+      "topic": "position-attached-bodies",
+      "q": "In tracking attached bodies, what does **inverse kinematics** compute?",
+      "options": [
+        "The end-effector position, given the joint angles",
+        "The joint angles, given a desired end-effector pose",
+        "The mass of each link",
+        "The velocity of the root body"
+      ],
+      "answer": 1,
+      "explain": "**IK: position → angles** (may have many solutions or none). **FK: angles → position** (straightforward concatenation). VR avatar animation is an **IK** problem — the headset knows only head and two hands and must solve for plausible elbows.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-041",
+      "topic": "drift-noise-filtering",
+      "q": "Which statement correctly distinguishes **drift** from **noise**?",
+      "options": [
+        "Drift is random and fixed by filtering; noise is systematic and fixed by fusion",
+        "Drift is systematic and accumulates, needing an absolute reference; noise is random and is reduced by filtering",
+        "Both are random and both are fixed by averaging",
+        "Drift affects only position; noise affects only orientation"
+      ],
+      "answer": 1,
+      "explain": "**You cannot filter away drift and you cannot fuse away noise.** Averaging a biased sensor gives you the bias; drift needs something that **knows the truth** (gravity, north, a camera). Noise is zero-mean and **does** average out.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-042",
+      "topic": "drift-noise-filtering",
+      "q": "A **complementary filter** combines gyroscope and accelerometer data by:",
+      "options": [
+        "Averaging the two equally",
+        "High-passing the gyroscope and low-passing the accelerometer",
+        "Using the gyroscope indoors and the accelerometer outdoors",
+        "Discarding whichever reading is larger"
+      ],
+      "answer": 1,
+      "explain": "$\\theta_{k+1} = \\alpha(\\theta_k + \\omega\\Delta t) + (1-\\alpha)\\theta_{\\text{accel}}$ with $\\alpha \\approx 0.98$. Each sensor is used only where it is good: the gyro's fast response passes, its slow drift is filtered out; the accelerometer's stable average passes, its jitter is filtered out.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-043",
+      "topic": "drift-noise-filtering",
+      "q": "Which sensor corrects **heading (yaw) drift**?",
+      "options": ["Accelerometer", "Magnetometer", "Gyroscope", "Barometer"],
+      "answer": 1,
+      "explain": "Only the **magnetometer** gives an absolute horizontal reference (magnetic north). The **accelerometer corrects tilt drift** (roll and pitch, from gravity) but **cannot touch yaw** — rotating about vertical doesn't change how gravity feels.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-044",
+      "topic": "drift-noise-filtering",
+      "q": "Why is drift correction applied as a **small fraction** each step rather than snapping fully to the reference?",
+      "options": [
+        "To save computation",
+        "Because the accelerometer is only a valid vertical reference when the device is not accelerating",
+        "Because the gyroscope updates too slowly",
+        "To preserve the quaternion's unit length"
+      ],
+      "answer": 1,
+      "explain": "During real motion the accelerometer measures gravity **plus** movement and is briefly wrong. Correcting slowly means the accelerometer wins over **minutes** (where the gyro drifts) and the gyro wins over **milliseconds** (where the accelerometer lies).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "arvr-u3-045",
+      "topic": "sensor-fusion",
+      "q": "What is the correct order of the four sensor-fusion steps?",
+      "options": [
+        "Derive roll/pitch/yaw → normalize → re-normalize → combine with gyro",
+        "Normalize accelerometer and magnetometer → derive roll/pitch/yaw → convert to quaternions and combine with gyro deltas → re-normalize",
+        "Combine with gyro deltas → normalize → derive roll/pitch/yaw → re-normalize",
+        "Normalize → re-normalize → derive roll/pitch/yaw → combine with gyro"
+      ],
+      "answer": 1,
+      "explain": "**① Normalize** (remove scale differences, keep direction) → **② derive Euler angles** (absolute reference) → **③ convert to quaternions and combine with gyro $\\Delta q$** (fast response + long-term stability) → **④ re-normalize** (prevent floating-point error accumulating).",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-046",
+      "topic": "sensor-fusion",
+      "q": "Why must quaternions be **re-normalized** during sensor fusion?",
+      "options": [
+        "To convert them into Euler angles",
+        "Because floating-point error and integration drift push the norm away from 1, so the 'rotation' begins to scale as well as rotate",
+        "To increase the update rate",
+        "Because the magnetometer requires unit vectors"
+      ],
+      "answer": 1,
+      "explain": "Only **unit** quaternions represent pure rotations. Repeated multiplication accumulates error; without periodic $q \\leftarrow q/\\lVert q\\rVert$ small errors grow into visible misalignment of the viewpoint.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-047",
+      "topic": "sensor-fusion",
+      "q": "In sensor fusion, which sensor provides **fast, high-frequency** orientation data and which provides **long-term stability**?",
+      "options": [
+        "Accelerometer is fast; gyroscope is stable",
+        "Gyroscope is fast; accelerometer and magnetometer provide stability",
+        "Magnetometer is fast; GPS is stable",
+        "All three are equally fast and stable"
+      ],
+      "answer": 1,
+      "explain": "The **gyroscope** is precise moment-to-moment but **drifts**; the **accelerometer and magnetometer** are jittery but **never drift**, because they measure things that don't move — gravity and magnetic north. Their failure modes are opposites, which is the whole trick.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "arvr-u3-048",
+      "topic": "sensor-fusion",
+      "q": "A drone uses gyroscope and accelerometer for rapid adjustments, GPS for long-term positioning and a magnetometer for heading. This illustrates:",
+      "options": [
+        "That drones need more sensors than headsets",
+        "The same fusion architecture as a VR headset — a fast-but-drifting sensor corrected by a slow-but-absolute one",
+        "That GPS is more accurate than an IMU",
+        "That magnetometers are the primary navigation sensor"
+      ],
+      "answer": 1,
+      "explain": "Swap GPS for a camera doing SLAM and you have a Quest headset. **Fusion is one idea applied wherever fast and absolute cannot come from the same sensor.**",
+      "difficulty": "medium",
+      "source": "slide"
+    }
+  ]
+}
