@@ -87,11 +87,32 @@ export function buildOrbitPayload(
   const out: OrbitSubject[] = []
   let cards = 0
 
-  // Global across the whole export, so the daily new-item load is capped
-  // overall — not per subject.
-  let newIdx = 0
-  const staggeredReview = () =>
-    new Date(now.getTime() + Math.floor(newIdx++ / NEW_PER_DAY) * DAY_MS).toISOString()
+  // Stagger dates for every unstarted topic, worked out UP FRONT and
+  // interleaved across subjects.
+  //
+  // This counter used to run straight through the export in subject order, so
+  // the first subject's backlog took the early days and everything after it was
+  // pushed weeks out — a second subject with 15 topics started "in 10 days" and
+  // was never due, which meant the planner had nothing to schedule for it and
+  // every single day came back as the first subject. Round-robin instead: each
+  // subject gets a topic due today, then one tomorrow, and so on. The overall
+  // NEW_PER_DAY pacing is unchanged; only the order it draws in is.
+  const dueDateFor = new Map<string, string>()
+  if (includeAll) {
+    const queues = subjects.map((s) =>
+      s.units.flatMap((u) => u.topics.filter((t) => !done[t.id])),
+    )
+    const interleaved: { id: string }[] = []
+    for (let i = 0; queues.some((q) => i < q.length); i++) {
+      for (const q of queues) if (i < q.length) interleaved.push(q[i])
+    }
+    interleaved.forEach((topic, idx) => {
+      dueDateFor.set(
+        topic.id,
+        new Date(now.getTime() + Math.floor(idx / NEW_PER_DAY) * DAY_MS).toISOString(),
+      )
+    })
+  }
 
   // CRUX is a HashRouter app, so a link back is origin + path + #/route.
   // This resolves to localhost in dev and the deployed URL in production —
@@ -126,7 +147,7 @@ export function buildOrbitPayload(
           items.push({
             name: `U${unit.unit} · ${topic.title}`,
             lastStudied: stamp,
-            nextReview: staggeredReview(), // never studied → dripped into the plan
+            nextReview: dueDateFor.get(topic.id) ?? stamp, // never studied → dripped into the plan
             easeFactor: 2.5,
             reviewCount: 0,
             comprehensionHistory: [],
