@@ -1,0 +1,312 @@
+{
+  "subject": "ml",
+  "unit": 1,
+  "title": "Unit 1 — Course MCQ Bank",
+  "items": [
+    {
+      "id": "ml-u1-mcq-001",
+      "topic": "concept-learning",
+      "q": "Which best describes the role of a hypothesis in concept learning?",
+      "options": [
+        "It stores the final trained model weights",
+        "It represents a possible function mapping inputs to outputs",
+        "It lists all possible training examples",
+        "It encodes error during model evaluation"
+      ],
+      "answer": 1,
+      "explain": "A **hypothesis $h$ is a candidate function** $h : X \\to \\{0,1\\}$ — one guess at the target concept. Concept learning is the **search through the hypothesis space $H$** for an $h$ consistent with the training data. Weights belong to parametric models; a hypothesis is the more general idea.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-002",
+      "topic": "find-s",
+      "q": "What does a version space contain during the learning process?",
+      "options": [
+        "All incorrect hypotheses",
+        "All hypotheses consistent with the training examples",
+        "The most general hypothesis only",
+        "The most specific hypothesis only"
+      ],
+      "answer": 1,
+      "explain": "$VS_{H,D} = \\{h \\in H \\mid h \\text{ is consistent with } D\\}$ — **every** hypothesis that fits the data seen so far. Find-S returns only the **single most specific** one; Candidate Elimination maintains the whole space via its $S$ and $G$ boundaries.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-003",
+      "topic": "find-s",
+      "q": "What happens to the hypothesis space in Candidate Elimination when conflicting examples are introduced?",
+      "options": [
+        "G becomes more general",
+        "S becomes more general",
+        "The version space becomes empty",
+        "No change occurs"
+      ],
+      "answer": 2,
+      "explain": "Positive examples push $S$ **upward** and negative examples push $G$ **downward**. With inconsistent (noisy or contradictory) data the two boundaries **cross**, leaving **no hypothesis consistent with everything** — the version space collapses to $\\varnothing$.\n\nThis is the algorithm's honest failure mode: it cannot represent *'no hypothesis in $H$ fits'* any other way, which is why it needs **noise-free data and the target concept present in $H$**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-004",
+      "topic": "inductive-bias-issues",
+      "q": "What best describes the inductive bias of the ID3 decision tree algorithm?",
+      "options": [
+        "It prefers trees with maximum depth to fully fit the training data",
+        "It prefers randomly ordered attributes to ensure diversity",
+        "It prefers shorter trees, and places attributes with high information gain closer to the root",
+        "It builds trees without considering information gain"
+      ],
+      "answer": 2,
+      "explain": "**Shorter trees are preferred, and attributes with high information gain sit closest to the root.** Note it is a **preference (search) bias**, not a restriction bias — ID3 searches the **complete** hypothesis space of all decision trees but explores it in a biased *order*.\n\nContrast **Candidate Elimination**, whose bias is a **restriction**: the target concept must lie in $H$.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-005",
+      "topic": "inductive-bias-issues",
+      "q": "Decision tree algorithms such as ID3 employ a greedy approach. What does this imply?",
+      "options": [
+        "The algorithm builds all possible trees and chooses the best",
+        "It selects the attribute with the highest gain at each step, without backtracking",
+        "It stores all hypotheses in memory",
+        "It avoids using any inductive bias"
+      ],
+      "answer": 1,
+      "explain": "ID3 commits to the **locally best** attribute at each node and **never revisits** that choice. The consequence: it can settle on a **locally optimal but globally suboptimal** tree — a shorter tree may exist that ID3's greedy path never reaches. Building all possible trees is intractable, which is exactly why the greedy heuristic is used.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-006",
+      "topic": "concept-learning",
+      "q": "In the EnjoySport task, what does the hypothesis ⟨?, ?, ?, ?, ?, ?⟩ represent?",
+      "options": [
+        "The most specific hypothesis — accepts nothing",
+        "The most general hypothesis — accepts every instance",
+        "A hypothesis with one attribute unconstrained",
+        "An inconsistent hypothesis"
+      ],
+      "answer": 1,
+      "explain": "**`?` means *any value is acceptable*** for that attribute, so all-`?` accepts **every** instance — the **most general** hypothesis. Its opposite is $\\langle\\varnothing,\\varnothing,\\dots,\\varnothing\\rangle$, which accepts **nothing** and is where Find-S begins.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-007",
+      "topic": "find-s",
+      "q": "Why does Find-S examine only the positive training examples?",
+      "options": [
+        "Negative examples are usually noisy",
+        "It assumes by default that all instances are negative unless its present knowledge shows them positive, so only positives can force a change",
+        "Negative examples are not available in concept learning",
+        "It processes negatives in a second pass"
+      ],
+      "answer": 1,
+      "explain": "Find-S starts at the **most specific** hypothesis, which already rejects everything. A negative example is therefore **already classified correctly** and can never force generalisation — only a **misclassified positive** can. Its output is still consistent with the negatives **provided** the target concept is in $H$ and the data is error-free.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-008",
+      "topic": "id3-entropy-gain",
+      "q": "What is the entropy of a collection in which all examples belong to the same class?",
+      "options": ["1", "0", "0.5", "log₂(n)"],
+      "answer": 1,
+      "explain": "$Entropy(S) = -p_+\\log_2 p_+ - p_-\\log_2 p_-$. With $p_+ = 1$ and $p_- = 0$: $-1\\log_2 1 - 0 = \\mathbf{0}$ — a **pure** collection carries no uncertainty. Entropy is **maximal at 1** for a 50/50 split, and reaching 0 is exactly the **stopping condition** that makes a node a leaf.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-009",
+      "topic": "id3-entropy-gain",
+      "q": "Information gain of an attribute A is best described as:",
+      "options": [
+        "The entropy of the attribute itself",
+        "The expected reduction in entropy caused by partitioning the examples on A",
+        "The number of distinct values A can take",
+        "The accuracy of a tree built using only A"
+      ],
+      "answer": 1,
+      "explain": "$Gain(S,A) = Entropy(S) - \\sum_{v \\in Values(A)} \\frac{|S_v|}{|S|}Entropy(S_v)$ — the **expected reduction in entropy** from splitting on $A$. ID3 picks the attribute with the **highest gain** at each node.\n\nKnown weakness: gain is **biased toward attributes with many values** (a unique ID would give maximal gain and a useless tree), which is what **Gain Ratio** corrects.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-010",
+      "topic": "overfitting-pruning",
+      "q": "A decision tree achieves 100% training accuracy but performs poorly on test data. This is:",
+      "options": ["Underfitting", "Overfitting", "High bias", "Correct behaviour"],
+      "answer": 1,
+      "explain": "**Overfitting** — the tree has memorised noise and idiosyncrasies of the training set rather than the underlying pattern. The formal statement: $h$ overfits if some $h'$ has **higher training error but lower error over the whole distribution**. Remedies: **pre-pruning** (stop early) and **post-pruning** (grow fully, then prune back).",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-011",
+      "topic": "bias-variance",
+      "q": "A model that is too simple to capture the underlying pattern exhibits:",
+      "options": ["High variance, low bias", "High bias, low variance", "Low bias, low variance", "High irreducible error"],
+      "answer": 1,
+      "explain": "**High bias, low variance** — underfitting. It makes strong, wrong assumptions and gives **consistently** poor predictions regardless of the training sample. The mirror case is **high variance, low bias** (overfitting): predictions swing wildly with the sample. Total error $=$ **bias² + variance + irreducible noise**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-012",
+      "topic": "eager-vs-lazy",
+      "q": "k-Nearest Neighbours is described as a lazy learner because:",
+      "options": [
+        "It has low accuracy",
+        "It defers all computation until a query arrives, simply storing the training data",
+        "It uses very few training examples",
+        "It cannot handle continuous attributes"
+      ],
+      "answer": 1,
+      "explain": "A **lazy** learner does **no work at training time** — it stores the data and does everything at query time. So training is $O(1)$ and **prediction is expensive**. An **eager** learner (decision tree, logistic regression) builds an explicit model up front: slow to train, fast to predict.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-013",
+      "topic": "knn-design-choices",
+      "q": "What is the effect of choosing a very large value of k in k-NN?",
+      "options": [
+        "The decision boundary becomes more jagged and sensitive to noise",
+        "The decision boundary becomes smoother, and the model may underfit",
+        "It has no effect on the boundary",
+        "It guarantees higher accuracy"
+      ],
+      "answer": 1,
+      "explain": "Large $k$ **averages over more neighbours** ⇒ smoother boundary, **less variance, more bias** (underfitting; at $k = n$ every query returns the majority class). Small $k$ — especially $k=1$ — gives a **jagged boundary highly sensitive to noise**. $k$ is the bias–variance dial.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-014",
+      "topic": "performance-metrics",
+      "q": "In a confusion matrix, precision is defined as:",
+      "options": ["TP / (TP + FN)", "TP / (TP + FP)", "(TP + TN) / total", "TN / (TN + FP)"],
+      "answer": 1,
+      "explain": "**Precision = TP/(TP+FP)** — of everything **predicted positive**, how much really was. **Recall = TP/(TP+FN)** — of everything **actually positive**, how much was caught.\n\nMemory hook: precision's denominator is the **predicted** column; recall's is the **actual** row.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-015",
+      "topic": "performance-metrics",
+      "q": "Why is accuracy a poor metric on a dataset where 99% of examples are negative?",
+      "options": [
+        "Accuracy cannot be computed for imbalanced data",
+        "A classifier predicting 'negative' for everything scores 99% while detecting nothing",
+        "Accuracy always underestimates performance",
+        "Accuracy requires probability outputs"
+      ],
+      "answer": 1,
+      "explain": "The **majority-class baseline** already scores 99%, so accuracy conveys almost nothing about whether the rare class is found. Use **precision, recall, F1** or **AUC**, which focus on the positive class rather than raw agreement.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-016",
+      "topic": "roc-auc",
+      "q": "What does an AUC of 0.5 indicate?",
+      "options": [
+        "A perfect classifier",
+        "A classifier no better than random guessing",
+        "A classifier that is always wrong",
+        "An undefined result"
+      ],
+      "answer": 1,
+      "explain": "AUC = the probability that the model ranks a random **positive** above a random **negative**. **0.5 is the diagonal — random guessing**; **1.0** is perfect. Below 0.5 means it is systematically *inverted* — and can be fixed by flipping its predictions.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-017",
+      "topic": "logistic-regression",
+      "q": "Why is logistic regression called a classification algorithm despite the name 'regression'?",
+      "options": [
+        "It regresses on the class labels directly",
+        "It uses a linear regression on the log-odds, then applies the sigmoid to output a class probability",
+        "The name is historically incorrect",
+        "It performs regression during training and classification at test time only"
+      ],
+      "answer": 1,
+      "explain": "It fits a **linear model of the log-odds**, $\\log\\frac{p}{1-p} = \\mathbf{w}^T\\mathbf{x} + b$, then the **sigmoid** maps that to a probability in $(0,1)$, thresholded at 0.5. So the *regression* is on the log-odds; the *classification* is the thresholding step.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-018",
+      "topic": "types-of-ml",
+      "q": "Grouping customers by purchasing behaviour without any labelled outcome is an example of:",
+      "options": ["Supervised learning", "Unsupervised learning", "Reinforcement learning", "Semi-supervised learning"],
+      "answer": 1,
+      "explain": "**Unsupervised** — there is **no target variable**, only structure to discover. The slides' own examples include *a subgroup of cancer patients grouped by gene-expression measurements* and *groups of shoppers based on browsing and purchasing histories*.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-019",
+      "topic": "introduction",
+      "q": "In Mitchell's ⟨P, T, E⟩ definition, what do the three symbols stand for?",
+      "options": [
+        "Prediction, Training, Evaluation",
+        "Performance measure, Task, Experience",
+        "Probability, Theory, Error",
+        "Parameters, Threshold, Epochs"
+      ],
+      "answer": 1,
+      "explain": "*A computer program is said to learn from **experience E** with respect to some class of **tasks T** and **performance measure P**, if its performance at tasks in T, as measured by P, improves with experience E.* For checkers: **T** = playing checkers, **P** = % of games won, **E** = playing games against itself.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-020",
+      "topic": "generative-vs-discriminative",
+      "q": "Which pair correctly distinguishes generative from discriminative models?",
+      "options": [
+        "Generative models learn P(y|x); discriminative models learn P(x,y)",
+        "Generative models learn the joint P(x,y) and can generate data; discriminative models learn P(y|x) or the boundary directly",
+        "Generative models are always more accurate",
+        "Discriminative models require unlabelled data"
+      ],
+      "answer": 1,
+      "explain": "**Generative** models the **joint** $P(x,y)$ (or $P(x|y)P(y)$) so it can **synthesise new data** — Naïve Bayes, GMM. **Discriminative** models only $P(y|x)$ or the boundary itself — logistic regression, SVM. Discriminative usually wins on pure classification accuracy; generative gives you more (sampling, missing-data handling).",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-021",
+      "topic": "decision-trees",
+      "q": "In a decision tree, what does a leaf node represent?",
+      "options": [
+        "An attribute test",
+        "A class label or predicted output",
+        "A branch condition",
+        "The information gain of the split"
+      ],
+      "answer": 1,
+      "explain": "**Internal nodes test an attribute**, **branches are attribute values**, and **leaves carry the class label**. A path from root to leaf is one **conjunction** of attribute tests, and the whole tree is a **disjunction of those conjunctions**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u1-mcq-022",
+      "topic": "continuous-missing",
+      "q": "How does C4.5 handle a continuous-valued attribute?",
+      "options": [
+        "It discards the attribute",
+        "It sorts the values and evaluates candidate thresholds, choosing the split point with the highest information gain",
+        "It rounds all values to integers",
+        "It replaces each value with the mean"
+      ],
+      "answer": 1,
+      "explain": "Sort the values, consider **thresholds midway between adjacent values whose class differs**, and pick the one maximising gain — turning a continuous attribute into a **binary test $A < c$**. Missing values are typically handled by distributing the instance **fractionally** across branches in proportion to the known values.",
+      "difficulty": "medium",
+      "source": "mcq"
+    }
+  ]
+}

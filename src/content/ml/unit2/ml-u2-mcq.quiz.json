@@ -1,0 +1,412 @@
+{
+  "subject": "ml",
+  "unit": 2,
+  "title": "Unit 2 — Course MCQ Bank",
+  "items": [
+    {
+      "id": "ml-u2-mcq-001",
+      "topic": "sigmoid-neuron-loss",
+      "q": "What is the derivative of the sigmoid activation function?",
+      "options": ["f(x)²", "f(x)(1 − f(x))", "1 − f(x)²", "f(x) + 1"],
+      "answer": 1,
+      "explain": "$\\sigma'(z) = \\sigma(z)(1-\\sigma(z))$, written **$O(1-O)$** in backpropagation — the forward-pass output is all you need. Note $1 - f(x)^2$ is the **tanh** derivative, the standard distractor. Max value **0.25** at $z=0$, which is the root of vanishing gradients.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-002",
+      "topic": "perceptron",
+      "q": "Which of the following is true for a single-layer perceptron?",
+      "options": [
+        "Can solve the XOR problem",
+        "Can classify linearly separable data",
+        "Has multiple hidden layers",
+        "Is non-linear"
+      ],
+      "answer": 1,
+      "explain": "A single perceptron produces a **linear decision surface**, so it handles **linearly separable** data — AND, OR, NAND, NOR — but **not XOR**, whose 1-outputs sit on opposite diagonal corners. *Single-layer* means **no hidden layers** by definition.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-003",
+      "topic": "activation-functions",
+      "q": "Which activation function is commonly used in the output layer for binary classification?",
+      "options": ["Tanh", "ReLU", "Sigmoid", "Linear"],
+      "answer": 2,
+      "explain": "**Sigmoid** — its output lies in $(0,1)$ and reads directly as a **probability**, paired with binary cross-entropy. Tanh gives $(-1,1)$, ReLU is unbounded above, and linear is for **regression** outputs. For **multi-class** the answer would be **softmax**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-004",
+      "topic": "backpropagation",
+      "q": "What happens to the weights during training in backpropagation?",
+      "options": [
+        "They are fixed",
+        "They are randomly selected",
+        "They are updated to reduce error",
+        "They are removed"
+      ],
+      "answer": 2,
+      "explain": "Weights are adjusted by **gradient descent on the error**: $\\Delta w = -\\eta\\,\\partial E_d/\\partial w$, which resolves to $\\Delta w = \\eta\\,\\delta\\,(\\text{input})$ at every layer. Randomness enters only at **initialisation**, never in the updates themselves.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-005",
+      "topic": "forward-propagation",
+      "q": "A neuron receives x₁ = 2, x₂ = 1 with weights w₁ = 0.4, w₂ = 0.6 and bias = 1. Compute the weighted sum.",
+      "options": ["1.4", "2.4", "3.0", "2.6"],
+      "answer": 1,
+      "explain": "$net = w_1x_1 + w_2x_2 + b = (0.4)(2) + (0.6)(1) + 1 = 0.8 + 0.6 + 1 = \\mathbf{2.4}$.\n\nThe trap is **1.4** — forgetting the bias. The bias is a weight on a constant input of 1 and is **always** part of the sum, even though most diagrams draw no input line for it.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-006",
+      "topic": "perceptron",
+      "q": "What is the output of a step activation function for a perceptron input of −0.6?",
+      "options": ["0", "1", "−1", "0.6"],
+      "answer": 0,
+      "explain": "The step (threshold) function outputs **1 if the net input $\\geq 0$, else 0**. Since $-0.6 < 0$, the output is **0**. It never returns the input value, and $-1$ would only apply under the **bipolar** $\\{-1,+1\\}$ convention — which SVM uses, but the perceptron here does not.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-007",
+      "topic": "perceptron",
+      "q": "How many weights are there in a perceptron with 4 inputs, including the bias?",
+      "options": ["3", "4", "5", "Cannot determine"],
+      "answer": 2,
+      "explain": "**4 input weights + 1 bias weight = 5.** Writing the bias as $w_0$ on a constant input $x_0 = 1$ makes the sum run $\\sum_{i=0}^{4} w_ix_i$ — **5 terms**. General rule: **$n$ inputs ⇒ $n+1$ trainable parameters**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-008",
+      "topic": "ensemble-learning",
+      "q": "Ensemble learning is a machine learning technique that involves:",
+      "options": [
+        "Training multiple models and combining their predictions",
+        "Training a single model on a large dataset",
+        "Training a model using a deep neural network",
+        "Training a model using reinforcement learning"
+      ],
+      "answer": 0,
+      "explain": "The defining act is **combining many models**. The stated goal: *boost accuracy while keeping models simple and fast* — combining **weak learners** (decision stump, perceptron) to rival a **strong learner** (SVM) that would be expensive to train.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-009",
+      "topic": "ensemble-learning",
+      "q": "What is the primary goal of ensemble learning?",
+      "options": [
+        "To reduce memory usage",
+        "To increase bias",
+        "To improve predictive performance",
+        "To simplify models"
+      ],
+      "answer": 2,
+      "explain": "*'To make **more accurate predictions** than any individual model'* and to improve **stability and predictive power**. Note the honest cost stated alongside: it comes at the price of **increased algorithmic and model complexity** — so it certainly does not simplify or save memory.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-010",
+      "topic": "ensemble-learning",
+      "q": "The purpose of using ensemble learning is to:",
+      "options": [
+        "Reduce overfitting and improve generalization",
+        "Increase training time and complexity",
+        "Decrease the number of models required",
+        "Eliminate the need for labeled data"
+      ],
+      "answer": 0,
+      "explain": "Combining diverse learners **reduces variance** and improves generalization. Increased training time and complexity are **real costs, not purposes**, and ensembles are firmly **supervised** — they need labels like any other classifier.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-011",
+      "topic": "boosting",
+      "q": "Boosting is a machine learning ensemble algorithm which converts weak learners to strong ones.",
+      "options": ["True", "False", "Only for regression tasks", "Only when learners are independent"],
+      "answer": 0,
+      "explain": "**True** — that is boosting's formal definition. It only requires each learner to be **slightly better than chance**, which is precisely what *weak* means. Note the last distractor inverts the truth: **independence is bagging's requirement**; boosting deliberately makes each learner **depend** on its predecessors.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-012",
+      "topic": "boosting",
+      "q": "Which ensemble method combines multiple weak learners sequentially?",
+      "options": ["Bagging", "Boosting", "Random Forest", "Voting"],
+      "answer": 1,
+      "explain": "*'Instead of training the models **in parallel** (like in bagging), we can train them **sequentially**. This is the main idea of Boosting!'* Bagging, random forest and voting all train models **independently**, so they parallelise; boosting cannot.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-013",
+      "topic": "boosting",
+      "q": "Which of the following is a major disadvantage of boosting?",
+      "options": [
+        "It reduces overfitting",
+        "It increases bias",
+        "It is not suitable for weak learners",
+        "It is sensitive to noisy data and outliers"
+      ],
+      "answer": 3,
+      "explain": "Boosting **raises the weight of misclassified instances** each round — so a **mislabelled point is repeatedly emphasised**, and the ensemble chases the noise. The other three invert the facts: boosting **reduces bias**, and weak learners are exactly what it is designed for.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-014",
+      "topic": "random-forest",
+      "q": "Which of the following is an example of an ensemble learning algorithm?",
+      "options": [
+        "Decision Tree",
+        "Support Vector Machine (SVM)",
+        "Random Forest",
+        "K-Nearest Neighbors (KNN)"
+      ],
+      "answer": 2,
+      "explain": "**Random Forest** — many decision trees combined by voting. The other three are **single models**. Note a decision tree is the *base learner* a random forest is built from, which is what makes it the tempting wrong answer.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-015",
+      "topic": "random-forest",
+      "q": "Random Forest is an ensemble of:",
+      "options": ["KNN classifiers", "Logistic Regression models", "SVMs", "Decision Trees"],
+      "answer": 3,
+      "explain": "*'An ensemble classifier using many **decision tree** models'* — usable for **classification or regression**, and it supplies **variable-importance** information alongside accuracy. Trees are chosen because they are **unstable (high variance)**, which is exactly what averaging fixes.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-016",
+      "topic": "optimizers",
+      "q": "Which optimizer updates all weights using the entire dataset?",
+      "options": ["SGD", "Adagrad", "GD (Batch Gradient Descent)", "Adam"],
+      "answer": 2,
+      "explain": "**Batch GD** computes the error for every example but **updates only after all of them have been evaluated** — one update per epoch. Its trade: a **stable gradient** and parallelisability, against needing the **whole dataset in memory** and being **very slow on large data**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-017",
+      "topic": "momentum-rmsprop-adam",
+      "q": "Which optimizer accumulates squared gradients to adapt learning rates?",
+      "options": ["Momentum", "Adagrad", "SGD", "GD"],
+      "answer": 1,
+      "explain": "**Adagrad** accumulates the **sum of all past squared gradients** and divides by its square root, giving a **per-parameter** learning rate. Its flaw: the sum only **grows**, so the effective rate decays to zero and learning stalls — which **RMSProp** fixes by using an **exponentially weighted average** instead of a running total.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-018",
+      "topic": "momentum-rmsprop-adam",
+      "q": "Which optimizer is best suited for sparse data?",
+      "options": ["Momentum", "Adagrad", "SGD", "GD"],
+      "answer": 1,
+      "explain": "**Adagrad.** With sparse features, rare ones receive gradients only occasionally — so their accumulated squared gradient stays **small**, and dividing by it gives them a **large** effective step. Frequent features accumulate more and take smaller steps. The per-parameter adaptation is exactly what sparse data needs.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-019",
+      "topic": "momentum-rmsprop-adam",
+      "q": "What is the role of the momentum term in optimization?",
+      "options": [
+        "Introduce randomness",
+        "Increase accuracy",
+        "Accelerate convergence and smooth updates",
+        "Normalize gradients"
+      ],
+      "answer": 2,
+      "explain": "Momentum takes the **EWMA of the gradients**, $V_{dW} = \\beta V_{dW} + (1-\\beta)dW$. Across a ravine the gradient **alternates sign and cancels**; along it the sign is constant and **accumulates** — so oscillation is damped and progress accelerates. *'Using a very high value for $\\beta$ we can dampen out the oscillations.'*",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-020",
+      "topic": "activation-functions",
+      "q": "What is the output of the sigmoid function for x = 0?",
+      "options": ["0", "0.25", "0.5", "1"],
+      "answer": 2,
+      "explain": "$\\sigma(0) = \\frac{1}{1+e^{0}} = \\frac{1}{2} = \\mathbf{0.5}$ — the curve's midpoint, and the usual classification threshold. **0.25** is the distractor: that is the value of the **derivative** $\\sigma'(0)$, not the function.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-021",
+      "topic": "activation-functions",
+      "q": "Which function does the code `np.maximum(0, x)` implement?",
+      "options": ["Sigmoid", "Tanh", "Binary Step", "ReLU"],
+      "answer": 3,
+      "explain": "**ReLU** $= \\max(0, x)$ — pass positives through unchanged, clamp negatives to zero. A **binary step** would be `np.where(x >= 0, 1, 0)`, returning only 0 or 1 rather than the value itself.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-022",
+      "topic": "activation-functions",
+      "q": "A graph shows an S-shaped curve rising smoothly from −1 to +1 and passing through the origin. Which function is it?",
+      "options": ["ReLU", "Sigmoid", "TanH", "Binary Step"],
+      "answer": 2,
+      "explain": "The giveaway is the **range and the crossing point**: **tanh** runs $(-1,1)$ and passes through **(0,0)**; **sigmoid** runs $(0,1)$ and passes through **(0, 0.5)**. Both are S-shaped, so identify them by where the curve crosses the $y$-axis. ReLU is a hinge; binary step is a jump.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-023",
+      "topic": "svm-margin-primal",
+      "q": "What is a Support Vector Machine (SVM)?",
+      "options": [
+        "An unsupervised learning algorithm used for clustering data",
+        "A supervised learning algorithm used for classification and regression tasks",
+        "A deep learning model used for image generation",
+        "A reinforcement learning algorithm used for policy optimization"
+      ],
+      "answer": 1,
+      "explain": "**Supervised**, for **classification and regression** (the regression variant is **SVR**). It needs labelled data to define which side of the boundary each point belongs on — clustering has no labels at all.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-024",
+      "topic": "svm-margin-primal",
+      "q": "Explain the concept of a hyperplane in SVM.",
+      "options": [
+        "A random line that passes through all data points",
+        "A surface that separates the data points into classes",
+        "A function that compresses features into lower dimensions",
+        "A point where all vectors intersect"
+      ],
+      "answer": 1,
+      "explain": "A **decision surface** $\\mathbf{w}^T\\mathbf{x} + b = 0$ dividing the classes — a **point** in 1-D, a **line** in 2-D, a **plane** in 3-D, a **hyperplane** in general. It deliberately passes through **no** data points; SVM pushes it as far from them as possible.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-025",
+      "topic": "svm-margin-primal",
+      "q": "What is the maximum margin classifier in the context of SVM?",
+      "options": [
+        "A classifier that minimizes distance between classes",
+        "A classifier that maximizes distance between the support vectors and the hyperplane",
+        "A classifier that generates more classes",
+        "A classifier with no margin at all"
+      ],
+      "answer": 1,
+      "explain": "SVM maximises **width $= 2/\\lVert w\\rVert$**, the gap between the hyperplane and the nearest points of either class. The justification: *'the **larger the margin the lower the generalization error** of the classifier'* — a boundary in the widest corridor has the most room to be slightly wrong and still classify correctly.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-026",
+      "topic": "bagging",
+      "q": "In bagging, roughly what fraction of the original data ends up in a single bootstrap sample?",
+      "options": ["50%", "63%", "75%", "100%"],
+      "answer": 1,
+      "explain": "$P(\\text{a record is never drawn}) = (1-1/n)^n \\to 1/e \\approx 0.368$, so about **63% distinct records are in the bag** and **37% are out-of-bag**. The sample still has **$n$ rows** — the shortfall is made up by **duplicates**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-027",
+      "topic": "bagging",
+      "q": "What makes the out-of-bag set useful?",
+      "options": [
+        "It is larger than the training set",
+        "It was never used to train those models, so it gives a free honest performance estimate",
+        "It contains only the hardest examples",
+        "It is used to initialise the weights"
+      ],
+      "answer": 1,
+      "explain": "Each instance is evaluated **only by the models that never saw it**, so the estimate is unbiased — essentially **free cross-validation**, obtained as a side effect of resampling with **no extra training** and with all data still used for fitting.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-028",
+      "topic": "kernels",
+      "q": "What does the kernel trick allow an SVM to avoid computing?",
+      "options": [
+        "The Lagrange multipliers",
+        "The explicit feature mapping φ(x) into the high-dimensional space",
+        "The bias term b",
+        "The support vectors"
+      ],
+      "answer": 1,
+      "explain": "The dual uses the data **only through inner products**, so $K(\\mathbf{x}_i,\\mathbf{x}_j) = \\phi(\\mathbf{x}_i)^T\\phi(\\mathbf{x}_j)$ can be evaluated **directly**. This matters most for the **RBF kernel**, whose implicit feature space is **infinite-dimensional** and could never be written down.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-029",
+      "topic": "soft-margin",
+      "q": "In soft-margin SVM, what does a slack variable ξᵢ > 1 indicate?",
+      "options": [
+        "The point is correctly classified and outside the margin",
+        "The point is inside the margin but on the correct side",
+        "The point is misclassified",
+        "The point is a support vector"
+      ],
+      "answer": 2,
+      "explain": "**$\\xi_i = 0$** correctly classified outside the margin; **$0 < \\xi_i \\leq 1$** inside the margin, still correct; **$\\xi_i > 1$** **misclassified**. The value $\\xi_i = 1$ puts the point exactly **on the decision boundary**, so anything beyond has crossed it.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-030",
+      "topic": "multilayer-xor",
+      "q": "Why can a multilayer network solve XOR when a single perceptron cannot?",
+      "options": [
+        "It uses a larger learning rate",
+        "The hidden layer re-represents the input in a space where the classes become linearly separable",
+        "It trains for more epochs",
+        "It uses negative weights"
+      ],
+      "answer": 1,
+      "explain": "The hidden layer maps the 2 inputs into 4 mutually exclusive indicators, so each output weight becomes responsible for **one** input pattern and the constraints stop conflicting. **The hidden layer's job is to make the problem linearly separable** — the same service a **kernel** performs for an SVM, by a different mechanism.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-031",
+      "topic": "backprop-practice",
+      "q": "Why do sigmoid networks suffer from vanishing gradients as depth increases?",
+      "options": [
+        "The learning rate decays automatically",
+        "Each layer multiplies the gradient by σ′ ≤ 0.25, so it shrinks exponentially with depth",
+        "The weights become too large",
+        "The loss function saturates"
+      ],
+      "answer": 1,
+      "explain": "$\\sigma' = O(1-O)$ peaks at **0.25**, so $n$ layers scale the gradient by at most $(0.25)^n$ — about $10^{-6}$ after 10 layers, and that is the **best case**. Lower layers are left *'nearly unchanged'*. The fix is **ReLU**, whose derivative is **1**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "ml-u2-mcq-032",
+      "topic": "gradient-descent",
+      "q": "In gradient descent, why do we move in the direction opposite to the gradient?",
+      "options": [
+        "To increase the loss and escape minima",
+        "Because ℒ(θ+ηu) − ℒ(θ) = k·cos β is most negative when β = 180°",
+        "Because the gradient is always negative",
+        "To keep the weights bounded"
+      ],
+      "answer": 1,
+      "explain": "The change in loss is $u^T\\nabla\\mathcal{L} = k\\cos\\beta$, minimised at $\\cos\\beta = -1$, i.e. **$\\beta = 180°$**. Hence the rule: *the direction we move in should be at **180° w.r.t. the gradient***. The gradient itself points **uphill**, which is why it is negated.",
+      "difficulty": "medium",
+      "source": "mcq"
+    }
+  ]
+}
