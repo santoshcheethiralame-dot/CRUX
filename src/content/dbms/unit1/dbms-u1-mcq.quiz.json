@@ -1,0 +1,907 @@
+{
+  "subject": "dbms",
+  "unit": 1,
+  "title": "Unit 1 — Course MCQ Bank",
+  "items": [
+    {
+      "id": "dbms-u1-mcq-001",
+      "topic": "sql-overview-datatypes",
+      "q": "In SQL, which datatype would be most appropriate for storing email addresses?",
+      "options": [
+        "TEXT",
+        "CHAR(50)",
+        "NVARCHAR(MAX)",
+        "VARCHAR(255)"
+      ],
+      "answer": 3,
+      "explain": "**VARCHAR(255)** — emails vary in length, so a *variable*-length type avoids the padding waste of `CHAR(50)`, and 255 comfortably covers the practical maximum. `TEXT` and `NVARCHAR(MAX)` are for large blocks of prose; they are often stored off-page and frequently cannot be indexed normally, which matters because email is usually a lookup or `UNIQUE` column.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-002",
+      "topic": "sql-constraints",
+      "q": "`INSERT INTO Employee(emp_id, emp_name) VALUES (101, 'Alice');` — the table has a `salary DECIMAL(10,2) NOT NULL` column with no default. What happens?",
+      "options": [
+        "Insert succeeds, database assigns a default value automatically",
+        "Insert succeeds, salary is set to 0",
+        "Insert succeeds, salary is NULL",
+        "Insert fails due to the NOT NULL constraint"
+      ],
+      "answer": 3,
+      "explain": "An omitted column takes its **DEFAULT**, and with no default declared that is **NULL** — which the `NOT NULL` constraint rejects. The insert **fails**. Databases do *not* invent a zero: `NOT NULL` without `DEFAULT` makes the column effectively **mandatory in every INSERT**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-003",
+      "topic": "ra-unary-operators",
+      "q": "Which relational-algebra operation can reduce duplicates and schema size simultaneously?",
+      "options": [
+        "Selection (σ)",
+        "Intersection (∩)",
+        "Aggregation (ℱ)",
+        "Projection (π)"
+      ],
+      "answer": 3,
+      "explain": "**Projection (π)** drops *columns* — that is the schema-size reduction — and because relations are **sets**, dropping columns can make formerly distinct rows identical, so duplicates are eliminated too. **Selection (σ)** drops rows but keeps the full schema. Only π does both at once.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-004",
+      "topic": "sql-overview-datatypes",
+      "q": "Which of the following is NOT a valid SQL numeric datatype?",
+      "options": [
+        "DECIMAL(10,2)",
+        "NUMERIC(5)",
+        "FLOAT(10)",
+        "CHAR(10)"
+      ],
+      "answer": 3,
+      "explain": "**CHAR(10)** is a fixed-length **character** type, not numeric. `DECIMAL`/`NUMERIC` are exact fixed-point types; `FLOAT` is approximate floating-point.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-005",
+      "topic": "sql-constraints",
+      "q": "`Orders` has `FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE CASCADE`. What happens when a customer is deleted from `Customers`?",
+      "options": [
+        "All orders for that customer are automatically deleted",
+        "The deletion fails due to the foreign key constraint",
+        "customer_id in Orders is set to NULL",
+        "Nothing happens to Orders"
+      ],
+      "answer": 0,
+      "explain": "**ON DELETE CASCADE** propagates the delete downward — every child row referencing the removed parent is **deleted too**. The other options describe the alternatives: `NO ACTION`/`RESTRICT` (deletion fails), `SET NULL`, and no referential action at all.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-006",
+      "topic": "er-to-relational",
+      "q": "Mapping a binary 1:1 relationship R between entity types S and T where **both have partial participation**, using the foreign-key (2 relations) approach — where does the foreign key go?",
+      "options": [
+        "A foreign key is not necessary; a separate relationship table is always preferred for partial participation",
+        "The foreign key must be placed in S, referencing T",
+        "The foreign key must be placed in T, referencing S",
+        "The foreign key can be placed in either S or T, referencing the other relation"
+      ],
+      "answer": 3,
+      "explain": "With **both sides partial**, neither side is the obviously better host, so the foreign key may go in **either** relation. The usual tie-breaker does not apply here: when *one* side has **total** participation you put the FK on **that** side, because then it can be declared `NOT NULL` and no nulls appear. Both partial means whichever side you choose will carry some nulls.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-007",
+      "topic": "intro-dbms",
+      "q": "Which scenario best illustrates 'data' as distinct from 'information'?",
+      "options": [
+        "A report showing student pass/fail percentages for each department",
+        "A list of student IDs, names and phone numbers, stored without any sorting or grouping",
+        "A dashboard showing average student attendance by department and semester",
+        "A pie chart visualizing student enrollment trends over five years"
+      ],
+      "answer": 1,
+      "explain": "**Raw, unorganised facts** = data. The other three have all been **processed, organised and given context** to support a decision — that makes them **information**. The giveaway phrase is *'without any sorting or grouping'*.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-008",
+      "topic": "file-systems-purpose",
+      "q": "What is one major drawback of a file-processing system?",
+      "options": [
+        "Faster data access",
+        "Data redundancy and inconsistency",
+        "Centralized control of data",
+        "Automatic enforcement of constraints"
+      ],
+      "answer": 1,
+      "explain": "**Data redundancy and inconsistency** is drawback #1 — the same fact duplicated across files, which wastes space and lets copies disagree. The other three options are **benefits of a DBMS**, i.e. exactly what file systems lack.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-009",
+      "topic": "file-systems-purpose",
+      "q": "In a database system, atomicity ensures that:",
+      "options": [
+        "A transaction executes completely or not at all, with no partial effects",
+        "Every value lies within its declared domain",
+        "Data is replicated across multiple servers",
+        "Data is accessed by one user at a time"
+      ],
+      "answer": 0,
+      "explain": "**Atomicity** = **all-or-nothing**. The debit-and-credit transfer either does both steps or neither; a crash midway is undone by **rollback**. Single-user access is *isolation*; domain checking is *integrity*; replication is unrelated.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-010",
+      "topic": "er-attributes",
+      "q": "Which scenario illustrates a misuse of a derived attribute in an ER model?",
+      "options": [
+        "Storing age in the database while also storing date_of_birth",
+        "Calculating age from date_of_birth during query execution",
+        "Using current date to calculate years of service",
+        "Creating a view that computes a value on the fly"
+      ],
+      "answer": 0,
+      "explain": "**Storing** a derived value alongside its source is the misuse — `age` is a function of `date_of_birth` **and today's date**, so a stored copy is stale within a day. The other three all *derive at read time*, which is correct. Ramakrishnan & Gehrke name `age` explicitly as an example of poor design.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-011",
+      "topic": "sql-ddl",
+      "q": "Which ALTER TABLE operation is NOT allowed if the table already contains data (and dependent objects exist)?",
+      "options": [
+        "Renaming a table",
+        "Adding a CHECK constraint",
+        "Adding a new column with a DEFAULT value",
+        "Dropping a column that has dependent foreign keys"
+      ],
+      "answer": 3,
+      "explain": "**Dropping a column referenced by a foreign key** is refused — it would leave the dependent constraint pointing at nothing. You must drop the constraint first (or use `CASCADE` where supported). Adding a column with a default, renaming, and adding a `CHECK` all work on populated tables — though a `CHECK` will be **rejected if existing rows violate it**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-012",
+      "topic": "ra-set-operations",
+      "q": "If relation A has tuples {1, 2, 3, 4} and relation B has {3, 4, 5, 6}, then **A − B** gives:",
+      "options": [
+        "{1, 2}",
+        "{3, 4}",
+        "{5, 6}",
+        "{1, 2, 5, 6}"
+      ],
+      "answer": 0,
+      "explain": "**Set difference** keeps tuples in A that are **not** in B → **{1, 2}**. For reference: `A ∩ B` = {3,4}, `B − A` = {5,6}, `A ∪ B` = {1,2,3,4,5,6}. Both `−` and `∩` require the relations to be **union-compatible**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-013",
+      "topic": "ra-joins-aggregates",
+      "q": "The Division (÷) operation is most useful when we want to:",
+      "options": [
+        "Find tuples related to at least one value in another relation",
+        "Remove duplicate tuples from a relation",
+        "Combine two relations with identical schemas",
+        "Find tuples related to ALL values in another relation"
+      ],
+      "answer": 3,
+      "explain": "**Division answers 'for all' queries** — *'students who have taken **every** course offered by the CS department'*, *'suppliers who supply **all** parts'*. The 'at least one' case is an ordinary join or semi-join; that contrast is the whole point of the operator.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-014",
+      "topic": "er-keys-weak-entities",
+      "q": "When mapping a weak entity set A that depends on a strong entity set B, how is the primary key of A's relation schema formed?",
+      "options": [
+        "It is the combination of the primary key of the identifying strong entity set B and the discriminator (partial key) of A",
+        "It is the primary key of the strong entity set B only",
+        "It consists solely of the discriminator of A",
+        "It is derived from a hash function of all attributes of A"
+      ],
+      "answer": 0,
+      "explain": "A weak entity has no key of its own — only a **partial key / discriminator** that distinguishes it *among the dependents of one owner*. So the primary key is **owner's PK + discriminator**. `Dependent(`**`Essn`**`, `**`Dependent_name`**`, Sex, Bdate)` is the canonical example: two employees may each have a dependent named 'Anna', and only the pair is unique.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-015",
+      "topic": "dbms-characteristics-advantages",
+      "q": "Which best represents a unique benefit of a DBMS over traditional file systems when handling a university's student records?",
+      "options": [
+        "Restricting access to data completely",
+        "Storing plain text student names and marks",
+        "Manual entry and tallying of records",
+        "Supporting multiple concurrent users while maintaining consistency"
+      ],
+      "answer": 3,
+      "explain": "**Controlled concurrent access** is the distinctive capability — files can store text too, and blocking all access is not a benefit. The DBMS lets registrars, faculty and students work simultaneously while **transactions and locking** keep the data correct.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-016",
+      "topic": "file-systems-purpose",
+      "q": "Which problem occurs when multiple users access and modify data simultaneously without proper control?",
+      "options": [
+        "Concurrent access anomalies",
+        "Data isolation",
+        "Integrity problems",
+        "Atomicity failure"
+      ],
+      "answer": 0,
+      "explain": "**Concurrent-access anomalies** — the classic being the **lost update**, where two clerks both read a ₹10,000 balance, deduct ₹500 and ₹100, and the last writer's value overwrites the other, leaving 9,500 or 9,900 instead of 9,400.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-017",
+      "topic": "file-systems-purpose",
+      "q": "A DBMS provides a central information store primarily to:",
+      "options": [
+        "Remove the need for any constraints",
+        "Increase redundancy",
+        "Minimise redundancy and allow changes to be made at a single point, ensuring consistency",
+        "Make queries slower but safer"
+      ],
+      "answer": 2,
+      "explain": "Centralising the store is the direct fix for **drawback #1**: it **minimises redundancy**, and because each fact lives in one place, an update happens **at a single spot** — so copies cannot drift out of agreement.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-018",
+      "topic": "design-architecture-users",
+      "q": "Which scenario most justifies adopting a **parallel** database architecture over a distributed one?",
+      "options": [
+        "A news app that loads local headlines depending on a user's GPS location",
+        "A cloud-based game that stores player stats and friend lists",
+        "A government meteorology centre analysing real-time satellite data for cyclone predictions",
+        "A blogging platform used globally that stores content by region"
+      ],
+      "answer": 2,
+      "explain": "Meteorology is **one enormous computation that must go faster** — a tightly-coupled cluster with many cores and shared disk. The other three are about **data living in different places** (geography, regions, users), which is the **distributed** case. Tell: *compute-bound and central* → parallel; *location-bound and spread* → distributed.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-019",
+      "topic": "sql-dml",
+      "q": "`Employee(emp_id, emp_name, salary)`. Which statement increases salaries by 10% **only for employees earning less than 5000**?",
+      "options": [
+        "UPDATE Employee SET salary = salary*1.1;",
+        "UPDATE Employee SET salary = salary*1.1 WHERE salary < 5000;",
+        "UPDATE Employee WHERE salary < 5000 SET salary = salary*1.1;",
+        "UPDATE Employee SET salary*1.1 WHERE salary < 5000;"
+      ],
+      "answer": 1,
+      "explain": "The syntax is **`UPDATE table SET col = expr WHERE condition`** — `SET` always precedes `WHERE`, and `SET` needs an **assignment** (`salary = salary*1.1`), not a bare expression. Option 1 is syntactically fine but updates **everyone**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-020",
+      "topic": "ra-joins-aggregates",
+      "q": "Given `Employee(EmpID, Name, DeptID, Salary)` and `Department(DeptID, DeptName)`, evaluate: `Temp ← σ(Salary>60000)(Employee)` then `Result ← π(Name, DeptName)(Temp ⋈ Department)`. What does Result contain?",
+      "options": [
+        "All department names regardless of salary",
+        "Names of departments with average salary > 60000",
+        "Names of employees earning > 60000",
+        "Names of employees earning > 60000 and their department names"
+      ],
+      "answer": 3,
+      "explain": "Read it inside-out: **σ** filters employees earning over 60000, the **natural join** attaches each one's department row via the shared `DeptID`, and **π** keeps `Name` and `DeptName`. So: **high earners paired with their department names**. There is no aggregation anywhere, which rules out the 'average salary' option.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-021",
+      "topic": "sql-constraints",
+      "q": "What happens if a row violates a CHECK constraint during INSERT or UPDATE?",
+      "options": [
+        "The operation fails and an error is thrown",
+        "The database ignores the CHECK constraint",
+        "The row is inserted/updated but flagged as invalid",
+        "The row is automatically corrected to satisfy the constraint"
+      ],
+      "answer": 0,
+      "explain": "Constraints are **enforced, not advisory** — the statement **fails with an error** and the row is not written. A DBMS never silently 'corrects' your data; that would be a worse outcome than rejecting it, since it would hide the bug.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-022",
+      "topic": "er-attributes",
+      "q": "When is representing `phone_number` as a multivalued attribute (double ellipse) most appropriate?",
+      "options": [
+        "When the phone number is derived from the department code",
+        "When all instructors have exactly one phone number",
+        "When the number of phone numbers per instructor varies",
+        "When phone numbers are the same for all instructors in a department"
+      ],
+      "answer": 2,
+      "explain": "A multivalued attribute exists exactly because an instructor may have **zero, one, or several** numbers, and **different instructors have different counts**. If everyone had exactly one it would be plain single-valued; a shared departmental number belongs on **Department**, not Instructor.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-023",
+      "topic": "sql-ddl",
+      "q": "Given `emp_id INT PRIMARY KEY, emp_name VARCHAR(50) NOT NULL, salary DECIMAL(10,2), join_date DATE DEFAULT CURRENT_DATE` — which is TRUE?",
+      "options": [
+        "join_date cannot have a default value",
+        "emp_id can have duplicate values",
+        "emp_name can store NULL values",
+        "salary can store up to 10 digits in total, with 2 after the decimal point"
+      ],
+      "answer": 3,
+      "explain": "**`DECIMAL(p, s)`** = **precision** p (total significant digits) and **scale** s (digits after the point). So `DECIMAL(10,2)` holds **10 digits in total, 2 of them after the decimal** — a maximum of 99,999,999.99. Note the trap: the integer part gets p − s = **8** digits, not 10. `emp_name` is `NOT NULL`, `join_date` clearly *does* have a default, and a `PRIMARY KEY` forbids duplicates.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-024",
+      "topic": "er-attributes",
+      "q": "An attribute `PreviousDegrees` stores multiple tuples of (College, Year, Degree, Field). Which classification best fits?",
+      "options": [
+        "Complex attribute",
+        "Redundant attribute",
+        "Multivalued attribute",
+        "Composite attribute"
+      ],
+      "answer": 0,
+      "explain": "It is **multivalued** (many degrees) **and composite** (four components each) — and the **nesting of the two is precisely what defines a complex attribute**. Written `{PreviousDegrees(College, Year, Degree, Field)}`: braces = multivalued, parentheses = composite.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-025",
+      "topic": "schema-state-three-schema",
+      "q": "Which correctly matches a schema level with its description?",
+      "options": [
+        "Logical schema — Describes file storage techniques and indexing",
+        "View schema — Defines access-controlled subsets of data for different users",
+        "Subschema — Refers to low-level device-specific storage",
+        "Physical schema — Describes virtual views for users"
+      ],
+      "answer": 1,
+      "explain": "**View (external) schema** = the tailored, permission-bounded slice each user group sees. The distractors swap the pairs: *physical/internal* is storage and indexing, *logical/conceptual* is entities and relationships, and **'subschema' is an old synonym for external schema** — not a storage-level term.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-026",
+      "topic": "design-architecture-users",
+      "q": "Which indirectly helps reduce client-side computational burden in a two-tier architecture?",
+      "options": [
+        "Disabling ODBC query translation",
+        "Moving data to local JSON files",
+        "Shifting SQL parsing and query execution to the server",
+        "Compiling JDBC drivers into the client program"
+      ],
+      "answer": 2,
+      "explain": "In client-server the **server does the parsing, optimisation and execution** and returns only the result set — so the client ships a short query string instead of processing data itself. Moving data to local files pushes work *back* onto the client; the other two do not change where computation happens.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-027",
+      "topic": "sql-overview-datatypes",
+      "q": "What happens if you insert the string `'abc'` into a column defined as INT?",
+      "options": [
+        "SQL stores 'abc' as NULL",
+        "SQL truncates 'abc' to 'a'",
+        "SQL automatically converts it to 0",
+        "SQL raises a data-type / conversion error"
+      ],
+      "answer": 3,
+      "explain": "This is **domain integrity** doing its job — the value is outside the column's declared domain, so the statement is **rejected with an error**. (Historical note: MySQL in its old non-strict mode *would* coerce to 0 with a warning; every modern default, including MySQL's `STRICT_TRANS_TABLES`, errors instead.)",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-028",
+      "topic": "er-relationships-cardinality",
+      "q": "Which most accurately represents a **relationship instance**?",
+      "options": [
+        "A row in a table that links one specific instructor to one specific student",
+        "The set of all students in the 'Student' entity set",
+        "An attribute in the 'Course' entity",
+        "The 'advisor' diamond in an ER diagram"
+      ],
+      "answer": 0,
+      "explain": "An **instance** is one **specific association between named entities** — *Katz (45565) advises Shankar (12345)*. The **diamond** is the relationship **set/type** (the definition, part of the schema); the set of all students is an **entity set**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-029",
+      "topic": "design-architecture-users",
+      "q": "A global supply chain suffers delays from poor visibility into inventory. Which database feature is most likely to resolve it?",
+      "options": [
+        "Creating spreadsheet backups of inventory every week",
+        "Real-time synchronization of supplier and inventory tables across branches",
+        "Maintaining manual dispatch registers at warehouses",
+        "Triggering automatic email notifications"
+      ],
+      "answer": 1,
+      "explain": "The stated problem is **visibility** — branches cannot see each other's current state. **Real-time synchronization (a distributed database with replication)** fixes the cause. Weekly spreadsheets and manual registers recreate the **data-isolation** problem; email notifications treat the symptom.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-030",
+      "topic": "intro-dbms",
+      "q": "Which most accurately reflects the definition of a database in a university context?",
+      "options": [
+        "A set of spreadsheets with course names typed manually by different departments",
+        "A shared folder with scanned student mark sheets",
+        "A structured collection of interrelated student and course records maintained on a centralized server",
+        "A pile of physical student registration forms stored in an office"
+      ],
+      "answer": 2,
+      "explain": "The definition demands **related** data that is **logically coherent** and **built for a purpose**. Only option 3 has structure and interrelation; the others are unstructured collections — and the departmental spreadsheets are a textbook illustration of **redundancy and inconsistency**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-031",
+      "topic": "sql-ddl",
+      "q": "Which DDL command changes the datatype of a column in an existing table?",
+      "options": [
+        "CHANGE TABLE ... COLUMN ...",
+        "MODIFY TABLE ... COLUMN ...",
+        "ALTER TABLE ... MODIFY COLUMN ...",
+        "UPDATE TABLE ... SET ..."
+      ],
+      "answer": 2,
+      "explain": "**`ALTER TABLE`** is the only DDL verb for changing structure; the sub-clause is `MODIFY COLUMN` in MySQL/Oracle and `ALTER COLUMN` in SQL Server/PostgreSQL. **`UPDATE` is DML** — it changes *values inside rows*, never the schema. That DDL-vs-DML distinction is the point of the question.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-032",
+      "topic": "design-architecture-users",
+      "q": "Which reflects an **indirect** responsibility of a DBA in maintaining system performance?",
+      "options": [
+        "Designing user interface forms",
+        "Writing business logic in the application tier",
+        "Tuning index structures and access methods",
+        "Creating JavaScript front-end validators"
+      ],
+      "answer": 2,
+      "explain": "**Storage-structure and access-method definition** is a named DBA function — the DBA never writes the query, but by choosing **indexes** they change how fast everyone else's queries run. The other three belong to **application programmers**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-033",
+      "topic": "er-cardinality-participation",
+      "q": "Owner–Property: each owner must own at least one property but can own many; each property must be owned by exactly one owner. Which (min, max) notation is correct?",
+      "options": [
+        "Owner (0, N), Property (1, 1)",
+        "Owner (1, 1), Property (1, N)",
+        "Owner (0, 1), Property (1, N)",
+        "Owner (1, N), Property (1, 1)"
+      ],
+      "answer": 3,
+      "explain": "*'Must own at least one'* → Owner min = **1** (total participation); *'can own many'* → max = **N**. *'Owned by exactly one'* → Property is **(1, 1)**. Reading rule: the pair on a line constrains **the entity set that line attaches to**, counting how many relationship instances **each of its entities** joins.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-034",
+      "topic": "design-architecture-users",
+      "q": "What could be an indirect consequence if a DBA fails to periodically monitor disk space availability?",
+      "options": [
+        "Transaction logs may overflow, causing system crashes",
+        "Logical schema changes become necessary",
+        "Query execution plans become invalid",
+        "Sophisticated users lose their access rights"
+      ],
+      "answer": 0,
+      "explain": "**Ensuring disk space availability** is listed under the DBA's *routine maintenance*. The subtle failure mode is the **transaction log**: it grows with every write, and if it cannot extend, the DBMS can no longer guarantee recovery — so it **refuses writes or halts**. The database can stop even when the *data* files have room.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-035",
+      "topic": "sql-dml",
+      "q": "`DELETE FROM Employee WHERE emp_id = 105;` and `Orders` has a foreign key to `Employee` with ON DELETE CASCADE. What happens?",
+      "options": [
+        "Only employee 105 is deleted",
+        "Employee 105 and all related orders are deleted",
+        "Deletion fails because of the foreign key",
+        "Only orders are deleted, employee remains"
+      ],
+      "answer": 1,
+      "explain": "**CASCADE deletes downward** — the parent row goes, and every child row referencing it goes with it, in the same transaction. Note this can chain: if `Orders` itself has cascading children, those are removed too, which is why CASCADE deserves care in production schemas.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-036",
+      "topic": "sql-constraints",
+      "q": "Which constraint ensures a column's values are unique but still allows NULL?",
+      "options": [
+        "CHECK",
+        "PRIMARY KEY",
+        "UNIQUE",
+        "NOT NULL"
+      ],
+      "answer": 2,
+      "explain": "**UNIQUE** enforces distinctness but **permits NULL** — and because two NULLs are not considered equal, most systems allow **several** NULL rows. **PRIMARY KEY = UNIQUE + NOT NULL**, which is exactly the difference being tested here.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-037",
+      "topic": "ra-set-operations",
+      "q": "Which statement about Union (∪) and Difference (−) is true?",
+      "options": [
+        "Union allows different attribute domains, but Difference does not",
+        "Difference can be applied to relations with different schemas",
+        "Union automatically removes duplicate tuples but Difference does not",
+        "Both operations require the relations to be union-compatible — same number of attributes with matching domains"
+      ],
+      "answer": 3,
+      "explain": "**∪, ∩ and − all require union-compatibility**: the same **degree** (number of attributes) and **compatible domains** position by position. (Attribute *names* need not match in the formal algebra — the domains must.) Beware the half-truth distractor claiming *union removes duplicates but difference does not* — **every** set operation removes duplicates, because relations are sets.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-038",
+      "topic": "er-to-relational",
+      "q": "A `Product` entity has primary key `Product_ID` and a **multivalued** attribute `Color`. What is the correct relational schema?",
+      "options": [
+        "Product (Product_ID, Color)",
+        "Product (Product_ID) and Product_Color (Product_ID, Color), with Product_ID a foreign key in Product_Color",
+        "Product (Product_ID, Color1, Color2, ...)",
+        "Product (Product_ID) and Color (Color_ID, Product_ID)"
+      ],
+      "answer": 1,
+      "explain": "**A multivalued attribute always becomes its own relation**, holding the owner's key plus the attribute, with **{Product_ID, Color} as the composite primary key** and Product_ID a foreign key. Option 1 breaks **1NF** (non-atomic values); option 3 hard-codes an arbitrary limit and is unqueryable.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-039",
+      "topic": "er-degree-ternary",
+      "q": "A university wants to track which instructor supervises which student on which project. Why can't this be modelled with only binary relationships?",
+      "options": [
+        "A set of binary relationships cannot express the three-way dependency simultaneously",
+        "The ER model doesn't support multiple relationships",
+        "It increases redundancy in course records",
+        "A student can only have one instructor"
+      ],
+      "answer": 0,
+      "explain": "A student may have **different instructors for different projects**. Split into three binary relationships, the pairs *(Asha, Rao)* and *(Asha, Iyer)* both exist and neither records **which project each applies to** — the three-way fact is **not the sum of its two-way projections**. Hence a ternary `proj_guide`.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-040",
+      "topic": "ra-unary-operators",
+      "q": "What does `ρ E1(EmpID, EName, DNo) ( π EmpID, Name, DeptID (Employee) )` do?",
+      "options": [
+        "Selects employees with a specific DeptID",
+        "Projects EmpID, Name and DeptID, then renames the result to E1 with attributes EmpID, EName, DNo",
+        "Joins Employee with a Dept relation",
+        "Deletes the attribute DeptID"
+      ],
+      "answer": 1,
+      "explain": "**ρ (rho) is rename.** The inner **π** picks three columns; ρ gives the result the relation name **E1** and renames its attributes positionally to `(EmpID, EName, DNo)`. Renaming matters for **self-joins** and for making relations union-compatible. No σ appears, so nothing is filtered.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-041",
+      "topic": "dbms-characteristics-advantages",
+      "q": "Two instructors simultaneously update a student's grade. The system ensures correctness using:",
+      "options": [
+        "Integrity constraints",
+        "View definition",
+        "Concurrency control and locking",
+        "Redundant backups"
+      ],
+      "answer": 2,
+      "explain": "Simultaneous writes to the same item is the **lost-update** hazard, prevented by **concurrency control (transactions + locking)**. Integrity constraints check *what values are legal*, not *what happens when two writers interleave* — a different axis entirely.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-042",
+      "topic": "er-to-relational",
+      "q": "For an N-ary relationship type (N > 2) mapped to a new relation S, which is NOT a direct component of S?",
+      "options": [
+        "The simple attributes of the N-ary relationship type",
+        "The simple components of composite attributes of the N-ary relationship type",
+        "The foreign-key attributes which are primary keys of the participating entity types",
+        "The derived attributes of any of the participating entity types"
+      ],
+      "answer": 3,
+      "explain": "An N-ary relationship relation gets: the **primary keys of all N participating entities** as foreign keys (together forming its key), plus the relationship's **own descriptive attributes**, with composites broken into simple components. **Derived attributes are never stored anywhere** — they are computed on demand, so they belong to no relation.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-043",
+      "topic": "sql-dml",
+      "q": "Which statement about DELETE is TRUE?",
+      "options": [
+        "DELETE FROM Employee; removes all rows but keeps the table structure",
+        "DELETE cannot have a WHERE clause",
+        "DELETE automatically resets identity columns",
+        "DELETE FROM Employee; removes the table itself"
+      ],
+      "answer": 0,
+      "explain": "**DELETE is DML** — it removes **rows**, leaving the table, its columns and constraints intact. **`DROP TABLE`** removes the table itself. Contrast **`TRUNCATE`**: also empties the table but is DDL, is not row-by-row logged, cannot take a `WHERE`, and typically **does** reset identity counters.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-044",
+      "topic": "design-architecture-users",
+      "q": "Why might a company like Netflix rely on distributed databases rather than a centralized one?",
+      "options": [
+        "To reduce the need for user authentication",
+        "To ensure low-latency access and personalized recommendations across global regions",
+        "To simplify billing operations across countries",
+        "To stream videos from a local device instead of the cloud"
+      ],
+      "answer": 1,
+      "explain": "Distributed databases place data **near the users who read it**, cutting latency, and add **replication** for fault tolerance. A single central server would force every request worldwide through one location — the exact problem distribution solves.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-045",
+      "topic": "sql-dml",
+      "q": "Which SELECT returns only distinct **combinations** of emp_name and salary?",
+      "options": [
+        "SELECT emp_name, salary FROM Employee;",
+        "SELECT DISTINCT emp_name, salary FROM Employee;",
+        "SELECT DISTINCT emp_name FROM Employee;",
+        "SELECT emp_name, DISTINCT salary FROM Employee;"
+      ],
+      "answer": 1,
+      "explain": "**`DISTINCT` applies to the entire select list**, not to one column — so `DISTINCT emp_name, salary` de-duplicates **pairs**. Option 4 is a **syntax error**: `DISTINCT` may appear only once, immediately after `SELECT`.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-046",
+      "topic": "sql-constraints",
+      "q": "What is the main difference between ON DELETE CASCADE and ON DELETE SET NULL?",
+      "options": [
+        "Both set the child column to NULL",
+        "CASCADE deletes parent rows, SET NULL deletes child rows",
+        "CASCADE deletes the child rows, SET NULL sets the child's foreign-key column to NULL",
+        "Both delete child rows"
+      ],
+      "answer": 2,
+      "explain": "Both are **referential actions on the child** when a parent is deleted. **CASCADE** removes the child rows; **SET NULL** keeps them but **orphans them by nulling the FK column** — which naturally requires that column to be nullable, so it cannot be used where the FK is `NOT NULL` or part of the primary key.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-047",
+      "topic": "er-cardinality-participation",
+      "q": "In min–max notation (1, N), what does the number 1 represent?",
+      "options": [
+        "Relationship type",
+        "Key attribute",
+        "Maximum participation",
+        "Minimum participation"
+      ],
+      "answer": 3,
+      "explain": "In **(min, max)** the first number is the **minimum** — and `min = 1` means **total participation** (every entity must take part at least once). `min = 0` means partial. The second number caps the **maximum**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-048",
+      "topic": "er-keys-weak-entities",
+      "q": "In an ER model, a weak entity must always have:",
+      "options": [
+        "A partial key (discriminator) and an identifying relationship with its owner",
+        "A composite primary key of its own",
+        "At least one derived attribute",
+        "A multivalued attribute"
+      ],
+      "answer": 0,
+      "explain": "A weak entity has **no key of its own**. It needs a **partial key / discriminator** — unique only among one owner's dependents — plus an **identifying relationship** to the owner, and it has **total participation** in that relationship. In diagrams: double rectangle, double diamond, dashed-underlined partial key.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-049",
+      "topic": "er-keys-weak-entities",
+      "q": "A foreign-key constraint is added to the relational schema of a weak entity set. What is its primary purpose?",
+      "options": [
+        "To define the primary key of the weak entity",
+        "To ensure that for each tuple representing a weak entity there is a corresponding tuple representing the identifying strong entity",
+        "To enforce uniqueness across all attributes in the weak entity's schema",
+        "To establish a many-to-many relationship between the weak and strong entity"
+      ],
+      "answer": 1,
+      "explain": "This is **referential integrity** enforcing the weak entity's **existence dependency** — a dependent cannot exist without its employee. Note the owner's key does double duty: it is **part of** the weak entity's primary key *and* a **foreign key**, but those are two separate constraints, and the FK is the one guaranteeing the owner exists.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-050",
+      "topic": "er-entities-attributes",
+      "q": "Which of the following is an entity with **conceptual** rather than physical existence?",
+      "options": [
+        "A server rack",
+        "A library book",
+        "A university course",
+        "A delivery van"
+      ],
+      "answer": 2,
+      "explain": "A **course** is abstract — you cannot touch it, yet it has identity and attributes. Companies, jobs, projects and reservations are the other standard examples. Both concrete and abstract things serve equally as entities; assuming entities must be physical is a common modelling error.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-051",
+      "topic": "data-abstraction-schema",
+      "q": "A DBA adds an index to speed up a slow report. No application code changes. Which property made this possible?",
+      "options": [
+        "Atomicity",
+        "Entity integrity",
+        "Logical data independence",
+        "Physical data independence"
+      ],
+      "answer": 3,
+      "explain": "An index is a **physical/internal schema** object. Changing it without touching the logical schema or applications is **physical data independence**, delivered by the **conceptual/internal mapping**. Logical independence would be adding or removing a *column* without breaking applications — much harder to achieve.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-052",
+      "topic": "schema-state-three-schema",
+      "q": "You run `INSERT` 500 times, then `ALTER TABLE ... ADD COLUMN`. Which changed the schema, and which changed the state?",
+      "options": [
+        "The INSERTs changed the state; the ALTER changed the schema",
+        "The INSERTs changed the schema; the ALTER changed the state",
+        "Both changed the schema",
+        "Both changed the state"
+      ],
+      "answer": 0,
+      "explain": "**Schema = the design** (≈ variable declarations + types); **state = the data at a moment** (≈ the variables' values). **DML (`INSERT`/`UPDATE`/`DELETE`) changes state**; **DDL (`CREATE`/`ALTER`/`DROP`) changes schema**. Many states correspond to one schema.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-053",
+      "topic": "database-design-phases",
+      "q": "In the database design process, which phase produces a schema that is still **DBMS-independent**?",
+      "options": [
+        "Logical design (data model mapping)",
+        "Conceptual design",
+        "Transaction implementation",
+        "Physical design"
+      ],
+      "answer": 1,
+      "explain": "The dashed line in the design diagram falls **between conceptual and logical design**. The **conceptual schema** (your ER diagram) is DBMS-independent; the **logical schema** is expressed in the data model of a *specific* DBMS. This is what lets you argue about the business without MySQL's limitations entering the discussion.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-054",
+      "topic": "database-design-phases",
+      "q": "Which DBMS module reads the system catalog to choose an efficient execution plan?",
+      "options": [
+        "The pre-compiler",
+        "The DDL compiler",
+        "The query optimizer",
+        "The stored data manager"
+      ],
+      "answer": 2,
+      "explain": "The **DDL compiler writes** metadata into the catalog; the **query optimizer reads** it — statistics, indexes, column types — to pick a plan. That write-once/read-many asymmetry is the **self-describing nature** rendered as a wiring diagram, and it is why a schema change can invalidate a cached plan.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-055",
+      "topic": "er-degree-ternary",
+      "q": "In a `Student —Enrolls— Course` relationship, where does the `Grade` attribute belong?",
+      "options": [
+        "In both Student and Course",
+        "In the Student entity",
+        "In the Course entity",
+        "As a descriptive attribute on the Enrolls relationship"
+      ],
+      "answer": 3,
+      "explain": "A grade only exists **once a student and a course are connected**, so it is a **descriptive attribute** — an oval on the **diamond**. The test: *does the value exist for the entity on its own, or only for the pair?* Same logic puts `hours` on `works_on` and a manager's `start_date` on `manages`.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-056",
+      "topic": "er-relationships-cardinality",
+      "q": "Which relationship requires **explicit role names** in the ER diagram?",
+      "options": [
+        "Course — prereq — Course",
+        "Instructor — advisor — Student",
+        "Employee — works_on — Project",
+        "Student — Enrolls — Course"
+      ],
+      "answer": 0,
+      "explain": "**`prereq` is recursive** — the *same* entity set appears at both ends, so the two lines are indistinguishable without labels like `course_id` and `prereq_id`. The pair `(CS201, CS101)` is meaningless until you know which end is the prerequisite. Roles are optional when the entity sets differ, **mandatory** when they don't.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-057",
+      "topic": "er-to-relational",
+      "q": "A **1:N** relationship between `Department` (one) and `Employee` (many) is reduced to relations. What is the correct result?",
+      "options": [
+        "A new relation holding both primary keys",
+        "The Department key becomes a foreign key in Employee",
+        "The Employee key becomes a foreign key in Department",
+        "Both relations are merged into one"
+      ],
+      "answer": 1,
+      "explain": "For **1:N**, the key of the **'one' side** is posted as a **foreign key on the 'many' side** — each employee stores its single `Dnumber`. No extra table is needed. Only **M:N** requires its own relation; the reverse placement is impossible because a department would need many employee keys in one column.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-058",
+      "topic": "er-key-attributes-null",
+      "q": "An ER diagram shows the `CAR` entity with **two** underlined attributes: `VIN` and `VehicleTagNumber(Number, State)`. What does this mean?",
+      "options": [
+        "The two attributes together form one composite key",
+        "The diagram contains an error — only one key may be underlined",
+        "CAR has two candidate keys; one must be chosen as primary key when reducing to relational",
+        "VIN is the primary key and VehicleTagNumber is a foreign key"
+      ],
+      "answer": 2,
+      "explain": "In an **ER diagram every key is underlined**, so two underlines legitimately mean **two candidate keys**. (In a **relational schema** only the single chosen **primary key** is underlined.) It also shows a key may be **composite** — a plate number alone is not unique across states.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-059",
+      "topic": "database-landscape",
+      "q": "A bank runs two systems: one handles ATM withdrawals; the other analyses five years of transactions to score loan applicants. Which pair correctly labels them?",
+      "options": [
+        "Both are OLAP",
+        "Both are OLTP",
+        "ATM = OLAP, loan scoring = OLTP",
+        "ATM = OLTP, loan scoring = OLAP"
+      ],
+      "answer": 3,
+      "explain": "**OLTP** = many users, **small** reads and writes that must finish in milliseconds — the ATM. **OLAP** = few, **enormous** scans that build predictive models — loan scoring, one of the named examples. The two want opposite physical designs, which is why banks usually run them on separate systems.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u1-mcq-060",
+      "topic": "sql-constraints",
+      "q": "Which constraint pair is required to guarantee **entity integrity** on a table?",
+      "options": [
+        "PRIMARY KEY (which implies UNIQUE + NOT NULL)",
+        "FOREIGN KEY and NOT NULL",
+        "DEFAULT and CHECK",
+        "UNIQUE and CHECK"
+      ],
+      "answer": 0,
+      "explain": "**Entity integrity** = every row is uniquely identifiable, so the primary key must be **unique** *and* **never null** — exactly what `PRIMARY KEY` enforces. A bare `UNIQUE` column still permits NULLs, which is why it alone is not enough. `FOREIGN KEY` provides **referential** integrity, a different guarantee.",
+      "difficulty": "medium",
+      "source": "mcq"
+    }
+  ]
+}

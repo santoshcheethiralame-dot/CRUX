@@ -1,0 +1,847 @@
+{
+  "subject": "dbms",
+  "unit": 4,
+  "title": "Unit 4 — Course MCQ Bank",
+  "items": [
+    {
+      "id": "dbms-u4-mcq-001",
+      "topic": "database-connectivity",
+      "q": "What is the correct order of steps for interacting with a MySQL database in Python?",
+      "options": [
+        "Connect → Execute Query → Create Cursor → Commit → Close",
+        "Create Cursor → Connect → Execute Query → Commit → Close",
+        "Connect → Execute Query → Close → Commit",
+        "Connect → Create Cursor → Execute Query → Commit → Close"
+      ],
+      "answer": 3,
+      "explain": "The **cursor is created from the connection**, so it cannot exist first, and **commit must precede close** — closing a connection with uncommitted work **rolls it back**. Order: `connect()` → `conn.cursor()` → `cursor.execute()` → `conn.commit()` → `close()`.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-002",
+      "topic": "database-connectivity",
+      "q": "Which statement about the cursor object is FALSE?",
+      "options": [
+        "It automatically commits all transactions",
+        "It can be created using conn.cursor()",
+        "It is used to execute SQL statements",
+        "It can fetch rows from a result set"
+      ],
+      "answer": 0,
+      "explain": "**The cursor does not commit** — `commit()` is a method of the **connection**, because a transaction spans the connection, not a single cursor. The connector opens transactions implicitly and leaves autocommit **off** by default, which is why forgetting `conn.commit()` is such a common bug.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-003",
+      "topic": "database-connectivity",
+      "q": "What happens if you forget to call `conn.commit()` after an INSERT?",
+      "options": [
+        "The record is visible to all sessions immediately",
+        "The record is not saved — it is rolled back when the connection closes",
+        "An error occurs immediately",
+        "The record is permanently saved"
+      ],
+      "answer": 1,
+      "explain": "The insert lives only inside the **uncommitted transaction**. Closing the connection **rolls it back**, and no error is raised — which is what makes this failure so confusing: your script runs cleanly and the table stays empty. Meanwhile other sessions never saw the row at all (that would be a **dirty read**).",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-004",
+      "topic": "database-connectivity",
+      "q": "What happens if `cursor.execute()` encounters a syntax error in the SQL query?",
+      "options": [
+        "It ignores the error",
+        "It automatically fixes the query",
+        "It raises an exception of type mysql.connector.Error",
+        "The connection closes silently"
+      ],
+      "answer": 2,
+      "explain": "Errors surface as Python **exceptions** derived from `mysql.connector.Error`, so they belong in a `try/except` block. The connection stays open, letting you roll back and continue.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-005",
+      "topic": "database-connectivity",
+      "q": "Which statement retrieves all rows from a query result?",
+      "options": [
+        "cursor.read()",
+        "cursor.all()",
+        "cursor.readall()",
+        "cursor.fetchall()"
+      ],
+      "answer": 3,
+      "explain": "**`fetchall()`** returns every remaining row as a list of tuples. Companions: **`fetchone()`** for a single row and **`fetchmany(n)`** for a batch — preferable on large result sets, since `fetchall()` loads everything into memory at once.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-006",
+      "topic": "transactions-acid",
+      "q": "Which correctly describes a transaction?",
+      "options": [
+        "A logical unit of work that must be executed entirely or not at all",
+        "Any sequence of SELECT statements",
+        "A background process that maintains indexes",
+        "A single SQL query that retrieves data"
+      ],
+      "answer": 0,
+      "explain": "A **transaction is the unit of atomicity** — a group of operations treated as **all-or-nothing**. It may contain one statement or fifty; what matters is that the DBMS commits or aborts the whole group together.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-007",
+      "topic": "transaction-states",
+      "q": "Which state comes immediately after a transaction completes its final operation but before commit?",
+      "options": [
+        "Aborted",
+        "Partially Committed",
+        "Failed",
+        "Committed"
+      ],
+      "answer": 1,
+      "explain": "The full path is **Active → Partially Committed → Committed**, with **Failed → Aborted** branching off on error. **Partially committed** means all operations are done but the changes are **not yet durable on disk** — a crash here still loses the transaction, which is exactly why the state exists as a separate step.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-008",
+      "topic": "transactions-acid",
+      "q": "Which SQL statement permanently saves the changes made during a transaction?",
+      "options": [
+        "ROLLBACK",
+        "SAVEPOINT",
+        "COMMIT",
+        "END"
+      ],
+      "answer": 2,
+      "explain": "**COMMIT** makes changes **durable** and visible to other transactions. `ROLLBACK` undoes them; `SAVEPOINT` marks an intermediate point you can roll back *to* without discarding the whole transaction.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-009",
+      "topic": "transactions-acid",
+      "q": "Which of the following violates **Consistency** in the ACID properties?",
+      "options": [
+        "A transaction updates multiple related tables but commits only one",
+        "The database recovers automatically after a crash",
+        "Data remains correct and valid after a rollback",
+        "Multiple users read data concurrently"
+      ],
+      "answer": 0,
+      "explain": "**Consistency** means a transaction moves the database from one **valid state to another**, with all constraints and business rules intact. Committing half a related update leaves the database in a state no rule permits — a debit without its matching credit. The other three options describe **durability**, **atomicity** and **isolation** working correctly.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-010",
+      "topic": "transaction-states",
+      "q": "If a system failure occurs before COMMIT is executed, what happens to the transaction?",
+      "options": [
+        "Only its SELECT operations are saved",
+        "Its data remains partially saved",
+        "It is automatically committed",
+        "It is rolled back"
+      ],
+      "answer": 3,
+      "explain": "**Atomicity** guarantees the rollback. On restart the recovery manager reads the **log** and **undoes** every uncommitted transaction, while **redoing** committed ones whose pages had not yet reached disk. Partial effects are precisely what the log exists to eliminate.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-011",
+      "topic": "concurrency-problems",
+      "q": "T1 and T2 both read the same row. T1 updates it from the old value and commits; T2 then updates it using the stale value and commits later. What has occurred?",
+      "options": [
+        "Lost Update",
+        "Dirty Read",
+        "Serialization",
+        "Phantom Read"
+      ],
+      "answer": 0,
+      "explain": "**Lost update** — T2 overwrites T1's committed change because it computed from a value read *before* T1 wrote. **T1's update disappears with no error**. This is the same anomaly as the two bank clerks deducting from one balance.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-012",
+      "topic": "concurrency-problems",
+      "q": "T1 reads a value; before T1 commits, T2 updates and commits that same value; T1 re-reads and sees something different. What is this?",
+      "options": [
+        "Dirty Read",
+        "Non-repeatable Read",
+        "Phantom Read",
+        "Lost Update"
+      ],
+      "answer": 1,
+      "explain": "**Non-repeatable read** — the same query on the **same row** yields different values within one transaction. Distinguish the three carefully: **dirty read** = reading *uncommitted* data; **non-repeatable read** = an existing row's **value** changed; **phantom** = the set of **rows matching a condition** changed.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-013",
+      "topic": "isolation-levels",
+      "q": "Which isolation level guarantees that no phantom rows are read?",
+      "options": [
+        "Repeatable Read",
+        "Read Uncommitted",
+        "Serializable",
+        "Read Committed"
+      ],
+      "answer": 2,
+      "explain": "Only **SERIALIZABLE** prevents all three anomalies in the SQL standard:\n\n| Level | Dirty read | Non-repeatable | Phantom |\n|---|---|---|---|\n| Read Uncommitted | ✔ possible | ✔ | ✔ |\n| Read Committed | ✘ | ✔ | ✔ |\n| Repeatable Read | ✘ | ✘ | ✔ |\n| Serializable | ✘ | ✘ | ✘ |\n\n(In practice MySQL's InnoDB blocks phantoms at Repeatable Read too, via **gap locks** — but the standard answer is Serializable.)",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-014",
+      "topic": "concurrency-problems",
+      "q": "After deploying an e-commerce app, product quantities occasionally go negative during flash sales. What is MOST likely missing?",
+      "options": [
+        "Indexing",
+        "Normalization",
+        "Logging system",
+        "Isolation control mechanism"
+      ],
+      "answer": 3,
+      "explain": "Many buyers read the same stock count simultaneously and each decrements from a **stale** value — a **lost update** driving stock below zero. The fix is **isolation**: appropriate locking (or a `SELECT … FOR UPDATE`) so the read-modify-write is atomic. Indexing and normalization affect speed and structure, not concurrent correctness.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-015",
+      "topic": "isolation-levels",
+      "q": "A mobile banking app must stay correct under heavy concurrent load while maximizing performance. What ensures this?",
+      "options": [
+        "Apply isolation and durability via the concurrency-control and recovery subsystems",
+        "Cache values and update the database later",
+        "Run all transactions serially",
+        "Use volatile memory and defer rollbacks"
+      ],
+      "answer": 0,
+      "explain": "**Concurrency control delivers isolation; the recovery manager delivers durability** — together they keep interleaved execution *equivalent to* some serial order without actually serialising it. Running transactions strictly serially would be correct but would destroy throughput, which is the constraint the question sets.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-016",
+      "topic": "schedules-conflict-serializability",
+      "q": "Which kind of schedule is **always** consistent?",
+      "options": [
+        "View serializable schedules",
+        "Serial schedules",
+        "Cascading schedules",
+        "Non-serial schedules"
+      ],
+      "answer": 1,
+      "explain": "A **serial schedule** runs transactions one after another with no interleaving, so no anomaly is even possible — it is **correct by definition** and serves as the **benchmark**: every other schedule is judged by whether it is *equivalent to* some serial order.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-017",
+      "topic": "precedence-graph",
+      "q": "A precedence graph contains T1 → T2, T2 → T3 and T3 → T1. What does this indicate?",
+      "options": [
+        "The schedule is deadlock-free",
+        "The schedule is conflict serializable",
+        "The graph has a cycle, so the schedule is NOT conflict serializable",
+        "The schedule is view serializable"
+      ],
+      "answer": 2,
+      "explain": "**A cycle means no valid serial order exists** — T1 must precede T2, T2 must precede T3, and T3 must precede T1, which is impossible. The test is exactly this: build the graph, **acyclic ⇒ conflict serializable**, and a topological sort of an acyclic graph gives you the equivalent serial order.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-018",
+      "topic": "lock-based-protocols",
+      "q": "What is the main purpose of using locks in a database system?",
+      "options": [
+        "To automatically commit transactions",
+        "To improve query performance",
+        "To let multiple transactions read and write the same data simultaneously",
+        "To ensure controlled access to data items during concurrent transactions"
+      ],
+      "answer": 3,
+      "explain": "Locks **serialise access to individual data items** so that interleaved transactions cannot corrupt each other. Note that locking **costs** performance rather than improving it — it is a correctness mechanism, and the design challenge is buying correctness with the least concurrency lost.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-019",
+      "topic": "schedules-conflict-serializability",
+      "q": "Schedule S: T1 writes A; then T2 reads A and T3 reads A — all before T1 commits. What is the consequence?",
+      "options": [
+        "If T1 aborts, T2 and T3 must also roll back — a cascading rollback",
+        "A strict schedule makes rollback unnecessary here",
+        "No rollback is needed since T2 and T3 committed",
+        "T1 can recover independently of T2 and T3"
+      ],
+      "answer": 0,
+      "explain": "T2 and T3 performed **dirty reads** of T1's uncommitted value, so aborting T1 forces both of them to abort too — a **cascading rollback**, potentially spreading further. A **cascadeless** schedule prevents this by requiring a transaction to read only **committed** data.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-020",
+      "topic": "schedules-conflict-serializability",
+      "q": "What differentiates **strict** from **cascadeless** schedules?",
+      "options": [
+        "A cascadeless schedule delays both reads and writes",
+        "A strict schedule delays both reads AND writes of a modified item until the writing transaction commits",
+        "Cascadeless schedules are more restrictive than strict schedules",
+        "A strict schedule allows uncommitted reads"
+      ],
+      "answer": 1,
+      "explain": "**Cascadeless** forbids only *reading* uncommitted data. **Strict** forbids both *reading and writing* it — which additionally makes recovery simple, since undo is just restoring the before-image. **Strict ⊂ cascadeless ⊂ recoverable**, so strict is the *more* restrictive of the two.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-021",
+      "topic": "two-phase-locking",
+      "q": "What are the two phases in the Two-Phase Locking (2PL) protocol?",
+      "options": [
+        "Lock phase and deadlock-detection phase",
+        "Reading phase and writing phase",
+        "Growing phase (acquire locks only) and shrinking phase (release locks only)",
+        "Commit phase and rollback phase"
+      ],
+      "answer": 2,
+      "explain": "In the **growing** phase a transaction may only **acquire** locks; once it releases its first lock it enters the **shrinking** phase and may never acquire another. This discipline **guarantees conflict serializability** — but it does not prevent **deadlock**, which is why 2PL is usually paired with a detection or timeout scheme.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-022",
+      "topic": "nosql-cap",
+      "q": "Which best differentiates NoSQL databases from traditional RDBMS?",
+      "options": [
+        "NoSQL databases always require fixed schemas",
+        "NoSQL databases cannot store relationships between data",
+        "NoSQL databases are schema-flexible and horizontally scalable",
+        "NoSQL databases only support structured data"
+      ],
+      "answer": 2,
+      "explain": "The two defining traits are **schema flexibility** (documents in one collection may differ in structure) and **horizontal scalability** (scale by adding commodity nodes rather than a bigger server). Graph databases store relationships as *first-class citizens*, so option 2 is emphatically false.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-023",
+      "topic": "nosql-cap",
+      "q": "Which statement about database **sharding** is TRUE?",
+      "options": [
+        "Sharding is the same as indexing, used to speed up queries within one server",
+        "Sharding always guarantees strong consistency across shards",
+        "Sharding replicates the same data across all nodes for high availability",
+        "Sharding divides a dataset horizontally so each shard stores a subset of the rows"
+      ],
+      "answer": 3,
+      "explain": "**Sharding partitions rows across nodes** by a shard key — each node holds a *different subset*. That is the opposite of **replication**, which puts the *same* data on many nodes. Sharding buys write scalability, but **cross-shard queries and transactions become expensive**, so it certainly does not hand you strong consistency for free.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-024",
+      "topic": "nosql-cap",
+      "q": "In an **eventually consistent** NoSQL system, which is TRUE?",
+      "options": [
+        "All replicas converge to the same value if no new updates occur",
+        "The system guarantees strong consistency",
+        "All nodes always return the latest updated value",
+        "Updates propagate immediately and atomically"
+      ],
+      "answer": 0,
+      "explain": "**Eventual consistency** promises convergence **given a quiet period** — replicas may disagree briefly, but with no new writes they settle on the same value. This is the **AP** corner of the CAP theorem: availability and partition tolerance are kept, immediate consistency is traded away.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-025",
+      "topic": "nosql-cap",
+      "q": "Which statement about **document-oriented** databases is TRUE?",
+      "options": [
+        "Data is stored as rows and columns",
+        "Documents are usually stored in JSON, BSON or XML formats",
+        "Documents require a strict predefined schema",
+        "Document databases cannot handle nested data structures"
+      ],
+      "answer": 1,
+      "explain": "Documents are **self-describing, semi-structured** records in **JSON/BSON/XML**. Nesting is a core strength — an order can embed its line items rather than joining to another table — and no fixed schema is imposed.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-026",
+      "topic": "redis",
+      "q": "Which is an example of a **key-value** store?",
+      "options": [
+        "MongoDB",
+        "Cassandra",
+        "Redis",
+        "Neo4j"
+      ],
+      "answer": 2,
+      "explain": "Map each to its family: **Redis** = key-value, **MongoDB** = document, **Cassandra** = wide-column, **Neo4j** = graph. This four-way mapping is a favourite exam item.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-027",
+      "topic": "redis",
+      "q": "Redis stores data as:",
+      "options": [
+        "XML documents",
+        "Graph nodes and edges",
+        "Tables with rows and columns",
+        "Key-value pairs"
+      ],
+      "answer": 3,
+      "explain": "Redis maps a **key** to a **value**, and because it holds data **in memory** it delivers sub-millisecond access — which is why it dominates caching, session storage and rate limiting.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-028",
+      "topic": "redis",
+      "q": "Which is NOT a native Redis data type?",
+      "options": [
+        "Array",
+        "String",
+        "Hash",
+        "List"
+      ],
+      "answer": 0,
+      "explain": "Redis's native types are **String, List, Set, Sorted Set (ZSet), Hash**, plus Bitmap, HyperLogLog and Stream. There is **no 'Array' type** — an ordered sequence is a **List**. Note the distinction the question is probing: Redis is key-value, but its *values* are richly typed data structures.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-029",
+      "topic": "redis",
+      "q": "Which command sets a key-value pair in Redis?",
+      "options": [
+        "STORE key value",
+        "SET key value",
+        "SAVE key value",
+        "INSERT key value"
+      ],
+      "answer": 1,
+      "explain": "**`SET key value`** writes the pair; **`GET key`** reads it back. (`SAVE` is a real Redis command, but it forces a snapshot of the dataset to disk — unrelated to storing one key.)",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-030",
+      "topic": "redis",
+      "q": "Which command removes a key from Redis?",
+      "options": [
+        "REMOVE key",
+        "DELETE key",
+        "DEL key",
+        "DROP key"
+      ],
+      "answer": 2,
+      "explain": "**`DEL key`** — abbreviated, like most Redis commands (`SET`, `GET`, `INCR`, `EXPIRE`). `DROP` and `DELETE` are SQL verbs and have no meaning here.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-031",
+      "topic": "redis",
+      "q": "What happens when a Redis key with an expiration time (TTL) reaches zero?",
+      "options": [
+        "The key is moved to disk",
+        "The key resets its TTL automatically",
+        "The key's value becomes NULL",
+        "The key is automatically deleted"
+      ],
+      "answer": 3,
+      "explain": "The key is **deleted automatically** and subsequent `GET`s return nil. This is what makes Redis a natural **cache and session store** — entries expire on their own, with no cleanup job. Set it with `EXPIRE key seconds` or `SET key value EX seconds`.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-032",
+      "topic": "neo4j",
+      "q": "Which query language is used in Neo4j?",
+      "options": [
+        "Cypher",
+        "CQL",
+        "SQL",
+        "GraphQL"
+      ],
+      "answer": 0,
+      "explain": "**Cypher** is Neo4j's declarative graph query language. Its syntax draws the pattern you are looking for: **`(node)-[:RELATIONSHIP]->(node)`** — an ASCII-art arrow. Don't confuse it with GraphQL (an API query language) or CQL (Cassandra's).",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-033",
+      "topic": "neo4j",
+      "q": "Which use case is best suited to a graph database like Neo4j?",
+      "options": [
+        "Inventory management",
+        "Social network analysis",
+        "Flat-file storage",
+        "Transactional banking systems"
+      ],
+      "answer": 1,
+      "explain": "Graph databases shine when the **relationships themselves are the data** and queries traverse many hops — *friends of friends of friends*. In SQL that is a self-join per hop, growing painful fast; in a graph it is pointer-following at constant cost per hop. Fraud detection and recommendations have the same shape.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-034",
+      "topic": "neo4j",
+      "q": "In Neo4j, a node has multiple labels `:PERSON:EMPLOYEE:MANAGER`. What does this imply?",
+      "options": [
+        "The node is duplicated in three subgraphs",
+        "It is a syntax error in Cypher",
+        "The node is simultaneously an instance of PERSON and of two of its subtypes",
+        "The node is unrelated to any defined schema"
+      ],
+      "answer": 2,
+      "explain": "**A node may carry any number of labels**, and it is a **single node** belonging to all those categories at once. Labels act as indexable groupings, so `MATCH (n:MANAGER)` finds this node, and so does `MATCH (n:PERSON)`. This naturally expresses generalisation/specialisation without the extra tables an RDBMS would need.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-035",
+      "topic": "neo4j",
+      "q": "Which statement about **paths** in graph theory is TRUE?",
+      "options": [
+        "All paths must start and end at the same node",
+        "Paths always have a fixed length",
+        "A path may include the same node multiple times",
+        "A simple path does not repeat any node or relationship"
+      ],
+      "answer": 3,
+      "explain": "A **simple path** visits no node twice. (A general *walk* may repeat nodes; a path that returns to its start is a **cycle**.) The distinction matters practically — traversals must avoid revisiting nodes or a cyclic graph sends them into an infinite loop.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-036",
+      "topic": "neo4j",
+      "q": "How do you ensure all employees in a Neo4j graph have unique employee IDs?",
+      "options": [
+        "A uniqueness constraint on an indexed property",
+        "Relationship types",
+        "Labels",
+        "Paths"
+      ],
+      "answer": 0,
+      "explain": "Neo4j supports **constraints** — `CREATE CONSTRAINT ... REQUIRE n.empId IS UNIQUE` — which the engine enforces and backs with an index. This is the graph counterpart of a relational `UNIQUE` constraint. Labels merely *group* nodes; they guarantee nothing about property values.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-037",
+      "topic": "neo4j",
+      "q": "Which Cypher query correctly creates a node with a label and a property?",
+      "options": [
+        "INSERT INTO Person (name='John')",
+        "CREATE (n:Person {name:'John'})",
+        "ADD NODE Person name='John'",
+        "SET NODE Person {name:'John'}"
+      ],
+      "answer": 1,
+      "explain": "Cypher's node pattern is **`(variable:Label {property: value})`** — parentheses for the node, a colon for the label, braces for properties. `INSERT INTO` is SQL and has no place in Cypher.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-038",
+      "topic": "neo4j",
+      "q": "Which Cypher clause is used to find patterns in the graph?",
+      "options": [
+        "WHERE",
+        "FIND",
+        "MATCH",
+        "SELECT"
+      ],
+      "answer": 2,
+      "explain": "**`MATCH`** is Cypher's pattern-finding clause — the rough equivalent of SQL's `SELECT ... FROM`. `WHERE` exists in Cypher too, but only to **filter** what `MATCH` has already found.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-039",
+      "topic": "neo4j",
+      "q": "`MATCH (p:Person {name:'Alice'}) RETURN p.age` returns:",
+      "options": [
+        "The number of relationships Alice has",
+        "The label of the node",
+        "All properties of Alice",
+        "The `age` property of Alice"
+      ],
+      "answer": 3,
+      "explain": "The pattern finds the `Person` node whose `name` is `'Alice'`, and **`RETURN p.age`** projects just that one property. Returning **`p`** alone would give the whole node with all its properties — the dot notation is what narrows it.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-040",
+      "topic": "neo4j",
+      "q": "Which query creates a relationship between two existing nodes?",
+      "options": [
+        "MATCH (a:Person), (b:Company) CREATE (a)-[:WORKS_AT]->(b)",
+        "LINK a TO b USING WORKS_AT",
+        "RELATE (a, b, 'WORKS_AT')",
+        "UPDATE RELATION (a,b)"
+      ],
+      "answer": 0,
+      "explain": "You must **`MATCH` the existing nodes first**, then `CREATE` the relationship between the bound variables. The arrow **`-[:TYPE]->`** carries the relationship's type and direction. Using `CREATE` for the nodes as well would make **duplicates** rather than connecting the existing ones.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-041",
+      "topic": "neo4j",
+      "q": "Which query finds the shortest path between nodes A and B connected by FRIENDS_WITH relationships?",
+      "options": [
+        "MATCH (a:Person {name:'A'}), (b:Person {name:'B'}) RETURN path(a,b)",
+        "MATCH p = shortestPath((a:Person {name:'A'})-[:FRIENDS_WITH*]-(b:Person {name:'B'})) RETURN p",
+        "FIND SHORTEST (a,b) USING FRIENDS_WITH",
+        "MATCH (a:Person {name:'A'}), (b:Person {name:'B'}) RETURN allPaths(a,b)"
+      ],
+      "answer": 1,
+      "explain": "**`shortestPath()`** wraps a pattern whose relationship carries **`*`**, meaning a **variable-length** traversal of one or more hops. Assigning it to `p` with `MATCH p = ...` binds the whole path so it can be returned. This 'degrees of separation' query is the canonical demonstration of why graph databases exist.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-042",
+      "topic": "vector-databases",
+      "q": "What is a **vector** in the machine-learning sense?",
+      "options": [
+        "A type of SQL query",
+        "A database table with rows and columns",
+        "An ordered array of numbers where each number describes a feature of a data point",
+        "A programming language for AI applications"
+      ],
+      "answer": 2,
+      "explain": "A vector is a **list of numbers — an embedding — encoding features of an object**. Typical dimensionality runs from a few hundred to a few thousand, and each dimension captures some learned aspect of meaning rather than anything a human named.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-043",
+      "topic": "vector-databases",
+      "q": "What is a **vector database**?",
+      "options": [
+        "A database that uses vector graphics",
+        "A database for storing direction and magnitude values",
+        "A database that stores only numerical data",
+        "A database designed to store and query high-dimensional vectors"
+      ],
+      "answer": 3,
+      "explain": "A vector database stores **high-dimensional embeddings** and retrieves them by **similarity** rather than exact match. That inverts the usual model: a relational index answers *'which row equals X?'*, a vector index answers *'which vectors are nearest to X?'*",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-044",
+      "topic": "vector-databases",
+      "q": "What is the primary purpose of an **embedding model**?",
+      "options": [
+        "To convert complex data such as text, images or video into numerical vectors that retain its important features",
+        "To compress database files",
+        "To store data in relational tables",
+        "To execute SQL queries faster"
+      ],
+      "answer": 0,
+      "explain": "An **embedding model maps unstructured data into vector space** so that **semantically similar items land near each other**. That mapping is what makes similarity search possible at all — the model does the understanding, the database does the retrieval.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-045",
+      "topic": "vector-databases",
+      "q": "What is the purpose of converting text to embeddings?",
+      "options": [
+        "To save storage space",
+        "To make text searchable by **meaning** rather than exact keywords",
+        "To encrypt the text",
+        "To translate the text"
+      ],
+      "answer": 1,
+      "explain": "Embeddings enable **semantic search**: a query for *'car'* can retrieve documents about *'automobile'* or *'vehicle'*, which keyword matching would miss entirely. Note embeddings usually **increase** storage — a short sentence becomes hundreds of floats.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-046",
+      "topic": "vector-databases",
+      "q": "An e-commerce platform finds similar products positioned close together in vector space. What explains this?",
+      "options": [
+        "Distance is determined by product price only",
+        "Products are randomly distributed",
+        "Embeddings numerically capture semantic meaning, so similar objects sit near one another — the closer, the more similar",
+        "Products are arranged alphabetically"
+      ],
+      "answer": 2,
+      "explain": "Embedding models are **trained** so that **geometric proximity encodes semantic similarity**. That single property is what turns 'find similar products' into 'find nearby vectors' — a purely mathematical nearest-neighbour problem the database can index and solve.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-047",
+      "topic": "vector-databases",
+      "q": "In **cosine similarity**, what does a value close to 1 indicate?",
+      "options": [
+        "The vectors have no relationship",
+        "The vectors are completely different",
+        "The vectors are orthogonal",
+        "The angle between the vectors is near zero — high similarity"
+      ],
+      "answer": 3,
+      "explain": "Cosine similarity is $\\cos\\theta = \\frac{A \\cdot B}{\\|A\\| \\|B\\|}$. **1 = same direction** (θ ≈ 0, highly similar), **0 = orthogonal** (unrelated), **−1 = opposite**. Because it measures **angle, not magnitude**, it is the standard metric for text embeddings — document length shouldn't affect topical similarity.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-048",
+      "topic": "vector-databases",
+      "q": "When querying a vector database, the input is usually:",
+      "options": [
+        "Raw text or an image that is first converted into a vector",
+        "A CSV file",
+        "An index key",
+        "An SQL query"
+      ],
+      "answer": 0,
+      "explain": "The query goes through **the same embedding model** used at ingestion — this is essential, since vectors from different models are not comparable. The resulting query vector is then matched against the stored ones by distance.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-049",
+      "topic": "vector-databases",
+      "q": "Vector databases retrieve data primarily by:",
+      "options": [
+        "Sorting alphabetically",
+        "Comparing vector similarity using distance metrics",
+        "Using primary keys",
+        "Using foreign-key relationships"
+      ],
+      "answer": 1,
+      "explain": "Retrieval is **nearest-neighbour search** under a distance metric — **cosine**, Euclidean (L2) or dot product. There is no exact-match key lookup: the answer is a **ranked list of the closest vectors**, usually the top-k.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-050",
+      "topic": "vector-databases",
+      "q": "Which is a common use case for vector databases?",
+      "options": [
+        "Storing customer transaction records",
+        "Managing inventory data",
+        "Similarity search and recommendation systems",
+        "Processing financial calculations"
+      ],
+      "answer": 2,
+      "explain": "**Similarity search, recommendations, semantic search, image retrieval and RAG** (retrieval-augmented generation for LLMs) are the standard applications. Transactions, inventory and financial arithmetic all want **exact values and ACID guarantees** — squarely relational territory.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-051",
+      "topic": "vector-databases",
+      "q": "Why do most RDBMSs now provide a vector extension rather than letting users store embeddings as plain numeric arrays?",
+      "options": [
+        "To prevent users from accessing vector data",
+        "Because numeric arrays cannot store floating-point numbers",
+        "To make the database larger and more complex",
+        "Because searching plain arrays requires computing similarity against every row manually — memory-intensive and slow"
+      ],
+      "answer": 3,
+      "explain": "Stored as a bare array, finding the nearest neighbours means **computing cosine similarity against every single row** — a full scan with heavy arithmetic. A vector extension adds a **specialised index** (HNSW, IVF) so the search visits only a small candidate set. This is the same lesson as ordinary indexing: **the data type is useless without an access method built for the query**.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-052",
+      "topic": "vector-databases",
+      "q": "Why are NoSQL databases like Redis suitable for vector search?",
+      "options": [
+        "They are built for the low-latency reads and writes that real-time, computationally intensive retrieval demands",
+        "They only support structured data with fixed schemas",
+        "They are cheaper than all other database types",
+        "They have stronger ACID guarantees than relational databases"
+      ],
+      "answer": 0,
+      "explain": "Vector search is **compute-heavy and latency-sensitive** — a recommendation must return in milliseconds. Redis is **in-memory** and built for exactly that profile. Note it is *weaker* on ACID than an RDBMS, not stronger; that is part of the trade.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-053",
+      "topic": "vector-databases",
+      "q": "In Redis vector search, what does the **FLAT** indexing method do?",
+      "options": [
+        "Uses a multi-layered graph for fast traversal",
+        "Performs a brute-force search, comparing the query vector against every stored vector",
+        "Only works with text data",
+        "Provides approximate results with 99% accuracy"
+      ],
+      "answer": 1,
+      "explain": "**FLAT is exhaustive** — it compares against every vector, giving **exact** results at O(n) cost. The alternative, **HNSW**, uses a multi-layer proximity graph for **approximate** nearest neighbours: far faster, marginally less accurate. Use FLAT on small datasets or when perfect recall is required.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-054",
+      "topic": "vector-databases",
+      "q": "When creating a Redis vector index, what does `PREFIX 1 user:` specify?",
+      "options": [
+        "Vector dimensions are limited to 1",
+        "Only one user can be indexed at a time",
+        "Only keys beginning with `user:` are included in the index",
+        "The user field must contain exactly one value"
+      ],
+      "answer": 2,
+      "explain": "**`PREFIX <count> <prefix…>`** scopes the index to keys with the given prefix — the `1` is simply **how many prefixes follow**, not a limit on anything. Since Redis keys are conventionally namespaced (`user:1001`, `product:42`), this is how one index is confined to a single entity type.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-055",
+      "topic": "vector-databases",
+      "q": "In a Redis vector search, what is the purpose of the wildcard pattern `*`?",
+      "options": [
+        "To disable vector search and perform text search only",
+        "To limit results to exactly one document",
+        "To search only for users with an asterisk in their names",
+        "To match all documents, since the filtering is done by vector similarity"
+      ],
+      "answer": 3,
+      "explain": "In a hybrid query the pre-filter and the vector clause are separate: **`*`** means *'no metadata filter — consider everything'*, leaving **ranking entirely to vector similarity**. Replacing `*` with a real filter (say `@country:{IN}`) narrows the candidates *before* the nearest-neighbour search runs.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u4-mcq-056",
+      "topic": "vector-databases",
+      "q": "What advantage does a **unified data model** give NoSQL vector search?",
+      "options": [
+        "It stores vector embeddings alongside operational metadata, so one query can filter and rank together",
+        "It prevents filtering by metadata during searches",
+        "It requires separate databases for vectors and business data",
+        "It stores only vectors, without metadata"
+      ],
+      "answer": 0,
+      "explain": "Keeping embeddings **next to** the business fields means a single query can do *'find products similar to this one, **in stock**, **under ₹5000**'* — filter and similarity in one pass. Split across two systems you would have to query each and reconcile the results in application code, adding latency and complexity.",
+      "difficulty": "medium",
+      "source": "mcq"
+    }
+  ]
+}

@@ -1,0 +1,697 @@
+{
+  "subject": "dbms",
+  "unit": 3,
+  "title": "Unit 3 — Course MCQ Bank",
+  "items": [
+    {
+      "id": "dbms-u3-mcq-001",
+      "topic": "functional-dependencies",
+      "q": "A functional dependency X → Y means:",
+      "options": [
+        "Y uniquely determines X",
+        "X uniquely determines Y",
+        "X and Y are independent",
+        "X and Y have the same values"
+      ],
+      "answer": 1,
+      "explain": "**X → Y**: any two tuples agreeing on **X** must agree on **Y**. X is the *determinant*. Note the direction is not symmetric — X → Y says nothing about whether Y → X.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-002",
+      "topic": "functional-dependencies",
+      "q": "If X is a candidate key of relation R, which is true?",
+      "options": [
+        "X → Y holds for no subset Y",
+        "X → R does not necessarily hold",
+        "X → R",
+        "R → X"
+      ],
+      "answer": 2,
+      "explain": "A candidate key **functionally determines every attribute of the relation** — that is what being a key *means*, so **X → R**. The 'candidate' part adds minimality: no proper subset of X also determines R.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-003",
+      "topic": "fd-types",
+      "q": "Which of the following is a **partial** dependency?",
+      "options": [
+        "Ssn → {Pnumber, Hours}",
+        "{Ssn} → {Pnumber, Hours}",
+        "{Ssn, Pnumber} → Hours",
+        "{Ssn, Pnumber} → Ename, where Ssn → Ename also holds"
+      ],
+      "answer": 3,
+      "explain": "A **partial dependency** is a non-prime attribute determined by **part of a composite key**. With key `{Ssn, Pnumber}`, `Ename` really depends on **Ssn alone** — so it is partial, and it violates **2NF**. `Hours` needs *both* key parts, so that one is a full dependency.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-004",
+      "topic": "fd-types",
+      "q": "Which dependency is **trivial**?",
+      "options": [
+        "ABC → BC",
+        "A → C",
+        "A → AB",
+        "A → B"
+      ],
+      "answer": 0,
+      "explain": "An FD X → Y is **trivial** when **Y ⊆ X**. In `ABC → BC`, the right side is contained in the left, so it holds in *every* relation and carries no information. (`A → AB` is not trivial — `B` is not in `{A}`.)",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-005",
+      "topic": "fd-types",
+      "q": "For a relation with attributes (A, B, C, D), which set of FDs indicates a **transitive** dependency?",
+      "options": [
+        "A → B, B → C",
+        "A → C directly",
+        "A → B, C → D",
+        "B → A, A → D"
+      ],
+      "answer": 0,
+      "explain": "A **transitive dependency** is a chain **key → non-prime → non-prime**. With `A` as the key, `A → B → C` makes `C` depend on the key only *through* `B`. That is what **3NF** forbids. (Option 4 has the same shape but `B → A` where A is the key, which is a different situation.)",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-006",
+      "topic": "inference-rules",
+      "q": "According to Armstrong's axioms, which rule states that if Y ⊆ X then X → Y?",
+      "options": [
+        "Transitivity",
+        "Reflexivity",
+        "Decomposition",
+        "Augmentation"
+      ],
+      "answer": 1,
+      "explain": "**Reflexivity** generates exactly the **trivial** dependencies. The three axioms are: **Reflexivity** (Y ⊆ X ⇒ X → Y), **Augmentation** (X → Y ⇒ XZ → YZ), **Transitivity** (X → Y and Y → Z ⇒ X → Z). Union, decomposition and pseudo-transitivity are derived from these.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-007",
+      "topic": "inference-rules",
+      "q": "Which inference rule lets you infer WX → Z from X → Y and WY → Z?",
+      "options": [
+        "Union",
+        "Decomposition",
+        "Pseudo-transitivity",
+        "Augmentation"
+      ],
+      "answer": 2,
+      "explain": "**Pseudo-transitivity**: X → Y and WY → Z ⇒ WX → Z. Intuitively, X supplies Y, and W together with Y supplies Z — so W together with X suffices. It is derivable: augment X → Y with W to get WX → WY, then apply transitivity with WY → Z.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-008",
+      "topic": "inference-rules",
+      "q": "Given F = {A → BC, CD → EF}, which FD can be inferred?",
+      "options": [
+        "CD → B",
+        "EF → CD",
+        "A → EF",
+        "AD → F"
+      ],
+      "answer": 3,
+      "explain": "Compute **{AD}⁺**: start {A, D} → `A → BC` adds B, C → now {A, B, C, D} contains both C and D, so `CD → EF` adds E, F → **{A, B, C, D, E, F}**. F is present, so **AD → F** holds. `A⁺` is only {A, B, C} — without D the second FD never fires, so `A → EF` fails.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-009",
+      "topic": "inference-rules",
+      "q": "R(A, B, C, D, E, F) with F = {A → BC, B → E, CD → EF}. Which FD can be inferred?",
+      "options": [
+        "AD → F",
+        "CD → A",
+        "B → C",
+        "A → F"
+      ],
+      "answer": 0,
+      "explain": "**{AD}⁺** = {A, D} → +BC → {A, B, C, D} → `B → E` adds E → `CD → EF` adds F → **all six attributes**, so `AD → F` holds. Check the others: `A⁺` = {A, B, C, E} (no F), `{CD}⁺` = {C, D, E, F} (no A), and `B⁺` = {B, E} (no C).",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-010",
+      "topic": "decomposition-lossless-join",
+      "q": "Which property ensures that no information is lost when a relation is decomposed into two relations?",
+      "options": [
+        "Dependency preservation",
+        "Lossless join property",
+        "Transitive property",
+        "Augmentation rule"
+      ],
+      "answer": 1,
+      "explain": "**Lossless join** (non-additive join): re-joining the fragments returns **exactly** the original relation — no spurious extra tuples. For a binary decomposition into R₁ and R₂ the test is simple: **R₁ ∩ R₂ must be a superkey of R₁ or of R₂**. Dependency preservation is the *other*, independent goal.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-011",
+      "topic": "closure",
+      "q": "The closure of a set of functional dependencies F, written F⁺, is:",
+      "options": [
+        "The set of all trivial dependencies",
+        "The set of all dependencies in F only",
+        "The set of all dependencies logically implied by F",
+        "The set of all candidate keys"
+      ],
+      "answer": 2,
+      "explain": "**F⁺ is everything F entails**, obtained by applying Armstrong's axioms until nothing new appears. Distinguish it from **X⁺** (*attribute* closure) — the set of attributes determined by X. F⁺ is usually huge; X⁺ is what you actually compute by hand.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-012",
+      "topic": "closure",
+      "q": "If A → B and B → H, which dependency holds?",
+      "options": [
+        "H → A",
+        "B → A",
+        "A → A only",
+        "A → H"
+      ],
+      "answer": 3,
+      "explain": "**Transitivity** gives **A → H**. The reverse directions (`H → A`, `B → A`) do *not* follow — functional dependency is **not symmetric**, and assuming it is causes more normalization errors than any other single mistake.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-013",
+      "topic": "closure",
+      "q": "R(A, B, C, G, H, I) with F = {A → B, A → C, CG → H, CG → I, B → H}. Which is implied by F?",
+      "options": [
+        "A → H",
+        "C → I",
+        "G → I",
+        "A → G"
+      ],
+      "answer": 0,
+      "explain": "**A⁺** = {A} → `A → B`, `A → C` add B, C → `B → H` adds H → **{A, B, C, H}**. So **A → H** holds. The others fail: `C⁺` = {C} and `G⁺` = {G}, because **`CG → I` needs C *and* G together** — a composite left side never fires on half its attributes.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-014",
+      "topic": "closure",
+      "q": "In the algorithm for computing X⁺ under F, what condition adds new attributes to X⁺?",
+      "options": [
+        "If Z ⊆ X for some FD Y → Z",
+        "If there is an FD Y → Z with Y ⊆ X⁺, then add Z to X⁺",
+        "If there is an FD Y → Z with Z ⊆ X⁺, then add Y to X⁺",
+        "If X⁺ ⊆ Y for some FD Y → Z"
+      ],
+      "answer": 1,
+      "explain": "Repeat until nothing changes: **if the whole left side of an FD is already inside X⁺, add its right side**. Two traps — the left side must be **fully** contained (a composite LHS needs *all* its attributes), and you must **re-scan every FD after each addition**, since a newly added attribute can unlock earlier ones.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-015",
+      "topic": "closure",
+      "q": "Given F = {AB → CD, AF → D, DE → F, C → G, F → E, G → A}, what is **{AF}⁺**?",
+      "options": [
+        "{A, B, C, D, F}",
+        "{A, F}",
+        "{A, D, E, F}",
+        "{A, C, D, E, F, G}"
+      ],
+      "answer": 2,
+      "explain": "Start **{A, F}** → `AF → D` adds **D** → `F → E` adds **E** → now {A, D, E, F}. Check the rest: `DE → F` (F already there), `AB → CD` needs **B** — absent, `C → G` needs **C** — absent, `G → A` needs **G** — absent. Nothing more fires, so **{AF}⁺ = {A, D, E, F}**. Since it misses B, C and G, AF is **not** a key.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-016",
+      "topic": "closure",
+      "q": "Given F = {AB → CD, AF → D, DE → F, C → G, F → E, G → A}, what is **{BG}⁺**?",
+      "options": [
+        "{A, B, C, D, E, F, G}",
+        "{B, C, G}",
+        "{B, G}",
+        "{A, B, C, D, G}"
+      ],
+      "answer": 3,
+      "explain": "Start **{B, G}** → `G → A` adds **A** → now A and B are both present so `AB → CD` adds **C, D** → `C → G` (already there). `DE → F` needs **E** — absent; `F → E` needs F — absent. Result: **{A, B, C, D, G}**.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-017",
+      "topic": "equivalence",
+      "q": "What does it mean when we say that F **covers** G?",
+      "options": [
+        "Every FD in G can be inferred from F",
+        "F and G have the same number of FDs",
+        "F and G are unrelated",
+        "Every FD in F can be inferred from G"
+      ],
+      "answer": 0,
+      "explain": "**F covers G** ⟺ **G ⊆ F⁺** — F is strong enough to derive everything G says. Note the direction carefully; it is the reverse of what the wording suggests to many students. The number of FDs is irrelevant: a two-FD set can cover a ten-FD set.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-018",
+      "topic": "equivalence",
+      "q": "To determine whether F covers G, you must:",
+      "options": [
+        "Compute the closure of all attributes in F",
+        "For each FD X → Y in G, compute X⁺ under F and check that Y ⊆ X⁺",
+        "Compare the number of dependencies in F and G",
+        "Decompose all FDs into canonical form first"
+      ],
+      "answer": 1,
+      "explain": "For **every** FD in G, compute the left side's closure **using F**, and confirm the right side is inside it. If even one fails, F does not cover G. You never need to build F⁺ itself — attribute closure is the practical tool.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-019",
+      "topic": "equivalence",
+      "q": "Two sets of functional dependencies F and G are **equivalent** if:",
+      "options": [
+        "F covers G only",
+        "G covers F only",
+        "F covers G AND G covers F (equivalently, F⁺ = G⁺)",
+        "They contain the same number of FDs"
+      ],
+      "answer": 2,
+      "explain": "Equivalence requires **coverage in both directions**, which is the same as saying **F⁺ = G⁺** — the two sets constrain the data identically even if they look nothing alike. One-directional coverage is strictly weaker.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-020",
+      "topic": "equivalence",
+      "q": "FD1 = {A → B, B → C, AB → D} and FD2 = {A → B, B → C, A → C, A → D}. What is their relationship?",
+      "options": [
+        "FD1 covers FD2 only",
+        "FD2 covers FD1 only",
+        "They are equivalent — FD1⁺ = FD2⁺",
+        "Neither covers the other"
+      ],
+      "answer": 2,
+      "explain": "**FD1 covers FD2:** under FD1, `A⁺` = {A, B, C, D} (A→B, B→C, then AB→D fires since A and B are both present) — so `A → C` and `A → D` both hold. **FD2 covers FD1:** under FD2, `{AB}⁺` = {A, B, C, D}, so `AB → D` holds. Both directions succeed, so they are **equivalent**.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-021",
+      "topic": "equivalence",
+      "q": "F = {A → C, AC → D, E → AD, E → H} and G = {A → CD, E → AH}. Which is true?",
+      "options": [
+        "F covers G only",
+        "G covers F only",
+        "F and G are equivalent",
+        "Neither covers the other"
+      ],
+      "answer": 2,
+      "explain": "**F ⊨ G:** `A⁺` under F = {A, C, D} ⊇ {C, D} ✓; `E⁺` under F = {E, A, D, H, C} ⊇ {A, H} ✓. **G ⊨ F:** `A⁺` under G = {A, C, D} covers `A → C` and `AC → D` ✓; `E⁺` under G = {E, A, H, C, D} covers `E → AD` and `E → H` ✓. Both ways hold, so **F = G**.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-022",
+      "topic": "minimal-cover",
+      "q": "What is a **minimal cover** of a set of functional dependencies?",
+      "options": [
+        "A set where all attributes are superkeys",
+        "A set that contains redundant attributes",
+        "A set of dependencies with multiple attributes on the RHS",
+        "A minimal set of dependencies equivalent to the original set"
+      ],
+      "answer": 3,
+      "explain": "A **minimal (canonical) cover** is the smallest FD set with the **same closure** as the original — no redundant FDs, no extraneous left-side attributes, single attribute on each right side. It is the standard preprocessing step before **3NF synthesis**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-023",
+      "topic": "minimal-cover",
+      "q": "Which is NOT a property of a minimal cover?",
+      "options": [
+        "Every dependency has a single attribute on the RHS",
+        "No functional dependency can be removed without changing the closure",
+        "No attribute can be removed from a LHS without changing the closure",
+        "All dependencies must have more than one attribute on the LHS"
+      ],
+      "answer": 3,
+      "explain": "There is **no requirement about the size of the left side** — minimality *shrinks* left sides where possible, so single-attribute LHSs are common and perfectly valid. The other three are exactly the three conditions: singleton RHS, no redundant FD, no extraneous LHS attribute.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-024",
+      "topic": "minimal-cover",
+      "q": "For E = {B → A, D → A, AB → D}, which dependency turns out to be redundant in the minimal cover?",
+      "options": [
+        "B → A",
+        "D → A",
+        "AB → D",
+        "None of them"
+      ],
+      "answer": 0,
+      "explain": "First reduce the left side of `AB → D`: since **B → A**, `B⁺` = {A, B} already contains A, so **A is extraneous** and the FD becomes **B → D**. Now re-test `B → A` for redundancy: without it, `B⁺` = {B} → `B → D` adds D → `D → A` adds **A**. It is derivable, so **B → A is redundant**. Minimal cover: **{B → D, D → A}**.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-025",
+      "topic": "minimal-cover",
+      "q": "In F = {A → C, AB → C, C → D, CD → I, EC → AB, EI → C}, which FD is redundant?",
+      "options": [
+        "C → D",
+        "AB → C",
+        "EC → AB",
+        "EI → C"
+      ],
+      "answer": 1,
+      "explain": "**`AB → C` is implied by `A → C`** — augment `A → C` with B to get `AB → BC`, then decompose. Equivalently, `{AB}⁺` computed **without** `AB → C` still contains C. The others are each the sole source of their right-hand attributes: drop `EI → C` and `{EI}⁺` = {E, I}, with no way to reach C.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-026",
+      "topic": "candidate-keys",
+      "q": "For R(A, B, C, D, E, F) with F = {C → F, E → A, EC → D, A → B}, what is the only candidate key?",
+      "options": [
+        "AC",
+        "CD",
+        "EC",
+        "AE"
+      ],
+      "answer": 2,
+      "explain": "**Attributes appearing on no right-hand side must be in every key.** RHS attributes here are {F, A, D, B}, so **C and E** appear nowhere on the right and must be in the key. Test `{EC}⁺`: {C, E} → +F (C→F) → +A (E→A) → +D (EC→D) → +B (A→B) = **all six attributes**. Since {C, E} alone suffices, **EC is the unique candidate key**.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-027",
+      "topic": "first-second-normal-form",
+      "q": "What is the main goal of normalization?",
+      "options": [
+        "To improve indexing speed",
+        "To store data in nested form",
+        "To increase redundancy for faster access",
+        "To reduce redundancy and eliminate insertion, update and deletion anomalies"
+      ],
+      "answer": 3,
+      "explain": "Normalization removes **redundancy** and with it the three **anomalies**: *insertion* (cannot record a department without an employee), *update* (change a fact in one row but not its copies), *deletion* (removing the last employee erases the department). It is a **correctness** technique, not a performance one.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-028",
+      "topic": "first-second-normal-form",
+      "q": "Which is true for a relation in **First Normal Form (1NF)**?",
+      "options": [
+        "Every attribute contains only atomic (indivisible) values",
+        "It must be in 3NF first",
+        "It allows multi-valued attributes",
+        "It allows nested relations"
+      ],
+      "answer": 0,
+      "explain": "**1NF demands atomic values** — no repeating groups, no sets inside a cell, no nested relations. This is why a multivalued ER attribute such as `Color` must become its **own relation** during reduction; leaving it as a comma-separated list breaks 1NF.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-029",
+      "topic": "first-second-normal-form",
+      "q": "Which correctly describes **Second Normal Form (2NF)**?",
+      "options": [
+        "Every attribute is a foreign key",
+        "Every non-prime attribute is fully functionally dependent on every candidate key",
+        "Every attribute is atomic",
+        "No attribute depends transitively on the key"
+      ],
+      "answer": 1,
+      "explain": "**2NF = 1NF + no partial dependencies** — no non-prime attribute may depend on only *part* of a composite key. Corollary worth remembering: **if every candidate key is a single attribute, the relation is automatically in 2NF**, because there is no 'part of a key' to depend on.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-030",
+      "topic": "first-second-normal-form",
+      "q": "R(SSN, PNUMBER, HOURS, ENAME) with {SSN, PNUMBER} → HOURS and SSN → ENAME. Which is correct?",
+      "options": [
+        "R is in 1NF only",
+        "R is in 2NF but not 3NF",
+        "R is not in 2NF because of a partial dependency",
+        "R is in 3NF"
+      ],
+      "answer": 2,
+      "explain": "The key is **{SSN, PNUMBER}**, so `ENAME` is non-prime — yet it depends on **SSN alone**, half the key. That is a **partial dependency**, so R is **1NF but not 2NF**. The fix is to split: `WORKS_ON(SSN, PNUMBER, HOURS)` and `EMPLOYEE(SSN, ENAME)`.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-031",
+      "topic": "third-normal-form",
+      "q": "R(A, B, C) with FDs {A → B, B → C}. Which is true?",
+      "options": [
+        "R is in 3NF",
+        "R is not normalized",
+        "R is in 1NF only",
+        "R is in 2NF but not in 3NF"
+      ],
+      "answer": 3,
+      "explain": "The only candidate key is **A** (`A⁺` = {A, B, C}). Because the key is a **single attribute**, no partial dependency is possible → **2NF holds**. But `B → C` with B non-prime is a **transitive dependency** (A → B → C) → **3NF fails**. Highest normal form: **2NF**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-032",
+      "topic": "third-normal-form",
+      "q": "Which is a violation of 3NF?",
+      "options": [
+        "A non-prime attribute depending on a candidate key",
+        "A non-prime attribute depending on another non-prime attribute (transitive dependency)",
+        "A prime attribute depending on a superkey",
+        "A trivial functional dependency"
+      ],
+      "answer": 1,
+      "explain": "**3NF forbids transitive dependencies**: for every non-trivial X → A, either **X is a superkey** or **A is prime**. A non-prime attribute determined by another non-prime attribute satisfies neither escape clause. Option 1 is exactly what a well-normalized relation *should* look like.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-033",
+      "topic": "bcnf",
+      "q": "In BCNF, if a non-trivial functional dependency X → A holds in R, then:",
+      "options": [
+        "X must be a candidate key",
+        "X must be a superkey",
+        "A must be a prime attribute",
+        "None of the above"
+      ],
+      "answer": 1,
+      "explain": "**BCNF: every determinant must be a superkey.** 'Superkey' rather than 'candidate key' is the precise wording — a candidate key with extra attributes attached is still a superkey and still fine. **BCNF is 3NF minus the 'or A is prime' escape clause**, which is exactly why it is stricter.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-034",
+      "topic": "bcnf",
+      "q": "TEACH(student, course, instructor) with {student, course} → instructor and instructor → course. Which normal form does it satisfy?",
+      "options": [
+        "3NF but not BCNF",
+        "BCNF",
+        "1NF only",
+        "2NF only"
+      ],
+      "answer": 0,
+      "explain": "Candidate keys are **{student, course}** and **{student, instructor}** — so **all three attributes are prime**, and with no non-prime attributes at all, 2NF and 3NF hold automatically. But **`instructor → course` has a determinant that is not a superkey**, so **BCNF fails**. This is the textbook case where 3NF and BCNF diverge — and where a BCNF decomposition would **lose** the dependency `{student, course} → instructor`.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-035",
+      "topic": "higher-normal-forms",
+      "q": "A relation schema R is in **4NF** if:",
+      "options": [
+        "Every non-prime attribute depends only on the primary key",
+        "For every non-trivial multivalued dependency X ↠ Y, X is a superkey",
+        "Every functional dependency has X as a superkey",
+        "There are no transitive dependencies"
+      ],
+      "answer": 1,
+      "explain": "**4NF** extends BCNF's rule from functional to **multivalued** dependencies: every non-trivial **X ↠ Y** must have **X as a superkey**. Option 3 is BCNF's condition — 4NF is the same shape of rule applied to MVDs.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-036",
+      "topic": "higher-normal-forms",
+      "q": "A multivalued dependency X ↠ Y in R is **trivial** if:",
+      "options": [
+        "Y ⊆ X",
+        "X ∪ Y = R",
+        "Either Y ⊆ X or X ∪ Y = R",
+        "Neither condition"
+      ],
+      "answer": 2,
+      "explain": "**Both** conditions make an MVD trivial — either the right side is contained in the left, **or** together they exhaust the relation's attributes. A trivial MVD holds in every instance, so 4NF only constrains the **non-trivial** ones.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-037",
+      "topic": "higher-normal-forms",
+      "q": "EMP(Ename, Pname, Dname) with MVDs Ename ↠ Pname and Ename ↠ Dname. Which is correct?",
+      "options": [
+        "EMP is in 3NF but not BCNF",
+        "EMP is in BCNF but not 4NF",
+        "EMP is in 4NF",
+        "EMP is in 5NF"
+      ],
+      "answer": 1,
+      "explain": "The only key is **all three attributes**, and there are no non-trivial *functional* dependencies — so **BCNF holds vacuously**. But `Ename ↠ Pname` is a **non-trivial MVD whose determinant is not a superkey**, so **4NF fails**. The symptom is the classic one: independent projects and dependents get multiplied together, forcing a row for every combination.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-038",
+      "topic": "higher-normal-forms",
+      "q": "Which statement about the normal-form hierarchy is TRUE?",
+      "options": [
+        "Every relation in 3NF is in 4NF",
+        "Every relation in BCNF is in 4NF",
+        "Every relation in 4NF is in BCNF",
+        "Every relation in 1NF is in 2NF"
+      ],
+      "answer": 2,
+      "explain": "The hierarchy is **strictly nested downward**: 1NF ⊃ 2NF ⊃ 3NF ⊃ BCNF ⊃ 4NF ⊃ 5NF. So a **higher** form implies all lower ones — 4NF ⇒ BCNF. The reverse never holds: the EMP example above is in BCNF but **not** 4NF.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-039",
+      "topic": "higher-normal-forms",
+      "q": "Which statement about **5NF** is correct?",
+      "options": [
+        "An MVD is a special case of a join dependency into three parts",
+        "Discovering join dependencies in large databases is straightforward",
+        "5NF is the normal form most commonly enforced in practice",
+        "A relation is in 5NF if every non-trivial join dependency has each Ri as a superkey"
+      ],
+      "answer": 3,
+      "explain": "**5NF (project-join normal form)** requires every non-trivial **join dependency** to be implied by the candidate keys — each component Rᵢ being a superkey. An **MVD is the special case of a JD with *two* components**, not three. And JDs are notoriously **hard to discover**, which is why 5NF is rarely enforced in practice — most designs stop at 3NF or BCNF.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-040",
+      "topic": "query-optimization",
+      "q": "The main goal of query optimization is to:",
+      "options": [
+        "Find the most efficient query-evaluation plan",
+        "Reduce the size of the query text",
+        "Simplify the relational schema",
+        "Minimize data redundancy"
+      ],
+      "answer": 0,
+      "explain": "SQL is **declarative** — you state *what* you want, not *how*. Many equivalent execution plans exist, and the optimizer's job is to pick the **cheapest** using catalog statistics. Redundancy and schema simplification are **normalization** concerns, a different topic entirely.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-041",
+      "topic": "query-optimization",
+      "q": "The EXPLAIN statement in MySQL is used to:",
+      "options": [
+        "Display the query result set",
+        "Show how MySQL plans to execute a query",
+        "Create a view of the query",
+        "Execute a query faster"
+      ],
+      "answer": 1,
+      "explain": "**EXPLAIN reveals the execution plan** — join order, access method per table, which index (if any) is chosen, and estimated row counts. It does **not run** the query. (`EXPLAIN ANALYZE` does run it and reports actual timings.)",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-042",
+      "topic": "query-optimization",
+      "q": "Which value in EXPLAIN output indicates a potential performance problem?",
+      "options": [
+        "type = const",
+        "select_type = SIMPLE",
+        "type = ALL",
+        "key = PRIMARY"
+      ],
+      "answer": 2,
+      "explain": "**`type = ALL` means a full table scan** — every row is read because no usable index exists. The access types run roughly best-to-worst: `const` → `eq_ref` → `ref` → `range` → `index` → **`ALL`**. Seeing `ALL` on a large table is the classic signal that an index is missing.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-043",
+      "topic": "query-optimization",
+      "q": "Which optimization technique divides a table by rows or columns to improve performance?",
+      "options": [
+        "Batch processing",
+        "Parallel execution",
+        "Query rewrite",
+        "Partitioning"
+      ],
+      "answer": 3,
+      "explain": "**Partitioning** splits one logical table into physical pieces — **horizontal** (by rows, e.g. one partition per year) or **vertical** (by columns). The payoff is **partition pruning**: a query filtered to 2024 touches only that partition and skips the rest.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-044",
+      "topic": "query-optimization",
+      "q": "Replacing correlated subqueries with joins is beneficial because:",
+      "options": [
+        "A join is evaluated as a single set-based operation, while a correlated subquery re-executes per outer row",
+        "Joins require fewer indexes",
+        "Joins always use less memory",
+        "Joins execute subqueries in parallel"
+      ],
+      "answer": 0,
+      "explain": "A correlated subquery is conceptually a **nested loop** — re-evaluated for **every** outer row. Rewritten as a join, the optimizer can choose a **hash or merge join** and process the whole set at once. Note 'always' claims are wrong: a hash join may well use *more* memory, it is simply faster.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-045",
+      "topic": "query-processing",
+      "q": "What are the three main steps of query processing?",
+      "options": [
+        "Compilation → linking → execution",
+        "Parsing and translation → optimization → evaluation",
+        "Indexing → sorting → joining",
+        "Normalization → decomposition → reconstruction"
+      ],
+      "answer": 1,
+      "explain": "**Parsing and translation** turns SQL into a relational-algebra expression (checking syntax and catalog references), **optimization** picks the cheapest equivalent evaluation plan, and **evaluation** runs it against the stored data. Query optimization matters because the cost gap between the best and worst plans for one query can be orders of magnitude.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u3-mcq-046",
+      "topic": "design-guidelines",
+      "q": "A relation stores `Dname` alongside every employee row, repeated for all employees of a department. Which anomaly appears when the last employee of a department is deleted?",
+      "options": [
+        "Insertion anomaly",
+        "Update anomaly",
+        "Deletion anomaly",
+        "No anomaly — the design is fine"
+      ],
+      "answer": 2,
+      "explain": "**Deletion anomaly** — removing that final employee row erases the **only record that the department exists**. The same design also produces an *insertion* anomaly (you cannot register a new department before hiring someone) and an *update* anomaly (renaming a department means editing every one of its employee rows). All three come from one cause: **two independent facts crammed into one relation**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    }
+  ]
+}

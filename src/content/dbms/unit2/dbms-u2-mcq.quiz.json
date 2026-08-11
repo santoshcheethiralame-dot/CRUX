@@ -1,0 +1,1132 @@
+{
+  "subject": "dbms",
+  "unit": 2,
+  "title": "Unit 2 — Course MCQ Bank",
+  "items": [
+    {
+      "id": "dbms-u2-mcq-001",
+      "topic": "additional-sql-operations",
+      "q": "Which SQL clause specifies the columns to be retrieved from a table?",
+      "options": [
+        "FROM",
+        "SELECT",
+        "GROUP BY",
+        "WHERE"
+      ],
+      "answer": 1,
+      "explain": "**SELECT** names the columns (the *projection*). `FROM` names the source tables, `WHERE` filters rows, `GROUP BY` partitions them. Note the mismatch worth remembering: SELECT is written **first** but evaluated **almost last**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-002",
+      "topic": "grouping-having",
+      "q": "Which SQL clause filters records **after** they have been grouped?",
+      "options": [
+        "DISTINCT",
+        "WHERE",
+        "HAVING",
+        "ORDER BY"
+      ],
+      "answer": 2,
+      "explain": "**HAVING** filters **groups** after aggregation — so it may reference aggregates like `COUNT(*) > 10`. **WHERE** filters **individual rows before** grouping and cannot see aggregates. That before/after split is the single most examined fact about grouping.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-003",
+      "topic": "additional-sql-operations",
+      "q": "Which statement returns all **unique** department names from `employees`?",
+      "options": [
+        "SELECT department FROM employees;",
+        "SELECT UNIQUE department FROM employees;",
+        "SELECT DISTINCT department FROM employees;",
+        "SELECT department, DISTINCT FROM employees;"
+      ],
+      "answer": 2,
+      "explain": "**`DISTINCT`** removes duplicate rows from the result. `UNIQUE` is a *constraint* keyword, not a select-list keyword (legacy Oracle accepted `SELECT UNIQUE`, but standard SQL does not), and option 4 is a syntax error.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-004",
+      "topic": "grouping-having",
+      "q": "`SELECT department, COUNT(*) FROM employees WHERE salary > 50000 GROUP BY department HAVING COUNT(*) > 10 ORDER BY COUNT(*) DESC;` — which statement is true?",
+      "options": [
+        "The ORDER BY clause must appear before GROUP BY",
+        "The WHERE clause filters groups after aggregation",
+        "The HAVING clause filters rows before grouping",
+        "The HAVING clause filters groups after aggregation"
+      ],
+      "answer": 3,
+      "explain": "Trace it: **WHERE** discards employees earning ≤ 50000 (rows, before grouping) → **GROUP BY** forms one group per department → **HAVING** discards groups with 10 or fewer such employees → **ORDER BY** sorts last. So the query means *'departments with more than 10 employees earning over 50000'*.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-005",
+      "topic": "additional-sql-operations",
+      "q": "Which statement retrieves employee names starting with 'A' in the Sales department, sorted ascending by name?",
+      "options": [
+        "SELECT name FROM employees WHERE name LIKE 'A%' AND department = 'Sales' ORDER BY name ASC;",
+        "SELECT DISTINCT name FROM employees HAVING name LIKE 'A%' AND department = 'Sales' GROUP BY name;",
+        "SELECT name FROM employees GROUP BY name ASC WHERE name LIKE 'A%' AND department = 'Sales';",
+        "SELECT name FROM employees WHERE department = 'Sales' AND name = 'A%' ORDER BY name;"
+      ],
+      "answer": 0,
+      "explain": "Two errors to spot in the distractors: pattern matching needs **`LIKE`**, not `=` (option 4 looks for the literal string `A%`), and the clause order is fixed — **`SELECT … FROM … WHERE … GROUP BY … HAVING … ORDER BY`**. Options 2 and 3 misplace `HAVING` and `WHERE`.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-006",
+      "topic": "set-operations",
+      "q": "Which SQL set operator removes duplicates while combining the results of two SELECT statements?",
+      "options": [
+        "UNION",
+        "INTERSECT",
+        "EXCEPT",
+        "UNION ALL"
+      ],
+      "answer": 0,
+      "explain": "**UNION** concatenates both result sets **and de-duplicates**. `UNION ALL` keeps every row including duplicates — and is therefore **faster**, because de-duplication requires a sort or hash.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-007",
+      "topic": "set-operations",
+      "q": "What is the difference between UNION and UNION ALL?",
+      "options": [
+        "UNION ALL removes duplicates, while UNION keeps all rows",
+        "UNION removes duplicates, while UNION ALL keeps all rows",
+        "Both remove duplicates",
+        "Both keep all rows"
+      ],
+      "answer": 1,
+      "explain": "**UNION de-duplicates; UNION ALL does not.** Prefer `UNION ALL` when you know the inputs are already disjoint — you skip the sort/hash pass and the query runs measurably faster.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-008",
+      "topic": "set-operations",
+      "q": "Which SQL operator returns only the rows common to both SELECT statements?",
+      "options": [
+        "UNION",
+        "EXCEPT",
+        "INTERSECT",
+        "JOIN"
+      ],
+      "answer": 2,
+      "explain": "**INTERSECT** returns rows appearing in **both** results. A `JOIN` also finds matches but works **column-wise across tables**, producing a combined wider row; `INTERSECT` compares **entire rows** of two union-compatible result sets.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-009",
+      "topic": "set-operations",
+      "q": "`SELECT city FROM customers EXCEPT SELECT city FROM suppliers;` returns:",
+      "options": [
+        "All cities from both customers and suppliers",
+        "Cities that appear in both customers and suppliers",
+        "Cities that appear only in suppliers",
+        "Cities that appear in customers but not in suppliers"
+      ],
+      "answer": 3,
+      "explain": "**EXCEPT** (called **MINUS** in Oracle) is set difference: everything in the **first** result that is not in the second. It is **not commutative** — swapping the two SELECTs gives supplier-only cities instead.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-010",
+      "topic": "null-values",
+      "q": "Which statement about NULL and UNKNOWN is true?",
+      "options": [
+        "IS UNKNOWN checks whether a logical expression's result is unknown",
+        "IS NOT NULL returns TRUE only if a column contains NULL",
+        "NULL = NULL evaluates to TRUE",
+        "IS NULL checks whether a value is equal to an empty string"
+      ],
+      "answer": 0,
+      "explain": "SQL uses **three-valued logic**: TRUE, FALSE, **UNKNOWN**. Any comparison with NULL — including `NULL = NULL` — yields **UNKNOWN**, not TRUE, which is exactly why **`IS NULL`** exists. `IS UNKNOWN` tests the *result of a predicate*. And NULL is **not** the empty string: `''` is a real zero-length value.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-011",
+      "topic": "aggregate-functions",
+      "q": "Which function counts the number of rows in a table, including duplicates and rows with NULLs?",
+      "options": [
+        "COUNT(DISTINCT column_name)",
+        "COUNT(*)",
+        "SUM()",
+        "COUNT(column_name)"
+      ],
+      "answer": 1,
+      "explain": "**`COUNT(*)` counts rows**, full stop — it never inspects values, so NULLs and duplicates are included. **`COUNT(column)` skips NULLs in that column**, and `COUNT(DISTINCT column)` also removes duplicates. A `COUNT(*)` vs `COUNT(col)` gap is a quick way to spot how many NULLs a column has.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-012",
+      "topic": "aggregate-functions",
+      "q": "When AVG() or SUM() is applied to a column containing NULLs, what happens?",
+      "options": [
+        "NULL values are treated as zeros",
+        "NULL values are included in the calculation",
+        "NULL values are discarded before the calculation",
+        "The function returns an error"
+      ],
+      "answer": 2,
+      "explain": "**Aggregates ignore NULLs.** This matters most for **`AVG`**: it divides by the count of **non-null** values, so it is *not* the same as `SUM(col)/COUNT(*)`. Treating NULL as zero would silently drag the average down — which is precisely what SQL avoids.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-013",
+      "topic": "grouping-having",
+      "q": "Which statement about the GROUP BY clause is true?",
+      "options": [
+        "It can only be used together with an aggregate function",
+        "It must always be followed by a HAVING clause",
+        "It can include attributes that are not in the SELECT clause",
+        "It partitions the result into groups based on the given attributes"
+      ],
+      "answer": 3,
+      "explain": "**GROUP BY partitions rows into groups**, one per distinct combination of the grouping attributes. You *may* group by a column you do not select, `HAVING` is optional, and `GROUP BY` without any aggregate is legal — it behaves like `DISTINCT`. The reverse rule is the strict one: **every non-aggregated column in SELECT must appear in GROUP BY**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-014",
+      "topic": "grouping-having",
+      "q": "What is the correct order of **execution** for these SQL clauses?",
+      "options": [
+        "WHERE → GROUP BY → HAVING → SELECT",
+        "SELECT → WHERE → GROUP BY → HAVING",
+        "HAVING → GROUP BY → WHERE → SELECT",
+        "GROUP BY → WHERE → HAVING → SELECT"
+      ],
+      "answer": 0,
+      "explain": "Logical evaluation order: **FROM → WHERE → GROUP BY → HAVING → SELECT → DISTINCT → ORDER BY → LIMIT**. Two consequences fall straight out: `WHERE` cannot reference an aggregate (groups do not exist yet), and `WHERE` cannot use a **SELECT alias** (the select list has not been evaluated) — but `ORDER BY` can.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-015",
+      "topic": "grouping-having",
+      "q": "`SELECT Dno, COUNT(*) FROM EMPLOYEE WHERE Salary > 40000 GROUP BY Dno HAVING COUNT(*) > 2;` returns:",
+      "options": [
+        "Departments with more than two employees",
+        "Departments where more than two employees earn above 40,000",
+        "Departments with employees earning above 40,000",
+        "All departments in which total salary exceeds 40,000"
+      ],
+      "answer": 1,
+      "explain": "The `WHERE` restricts the population to high earners **before** grouping, so `COUNT(*)` counts **only those** employees per department, and `HAVING` keeps departments where that count exceeds two. Option 1 would need the `WHERE` removed; option 4 would need `SUM(Salary)`.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-016",
+      "topic": "join-expressions",
+      "q": "Which join combines two tables on columns with the same name and datatype, **without** specifying a join condition?",
+      "options": [
+        "CROSS JOIN",
+        "NATURAL JOIN",
+        "INNER JOIN",
+        "OUTER JOIN"
+      ],
+      "answer": 1,
+      "explain": "**NATURAL JOIN** infers the condition from **all commonly-named columns** and equates them implicitly. Convenient, but fragile: adding an unrelated same-named column later (say `created_at` to both tables) **silently changes the join condition** and the result.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-017",
+      "topic": "join-expressions",
+      "q": "What is the difference between a NATURAL JOIN and an INNER JOIN?",
+      "options": [
+        "INNER JOIN removes duplicates, while NATURAL JOIN keeps them",
+        "A NATURAL JOIN requires a join condition, while an INNER JOIN does not",
+        "A NATURAL JOIN automatically matches columns with the same name, while an INNER JOIN requires an explicit join condition",
+        "They always return the same results"
+      ],
+      "answer": 2,
+      "explain": "**NATURAL JOIN infers** the condition from same-named columns and **collapses each shared column to one** in the output. **INNER JOIN** needs an explicit `ON` (or `USING`) and keeps both copies unless you say otherwise.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-018",
+      "topic": "join-expressions",
+      "q": "What is the default join type when only the keyword `JOIN` is used?",
+      "options": [
+        "CROSS JOIN",
+        "LEFT OUTER JOIN",
+        "NATURAL JOIN",
+        "INNER JOIN"
+      ],
+      "answer": 3,
+      "explain": "Bare **`JOIN` means `INNER JOIN`**. Likewise `LEFT JOIN`, `RIGHT JOIN` and `FULL JOIN` are shorthand for their `OUTER` forms — `OUTER` is the optional word there, `INNER` is the implied one here.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-019",
+      "topic": "join-expressions",
+      "q": "`SELECT e.Employee_Name, d.Department_Name FROM Employee e INNER JOIN Department d ON e.Department_ID = d.Department_ID;` — will an employee with a NULL Department_ID appear?",
+      "options": [
+        "No, because INNER JOIN returns only rows satisfying the join condition",
+        "Yes, because NATURAL JOIN includes all records",
+        "Yes, because NULL values are treated as matches",
+        "Yes, because INNER JOIN includes all records from both tables"
+      ],
+      "answer": 0,
+      "explain": "**No.** `NULL = anything` evaluates to **UNKNOWN**, never TRUE, so the row satisfies no join condition and an INNER JOIN drops it. To keep such employees, use a **LEFT OUTER JOIN**, which preserves unmatched left rows and pads the right side with NULLs.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-020",
+      "topic": "join-expressions",
+      "q": "Which statement about NATURAL JOIN is FALSE?",
+      "options": [
+        "It automatically matches columns with the same name and datatype",
+        "It is possible to perform a NATURAL JOIN on more than two tables",
+        "The ON clause must be used to specify the join condition",
+        "Duplicate columns with the same name appear only once in the result"
+      ],
+      "answer": 2,
+      "explain": "The whole point of NATURAL JOIN is that **no `ON` clause is used** — the condition is inferred. The other three statements are all true, including the column-collapsing behaviour that distinguishes its output from an equivalent INNER JOIN.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-021",
+      "topic": "join-expressions",
+      "q": "Which join returns all records from the left table and only matching records from the right?",
+      "options": [
+        "FULL OUTER JOIN",
+        "LEFT OUTER JOIN",
+        "CROSS JOIN",
+        "RIGHT OUTER JOIN"
+      ],
+      "answer": 1,
+      "explain": "**LEFT OUTER JOIN** keeps **every left row**, attaching matching right rows where they exist and **NULLs where they do not**. It is the standard way to ask *'…including those with none'* — all customers including those with no orders.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-022",
+      "topic": "join-expressions",
+      "q": "What happens to unmatched rows from the **right** table in a LEFT OUTER JOIN?",
+      "options": [
+        "They are discarded",
+        "They are included with NULLs for left-table columns",
+        "They are included with NULLs for right-table columns",
+        "They are combined using a UNION operation"
+      ],
+      "answer": 0,
+      "explain": "A LEFT join preserves the **left** side only — unmatched **right** rows are **dropped**. Option 3 describes what happens to unmatched *left* rows (they appear, padded with NULLs on the right); option 2 describes a RIGHT join's behaviour.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-023",
+      "topic": "join-expressions",
+      "q": "Which statement about RIGHT OUTER JOIN is correct?",
+      "options": [
+        "It is not supported in SQL",
+        "It retrieves all rows from the left table and only matching rows from the right",
+        "It retrieves all rows from the right table and only matching rows from the left",
+        "It performs the same operation as a CROSS JOIN"
+      ],
+      "answer": 2,
+      "explain": "**RIGHT OUTER JOIN preserves the right table.** It is the exact mirror of LEFT, and `A RIGHT JOIN B` ≡ `B LEFT JOIN A` — which is why many teams standardise on LEFT joins for readability.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-024",
+      "topic": "join-expressions",
+      "q": "MySQL does not support FULL OUTER JOIN directly. How is it implemented?",
+      "options": [
+        "Using INTERSECT between LEFT and RIGHT JOIN results",
+        "By combining NATURAL JOIN and INNER JOIN results",
+        "Using a CROSS JOIN followed by DISTINCT",
+        "Using UNION of a LEFT OUTER JOIN and a RIGHT OUTER JOIN"
+      ],
+      "answer": 3,
+      "explain": "**`LEFT JOIN … UNION … RIGHT JOIN`** reproduces a FULL OUTER JOIN. Use **`UNION`** (not `UNION ALL`) — the inner-matching rows appear in both halves and must be de-duplicated.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-025",
+      "topic": "join-expressions",
+      "q": "If `loan` has 8 rows and `borrower` has 7 rows, how many rows does `SELECT * FROM loan CROSS JOIN borrower;` return?",
+      "options": [
+        "56",
+        "64",
+        "8",
+        "15"
+      ],
+      "answer": 0,
+      "explain": "A **CROSS JOIN is the Cartesian product**: every left row paired with every right row, so **8 × 7 = 56**. (15 is the sum — the trap for anyone thinking of a union.) An accidental Cartesian product from a forgotten join condition is a classic cause of runaway queries.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-026",
+      "topic": "nested-subqueries",
+      "q": "What is a nested query in SQL?",
+      "options": [
+        "A query that joins multiple tables",
+        "A query that contains another query inside it",
+        "A query that only uses aggregate functions",
+        "A query executed without a WHERE clause"
+      ],
+      "answer": 1,
+      "explain": "A **nested (sub)query** is a complete `SELECT` embedded inside another statement — typically in `WHERE`, but also in `FROM` (a derived table) or the select list. The inner query's result feeds the outer one.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-027",
+      "topic": "nested-subqueries",
+      "q": "`SELECT Ename FROM EMPLOYEE WHERE Dno IN (SELECT Dnumber FROM DEPARTMENT WHERE Dlocation = 'Dallas');` returns:",
+      "options": [
+        "Names of employees without any department",
+        "Names of employees who work in any department",
+        "Names of employees whose department is located in Dallas",
+        "Names of employees who earn the highest salary"
+      ],
+      "answer": 2,
+      "explain": "The subquery produces the set of Dallas department numbers; **`IN`** then keeps employees whose `Dno` is a member. This is an **uncorrelated** subquery — it does not reference the outer query, so it can be evaluated **once** and reused.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-028",
+      "topic": "nested-subqueries",
+      "q": "`SELECT Lname, Fname FROM EMPLOYEE WHERE Salary > ALL (SELECT Salary FROM EMPLOYEE WHERE Dno = 5);` returns:",
+      "options": [
+        "Employees who work in department 5",
+        "Employees who earn more than at least one employee in department 5",
+        "Employees who earn less than all employees in department 5",
+        "Employees who earn more than every employee in department 5"
+      ],
+      "answer": 3,
+      "explain": "**`> ALL`** means greater than **every** value returned — equivalent to `> MAX(...)`. Contrast **`> ANY`** (or `> SOME`), which means greater than **at least one**, i.e. `> MIN(...)`. Mixing up ALL and ANY is the intended trap.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-029",
+      "topic": "correlated-subqueries-exists",
+      "q": "Which keyword tests for the existence of rows returned by a subquery?",
+      "options": [
+        "EXISTS",
+        "ALL",
+        "ANY",
+        "IN"
+      ],
+      "answer": 0,
+      "explain": "**`EXISTS`** returns TRUE as soon as the subquery yields **at least one row** — it cares only about existence, never about values. That is why `SELECT 1` is the idiomatic body: what you select is irrelevant.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-030",
+      "topic": "correlated-subqueries-exists",
+      "q": "What is true about correlated subqueries?",
+      "options": [
+        "They execute independently of the outer query",
+        "They reference columns from the outer query and execute once for each outer row",
+        "They can be used only with aggregate functions",
+        "They execute only once for the entire main query"
+      ],
+      "answer": 1,
+      "explain": "A **correlated** subquery references an outer column, so it must be **re-evaluated for every candidate outer row** — conceptually a nested loop. That is its power and its cost, and the reason optimisers try to rewrite correlated subqueries as joins.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-031",
+      "topic": "correlated-subqueries-exists",
+      "q": "Which statement is true about a correlated nested query?",
+      "options": [
+        "It is executed only once before the outer query",
+        "It does not depend on the outer query for its values",
+        "It is executed once for every row processed by the outer query",
+        "It must always use the EXISTS operator"
+      ],
+      "answer": 2,
+      "explain": "**Once per outer row** — that is the defining behaviour. `EXISTS` is *commonly* paired with correlation but is not required; correlated subqueries also appear with `IN`, comparison operators, and in select lists.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-032",
+      "topic": "correlated-subqueries-exists",
+      "q": "`SELECT e.name FROM employees e WHERE EXISTS (SELECT 1 FROM departments d WHERE d.manager_id = e.emp_id);` returns:",
+      "options": [
+        "Names of all employees who do not manage any department",
+        "Names of employees who belong to departments with no manager",
+        "Names of all employees",
+        "Names of employees who manage at least one department"
+      ],
+      "answer": 3,
+      "explain": "For each employee, the correlated subquery asks *'is there a department whose manager is this person?'* — `EXISTS` keeps those where the answer is yes, i.e. **employees who manage at least one department**. The `SELECT 1` is a convention: `EXISTS` ignores the projected values entirely.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-033",
+      "topic": "correlated-subqueries-exists",
+      "q": "Which query finds customers who have **not** placed any orders?",
+      "options": [
+        "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id);",
+        "SELECT c.customer_id FROM customers c WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id);",
+        "SELECT c.customer_id FROM customers c WHERE c.customer_id IN (SELECT o.customer_id FROM orders o);",
+        "None of the above"
+      ],
+      "answer": 1,
+      "explain": "**`NOT EXISTS`** is the standard 'find the absence' idiom. Options 1 and 3 both find customers who *have* ordered. A practical note: `NOT EXISTS` is safer than `NOT IN` here, because **`NOT IN` returns no rows at all if the subquery yields even one NULL** — a notorious three-valued-logic trap.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-034",
+      "topic": "correlated-subqueries-exists",
+      "q": "What is the main difference between EXISTS and IN?",
+      "options": [
+        "EXISTS compares values, while IN checks for existence of rows",
+        "EXISTS stops as soon as a match is found, while IN evaluates the full list or subquery result",
+        "IN is faster than EXISTS in correlated queries",
+        "They are completely interchangeable"
+      ],
+      "answer": 1,
+      "explain": "**`EXISTS` short-circuits** on the first matching row; **`IN`** materialises the value list and compares against it. They also differ on NULLs — `NOT IN` misbehaves when the list contains NULL, while `NOT EXISTS` does not. Option 1 states the roles backwards.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-035",
+      "topic": "correlated-subqueries-exists",
+      "q": "How is the SQL `UNIQUE` predicate correctly used to test that no two departments share a manager?",
+      "options": [
+        "SELECT manager_id FROM departments WHERE UNIQUE (manager_id);",
+        "SELECT manager_id FROM departments WHERE manager_id IS UNIQUE;",
+        "SELECT manager_id FROM departments d WHERE UNIQUE (SELECT manager_id FROM departments WHERE manager_id = d.manager_id);",
+        "UNIQUE cannot be applied to a bare column — it is a predicate that takes a subquery"
+      ],
+      "answer": 3,
+      "explain": "The SQL **`UNIQUE` predicate takes a subquery** and is TRUE when that subquery returns **no duplicate rows** — it is not a column test, so options 1 and 2 are invalid syntax. Option 3 has the right *shape* (a correlated `UNIQUE (subquery)`), which is why the precise statement of the rule is the better answer. In practice most engines omit the predicate entirely and people write `GROUP BY manager_id HAVING COUNT(*) = 1`.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-036",
+      "topic": "additional-sql-operations",
+      "q": "What does the SQL `NOT LIKE` operator do?",
+      "options": [
+        "Filters rows NOT matching a pattern",
+        "Joins tables",
+        "Groups rows by a column",
+        "Filters rows matching a pattern"
+      ],
+      "answer": 0,
+      "explain": "**`NOT LIKE`** is the negation of `LIKE` — it keeps rows whose value **fails** to match the pattern. Watch for NULLs: if the column is NULL, both `LIKE` and `NOT LIKE` evaluate to **UNKNOWN**, so the row is excluded either way.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-037",
+      "topic": "additional-sql-operations",
+      "q": "Which SQL clause is `NOT LIKE` normally used in?",
+      "options": [
+        "FROM",
+        "WHERE",
+        "GROUP BY",
+        "HAVING"
+      ],
+      "answer": 1,
+      "explain": "`NOT LIKE` is a **row predicate**, so it belongs in **`WHERE`** (it may also appear in `HAVING` when filtering a grouped column, but row-level filtering is its normal home).",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-038",
+      "topic": "additional-sql-operations",
+      "q": "Which wildcard represents **zero or more** characters in a LIKE pattern?",
+      "options": [
+        "*",
+        "_",
+        "%",
+        "#"
+      ],
+      "answer": 2,
+      "explain": "**`%`** matches **zero or more** characters; **`_`** matches **exactly one**. (`*` is the wildcard in shell globbing and in `SELECT *`, but not inside `LIKE` — a frequent confusion.)",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-039",
+      "topic": "additional-sql-operations",
+      "q": "How do you exclude records where the **second** character of `code` is 'X'?",
+      "options": [
+        "WHERE code LIKE '_X%'",
+        "WHERE code NOT LIKE 'X_%'",
+        "WHERE code NOT LIKE '__X%'",
+        "WHERE code NOT LIKE '_X%'"
+      ],
+      "answer": 3,
+      "explain": "**`'_X%'`** = one arbitrary character, then a literal `X`, then anything — so `X` sits in **position 2**. Count the underscores: `'__X%'` puts X third, and `'X_%'` puts it first.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-040",
+      "topic": "additional-sql-operations",
+      "q": "`SELECT * FROM employees WHERE email NOT LIKE '%@example.com'` returns:",
+      "options": [
+        "Employees whose email does not end in @example.com",
+        "Employees with @example.com anywhere in the email",
+        "Employees with no email address",
+        "Employees with emails ending in @example.com"
+      ],
+      "answer": 0,
+      "explain": "`'%@example.com'` anchors the pattern at the **end** (`%` only precedes it), so `NOT LIKE` keeps addresses **not ending** with that domain. Note it will **not** return employees whose email is **NULL** — for those the predicate is UNKNOWN. You would need `OR email IS NULL`.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-041",
+      "topic": "views",
+      "q": "Which statement about views is TRUE?",
+      "options": [
+        "A view physically stores data in the database",
+        "A view can combine data from multiple tables and present it as one",
+        "A view can only be created on a single table",
+        "A view requires manual synchronization with its base table"
+      ],
+      "answer": 1,
+      "explain": "A view is a **stored query, not stored data** — its rows are **computed on demand** from the base tables, so it is always current and needs no synchronisation. It may join any number of tables and is a standard way to hide join complexity.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-042",
+      "topic": "views",
+      "q": "Which is NOT an advantage of using views?",
+      "options": [
+        "Views help simplify complex queries",
+        "Views can hide sensitive data from unauthorized users",
+        "Views increase physical storage requirements significantly",
+        "Views provide logical data independence"
+      ],
+      "answer": 2,
+      "explain": "A standard view stores **only its definition**, so storage cost is negligible — this is the false statement. (A **materialized view** *does* store results, trading storage and staleness for speed, but that is a different object.)",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-043",
+      "topic": "views",
+      "q": "Which correctly describes a **disadvantage** of views?",
+      "options": [
+        "You can always perform DML even if the view is marked READ ONLY",
+        "You can create a view using temporary tables",
+        "You can easily insert data through any view regardless of base-table constraints",
+        "You cannot insert or update if the view contains aggregate functions or GROUP BY"
+      ],
+      "answer": 3,
+      "explain": "A view is **updatable only if each result row maps unambiguously back to exactly one base row**. **Aggregates, `GROUP BY`, `DISTINCT`, `UNION` and most joins break that mapping** — there is no single row to update — so the view becomes read-only.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-044",
+      "topic": "cte-recursive",
+      "q": "What is the difference between a view and a CTE?",
+      "options": [
+        "A view is a stored, reusable database object; a CTE exists only for the duration of the single query that defines it",
+        "They are identical in usage and persistence",
+        "Both are permanently stored database objects",
+        "A CTE is stored permanently, whereas a view is temporary"
+      ],
+      "answer": 0,
+      "explain": "A **view** is a schema object created with `CREATE VIEW` and reusable by any query. A **CTE** is declared with `WITH` at the top of one statement and **vanishes when that statement finishes**. Use a view for shared logic, a CTE for readability inside one query — and CTEs additionally support **recursion**, which views do not.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-045",
+      "topic": "users-roles-privileges",
+      "q": "Which correctly distinguishes roles and users in SQL?",
+      "options": [
+        "A user is a group of roles assigned to a database",
+        "A role is a named collection of privileges that can be granted to users",
+        "Roles and users cannot be related to privileges",
+        "Privileges can only be granted directly to users, not roles"
+      ],
+      "answer": 1,
+      "explain": "A **role bundles privileges** under a name; granting the role to a user confers all of them at once. This is what makes access control maintainable — change the role's privileges and every holder updates, instead of re-granting to a hundred accounts individually.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-046",
+      "topic": "triggers",
+      "q": "What is a trigger in SQL?",
+      "options": [
+        "A type of constraint",
+        "A database index used for faster queries",
+        "A statement the system executes automatically as a side effect of a modification to the database",
+        "A user-defined function"
+      ],
+      "answer": 2,
+      "explain": "A **trigger** is procedural code the DBMS fires **automatically** in response to a data modification. The defining property is that **nobody calls it** — that is what separates it from a function or procedure.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-047",
+      "topic": "triggers",
+      "q": "Which statement about triggers is true?",
+      "options": [
+        "Triggers are used only to improve performance",
+        "Triggers cannot access the old or new values of a record",
+        "Triggers are executed manually by the user",
+        "A trigger can be fired by INSERT, UPDATE or DELETE operations"
+      ],
+      "answer": 3,
+      "explain": "Triggers fire on **DML events** — `INSERT`, `UPDATE`, `DELETE`. They very much *can* see the affected values, through the **`OLD`** and **`NEW`** pseudo-records (`NEW` on insert, `OLD` on delete, both on update), which is what makes auditing and validation triggers possible.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-048",
+      "topic": "triggers",
+      "q": "What is the difference between a BEFORE trigger and an AFTER trigger?",
+      "options": [
+        "BEFORE executes before the DML event, AFTER executes after it",
+        "BEFORE executes after the DML event, AFTER executes before it",
+        "Both execute at the same time",
+        "Only BEFORE triggers can be used with DELETE"
+      ],
+      "answer": 0,
+      "explain": "**BEFORE** runs prior to the row change — so it can **modify `NEW` values or reject the operation**, making it the right choice for validation and normalisation. **AFTER** runs once the change is applied and the row is known-good — the right choice for **audit logging and cascading updates**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-049",
+      "topic": "triggers",
+      "q": "Which is an example of a **row-level** trigger?",
+      "options": [
+        "A trigger that fires once per statement, regardless of rows affected",
+        "A trigger that fires once for every row affected by an INSERT, UPDATE or DELETE",
+        "A trigger that executes only when a column is renamed",
+        "A trigger that monitors schema-level changes"
+      ],
+      "answer": 1,
+      "explain": "**FOR EACH ROW** = row-level: an `UPDATE` touching 500 rows fires it **500 times**, and each firing sees that row's `OLD`/`NEW`. A **statement-level** trigger fires **once** for the whole statement and cannot see individual rows.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-050",
+      "topic": "triggers",
+      "q": "Which statement about the limitations of triggers is correct?",
+      "options": [
+        "Triggers can accept parameters directly from a user",
+        "Triggers can be explicitly executed using EXECUTE TRIGGER",
+        "Too many triggers can cause performance issues and make debugging difficult",
+        "Triggers can completely replace stored procedures"
+      ],
+      "answer": 2,
+      "explain": "Triggers run **invisibly**, so a slow `INSERT` may have its real cost hidden in a trigger, and one trigger firing another produces **cascades that are painful to trace**. They take **no parameters** and **cannot be invoked manually** — those two facts rule out options 1 and 2.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-051",
+      "topic": "functions-procedures",
+      "q": "What is the main purpose of creating a function in SQL?",
+      "options": [
+        "To schedule database backups",
+        "To store large amounts of data permanently",
+        "To encapsulate reusable logic that returns a value and can be called inside queries",
+        "To modify the database schema automatically"
+      ],
+      "answer": 2,
+      "explain": "A stored **function returns a single value** and can therefore be used **inside expressions** — in `SELECT`, `WHERE`, `ORDER BY`. That callable-in-a-query property is the practical difference from a **procedure**, which is invoked with `CALL` and cannot appear in an expression.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-052",
+      "topic": "functions-procedures",
+      "q": "Which statement about parameters in functions is true?",
+      "options": [
+        "Parameters must always be integers",
+        "A function cannot accept any parameters",
+        "A function must accept at least one parameter",
+        "A function can have none, one, or many parameters declared in parentheses"
+      ],
+      "answer": 3,
+      "explain": "Parameter lists are **optional and unbounded** — `CREATE FUNCTION f() RETURNS INT` is perfectly legal, as is a function with several typed parameters. Note that in MySQL, **function parameters are always input-only**; `OUT`/`INOUT` belong to procedures.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-053",
+      "topic": "functions-procedures",
+      "q": "What is a **deterministic** function?",
+      "options": [
+        "One that always returns the same result for the same input values",
+        "One that can only be used in stored procedures",
+        "There is no such distinction in MySQL",
+        "One that returns different results for the same input"
+      ],
+      "answer": 0,
+      "explain": "**Deterministic = same input always gives same output** (`CONCAT`, arithmetic). **Non-deterministic** functions depend on outside state — `NOW()`, `RAND()`, `UUID()`. The distinction is not academic: MySQL requires the `DETERMINISTIC` declaration for binary logging safety, and only deterministic expressions can be indexed or cached.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-054",
+      "topic": "functions-procedures",
+      "q": "Which is the correct general syntax to create a function?",
+      "options": [
+        "CREATE FUNCTION function_name RETURNS data_type;",
+        "CREATE FUNCTION name(parameter_list) RETURNS data_type BEGIN statements; RETURN value; END;",
+        "MAKE FUNCTION function_name(parameter_list) RETURN value;",
+        "DEFINE FUNCTION function_name RETURNS value;"
+      ],
+      "answer": 1,
+      "explain": "A function needs **a name, a parameter list, a declared `RETURNS` type, and a body that actually executes `RETURN`**. Option 1 declares a return type but has no body; `MAKE` and `DEFINE` are not SQL keywords.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-055",
+      "topic": "functions-procedures",
+      "q": "How do you delete a function in MySQL?",
+      "options": [
+        "REMOVE FUNCTION function_name;",
+        "DROP FUNCTION IF EXISTS function_name;",
+        "You must delete the schema before deleting the function",
+        "You cannot delete a function once created"
+      ],
+      "answer": 1,
+      "explain": "**`DROP`** is SQL's universal delete-an-object verb — `DROP TABLE`, `DROP VIEW`, `DROP FUNCTION`. **`IF EXISTS`** makes the statement safe to re-run in a script by suppressing the error when the object is already gone.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-056",
+      "topic": "functions-procedures",
+      "q": "What is a stored procedure?",
+      "options": [
+        "A command to optimize database performance",
+        "A trigger that runs automatically on data change",
+        "A precompiled set of SQL statements stored in the database and invoked by name",
+        "A constraint used to maintain data integrity"
+      ],
+      "answer": 2,
+      "explain": "A **stored procedure** is named, parameterised SQL held **in the database** and executed with **`CALL`**. Because it lives server-side it cuts network round-trips, centralises business logic, and can be granted as a unit — users may be allowed to run it without direct table privileges.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-057",
+      "topic": "functions-procedures",
+      "q": "Which is the correct syntax to create a procedure with a parameter in MySQL?",
+      "options": [
+        "CREATE PROCEDURE proc_name(parameter) BEGIN statements; END;",
+        "CREATE FUNCTION proc_name(parameter) BEGIN statements; END;",
+        "CREATE PROCEDURE proc_name AS parameter BEGIN statements; END;",
+        "DEFINE PROCEDURE proc_name(parameter) BEGIN statements; END;"
+      ],
+      "answer": 0,
+      "explain": "**`CREATE PROCEDURE name(params) BEGIN … END`**. Option 2 creates a *function* — and would be invalid anyway, since a function requires a `RETURNS` clause a procedure must not have.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-058",
+      "topic": "functions-procedures",
+      "q": "Which statement about **IN** parameters is true?",
+      "options": [
+        "IN parameters are optional and used only in triggers",
+        "IN parameters can only accept integer values",
+        "IN parameters can be modified and the new value returned to the caller",
+        "IN parameters pass values into a procedure; changes inside are not returned to the caller"
+      ],
+      "answer": 3,
+      "explain": "**`IN` is pass-by-value and the default mode.** You may assign to the parameter inside the procedure, but the change is **local** — the caller's variable is untouched. To send a value back you need `OUT` or `INOUT`.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-059",
+      "topic": "functions-procedures",
+      "q": "Which correctly describes an **OUT** parameter?",
+      "options": [
+        "It returns a value from the procedure back to the caller",
+        "It can only be used in functions, not procedures",
+        "It is used only for inserting data",
+        "It passes a value from the caller into the procedure"
+      ],
+      "answer": 0,
+      "explain": "**`OUT` carries a value outward.** It arrives **initialised to NULL** regardless of what the caller's variable held — the procedure is expected to assign it. This is how a procedure returns results, since unlike a function it has no `RETURN` value.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-060",
+      "topic": "functions-procedures",
+      "q": "What is an **INOUT** parameter?",
+      "options": [
+        "It cannot be used with numeric datatypes",
+        "It allows data to flow both into and out of the procedure",
+        "It behaves exactly like an IN parameter",
+        "It behaves exactly like an OUT parameter"
+      ],
+      "answer": 1,
+      "explain": "**`INOUT` is bidirectional** — the caller's value is visible on entry (unlike `OUT`, which starts NULL) **and** any modification is written back on exit (unlike `IN`). Use it for accumulate-and-return patterns such as a running counter.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-061",
+      "topic": "cte-recursive",
+      "q": "What is the primary purpose of a Common Table Expression (CTE)?",
+      "options": [
+        "To control user permissions",
+        "To permanently store data",
+        "To simplify complex queries by defining temporary named result sets",
+        "To create indexes"
+      ],
+      "answer": 2,
+      "explain": "A **CTE** (`WITH name AS (...)`) gives a subquery a **name**, letting you build a query in readable stages and reference the same intermediate result more than once — instead of nesting derived tables several levels deep.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-062",
+      "topic": "cte-recursive",
+      "q": "What are the two main parts of a **recursive** CTE?",
+      "options": [
+        "HAVING clause and GROUP BY clause",
+        "FROM clause and WHERE clause",
+        "SELECT and INSERT",
+        "Anchor member and recursive member"
+      ],
+      "answer": 3,
+      "explain": "The **anchor member** is the non-recursive seed (the base case); the **recursive member** references the CTE itself and is repeatedly applied to the previous result. They are joined by **`UNION ALL`**, and the recursion stops when the recursive member returns no new rows.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-063",
+      "topic": "cte-recursive",
+      "q": "`WITH RECURSIVE Countdown(n) AS (SELECT 5 UNION ALL SELECT n - 1 FROM Countdown WHERE n > 1) SELECT n FROM Countdown;` — what does this produce?",
+      "options": [
+        "Counts downwards from 5 to 1",
+        "Random numbers",
+        "Only the value 5",
+        "Counts upwards from 1 to 5"
+      ],
+      "answer": 0,
+      "explain": "Anchor gives **5**; the recursive member subtracts 1 while `n > 1`, yielding 4, 3, 2, 1 — so **5, 4, 3, 2, 1**. When n reaches 1 the `WHERE n > 1` guard fails, no new row is produced, and recursion terminates. **Without that guard the query would loop forever** — every recursive CTE needs a terminating condition.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-064",
+      "topic": "cte-recursive",
+      "q": "In a recursive org-hierarchy CTE seeded with `WHERE super_ssn IS NULL` and incrementing `OH.level + 1`, what does the `level` column represent?",
+      "options": [
+        "The number of projects an employee works on",
+        "The depth of the employee in the organizational hierarchy",
+        "The salary level",
+        "The count of direct reports"
+      ],
+      "answer": 1,
+      "explain": "The anchor selects employees with **no supervisor** (the top) at `level = 1`; each recursive step joins subordinates and adds one. So **`level` is the depth in the reporting tree** — 1 for the CEO, 2 for their direct reports, and so on. Carrying a depth counter is the standard way to make a recursive CTE's output interpretable.",
+      "difficulty": "hard",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-065",
+      "topic": "case-expressions",
+      "q": "How is a CASE expression typically used in SQL?",
+      "options": [
+        "To enforce database constraints",
+        "To perform arithmetic calculations",
+        "To apply conditional logic and return values based on conditions",
+        "To define temporary tables"
+      ],
+      "answer": 2,
+      "explain": "**`CASE WHEN condition THEN value ... ELSE value END`** is SQL's if-then-else **expression**. Because it is an expression, not a statement, it can appear anywhere a value can — in `SELECT`, `WHERE`, `ORDER BY`, even inside an aggregate, which is the trick behind conditional counts like `SUM(CASE WHEN passed THEN 1 ELSE 0 END)`.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-066",
+      "topic": "window-functions",
+      "q": "What is a window function in SQL?",
+      "options": [
+        "A function that permanently modifies table data",
+        "A type of constraint that checks column values",
+        "A function that retrieves data from another database",
+        "A function that performs a calculation across a set of rows related to the current row, without collapsing them"
+      ],
+      "answer": 3,
+      "explain": "A **window function** computes over a set of related rows — the *window* — but **returns one value per input row**. That is the key contrast with `GROUP BY` aggregation, which **collapses** each group into a single row. Windows let you show a running total *beside* each detail row.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-067",
+      "topic": "window-functions",
+      "q": "Which clause is required to define the set of rows a window function operates on?",
+      "options": [
+        "OVER()",
+        "WHERE",
+        "ORDER BY",
+        "PARTITION BY"
+      ],
+      "answer": 0,
+      "explain": "**`OVER()`** is what makes a function a window function at all. `PARTITION BY` and `ORDER BY` are **optional clauses inside** `OVER()` — dividing rows into groups and ordering within them respectively. `SUM(x) OVER ()` is valid and windows over the whole result set.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-068",
+      "topic": "window-functions",
+      "q": "Which is an example of an **aggregate** window function?",
+      "options": [
+        "RANK()",
+        "AVG()",
+        "LEAD()",
+        "ROW_NUMBER()"
+      ],
+      "answer": 1,
+      "explain": "The three families: **aggregate** (`SUM`, `AVG`, `COUNT`, `MIN`, `MAX` used with `OVER()`), **ranking** (`ROW_NUMBER`, `RANK`, `DENSE_RANK`, `NTILE`), and **value** (`LEAD`, `LAG`, `FIRST_VALUE`, `LAST_VALUE`). `AVG()` is the ordinary aggregate borrowed into a window.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-069",
+      "topic": "window-functions",
+      "q": "Which function assigns a unique sequential number to each row within a partition?",
+      "options": [
+        "RANK()",
+        "DENSE_RANK()",
+        "ROW_NUMBER()",
+        "NTILE()"
+      ],
+      "answer": 2,
+      "explain": "**`ROW_NUMBER()`** is always **1, 2, 3…** with **no ties**. Compare on the values 10, 10, 9: `ROW_NUMBER` → 1, 2, 3; **`RANK`** → 1, 1, **3** (gap after the tie); **`DENSE_RANK`** → 1, 1, **2** (no gap). `NTILE(n)` splits rows into n buckets.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-070",
+      "topic": "window-functions",
+      "q": "Which functions belong to the **value** window-function category?",
+      "options": [
+        "SUM() and AVG()",
+        "RANK() and DENSE_RANK()",
+        "COUNT() and MAX()",
+        "LEAD() and LAG()"
+      ],
+      "answer": 3,
+      "explain": "**`LEAD`** peeks at a following row and **`LAG`** at a preceding one, letting you compare a row with its neighbours — month-over-month change, for instance — **without a self-join**. `FIRST_VALUE` and `LAST_VALUE` are in the same family.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-071",
+      "topic": "full-text-search",
+      "q": "What is Full-Text Search (FTS) in SQL?",
+      "options": [
+        "A technique for efficiently searching words or phrases within text columns",
+        "A function to sort numeric data",
+        "A way to create backups of text data",
+        "A method to encrypt data"
+      ],
+      "answer": 0,
+      "explain": "**FTS** uses a **full-text index** over the words in a column, so it can find terms without scanning every row. `LIKE '%word%'` cannot use a normal index at all — the leading wildcard forces a full scan — which is exactly the problem FTS solves.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-072",
+      "topic": "full-text-search",
+      "q": "Which is a mode used in Full-Text Search?",
+      "options": [
+        "GROUP BY",
+        "NATURAL LANGUAGE",
+        "ORDER BY",
+        "DISTINCT"
+      ],
+      "answer": 1,
+      "explain": "MySQL offers **NATURAL LANGUAGE MODE** (the default), **BOOLEAN MODE**, and **QUERY EXPANSION**. They are supplied inside `MATCH(col) AGAINST('terms' IN … MODE)`.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-073",
+      "topic": "full-text-search",
+      "q": "Which statement about **Natural Language mode** is true?",
+      "options": [
+        "It returns results in random order regardless of relevance",
+        "It requires explicit operators like + or - for search terms",
+        "It ignores stopwords and computes relevance based on term frequency",
+        "It only works with numeric columns"
+      ],
+      "answer": 2,
+      "explain": "Natural-language mode drops **stopwords** (very common words like *the*, *and*) and scores rows by **term frequency weighted against how rare the term is across the table** — so a rare matching word counts for much more than a common one. Results come back **ordered by relevance**. The `+`/`-` operators belong to **Boolean mode**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-074",
+      "topic": "full-text-search",
+      "q": "In **Boolean mode**, which symbol indicates that a word **must** be present?",
+      "options": [
+        "* (asterisk)",
+        "~ (tilde)",
+        "- (minus)",
+        "+ (plus)"
+      ],
+      "answer": 3,
+      "explain": "**`+` requires** a word, **`-` excludes** it, **`*`** is a trailing wildcard (`data*` matches *database*), **`\"…\"`** matches an exact phrase, and **`~`** lowers a term's contribution. So `+database -oracle` finds rows with *database* and without *oracle*.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "dbms-u2-mcq-075",
+      "topic": "full-text-search",
+      "q": "What does relevance ranking mean in Full-Text Search?",
+      "options": [
+        "Assigning each row a score reflecting how closely it matches the query",
+        "Counting the total number of words in a column",
+        "Filtering out duplicate results",
+        "Ordering search results alphabetically"
+      ],
+      "answer": 0,
+      "explain": "**Relevance** is a numeric score per row — higher means a better match — driven by how often the terms occur in the row and how rare they are overall. `MATCH(...) AGAINST(...)` in a `SELECT` list returns this score, so you can display or sort by it.",
+      "difficulty": "easy",
+      "source": "mcq"
+    }
+  ]
+}
