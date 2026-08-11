@@ -175,7 +175,7 @@ $I(\text{Windy}) = \tfrac35(0.918)+\tfrac25(1) = 0.951$ → $\text{Gain} = 0.971
 
 **Humidity wins.** Both of its values have entropy 0, **which means we have reached leaf nodes** — High → No, Normal → Yes. Doing the same for the Rain branch gives **Windy** (Strong → No, Weak → Yes).
 
-### Final tree
+### Final tree — Play Tennis
 
 ```
 Outlook = Sunny    → Humidity = High   → No
@@ -288,7 +288,7 @@ $$I(\text{Mood}) = 0 \quad\Rightarrow\quad \text{Gain}(S_{\text{sunny}},\text{Mo
 
 Mood splits Sunny perfectly, and it collapses neatly into **bored → No, not bored → Yes**. The Rainy branch resolves on **Alone**.
 
-### Final tree
+### Final tree — the second dataset
 
 ```
                    weather

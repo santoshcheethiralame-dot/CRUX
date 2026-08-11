@@ -1,0 +1,385 @@
+{
+  "subject": "ml",
+  "unit": 2,
+  "title": "Unit 2 — Lecture Deep-Dive Flashcards",
+  "cards": [
+    {
+      "id": "ml-u2-dc01",
+      "topic": "mp-neuron",
+      "front": "MP neuron — the two functions",
+      "back": "**g aggregates**: $g(\\mathbf{x}) = \\sum_{i=1}^{n} x_i$\n**f decides**: $y = 1$ if $g(\\mathbf{x}) \\geq \\theta$, else 0\n\n$\\theta$ = **thresholding parameter**. Inputs and output are **binary**. **$y=0$ if ANY input is inhibitory** — an absolute veto checked *before* the threshold."
+    },
+    {
+      "id": "ml-u2-dc02",
+      "topic": "mp-neuron",
+      "front": "MP neuron thresholds for AND / OR / NOR / NOT",
+      "back": "**AND** (3 inputs): $\\theta = 3$\n**OR** (2 inputs): $\\theta = 1$\n**NOR**: $\\theta = 0$ with **both inputs inhibitory**\n**NOT**: $\\theta = 0$, single **inhibitory** input\n\nPattern: non-inhibitory functions just ask *'how many inputs must be 1?'*"
+    },
+    {
+      "id": "ml-u2-dc03",
+      "topic": "mp-neuron",
+      "front": "Linear separability (for Boolean functions) — the definition",
+      "back": "*There exists a **line (plane)** such that all inputs which produce a **1** lie on one side and all inputs which produce a **0** lie on the other side.*\n\nA single MP neuron represents **only linearly separable** functions. Its line is $\\sum x_i - \\theta = 0$ — always **slope −1**, since there are no weights to tilt it."
+    },
+    {
+      "id": "ml-u2-dc04",
+      "topic": "mp-neuron",
+      "front": "The 5 MP neuron limitations — and what fixes each",
+      "back": "1. Input must be **binary** → *perceptron*\n2. All inputs treated **equally** → *perceptron (weights)*\n3. Threshold is **hand-coded** → *perceptron (bias as a weight)*\n4. Only **linearly separable** functions → *multilayer network*\n5. Output is **binary** → *sigmoid neuron*\n\nThe first half of the unit is this table worked through row by row."
+    },
+    {
+      "id": "ml-u2-dc05",
+      "topic": "perceptron",
+      "front": "Perceptron vs MP neuron — the two primary differences",
+      "back": "1. **Numerical weights** for the inputs, **plus a mechanism for learning those weights and the bias**\n2. **Inputs no longer limited to Boolean values**\n\nRosenblatt, **1958**. Fixes MP limitations 1–3 at a stroke."
+    },
+    {
+      "id": "ml-u2-dc06",
+      "topic": "perceptron",
+      "front": "Why $w_0 = -\\theta$ with $x_0 = 1$",
+      "back": "From $\\sum_{i\\ge1} w_ix_i \\geq \\theta$, move $\\theta$ left:\n$$\\sum_{i\\ge1} w_ix_i + w_0x_0 \\geq 0, \\quad w_0 = -\\theta,\\; x_0 = 1$$\nThe **threshold becomes an ordinary weight on a constant input** — so the learning rule updates it like any other, with **no special case**.\n\nTrap: $w_0 = -0.3 \\Rightarrow \\theta = +0.3$."
+    },
+    {
+      "id": "ml-u2-dc07",
+      "topic": "perceptron",
+      "front": "The restaurant example — what the bias means",
+      "back": "$x_1$ = Service, $x_2$ = Ambience, $x_3$ = Taste. Past data gives **high weight to taste**.\n\n**$w_0$ is the bias — it represents the prior (prejudice).**\n- **Foodie**: very low threshold, dines anywhere, $\\theta = 0$\n- **Food critic**: needs ≥4 stars on all three, $\\theta = 3$\n\nWeights = what the evidence says. Bias = how much evidence you demand."
+    },
+    {
+      "id": "ml-u2-dc08",
+      "topic": "perceptron-learning",
+      "front": "The perceptron learning algorithm",
+      "back": "```\nP ← inputs with label 1;  N ← inputs with label 0\nInitialize w randomly\nwhile !convergence:\n    pick random x ∈ P ∪ N\n    if x ∈ P and w·x < 0:  w = w + x\n    if x ∈ N and w·x ≥ 0:  w = w − x\n```\n**Error-driven** — a correctly classified point triggers **no update at all**."
+    },
+    {
+      "id": "ml-u2-dc09",
+      "topic": "perceptron-learning",
+      "front": "The angle convergence argument",
+      "back": "$\\cos\\alpha = \\dfrac{\\mathbf{w}^T\\mathbf{x}}{\\lVert\\mathbf{w}\\rVert\\lVert\\mathbf{x}\\rVert}$, so the **sign of $\\mathbf{w}^T\\mathbf{x}$ = which side of 90°**.\n\nFor $\\mathbf{x}\\in P$ with $\\mathbf{w}\\cdot\\mathbf{x}<0$, $\\alpha > 90°$ but we want $< 90°$. After $\\mathbf{w}_{new} = \\mathbf{w}+\\mathbf{x}$:\n$$\\cos\\alpha_{new} \\propto \\mathbf{w}^T\\mathbf{x} + \\mathbf{x}^T\\mathbf{x} \\propto \\cos\\alpha + \\lVert\\mathbf{x}\\rVert^2$$\nSince $\\lVert\\mathbf{x}\\rVert^2>0$, $\\cos\\alpha_{new} > \\cos\\alpha \\Rightarrow \\alpha_{new} < \\alpha$ ✓"
+    },
+    {
+      "id": "ml-u2-dc10",
+      "topic": "perceptron-learning",
+      "front": "What the angle argument does NOT prove",
+      "back": "It shows each update is a **step in the right direction** — not that the algorithm **terminates**. One update can fix one point and break another.\n\nFull convergence needs the **Perceptron Convergence Theorem**, which additionally requires **linear separability**. On non-separable data the algorithm **cycles forever**."
+    },
+    {
+      "id": "ml-u2-dc11",
+      "topic": "multilayer-xor",
+      "front": "Why XOR defeats a single perceptron",
+      "back": "The four rows demand $w_0<0$, $w_0+w_2\\ge0$, $w_0+w_1\\ge0$, $w_0+w_1+w_2<0$. Adding rows 2+3 gives $2w_0+w_1+w_2 \\ge 0$, but row 4 forces it $< w_0 < 0$ — **contradiction**.\n\nGeometrically: the two 1s sit on **opposite diagonal corners** of the unit square. No line separates one diagonal from the other."
+    },
+    {
+      "id": "ml-u2-dc12",
+      "topic": "multilayer-xor",
+      "front": "The XOR network — why bias = −2",
+      "back": "3 layers: inputs $(x_1,x_2)$ → **hidden layer of 4 perceptrons** ($h_1..h_4$, bias **−2**) → 1 output neuron.\n\nEach hidden unit's $\\pm1$ weights match one input pattern, so its net reaches $+2$ **only** on that pattern. With threshold 2, **exactly one hidden neuron fires per input combination** — a **one-hot encoding** of the input."
+    },
+    {
+      "id": "ml-u2-dc13",
+      "topic": "multilayer-xor",
+      "front": "XOR — the four satisfiable conditions",
+      "back": "Because exactly one $h_i$ = 1 per row, $\\sum w_ih_i$ **collapses to a single weight**:\n$$w_1 < w_0,\\quad w_2 \\geq w_0,\\quad w_3 \\geq w_0,\\quad w_4 < w_0 \\quad (w_0 = 0)$$\n*'Unlike before, there are **no contradictions** now and the system of inequalities **can be satisfied**.'*\n\nEach $w_i$ is responsible for **one** of the 4 inputs. Generalises: $n$ inputs → **$2^n$ hidden units**."
+    },
+    {
+      "id": "ml-u2-dc14",
+      "topic": "sigmoid-neuron-loss",
+      "front": "Why the perceptron threshold is 'harsh'",
+      "back": "criticsRating **0.51 → like**, **0.49 → dislike**. *'It seems harsh…'*\n\nThe real problem is mathematical: a step has **zero derivative everywhere and is undefined at the threshold**, so *'does nudging this weight help?'* has **no useful answer**. **No gradient ⇒ no gradient descent.**"
+    },
+    {
+      "id": "ml-u2-dc15",
+      "topic": "sigmoid-neuron-loss",
+      "front": "The sigmoid (logistic) neuron",
+      "back": "$$y = \\frac{1}{1+e^{-(w_0 + \\sum_i w_ix_i)}}$$\n- **No sharp transition** around the threshold $-w_0$\n- Output is a **real value in (0,1), interpretable as a probability**\n- Instead of like/dislike we get the **probability of liking**\n\n$\\sigma'(z) = \\sigma(z)(1-\\sigma(z))$, written **$O(1-O)$** — **max 0.25** at $z=0$."
+    },
+    {
+      "id": "ml-u2-dc16",
+      "topic": "sigmoid-neuron-loss",
+      "front": "Perceptron vs sigmoid neuron",
+      "back": "| | Perceptron | Sigmoid |\n|---|---|---|\n| Shape | **step** | smooth **S-curve** |\n| Maths | **not smooth, not continuous, NOT differentiable** | **smooth, continuous, differentiable** |\n| Output | $\\{0,1\\}$ | $(0,1)$ — a probability |\n\n**Differentiability** is the row that matters — everything downstream depends on it."
+    },
+    {
+      "id": "ml-u2-dc17",
+      "topic": "sigmoid-neuron-loss",
+      "front": "The two loss functions",
+      "back": "**MSE** $= \\frac12\\sum_{i=1}^n(\\hat y_i - y_i)^2$ — error can be ±, so we **square**. The $\\frac12$ exists so differentiating **cancels it**.\n\n**Cross entropy** $L = -\\sum_{i=1}^N y^{(i)}\\log\\hat y^{(i)}$ — *'measures the performance of a classification model whose output is a **probability value between 0 and 1**.'*\n\nRegression → MSE. Classification → cross entropy."
+    },
+    {
+      "id": "ml-u2-dc18",
+      "topic": "forward-propagation",
+      "front": "The Mitchell notation",
+      "back": "$x_{ji}$ = **$i$-th input to unit $j$**\n$w_{ji}$ = weight on that input\n$net_j = \\sum_i w_{ji}x_{ji}$\n$o_j$ = output of unit $j$\n$t_j$ = **target** — *output layer only*\n$\\sigma$ = sigmoid\n$outputs$ = final-layer units\n$Downstream(j)$ = units whose inputs include $o_j$ — *hidden layer only*\n\n**$t_j$ ⇒ output-layer formula. $Downstream$ ⇒ hidden-layer formula.**"
+    },
+    {
+      "id": "ml-u2-dc19",
+      "topic": "forward-propagation",
+      "front": "Weight matrix shape and indexing",
+      "back": "**Shape = (# neurons in previous layer) × (# neurons in current layer)**\n\n$$W_1 = \\begin{bmatrix} w_{41} & w_{51} \\\\ w_{42} & w_{52} \\\\ w_{43} & w_{53}\\end{bmatrix}_{3\\times2}$$\n\n**$w_{ji}$: $j$ = current-layer neuron, $i$ = previous-layer neuron** — *destination before source*, which reads backwards from the data flow."
+    },
+    {
+      "id": "ml-u2-dc20",
+      "topic": "gradient-descent",
+      "front": "Taylor series and what GD uses from it",
+      "back": "$$f(x+h) = f(x) + hf'(x) + \\frac{h^2}{2}f''(x) + \\frac{h^3}{3!}f'''(x) + \\cdots$$\nGD uses **only the first two terms** — for small $h$ the higher powers shrink much faster. So the **change in $f$ is $\\approx h f'(x)$**, and the whole derivation is about making that as negative as possible."
+    },
+    {
+      "id": "ml-u2-dc21",
+      "topic": "gradient-descent",
+      "front": "The 180° argument",
+      "back": "Let $\\beta$ = angle between $u^T$ and $\\nabla\\mathcal{L}(\\theta)$. We need $u^T\\nabla\\mathcal{L} < 0 \\Rightarrow k\\cos\\beta < 0$.\n\n$\\mathcal{L}(\\theta+\\eta u)-\\mathcal{L}(\\theta) = k\\cos\\beta$ is **most negative when $\\cos\\beta = -1$, i.e. $\\beta = 180°$**.\n\n> **GD Rule:** move at **180° w.r.t. the gradient** — i.e. **opposite to the gradient**. $\\Delta\\theta = -\\nabla\\mathcal{L}(\\theta)$"
+    },
+    {
+      "id": "ml-u2-dc22",
+      "topic": "gradient-descent",
+      "front": "The update rule and the learning rate",
+      "back": "$$w_{t+1} = w_t - \\eta\\nabla w_t \\qquad b_{t+1} = b_t - \\eta\\nabla b_t$$\nGradients evaluated **at $(w_t, b_t)$**; weights and bias updated **simultaneously**.\n\n**η too small** → very slow. **η too large** → **overshoots**, oscillates, may diverge.\nNo single ideal value — hence schedules, momentum, and adaptive methods."
+    },
+    {
+      "id": "ml-u2-dc23",
+      "topic": "backpropagation",
+      "front": "The chain-rule decomposition",
+      "back": "$$\\frac{\\partial E_d}{\\partial w_{kj}} = \\frac{\\partial E_d}{\\partial O_k}\\cdot\\frac{\\partial O_k}{\\partial net_k}\\cdot\\frac{\\partial net_k}{\\partial w_{kj}}$$\n$= -(t_k-O_k) \\;\\times\\; O_k(1-O_k) \\;\\times\\; O_j$\n\n**Backprop is the chain rule plus bookkeeping** — its contribution is *reusing* shared prefixes so one backward sweep serves every weight."
+    },
+    {
+      "id": "ml-u2-dc24",
+      "topic": "backpropagation",
+      "front": "THE THREE TRAINING RULES",
+      "back": "**Output $k$:** $\\delta_k = (t_k-O_k)O_k(1-O_k)$, $\\;\\Delta w_{kj} = \\eta\\delta_kO_j$\n\n**Hidden 2, $j$:** $\\delta_j = O_j(1-O_j)\\sum_{k\\in Down(j)}\\delta_kw_{kj}$, $\\;\\Delta w_{ji} = \\eta\\delta_jO_i$\n\n**Hidden 1, $i$:** $\\delta_i = O_i(1-O_i)\\sum_{j\\in Down(i)}\\delta_jw_{ji}$, $\\;\\Delta w_{im} = \\eta\\delta_i x_m$\n\n**$\\Delta w = \\eta\\cdot\\delta\\cdot(\\text{input})$ at every layer** — only $\\delta$ changes."
+    },
+    {
+      "id": "ml-u2-dc25",
+      "topic": "backpropagation",
+      "front": "Output vs hidden delta — the only structural difference",
+      "back": "**Output:** $(t_k - O_k)$ — a **direct** error, because a target exists.\n**Hidden:** $\\sum_k \\delta_k w_{kj}$ — an **inherited** error, because none does.\n\nThe **$O(1-O)$ sigmoid factor is in BOTH**. Dropping it for hidden units, or writing $(t_j - O_j)$ for a hidden unit, are the two classic errors."
+    },
+    {
+      "id": "ml-u2-dc26",
+      "topic": "backprop-practice",
+      "front": "Worked output-layer update",
+      "back": "$t=0.01$, $O=0.7514$, $o_{h_1}=0.5933$, $\\eta=0.5$, $w_5=0.40$:\n\n$\\delta = (0.01-0.7514)(0.7514)(0.2486) = \\mathbf{-0.1385}$\n$\\Delta w_5 = 0.5\\times(-0.1385)\\times0.5933 = -0.0411$\n$w_5^{new} = 0.40 - 0.0411 = \\mathbf{0.3589}$\n\nDecreased — correct, since $O$ sits far **above** its target."
+    },
+    {
+      "id": "ml-u2-dc27",
+      "topic": "backprop-practice",
+      "front": "Worked hidden-layer update — and the magnitude gap",
+      "back": "$\\sum_k\\delta_kw_{kh_1} = (-0.1385)(0.40) + (0.0381)(0.50) = -0.0364$\n$\\delta_{h_1} = (0.5933)(0.4067)(-0.0364) = \\mathbf{-0.00877}$\n$\\Delta w_1 = 0.5\\times(-0.00877)\\times0.05 = -0.00022$\n\nOutput weight moved **0.041**, hidden weight **0.00022** — **~190× smaller**. That is the **vanishing gradient**, visible in just two layers."
+    },
+    {
+      "id": "ml-u2-dc28",
+      "topic": "backprop-practice",
+      "front": "Vanishing gradients — statement and cause",
+      "back": "*'As backprop advances **backward from the output layer toward the input layer**, the gradients often get **smaller and smaller and approach zero**, leaving lower-layer weights **nearly unchanged**. Gradient descent never converges to the optimum.'*\n\n**Cause:** each layer multiplies by $\\sigma' = O(1-O) \\le 0.25$. Over $n$ layers: $\\le(0.25)^n$ — about $10^{-6}$ after 10 layers.\n**Fix:** **ReLU** ($\\text{ReLU}' = 1$)."
+    },
+    {
+      "id": "ml-u2-dc29",
+      "topic": "backprop-practice",
+      "front": "Dropout & early stopping",
+      "back": "**Dropout:** *'randomly drops neurons during training, which is **equivalent to training different neural networks**. The different networks will **overfit differently**.'* — $2^n$ sub-networks; same family as **bagging**.\n\n**Early stopping:** after a point *'the model **begins to overfit** the training data'* — stop there. Chosen on the **validation** curve (training error never turns up)."
+    },
+    {
+      "id": "ml-u2-dc30",
+      "topic": "activation-functions",
+      "front": "Why any non-linearity is needed",
+      "back": "If every unit were linear the whole network collapses:\n$$W_3(W_2(W_1x)) = (W_3W_2W_1)x = Wx$$\n— a **single linear layer**, however deep.\n\n**The activation function is the only thing standing between a deep network and a glorified matrix multiply.**"
+    },
+    {
+      "id": "ml-u2-dc31",
+      "topic": "activation-functions",
+      "front": "Sigmoid vs tanh",
+      "back": "**Sigmoid**: range $(0,1)$, max $\\sigma' = $ **0.25**, **not zero-centred**, saturates both ends.\n**tanh**: range $(-1,1)$, max derivative **1**, **zero-centred**, still saturates.\n\n*'tanh is also like sigmoid **but better** — negative inputs mapped **strongly negative**, zero inputs mapped **near zero**.'*\n\nZero-centring matters: all-positive outputs force all weights into the same gradient sign → **zig-zag** updates."
+    },
+    {
+      "id": "ml-u2-dc32",
+      "topic": "activation-functions",
+      "front": "ReLU and Leaky ReLU",
+      "back": "**ReLU** $=\\max(0,y)$; derivative **1** for $y>0$ ⇒ **no vanishing gradient**; cheap; sparse. Failure: **dying ReLU** (stuck at 0, gradient 0 forever).\n\n**Leaky ReLU** $= ay$ for $y<0$. *'The leak helps **increase the range** of the ReLU function. Usually **a = 0.01**.'* Set $a$ as a **learnable network parameter** ⇒ **PReLU**."
+    },
+    {
+      "id": "ml-u2-dc33",
+      "topic": "activation-functions",
+      "front": "Softmax — and sigmoid vs softmax",
+      "back": "$$\\text{softmax}(z)_i = \\frac{e^{z_i}}{\\sum_j e^{z_j}}$$\nOutputs **sum to 1**; **not element-wise** — raising one score lowers the others.\n\n**Sigmoid per output** → **multi-label** (beach AND sunset).\n**Softmax across outputs** → **multi-class** (exactly one of 0–9)."
+    },
+    {
+      "id": "ml-u2-dc34",
+      "topic": "optimizers",
+      "front": "Why deep-learning optimization is indirect",
+      "back": "*'We care about some performance measure $P$, but we optimise $P$ **only indirectly** by reducing a different cost function $J(\\theta)$ in the hope that doing so will improve $P$.'*\n\nAccuracy is **non-differentiable**, so we minimise a smooth **surrogate**. They mostly move together — which is why **loss is a diagnostic, not the goal**."
+    },
+    {
+      "id": "ml-u2-dc35",
+      "topic": "optimizers",
+      "front": "Batch vs SGD vs mini-batch",
+      "back": "| | Batch | Mini-batch | SGD |\n|---|---|---|---|\n| Update after | **all** examples | a batch of $b$ | **each** example |\n| Gradient | exact | good | **noisy** |\n| Escapes local minima | poorly | reasonably | **well** |\n| Memory | whole dataset | one batch | one example |\n\nMini-batch is *'the **most common** implementation used in deep learning'*."
+    },
+    {
+      "id": "ml-u2-dc36",
+      "topic": "optimizers",
+      "front": "SGD's noise — upside AND downside",
+      "back": "**Upside:** *'the noisy update process can allow the model to **avoid local minima**.'*\n**Downside:** *'the noisy learning process makes it **hard to settle on an error minimum**.'*\n\nBoth true. Standard resolution: **decay the learning rate** — noisy early, calm late.\n\nConvergence: *'Batch takes small steps and **will converge**; SGD oscillates and **never actually converges** to the minima.'*"
+    },
+    {
+      "id": "ml-u2-dc37",
+      "topic": "optimizers",
+      "front": "Exponentially Weighted Averages (EWMA)",
+      "back": "$$V_t = \\beta V_{t-1} + (1-\\beta)\\theta_t$$\n**$\\beta$ = importance of the previous value (the trend); $(1-\\beta)$ = importance of the current value.**\n\nAverages over **$1/(1-\\beta)$** periods: $\\beta=0.9 \\Rightarrow$ **10 days**, $\\beta=0.5 \\Rightarrow$ 2.\nLarger $\\beta$ = **smoother but slower to adapt**.\n\nBehind **Momentum, RMSProp and Adam** — fast, low memory (one number, not a window)."
+    },
+    {
+      "id": "ml-u2-dc38",
+      "topic": "momentum-rmsprop-adam",
+      "front": "Gradient descent with momentum",
+      "back": "1. compute $dW$ for the current mini-batch\n2. $V_{dW} = \\beta V_{dW} + (1-\\beta)dW$\n3. $W_{new} = W - \\alpha V_{dW}$\n\n*'Using a **very high value for $\\beta$** we can **dampen out the oscillations**.'*\n\n**Why it works:** across a ravine the gradient **alternates sign** and terms **cancel**; along it the sign is constant and terms **accumulate**."
+    },
+    {
+      "id": "ml-u2-dc39",
+      "topic": "momentum-rmsprop-adam",
+      "front": "Momentum — upsides and downsides",
+      "back": "**Up:** damps gradient change and step size; most useful with **large curvature**; helps with **noisy/estimated** gradients; **crosses flat regions** by carrying prior direction.\n\n**Down:** *'can **overshoot the global minimum**'* and converge to a local one; *'can cause the process to **oscillate around the global minimum**.'*\n\nSame velocity — virtue early, liability near the optimum. Typical $\\beta = 0.9$."
+    },
+    {
+      "id": "ml-u2-dc40",
+      "topic": "momentum-rmsprop-adam",
+      "front": "RMSProp",
+      "back": "$$S_{dW} = \\beta_2 S_{dW} + (1-\\beta_2)(dW)^2$$\n$$W_{new} = W - \\alpha\\frac{dW}{\\sqrt{S_{dW}} + \\epsilon}$$\n\n*'By dividing by a **small** $S_{dW}$ we **increase** the update in the W direction; dividing by a **large** $S_{db}$ we **dampen** the oscillations in b.'*\n\nAverages the **squared** gradient ⇒ signs destroyed, only **magnitude** survives ⇒ **per-parameter learning rate**. $\\epsilon$ is pure numerical safety."
+    },
+    {
+      "id": "ml-u2-dc41",
+      "topic": "momentum-rmsprop-adam",
+      "front": "Adam + bias correction",
+      "back": "**Adam = momentum + RMSProp + bias correction.**\n$V_{dW} = \\beta_1V_{dW} + (1-\\beta_1)dW$ · $S_{dW} = \\beta_2S_{dW} + (1-\\beta_2)(dW)^2$\n\n$$V^C_{dW} = \\frac{V_{dW}}{1-\\beta_1^t} \\qquad S^C_{dW} = \\frac{S_{dW}}{1-\\beta_2^t}$$\n\n**Why:** $V$ starts at **0**, so at $t=1$ with $\\beta_1=0.9$ it is $0.1\\,dW$ — **10× too small**. Dividing by $1-\\beta_1^t = 0.1$ repairs it exactly, and the correction **fades as $t$ grows**.\n\nDefaults: $\\beta_1=0.9$, $\\beta_2=0.999$, $\\epsilon=10^{-8}$."
+    },
+    {
+      "id": "ml-u2-dc42",
+      "topic": "svm-margin-primal",
+      "front": "The single compact SVM constraint",
+      "back": "Define $y_i = +1$ (positive), $-1$ (negative). Then\n$$y_i(\\mathbf{w}^T\\mathbf{x}_i + b) \\ge 1 \\;\\Longrightarrow\\; y_i(\\mathbf{w}^T\\mathbf{x}_i+b) - 1 \\ge 0$$\nMultiplying by $y_i$ **flips the inequality for negatives**, merging two rules into one.\n\n**Requires labels $\\{-1,+1\\}$, not $\\{0,1\\}$.**"
+    },
+    {
+      "id": "ml-u2-dc43",
+      "topic": "svm-margin-primal",
+      "front": "Deriving the margin width",
+      "back": "$\\text{Width} = \\hat{\\mathbf{w}}\\cdot\\mathbf{x}^+ - \\hat{\\mathbf{w}}\\cdot\\mathbf{x}^-$ with $\\hat{\\mathbf{w}} = \\mathbf{w}/\\lVert\\mathbf{w}\\rVert$\n\nFrom the gutters: $\\mathbf{w}^T\\mathbf{x}^+ = 1-b$, $\\mathbf{w}^T\\mathbf{x}^- = -1-b$. Divide by $\\lVert\\mathbf{w}\\rVert$ and subtract:\n$$\\frac{1-b}{\\lVert w\\rVert} - \\frac{-1-b}{\\lVert w\\rVert} = \\boxed{\\frac{2}{\\lVert w\\rVert}}$$\n**$b$ cancels** — width depends only on $\\lVert w\\rVert$."
+    },
+    {
+      "id": "ml-u2-dc44",
+      "topic": "svm-margin-primal",
+      "front": "The primal problem",
+      "back": "Maximize $2/\\lVert W\\rVert$ ⇔ minimize $\\lVert W\\rVert/2$ ⇔ **minimize $\\frac12\\lVert W\\rVert^2$**\n$$\\min \\tfrac12\\lVert W\\rVert^2 \\quad\\text{s.t.}\\quad y_i(\\mathbf{w}^T\\mathbf{x}_i+b)\\ge1$$\n**Convex** (linear constraints) **Quadratic** (objective) — *'a standard problem!'* Solved by the **Lagrangian multiplier method**.\n\nSquaring removes the **non-differentiable square root**; convexity guarantees **no local minima**."
+    },
+    {
+      "id": "ml-u2-dc45",
+      "topic": "lagrange-kkt",
+      "front": "Lagrange multipliers — the idea",
+      "back": "At a constrained optimum $\\nabla f$ has **no component along the constraint surface**, so it is perpendicular to it — and so is $\\nabla g$. Two perpendiculars must be **parallel**:\n$$\\nabla f = \\lambda\\nabla g$$\n$L = f - \\lambda g$; set **all** partials (each $x_j$ **and** $\\lambda$) to zero → **$D+1$ equations**. $\\partial L/\\partial\\lambda = 0$ **regenerates the constraint**."
+    },
+    {
+      "id": "ml-u2-dc46",
+      "topic": "lagrange-kkt",
+      "front": "The KKT conditions",
+      "back": "$g(X)\\ge0$ — **primal feasibility**\n$\\lambda\\ge0$ — **dual feasibility**\n$\\lambda g(X)=0$ — **complementary slackness**\n(+ **stationarity** $\\nabla_X L = 0$)\n\n*'For points **on** the constraint surface $\\lambda>0$; for points **above** it the constraint is **inactive** and $\\lambda=0$.'*\n\nComplementary slackness ⇒ **either $\\lambda=0$ or $g=0$, never both** — this is what creates **support vectors**."
+    },
+    {
+      "id": "ml-u2-dc47",
+      "topic": "svm-dual-support-vectors",
+      "front": "The SVM dual problem",
+      "back": "$$\\max_\\alpha W(\\alpha) = \\sum_i \\alpha_i - \\tfrac12\\sum_i\\sum_j \\alpha_i\\alpha_j y_iy_j \\mathbf{x}_i^T\\mathbf{x}_j$$\n$C_1$: $\\alpha_i \\ge 0$ · $C_2$: $\\sum_i\\alpha_iy_i = 0$\n$C_3/C_4$: the gutter equations, used to **recover $b$**\n\nStationarity gave $\\mathbf{w} = \\sum_i\\alpha_iy_i\\mathbf{x}_i$ — **the boundary is built from the data points themselves**."
+    },
+    {
+      "id": "ml-u2-dc48",
+      "topic": "svm-dual-support-vectors",
+      "front": "Support vectors & why the dual",
+      "back": "**Complementary slackness** ⇒ either $\\alpha_i = 0$ or the point sits **exactly on a gutter**. Only $\\alpha_i>0$ points build $\\mathbf{w}$ — **delete all others and get the same classifier**.\n\n**Why the dual:**\n1. QP algorithms solve it **faster when $d \\gg n$** (primal has one variable per *feature*, dual one per *example*)\n2. *'But, more importantly, **the kernel trick**!!!'*"
+    },
+    {
+      "id": "ml-u2-dc49",
+      "topic": "kernels",
+      "front": "The kernel trick",
+      "back": "The dual uses the data **only through inner products $\\mathbf{x}_i^T\\mathbf{x}_j$**. So replace them with\n$$K(\\mathbf{x}_i,\\mathbf{x}_j) = \\phi(\\mathbf{x}_i)^T\\phi(\\mathbf{x}_j)$$\nand compute $K$ **directly, never evaluating $\\phi$**.\n\n*'A kernel function is some function that corresponds to an **inner product in some expanded feature space**.'* Validity requires **Mercer's condition**."
+    },
+    {
+      "id": "ml-u2-dc50",
+      "topic": "kernels",
+      "front": "The three kernels + which to use",
+      "back": "**Linear:** $\\mathbf{x}_i^T\\mathbf{x}_j$\n**Polynomial:** $(\\mathbf{x}_i^T\\mathbf{x}_j + c)^d$\n**Gaussian/RBF:** $\\exp(-\\lVert\\mathbf{x}_i-\\mathbf{x}_j\\rVert^2/2\\sigma^2)$ — **infinite-dimensional** implicit space\n\n*'Sometimes polynomial kernels are **not sophisticated enough**… that's when Gaussian kernels come to the rescue.'*\n\n**Try RBF first, because it usually works well.** But *'a kernel is a **measure of similarity**, so that is where **domain knowledge** may have the biggest impact.'*"
+    },
+    {
+      "id": "ml-u2-dc51",
+      "topic": "soft-margin",
+      "front": "Slack variables — the three ranges",
+      "back": "| $\\xi_i$ | Meaning |\n|---|---|\n| $=0$ | correctly classified, **outside** the margin |\n| $0<\\xi_i\\le1$ | **inside** the margin, **correct** side |\n| $>1$ | **misclassified** |\n\nConstraint becomes $y_i(\\mathbf{w}\\cdot\\mathbf{x}_i+b) \\ge 1-\\xi_i$. The LHS is the **confidence of classification**; $<1$ incurs a **linear penalty of $\\xi_i$**."
+    },
+    {
+      "id": "ml-u2-dc52",
+      "topic": "soft-margin",
+      "front": "The C parameter and the box constraint",
+      "back": "$$\\min \\tfrac12\\lVert w\\rVert^2 + C\\sum_i\\xi_i$$\n**Large C** = heavy penalty = **narrow margin** = **overfitting** risk (→ hard margin as $C\\to\\infty$)\n**Small C** = cheap violations = **wide margin** = **underfitting** risk\n\n**C for Cost.** In the dual: **$0 \\le \\alpha_i \\le C$** — the *box constraint*, so **no single point can matter more than C**."
+    },
+    {
+      "id": "ml-u2-dc53",
+      "topic": "ensemble-learning",
+      "front": "Weak vs strong learners",
+      "back": "**Strong** (e.g. **SVM**) — high accuracy, **expensive** to train/test.\n**Weak** (**decision stump, perceptron**) — simple, fast, low accuracy.\n**Combine weak learners → comparable to a strong model.**\n\nA **decision stump** is a tree with **only the root node** — so simple that *'there is **no real scope for overfitting**.'*"
+    },
+    {
+      "id": "ml-u2-dc54",
+      "topic": "ensemble-learning",
+      "front": "The 4 sources of diversity + the requirement",
+      "back": "**Different algorithms** · **different hyperparameters** · **different subsets of the training data (resampling — most popular)** · **different features**\n\n**The requirement:** *'The errors made by these learners must be **independent and random** in nature.'*\n\nIf every learner makes the same mistakes, averaging changes **nothing**. ~**100 learners** empirically."
+    },
+    {
+      "id": "ml-u2-dc55",
+      "topic": "ensemble-learning",
+      "front": "Why confidence increases — the probability argument",
+      "back": "$P(\\text{one model wrong}) = 1-A$\n$P(\\text{all } N \\text{ wrong}) = \\mathbf{(1-A)^N}$ (multiply — **all** must fail)\n$P(\\text{at least 1 correct}) = C = \\mathbf{1-(1-A)^N}$\n\nAt $A=0.6$: $N=5 \\Rightarrow 0.99$; $N=10 \\Rightarrow 0.9999$.\n\n**Caveat (stated):** this is *not* the ensemble's accuracy — majority voting needs **more than half** right. And it assumes **independence**."
+    },
+    {
+      "id": "ml-u2-dc56",
+      "topic": "bagging",
+      "front": "Bagging — the four steps",
+      "back": "**B**ootstrap **AGG**regat**ING**\n1. **Multiple bootstrap samples**, selecting observations **with replacement**, usually **same size** ⇒ **duplicates introduced**\n2. A **base (weak) model** on each subset\n3. Models run **in parallel, independent** of each other\n4. Combine by **voting or averaging — Aggregation**\n\nReplacement is the **mechanism**, not a flaw — without it every sample would be the original reshuffled."
+    },
+    {
+      "id": "ml-u2-dc57",
+      "topic": "bagging",
+      "front": "The 63% / 37% derivation",
+      "back": "$P(x \\text{ not picked in one draw}) = 1 - 1/n$\n*'Why to the power of n? **n times we draw with replacement**.'*\n$$P(x\\text{ never picked}) = \\left(1-\\tfrac1n\\right)^n \\to \\frac1e \\approx 0.368$$\n**≈37% out-of-bag, ≈63% in the bag.**\n\nThe sample still has **n rows** — just ~0.63n *unique* records plus duplicates."
+    },
+    {
+      "id": "ml-u2-dc58",
+      "topic": "bagging",
+      "front": "Out-of-bag error",
+      "back": "1. **Find all models NOT trained by the OOB instance**\n2. **Take their majority vote**, compare to the true value\n3. **Compile the OOB error over all instances**\n\nEssentially **free cross-validation** — an honest held-out estimate as a **side effect** of resampling, at no extra training cost, with all data still used for training.\n\nBagging **reduces variance**, so it suits **unstable, high-variance** learners (deep trees), not stumps."
+    },
+    {
+      "id": "ml-u2-dc59",
+      "topic": "boosting",
+      "front": "Boosting — the core idea and the weights",
+      "back": "*'Instead of training the models **in parallel** (like bagging), we train them **sequentially**.'* Each model corrects **the combined ensemble so far**.\n\n**Weights on instances** = *'the importance of getting that instance classified correctly'*. **Misclassified → more weight, correct → less**, so the next learner **pays greater attention** to earlier mistakes. **Normalised to sum to 1.**\n\nA quality measure defines each model's **voting right**."
+    },
+    {
+      "id": "ml-u2-dc60",
+      "topic": "boosting",
+      "front": "Bagging vs Boosting",
+      "back": "| | Bagging | Boosting |\n|---|---|---|\n| Training | **parallel** | **sequential** |\n| Sampling | **same probability** for every element | **weighted** — some appear more often |\n| Voting | **equal** | **weighted by quality** |\n| Reduces | **variance** | **bias** |\n| Base learner | **unstable** (deep trees) | **weak** (stumps) |\n| Parallelisable | **yes** | **no** |\n\nExamples: **Random Forest** vs **AdaBoost / Gradient Boosting / XGBoost**."
+    },
+    {
+      "id": "ml-u2-dc61",
+      "topic": "random-forest",
+      "front": "Random forest — the algorithm",
+      "back": "1. Random seed pulls samples from the training set **while maintaining the class distribution**\n2. A **random set of attributes** is chosen — *not all variables, because of **enormous computation** and **high chances of overfitting***\n3. With $M$ total attributes, **only R are chosen at random per tree, R < M**\n4. Best possible split from that set; repeat per branch until **leaves too small to split**\n\nSteps: **bootstrap → random-feature trees → OOB error → vote**."
+    },
+    {
+      "id": "ml-u2-dc62",
+      "topic": "random-forest",
+      "front": "Bagged trees vs random forest — the decorrelation argument",
+      "back": "**Bagging** randomises the **data** only. **Random forest** randomises the **data AND the features at every split**.\n\nWithout feature randomisation, a strong predictor becomes the root split of **every** tree ⇒ trees near-identical ⇒ errors **correlated** ⇒ averaging achieves little.\n\nRestricting to $R$ random attributes **forces alternative structure** and **decorrelates** the trees. Defaults: **$R=\\sqrt M$** (classification), **$R=M/3$** (regression)."
+    },
+    {
+      "id": "ml-u2-dc63",
+      "topic": "random-forest",
+      "front": "OOB in the forest + variable importance",
+      "back": "*'In bootstrapping we sample with replacement, so **on average 1/3 are not used**'* — the same $1/e$ result. Predict each observation using **every tree in which it was OOB**, then compute overall **OOB MSE or classification error**.\n\n**Variable importance** comes free: **permute one attribute** in the OOB data, re-measure the error, and the **increase** shows how much the forest relied on it."
+    }
+  ]
+}

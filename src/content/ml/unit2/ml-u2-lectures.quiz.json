@@ -1,0 +1,1247 @@
+{
+  "subject": "ml",
+  "unit": 2,
+  "title": "Unit 2 — Lecture Deep-Dive MCQs",
+  "items": [
+    {
+      "id": "ml-u2-lec-001",
+      "topic": "mp-neuron",
+      "q": "In the MP neuron, what do the two functions g and f do?",
+      "options": [
+        "g thresholds the inputs and f weights them",
+        "g aggregates the inputs and f takes a decision based on that aggregation",
+        "Both compute weighted sums at different layers",
+        "g learns the weights and f learns the threshold"
+      ],
+      "answer": 1,
+      "explain": "**g aggregates** ($g(\\mathbf{x}) = \\sum_i x_i$) and **f decides** ($y = 1$ if $g \\geq \\theta$). Neither learns anything — the MP neuron has **no weights at all**, which is limitation #2.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-002",
+      "topic": "mp-neuron",
+      "q": "In an MP neuron, what happens if any input is inhibitory?",
+      "options": [
+        "It is subtracted from the aggregation",
+        "y = 0 regardless of the other inputs",
+        "The threshold θ is increased by 1",
+        "It is ignored unless θ = 0"
+      ],
+      "answer": 1,
+      "explain": "**y = 0 if any $x_i$ is inhibitory** — an absolute veto checked *before* the threshold, not a subtraction. This override is what lets a single MP neuron implement **NOT** and **NOR**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-003",
+      "topic": "mp-neuron",
+      "q": "What threshold implements a 3-input AND function in an MP neuron?",
+      "options": ["θ = 0", "θ = 1", "θ = 2", "θ = 3"],
+      "answer": 3,
+      "explain": "AND requires **all three** inputs to be 1, and $g = \\sum x_i$ reaches 3 only for $(1,1,1)$ — so **θ = 3**. The general pattern for non-inhibitory functions: AND over $n$ inputs needs $\\theta = n$; OR needs $\\theta = 1$.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-004",
+      "topic": "mp-neuron",
+      "q": "Geometrically, what does a single MP neuron do to the input space?",
+      "options": [
+        "It projects points onto a lower-dimensional subspace",
+        "It splits the input points into two halves along the line Σxᵢ − θ = 0",
+        "It clusters points around θ",
+        "It rotates the axes so the classes align"
+      ],
+      "answer": 1,
+      "explain": "The dividing line is **$\\sum x_i - \\theta = 0$**: outputs of 0 lie where $\\sum x_i < \\theta$ and outputs of 1 where $\\sum x_i \\geq \\theta$. Because there are **no weights**, this line always has slope −1 — the threshold only slides it, never tilts it.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-005",
+      "topic": "mp-neuron",
+      "q": "Which is NOT one of the five stated limitations of the MP neuron?",
+      "options": [
+        "Input must be binary",
+        "All inputs are treated equally",
+        "It cannot be extended to multiple layers",
+        "The threshold is hand-coded"
+      ],
+      "answer": 2,
+      "explain": "Layering is never listed as a limitation — indeed **networks of these units are exactly the fix** for linear inseparability. The five are: binary input, equal treatment of inputs, hand-coded threshold, only linearly separable functions, and binary output.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-006",
+      "topic": "perceptron",
+      "q": "What are the two primary differences between the perceptron and the MP neuron?",
+      "options": [
+        "Multiple layers and a smooth activation",
+        "Numerical weights with a mechanism to learn them and the bias, and inputs no longer limited to Boolean values",
+        "Backpropagation and gradient descent",
+        "Real-valued output and a probabilistic interpretation"
+      ],
+      "answer": 1,
+      "explain": "Rosenblatt (1958) added **numerical weights plus a learning mechanism for the weights and the bias**, and lifted the restriction to **Boolean inputs**. Real-valued *output* comes later, with the sigmoid neuron.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-007",
+      "topic": "perceptron",
+      "q": "Why is the threshold written as w₀ = −θ with x₀ = 1?",
+      "options": [
+        "To keep the weights positive",
+        "So the threshold becomes an ordinary weight and can be learned by the same update rule",
+        "To normalise the inputs to unit length",
+        "Because θ must always be negative"
+      ],
+      "answer": 1,
+      "explain": "Moving $\\theta$ to the left of the inequality turns it into a **weight on a constant input of 1**. The learning rule then updates $w_0$ exactly like any other weight, **with no special case** — which is precisely how the MP neuron's hand-coded threshold becomes learnable.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-008",
+      "topic": "perceptron",
+      "q": "In the restaurant example, what does w₀ represent?",
+      "options": [
+        "The importance of taste",
+        "The bias — the prior, or prejudice",
+        "The learning rate",
+        "The number of past visits"
+      ],
+      "answer": 1,
+      "explain": "**$w_0$ is called the bias as it represents the prior (prejudice).** A **foodie** has a very low threshold ($\\theta = 0$) and dines anywhere; a **food critic** requires ≥4 stars on all three inputs ($\\theta = 3$). Same weights, different disposition.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-009",
+      "topic": "perceptron",
+      "q": "For the OR function the hint gives w₀ = −0.3, w₁ = w₂ = 0.5. What does the perceptron output for input (0,0)?",
+      "options": ["1, because the bias is negative", "0, since −0.3 < 0", "0.5", "Undefined"],
+      "answer": 1,
+      "explain": "$w_0 + w_1(0) + w_2(0) = -0.3 < 0$, so **y = 0** — correct for OR. Check the rest: $(0,1)$ and $(1,0)$ give $0.2 \\geq 0 \\Rightarrow 1$; $(1,1)$ gives $0.7 \\Rightarrow 1$. The effective threshold is $\\theta = 0.3$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-010",
+      "topic": "perceptron-learning",
+      "q": "In the perceptron learning algorithm, when is the update w = w + x applied?",
+      "options": [
+        "For every positive example",
+        "When x ∈ P and w·x < 0",
+        "When x ∈ N and w·x ≥ 0",
+        "Whenever the loss increases"
+      ],
+      "answer": 1,
+      "explain": "Both conditions must hold — the point must be **positive** *and* **currently misclassified**. A correctly classified positive triggers **no update at all**, which makes the perceptron an **error-driven** rule rather than a gradient method.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-011",
+      "topic": "perceptron-learning",
+      "q": "In the convergence argument, why does cos(α_new) > cos(α) after the update w_new = w + x?",
+      "options": [
+        "Because ||w|| always decreases",
+        "Because the extra term xᵀx is strictly positive",
+        "Because the learning rate is less than 1",
+        "Because α is always obtuse"
+      ],
+      "answer": 1,
+      "explain": "$\\cos(\\alpha_{new}) \\propto (\\mathbf{w}+\\mathbf{x})^T\\mathbf{x} = \\mathbf{w}^T\\mathbf{x} + \\mathbf{x}^T\\mathbf{x} \\propto \\cos\\alpha + \\mathbf{x}^T\\mathbf{x}$. Since $\\mathbf{x}^T\\mathbf{x} = \\lVert\\mathbf{x}\\rVert^2 > 0$ the cosine **increases**, and since cosine decreases on $[0°,180°]$, the **angle shrinks** — exactly what we want for a positive example.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-012",
+      "topic": "perceptron-learning",
+      "q": "What does the angle argument prove, and what does it NOT prove?",
+      "options": [
+        "It proves termination on any dataset",
+        "It proves each update moves w in the right direction, but not that the algorithm terminates",
+        "It proves the margin is maximised",
+        "It proves the solution is unique"
+      ],
+      "answer": 1,
+      "explain": "Each update provably **reduces the angle for the point being corrected** — but a single update can fix one point while breaking another. Full termination additionally requires the data to be **linearly separable** (the Perceptron Convergence Theorem); on non-separable data the algorithm **cycles forever**.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u2-lec-013",
+      "topic": "multilayer-xor",
+      "q": "Why can no single perceptron represent XOR?",
+      "options": [
+        "XOR needs more than two inputs",
+        "The four required inequalities are mutually contradictory — the 1s sit on opposite diagonal corners",
+        "XOR is not a Boolean function",
+        "The sigmoid saturates at the corners"
+      ],
+      "answer": 1,
+      "explain": "Adding the constraints for $(0,1)$ and $(1,0)$ gives $2w_0 + w_1 + w_2 \\geq 0$, while $(0,0)$ and $(1,1)$ force $2w_0 + w_1 + w_2 < w_0 < 0$ — a **contradiction**. Geometrically, the two 1-outputs occupy **opposite diagonal corners**, and no straight line separates one diagonal from the other.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-014",
+      "topic": "multilayer-xor",
+      "q": "In the XOR network, why is the bias of every hidden perceptron set to −2?",
+      "options": [
+        "To keep the outputs in (0,1)",
+        "So exactly one hidden neuron fires for each of the four input combinations",
+        "Because there are two inputs",
+        "To prevent the gradient from vanishing"
+      ],
+      "answer": 1,
+      "explain": "Each hidden unit's weights match one specific input pattern, so its net input reaches $+2$ **only** on that pattern. With the threshold at 2, **exactly one hidden neuron fires per input combination** — the hidden layer performs a **one-hot encoding**.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-015",
+      "topic": "multilayer-xor",
+      "q": "With w₀ = 0, what four conditions on w₁..w₄ implement XOR in the network?",
+      "options": [
+        "All four weights positive",
+        "w₁ < w₀, w₂ ≥ w₀, w₃ ≥ w₀, w₄ < w₀",
+        "w₁ = w₂ = w₃ = w₄",
+        "w₁ + w₂ + w₃ + w₄ = 0"
+      ],
+      "answer": 1,
+      "explain": "Because exactly one $h_i$ is 1 per row, the sum $\\sum w_i h_i$ **collapses to a single weight**, giving four **independent** conditions. *'Unlike before, there are no contradictions now and the system of inequalities can be satisfied.'*",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-016",
+      "topic": "multilayer-xor",
+      "q": "How many hidden perceptrons does the construction need for an arbitrary Boolean function of n inputs?",
+      "options": ["n", "2n", "2ⁿ", "n²"],
+      "answer": 2,
+      "explain": "**$2^n$** — one hidden unit per possible input combination, each firing for exactly one pattern. This is a **representation** result: it guarantees a solution exists, at a hidden layer growing **exponentially**. Real networks are smaller because units are **shared** across patterns.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-017",
+      "topic": "sigmoid-neuron-loss",
+      "q": "In the movie example, what makes the perceptron's thresholding 'harsh'?",
+      "options": [
+        "It requires too many weights",
+        "A rating of 0.51 gives 'like' while 0.49 gives 'dislike' — a discontinuous jump",
+        "The threshold cannot be learned",
+        "The output is unbounded"
+      ],
+      "answer": 1,
+      "explain": "*'It seems harsh that we would like a movie with rating 0.51 but not one with a rating of 0.49.'* The deeper problem is mathematical: a step function has **zero derivative everywhere and is undefined at the threshold**, so there is **no gradient to descend**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-018",
+      "topic": "sigmoid-neuron-loss",
+      "q": "Which property of the sigmoid neuron makes gradient descent possible?",
+      "options": [
+        "Its output is bounded in (0,1)",
+        "It is smooth, continuous and differentiable",
+        "It is monotonic",
+        "It can be interpreted as a probability"
+      ],
+      "answer": 1,
+      "explain": "The comparison table states it directly: the perceptron is *'not smooth, not continuous (at $w_0$), **not differentiable**'*, while the sigmoid is *'smooth, continuous, **differentiable**'*. **Differentiability** is the property everything downstream depends on.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-019",
+      "topic": "sigmoid-neuron-loss",
+      "q": "What is the derivative of the logistic sigmoid σ(z)?",
+      "options": ["σ(z)", "σ(z)(1 − σ(z))", "1 − σ(z)²", "z·σ(z)"],
+      "answer": 1,
+      "explain": "**$\\sigma'(z) = \\sigma(z)(1-\\sigma(z))$**, written $O(1-O)$ in backpropagation — the output already computed in the forward pass is all you need. Its **maximum is 0.25** at $z = 0$, which is the seed of the vanishing-gradient problem.",
+      "difficulty": "medium",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u2-lec-020",
+      "topic": "sigmoid-neuron-loss",
+      "q": "Cross entropy is described as measuring the performance of which kind of model?",
+      "options": [
+        "A regression model with unbounded output",
+        "A classification model whose output is a probability value between 0 and 1",
+        "Any model trained by gradient descent",
+        "A clustering model"
+      ],
+      "answer": 1,
+      "explain": "$L = -\\sum_i y^{(i)}\\log\\hat y^{(i)}$. It punishes **confident wrongness** far harder than MSE: predicting 0.01 when the truth is 1 costs $-\\log(0.01) \\approx 4.6$ against MSE's 0.98, and the penalty grows **without bound** as $\\hat y \\to 0$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-021",
+      "topic": "forward-propagation",
+      "q": "In the notation used, what is Downstream(j)?",
+      "options": [
+        "The set of inputs to unit j",
+        "The set of units whose immediate inputs include the output of unit j",
+        "The layer below unit j",
+        "The set of target values for unit j"
+      ],
+      "answer": 1,
+      "explain": "**The units that unit $j$ feeds.** It is annotated *'applicable only to neurons in the hidden layer'* — hidden units have no target $t_j$, so they inherit their error from the units downstream. Spotting $Downstream$ in a formula tells you it is a **hidden-layer** formula.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-022",
+      "topic": "forward-propagation",
+      "q": "What is the shape of the weight matrix between two layers?",
+      "options": [
+        "(neurons in current layer) × (neurons in previous layer)",
+        "(neurons in previous layer) × (neurons in current layer)",
+        "Always square",
+        "(number of inputs) × (number of outputs of the network)"
+      ],
+      "answer": 1,
+      "explain": "**(previous × current)** — three neurons feeding two gives a $3\\times 2$ matrix. Within it, **$w_{ji}$ has $j$ = current-layer neuron and $i$ = previous-layer neuron**, so the matrix reads as the transpose of the subscripts.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-023",
+      "topic": "forward-propagation",
+      "q": "In w_ji, which index refers to the destination unit?",
+      "options": ["i", "j", "Both", "Neither — it denotes a layer"],
+      "answer": 1,
+      "explain": "**$j$ is the destination** (the unit being computed), $i$ the source. It matches $net_j = \\sum_i w_{ji}x_{ji}$. The order reads *backwards* from the direction of data flow, and reversing it transposes every weight matrix.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-024",
+      "topic": "gradient-descent",
+      "q": "Which Taylor terms does gradient descent actually use?",
+      "options": [
+        "All of them",
+        "Only the first two — f(x) and h·f′(x)",
+        "Only the second-order term",
+        "The third-order term onwards"
+      ],
+      "answer": 1,
+      "explain": "For small $h$ the higher powers $h^2, h^3$ shrink far faster than $h$, so $f(x+h) \\approx f(x) + hf'(x)$. The change in $f$ is therefore approximately $h f'(x)$ — the quantity we then make as negative as possible.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-025",
+      "topic": "gradient-descent",
+      "q": "In the derivation, ℒ(θ+ηu) − ℒ(θ) = k·cos(β) is most negative when β equals what?",
+      "options": ["0°", "90°", "180°", "270°"],
+      "answer": 2,
+      "explain": "$k\\cos\\beta$ is minimised when $\\cos\\beta = -1$, i.e. **β = 180°**. Hence the **Gradient Descent Rule**: *the direction $u$ we intend to move in should be at 180° w.r.t. the gradient* — move **opposite to the gradient**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-026",
+      "topic": "gradient-descent",
+      "q": "What is the direction of steepest descent for a function v(x)?",
+      "options": [
+        "u = ∇v(x) / ‖∇v(x)‖",
+        "u = −∇v(x) / ‖∇v(x)‖",
+        "u = ∇²v(x)",
+        "Any u with u·∇v = 0"
+      ],
+      "answer": 1,
+      "explain": "The **negative** normalised gradient. The directional derivative is $D_u v = u\\cdot\\nabla v$; it is most negative when $u$ points exactly opposite to $\\nabla v$. (A $u$ with $u\\cdot\\nabla v = 0$ moves **along a contour**, changing nothing.)",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-027",
+      "topic": "gradient-descent",
+      "q": "What is the consequence of a learning rate that is too large?",
+      "options": [
+        "Convergence is slow but guaranteed",
+        "The step overshoots the minimum; the loss oscillates and may diverge",
+        "The gradient vanishes",
+        "The model underfits"
+      ],
+      "answer": 1,
+      "explain": "Too large **overshoots** — leaping past the minimum to a *higher* point on the opposite wall, then further still. Too small means **very slow convergence**. There is **no single ideal value**; $\\eta$ is a hyperparameter, addressed by schedules, momentum, and adaptive methods.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-028",
+      "topic": "backpropagation",
+      "q": "What is δ_k for an output unit?",
+      "options": [
+        "(t_k − O_k)",
+        "(t_k − O_k)·O_k(1 − O_k)",
+        "O_k(1 − O_k)",
+        "Σ δ_j w_jk O_k(1 − O_k)"
+      ],
+      "answer": 1,
+      "explain": "**$\\delta_k = (t_k - O_k)O_k(1-O_k)$** — defined as $-\\partial E_d/\\partial net_k$. It combines the **direct error** $(t_k - O_k)$, available because output units have targets, with the **sigmoid derivative** $O_k(1-O_k)$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-029",
+      "topic": "backpropagation",
+      "q": "What is δ_j for a hidden unit?",
+      "options": [
+        "(t_j − O_j)·O_j(1 − O_j)",
+        "O_j(1 − O_j) · Σ_{k∈Downstream(j)} δ_k w_kj",
+        "Σ_{k} δ_k w_kj only",
+        "η·δ_k·O_j"
+      ],
+      "answer": 1,
+      "explain": "A hidden unit has **no target**, so its error is **inherited** as a weighted sum of the deltas of the units it feeds, scaled by its own sigmoid derivative. Read it as: *my responsibility = my sensitivity × the sum of my children's blame, weighted by my influence on each*.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-030",
+      "topic": "backpropagation",
+      "q": "What form does the weight update take at every layer?",
+      "options": [
+        "Δw = η · δ_destination · (input on that connection)",
+        "Δw = η · (t − O)",
+        "Δw = −η · w",
+        "Δw = η · O(1 − O)"
+      ],
+      "answer": 0,
+      "explain": "**$\\Delta w = \\eta\\,\\delta\\,(\\text{input})$** is identical at every layer — $\\Delta w_{kj} = \\eta\\delta_k O_j$, $\\Delta w_{ji} = \\eta\\delta_j O_i$, $\\Delta w_{im} = \\eta\\delta_i x_m$. **Only the definition of $\\delta$ changes**; remembering that gives you two thirds of backpropagation.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-031",
+      "topic": "backpropagation",
+      "q": "The chain rule decomposes ∂E_d/∂w_kj into which three factors?",
+      "options": [
+        "∂E/∂w × ∂w/∂net × ∂net/∂O",
+        "∂E_d/∂O_k × ∂O_k/∂net_k × ∂net_k/∂w_kj",
+        "∂E/∂t × ∂t/∂O × ∂O/∂w",
+        "Three copies of the sigmoid derivative"
+      ],
+      "answer": 1,
+      "explain": "Error → output → net → weight. The three factors evaluate to $-(t_k-O_k)$, $O_k(1-O_k)$ and $O_j$ respectively. **Backpropagation is the chain rule plus bookkeeping** — its contribution is reusing shared prefixes so one backward sweep serves all weights.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-032",
+      "topic": "backprop-practice",
+      "q": "Given t = 0.01, O = 0.7514 at an output unit, what is δ?",
+      "options": ["−0.7414", "−0.1385", "+0.1385", "−0.2486"],
+      "answer": 1,
+      "explain": "$\\delta = (t-O)O(1-O) = (0.01-0.7514)(0.7514)(0.2486) = (-0.7414)(0.7514)(0.2486) = \\mathbf{-0.1385}$. The **negative** sign is correct: the output is far above its target, so the weights driving it must be reduced.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-033",
+      "topic": "backprop-practice",
+      "q": "In a numeric backpropagation problem, why must you use the OLD weights throughout?",
+      "options": [
+        "Because the new weights are not yet normalised",
+        "Because every delta and Δw must be computed from the same pre-update state; updating early corrupts the hidden-layer results",
+        "Because the learning rate changes each step",
+        "It does not matter — either works"
+      ],
+      "answer": 1,
+      "explain": "Hidden deltas depend on **output-layer weights**. If you update $w_5$ before using it in $\\delta_{h_1} = O(1-O)\\sum_k \\delta_k w_{k h_1}$, every hidden result is wrong. **Compute all updates first, apply them at the end** — this is the single most common exam error.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-034",
+      "topic": "backprop-practice",
+      "q": "Why do gradients vanish in deep sigmoid networks?",
+      "options": [
+        "The learning rate decays automatically",
+        "Each layer multiplies the gradient by σ′ = O(1−O) ≤ 0.25, so it shrinks exponentially with depth",
+        "The weights are initialised too small",
+        "The loss function saturates"
+      ],
+      "answer": 1,
+      "explain": "**$\\sigma' \\leq 0.25$**, so across $n$ layers the gradient is scaled by at most $(0.25)^n$ — about $10^{-6}$ after 10 layers, and that is the **optimistic** bound. Lower-layer weights are left **nearly unchanged** and gradient descent never converges.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-035",
+      "topic": "backprop-practice",
+      "q": "How does dropout reduce overfitting?",
+      "options": [
+        "It removes redundant weights permanently after training",
+        "It randomly drops neurons during training, equivalent to training different networks that overfit differently",
+        "It shrinks the weights toward zero each epoch",
+        "It stops training when validation error rises"
+      ],
+      "answer": 1,
+      "explain": "*'It randomly drops neurons from the neural network during training, which is **equivalent to training different neural networks**. The different networks will overfit differently.'* A network with $n$ droppable units defines $2^n$ sub-networks — placing dropout in the same family as **bagging**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-036",
+      "topic": "backprop-practice",
+      "q": "In early stopping, which curve identifies the point to stop?",
+      "options": [
+        "The training-error curve, when it flattens",
+        "The validation-error curve, at its minimum before it turns upward",
+        "The gradient-norm curve",
+        "The learning-rate schedule"
+      ],
+      "answer": 1,
+      "explain": "**Training error falls monotonically** right through the overfitting regime, so it can never tell you when to stop. Only the **validation** curve turns upward. In practice you keep the weights from the **best validation epoch**, not the last one.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-037",
+      "topic": "activation-functions",
+      "q": "What is the stated advantage of tanh over sigmoid?",
+      "options": [
+        "It never saturates",
+        "Negative inputs are mapped strongly negative and zero inputs near zero",
+        "It is cheaper to compute",
+        "Its output is a probability"
+      ],
+      "answer": 1,
+      "explain": "*'tanh is also like sigmoid but better'* — its range is $(-1,1)$, so it is **zero-centred**, and its maximum derivative is **1** rather than 0.25. It **still saturates** at both ends, so vanishing gradients persist, merely less severely.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-038",
+      "topic": "activation-functions",
+      "q": "In Leaky ReLU f(y) = ay for y < 0, what is the usual value of a, and what is the alternative?",
+      "options": [
+        "a = 0.5, fixed",
+        "a = 0.01, or set it as a network parameter and let the network learn the optimal value",
+        "a = 1, making it linear",
+        "a = 0, making it ReLU"
+      ],
+      "answer": 1,
+      "explain": "**Usually $a = 0.01$**, and *'instead of setting some default value of $a$, we can set it as a parameter of a neural network and the network can be trained to learn the optimal value for it'* — that learned variant is **Parametric ReLU (PReLU)**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-039",
+      "topic": "activation-functions",
+      "q": "Why does ReLU avoid the vanishing gradient problem on the positive side?",
+      "options": [
+        "It is bounded above",
+        "Its derivative is exactly 1, so backpropagating through layers does not shrink the gradient",
+        "It is zero-centred",
+        "It saturates more slowly than tanh"
+      ],
+      "answer": 1,
+      "explain": "$\\text{ReLU}'(y) = 1$ for $y > 0$ — nothing shrinks. Contrast $\\sigma' \\leq 0.25$. The cost is the **dying ReLU**: a unit always receiving negative input outputs 0, has **zero gradient**, and can never recover.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-040",
+      "topic": "activation-functions",
+      "q": "What distinguishes softmax from applying sigmoid to each output independently?",
+      "options": [
+        "Softmax is faster",
+        "Softmax outputs are coupled through a shared denominator and sum to 1, giving mutually exclusive classes",
+        "Softmax has no exponentials",
+        "Softmax works only for two classes"
+      ],
+      "answer": 1,
+      "explain": "Each softmax output depends on **every** input via the denominator, so raising one score lowers the others and the outputs **sum to 1**. Use **softmax for multi-class** (a digit is exactly one of 0–9) and **independent sigmoids for multi-label** (an image can be both *beach* and *sunset*).",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u2-lec-041",
+      "topic": "optimizers",
+      "q": "Why is deep-learning optimization described as indirect?",
+      "options": [
+        "Because gradients are approximated numerically",
+        "Because we care about a performance measure P but optimise it only indirectly by reducing a different cost function J(θ)",
+        "Because the data is sampled",
+        "Because weights are initialised randomly"
+      ],
+      "answer": 1,
+      "explain": "The measure you actually want — **accuracy** — is typically **non-differentiable**, so we optimise a smooth **surrogate** and hope the two move together. They mostly do, which is why loss is a **diagnostic rather than the goal**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-042",
+      "topic": "optimizers",
+      "q": "Which variant updates the model after every single training example?",
+      "options": ["Batch gradient descent", "Stochastic gradient descent", "Mini-batch gradient descent", "Momentum"],
+      "answer": 1,
+      "explain": "**SGD** updates per example. Its noise is listed as **both** an upside (*'can allow the model to avoid local minima'*) and a downside (*'hard for the algorithm to settle on an error minimum'*) — the standard resolution is to **decay the learning rate**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-043",
+      "topic": "optimizers",
+      "q": "Which convergence behaviour is stated for batch versus stochastic gradient descent?",
+      "options": [
+        "Both converge exactly to the minimum",
+        "Batch takes small steps and will converge to a minimum; SGD is noisy, oscillates near the minimum and never actually converges",
+        "SGD converges faster and more precisely",
+        "Neither converges without momentum"
+      ],
+      "answer": 1,
+      "explain": "Stated verbatim on the convergence slide. SGD's perpetual oscillation around the optimum is exactly why a **decaying learning rate** is used to quiet it in the late stages.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-044",
+      "topic": "optimizers",
+      "q": "Why are mini-batch sizes commonly chosen as 32, 64, 128 or 256?",
+      "options": [
+        "They are the only sizes the algorithm accepts",
+        "They are powers of two tuned to the memory of the GPU or CPU hardware",
+        "They guarantee convergence",
+        "They match the number of classes"
+      ],
+      "answer": 1,
+      "explain": "*'Often tuned to an aspect of the computational architecture… such as a power of two that fits the memory requirements of the GPU or CPU hardware.'* Batch size is a **hyperparameter** — and for a **small training set, batch gradient descent is preferred**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-045",
+      "topic": "optimizers",
+      "q": "In the EWMA V_t = βV_{t−1} + (1−β)θ_t with β = 0.9, over roughly how many days is the average taken?",
+      "options": ["2", "9", "10", "90"],
+      "answer": 2,
+      "explain": "$V_t$ approximates over **$1/(1-\\beta)$** periods, so $1/(1-0.9) = \\mathbf{10}$ days ($\\beta = 0.5$ gives 2). Larger $\\beta$ means **smoother, less noisy** but **slower to adapt**, since high weight goes to older values.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-046",
+      "topic": "momentum-rmsprop-adam",
+      "q": "What quantity does momentum take an exponentially weighted average of?",
+      "options": ["The squared gradient", "The gradient", "The loss", "The learning rate"],
+      "answer": 1,
+      "explain": "$V_{dW} = \\beta V_{dW} + (1-\\beta)dW$ — the **gradient itself**, giving a smoothed **direction**. Across a ravine the gradient alternates sign and terms **cancel**; along the ravine the sign is constant and terms **accumulate**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-047",
+      "topic": "momentum-rmsprop-adam",
+      "q": "Which is listed as a downside of momentum?",
+      "options": [
+        "It cannot cross flat regions",
+        "It can overshoot the global minimum and converge to a local minimum instead",
+        "It requires the full dataset in memory",
+        "It only works with batch gradient descent"
+      ],
+      "answer": 1,
+      "explain": "Both downsides concern the same excess velocity: it **can overshoot the global minimum**, and the momentum term **can cause oscillation around the global minimum**. Crossing flat regions is one of its listed **upsides**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-048",
+      "topic": "momentum-rmsprop-adam",
+      "q": "In RMSProp, why does dividing by √S_dW help when S_dW is small?",
+      "options": [
+        "It reduces the update to prevent overshoot",
+        "It increases the magnitude of the update in that direction, letting the parameter learn faster",
+        "It normalises the weights to unit length",
+        "It converts the gradient to a probability"
+      ],
+      "answer": 1,
+      "explain": "*'By dividing by a small $S_{dW}$ we can **increase** the magnitude of the update in the W direction, and while dividing with a large $S_{db}$ we can **dampen** the oscillations in the b direction.'* This gives every parameter its **own effective learning rate**.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-049",
+      "topic": "momentum-rmsprop-adam",
+      "q": "Why is a small ε added to the denominator in RMSProp?",
+      "options": [
+        "To make the update unbiased",
+        "Because if S_dW is very close to zero the update term would become very large",
+        "To normalise across mini-batches",
+        "To decay the learning rate"
+      ],
+      "answer": 1,
+      "explain": "Stated as an explicit note: if $S_{dW} \\approx 0$ the quotient blows up, so the update becomes $W - \\alpha\\,dW/(\\sqrt{S_{dW}} + \\epsilon)$. Typically $\\epsilon = 10^{-8}$ — purely **numerical stability**, not statistics.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-050",
+      "topic": "momentum-rmsprop-adam",
+      "q": "What is Adam?",
+      "options": [
+        "A learning-rate schedule",
+        "A combination of gradient descent with momentum and the RMSProp optimizer, with bias correction",
+        "A second-order Newton method",
+        "A variant of batch gradient descent"
+      ],
+      "answer": 1,
+      "explain": "**Adaptive Moment Estimation** = momentum (first moment $V$) + RMSProp (second moment $S$) + **bias correction**. Standard defaults: $\\beta_1 = 0.9$, $\\beta_2 = 0.999$, $\\epsilon = 10^{-8}$.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-051",
+      "topic": "momentum-rmsprop-adam",
+      "q": "Why does Adam apply bias correction?",
+      "options": [
+        "To keep the weights bounded",
+        "Because V and S are initialised to zero, so early estimates are biased toward zero",
+        "To compensate for mini-batch sampling noise",
+        "To normalise across layers"
+      ],
+      "answer": 1,
+      "explain": "With $V = 0$ initially and $\\beta_1 = 0.9$, the first step gives $V = 0.1\\,dW$ — **ten times too small**. Dividing by $1-\\beta_1^{\\,t}$ repairs it exactly ($1-0.9 = 0.1$ at $t=1$), and the correction **fades on its own** as $\\beta^t \\to 0$.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-052",
+      "topic": "svm-margin-primal",
+      "q": "Defining yᵢ = +1 for positive and −1 for negative samples, the two decision rules combine into what single constraint?",
+      "options": [
+        "wᵀxᵢ + b ≥ 0",
+        "yᵢ(wᵀxᵢ + b) − 1 ≥ 0",
+        "yᵢ(wᵀxᵢ + b) = 0",
+        "‖w‖ ≤ 1"
+      ],
+      "answer": 1,
+      "explain": "Multiplying by $y_i$ **flips the inequality for negatives**, merging $\\mathbf{w}^T\\mathbf{x}^+ + b \\geq 1$ and $\\mathbf{w}^T\\mathbf{x}^- + b \\leq -1$ into one. This depends on labels being $\\{-1,+1\\}$, **not** $\\{0,1\\}$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-053",
+      "topic": "svm-margin-primal",
+      "q": "What is the width of the SVM margin?",
+      "options": ["1/‖w‖", "2/‖w‖", "‖w‖/2", "2‖w‖"],
+      "answer": 1,
+      "explain": "Projecting onto the unit normal and substituting the gutter equations gives $\\text{Width} = \\frac{1-b}{\\lVert w\\rVert} - \\frac{-1-b}{\\lVert w\\rVert} = \\mathbf{2/\\lVert w\\rVert}$. Note **$b$ cancels** — the width depends only on $\\lVert w\\rVert$, not where the boundary sits.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-054",
+      "topic": "svm-margin-primal",
+      "q": "Maximising 2/‖w‖ is reformulated as which minimisation?",
+      "options": ["min ‖w‖", "min ½‖w‖²", "min 2/‖w‖", "min ‖w‖²/4"],
+      "answer": 1,
+      "explain": "The chain: maximize $2/\\lVert W\\rVert$ ⇔ minimize $\\lVert W\\rVert/2$ ⇔ **minimize $\\tfrac12\\lVert W\\rVert^2$**. Squaring removes the **non-differentiable square root**, and the ½ makes the derivative come out as exactly $\\mathbf{w}$. Squaring is monotonic on non-negatives, so the minimiser is unchanged.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-055",
+      "topic": "svm-margin-primal",
+      "q": "How is the SVM primal problem classified?",
+      "options": [
+        "Non-convex quadratic optimization",
+        "Convex (linear constraints) quadratic (objective) optimization — a standard problem",
+        "Linear programming",
+        "Integer programming"
+      ],
+      "answer": 1,
+      "explain": "**Convex quadratic**, solvable by the **Lagrangian multiplier method**. Convexity is a *guarantee*: **no local minima distinct from the global one**, so unlike neural-network training there is no initialisation or learning rate to worry about.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-056",
+      "topic": "lagrange-kkt",
+      "q": "What is the geometric idea behind Lagrange multipliers?",
+      "options": [
+        "The constraint is ignored at the optimum",
+        "At a constrained optimum the gradients of f and g are parallel: ∇f = λ∇g",
+        "The objective is linearised",
+        "The optimum lies at the centroid of the constraint surface"
+      ],
+      "answer": 1,
+      "explain": "You can keep improving while $\\nabla f$ has any component **along** the constraint surface, so you stop when $\\nabla f$ is **perpendicular** to it. Since $\\nabla g$ is also perpendicular there, the two must be **parallel**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-057",
+      "topic": "lagrange-kkt",
+      "q": "Which condition is complementary slackness?",
+      "options": ["g(X) ≥ 0", "λ ≥ 0", "λ·g(X) = 0", "∇L = 0"],
+      "answer": 2,
+      "explain": "**$\\lambda\\,g(X) = 0$** — for each constraint, **either $\\lambda = 0$ or $g(X) = 0$, never both positive**. In SVM this is exactly what creates support vectors: only points on the margin can have $\\alpha_i > 0$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-058",
+      "topic": "lagrange-kkt",
+      "q": "Why must λ ≥ 0 for an inequality constraint, when it is unrestricted for an equality constraint?",
+      "options": [
+        "To keep the Lagrangian positive",
+        "Because an inequality constraint can only push the solution one way — a negative multiplier would represent an impossible force",
+        "Because λ represents a probability",
+        "To make the problem convex"
+      ],
+      "answer": 1,
+      "explain": "An inequality **blocks movement out of the feasible region but never pulls inward**, so its multiplier can only act in one direction. This asymmetry is precisely why inequality-constrained problems need the extra **KKT** conditions.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u2-lec-059",
+      "topic": "svm-dual-support-vectors",
+      "q": "Stationarity of the SVM Lagrangian w.r.t. w gives which result?",
+      "options": [
+        "w = 0",
+        "w = Σᵢ αᵢ yᵢ xᵢ",
+        "Σᵢ αᵢ = 1",
+        "w = Σᵢ xᵢ / m"
+      ],
+      "answer": 1,
+      "explain": "**$\\mathbf{w} = \\sum_i \\alpha_i y_i \\mathbf{x}_i$** — the boundary is literally **built out of the training points**, each pulled in the direction of its own label with strength $\\alpha_i$. Differentiating w.r.t. $b$ separately gives $\\sum_i \\alpha_i y_i = 0$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-060",
+      "topic": "svm-dual-support-vectors",
+      "q": "The SVM dual objective depends on the data only through what?",
+      "options": [
+        "The class labels",
+        "The inner products xᵢᵀxⱼ",
+        "The norms ‖xᵢ‖",
+        "The individual feature values"
+      ],
+      "answer": 1,
+      "explain": "$W(\\alpha) = \\sum_i\\alpha_i - \\tfrac12\\sum_i\\sum_j \\alpha_i\\alpha_j y_iy_j \\mathbf{x}_i^T\\mathbf{x}_j$ — the feature vectors **never appear alone**, only as pairwise dot products. This is the **entire door through which the kernel trick walks**.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-061",
+      "topic": "svm-dual-support-vectors",
+      "q": "Which points are the support vectors?",
+      "options": [
+        "The points closest to the class centroids",
+        "The points with αᵢ > 0, lying exactly on the margin boundaries",
+        "A random sample chosen at training time",
+        "All misclassified points"
+      ],
+      "answer": 1,
+      "explain": "By **complementary slackness**, either $\\alpha_i = 0$ or the point sits exactly on a gutter. Only $\\alpha_i > 0$ points contribute to $\\mathbf{w}$ — **you could delete every other training point and get the same classifier**. Nothing selects them; they fall out of the KKT conditions.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-062",
+      "topic": "svm-dual-support-vectors",
+      "q": "What are the two stated reasons for solving the dual rather than the primal?",
+      "options": [
+        "Fewer constraints and guaranteed convexity",
+        "Some QP algorithms solve the dual faster, especially when d ≫ n — and more importantly, the kernel trick",
+        "It removes the need for support vectors",
+        "It avoids the bias term"
+      ],
+      "answer": 1,
+      "explain": "The primal has **one variable per feature**, the dual **one per training example** — so with $d \\gg n$ (text classification) the dual is far smaller. And with kernels the feature space can be **infinite-dimensional**, making the primal impossible to write down while the dual stays finite.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-063",
+      "topic": "kernels",
+      "q": "How is a kernel function defined?",
+      "options": [
+        "A function that normalises the input features",
+        "Some function that corresponds to an inner product in some expanded feature space",
+        "A distance metric between classes",
+        "A smoothing filter applied to the data"
+      ],
+      "answer": 1,
+      "explain": "**$K(\\mathbf{x}_i,\\mathbf{x}_j) = \\phi(\\mathbf{x}_i)^T\\phi(\\mathbf{x}_j)$** — computed **directly, without ever evaluating $\\phi$**. A valid kernel must satisfy **Mercer's condition** (positive semi-definite kernel matrix); you cannot invent any similarity function and keep convexity.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-064",
+      "topic": "kernels",
+      "q": "Which kernel is K(xᵢ,xⱼ) = exp(−‖xᵢ − xⱼ‖²/2σ²)?",
+      "options": ["Linear", "Polynomial", "Gaussian / RBF", "Sigmoid"],
+      "answer": 2,
+      "explain": "The **Gaussian / RBF** kernel, best read as a **similarity score** — 1 when the points coincide, decaying to 0 as they separate. Its implicit feature space is **infinite-dimensional**, which is why it could never be computed explicitly.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-065",
+      "topic": "kernels",
+      "q": "Which kernel is recommended to try first, and why?",
+      "options": [
+        "Linear, because it is fastest",
+        "RBF, because it usually works well",
+        "Polynomial, because it is most interpretable",
+        "Sigmoid, because it matches neural networks"
+      ],
+      "answer": 1,
+      "explain": "*'The recommended approach is to try an RBF kernel first, because it usually works well.'* But note the deeper point: *'a kernel is a **measure of the similarity between two vectors**, so that is where **domain knowledge** of the problem may have the biggest impact.'*",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-066",
+      "topic": "kernels",
+      "q": "For K(x,z) = (xᵀz)² in two dimensions, what is the corresponding feature map φ?",
+      "options": [
+        "(x₁, x₂)",
+        "(x₁², √2·x₁x₂, x₂²)",
+        "(x₁², x₂²)",
+        "(x₁ + x₂)²"
+      ],
+      "answer": 1,
+      "explain": "Expanding $(x_1z_1 + x_2z_2)^2 = x_1^2z_1^2 + 2x_1x_2z_1z_2 + x_2^2z_2^2$, which is $\\phi(\\mathbf{x})^T\\phi(\\mathbf{z})$ for $\\phi = (x_1^2, \\sqrt2 x_1x_2, x_2^2)$. Via $\\phi$: two 3-D vectors and a 3-D dot product. Via $K$: one 2-D dot product, squared.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u2-lec-067",
+      "topic": "soft-margin",
+      "q": "In soft-margin SVM, what does 0 < ξᵢ ≤ 1 indicate?",
+      "options": [
+        "The point is correctly classified and outside the margin",
+        "The point is inside the margin but on the correct side",
+        "The point is misclassified",
+        "The point is a support vector with αᵢ = 0"
+      ],
+      "answer": 1,
+      "explain": "The three ranges: **$\\xi_i = 0$** correctly classified and outside the margin; **$0 < \\xi_i \\leq 1$** inside the margin but on the correct side; **$\\xi_i > 1$** misclassified. $\\xi_i = 1$ places the point exactly on the decision boundary.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-068",
+      "topic": "soft-margin",
+      "q": "How does the soft-margin constraint differ from the hard-margin one?",
+      "options": [
+        "yᵢ(w·xᵢ + b) ≥ 1 becomes yᵢ(w·xᵢ + b) ≥ 1 − ξᵢ",
+        "The labels change from ±1 to 0/1",
+        "The norm ‖w‖ is removed",
+        "The constraint becomes an equality"
+      ],
+      "answer": 0,
+      "explain": "Soft SVM **relaxes linear separability by introducing slack variables into the constraint equations**. The left side reads as the **confidence of classification**: ≥ 1 means correctly classified; < 1 incurs a **linear penalty of $\\xi_i$**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-069",
+      "topic": "soft-margin",
+      "q": "What is the effect of a large value of C in soft-margin SVM?",
+      "options": [
+        "Wide margin, many violations tolerated, risk of underfitting",
+        "Heavy penalty on violations, narrow margin, risk of overfitting",
+        "No effect on the margin",
+        "It makes the problem non-convex"
+      ],
+      "answer": 1,
+      "explain": "**C for Cost** — a high cost of being wrong forces the model to contort itself to fit every point, approaching hard margin as $C\\to\\infty$. Small $C$ tolerates violations and gives a **wider margin**. In the dual, $C$ becomes the **box constraint** $0 \\leq \\alpha_i \\leq C$.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-070",
+      "topic": "soft-margin",
+      "q": "Kernels and slack variables solve which two different problems?",
+      "options": [
+        "Both solve non-linearity",
+        "Kernels handle data separable but not linearly; soft margin handles data where no clean boundary exists at all",
+        "Kernels reduce overfitting; slack speeds up training",
+        "Both are ways of choosing the learning rate"
+      ],
+      "answer": 1,
+      "explain": "**Kernels** give a curved boundary for data that *is* separable in some space. **Soft margin** copes with **overlapping classes and label noise**, where no boundary works. They are routinely combined — RBF with a tuned $C$, with $(C,\\gamma)$ grid-searched together.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u2-lec-071",
+      "topic": "ensemble-learning",
+      "q": "What is the stated goal of ensemble learning?",
+      "options": [
+        "To replace weak learners with a single strong learner",
+        "To boost accuracy while keeping models simple and fast",
+        "To reduce the size of the training set",
+        "To eliminate the need for validation data"
+      ],
+      "answer": 1,
+      "explain": "**Strong learners (e.g. SVM)** give high accuracy but are **expensive to train/test**; **weak learners (decision stump, perceptron)** are simple and fast but inaccurate. Combining weak learners makes the result **comparable to a strong model**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-072",
+      "topic": "ensemble-learning",
+      "q": "What must be true of the errors made by the individual learners?",
+      "options": [
+        "They must be identical so they cancel",
+        "They must be independent and random in nature",
+        "They must all be below 10%",
+        "They must be normally distributed"
+      ],
+      "answer": 1,
+      "explain": "*'The errors made by these learners must be **independent and random** in nature.'* This is the **entire condition** for an ensemble to work — if every learner makes the same mistakes, averaging changes nothing and you get one model's error at $N$ times the cost.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-073",
+      "topic": "ensemble-learning",
+      "q": "For N models each with accuracy A, what is the probability that all N misclassify an instance?",
+      "options": ["N(1−A)", "(1−A)^N", "1 − A^N", "1 − (1−A)^N"],
+      "answer": 1,
+      "explain": "**$(1-A)^N$** — multiplication because **all N must** misclassify and the errors are independent. Hence $P(\\text{at least one correct}) = 1 - (1-A)^N$. Note this is **not** the ensemble's accuracy, since majority voting needs more than half to be right.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-074",
+      "topic": "ensemble-learning",
+      "q": "Why is over-training generally not a problem with weak classifiers?",
+      "options": [
+        "They are trained on more data",
+        "A decision stump has only one node, so there is no real scope for overfitting",
+        "They use regularization by default",
+        "Their errors are always independent"
+      ],
+      "answer": 1,
+      "explain": "*'In decision stumps, i.e. decision trees with only one node (the root node), there is **no real scope for overfitting**. This helps the classifier which combines the outputs of weak classifiers in avoiding overfitting.'*",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-075",
+      "topic": "ensemble-learning",
+      "q": "Which ensemble strategy do random forests represent?",
+      "options": [
+        "Manipulate the data distribution",
+        "Manipulate the input features",
+        "Manipulate the class labels",
+        "Manipulate the loss function"
+      ],
+      "answer": 1,
+      "explain": "The taxonomy: **manipulate data distribution** → bagging, boosting; **manipulate input features** → **random forests**; **manipulate class labels** → error-correcting output coding. Random forest does *both* data and features, but feature randomisation is what distinguishes it.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-076",
+      "topic": "bagging",
+      "q": "In bagging, how are the bootstrap samples created?",
+      "options": [
+        "By partitioning the dataset into disjoint folds",
+        "By selecting observations with replacement, usually of the same size as the original",
+        "By selecting a random subset of features",
+        "By weighting instances according to previous errors"
+      ],
+      "answer": 1,
+      "explain": "**With replacement**, same size — so **duplicates will be introduced**. That is the mechanism, not a flaw: without replacement each full-size sample would be the original reshuffled, giving **identical models and zero diversity**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-077",
+      "topic": "bagging",
+      "q": "Roughly what fraction of the original data is NOT selected in a bootstrap sample, and why?",
+      "options": [
+        "50%, because each draw is a coin flip",
+        "About 37%, since (1 − 1/n)ⁿ → 1/e",
+        "25%, by convention",
+        "63%, the complement of 1/e"
+      ],
+      "answer": 1,
+      "explain": "$P(x\\text{ not selected}) = (1-1/n)^n \\to 1/e \\approx 0.368$. *'Why to the power of n? **n times we draw from the sample with replacement**.'* So ≈37% out, ≈**63% in**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-078",
+      "topic": "bagging",
+      "q": "How is out-of-bag error calculated?",
+      "options": [
+        "Average the training error of all models",
+        "Find all models NOT trained on the OOB instance, take their majority vote, compare to the true value, and compile over all instances",
+        "Use a held-out 20% test split",
+        "Measure the variance of the predictions"
+      ],
+      "answer": 1,
+      "explain": "Each instance is scored only by the ~37% of models that **never saw it**, so the estimate is honest. OOB error is essentially **free cross-validation** — no extra training, and all data still used for training.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-079",
+      "topic": "bagging",
+      "q": "Bagging primarily reduces which component of error?",
+      "options": ["Bias", "Variance", "Irreducible noise", "Both bias and variance equally"],
+      "answer": 1,
+      "explain": "*'This helps in reducing overall **variance**. Due to the reduction in variance, normally **unstable** classifiers can be made robust.'* So bagging suits **low-bias, high-variance** learners — deep unpruned trees — not stumps.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-080",
+      "topic": "boosting",
+      "q": "What is the main idea of boosting?",
+      "options": [
+        "Train models in parallel on bootstrap samples",
+        "Train models sequentially, each correcting the shortcomings of the combined ensemble of all previous models",
+        "Train one model on all features at once",
+        "Average the predictions of independent models"
+      ],
+      "answer": 1,
+      "explain": "*'Instead of training the models in parallel (like in bagging), we can train them **sequentially**.'* Note it corrects **the combined ensemble so far**, not just the previous model — the target moves every round.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-081",
+      "topic": "boosting",
+      "q": "How are instance weights adjusted between boosting iterations?",
+      "options": [
+        "All weights are reset to 1/n each round",
+        "Misclassified instances get more weight and correctly classified instances get less",
+        "Weights decay exponentially regardless of correctness",
+        "Only the weights of support vectors change"
+      ],
+      "answer": 1,
+      "explain": "This ensures **the next weak learner pays greater attention to instances misclassified earlier**. The weights are the ensemble's **memory** — the only thing passed between rounds — and are **normalised to sum to 1**.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-082",
+      "topic": "boosting",
+      "q": "What determines a model's 'voting right' in boosting?",
+      "options": [
+        "The order in which it was trained",
+        "A performance measure indicating the quality of the model — better models get better voting right",
+        "The number of instances it was trained on",
+        "All models vote equally, as in bagging"
+      ],
+      "answer": 1,
+      "explain": "In AdaBoost this is $\\alpha_t = \\tfrac12\\ln\\frac{1-\\varepsilon_t}{\\varepsilon_t}$: a near-perfect learner gets a large positive weight, one at $\\varepsilon = 0.5$ gets **exactly zero** (it carries no information), and one worse than chance gets a **negative** weight — its vote is inverted.",
+      "difficulty": "hard",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-083",
+      "topic": "boosting",
+      "q": "Which statement correctly contrasts bagging and boosting sampling?",
+      "options": [
+        "Both weight observations equally",
+        "In bagging any element has the same probability of appearing; in boosting observations are weighted so some appear more often",
+        "Bagging weights observations, boosting does not",
+        "Neither resamples the data"
+      ],
+      "answer": 1,
+      "explain": "Stated directly on the comparison slide. Add the standard contrasts: bagging is **parallel and reduces variance**; boosting is **sequential and reduces bias**; bagging votes equally, boosting votes by quality.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-084",
+      "topic": "random-forest",
+      "q": "In random forest, how many attributes are considered at each split?",
+      "options": [
+        "All M attributes",
+        "Only R attributes chosen at random, where R < M",
+        "Exactly two",
+        "One per tree, fixed in advance"
+      ],
+      "answer": 1,
+      "explain": "*'In a dataset where M is the total number of input attributes, only **R attributes are chosen at random** for each tree, where **R < M**.'* The reason has **two parts**: **enormous computation** and **high chances of overfitting**.",
+      "difficulty": "easy",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-085",
+      "topic": "random-forest",
+      "q": "What is the essential difference between bagged trees and a random forest?",
+      "options": [
+        "Random forest uses boosting internally",
+        "Bagging randomises only the data; random forest randomises the data AND the features at every split",
+        "Random forest uses a single tree",
+        "Bagging cannot be used for regression"
+      ],
+      "answer": 1,
+      "explain": "Without feature randomisation, a strong predictor becomes the root split of **every** tree, the trees are near-identical, their errors are **correlated**, and averaging achieves little. Restricting each split to $R$ random attributes **decorrelates** the trees.",
+      "difficulty": "hard",
+      "source": "textbook"
+    },
+    {
+      "id": "ml-u2-lec-086",
+      "topic": "random-forest",
+      "q": "What are the four steps of the random forest algorithm?",
+      "options": [
+        "Normalise, split, prune, vote",
+        "Create bootstrapped dataset; create trees using a random subset of features; compute out-of-bag error; classify by voting",
+        "Weight instances, train sequentially, compute voting rights, aggregate",
+        "Select features, train one deep tree, prune, validate"
+      ],
+      "answer": 1,
+      "explain": "Note step 1 also specifies **maintaining the class distribution** — stratified bootstrapping, which matters on imbalanced data. And the random feature subset is drawn **fresh at every node**, not once per tree.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-087",
+      "topic": "random-forest",
+      "q": "Besides accuracy, what does a random forest provide with its results?",
+      "options": [
+        "The optimal learning rate",
+        "Variable (feature) importance information",
+        "A convex optimisation certificate",
+        "The exact decision boundary equation"
+      ],
+      "answer": 1,
+      "explain": "*'**Accuracy and variable importance information** is provided with the results.'* Importance comes free from the OOB machinery: permute one attribute in the OOB data, re-measure the error, and the **increase** shows how much the forest relied on it.",
+      "difficulty": "medium",
+      "source": "slide"
+    },
+    {
+      "id": "ml-u2-lec-088",
+      "topic": "random-forest",
+      "q": "Typical defaults for R are √M for classification and M/3 for regression. What does a smaller R trade off?",
+      "options": [
+        "Faster training against more memory",
+        "More decorrelation between trees against weaker individual trees",
+        "Lower bias against higher irreducible error",
+        "Fewer trees against deeper trees"
+      ],
+      "answer": 1,
+      "explain": "Smaller $R$ makes trees **more different** (better variance reduction when averaged) but each tree **weaker**, since the best attribute is often unavailable. $R$ is the dial between the two, and the forest's main hyperparameter.",
+      "difficulty": "hard",
+      "source": "textbook"
+    }
+  ]
+}

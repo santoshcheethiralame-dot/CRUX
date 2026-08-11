@@ -7,7 +7,12 @@
       "id": "ml-u2-tb-01",
       "topic": "perceptron",
       "q": "A two-input perceptron has decision line crossing the $x_1$-axis at $-1$ and the $x_2$-axis at $2$ (i.e. $\\frac{x_1}{-1}+\\frac{x_2}{2}=1$). Which weight set $(w_0,w_1,w_2)$ realises $w_0+w_1x_1+w_2x_2=0$ on this line?",
-      "options": ["$(2, 2, -1)$", "$(-2, -2, 1)$", "$(0, 1, 1)$", "$(1, -1, 2)$"],
+      "options": [
+        "$(2, 2, -1)$",
+        "$(-2, -2, 1)$",
+        "$(0, 1, 1)$",
+        "$(1, -1, 2)$"
+      ],
       "answer": 0,
       "explain": "The line is $2x_1 - x_2 + 2 = 0$ (check intercepts: $x_2{=}0\\Rightarrow x_1{=}{-}1$; $x_1{=}0\\Rightarrow x_2{=}2$), giving $(w_0,w_1,w_2)=(2,2,-1)$ up to scale. (Mitchell, Exercise 4.1.)",
       "difficulty": "hard",
@@ -17,7 +22,12 @@
       "id": "ml-u2-tb-02",
       "topic": "perceptron",
       "q": "Per Mitchell, the **Perceptron training rule** is guaranteed to converge to a perfect classifier only when:",
-      "options": ["the learning rate is large", "the training data is linearly separable", "the data is noisy", "a sigmoid activation is used"],
+      "options": [
+        "the learning rate is large",
+        "the training data is linearly separable",
+        "the data is noisy",
+        "a sigmoid activation is used"
+      ],
       "answer": 1,
       "explain": "The Perceptron Convergence Theorem guarantees convergence in finite steps **iff the data is linearly separable** (and η is sufficiently small). (Mitchell §4.4.2.)",
       "difficulty": "medium",
@@ -27,7 +37,12 @@
       "id": "ml-u2-tb-03",
       "topic": "perceptron",
       "q": "How does the **delta rule** (LMS / gradient descent) differ from the perceptron training rule in Mitchell's treatment?",
-      "options": ["The delta rule uses the thresholded output; the perceptron rule uses the linear output", "The delta rule does gradient descent on the **unthresholded linear output** and converges (asymptotically) even when data is **not** linearly separable", "They are identical", "The delta rule only works for Boolean inputs"],
+      "options": [
+        "The delta rule uses the thresholded output; the perceptron rule uses the linear output",
+        "The delta rule does gradient descent on the **unthresholded linear output** and converges (asymptotically) even when data is **not** linearly separable",
+        "They are identical",
+        "The delta rule only works for Boolean inputs"
+      ],
       "answer": 1,
       "explain": "The delta rule minimizes squared error on the *unthresholded* linear unit $o=\\mathbf{w}\\cdot\\mathbf{x}$, so it converges toward the best-fit weights even for non-separable data — unlike the perceptron rule, which needs separability. (Mitchell §4.4.3.)",
       "difficulty": "hard",
@@ -37,7 +52,12 @@
       "id": "ml-u2-tb-04",
       "topic": "multilayer-xor",
       "q": "Mitchell Exercise 4.2 asks you to implement $A \\oplus B$ (XOR). This requires:",
-      "options": ["a single perceptron", "a two-layer network of perceptrons", "a linear unit", "no hidden units"],
+      "options": [
+        "a single perceptron",
+        "a two-layer network of perceptrons",
+        "a linear unit",
+        "no hidden units"
+      ],
       "answer": 1,
       "explain": "XOR is not linearly separable, so a single perceptron cannot represent it; a **two-layer** network of perceptrons can. (Mitchell, Exercise 4.2.)",
       "difficulty": "easy",
@@ -47,7 +67,12 @@
       "id": "ml-u2-tb-05",
       "topic": "backpropagation",
       "q": "For a sigmoid output unit $o$, the backprop error term is $\\delta = (t-o)\\,o(1-o)$. The factor $o(1-o)$ is:",
-      "options": ["the learning rate", "the derivative of the sigmoid, $\\sigma'(net)$", "the momentum", "the squared error"],
+      "options": [
+        "the learning rate",
+        "the derivative of the sigmoid, $\\sigma'(net)$",
+        "the momentum",
+        "the squared error"
+      ],
       "answer": 1,
       "explain": "$\\sigma'(net)=o(1-o)$ — the sigmoid's derivative — appears via the chain rule. (Mitchell §4.5.3.)",
       "difficulty": "medium",
@@ -57,7 +82,12 @@
       "id": "ml-u2-tb-06",
       "topic": "backpropagation",
       "q": "Mitchell Exercise 4.8 revises backprop to use $\\tanh$. The needed derivative is:",
-      "options": ["$\\tanh'(x) = \\tanh(x)(1-\\tanh(x))$", "$\\tanh'(x) = 1 - \\tanh^2(x)$", "$\\tanh'(x) = 1 + \\tanh^2(x)$", "$\\tanh'(x) = \\tanh^2(x)$"],
+      "options": [
+        "$\\tanh'(x) = \\tanh(x)(1-\\tanh(x))$",
+        "$\\tanh'(x) = 1 - \\tanh^2(x)$",
+        "$\\tanh'(x) = 1 + \\tanh^2(x)$",
+        "$\\tanh'(x) = \\tanh^2(x)$"
+      ],
       "answer": 1,
       "explain": "$\\tanh'(x) = 1 - \\tanh^2(x)$, which replaces $o(1-o)$ in the δ formulas. (Mitchell, Exercise 4.8.)",
       "difficulty": "medium",
@@ -67,7 +97,12 @@
       "id": "ml-u2-tb-07",
       "topic": "backpropagation",
       "q": "In Mitchell's backprop with a **momentum** term $\\alpha$, the weight update is $\\Delta w_{ji}(n) = \\eta\\,\\delta_j x_{ji} + \\alpha\\,\\Delta w_{ji}(n-1)$. Momentum mainly helps by:",
-      "options": ["increasing the learning rate to 1", "carrying velocity through flat regions and damping oscillations", "removing the need for a learning rate", "guaranteeing the global minimum"],
+      "options": [
+        "increasing the learning rate to 1",
+        "carrying velocity through flat regions and damping oscillations",
+        "removing the need for a learning rate",
+        "guaranteeing the global minimum"
+      ],
       "answer": 1,
       "explain": "Adding a fraction $\\alpha$ of the previous update keeps the search moving across flat plateaus and smooths oscillations in ravines. (Mitchell §4.5.2, Exercise 4.7.)",
       "difficulty": "medium",
@@ -77,7 +112,12 @@
       "id": "ml-u2-tb-08",
       "topic": "backpropagation",
       "q": "The vanishing-gradient issue with sigmoids stems from $\\sigma'(x)=\\sigma(x)(1-\\sigma(x))$ having maximum value:",
-      "options": ["1.0", "0.5", "0.25", "0.1"],
+      "options": [
+        "1.0",
+        "0.5",
+        "0.25",
+        "0.1"
+      ],
       "answer": 2,
       "explain": "$\\sigma'$ peaks at $x=0$ with value $0.25$; products of many such factors across layers shrink toward 0.",
       "difficulty": "medium",
@@ -87,7 +127,12 @@
       "id": "ml-u2-tb-09",
       "topic": "activation-functions",
       "q": "Alpaydin (Exercise 10.4): using **two softmax outputs** for a 2-class problem is equivalent to using:",
-      "options": ["two sigmoids", "one sigmoid output", "a linear unit", "a tanh unit"],
+      "options": [
+        "two sigmoids",
+        "one sigmoid output",
+        "a linear unit",
+        "a tanh unit"
+      ],
       "answer": 1,
       "explain": "Softmax with $K=2$ reduces algebraically to a single logistic (sigmoid) output — softmax generalises sigmoid to many classes. (Alpaydin §10.7.)",
       "difficulty": "medium",
@@ -97,7 +142,12 @@
       "id": "ml-u2-tb-10",
       "topic": "activation-functions",
       "q": "Softmax outputs $y_i = e^{a_i}/\\sum_j e^{a_j}$ always satisfy:",
-      "options": ["each $y_i > 1$", "$\\sum_i y_i = 1$ with each $y_i \\in [0,1]$", "$\\sum_i y_i = 0$", "exactly one $y_i = 1$"],
+      "options": [
+        "each $y_i > 1$",
+        "$\\sum_i y_i = 1$ with each $y_i \\in [0,1]$",
+        "$\\sum_i y_i = 0$",
+        "exactly one $y_i = 1$"
+      ],
       "answer": 1,
       "explain": "Softmax produces a probability distribution: non-negative values summing to 1. (Alpaydin §10.7.)",
       "difficulty": "easy",
@@ -107,7 +157,12 @@
       "id": "ml-u2-tb-11",
       "topic": "svm-margin-primal",
       "q": "Alpaydin's **optimal separating hyperplane** is the one that:",
-      "options": ["passes through the most data points", "maximizes the margin (distance to the nearest instances of each class)", "minimizes the number of support vectors to zero", "has the largest $\\|W\\|$"],
+      "options": [
+        "passes through the most data points",
+        "maximizes the margin (distance to the nearest instances of each class)",
+        "minimizes the number of support vectors to zero",
+        "has the largest $\\|W\\|$"
+      ],
       "answer": 1,
       "explain": "Among all separating hyperplanes, SVM picks the one **maximizing the margin** $2/\\|W\\|$ — equivalently minimizing $\\tfrac12\\|W\\|^2$. (Alpaydin §10.9.)",
       "difficulty": "easy",
@@ -117,7 +172,12 @@
       "id": "ml-u2-tb-12",
       "topic": "svm-dual-support-vectors",
       "q": "After solving the SVM dual, $\\mathbf{W} = \\sum_i \\alpha_i y_i \\mathbf{x}_i$. The instances with $\\alpha_i > 0$ are:",
-      "options": ["all training points", "the support vectors (those on the margin)", "the misclassified points only", "the class centroids"],
+      "options": [
+        "all training points",
+        "the support vectors (those on the margin)",
+        "the misclassified points only",
+        "the class centroids"
+      ],
       "answer": 1,
       "explain": "Only the support vectors (on the margin boundary) have non-zero multipliers; they alone determine $\\mathbf{W}$. (Alpaydin §10.9.1.)",
       "difficulty": "medium",
@@ -125,9 +185,14 @@
     },
     {
       "id": "ml-u2-tb-13",
-      "topic": "kernels-soft-margin",
+      "topic": "soft-margin",
       "q": "In Alpaydin's **soft-margin** hyperplane, slack variables $\\xi_i$ are introduced and the objective adds the term:",
-      "options": ["$-C\\sum_i \\xi_i$", "$+C\\sum_i \\xi_i$ (penalty for violations)", "$\\sum_i \\xi_i^2$ only", "nothing — slack is free"],
+      "options": [
+        "$-C\\sum_i \\xi_i$",
+        "$+C\\sum_i \\xi_i$ (penalty for violations)",
+        "$\\sum_i \\xi_i^2$ only",
+        "nothing — slack is free"
+      ],
       "answer": 1,
       "explain": "Soft margin minimizes $\\tfrac12\\|W\\|^2 + C\\sum_i\\xi_i$; large $C$ penalizes violations more (→ hard margin), small $C$ widens the margin. (Alpaydin §10.9.2.)",
       "difficulty": "medium",
@@ -135,9 +200,14 @@
     },
     {
       "id": "ml-u2-tb-14",
-      "topic": "kernels-soft-margin",
+      "topic": "kernels",
       "q": "The **kernel trick** lets SVM operate in a high-dimensional space efficiently because the dual depends on data only through:",
-      "options": ["the class labels", "inner (dot) products, which a kernel $K(x_i,x_j)$ computes directly", "the bias term", "the slack variables"],
+      "options": [
+        "the class labels",
+        "inner (dot) products, which a kernel $K(x_i,x_j)$ computes directly",
+        "the bias term",
+        "the slack variables"
+      ],
       "answer": 1,
       "explain": "Since training points appear only as dot products, replacing them with $K(x_i,x_j)$ computes the high-dimensional inner product **without the explicit mapping**. (Alpaydin §13, Burges tutorial.)",
       "difficulty": "medium",
@@ -145,9 +215,14 @@
     },
     {
       "id": "ml-u2-tb-15",
-      "topic": "ensemble-bagging",
+      "topic": "ensemble-learning",
       "q": "Alpaydin Exercise 15.1: if $L$ **independent** base learners are each correct with probability $p > \\tfrac12$, the probability a majority vote is correct, as $L$ grows, tends to:",
-      "options": ["$p$", "1 (it increases toward certainty)", "$\\tfrac12$", "$1-p$"],
+      "options": [
+        "$p$",
+        "1 (it increases toward certainty)",
+        "$\\tfrac12$",
+        "$1-p$"
+      ],
       "answer": 1,
       "explain": "This is Condorcet's Jury Theorem: a majority of many independent better-than-random voters is correct with probability $\\to 1$ — the statistical basis of ensembles. (Alpaydin §15.2.)",
       "difficulty": "medium",
@@ -157,7 +232,12 @@
       "id": "ml-u2-tb-16",
       "topic": "boosting",
       "q": "Alpaydin contrasts bagging and boosting. A key property of **boosting (AdaBoost)** is that base learners are trained:",
-      "options": ["in parallel on equal-weight bootstrap samples", "sequentially, each focusing on instances the previous ones misclassified", "independently with no reweighting", "on disjoint feature subsets"],
+      "options": [
+        "in parallel on equal-weight bootstrap samples",
+        "sequentially, each focusing on instances the previous ones misclassified",
+        "independently with no reweighting",
+        "on disjoint feature subsets"
+      ],
       "answer": 1,
       "explain": "Boosting is sequential: each learner is trained on a reweighted distribution emphasizing previously misclassified instances. Bagging, by contrast, is parallel with equal weights. (Alpaydin §15.5.)",
       "difficulty": "medium",
@@ -165,9 +245,14 @@
     },
     {
       "id": "ml-u2-tb-17",
-      "topic": "ensemble-bagging",
+      "topic": "bagging",
       "q": "Alpaydin Exercise 15.2 asks the effect of using L-fold cross-validation instead of bootstrap to make bagging's training sets. Compared to bootstrap, CV folds are:",
-      "options": ["sampled with replacement (duplicates)", "disjoint subsets (sampling without replacement), so they share no instances", "identical to each other", "always larger than the original set"],
+      "options": [
+        "sampled with replacement (duplicates)",
+        "disjoint subsets (sampling without replacement), so they share no instances",
+        "identical to each other",
+        "always larger than the original set"
+      ],
       "answer": 1,
       "explain": "Bootstrap samples *with replacement* (~63% unique, duplicates allowed); CV partitions into *disjoint* folds without replacement — changing the diversity/overlap of the training sets. (Alpaydin, Exercise 15.2.)",
       "difficulty": "hard",
@@ -177,7 +262,12 @@
       "id": "ml-u2-tb-18",
       "topic": "optimizers",
       "q": "Mitchell Exercise 4.4 contrasts **incremental (stochastic)** vs **batch** gradient descent. The incremental version:",
-      "options": ["updates weights only after summing errors over all examples", "updates weights after each example, approximating true gradient descent with noisier steps", "never converges", "ignores the learning rate"],
+      "options": [
+        "updates weights only after summing errors over all examples",
+        "updates weights after each example, approximating true gradient descent with noisier steps",
+        "never converges",
+        "ignores the learning rate"
+      ],
       "answer": 1,
       "explain": "Incremental/stochastic GD updates per example — a noisy approximation of the true (batch) gradient that often converges faster and can escape local minima. (Mitchell §4.4.3, Exercise 4.4.)",
       "difficulty": "medium",

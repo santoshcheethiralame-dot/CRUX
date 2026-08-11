@@ -37,7 +37,7 @@ export const SUBJECTS: SubjectMeta[] = [
         subtitle:
           'P-T-E & well-posed problems · supervised/unsupervised/RL · generative vs discriminative · concept, hypothesis & version space · Find-S · decision trees & ID3 (entropy, gain) · inductive bias · overfitting & pruning · continuous/missing/costly attributes · bias–variance · logistic regression · eager vs lazy · KNN & weighted KNN · curse of dimensionality · confusion matrix & metrics · ROC/AUC',
       },
-      { unit: 2, title: 'ANN, SVM, Boosting', subtitle: 'Perceptrons · backprop · activations · optimizers · SVM · kernels · gradient boost · random forest' },
+      { unit: 2, title: 'ANN, SVM, Boosting', subtitle: 'MP neuron & perceptron · XOR and multilayer networks · sigmoid & loss · forward prop · gradient descent & backpropagation · activations · optimizers (momentum, RMSProp, Adam) · SVM margin, dual & KKT · kernels & soft margin · ensembles, bagging, boosting & random forest' },
       { unit: 3, title: 'Bayesian Learning, HMM', subtitle: 'Bayes theorem · MLE · Bayes optimal · Naïve Bayes · EM & GMM · Hidden Markov Models' },
       { unit: 4, title: 'Unsupervised Learning, Dimensionality Reduction & Intro to Deep Learning', subtitle: 'Clustering · K-means · PCA & SVD · RL · CNNs · Transformers · LLMs' },
     ],

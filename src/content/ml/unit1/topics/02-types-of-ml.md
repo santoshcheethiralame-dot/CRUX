@@ -64,7 +64,7 @@ Given $(x_1,y_1),\dots,(x_n,y_n)$, learn $f(x)$ to predict $y$, where **$y$ is c
 - Slide example: **Breast cancer Malignant(1)/Benign(0) vs Tumour Size**.
 - Binary: $y\in\{0,1\}$, where **0 = negative class, 1 = positive class**. Multi-class: $y\in\{0,1,2,3,\dots\}$.
 
-### Algorithms
+### Supervised algorithms
 
 | For classification | For regression |
 |---|---|
@@ -113,7 +113,7 @@ Examples from the slides:
 - groups of shoppers based on browsing and purchasing histories;
 - movies grouped by the ratings given by viewers.
 
-### Algorithms
+### Unsupervised algorithms
 
 **K-means clustering · Hierarchical clustering · Neural networks (encoders, autoencoders) · Principal Component Analysis (PCA) · Independent Component Analysis · Apriori algorithm · Singular Value Decomposition (SVD)**
 

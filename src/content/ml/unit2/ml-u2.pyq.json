@@ -68,7 +68,7 @@
     },
     {
       "id": "ml-u2-pyq-08",
-      "topic": "kernels-soft-margin",
+      "topic": "kernels",
       "year": "ESA 2024",
       "marks": 15,
       "difficulty": "hard",
@@ -77,7 +77,7 @@
     },
     {
       "id": "ml-u2-pyq-09",
-      "topic": "kernels-soft-margin",
+      "topic": "kernels",
       "year": "ESA 2024",
       "marks": 5,
       "difficulty": "medium",
@@ -95,7 +95,7 @@
     },
     {
       "id": "ml-u2-pyq-11",
-      "topic": "kernels-soft-margin",
+      "topic": "kernels",
       "year": "ESA 2024",
       "marks": 8,
       "difficulty": "hard",

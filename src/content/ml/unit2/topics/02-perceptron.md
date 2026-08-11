@@ -4,84 +4,112 @@ unit: 2
 order: 2
 slug: perceptron
 title: The Perceptron
-summary: Rosenblatt's perceptron — learnable weights & bias, the decision rule, OR by hand, and the learning algorithm.
-minutes: 13
-tags: [perceptron, weights, bias, learning-rule, linear]
+summary: Rosenblatt's model, the two primary differences from the MP neuron, the bias-as-prior trick that makes the threshold learnable, and the restaurant example that gives w0 its meaning.
+minutes: 9
+tags: [perceptron, rosenblatt, weights, bias, threshold, prior]
 ---
 
 # The Perceptron
 
-Frank Rosenblatt's **Perceptron (1958)** generalises the MP neuron with two crucial additions:
+## What Rosenblatt added
 
-1. **Numerical weights** $w_i$ on each input — *and a mechanism to learn them* (plus the bias).
-2. Inputs are **no longer limited to Boolean values** (real-valued inputs allowed).
+> [!NOTE]
+> **Frank Rosenblatt proposed the classical perceptron model in 1958** — *a more general computational model than the MP neuron.*
+>
+> **The two primary differences:**
+> 1. **Introduction of numerical weights for the inputs, and a mechanism for learning those weights and the bias.**
+> 2. **Inputs are no longer limited to Boolean values.**
 
-## The model
-
-Each input $x_i$ has a weight $w_i$; a special **bias** $w_0 = -\theta$ with $x_0 = 1$ absorbs the threshold. The neuron fires based on the sign of the weighted sum:
-
-$$y = \begin{cases} 1 & \text{if } \mathbf{w}^T\mathbf{x} + b \ge 0 \\ 0 & \text{if } \mathbf{w}^T\mathbf{x} + b < 0 \end{cases} \qquad (b = w_0 = -\theta)$$
-
-> [!INTUITION]
-> **Restaurant decision.** Inputs = Service, Ambience, Taste; a foodie weights *Taste* highest. The **bias** is your *prior/prejudice*: a foodie has a very low threshold ($\theta = 0$, dines anywhere); a food critic has a high one ($\theta = 3$, only ≥4-star places). Learning = finding the weights and bias that match your past choices (the data).
-
-## MP neuron vs Perceptron
-
-| | MP Neuron | Perceptron |
-|---|---|---|
-| Inputs | Binary only | Real-valued |
-| Weights | Fixed / none | **Learnable** |
-| Threshold | Hand-coded | **Learnable** (as bias) |
-
-**Shared:** both split the input space into two halves with a **linear** boundary, and output is binary.
-
-## Worked example — OR by hand
-
-For OR, we need weights satisfying one inequality per row of the truth table:
-
-| $x_1$ | $x_2$ | OR | Constraint on $w_0 + w_1x_1 + w_2x_2$ |
-|---|---|---|---|
-| 0 | 0 | 0 | $w_0 < 0$ |
-| 0 | 1 | 1 | $w_2 \ge -w_0$ |
-| 1 | 0 | 1 | $w_1 \ge -w_0$ |
-| 1 | 1 | 1 | $w_1 + w_2 \ge -w_0$ |
-
-One solution: $w_0 = -1,\ w_1 = 1.1,\ w_2 = 1.1$ → boundary $-1 + 1.1x_1 + 1.1x_2 = 0$. (For AND a valid set is $w_0 = -0.8,\ w_1 = w_2 = 0.5$.)
-
-## The Perceptron Learning Algorithm
-
-Let **P** = inputs labelled $+1$ and **N** = inputs labelled $0$. Loop until every point is correctly classified:
-
-```
-Initialise w randomly.
-Repeat until convergence:
-   pick a misclassified example x:
-      if x ∈ P but w·x < 0:   w ← w + x   (push boundary toward x)
-      if x ∈ N but w·x ≥ 0:   w ← w − x   (push boundary away from x)
-```
-
-> [!INTUITION]
-> The weight vector $\mathbf{w}$ is **normal** to the decision boundary. Adding a misclassified positive $\mathbf{x}$ rotates $\mathbf{w}$ *toward* it (shrinking the angle below 90°, so $\mathbf{w}\cdot\mathbf{x}$ becomes positive); subtracting a misclassified negative rotates it *away* (angle grows past 90°).
-
-A perceptron is a **threshold linear unit** giving **linear decision surfaces** — it easily represents AND, OR, NAND, NOR.
-
-> [!EXAM]
-> The **Perceptron Convergence Theorem** guarantees this algorithm terminates **iff the data is linearly separable**. On non-separable data (e.g. XOR) it never converges — the motivation for the next topic.
-
-## Perceptron rule vs Delta rule (Mitchell — know the difference)
-
-Mitchell stresses **two distinct training rules**, and exams love the distinction:
-
-| | **Perceptron rule** | **Delta rule** (LMS / Widrow–Hoff) |
-|---|---|---|
-| Trains on | the **thresholded** output (0/1) | the **unthresholded** linear output $o=\mathbf{w}\cdot\mathbf{x}$ |
-| Method | mistake-driven correction | **gradient descent** on squared error $E=\tfrac12\sum(t-o)^2$ |
-| Update | $\Delta w_i = \eta(t-o)x_i$ | $\Delta w_i = \eta(t-o)x_i$ over the *linear* unit |
-| Convergence | only if data **linearly separable** (then exact) | converges **asymptotically** to least-squares fit **even if not separable** |
-
-> [!INTUITION]
-> The perceptron rule chases a *perfect* separator and gives up (loops forever) if none exists. The delta rule instead rolls downhill on a smooth error surface toward the **best-fit** weights — so it degrades gracefully on noisy, non-separable data. This gradient-descent idea is exactly what carries over to the **sigmoid neuron** and **backpropagation**. (Mitchell §4.4.)
+That single slide answers **three of the MP neuron's five limitations** at once: real-valued inputs (limitation 1), unequal treatment of inputs (limitation 2), and a threshold that need not be hand-coded (limitation 3).
 
 ---
 
-**Next:** why a *single* perceptron fails on **XOR**, and how a *network* fixes it.
+## The model
+
+$$y = \begin{cases} 1 & \text{if } \sum_{i=0}^{n} w_i x_i \geq 0 \\[4pt] 0 & \text{if } \sum_{i=0}^{n} w_i x_i < 0 \end{cases}$$
+
+The sum starts at $i = 0$, not $i = 1$, and that is the whole trick:
+
+> [!EXAM]
+> **$w_0 = -\theta$ is the bias, and $x_0 = 1$ always.**
+>
+> Starting from the MP-style condition $\sum_{i=1}^{n} w_i x_i \geq \theta$, move $\theta$ to the left:
+>
+> $$\sum_{i=1}^{n} w_i x_i - \theta \geq 0 \;\;\Longrightarrow\;\; \sum_{i=1}^{n} w_i x_i + w_0 x_0 \geq 0 \;\;\text{with } w_0 = -\theta,\; x_0 = 1$$
+>
+> The threshold has become **an ordinary weight on a constant input**. That is *why* it can now be learned — the learning rule updates $w_0$ exactly as it updates every other weight, with no special case.
+
+$w_1 \dots w_n$ are the weights on inputs $x_1 \dots x_n$, and $y$ is the output.
+
+> [!TRAP]
+> Watch the sign. $w_0 = -\theta$, so a **large threshold is a large negative bias**. If a question gives you $w_0 = -0.3$ and asks for the threshold, the answer is $\theta = 0.3$, not $-0.3$.
+
+---
+
+## What the bias means
+
+The restaurant example is worth keeping, because it gives $w_0$ an interpretation rather than leaving it as an algebraic convenience.
+
+Task: predict whether we would like to **dine at a restaurant**, based on three inputs — $x_1 = $ **Service**, $x_2 = $ **Ambience**, $x_3 = $ **Taste**.
+
+- Based on **past dining experience (the data)**, we give a **high weight to taste** compared with the other inputs.
+- **$w_0$ is called the bias, as it represents the prior (prejudice).**
+
+> [!EXAM]
+> The two characters the slides use to make the threshold concrete:
+>
+> - **A foodie** has a **very low threshold** and may dine at any restaurant irrespective of service, ambience or taste — $\theta = 0$.
+> - **A food critic** may only dine at restaurants with **≥ 4-star ratings** for service, taste and ambience — $\theta = 3$.
+>
+> Same weights, different bias, completely different behaviour.
+
+> [!INTUITION]
+> The split is genuinely meaningful. **The weights encode what the evidence says** — how much taste matters relative to ambience, learned from data. **The bias encodes how much evidence you demand before acting** — your standing disposition, independent of any particular restaurant.
+>
+> This is why calling $w_0$ a *prior* is apt rather than decorative: it shifts the decision boundary without changing its orientation. Two people can weigh the same evidence identically and still disagree, purely because one is harder to please.
+
+---
+
+## Perceptron as a linear unit
+
+> [!NOTE]
+> - A perceptron is a **threshold linear unit (discrete-valued)**.
+> - **What is a linear unit?** A **linear combination of weighted inputs (real-valued)**.
+> - A perceptron offers **linear decision surfaces**, which means a single perceptron can easily represent simple Boolean functions like **AND, OR, NAND and NOR**.
+
+> [!TRAP]
+> Read that first bullet carefully — there are **two** components. The *linear unit* is the real-valued weighted sum $\sum w_i x_i$; the *threshold* is the step applied on top of it that squashes the result to $\{0, 1\}$.
+>
+> The distinction matters later: the sum is smooth and differentiable, the threshold is neither. When the sigmoid neuron arrives, it keeps the linear unit **unchanged** and replaces only the threshold.
+
+---
+
+## Worked example — OR
+
+Given the truth table for OR and the perceptron equation, find $w_0$, $w_1$, $w_2$.
+
+| $x_1$ | $x_2$ | OR |
+|---|---|---|
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 1 |
+
+> [!DERIVE]
+> **One possible solution is $w_0 = -0.3$, $w_1 = w_2 = 0.5$.** Verify all four rows using $y = 1 \iff w_0 + w_1x_1 + w_2x_2 \geq 0$:
+>
+> | $(x_1, x_2)$ | $w_0 + w_1x_1 + w_2x_2$ | Sign | $y$ | Required |
+> |---|---|---|---|---|
+> | $(0,0)$ | $-0.3$ | $< 0$ | 0 | 0 ✓ |
+> | $(0,1)$ | $-0.3 + 0.5 = 0.2$ | $\geq 0$ | 1 | 1 ✓ |
+> | $(1,0)$ | $-0.3 + 0.5 = 0.2$ | $\geq 0$ | 1 | 1 ✓ |
+> | $(1,1)$ | $-0.3 + 1.0 = 0.7$ | $\geq 0$ | 1 | 1 ✓ |
+>
+> All four correct. Note the solution is **not unique** — any weights placing the line between $(0,0)$ and the other three points work. The threshold here is $\theta = 0.3$, i.e. *"at least one input must be on."*
+
+> [!EXAM]
+> For **AND** with the same $w_1 = w_2 = 0.5$, you need $\theta$ between $0.5$ and $1.0$ — so $w_0 = -0.8$ works: only $(1,1)$ gives $-0.8 + 1.0 = 0.2 \geq 0$. Being able to hand-construct weights for AND, OR, NAND and NOR is a standard short question.
+
+---
+
+**Next:** how those weights are found automatically — **the perceptron learning algorithm**.
