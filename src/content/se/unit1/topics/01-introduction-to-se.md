@@ -4,120 +4,244 @@ unit: 1
 order: 1
 slug: introduction-to-se
 title: Introduction to Software Engineering
-summary: What software & SE really are, the 1968 software crisis, FLURPS quality drivers, the cost of failure, and CS vs SE.
-minutes: 14
-tags: [definition, software-crisis, FLURPS, quality, CS-vs-SE]
+summary: Why software matters at scale, the failure case studies, the full terminology set, the software crisis and where the term came from, computer science versus software engineering, and the fundamental drivers.
+minutes: 13
+tags: [software-engineering, software-crisis, terminology, NATO-1968, FLURPS, drivers, case-studies]
 ---
 
 # Introduction to Software Engineering
 
-## What is "software"? (it is not just code)
-
-A common trap is to think *software = the program*. Sommerville is explicit: **software is the programs *and* all the associated documentation and configuration data needed to make them work correctly.**
-
-A **software product** therefore includes:
-
-- the **executable programs** (the source + compiled code),
-- **libraries** it depends on,
-- **configuration files** to set it up,
-- **documentation** — both system documentation (architecture, how it works) and user documentation (how to use it),
-- and increasingly, **websites / services** for users to download information.
+## Software is everywhere
 
 > [!NOTE]
-> Two kinds of software product:
-> - **Generic products** — stand-alone systems sold on the open market to *anyone* (e.g. MS Word, Photoshop, a database). The developer owns and controls the specification.
-> - **Customised (bespoke) products** — commissioned by a *specific* customer to meet their own needs (e.g. an air-traffic-control system, a bank's settlement engine). The customer owns and controls the specification.
-
-## What is Software Engineering?
-
-> [!NOTE]
-> **Software Engineering** is an engineering discipline concerned with **all aspects of software production**, from the early stages of system specification through to maintaining the system after it has gone into use.
-
-Unpack the two key phrases:
-
-- **"Engineering discipline"** — engineers make things work. They apply theories, methods and tools *appropriately*, but they also work within **organisational and financial constraints**, so they look for solutions even when there are no applicable theories. They are pragmatic.
-- **"All aspects of software production"** — not just the technical process of writing code, but also project management and the development of tools, methods and theories to support production.
-
-[!INTUITION] Computer **Science** is to Software **Engineering** as Physics is to Mechanical/Electrical Engineering. Science gives you the *theories and fundamentals*; engineering uses those theories to **build a real, reliable, economical product under constraints** (deadlines, budgets, team size).
-
-## The Software Crisis — why the discipline was born
-
-The term **"software engineering"** was coined at the **1968 NATO Software Engineering Conference (Garmisch, Germany)** to confront the **software crisis**: as hardware grew vastly more powerful, the software running on it became impossible to build and maintain with the *ad-hoc* "just code it" methods of the day.
-
-Symptoms of the crisis (still the symptoms of bad projects today):
-
-| Symptom | Meaning |
-|---|---|
-| **Over budget** | Projects cost far more than estimated |
-| **Over time** | Projects ran years late |
-| **Low quality** | Software was buggy, did not meet requirements |
-| **Unmaintainable** | Hard to change; fixing one bug created others |
-| **Never delivered** | Some projects were simply cancelled |
-
-The crisis was driven by **increasing system complexity**: we were trying to build larger and larger systems, yet had no proven, repeatable *process* to do so. The engineering response: bring **discipline, process, and measurement** to software production.
-
-> [!EXAM]
-> "Why/when did software engineering emerge?" → The **software crisis**, named at the **NATO conference of 1968**. The root cause was **growing complexity outpacing ad-hoc development methods**.
-
-## What makes *good* software? — quality attributes
-
-A program that "works" is not enough. Sommerville lists **four essential attributes** of good professional software — these are *non-functional* qualities that all good software must have:
-
-| Attribute | What it means |
-|---|---|
-| **Maintainability** | Software *must evolve* to meet changing needs. It should be written so it can be cost-effectively changed. |
-| **Dependability & security** | It should be reliable, safe, and secure — it must not cause physical or economic damage in the event of failure, and malicious users must not access or damage the system. |
-| **Efficiency** | It should not waste system resources — responsiveness, processing time, memory use. |
-| **Acceptability** | It must be *understandable, usable and compatible* with other systems users use, so they will actually adopt it. |
-
-### FLURPS — a memorable quality checklist
-
-A widely-taught mnemonic for the dimensions of software quality is **FLURPS** (a variant of HP's FURPS):
-
-- **F** — **Functionality** (does it do what it should?)
-- **L** — **Localizability** (can it adapt to languages/regions?)
-- **U** — **Usability** (is it easy to learn and use?)
-- **R** — **Reliability** (does it fail rarely, recover well?)
-- **P** — **Performance** (speed, throughput, resource use)
-- **S** — **Supportability** (can it be maintained, configured, serviced?)
+> **What is the most obvious driving force behind all these systems? SOFTWARE — lots of lines of code.**
+>
+> | System | Scale |
+> |---|---|
+> | **Boeing 787** avionics and online support | **6.5 million lines** — *more than the sum of all mechanical parts including nuts and bolts* |
+> | **Google Chrome** | **6.7 million lines** (upper estimate) |
+> | **Facebook** | **62 million lines** (minus backend) |
+> | **A 90-minute outage at Amazon** | **\$2.8 million revenue loss** and lots of customers lost |
 
 > [!INTUITION]
-> Functional requirements ask *"can it do the job?"* The FLURPS/quality attributes ask *"is it good enough to live with?"* A feature can be present (functional) yet unusable, unreliable or slow (poor quality). Both halves matter.
+> The Boeing comparison is the one worth carrying. An aircraft is the archetypal *physical* engineering achievement — and yet **there is more engineering in its software than in every physical part combined**.
+>
+> That inverts where you would expect the difficulty to lie, and it is the whole reason this subject exists. Once software becomes the largest and most complex part of a system, **the discipline for building it has to be as serious as the discipline for building the wings.**
 
-## The cost of getting it wrong
+### What high-quality software needs
 
-Software failure is not abstract — it is expensive and sometimes deadly. Classic disasters used to motivate SE:
-
-- **Ariane 5 (1996)** — rocket self-destructed 37 s after launch; cause was a software exception from converting a 64-bit float to a 16-bit integer (overflow). ~$370M lost.
-- **Therac-25** — a radiation-therapy machine whose software race condition delivered massive radiation overdoses, killing patients.
-- **Y2K** — billions spent worldwide fixing two-digit year fields.
-
-The lesson: software is now embedded in safety-critical, business-critical and society-critical systems, so **process and quality are not optional**.
-
-## Computer Science vs Software Engineering vs System Engineering
-
-A frequent exam discriminator:
-
-| | Concerns |
-|---|---|
-| **Computer Science** | The *theories and fundamentals* — algorithms, complexity, computation. Underpins SE the way physics underpins electrical engineering. |
-| **Software Engineering** | The *practicalities* of developing and delivering **useful software** under real constraints. |
-| **System Engineering** | All aspects of **computer-based systems development** — hardware, software, *and* process engineering. SE is one part of this larger whole. |
-
-> [!TRAP]
-> SE is **not** simply "programming." Programming is one activity *inside* software engineering. SE adds requirements, design, verification, project management, and maintenance — the whole lifecycle around the code.
-
-## Software process & the engineering mindset
-
-Because software is intangible and infinitely malleable, the only way to control its production is to follow a **software process**: a structured set of activities required to develop a software system. Every process, however simple, includes four fundamental activities:
-
-1. **Specification** — define what the system should do.
-2. **Development (Design & Implementation)** — define the organisation of the system and implement it.
-3. **Validation** — check that it does what the customer wants.
-4. **Evolution** — change the system in response to changing needs.
-
-These four are the backbone of *every* lifecycle model in the next topics.
+> [!NOTE]
+> Any software system should have **all functionality up and running with minimum downtime**. To build software of high quality we need:
+>
+> - **Interaction with customers and stakeholders** on what exactly is needed
+> - A **clear understanding of the end users** — who they are and how they will use the system
+> - **Experts in multiple domains**
+> - **Good planning**
+> - **Team work**
+> - **Ability to scale and support**
+>
+> Hence the need for **lots of engineers working in teams — teamwork is most important.**
 
 ---
 
-**Next:** a concrete, modern reminder of why this discipline matters — the **CrowdStrike** outage of 2024.
+## When software fails
+
+The deck opens with real disasters, because they make the argument better than any definition can.
+
+| Case | What happened |
+|---|---|
+| **Boeing 737 Max** | *"The many human errors that brought down the Boeing 737 Max"* — the MCAS control software and the decisions around it |
+| **Ariane 5** | The European heavy-lift launcher developed by Arianespace for ESA — lost to a software exception |
+| **Zenit 3SL (2000)** | Launch failed due to **faulty ground software not closing a valve** in the rocket's second-stage pneumatic system |
+| **CryoSat-1 (2005)** | ESA satellite lost in launch failure due to a **missing shutdown command** in the flight control system of its Rokot carrier rocket |
+
+> [!NOTE]
+> The deck's chosen quote:
+>
+> > **"To err is human, but to really foul things up you need a computer."** — *Paul Ehrlich*
+
+> [!INTUITION]
+> Look at what actually failed in the last two: **a valve that did not close** and **a command that was not sent**. Not exotic algorithmic errors — small omissions, in software that had presumably been tested.
+>
+> That is the honest lesson of the case studies. **Catastrophic failures rarely come from hard problems handled badly; they come from easy problems handled carelessly at scale.** Everything in this unit — process models, requirements engineering, test planning — exists to catch exactly that kind of small omission before it reaches a rocket.
+
+---
+
+## Terminology
+
+> [!EXAM]
+> **Software — the comprehensive definition:**
+> **Software is not just the programs, but also the associated documentation and configuration data needed to make those programs operate correctly, serving a computational purpose.**
+>
+> The "not just the programs" clause is the examinable part.
+
+> [!NOTE]
+> **What is a software system?** A software system usually consists of:
+> - a number of **separate programs**,
+> - **configuration files** used to set up those programs,
+> - **system documentation** describing the structure of the system,
+> - **user documentation** explaining how to use the system,
+> - and **web sites** for users to download recent product information.
+
+> [!NOTE]
+> **Software product:** software that has been **developed and maintained for the benefit of a user base**, often to **satisfy a need in the market**.
+
+### The two classifications
+
+> [!EXAM]
+> **Categories of software — two independent splits:**
+>
+> | | **System software** | **Application software** |
+> |---|---|---|
+> | Definition | Software designed to **provide a platform for other software** | Software that **allows users to do user-oriented tasks** |
+> | Examples | Operating systems (macOS, Linux, Android), **game engines, search engines, industrial automation**, software-as-a-service | Create text documents, play or develop games, create presentations, listen to music, draw pictures, browse the web |
+>
+> | | **Generic / General software** | **Custom software** |
+> |---|---|---|
+> | Definition | **Stand-alone systems developed by a development organization and sold on the open market** to any customer able to buy them | A **bespoke design developed to meet one client's specific needs**, based on a budget and requirements predefined by them |
+> | Fits | **Many clients' general requirements** | **One** client |
+
+> [!TRAP]
+> These are **two separate axes, not one four-way list**. An operating system is *system* software and also *generic*; a bank's in-house trading platform is *application* software and *custom*. A question asking you to classify something wants **both** labels.
+
+### Engineering and software engineering
+
+> [!NOTE]
+> **Engineering** is the **application of science and mathematics to solve problems**. *While scientists come up with inventions, it is engineers who apply these discoveries to the real world. Engineers innovate.*
+>
+> **What is software engineering?**
+> - An **approach to the development, operation, and maintenance of software, and the study of these approaches** — that is, **the application of engineering to software**.
+> - Also defined as **a systematic approach to the analysis, design, assessment, implementation, testing, maintenance and re-engineering of software.**
+
+Two further points the deck makes:
+
+- The software engineering principle **drives usage of appropriate tools and techniques depending on the problem to be solved**, while **considering the constraints and resources available**.
+- It **focuses more on techniques for developing and maintaining software that is correct from its inception.**
+
+> [!INTUITION]
+> *"Correct from its inception"* is doing a lot of work in that sentence. The alternative — write it, then find the defects — is exactly what the failure cases above show going wrong.
+>
+> Notice also that both definitions include **maintenance**. Software engineering is not "how to write a program"; it is **how to keep a system correct for years while people and requirements change around it.**
+
+---
+
+## The software crisis
+
+> [!EXAM]
+> **When did the term "Software Engineering" first appear?**
+> At the **1968 NATO Software Engineering Conference**.
+>
+> **Why?** It was meant to **provoke thought regarding the perceived "software crisis"** at the time.
+>
+> **What was the software crisis?** The term described **the impact of rapid increases in computer power and the complexity of the problems that could be tackled** — in essence, **the difficulty of writing correct, understandable and verifiable computer programs**.
+>
+> **The roots of the software crisis are complexity, expectations, and change.**
+
+> [!NOTE]
+> The causes were linked to the **overall complexity of hardware and of the software development process**. It manifested in several ways:
+>
+> - Projects running **over-budget and over-time**
+> - Software was **very inefficient and often of low quality**
+> - Software **often did not meet requirements**
+> - Projects were **unmanageable and code difficult to maintain**
+> - Software was **never delivered**
+
+> [!INTUITION]
+> The crisis has a slightly counter-intuitive cause: **it was created by hardware getting better.** Cheaper, faster machines meant people attempted far more ambitious systems — and the methods that worked for small programs simply did not scale.
+>
+> The three roots are worth remembering as a triple. **Complexity** — the systems got bigger than one mind can hold. **Expectations** — capability grew faster than the ability to deliver it. **Change** — requirements would not stay still long enough to finish.
+
+### The state of software projects
+
+> [!EXAM]
+> - **Only one in three software projects are truly successful.**
+> - According to the **Standish Group's report** — based on analysis of **50,000 projects globally** — **66% of technology projects end in partial or total failure**, with **large projects most at risk**.
+>
+> **When is a software project defined as a failure?**
+> - The software **did not satisfy the requirements** of the customer
+> - The software release was **later than scheduled** (deadline violation)
+> - The software had **too many bugs**
+
+> [!TRAP]
+> Note that **only one of those three failure criteria is about defects.** A project that works perfectly but arrives late, or arrives on time but solves the wrong problem, is counted as a failure just the same.
+>
+> That is why this unit spends far more time on **requirements** than on coding — the most expensive failure is building the wrong thing correctly.
+
+---
+
+## Computer science vs software engineering
+
+> [!EXAM]
+> **Is Computer Science the same as Software Engineering? NO.**
+>
+> - **Computer Science** is the **study of computation, automation and information**. It spans **theoretical disciplines** (algorithms, theory of computation, information theory, automation) to **practical disciplines** (the design and implementation of hardware and software).
+> - **Software Engineering** typically deals with the **engineering principles of building, designing and testing software products.**
+>
+> The deck draws them as **two overlapping circles** — related and sharing ground, but neither contained in the other.
+
+> [!INTUITION]
+> A workable one-liner: **computer science asks what is possible and how efficiently; software engineering asks how to deliver it reliably, on time, with a team, and keep it working.**
+>
+> Sorting algorithms are computer science. Deciding which one your product needs, getting it reviewed, tested, documented and shipped without breaking the other 62 million lines — that is software engineering.
+
+---
+
+## Fundamental drivers of software engineering
+
+> [!EXAM]
+> **Industrial-strength software should:**
+> - be **operational**
+> - be **maintainable**
+> - be **capable of being moved** (portable)
+> - have **elaborate documentation**
+> - have **no or minimal number of bugs**
+> - be **impactful to the business**
+
+The named drivers:
+
+| Driver | What it demands |
+|---|---|
+| **Software is expensive** | Good software engineers are **at a premium and hence expensive**; **maintenance and rework cost money** |
+| **Life-critical and mission-critical software** | Failure is not merely inconvenient |
+| **Heterogeneity** | Systems should work as **distributed systems** |
+| **Security and trust** | Software should be **trustworthy** and **secure** |
+| **Diversity** | **Different types of software systems** |
+| **Scale** | Software should be **scalable** |
+| **Business and social changes** | Ability to **change existing software** and to **develop new software** |
+| **Quality and productivity** | Measured through **FLURPS**, plus **portability, efficiency/maintainability** |
+| **Consistency and repeatability** | Same process, same result |
+| **Late and unreliable** | Typically **35% of computer-based projects are runaway** |
+
+> [!EXAM]
+> **FLURPS** — the quality attributes, worth memorising as an acronym:
+>
+> **F**unctionality · **L**ocalizability · **U**sability · **R**eliability · **P**erformance · **S**ecurity
+>
+> Plus **Portability** and **Efficiency/Maintainability** listed alongside.
+
+> [!INTUITION]
+> Read the driver list and notice how few entries are about *making the program work*. Almost all are about **the conditions around the software** — cost, teams, change, scale, distribution, security, business impact.
+>
+> That is the honest definition of the subject: **software engineering is what programming becomes once you add other people, a deadline, a budget, and a decade of maintenance.**
+
+---
+
+## Why software engineering is required — the summary
+
+> [!EXAM]
+> The deck's own closing list:
+> - **Developing large programs**
+> - **Mastering complexity** of big programs
+> - **Efficient development of evolving software**
+> - **Ensuring the software process supports users effectively** and that right choices and decisions are made
+> - **Supporting large teams and team work**
+> - **Ensuring visibility and continuity**
+
+> [!NOTE]
+> **About the course**, in its own words: *"This course will transform you from **programmers to Software Engineers**"* — working as a team; achieving **scale, maintainability, security, extensibility, compatibility and quality**; producing **deterministic and measurable results through structured methods**.
+>
+> And what it is **not** about: *"Programming, but more about **how** to program"*, and *"not rote learning, but becoming a better SW engineer"*.
+
+---
+
+**Next:** a failure that happened while this course was being written — **the CrowdStrike outage**.
