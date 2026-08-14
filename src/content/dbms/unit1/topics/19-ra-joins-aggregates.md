@@ -3,77 +3,162 @@ subject: dbms
 unit: 1
 order: 19
 slug: ra-joins-aggregates
-title: Cartesian Product, Joins, Aggregates & Worked Queries
-summary: The Cartesian product and natural/theta join, aggregate functions and grouping, and a set of fully worked relational-algebra queries over the Sailors-Boats-Reserves database.
-minutes: 15
-tags: [relational-algebra, join, cartesian-product, aggregate, grouping, sailors]
+title: Relational Algebra — Joins, Aggregate Functions & Grouping
+summary: The natural join and how it improves on the Cartesian product, the five aggregate functions and the script-F operator, grouping with the grouping attribute on the left, and worked exercises with their answers.
+minutes: 11
+tags: [natural-join, join, aggregate-functions, count, sum, average, min, max, grouping, group-by]
 ---
 
-# Cartesian Product, Joins, Aggregates & Worked Queries
+# Joins, Aggregate Functions & Grouping
 
-## Cartesian Product — ×
+## The join operation (⋈)
 
-> [!NOTE]
-> **R × S** combines **every** tuple of R with **every** tuple of S. Result **degree = n + m**; result **size = |R| · |S|**. Operands need **not** be union-compatible.
-
-> [!TRAP]
-> A raw Cartesian product is usually **meaningless** (it pairs unrelated rows) — it becomes useful only when **followed by a selection** that keeps matching rows: `σ_{Sailors.sid = Reserves.sid}(Sailors × Reserves)`.
-
-## Join — ⋈
+The previous topic ended with the problem: a Cartesian product produces **every** combination, most of them meaningless, and you must add a SELECT to keep the related ones.
 
 > [!NOTE]
-> - **Natural join (⋈)** does a Cartesian product **internally**, then automatically keeps only rows that **match on the common-named, compatible columns** (and removes the duplicate column). `Sailors ⋈ Reserves` joins on `sid`.
-> - **Theta join (⋈_θ)** joins on an explicit condition θ, e.g. `Project ⋈_{Dnum = Dnumber} Department`.
-
-> [!INTUITION]
-> A natural join is exactly **Cartesian product + select on equal keys + drop the duplicate column** — it's the everyday way to "follow a foreign key" and combine two tables without the cross-product's redundancy.
-
-## Aggregate Functions & Grouping
-
-> [!NOTE]
-> **Aggregate functions** take a collection of values and return a single value: **SUM, AVG (average), MAX, MIN, COUNT**. Notation uses **ℱ**: `ℱ_{MAX age}(Sailors)`, `ℱ_{COUNT sid, AVG age}(Sailors)`. (COUNT counts rows incl. duplicates; AVG ignores NULLs.)
-
-**Grouping** divides tuples into groups by a **grouping attribute** (written on the **left** of ℱ), then applies the aggregate per group:
-```text
-rating ℱ COUNT(sid), AVG(age) (Sailors)     -- count & average age PER rating
-```
-This is SQL's **GROUP BY**.
-
-## Worked queries — Sailors–Boats–Reserves
-
-> [!DERIVE]
-> Schema: **Sailors**(sid, sname, rating, age) · **Boats**(bid, bname, color) · **Reserves**(sid, bid, day).
->
-> **1. Names of sailors who reserved boat 103:**
-> `∏ sname ( σ bid=103 (Reserves) ⋈ Sailors )`
->
-> **2. Names of sailors who reserved a *red* boat:**
-> `∏ sname ( σ color='red' (Boats) ⋈ Reserves ⋈ Sailors )`
->
-> **3. Names of sailors who reserved a red *or* a green boat:**
-> `∏ sname ( σ color='red' ∨ color='green' (Boats) ⋈ Reserves ⋈ Sailors )`
->
-> **4. Sailors who reserved *every* boat (division):**
-> `( ∏ sid, bid (Reserves) )  ÷  ( ∏ bid (Boats) )`  → then join with Sailors for names.
-
-## Worked queries — generalized projection & joins
-
-> [!DERIVE]
-> **EMPLOYEE(Emp-ID, Salary, Deduction, Years-of-Service)** — compute a report:
-> `Report(Emp-ID, Net_Salary, Bonus, Tax) ← ∏ Emp-ID, (Salary − Deduction), (2000 × Years-of-Service), (Salary × 0.25) (EMPLOYEE)`
-> *(Generalized projection allows arithmetic expressions in the project list.)*
->
-> **SALESPERSON(SalesPersonID, Name)** · **TRIP(SalesPersonID, From, To, TripID)** · **EXPENSE(TripID, Amount)** — total expenses of salesperson 504:
-> ```text
-> t1 ← σ SalesPersonID=504 (TRIP)
-> t2 ← ∏ TripID (t1)
-> t3 ← EXPENSE ⋈ t2
-> Result ← ℱ SUM(Amount) (t3)
-> ```
+> **A natural join performs a Cartesian product internally and automatically filters rows by matching columns with the same name and compatible data types**, thus ensuring there are **no redundancies in the results**.
 
 > [!EXAM]
-> Strategy for RA queries: **(1)** select the rows you want with σ, **(2)** join the tables you need with ⋈, **(3)** project the columns asked for with ∏, **(4)** use **division for "every/all"**, **set difference for "not/without"**, and **ℱ with grouping for "total/average per …"**.
+> So the two-step pattern
+> $$EMP\_DEPENDENTS \leftarrow EMPLOYEE \times DEPENDENT$$
+> $$ACTUAL\_DEPS \leftarrow \sigma_{SSN=ESSN}(EMP\_DEPENDENTS)$$
+> collapses into **a single join**. The join is not a new capability — it is **product + select packaged together**, which is why it can be derived from the primitive operators rather than being one of them.
+
+**Worked example from the deck:** *retrieve the details of managers (Fname, Name) and the name of the department they manage* — a join of `EMPLOYEE` with `DEPARTMENT` on the managing SSN.
+
+> [!INTUITION]
+> The word **natural** refers to the condition being **inferred** rather than written: match on **every attribute the two relations share by name**, and keep only one copy of each shared column in the result.
+>
+> Convenient, but be aware of the fragility — if someone later adds a same-named column to both tables (say `created_at`), the join condition **silently changes** and so does the answer. That is why explicit join conditions are usually preferred in production SQL.
 
 ---
 
-**Next:** the practical query language — **SQL overview & data types**.
+## Aggregate functions
+
+> [!NOTE]
+> **Aggregate functions take a collection (a set or multiset) of values as input and return a single value.**
+>
+> **There are five aggregate functions:**
+> 1. **AVERAGE**
+> 2. **MINIMUM**
+> 3. **MAXIMUM**
+> 4. **SUM**
+> 5. **COUNT**
+
+> [!NOTE]
+> **A type of request that cannot be expressed in basic relational algebra** is to specify mathematical aggregate functions on collections of values — such as retrieving the average or total salary of all employees, or the total number of employee tuples. These are used in **simple statistical queries that summarize information** from the database tuples.
+>
+> - **SUM, AVERAGE, MAXIMUM and MINIMUM** apply to collections of **numeric** values.
+> - **COUNT** is used for **counting tuples or values**.
+> - **COUNT just counts the number of rows, without removing duplicates.**
+
+> [!TRAP]
+> Note the phrase *"cannot be expressed in **basic** relational algebra"*. Aggregation is a genuine **extension** to the algebra, not something derivable from σ, ∏, ∪, − and ×. That is why it needs its own symbol.
+
+### The ℱ operator
+
+> [!EXAM]
+> The **aggregate functional operation** is written **ℱ** (script F; the deck notes **ℱ or 𝑔 can be used**).
+>
+> | Expression | Retrieves |
+> |---|---|
+> | $\mathcal{F}_{\text{MAX Salary}}(EMPLOYEE)$ | the **maximum** salary |
+> | $\mathcal{F}_{\text{MIN Salary}}(EMPLOYEE)$ | the **minimum** salary |
+> | $\mathcal{F}_{\text{SUM Salary}}(EMPLOYEE)$ | the **sum** of salaries |
+> | $\mathcal{F}_{\text{COUNT SSN, AVERAGE Salary}}(EMPLOYEE)$ | the **count** of employees **and** their **average** salary |
+
+### The individual functions
+
+| Function | Behaviour |
+|---|---|
+| **COUNT** | Counts the number of tuples. **Works on both numeric and non-numeric** data types. Example: $g_{count(*)}(E) = 4$ |
+| **SUM** | Sum of all selected columns. **Works on numeric fields only.** |
+| **AVERAGE** | Average of numeric values. **Returns the average of all non-NULL values.** Example: $g_{average(C)}(R) = 27/4 = 6.75$ |
+| **MINIMUM** | Smallest value of all selected values of a column. Example: $g_{min(C)}(R) = 3$ |
+| **MAXIMUM** | Largest value of all selected values. Example: $g_{max(C)}(R) = 10$ |
+
+> [!TRAP]
+> Two easily-confused details sit right next to each other:
+> - **COUNT does not remove duplicates** — it counts rows as they are.
+> - **AVERAGE ignores NULLs** — it divides by the count of **non-null** values, not by the total row count.
+>
+> So `AVERAGE` and `SUM ÷ COUNT(*)` are **not** the same thing whenever nulls are present.
+
+### Renaming aggregate results
+
+*Find the sum, maximum, minimum and average of all employee salaries:*
+
+$$\rho_{R(Total\_Sal,\, Highest\_Sal,\, Lowest\_Sal,\, Average\_Sal)}\; \mathcal{F}_{\text{SUM(Salary), MAX(Salary), MIN(Salary), AVG(Salary)}}(EMPLOYEE)$$
+
+> [!INTUITION]
+> Why bother with ρ here? Because an aggregate produces a column with **no sensible name of its own** — the result of `SUM(Salary)` is not `Salary`. Renaming gives the output columns meaningful headings, which matters as soon as the result feeds into another operation.
+
+---
+
+## Grouping
+
+> [!NOTE]
+> **In many cases aggregate functions can be applied to subgroups of data** — for example, calculating the average salary **for each department**.
+>
+> - Data is divided into **non-overlapping groups** based on specified attributes.
+> - **Each group (partition) consists of the tuples that have the same value** of some attribute(s), called the **grouping attribute(s)**.
+> - The function is then applied to **each group independently** to produce summary information about each group.
+> - **SQL has a `GROUP BY` clause for this purpose.** The grouping attributes **should also appear in the SELECT clause**, so each aggregate value appears alongside the group it describes.
+
+> [!EXAM]
+> **The notation rule, stated explicitly in the deck:**
+>
+> > **Grouping attribute placed to the LEFT of the ℱ symbol; aggregate functions to the RIGHT.**
+>
+> $$_{DNO}\,\mathcal{F}_{\text{COUNT SSN, AVERAGE Salary}}(EMPLOYEE)$$
+>
+> This **groups employees by DNO** and computes the **count of employees and average salary per department**.
+
+> [!INTUITION]
+> Left-of-ℱ versus right-of-ℱ is the whole notation. **Nothing on the left** means *treat the entire relation as one group* — you get a single row back. **Something on the left** means *one row per distinct value of that attribute*.
+>
+> That is exactly the difference between `SELECT AVG(salary) FROM employee` and `SELECT dno, AVG(salary) FROM employee GROUP BY dno`.
+
+---
+
+## Worked exercises
+
+> [!EXAM]
+> **(a) Retrieve each department number, the number of employees in the department, and their average salary, renaming the resulting attributes.**
+> $$\rho_{R(Dno,\, No\_of\_employees,\, Average\_sal)}\bigl(_{Dno}\,\mathcal{F}_{\text{COUNT Ssn, AVERAGE Salary}}(EMPLOYEE)\bigr)$$
+>
+> **(b) Department number, total number of employees, and average salary, for each department.**
+> $$_{Dno}\,\mathcal{F}_{\text{COUNT Ssn, AVERAGE Salary}}(EMPLOYEE)$$
+>
+> **(c) Total number of employees and average salary across the entire company.**
+> $$\mathcal{F}_{\text{COUNT Ssn, AVERAGE Salary}}(EMPLOYEE)$$
+
+> [!TRAP]
+> Compare (b) and (c) carefully — they differ **only** by the presence of $Dno$ on the left of ℱ. That single subscript is the difference between **per-department** figures and **one company-wide** figure. It is the most commonly dropped symbol in exam answers.
+>
+> And (a) differs from (b) only by the ρ wrapper supplying column names. Read the question for the words *"renaming the resulting attributes"* to know whether ρ is wanted.
+
+---
+
+## Where relational algebra has arrived
+
+> [!INTUITION]
+> The full toolkit, and what each is for:
+>
+> | Need | Operator |
+> |---|---|
+> | Pick **rows** | **σ** select |
+> | Pick **columns** | **∏** project |
+> | **Name** things | **ρ** rename |
+> | Combine rows from two relations **vertically** | **∪ ∩ −** set operations |
+> | Combine relations **horizontally** | **×** product, **⋈** join |
+> | Answer **"for all"** | **÷** division |
+> | **Summarise** | **ℱ** aggregate, with grouping |
+>
+> Every one of these has a direct SQL counterpart, which is the subject of the rest of the unit: σ → `WHERE`, ∏ → `SELECT`, ρ → `AS`, ⋈ → `JOIN`, ℱ → `COUNT/SUM/AVG`, grouping → `GROUP BY`.
+>
+> **Relational algebra is the theory SQL implements** — which is why the optimiser can rewrite your SQL freely: it translates it into algebra first, and the algebraic equivalences tell it what rewrites are safe.
+
+---
+
+**Next:** the language built on top of all this — **SQL overview & data types**.
