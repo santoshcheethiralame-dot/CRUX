@@ -1,7 +1,7 @@
 ---
 subject: se
 unit: 1
-order: 11
+order: 12
 slug: uml-use-cases
 title: UML & Use-Case Modelling
 summary: The UML diagram taxonomy (structural vs behavioural), use-case diagrams with actors and «include»/«extend», how to write a use case in four steps, and main/alternate/exception flows.

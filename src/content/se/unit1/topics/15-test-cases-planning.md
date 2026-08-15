@@ -1,7 +1,7 @@
 ---
 subject: se
 unit: 1
-order: 14
+order: 15
 slug: test-cases-planning
 title: Test Cases, Test Planning & Security Validation
 summary: Anatomy of a test case, the test plan and its IEEE 829 structure, the test-planning steps, adequacy/coverage criteria, tester mindsets, defect metrics, and security validation planning.

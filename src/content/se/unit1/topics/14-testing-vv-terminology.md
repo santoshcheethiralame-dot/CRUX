@@ -1,7 +1,7 @@
 ---
 subject: se
 unit: 1
-order: 13
+order: 14
 slug: testing-vv-terminology
 title: Software Testing — V&V and Terminology
 summary: Verification vs validation (Boehm's two questions), the precise error→defect→fault→failure chain, testing goals, and the levels of testing (unit, integration, system, acceptance).

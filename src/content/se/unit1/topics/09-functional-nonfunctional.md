@@ -1,7 +1,7 @@
 ---
 subject: se
 unit: 1
-order: 8
+order: 9
 slug: functional-nonfunctional
 title: Functional & Non-Functional Requirements
 summary: The difference between functional and non-functional requirements, Sommerville's NFR taxonomy (product/organisational/external), why NFRs are often critical, and how to make them measurable.

@@ -3,108 +3,172 @@ subject: se
 unit: 1
 order: 6
 slug: user-stories-xp-lean
-title: User Stories (INVEST), Extreme Programming & Lean
-summary: How agile captures requirements as user stories with the INVEST criteria and acceptance criteria; the values and twelve practices of Extreme Programming; and the principles of Lean software development.
-minutes: 16
-tags: [user-stories, INVEST, XP, extreme-programming, lean, agile]
+title: User Stories & the INVEST Criteria
+summary: The user-story template and the three Cs, then each INVEST criterion with its definition, why it matters, a good example and a failing example from the college-events app the deck uses throughout.
+minutes: 12
+tags: [user-story, INVEST, independent, negotiable, valuable, estimable, small, testable, acceptance-criteria]
 ---
 
-# User Stories, Extreme Programming & Lean
+# User Stories & the INVEST Criteria
 
-## User stories — requirements, the agile way
-
-Agile teams don't write a giant requirements document up front. They capture needs as **user stories**: short, plain-language descriptions of a feature told from the **user's** point of view. The standard template:
-
-> **As a** `<type of user>`, **I want** `<some goal>`, **so that** `<some reason/benefit>`.
-
-Example:
-> *As a* **registered shopper**, *I want to* **save items to a wishlist**, *so that* **I can buy them later without searching again**.
-
-The three parts force you to capture **who** wants it, **what** they want, and **why** (the value).
-
-> [!INTUITION]
-> A user story is **"a promise for a conversation,"** not a complete spec. It is a placeholder that reminds the team to discuss the detail with the customer when the story is built. Detail is added *just in time* via **acceptance criteria**.
-
-### Acceptance criteria
-
-Each story carries **acceptance criteria** — the conditions that must be true for the story to be accepted as "done." They make the story **testable** and define the boundaries. Often written as scenarios (*Given… When… Then…*).
-
-### The 3 C's of a user story
-
-- **Card** — the short written story (fits on an index card).
-- **Conversation** — the discussion that fleshes out the detail.
-- **Confirmation** — the acceptance criteria that confirm it's done.
-
-## INVEST — what makes a *good* user story
-
-A good user story satisfies the **INVEST** checklist (Bill Wake):
-
-| Letter | Criterion | Meaning |
-|---|---|---|
-| **I** | **Independent** | Self-contained; can be built and delivered on its own, in any order. |
-| **N** | **Negotiable** | Not a rigid contract — details are negotiated between team and customer. |
-| **V** | **Valuable** | Delivers clear value to a user or customer. |
-| **E** | **Estimable** | The team can size/estimate the effort to build it. |
-| **S** | **Small** | Small enough to fit comfortably within one iteration/sprint. |
-| **T** | **Testable** | Has acceptance criteria so you can verify it's done. |
-
-> [!EXAM]
-> **INVEST** = **I**ndependent, **N**egotiable, **V**aluable, **E**stimable, **S**mall, **T**estable. A frequent question: "give the qualities of a good user story." If a story is too big to estimate or test, **split it** ("epic" → smaller stories).
+## What a user story is
 
 > [!NOTE]
-> An **Epic** is a large user story that must be broken down into several smaller stories before it can be built. A **theme** groups related stories. Stories are sized in **story points** (relative effort), not hours.
-
-## Extreme Programming (XP)
-
-**Extreme Programming**, created by Kent Beck, is the most influential agile method on the **engineering** side. The name comes from taking known good practices to "extreme" levels — *if code review is good, review constantly (pair programming); if testing is good, test first (TDD).*
-
-### XP values
-
-**Communication, Simplicity, Feedback, Courage,** and **Respect.**
-
-### The twelve XP practices
-
-| # | Practice | Idea |
-|---|---|---|
-| 1 | **The Planning Game** | Customer & team plan releases/iterations together using stories. |
-| 2 | **Small Releases** | Ship small, frequent releases of working software. |
-| 3 | **Metaphor** | A shared simple story/system metaphor guides the design. |
-| 4 | **Simple Design** | Do the simplest thing that works; no speculative complexity (**YAGNI** – "You Aren't Gonna Need It"). |
-| 5 | **Test-Driven Development (TDD)** | Write the (failing) test *before* the code; code until it passes. |
-| 6 | **Refactoring** | Continuously improve code structure without changing behaviour. |
-| 7 | **Pair Programming** | Two developers, one machine — continuous review. |
-| 8 | **Collective Ownership** | Anyone can change any code; no silos. |
-| 9 | **Continuous Integration** | Integrate and test changes many times a day. |
-| 10 | **Sustainable Pace** (40-hour week) | No habitual overtime; avoid burnout. |
-| 11 | **On-site Customer** | A real customer is available full-time to answer questions. |
-| 12 | **Coding Standards** | Everyone follows the same conventions so code is uniform. |
+> From the Scrum cheat sheet:
+> - **A very high level definition of what the customer wants the system to do.**
+> - **Each story is captured as a separate item on the Product Backlog.**
+> - **User stories are NOT dependent on other stories.**
+>
+> **Story template:**
+> > **"As a `<User>` I want `<function>` so that `<desired result>`"**
+>
+> **Story example:** *"As a user, I want to print a recipe so that I can cook it."*
 
 > [!EXAM]
-> Pressman/Sommerville love XP. Know **TDD** (test *first*), **pair programming** (continuous review), **refactoring** (improve structure, same behaviour), **continuous integration**, and **on-site customer**. "Test-first development" and "pair programming" are the two most-asked.
-
-[!TRAP] **Refactoring** changes the *internal structure* of code **without changing its external behaviour**. If behaviour changes, it's not refactoring — it's modification. This is a classic true/false trap.
-
-## Lean software development
-
-**Lean** adapts Toyota's manufacturing philosophy (the Poppendiecks brought it to software). Its goal: **maximise customer value while minimising waste.** Seven principles:
-
-| Principle | Meaning |
-|---|---|
-| **Eliminate waste** | Remove anything that doesn't add customer value (extra features, waiting, hand-offs, defects, partially-done work). |
-| **Amplify learning** | Use short iterations and feedback to learn fast. |
-| **Decide as late as possible** | Keep options open; commit when you have the most information. |
-| **Deliver as fast as possible** | Short cycle times; fast feedback. |
-| **Empower the team** | Let the people doing the work make decisions. |
-| **Build integrity in** | Quality (and conceptual + perceived integrity) is built in, not tested in. |
-| **See the whole** | Optimise the *whole* value stream, not local parts. |
+> The three parts of the template each answer a different question — **who**, **what**, and **why**. The **"so that"** clause is the one students drop, and it is the most valuable: it captures the **motivation**, which is what lets the team propose a better solution than the one the customer literally asked for.
 
 > [!INTUITION]
-> The seven "**wastes**" of Lean software (the *Muda*): partially-done work, extra features, relearning, hand-offs, task switching, delays, and defects. Lean is the discipline of relentlessly removing these.
-
-### Kanban (a Lean technique)
-
-**Kanban** visualises work on a board (*To Do → In Progress → Done*) and **limits work-in-progress (WIP)** to expose bottlenecks and create flow. It is **pull-based** (start new work only when capacity frees up) and is commonly used alongside or instead of Scrum.
+> Notice the story says nothing about *how*. "Print a recipe" does not specify a button, a page layout, or a file format.
+>
+> That is deliberate — a user story is **a placeholder for a conversation**, not a specification. This is why the classic description is the **three Cs**: **Card** (the short written story), **Conversation** (the discussion it triggers), and **Confirmation** (the acceptance criteria agreed at the end).
 
 ---
 
-**Next:** the front of the lifecycle in depth — **Requirements Engineering** and how we *elicit* requirements.
+## INVEST
+
+> [!NOTE]
+> **Follow the INVEST guidelines for good user stories.** Each component ensures that user stories are **well-structured, facilitating better planning, execution, and delivery in Agile projects.**
+
+The deck runs one example application throughout — **a mobile/web application for college students to view events, register, and receive notifications** — and gives a *failing* story for each letter. Those counter-examples are the most useful part.
+
+---
+
+### I — Independent
+
+> [!NOTE]
+> **Definition:** User stories should be **self-contained, with minimal dependencies on other stories.**
+> **Importance:** Independence **allows teams to prioritize and implement stories in any order, reducing bottlenecks and complexities.**
+> **Example:** Instead of *"Implement payment processing"* which might depend on *"User registration"*, break them into **separate, independent stories**.
+
+> [!TRAP]
+> **Failing story:** *"As a student, I want to register for events **after creating my profile** so I can get updates."*
+> **Problem: depends on profile creation; not independent.**
+>
+> The tell is the word **"after"** — any story that names a prerequisite has a dependency built into it.
+
+---
+
+### N — Negotiable
+
+> [!NOTE]
+> **Definition:** User stories are **not contracts** but **starting points for discussions** between stakeholders and the development team.
+> **Importance:** Flexibility **encourages collaboration**, allowing teams to **adapt and refine requirements as more information becomes available.**
+> **Example:** *"As a user, I want to receive notifications"* is negotiable — it **allows the team to decide on the best implementation method.**
+
+> [!TRAP]
+> **Failing story:** *"As a student, I **must** receive **SMS** notifications for every event registration."*
+> **Problem: rigid on SMS only; not open for discussion.**
+>
+> The story has pre-decided the **implementation**. Perhaps push notifications would serve students better and cost less — but the story has closed that conversation before it started.
+
+---
+
+### V — Valuable
+
+> [!NOTE]
+> **Definition:** Each user story should **deliver value to stakeholders or end-users.**
+> **Importance:** Focusing on value ensures the team **works on features that provide tangible benefits, aligning with business goals.**
+> **Example:** *"As a customer, I want to view my order history so I can track my past purchases."*
+
+> [!TRAP]
+> **Failing story:** *"As a student, I want to see the **college's logo** on the app's home screen."*
+> **Problem: does not provide clear user value related to event management.**
+>
+> Note the phrasing — not *"no value at all"* but **no value related to the product's purpose**. Plenty of requests are legitimate wishes from somebody without being valuable to the user the product serves.
+
+---
+
+### E — Estimable
+
+> [!NOTE]
+> **Definition:** The team should be able to **estimate the effort required** to complete a user story.
+> **Importance:** Estimations **help in planning and resource allocation.** If a story is **too vague to estimate, it might need to be broken down or clarified.**
+> **Example:** *"Improve website performance"* is **too broad**. Specifying **"Reduce homepage load time by 2 seconds"** makes it estimable.
+
+> [!TRAP]
+> **Failing story:** *"As a student, I want the app to load **extremely fast** and be **secure**."*
+> **Problem: vague; no clear criteria for "fast" or "secure."**
+>
+> This is the same defect that **non-functional requirements** suffer from generally — and the same fix applies: **attach a metric.** "Fast" is unestimable; "under 2 seconds on 4G" is a day's work you can plan.
+
+---
+
+### S — Small
+
+> [!NOTE]
+> **Definition:** User stories should be **concise enough to be completed within a single iteration.**
+> **Importance:** Smaller stories are **easier to estimate, test, and deliver, promoting continuous progress.**
+> **Example:** Instead of *"Develop user account management"*, break it into **"Implement user login"**, **"Implement password reset"**, etc.
+
+> [!TRAP]
+> **Failing story:** *"As a student, I want to **view upcoming events, register, and see my registration history** in one place."*
+> **Problem: multiple features in one story; difficult to complete in one sprint.**
+>
+> The tell is the **list of verbs joined by "and"**. Three capabilities in one sentence is three stories.
+
+---
+
+### T — Testable
+
+> [!NOTE]
+> **Definition:** A user story should have **clear acceptance criteria to determine when it's complete.**
+> **Importance:** Testability ensures the team can **verify the functionality, maintaining quality and reliability.**
+> **Example:** *"As a user, I want to receive a confirmation email after registration"*, with **acceptance criteria detailing the email's content and delivery time.**
+
+> [!TRAP]
+> **Failing story:** *"As a student, I want the app to be **fun and easy to use**."*
+> **Problem: no acceptance criteria or test conditions.**
+>
+> "Testable" is really asking: **how would two people disagree about whether this is done?** If they could, the story is not testable yet.
+
+---
+
+## The six at a glance
+
+> [!EXAM]
+> | Letter | Means | Failing example from the deck |
+> |---|---|---|
+> | **I** — Independent | Self-contained, minimal dependencies | *"…register for events **after creating my profile**"* |
+> | **N** — Negotiable | A starting point for discussion, not a contract | *"…**must** receive **SMS** notifications"* |
+> | **V** — Valuable | Delivers value to stakeholders or end-users | *"…see the college's **logo** on the home screen"* |
+> | **E** — Estimable | The team can estimate the effort | *"…load **extremely fast** and be **secure**"* |
+> | **S** — Small | Completable within a single iteration | *"…view events, **and** register, **and** see history"* |
+> | **T** — Testable | Has clear acceptance criteria | *"…be **fun and easy to use**"* |
+
+> [!INTUITION]
+> The six are not independent of each other, and seeing how they interact helps you remember them.
+>
+> **Small usually produces Estimable** — a story you can finish in a sprint is one you can size. **Testable usually produces Negotiable** — once you have written acceptance criteria, you have had the conversation. And **failing Independent often means failing Small**, because bundled stories tend to drag their prerequisites along.
+>
+> So in practice, when a story fails INVEST, **the fix is almost always to split it** and then write acceptance criteria for the pieces.
+
+---
+
+## Applying INVEST in practice
+
+> [!EXAM]
+> The deck's four working rules:
+>
+> - **Start with the user** — frame stories from the **end-user's perspective** to ensure relevance and value.
+> - **Collaborate** — engage stakeholders in discussions to refine stories, ensuring they are **negotiable and valuable**.
+> - **Break down large stories** — if a story seems **too big or complex**, divide it into **smaller, more manageable pieces**.
+> - **Define clear acceptance criteria** — this makes stories **testable** and **sets clear expectations for completion**.
+
+> [!TRAP]
+> Recall from the Scrum cheat sheet that **"DONE" = Potentially Shippable**, and that **functionality not "done" is not shown** at the Sprint Review.
+>
+> Those two rules only work if stories are **Testable** — because "done" has to mean something checkable, agreed in advance. **INVEST is what makes the definition of done enforceable**, rather than a matter of opinion at the end of a sprint.
+
+---
+
+**Next:** two more agile methods in detail — **Extreme Programming & Lean Agile**.

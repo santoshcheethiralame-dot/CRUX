@@ -1,7 +1,7 @@
 ---
 subject: se
 unit: 1
-order: 12
+order: 13
 slug: personas-discovery
 title: Personas, Scenarios & Requirements Discovery
 summary: Using personas and scenarios to keep requirements user-centred, ethnography for tacit requirements (the Flipkart example), and how these techniques feed the requirements process.

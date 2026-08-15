@@ -3,51 +3,281 @@
   "unit": 1,
   "title": "Unit 1 — Flashcards",
   "cards": [
-    { "id": "se-u1-c01", "topic": "introduction-to-se", "front": "Definition: Software Engineering", "back": "An **engineering discipline** concerned with **all aspects of software production**, from early specification through to maintenance after the system goes into use." },
-    { "id": "se-u1-c02", "topic": "introduction-to-se", "front": "What is 'software' (Sommerville)?", "back": "The **programs + all associated documentation + configuration data** needed to make the programs work correctly. Not just code." },
-    { "id": "se-u1-c03", "topic": "introduction-to-se", "front": "Four essential attributes of good software", "back": "**Maintainability**, **Dependability & security**, **Efficiency**, **Acceptability**." },
-    { "id": "se-u1-c04", "topic": "introduction-to-se", "front": "The 'software crisis' & SE's origin", "back": "Coined at the **1968 NATO conference**. As hardware grew, ad-hoc methods couldn't build/maintain growing-complexity software → projects over budget, over time, low quality, unmaintainable. SE = the disciplined response." },
-    { "id": "se-u1-c05", "topic": "introduction-to-se", "front": "FLURPS quality dimensions", "back": "**F**unctionality, **L**ocalizability, **U**sability, **R**eliability, **P**erformance, **S**upportability — a checklist of software quality dimensions (variant of FURPS)." },
-    { "id": "se-u1-c06", "topic": "introduction-to-se", "front": "Generic vs Bespoke (customised) products", "back": "**Generic** = sold to anyone on the open market; developer controls the spec (e.g. Word). **Bespoke** = commissioned by one customer who controls the spec (e.g. ATC system)." },
-    { "id": "se-u1-c07", "topic": "crowdstrike-case-study", "front": "CrowdStrike outage (19 Jul 2024) — cause & lesson", "back": "A **faulty content/config update** crashed a **kernel-level driver** → BSOD boot-loops on ~8.5M machines. NOT a hack. Lessons: **test content updates**, **staged/canary rollout**, **defensive/fault-tolerant design**, **rollback** path." },
-    { "id": "se-u1-c08", "topic": "sdlc-models", "front": "Four fundamental process activities", "back": "**Specification** (what), **Development** (design & implement), **Validation** (check it), **Evolution** (change it). Present in every process model." },
-    { "id": "se-u1-c09", "topic": "sdlc-models", "front": "Waterfall — when to use / weakness", "back": "Use when **requirements are stable & well-understood**. Plan-driven, document-driven, sequential. Weakness: **inflexible to change**; working software appears **late**." },
-    { "id": "se-u1-c10", "topic": "sdlc-models", "front": "V-model key idea", "back": "Each **build phase is paired with a test level** (reqs↔acceptance, system design↔system test, arch design↔integration, module↔unit). Tests are designed **early**, in parallel with development." },
-    { "id": "se-u1-c11", "topic": "sdlc-models", "front": "Spiral model (Boehm) — 4 quadrants", "back": "**Risk-driven**, iterative loops: (1) determine objectives → (2) **identify & resolve risks** → (3) develop & test → (4) plan next iteration. Suits large, costly, high-risk projects." },
-    { "id": "se-u1-c12", "topic": "sdlc-models", "front": "Incremental vs Iterative", "back": "**Incremental** = deliver the system in complete *slices* over time. **Iterative** = build a rough *whole*, then refine over repeated passes. Agile is **both**." },
-    { "id": "se-u1-c13", "topic": "lifecycles-secdlc-4ps", "front": "Secure SDLC (SecDLC) — 5 phases & big idea", "back": "**Investigation → Analysis → Design → Implementation → Maintenance**, each adding a security activity. Big idea = **'shift security left'** (catch flaws early)." },
-    { "id": "se-u1-c14", "topic": "lifecycles-secdlc-4ps", "front": "The 4 Ps of project management", "back": "**People → Product → Process → Project**. **People** are the most important asset. (Pressman.)" },
-    { "id": "se-u1-c15", "topic": "lifecycles-secdlc-4ps", "front": "Nested lifecycles (Product / PMLC / SDLC)", "back": "**Product Life Cycle** (market: intro→growth→maturity→decline) ⊃ **PMLC** (initiate→plan→execute→monitor→close) ⊃ **SDLC** (the engineering process)." },
-    { "id": "se-u1-c16", "topic": "agile-scrum", "front": "Agile Manifesto — four values", "back": "**Individuals & interactions** > processes/tools · **Working software** > documentation · **Customer collaboration** > contract negotiation · **Responding to change** > following a plan. (Value the LEFT more.)" },
-    { "id": "se-u1-c17", "topic": "agile-scrum", "front": "Scrum — 3 roles", "back": "**Product Owner** (prioritises backlog, voice of customer), **Scrum Master** (servant-leader/facilitator, removes impediments), **Development Team** (cross-functional, self-organising, builds it)." },
-    { "id": "se-u1-c18", "topic": "agile-scrum", "front": "Scrum — 3 artifacts", "back": "**Product Backlog** (ordered master list), **Sprint Backlog** (items committed this sprint + plan), **Increment** (potentially shippable 'Done' product)." },
-    { "id": "se-u1-c19", "topic": "agile-scrum", "front": "Scrum — 4 ceremonies", "back": "**Sprint Planning** (pick work), **Daily Scrum** (~15-min sync), **Sprint Review** (demo product → feedback), **Sprint Retrospective** (improve team/process)." },
-    { "id": "se-u1-c20", "topic": "agile-scrum", "front": "Review vs Retrospective", "back": "**Review** inspects the **product** (did we build the right thing? demo to stakeholders). **Retrospective** inspects the **team/process** (how do we improve?)." },
-    { "id": "se-u1-c21", "topic": "user-stories-xp-lean", "front": "User-story template + 3 C's", "back": "**'As a `<user>`, I want `<goal>`, so that `<benefit>`.'** The 3 C's: **Card** (the story), **Conversation** (the detail), **Confirmation** (acceptance criteria)." },
-    { "id": "se-u1-c22", "topic": "user-stories-xp-lean", "front": "INVEST (good user story)", "back": "**I**ndependent, **N**egotiable, **V**aluable, **E**stimable, **S**mall, **T**estable." },
-    { "id": "se-u1-c23", "topic": "user-stories-xp-lean", "front": "XP: TDD, Pair Programming, Refactoring", "back": "**TDD** = write the failing test *first*, then code to pass. **Pair programming** = two devs, one machine (continuous review). **Refactoring** = improve internal structure, **same external behaviour**." },
-    { "id": "se-u1-c24", "topic": "user-stories-xp-lean", "front": "Lean software development — goal", "back": "**Maximise customer value, minimise waste.** 7 principles incl. eliminate waste, amplify learning, decide late, deliver fast, empower team, build integrity in, see the whole. **Kanban** limits WIP." },
-    { "id": "se-u1-c25", "topic": "requirements-elicitation", "front": "User vs System requirements", "back": "**User** = abstract natural-language statements for customers (what they want). **System** = detailed, structured specification for developers (the contract to implement)." },
-    { "id": "se-u1-c26", "topic": "requirements-elicitation", "front": "RE process — 4 activities", "back": "**Elicitation** (discover) → **Analysis & negotiation** (classify, resolve conflicts) → **Specification** (write the SRS) → **Validation** (check it's right). Plus ongoing **management**." },
-    { "id": "se-u1-c27", "topic": "requirements-elicitation", "front": "Active vs Passive elicitation", "back": "**Active** (analyst drives): interviews, workshops/JAD, brainstorming, prototyping. **Passive** (analyst observes): **ethnography/observation**, document analysis." },
-    { "id": "se-u1-c28", "topic": "functional-nonfunctional", "front": "Functional vs Non-functional requirement", "back": "**FR** = *what* the system does (a service/feature). **NFR** = *how well* / a constraint (performance, reliability, security, usability). One failed NFR can break the whole system." },
-    { "id": "se-u1-c29", "topic": "functional-nonfunctional", "front": "Sommerville NFR taxonomy", "back": "**Product** (runtime: performance, dependability, security, usability), **Organisational** (org policy: e.g. 'must use Java'), **External** (regulatory, ethical, legislative — e.g. GDPR)." },
-    { "id": "se-u1-c30", "topic": "security-requirements", "front": "CIA triad", "back": "**Confidentiality** (disclosure only to authorised), **Integrity** (no unauthorised modification), **Availability** (accessible when needed). Often extended with authentication, authorisation, non-repudiation." },
-    { "id": "se-u1-c31", "topic": "security-requirements", "front": "SMART vs INVEST", "back": "**SMART** (good *requirements*): Specific, Measurable, Achievable, Relevant, Time-bound. **INVEST** is for *user stories*. Don't swap them!" },
-    { "id": "se-u1-c32", "topic": "srs-rtm-change", "front": "SRS — what it is + IEEE standard", "back": "**Software Requirements Specification** = the agreed **contract** stating *what* to implement (says what, not how). Follows **IEEE 830**. Should be complete, consistent, unambiguous, verifiable, traceable." },
-    { "id": "se-u1-c33", "topic": "srs-rtm-change", "front": "Requirements Traceability Matrix (RTM)", "back": "Table mapping each **requirement → design → code → test cases** (forward) and back. Proves **coverage**, enables **change-impact analysis**, catches gold-plating." },
-    { "id": "se-u1-c34", "topic": "uml-use-cases", "front": "UML: Structural vs Behavioural", "back": "**Structural** (static): class, object, component, deployment, package. **Behavioural** (dynamic): use-case, sequence, activity, state-machine, communication, timing." },
-    { "id": "se-u1-c35", "topic": "uml-use-cases", "front": "«include» vs «extend»", "back": "**«include»** = base **always** uses it (mandatory, shared behaviour). **«extend»** = **optional/conditional** behaviour added at an extension point. Mnemonic: include='always', extend='sometimes'." },
-    { "id": "se-u1-c36", "topic": "uml-use-cases", "front": "Use-case flows", "back": "**Main/basic flow** = happy path. **Alternative flow** = valid variation. **Exception flow** = error path. Actor = a **role** (human or another system), external to the system." },
-    { "id": "se-u1-c37", "topic": "personas-discovery", "front": "Persona vs Scenario", "back": "**Persona** = a fictional, research-based archetype of a user type (goals, frustrations, context) — fights the 'elastic user'. **Scenario** = a narrative story of a persona using the system to reach a goal." },
-    { "id": "se-u1-c38", "topic": "personas-discovery", "front": "Ethnography — value & example", "back": "Passive observation of real work → uncovers **tacit requirements** users never state. **Flipkart**: observing distrust of online payment + poor connectivity drove **Cash-on-Delivery** and low-data UIs." },
-    { "id": "se-u1-c39", "topic": "testing-vv-terminology", "front": "Verification vs Validation (Boehm)", "back": "**Verification** = 'building the product **right**' (conforms to spec; often static/reviews). **Validation** = 'building the **right** product' (meets user needs; often dynamic)." },
-    { "id": "se-u1-c40", "topic": "testing-vv-terminology", "front": "Error → Defect → Failure", "back": "A human makes an **error (mistake)** → introduces a **defect/fault (bug)** in the code → which, when executed, may cause a **failure** at runtime. A defect doesn't always cause a failure." },
-    { "id": "se-u1-c41", "topic": "testing-vv-terminology", "front": "Levels of testing", "back": "**Unit** (one component) → **Integration** (interfaces between modules) → **System** (whole integrated system vs requirements) → **Acceptance** (vs customer needs; alpha/beta/UAT)." },
-    { "id": "se-u1-c42", "topic": "testing-vv-terminology", "front": "Black-box vs White-box", "back": "**Black-box** = test against the **spec** (inputs→expected outputs), no code view — e.g. boundary-value analysis. **White-box** = test internal **logic/paths** — e.g. branch coverage." },
-    { "id": "se-u1-c43", "topic": "test-cases-planning", "front": "Test case — essential fields", "back": "ID, description, preconditions, **inputs/steps**, **expected result (oracle)**, actual result, status. Without a predefined **expected result** you can't tell pass from fail." },
-    { "id": "se-u1-c44", "topic": "test-cases-planning", "front": "Test plan (IEEE 829) — key contents", "back": "Scope/approach, **features to be tested + NOT tested**, **item pass/fail criteria**, **suspension/resumption criteria**, deliverables, environment, schedule, risks. Defines what/how/who/when." },
-    { "id": "se-u1-c45", "topic": "test-cases-planning", "front": "Coverage criteria & the trap", "back": "Statement < branch/decision < path coverage (strength). **100% statement coverage ≠ bug-free** — it shows what ran, not whether outputs are correct or code is missing." },
-    { "id": "se-u1-c46", "topic": "test-cases-planning", "front": "Defect density + security validation", "back": "**Defect density = defects ÷ size (KLOC / FP)** — normalises quality across modules. **Security validation** adds misuse cases, **pen-testing**, vulnerability scanning, **fuzzing** on top of normal V&V." }
+    {
+      "id": "se-u1-c01",
+      "topic": "introduction-to-se",
+      "front": "Definition: Software Engineering",
+      "back": "An **engineering discipline** concerned with **all aspects of software production**, from early specification through to maintenance after the system goes into use."
+    },
+    {
+      "id": "se-u1-c02",
+      "topic": "introduction-to-se",
+      "front": "What is 'software' (Sommerville)?",
+      "back": "The **programs + all associated documentation + configuration data** needed to make the programs work correctly. Not just code."
+    },
+    {
+      "id": "se-u1-c03",
+      "topic": "introduction-to-se",
+      "front": "Four essential attributes of good software",
+      "back": "**Maintainability**, **Dependability & security**, **Efficiency**, **Acceptability**."
+    },
+    {
+      "id": "se-u1-c04",
+      "topic": "introduction-to-se",
+      "front": "The 'software crisis' & SE's origin",
+      "back": "Coined at the **1968 NATO conference**. As hardware grew, ad-hoc methods couldn't build/maintain growing-complexity software → projects over budget, over time, low quality, unmaintainable. SE = the disciplined response."
+    },
+    {
+      "id": "se-u1-c05",
+      "topic": "introduction-to-se",
+      "front": "FLURPS quality dimensions",
+      "back": "**F**unctionality, **L**ocalizability, **U**sability, **R**eliability, **P**erformance, **S**upportability — a checklist of software quality dimensions (variant of FURPS)."
+    },
+    {
+      "id": "se-u1-c06",
+      "topic": "introduction-to-se",
+      "front": "Generic vs Bespoke (customised) products",
+      "back": "**Generic** = sold to anyone on the open market; developer controls the spec (e.g. Word). **Bespoke** = commissioned by one customer who controls the spec (e.g. ATC system)."
+    },
+    {
+      "id": "se-u1-c07",
+      "topic": "crowdstrike-case-study",
+      "front": "CrowdStrike outage (19 Jul 2024) — cause & lesson",
+      "back": "A **faulty content/config update** crashed a **kernel-level driver** → BSOD boot-loops on ~8.5M machines. NOT a hack. Lessons: **test content updates**, **staged/canary rollout**, **defensive/fault-tolerant design**, **rollback** path."
+    },
+    {
+      "id": "se-u1-c08",
+      "topic": "sdlc-models",
+      "front": "Four fundamental process activities",
+      "back": "**Specification** (what), **Development** (design & implement), **Validation** (check it), **Evolution** (change it). Present in every process model."
+    },
+    {
+      "id": "se-u1-c09",
+      "topic": "sdlc-models",
+      "front": "Waterfall — when to use / weakness",
+      "back": "Use when **requirements are stable & well-understood**. Plan-driven, document-driven, sequential. Weakness: **inflexible to change**; working software appears **late**."
+    },
+    {
+      "id": "se-u1-c10",
+      "topic": "sdlc-models",
+      "front": "V-model key idea",
+      "back": "Each **build phase is paired with a test level** (reqs↔acceptance, system design↔system test, arch design↔integration, module↔unit). Tests are designed **early**, in parallel with development."
+    },
+    {
+      "id": "se-u1-c11",
+      "topic": "sdlc-models",
+      "front": "Spiral model (Boehm) — 4 quadrants",
+      "back": "**Risk-driven**, iterative loops: (1) determine objectives → (2) **identify & resolve risks** → (3) develop & test → (4) plan next iteration. Suits large, costly, high-risk projects."
+    },
+    {
+      "id": "se-u1-c12",
+      "topic": "sdlc-models",
+      "front": "Incremental vs Iterative",
+      "back": "**Incremental** = deliver the system in complete *slices* over time. **Iterative** = build a rough *whole*, then refine over repeated passes. Agile is **both**."
+    },
+    {
+      "id": "se-u1-c13",
+      "topic": "lifecycles-secdlc-4ps",
+      "front": "Secure SDLC (SecDLC) — 5 phases & big idea",
+      "back": "**Investigation → Analysis → Design → Implementation → Maintenance**, each adding a security activity. Big idea = **'shift security left'** (catch flaws early)."
+    },
+    {
+      "id": "se-u1-c14",
+      "topic": "lifecycles-secdlc-4ps",
+      "front": "The 4 Ps of project management",
+      "back": "**People → Product → Process → Project**. **People** are the most important asset. (Pressman.)"
+    },
+    {
+      "id": "se-u1-c15",
+      "topic": "lifecycles-secdlc-4ps",
+      "front": "Nested lifecycles (Product / PMLC / SDLC)",
+      "back": "**Product Life Cycle** (market: intro→growth→maturity→decline) ⊃ **PMLC** (initiate→plan→execute→monitor→close) ⊃ **SDLC** (the engineering process)."
+    },
+    {
+      "id": "se-u1-c16",
+      "topic": "agile-scrum",
+      "front": "Agile Manifesto — four values",
+      "back": "**Individuals & interactions** > processes/tools · **Working software** > documentation · **Customer collaboration** > contract negotiation · **Responding to change** > following a plan. (Value the LEFT more.)"
+    },
+    {
+      "id": "se-u1-c17",
+      "topic": "agile-scrum",
+      "front": "Scrum — 3 roles",
+      "back": "**Product Owner** (prioritises backlog, voice of customer), **Scrum Master** (servant-leader/facilitator, removes impediments), **Development Team** (cross-functional, self-organising, builds it)."
+    },
+    {
+      "id": "se-u1-c18",
+      "topic": "agile-scrum",
+      "front": "Scrum — 3 artifacts",
+      "back": "**Product Backlog** (ordered master list), **Sprint Backlog** (items committed this sprint + plan), **Increment** (potentially shippable 'Done' product)."
+    },
+    {
+      "id": "se-u1-c19",
+      "topic": "agile-scrum",
+      "front": "Scrum — 4 ceremonies",
+      "back": "**Sprint Planning** (pick work), **Daily Scrum** (~15-min sync), **Sprint Review** (demo product → feedback), **Sprint Retrospective** (improve team/process)."
+    },
+    {
+      "id": "se-u1-c20",
+      "topic": "agile-scrum",
+      "front": "Review vs Retrospective",
+      "back": "**Review** inspects the **product** (did we build the right thing? demo to stakeholders). **Retrospective** inspects the **team/process** (how do we improve?)."
+    },
+    {
+      "id": "se-u1-c21",
+      "topic": "user-stories-xp-lean",
+      "front": "User-story template + 3 C's",
+      "back": "**'As a `<user>`, I want `<goal>`, so that `<benefit>`.'** The 3 C's: **Card** (the story), **Conversation** (the detail), **Confirmation** (acceptance criteria)."
+    },
+    {
+      "id": "se-u1-c22",
+      "topic": "user-stories-xp-lean",
+      "front": "INVEST (good user story)",
+      "back": "**I**ndependent, **N**egotiable, **V**aluable, **E**stimable, **S**mall, **T**estable."
+    },
+    {
+      "id": "se-u1-c23",
+      "topic": "xp-lean-agile",
+      "front": "XP: TDD, Pair Programming, Refactoring",
+      "back": "**TDD** = write the failing test *first*, then code to pass. **Pair programming** = two devs, one machine (continuous review). **Refactoring** = improve internal structure, **same external behaviour**."
+    },
+    {
+      "id": "se-u1-c24",
+      "topic": "xp-lean-agile",
+      "front": "Lean software development — goal",
+      "back": "**Maximise customer value, minimise waste.** 7 principles incl. eliminate waste, amplify learning, decide late, deliver fast, empower team, build integrity in, see the whole. **Kanban** limits WIP."
+    },
+    {
+      "id": "se-u1-c25",
+      "topic": "requirements-elicitation",
+      "front": "User vs System requirements",
+      "back": "**User** = abstract natural-language statements for customers (what they want). **System** = detailed, structured specification for developers (the contract to implement)."
+    },
+    {
+      "id": "se-u1-c26",
+      "topic": "requirements-elicitation",
+      "front": "RE process — 4 activities",
+      "back": "**Elicitation** (discover) → **Analysis & negotiation** (classify, resolve conflicts) → **Specification** (write the SRS) → **Validation** (check it's right). Plus ongoing **management**."
+    },
+    {
+      "id": "se-u1-c27",
+      "topic": "requirements-elicitation",
+      "front": "Active vs Passive elicitation",
+      "back": "**Active** (analyst drives): interviews, workshops/JAD, brainstorming, prototyping. **Passive** (analyst observes): **ethnography/observation**, document analysis."
+    },
+    {
+      "id": "se-u1-c28",
+      "topic": "functional-nonfunctional",
+      "front": "Functional vs Non-functional requirement",
+      "back": "**FR** = *what* the system does (a service/feature). **NFR** = *how well* / a constraint (performance, reliability, security, usability). One failed NFR can break the whole system."
+    },
+    {
+      "id": "se-u1-c29",
+      "topic": "functional-nonfunctional",
+      "front": "Sommerville NFR taxonomy",
+      "back": "**Product** (runtime: performance, dependability, security, usability), **Organisational** (org policy: e.g. 'must use Java'), **External** (regulatory, ethical, legislative — e.g. GDPR)."
+    },
+    {
+      "id": "se-u1-c30",
+      "topic": "security-requirements",
+      "front": "CIA triad",
+      "back": "**Confidentiality** (disclosure only to authorised), **Integrity** (no unauthorised modification), **Availability** (accessible when needed). Often extended with authentication, authorisation, non-repudiation."
+    },
+    {
+      "id": "se-u1-c31",
+      "topic": "security-requirements",
+      "front": "SMART vs INVEST",
+      "back": "**SMART** (good *requirements*): Specific, Measurable, Achievable, Relevant, Time-bound. **INVEST** is for *user stories*. Don't swap them!"
+    },
+    {
+      "id": "se-u1-c32",
+      "topic": "srs-rtm-change",
+      "front": "SRS — what it is + IEEE standard",
+      "back": "**Software Requirements Specification** = the agreed **contract** stating *what* to implement (says what, not how). Follows **IEEE 830**. Should be complete, consistent, unambiguous, verifiable, traceable."
+    },
+    {
+      "id": "se-u1-c33",
+      "topic": "srs-rtm-change",
+      "front": "Requirements Traceability Matrix (RTM)",
+      "back": "Table mapping each **requirement → design → code → test cases** (forward) and back. Proves **coverage**, enables **change-impact analysis**, catches gold-plating."
+    },
+    {
+      "id": "se-u1-c34",
+      "topic": "uml-use-cases",
+      "front": "UML: Structural vs Behavioural",
+      "back": "**Structural** (static): class, object, component, deployment, package. **Behavioural** (dynamic): use-case, sequence, activity, state-machine, communication, timing."
+    },
+    {
+      "id": "se-u1-c35",
+      "topic": "uml-use-cases",
+      "front": "«include» vs «extend»",
+      "back": "**«include»** = base **always** uses it (mandatory, shared behaviour). **«extend»** = **optional/conditional** behaviour added at an extension point. Mnemonic: include='always', extend='sometimes'."
+    },
+    {
+      "id": "se-u1-c36",
+      "topic": "uml-use-cases",
+      "front": "Use-case flows",
+      "back": "**Main/basic flow** = happy path. **Alternative flow** = valid variation. **Exception flow** = error path. Actor = a **role** (human or another system), external to the system."
+    },
+    {
+      "id": "se-u1-c37",
+      "topic": "personas-discovery",
+      "front": "Persona vs Scenario",
+      "back": "**Persona** = a fictional, research-based archetype of a user type (goals, frustrations, context) — fights the 'elastic user'. **Scenario** = a narrative story of a persona using the system to reach a goal."
+    },
+    {
+      "id": "se-u1-c38",
+      "topic": "personas-discovery",
+      "front": "Ethnography — value & example",
+      "back": "Passive observation of real work → uncovers **tacit requirements** users never state. **Flipkart**: observing distrust of online payment + poor connectivity drove **Cash-on-Delivery** and low-data UIs."
+    },
+    {
+      "id": "se-u1-c39",
+      "topic": "testing-vv-terminology",
+      "front": "Verification vs Validation (Boehm)",
+      "back": "**Verification** = 'building the product **right**' (conforms to spec; often static/reviews). **Validation** = 'building the **right** product' (meets user needs; often dynamic)."
+    },
+    {
+      "id": "se-u1-c40",
+      "topic": "testing-vv-terminology",
+      "front": "Error → Defect → Failure",
+      "back": "A human makes an **error (mistake)** → introduces a **defect/fault (bug)** in the code → which, when executed, may cause a **failure** at runtime. A defect doesn't always cause a failure."
+    },
+    {
+      "id": "se-u1-c41",
+      "topic": "testing-vv-terminology",
+      "front": "Levels of testing",
+      "back": "**Unit** (one component) → **Integration** (interfaces between modules) → **System** (whole integrated system vs requirements) → **Acceptance** (vs customer needs; alpha/beta/UAT)."
+    },
+    {
+      "id": "se-u1-c42",
+      "topic": "testing-vv-terminology",
+      "front": "Black-box vs White-box",
+      "back": "**Black-box** = test against the **spec** (inputs→expected outputs), no code view — e.g. boundary-value analysis. **White-box** = test internal **logic/paths** — e.g. branch coverage."
+    },
+    {
+      "id": "se-u1-c43",
+      "topic": "test-cases-planning",
+      "front": "Test case — essential fields",
+      "back": "ID, description, preconditions, **inputs/steps**, **expected result (oracle)**, actual result, status. Without a predefined **expected result** you can't tell pass from fail."
+    },
+    {
+      "id": "se-u1-c44",
+      "topic": "test-cases-planning",
+      "front": "Test plan (IEEE 829) — key contents",
+      "back": "Scope/approach, **features to be tested + NOT tested**, **item pass/fail criteria**, **suspension/resumption criteria**, deliverables, environment, schedule, risks. Defines what/how/who/when."
+    },
+    {
+      "id": "se-u1-c45",
+      "topic": "test-cases-planning",
+      "front": "Coverage criteria & the trap",
+      "back": "Statement < branch/decision < path coverage (strength). **100% statement coverage ≠ bug-free** — it shows what ran, not whether outputs are correct or code is missing."
+    },
+    {
+      "id": "se-u1-c46",
+      "topic": "test-cases-planning",
+      "front": "Defect density + security validation",
+      "back": "**Defect density = defects ÷ size (KLOC / FP)** — normalises quality across modules. **Security validation** adds misuse cases, **pen-testing**, vulnerability scanning, **fuzzing** on top of normal V&V."
+    }
   ]
 }
