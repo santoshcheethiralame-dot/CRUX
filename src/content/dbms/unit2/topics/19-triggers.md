@@ -124,6 +124,27 @@ DELIMITER ;
 >
 > Running `INSERT INTO Marks_sample VALUES (1,'C03',101);` → **the tuple does not get inserted**, as the marks value is greater than 100.
 
+> [!DERIVE]
+> **The before/after from the deck.** `Marks_sample` starts as:
+>
+> | SRN | Course | Marks |
+> |---|---|---|
+> | 1 | C01 | 98 |
+> | 1 | C02 | 89 |
+> | 2 | C01 | 100 |
+> | 2 | C02 | 98 |
+> | 2 | C03 | 80 |
+> | 3 | C01 | 95 |
+> | 3 | C02 | 98 |
+>
+> After the rejected insert the table is **byte-for-byte identical** — seven rows, no `(1, C03, 101)`. The error reported is:
+>
+> > **Error Code: 1644. Invalid marks: Marks must be between 0 and 100**
+>
+> Note the mismatch worth remembering: you write **`SQLSTATE '45000'`** in the trigger, but MySQL surfaces it to the client as **error 1644** (its generic code for a user-raised exception) carrying your `MESSAGE_TEXT`. The two numbers refer to the same event in two different error-numbering systems.
+>
+> Note also that `(2, C01, 100)` sits in the table quite legally — the check is `> 100`, so **100 is a valid mark** and the boundary is inclusive.
+
 > [!TRAP]
 > **The deck's own follow-up is the exam question:** running
 >

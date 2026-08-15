@@ -26,6 +26,51 @@ tags: [sql, window-function, over, partition-by, rank, dense-rank, row-number, r
 > - using the aggregate function `AVG` with `GROUP BY`, we get **a single row for each department**;
 > - using window functions, **all rows in the employee table are maintained**, along with the average salary of the department they belong to.
 
+### The sample data
+
+The whole deck runs on two small tables — `departments` (HR, Sales, Engineering) and `employees`:
+
+| emp_id | emp_name | department | salary | hire_date |
+|---|---|---|---|---|
+| 101 | Alice | Sales | 5000 | 2020-01-15 |
+| 102 | Bob | Sales | 7000 | 2019-03-12 |
+| 103 | Charlie | Engineering | 9000 | 2018-06-01 |
+| 104 | David | Engineering | 8000 | 2021-07-19 |
+| 105 | Eva | HR | 6000 | 2020-09-30 |
+| 106 | Frank | Sales | 7500 | 2022-02-11 |
+
+> [!DERIVE]
+> **The two queries, and their actual output.**
+>
+> ```sql
+> SELECT department, AVG(salary) FROM employees GROUP BY department;
+> ```
+>
+> | department | AVG(salary) |
+> |---|---|
+> | Sales | 6500.0000 |
+> | Engineering | 8500.0000 |
+> | HR | 6000.0000 |
+>
+> **3 rows** — the six employees are gone.
+>
+> ```sql
+> SELECT emp_name, department, salary,
+>        AVG(salary) OVER (PARTITION BY department) AS dept_avg_salary
+> FROM employees;
+> ```
+>
+> | emp_name | department | salary | dept_avg_salary |
+> |---|---|---|---|
+> | Charlie | Engineering | 9000 | 8500.0000 |
+> | David | Engineering | 8000 | 8500.0000 |
+> | Eva | HR | 6000 | 6000.0000 |
+> | Alice | Sales | 5000 | 6500.0000 |
+> | Bob | Sales | 7000 | 6500.0000 |
+> | Frank | Sales | 7500 | 6500.0000 |
+>
+> **6 rows** — the same three averages, now repeated beside every employee they apply to. Nothing was lost, and one extra column was gained.
+
 > [!INTUITION]
 > This is the cleanest way to hold the distinction:
 >
@@ -166,20 +211,31 @@ FROM   Employees;
 **Assigns a unique sequential number to each row within a partition, starting at 1 for each partition.** Unlike `RANK()` or `DENSE_RANK()` there are **no ties — every row gets its own distinct number, even if values are equal.**
 
 > [!DERIVE]
-> **The three side by side** on salaries 500, 500, 400, 300 — this is the comparison exam questions are built from:
+> **The three side by side on the deck's own output.** All three queries partition by department and order by salary descending, so only the **Sales** partition — which contains the tie — shows any difference:
 >
-> | Salary | `ROW_NUMBER()` | `RANK()` | `DENSE_RANK()` |
-> |---|---|---|---|
-> | 500 | 1 | **1** | **1** |
-> | 500 | **2** | **1** | **1** |
-> | 400 | 3 | **3** | **2** |
-> | 300 | 4 | 4 | 3 |
+> | emp_name | department | salary | `RANK()` | `DENSE_RANK()` | `ROW_NUMBER()` |
+> |---|---|---|---|---|---|
+> | Charlie | Engineering | 9000 | 1 | 1 | 1 |
+> | David | Engineering | 8000 | 2 | 2 | 2 |
+> | Eva | HR | 6000 | 1 | 1 | 1 |
+> | Bob | Sales | 7000 | **1** | **1** | **1** |
+> | Frank | Sales | 7000 | **1** | **1** | **2** |
+> | Alice | Sales | 5000 | **3** | **2** | **3** |
 >
-> - `ROW_NUMBER()` **ignores the tie entirely** — the two 500s get 1 and 2, arbitrarily ordered.
-> - `RANK()` gives both 500s rank **1**, then **skips 2** because two rows already occupy the top — "third-highest salary" in the ordinary sense.
-> - `DENSE_RANK()` gives both 500s rank 1, then **2** — counting *distinct values*, not rows.
+> - Bob and Frank tie at 7000. `RANK()` and `DENSE_RANK()` both give them **1**; `ROW_NUMBER()` splits them into **1 and 2**.
+> - Alice is the giveaway row: **3 under `RANK()`, 2 under `DENSE_RANK()`** — which is exactly the deck's note that *"Alice is now numbered 2 instead of 3 when rank was used."*
+> - Note that **HR and Engineering restart at 1** — ranking is per partition.
 >
 > **The mnemonic:** `RANK` counts **rows** ahead of you; `DENSE_RANK` counts **distinct values** ahead of you; `ROW_NUMBER` just counts.
+
+> [!TRAP]
+> **The deck's data is inconsistent between slides, and the tie only exists on one of them.**
+>
+> The `employees` table printed on the sample-schema slide lists **Frank at 7500** — and the aggregate-window slide confirms it, since Sales averages 6500, which is $(5000 + 7000 + 7500)/3$.
+>
+> But all three ranking screenshots show **Frank at 7000**, tied with Bob. They were evidently captured before the salary was changed.
+>
+> This matters because **with Frank at 7500 there is no tie at all**, and the entire `RANK()` vs `DENSE_RANK()` distinction the slides are built to demonstrate would be invisible. Use **7000** when reproducing the ranking examples; use 7500 if you are checking the department averages.
 
 > [!TRAP]
 > **`ROW_NUMBER()` is non-deterministic across ties.** With two identical salaries, which one gets 1 and which gets 2 is **not defined** and may differ between runs.

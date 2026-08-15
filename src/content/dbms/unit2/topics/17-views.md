@@ -65,7 +65,28 @@ tags: [sql, view, virtual-table, updatable-view, create-view, security, logical-
 
 ## Updates propagate to the base table
 
-The deck demonstrates CRUD on a view over a single `Authors` table — a view of experienced expert authors (`Age >= 30` and the word *Expert* in their bio) — performing an insert, an update and a delete.
+The deck demonstrates CRUD on a view over a single `Authors` table:
+
+```sql
+CREATE VIEW experienced_authors AS
+SELECT * FROM authors
+WHERE  age >= 30 AND Bio LIKE '%Expert%';
+```
+
+Of the nine authors in the base table, exactly three satisfy both conditions:
+
+| Author_ID | Name | Age | Bio |
+|---|---|---|---|
+| A001 | Alice Johnson | 35 | Expert in AI and ML |
+| A006 | Frank Martin | 45 | Expert in Computer Vision |
+| A009 | Ivy Scott | 34 | Data Engineering Expert |
+
+> [!TRAP]
+> Check who is **excluded**, because the two conditions do different work. **Carol White (28)** and **Henry Wilson (27)** are researchers but too young. **Bob Smith (40, "Data Scientist")** and **Eve Davis (32, "Cloud Computing Specialist")** are old enough but their bios never say *Expert*.
+>
+> And note `Bio LIKE '%Expert%'` is a **substring** match, not a word match — it catches *"Data Engineering **Expert**"* with the word at the end just as happily as at the start. It would equally match a bio reading *"no Expertise in..."*. This is precisely the word-boundary weakness that **Full-Text Search** exists to fix.
+
+After the insert, update and delete, the view holds Alice (now 40), Frank, and the newly added **John Wick (52, "Expert in Pencils")** — who qualifies because he meets both conditions.
 
 > [!EXAM]
 > **All the changes made to the view are also reflected on the original tables.**
@@ -134,6 +155,15 @@ SELECT * FROM EmpDependentCount WHERE NumDependents > 2;
 > **Security** and **logical data independence** are the two that matter most, and they connect back to Unit 1.
 >
 > **Security by subtraction:** grant a clerk access to a view of `EMPLOYEE` that omits `Salary`, and revoke their access to the base table. They can do their job and *cannot* see salaries — the restriction is structural, not a matter of trust. This is exactly why the deck pairs views with users and roles.
+
+> [!TRAP]
+> **The deck's own demo view does the opposite of what the Security advantage claims** — worth noticing, because it is the mistake the advantage is warning against.
+>
+> `experienced_authors` is defined as **`SELECT *`**, and the `Authors` table carries a **`Password`** column storing values in plaintext (`password123`, `password987`, …). So the view **republishes every password** to anyone granted access to it.
+>
+> Two lessons. First, a view only excludes sensitive information **if you actually name the columns** — `SELECT *` in a view definition forfeits the entire security benefit, and it also means the view silently acquires any column added to the base table later. Second, the plaintext passwords are a schema defect in their own right; real systems store a salted hash and never a recoverable password.
+>
+> If an exam asks you to write a view "for security," **list the columns explicitly.**
 >
 > **Logical data independence** is the middle level of the **three-schema architecture** from Unit 1. A view *is* an external schema. Split a table in two, keep a view with the old shape, and every application written against that view keeps working — the conceptual schema changed and the external schema did not.
 

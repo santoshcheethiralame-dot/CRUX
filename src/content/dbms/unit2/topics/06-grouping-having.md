@@ -42,6 +42,30 @@ GROUP BY Dno;
 
 Here `Dno` is the grouping attribute. `EMPLOYEE` is partitioned so that **each group has tuples with the same value of `Dno`** — i.e. each group consists of employees who work for the same department — and `COUNT` and `AVG` are **applied to each group independently**.
 
+> [!DERIVE]
+> **The deck's illustration, with the actual EMPLOYEE rows.** Eight employees, grouped by `Dno`:
+>
+> | Fname | Lname | Salary | Dno |
+> |---|---|---|---|
+> | John | Smith | 30000 | 5 |
+> | Franklin | Wong | 40000 | 5 |
+> | Ramesh | Narayan | 38000 | 5 |
+> | Joyce | English | 25000 | 5 |
+> | Alicia | Zelaya | 25000 | 4 |
+> | Jennifer | Wallace | 43000 | 4 |
+> | Ahmad | Jabbar | 25000 | 4 |
+> | James | Bong | 55000 | 1 |
+>
+> Three groups form, and the aggregates are applied to each independently:
+>
+> | Dno | COUNT(*) | AVG(Salary) |
+> |---|---|---|
+> | **5** | 4 | $\frac{30000+40000+38000+25000}{4} = 33250$ |
+> | **4** | 3 | $\frac{25000+43000+25000}{3} = 31000$ |
+> | **1** | 1 | $55000$ |
+>
+> Eight rows in, **three rows out** — one per distinct value of the grouping attribute. Keep these numbers; the WHERE-vs-HAVING trap later on this page resolves against exactly this data.
+
 > [!EXAM]
 > Two rules govern what may appear where:
 >
@@ -147,6 +171,19 @@ GROUP BY Dno;
 ```
 
 The deck's reading of the result: **there is only one employee with a salary greater than \$40,000 belonging to a department (department 4) with more than two employees.** All other departments either have two or fewer employees, or have nobody earning over \$40,000.
+
+> [!DERIVE]
+> **Check it against the eight rows from earlier on this page** — this is why both queries behave as they do.
+>
+> **Who earns over \$40,000?** Jennifer Wallace (43000, Dno 4) and James Bong (55000, Dno 1). **Two people.**
+>
+> **Which departments have more than two employees?** Dno 5 (four) and Dno 4 (three). **Not Dno 1**, which has one.
+>
+> **The correct query** intersects these: of the two high earners, only Jennifer is in a qualifying department. Result: **Dno 4, count 1.**
+>
+> **The incorrect query** filters to the two high earners *first*, then groups them — Dno 4 gets a group of size 1, Dno 1 a group of size 1. Neither survives `HAVING COUNT(*) > 2`, so the result is **empty**.
+>
+> Notice how close the two are: the incorrect version does not merely lose a row, it **loses the only correct answer** and reports nothing at all.
 
 > [!INTUITION]
 > The general principle is worth carrying out of this topic:

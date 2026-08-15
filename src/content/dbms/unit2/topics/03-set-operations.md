@@ -21,6 +21,29 @@ The running example throughout is one relation:
 
 **`student_course(name, course, grade)`** — records of grades obtained by students in various courses. One query pulls the **Physics** rows, another the **Mathematics** rows, and the set operators combine them.
 
+### The data
+
+| name | course | grade | | name | course | grade |
+|---|---|---|---|---|---|---|
+| Alex | Physics | **S** | | Alex | Mathematics | **S** |
+| Bert | Physics | **S** | | Bert | Mathematics | **S** |
+| Charles | Physics | **A** | | Charles | Mathematics | **A** |
+| Dennis | Physics | **B** | | Dennis | Mathematics | **A** |
+| Evans | Physics | **B** | | Evans | Mathematics | **A** |
+
+Reduced to the grade column alone, which is all the set operations see:
+
+$$\text{Physics} = \{S, S, A, B, B\} \qquad \text{Mathematics} = \{S, S, A, A, A\}$$
+
+> [!EXAM]
+> Tabulate the **multiplicities** before answering any question on this page — every result below falls straight out of them.
+>
+> | grade | $c_1$ (Physics) | $c_2$ (Mathematics) |
+> |---|---|---|
+> | **S** | 2 | 2 |
+> | **A** | 1 | 3 |
+> | **B** | 2 | 0 |
+
 ## The compatibility requirement
 
 > [!EXAM]
@@ -149,6 +172,26 @@ The deck then runs it **the other way round** — Mathematics `EXCEPT` Physics �
 > | **EXCEPT ALL** | retained | $\max(c_1 - c_2,\, 0)$ |
 >
 > All six require **the same number of columns and the same datatypes** on both sides.
+
+> [!DERIVE]
+> **Every output on the deck, computed from the multiplicity table.** Physics $= \{S{:}2,\, A{:}1,\, B{:}2\}$, Mathematics $= \{S{:}2,\, A{:}3,\, B{:}0\}$.
+>
+> | Operation | Per-grade count | Actual output |
+> |---|---|---|
+> | **UNION** | distinct values in either | **S, A, B** (3 rows) |
+> | **UNION ALL** | S:4, A:4, B:2 | **S,S,A,B,B,S,S,A,A,A** (10 rows) |
+> | **UNION ALL** *(DISTINCT inside each branch)* | S:2, A:2, B:1 | **S,A,B,S,A** (5 rows) |
+> | **INTERSECT** | values in both | **S, A** — B is absent from Maths |
+> | **INTERSECT ALL** | $\min$: S:2, A:1, B:0 | **S,S,A** (3 rows) |
+> | **EXCEPT** (P−M) | values in P not in M | **B** |
+> | **EXCEPT** (M−P) | none | **(Empty Set)** |
+> | **EXCEPT ALL** (P−M) | $\max(c_1-c_2,0)$: S:0, A:0, B:2 | **B,B** |
+> | **EXCEPT ALL** (M−P) | S:0, A:2, B:0 | **A,A** |
+>
+> Three things are worth reading off this table:
+> - **`UNION ALL` returns 10 rows — every row of both inputs.** It never inspects the data at all.
+> - **`EXCEPT ALL` in the two directions gives different values, not just different counts** — `B,B` one way and `A,A` the other. This is non-commutativity made concrete.
+> - The **`INTERSECT ALL`** result keeps *two* S's but only *one* A, because Physics only had one A to contribute. $\min$ is doing visible work.
 
 > [!TRAP]
 > **MySQL does not implement `INTERSECT` and `EXCEPT` in older versions**, and the `ALL` variants are the least portable of all. `EXCEPT` is spelled **`MINUS`** in Oracle.

@@ -22,6 +22,24 @@ tags: [sql, outer-join, left-outer, right-outer, full-outer, cross-join, cartesi
 >
 > **Three types:** Left Outer Join · Right Outer Join · Full Outer Join
 
+> [!NOTE]
+> The deck draws the three as Venn diagrams over two overlapping circles, `table1` and `table2`, with the **shaded region showing what the join returns**:
+>
+> | | Shaded |
+> |---|---|
+> | **LEFT JOIN** | **all of `table1`**, including the overlap — `table2`'s non-overlapping part is left white |
+> | **RIGHT JOIN** | **all of `table2`**, including the overlap — `table1`'s non-overlapping part is left white |
+> | **FULL OUTER JOIN** | **both circles entirely** |
+>
+> An **inner** join, by contrast, would shade only the lens where the two circles overlap.
+
+> [!TRAP]
+> The Venn picture is a good memory aid and a slightly misleading model, so do not lean on it too hard.
+>
+> Circles suggest **sets of rows being selected**. A join does something more than select — it **pairs rows and concatenates them**, and one left row matching three right rows produces **three output rows**. A Venn diagram cannot show that multiplication.
+>
+> Read the diagram as *"which side's non-matching rows are kept"* — which is exactly what it gets right — and not as a model of how many rows come out.
+
 > [!INTUITION]
 > The phrase **"avoids loss of information"** is the entire justification, and it is worth making concrete.
 >
