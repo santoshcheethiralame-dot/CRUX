@@ -73,6 +73,15 @@ WHERE  NOT EXISTS ( ( SELECT Pnumber FROM PROJECT   WHERE Dnum = 4 )
 > which is **the set of department-4 projects that this employee does not work on**.
 >
 > **If the employee works on all of them, this difference is empty**, `NOT EXISTS` evaluates to True, and the employee is selected.
+>
+> **The answer on the company database:**
+>
+> | Fname | Lname |
+> |---|---|
+> | Ahmed | Jabbar |
+> | Alicia | Zelaya |
+>
+> **Two employees out of eight.** Both forms of the query below return exactly this pair — which is the point of showing two forms.
 
 > [!INTUITION]
 > This form is worth preferring in an exam because it **reads like the logic**. Written out:

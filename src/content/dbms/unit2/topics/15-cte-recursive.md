@@ -103,7 +103,7 @@ SELECT * FROM cte;
 > 3. Repeat with the newly-produced row: from 2 it generates 3; from 3, 4; from 4, 5.
 > 4. From 5, the condition $5 < 5$ is **false**, so **no new rows are produced** and the recursion stops.
 >
-> Final result: **1, 2, 3, 4, 5**.
+> Final result: **1, 2, 3, 4, 5**. The countdown version, seeded with `SELECT 5` and stepping `n - 1` while `n > 1`, produces **5, 4, 3, 2, 1** — the deck prints exactly that output.
 >
 > The stopping rule is the general one: **recursion ends when an iteration produces no new rows**, not when a counter is checked. The `WHERE` is what starves it.
 

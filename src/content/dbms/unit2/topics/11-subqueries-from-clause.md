@@ -66,6 +66,15 @@ WHERE  avg_salary > 32000;
 >
 > **3 — The outer query**
 > `WHERE avg_salary > 32000` selects the tuples whose average exceeds 32000, and `SELECT Dno, avg_salary` projects the two columns.
+>
+> **The output:**
+>
+> | Dno | avg_salary |
+> |---|---|
+> | 1 | 55000.00 |
+> | 5 | 33250.00 |
+>
+> **Department 4 is filtered out** — its average is 31000, below the threshold. Both forms of the query return this same two-row result, which is what makes them equivalent here.
 
 > [!EXAM]
 > **Failing to name the result will throw an error:**

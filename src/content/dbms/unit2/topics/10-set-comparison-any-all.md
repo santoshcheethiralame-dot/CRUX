@@ -52,6 +52,19 @@ WHERE  Salary > ALL ( SELECT Salary FROM EMPLOYEE WHERE Dno = 5 );
 >
 > For every tuple in `EMPLOYEE`, the `WHERE` clause is **True only if that salary exceeds every one of the four values** — which is the same as exceeding the largest, 40000.
 >
+> **The answer**, checked against all eight employees:
+>
+> | Lname | Fname | Salary | > 40000? |
+> |---|---|---|---|
+> | **Borg** | **James** | **55000** | **yes** |
+> | **Wallace** | **Jennifer** | **43000** | **yes** |
+> | Wong | Franklin | 40000 | no — *equal*, not greater |
+> | Narayan | Ramesh | 38000 | no |
+> | Smith | John | 30000 | no |
+> | English / Jabbar / Zelaya | | 25000 | no |
+>
+> **Two employees qualify.** Note Franklin Wong at exactly 40000 fails — `> ALL` is strict, and he is a member of department 5 himself, so he cannot out-earn everyone in it including himself.
+>
 > **The same can be achieved using the `MAX` function.**
 
 ## SOME / ANY — greater than at least one

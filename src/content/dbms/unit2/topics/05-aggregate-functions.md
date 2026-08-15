@@ -81,9 +81,11 @@ SELECT COUNT(Salary)          FROM EMPLOYEE;   -- returns 8
 ```
 
 > [!DERIVE]
-> **Why 8 and 6.**
+> **Why 8 and 6.** The deck highlights the repeats in the actual `Salary` column:
 >
-> The `Salary` column holds **8 values** in total, and among them **three copies of the same value**.
+> $$30000,\; 40000,\; \mathbf{25000},\; 38000,\; 55000,\; 43000,\; \mathbf{25000},\; \mathbf{25000}$$
+>
+> The `Salary` column holds **8 values** in total, and among them **three copies of the same value** — 25000, appearing for Joyce English, Ahmed Jabbar and Alicia Zelaya.
 >
 > - `COUNT(Salary)` performs **no duplicate elimination** → **8**.
 > - `COUNT(DISTINCT Salary)` specifies duplicate elimination. Of the three identical copies, **two are discarded and one is retained** → $8 - 2 = \mathbf{6}$.
@@ -115,9 +117,15 @@ SELECT Pno, AVG(Hours) AS avg_hours FROM WORKS_ON GROUP BY Pno;
 ```
 
 > [!DERIVE]
-> **The deck's worked case, project 20.**
+> **The deck's worked case, project 20.** The `WORKS_ON` tuples for `Pno = 20`:
 >
-> The `WORKS_ON` tuples for `Pno = 20` hold three `Hours` values, **one of which is NULL**. When `AVG` is applied it **discards the NULL and considers the other two**:
+> | Essn | Pno | Hours |
+> |---|---|---|
+> | 333445555 | 20 | 10.0 |
+> | 888665555 | 20 | **NULL** |
+> | 987654321 | 20 | 15.0 |
+>
+> Three rows, **one of which is NULL**. When `AVG` is applied it **discards the NULL and considers the other two**:
 >
 > $$\text{AVG} = \frac{10 + 15}{2} = 12.5$$
 >

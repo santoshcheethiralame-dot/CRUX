@@ -54,7 +54,7 @@ Here `Dno` is the grouping attribute. `EMPLOYEE` is partitioned so that **each g
 > | Alicia | Zelaya | 25000 | 4 |
 > | Jennifer | Wallace | 43000 | 4 |
 > | Ahmad | Jabbar | 25000 | 4 |
-> | James | Bong | 55000 | 1 |
+> | James | Borg | 55000 | 1 |
 >
 > Three groups form, and the aggregates are applied to each independently:
 >
@@ -175,7 +175,7 @@ The deck's reading of the result: **there is only one employee with a salary gre
 > [!DERIVE]
 > **Check it against the eight rows from earlier on this page** — this is why both queries behave as they do.
 >
-> **Who earns over \$40,000?** Jennifer Wallace (43000, Dno 4) and James Bong (55000, Dno 1). **Two people.**
+> **Who earns over \$40,000?** Jennifer Wallace (43000, Dno 4) and James Borg (55000, Dno 1). **Two people.**
 >
 > **Which departments have more than two employees?** Dno 5 (four) and Dno 4 (three). **Not Dno 1**, which has one.
 >

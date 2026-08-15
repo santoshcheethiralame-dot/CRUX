@@ -107,6 +107,21 @@ WHERE  NOT EXISTS ( SELECT * FROM DEPENDENT WHERE Ssn = Essn );
 
 For each `EMPLOYEE` tuple the correlated nested query selects all `DEPENDENT` tuples whose `Essn` matches the employee's `Ssn`. **If the result is empty (i.e. no dependents), the `EMPLOYEE` tuple is selected**, as the `WHERE` condition evaluates to True.
 
+> [!DERIVE]
+> **The output on the company database — five of the eight employees:**
+>
+> | Fname | Lname |
+> |---|---|
+> | Joyce | English |
+> | Ramesh | Narayan |
+> | James | Borg |
+> | Ahmed | Jabbar |
+> | Alicia | Zelaya |
+>
+> The three **absent** from this list — John Smith, Franklin Wong and Jennifer Wallace — are precisely the employees who **do** have dependents.
+>
+> This is the cleanest illustration of what `NOT EXISTS` is for: the answer consists entirely of rows that have **no matching row anywhere in the other table**, so no join could ever produce them. A join returns pairs; there is no pair to return.
+
 > [!TRAP]
 > **`NOT EXISTS` is NULL-safe; `NOT IN` is not.** This is the practical reason to prefer it.
 >

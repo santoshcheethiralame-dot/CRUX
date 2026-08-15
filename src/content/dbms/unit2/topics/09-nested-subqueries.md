@@ -50,7 +50,7 @@ WHERE  Pnumber IN
 > WHERE Dnum = Dnumber AND Mgr_ssn = Ssn AND Lname = 'Smith'
 > ```
 >
-> On executing it we obtain **an empty set** — **because there is no manager whose last name is 'Smith'.**
+> On executing it we obtain **an empty set** — **because there is no manager whose last name is 'Smith'.** The deck proves it by listing the managers alongside: **Wong, Borg, Wallace**. John Smith is an employee, but he manages nothing.
 >
 > **Second subquery** — projects that employees named 'Smith' *work on*:
 >
