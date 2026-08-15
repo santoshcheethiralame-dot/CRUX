@@ -4,107 +4,181 @@ unit: 1
 order: 9
 slug: functional-nonfunctional
 title: Functional & Non-Functional Requirements
-summary: The difference between functional and non-functional requirements, Sommerville's NFR taxonomy (product/organisational/external), why NFRs are often critical, and how to make them measurable.
+summary: Functional requirements and the imprecision problem, why completeness and consistency are impossible in practice, the full non-functional taxonomy tree, the three classifications, the metrics table that makes NFRs verifiable, and user versus system versus domain requirements.
 minutes: 15
-tags: [functional, non-functional, NFR, taxonomy, metrics, quality]
+tags: [functional, non-functional, NFR, metrics, product, organisational, external, user-requirements, domain, imprecision]
 ---
 
 # Functional & Non-Functional Requirements
 
-System requirements are classically split into two kinds. Getting this distinction right — and knowing the **NFR taxonomy** — is one of the most heavily examined parts of the unit.
-
-## Functional requirements (FR)
-
-> [!NOTE]
-> **Functional requirements** are statements of the **services** the system should provide: how it should react to particular inputs, and how it should behave in particular situations. They describe **what the system does**.
-
-Examples (for a university library system):
-- "A user shall be able to **search** the set of databases for a given query."
-- "The system shall **email a confirmation** when a book is reserved."
-- "Each librarian shall be assigned a **unique identifier**."
-
-Functional requirements may also state what the system should **not** do.
-
-> [!TRAP]
-> Functional requirements must be **complete** (all services defined) and **consistent** (no contradictions). In practice, for complex systems they rarely are — natural-language FRs are often **ambiguous**, which is why we move to structured/system requirements and use cases.
-
-## Non-functional requirements (NFR)
-
-> [!NOTE]
-> **Non-functional requirements** are constraints on the **services or functions** offered by the system — they are **not** about specific features but about **properties** of the system as a whole: timing, reliability, security, standards, etc. They describe **how well the system does it.**
-
-Examples:
-- "The system shall respond to any query in **under 2 seconds**." (performance)
-- "The system shall be available **99.99%** of the time." (availability)
-- "All user passwords shall be stored **hashed and salted**." (security)
-- "The UI shall conform to **WCAG 2.1 AA** accessibility standards." (standards)
+## Functional requirements
 
 > [!EXAM]
-> The single most-asked discriminator: **FR = *what* the system does (a service/feature); NFR = *how well* it does it / a constraint (a quality).** "Respond within 2 seconds" = NFR (performance). "Let the user reset their password" = FR.
+> **Statements of services the system should provide, how the system should react to particular inputs and how the system should behave in particular situations.**
+>
+> - **Describe functionality or system services.**
+> - **May state what the system should *not* do.**
+> - **Depend on the type of software, expected users and the type of system where the software is used.**
+>
+> **Examples:**
+> - The system must **send a confirmation email whenever an order is placed**.
+> - The system must **allow blog visitors to sign up for the newsletter by leaving their email**.
+> - The system must **allow users to verify their accounts using their phone number**.
 
-### Why NFRs are often more critical than FRs
+> [!INTUITION]
+> **"May state what the system should not do"** is the clause students skip, and it matters more than it looks.
+>
+> Negative requirements are how you specify **safety and security**: *the system shall not permit a withdrawal exceeding the account balance*, *the system shall not display another user's records*. These are real, testable requirements — and they are invisible if you only ever write "the system shall…".
+>
+> They are also the bridge to the **security requirements** topic, where almost every requirement is a constraint on what must *not* happen.
 
-NFRs frequently apply to the system **as a whole** rather than individual features. A single failed NFR can make the **entire system unusable** even if every functional requirement is met. (A bank app that does everything but takes 5 minutes per transaction, or leaks passwords, is worthless.) NFRs also frequently **conflict** — e.g. more security usually costs performance and usability.
-
-## Sommerville's NFR taxonomy — the three types
-
-This taxonomy is a guaranteed exam diagram. NFRs come from **three sources**:
-
-```
-Non-functional requirements
-├── Product requirements      (about the product's behaviour)
-├── Organisational requirements (from the developing/buying org's policies)
-└── External requirements      (from factors outside the system & org)
-```
-
-### 1. Product requirements
-Specify or constrain the **runtime behaviour** of the software. Sub-types:
-- **Efficiency** → **Performance** (speed, response time) and **Space** (memory/storage use).
-- **Dependability** (reliability, availability, fault-tolerance).
-- **Security** (confidentiality, integrity).
-- **Usability** (ease of learning/use).
-
-### 2. Organisational requirements
-Derived from **policies and procedures** of the customer's or developer's organisation. Sub-types:
-- **Environmental** (operating environment constraints).
-- **Operational** (how the system will be used/operated).
-- **Development** requirements — e.g. *"the system must be written in Java"* or *"must follow the company's design process / use a specified IDE / programming language."*
-
-### 3. External requirements
-Derived from **factors external** to the system and its development. Sub-types:
-- **Regulatory** (must satisfy a regulator, e.g. aviation, medical).
-- **Ethical** requirements (acceptable to society).
-- **Legislative** → **Accounting** and **Safety/Security** legal requirements (e.g. GDPR data-protection law).
+## Requirements imprecision
 
 > [!EXAM]
-> Learn the tree: **Product / Organisational / External**, and at least two sub-types of each. Classic question: *"A requirement that the software be written in Java"* → **Organisational** (development) requirement. *"Must comply with GDPR"* → **External** (legislative/regulatory).
-
-## Making NFRs measurable (the big NFR pitfall)
-
-NFRs are often written **vaguely** ("the system should be easy to use," "fast," "secure") — which makes them **impossible to verify**. A good NFR must be **measurable** so you can objectively test whether it's met. Sommerville gives a metrics table:
-
-| Property | Measurable metric |
-|---|---|
-| **Speed** | Processed transactions/second; response/refresh time |
-| **Size** | Megabytes; number of ROM chips |
-| **Ease of use** | Training time; number of help frames |
-| **Reliability** | Mean time to failure (MTTF); availability % |
-| **Robustness** | Time to restart after failure; probability of data corruption |
-| **Portability** | Number of target systems; % of platform-dependent statements |
+> **Problems arise when functional requirements are not precisely stated.**
+>
+> **Ambiguous requirements may be interpreted in different ways by developers and users.**
 
 > [!TRAP]
-> "The system shall be **user-friendly**" is a **bad** requirement — unverifiable. Rewrite as: "A trained user shall complete a standard order in **under 90 seconds** with **fewer than 2 errors**." Always attach a number you can test.
+> The dangerous property of an ambiguous requirement is that **it does not look like a problem**. Both parties read it, both understand it, both are satisfied — and they understood **different things**.
+>
+> No one detects the disagreement at requirements time, because detecting it would require noticing that a sentence *could* be read another way. The cost surfaces at acceptance testing, which is the far end of the cost-of-repair curve from the previous topic.
 
-## Functional vs Non-Functional — side by side
+## Completeness and consistency
 
-| | Functional | Non-functional |
-|---|---|---|
-| Describes | *What* the system does | *How well* it does it / constraints |
-| Example | "Generate a monthly report" | "Generate it in < 5 s, 99.9% available" |
-| Verified by | Does the feature work? | Measured against a metric/threshold |
-| Failure impact | A feature is missing | The *whole system* may be unusable |
-| Also called | Behavioural requirements | Quality attributes / constraints |
+> [!EXAM]
+> **In principle, requirements should be both complete and consistent.**
+>
+> - **Complete** — they should include descriptions of **all facilities required**.
+> - **Consistent** — there should be **no conflicts or contradictions** in the descriptions of the system facilities.
+>
+> **In practice, because of system and environmental complexity, it is impossible to produce a complete and consistent requirements document.**
+
+> [!INTUITION]
+> That last sentence is unusually honest for a textbook, and it is worth taking seriously rather than treating as a caveat.
+>
+> **Completeness is unachievable** because it would require enumerating the system's behaviour in *every* situation, including ones nobody has imagined. **Consistency is unachievable at scale** because a document of thousands of requirements written by many people over months will contain contradictions no one can hold in their head at once.
+>
+> The practical consequence is not "give up" — it is that **requirements need a review process and a change process**, because you are guaranteed to be working from an imperfect document. That is precisely why validation and change management exist as named activities.
+
+## Non-functional requirements
+
+> [!EXAM]
+> **These define system properties and constraints** — e.g. reliability, response time and storage requirements. **Constraints are I/O device capability, system representations, etc.**
+>
+> - **Process requirements may also be specified**, mandating a particular **IDE, programming language or development method**.
+> - **Non-functional requirements may be more critical than functional requirements. If these are not met, the system may be useless.**
+> - **Often apply to the system as a whole rather than individual features or services.**
+
+> [!TRAP]
+> **"May be more critical than functional requirements"** is a stated exam point and it is counter-intuitive, so give the reasoning:
+>
+> A banking system that computes balances perfectly but takes **four minutes per transaction**, or is **available 60% of the time**, or **leaks account data**, has met every functional requirement and is **unusable**. Functional requirements decide whether the system *can* do the job; non-functional ones decide whether anyone *can use it* to do the job.
+
+## The types of non-functional requirement
+
+> [!EXAM]
+> The deck's taxonomy tree:
+>
+> **Non-functional requirements**
+> - **Product requirements**
+>   - **Efficiency requirements** → **Performance requirements**, **Space requirements**
+>   - **Usability requirements**
+>   - **Dependability requirements**
+>   - **Security requirements**
+> - **Organizational requirements**
+>   - **Environmental requirements**
+>   - **Operational requirements**
+>   - **Development requirements**
+> - **External requirements**
+>   - **Regulatory requirements**
+>   - **Ethical requirements**
+>   - **Legislative requirements** → **Accounting requirements**, **Safety/security requirements**
+
+## The three classifications
+
+> [!EXAM]
+> | Class | Definition | Example |
+> |---|---|---|
+> | **Product requirements** | Requirements which specify that **the delivered product must behave in a particular way** | execution speed, reliability |
+> | **Organisational requirements** | Requirements which are **a consequence of organisational policies and procedures** | process standards used, implementation requirements |
+> | **External requirements** | Requirements which arise from **factors external to the system and its development process** | interoperability requirements, legislative requirements |
+
+> [!INTUITION]
+> The three classes answer **"where did this requirement come from?"**, and that origin determines **who can change it** — which is the practical reason to classify at all.
+>
+> - **Product** — comes from *what the system must be*. Negotiable with the customer.
+> - **Organisational** — comes from *your own company's rules*. Negotiable internally, with effort.
+> - **External** — comes from *law, regulators and other systems*. **Not negotiable at all.**
+>
+> That ordering matters when scope is cut under schedule pressure: a legislative requirement cannot be dropped to make a date, however much the team would like to. Note the tree places **Safety/security** under **Legislative** for exactly this reason — in regulated domains it is a legal obligation, not a product choice.
+
+## Non-functional requirements affect architecture
+
+> [!EXAM]
+> - **Non-functional requirements may affect the overall architecture of a system rather than the individual components.** For example, to ensure that **performance requirements** are met, you may have to **organize the system to minimize communications between components**.
+> - **A single non-functional requirement, such as a security requirement, may generate a number of related functional requirements** that define system services that are required. **It may also generate requirements that restrict existing requirements.**
+
+> [!INTUITION]
+> This is why non-functional requirements cannot be deferred, and it is the single most useful idea on the page.
+>
+> A functional requirement is usually **local** — you can add "export to CSV" late, because it touches one place. A non-functional requirement is usually **global**: "respond within 200 ms" or "survive a datacentre failure" constrains **how the whole system is put together**. Discover it late and you are not adding a feature, you are rebuilding the architecture.
+>
+> The second bullet describes the *cascade*: one security NFR ("only authorised users may see records") spawns functional requirements (log in, manage roles, audit access) **and restricts existing ones** (every existing report now needs a permission check). **One line of non-functional requirement can rewrite a page of functional ones.**
+
+## Metrics for specifying non-functional requirements
+
+> [!EXAM]
+> This table is the answer to "how do you make an NFR verifiable?"
+>
+> | Property | Measure |
+> |---|---|
+> | **Speed** | Processed transactions/second · User/event response time · Screen refresh time |
+> | **Size** | Mbytes · Number of ROM chips |
+> | **Ease of use** | **Training time** · **Number of help frames** |
+> | **Reliability** | **Mean time to failure** · Probability of unavailability · Rate of failure occurrence |
+> | **Robustness** | **Time to restart after failure** · Percentage of events causing failure · Probability of data corruption on failure |
+> | **Portability** | **Percentage of target dependent statements** · Number of target systems |
+
+> [!DERIVE]
+> **Work the row that seems impossible.** "The system must be easy to use" is the classic unverifiable requirement — the deck used it as the bad example in the previous topic's exercise.
+>
+> The table's answer: measure **training time** and **number of help frames**. Neither *is* ease of use; both are **observable proxies** for it. So the requirement becomes:
+>
+> > *A new user shall complete the core workflow after no more than 30 minutes of training.*
+>
+> That is testable — recruit users, train them, time them. **The technique generalises: when a quality seems unmeasurable, do not measure the quality, measure a consequence of it.**
+
+> [!TRAP]
+> Proxies are approximations, and optimising the proxy instead of the property is a real failure mode. A team judged on "number of help frames" can add help frames without making anything easier.
+>
+> Choose proxies that are **hard to game and closely coupled** to what you actually want — and note that this is the same hazard as metric-driven management generally.
+
+## User, system and domain requirements
+
+Beyond functional and non-functional, the analysis step classifies requirements by **who they are written for**.
+
+> [!EXAM]
+> **User requirements** — **statements in natural language plus informal context diagrams**, system/sub-system and their interconnections and operational constraints. **Written for/by customers.**
+>
+> > *Example:* Screen A accepts production information, including Lot, Product Number, and Date. System B produces the Lab Summary Report. Twenty users can use System C concurrently without noticeable system delays.
+>
+> **System requirements** — **a structured document setting out detailed descriptions of the system's functions, services and operational constraints.** **Defines what should be implemented**, so **may be part of a contract between client and contractor**.
+>
+> **Domain requirements** — **constraints on the system from the domain of operations.**
+>
+> > *Example (healthcare):* The software must be developed in accordance with **IEC 60601** standard regarding the basic safety and performance for medical electrical equipment.
+
+> [!NOTE]
+> The deck's summary: **user requirements describe what the user needs and wants from the system, while system requirements describe the technical specifications and constraints that the system must meet to fulfil those user requirements.** Understanding the difference **helps ensure the system meets the needs of its users while also being technically feasible and efficient.**
+
+> [!INTUITION]
+> User and system requirements are often **the same requirement written twice, for two audiences** — and the reason is the phrase *"may be part of a contract."*
+>
+> The user version must be readable by a customer who is not an engineer, so it is natural language and tolerates some vagueness. The system version may be **legally binding**, so it must be precise enough to settle a dispute about whether the delivered software conforms.
+>
+> **Domain requirements are the dangerous category**, and they connect to the elicitation topic's warning about interviews: domain knowledge is *"so familiar that people find it hard to articulate or think that it isn't worth articulating."* Nobody in a hospital will spontaneously tell you about IEC 60601 — they assume everyone knows. Missed domain requirements are missed precisely because they are obvious to the expert.
 
 ---
 
-**Next:** a critical, often-separate category — **security requirements**.
+**Next:** the requirements that specify what must *not* happen — **security requirements**.

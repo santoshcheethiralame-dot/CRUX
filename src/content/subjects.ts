@@ -55,7 +55,7 @@ export const SUBJECTS: SubjectMeta[] = [
         unit: 1,
         title: 'Introduction to Software Engineering & Requirements Engineering',
         subtitle:
-          'what is SE · software crisis · SDLCs (waterfall/V/spiral) · Security DLC · agile & Scrum · XP · requirements (FR/NFR/security) · SRS · RTM · UML use cases · testing & test planning',
+          'what is SE · the CrowdStrike outage · software crisis · SDLCs (waterfall/V/spiral) · Secure SDLC & the 4 Ps · agile & Scrum · user stories & INVEST · XP & Lean · requirements engineering & elicitation · functional vs non-functional · security requirements & risk assessment · SRS, RTM & change management · UML & use cases · personas, scenarios & ethnography · testing, V&V and terminology · test cases & levels · test planning & security validation',
       },
       { unit: 2, title: 'Software Project Management, Architecture, Design & Quality', subtitle: 'PM role · estimation · scheduling · risk · architecture views · design patterns · modularity · TDD · technical debt' },
       { unit: 3, title: 'AI, Implementation, SCM & DevOps', subtitle: 'AI for SE · secure/testable coding · code reviews · CI/CD · DevSecOps · testing types · SCM · versioning · defect & release management' },

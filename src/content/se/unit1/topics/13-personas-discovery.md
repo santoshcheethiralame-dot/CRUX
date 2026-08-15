@@ -4,82 +4,185 @@ unit: 1
 order: 13
 slug: personas-discovery
 title: Personas, Scenarios & Requirements Discovery
-summary: Using personas and scenarios to keep requirements user-centred, ethnography for tacit requirements (the Flipkart example), and how these techniques feed the requirements process.
-minutes: 11
-tags: [personas, scenarios, ethnography, user-centred, discovery, requirements]
+summary: The six specification techniques, personas and user scenarios, requirements discovery through interviewing with its two types and two stated problems, and ethnography — including the Flipkart last-mile delivery case study end to end.
+minutes: 14
+tags: [personas, user-scenarios, discovery, interviewing, ethnography, flipkart, stakeholders, storyboarding]
 ---
 
 # Personas, Scenarios & Requirements Discovery
 
-Requirements aren't abstract — they exist to serve **real people doing real tasks**. These techniques keep the team anchored to the user.
+## The techniques for specifying requirements
+
+> [!EXAM]
+> **What techniques are used to specify requirements?**
+>
+> **UML and use cases · Personas and user scenarios · Storyboarding · Paper prototyping · Prototyping · Feature list**
+
+UML and use cases had the previous topic. This one covers **personas and user scenarios**, then turns to how requirements are **discovered** in the first place.
 
 ## Personas
 
-> [!NOTE]
-> A **persona** is a **fictional but realistic character** that represents a key *type* of user. It gives the team a concrete, memorable stand-in for a whole class of users, so design decisions can be made by asking *"would this work for Priya?"* instead of arguing about an abstract "user."
-
-A good persona typically includes:
-
-- **Name & photo** — makes them memorable ("Priya, the busy commuter").
-- **Demographics** — age, job, tech-savviness.
-- **Goals & motivations** — what they're trying to achieve.
-- **Frustrations / pain points** — what currently annoys them.
-- **Context** — how, when and where they'd use the system.
-
-> [!INTUITION]
-> Personas fight the **"elastic user"** problem — when "the user" can be stretched to justify any decision. A named persona with fixed goals forces honest design: a feature either helps *that specific persona* or it doesn't.
-
-> [!TRAP]
-> A persona is **not** a real individual and not an *actor* (a use-case role). It's a research-based *archetype* used for empathy and prioritisation. Several personas may all map to the same use-case actor.
-
-## Scenarios
-
-> [!NOTE]
-> A **scenario** is a **narrative story** of how a persona uses the system to accomplish a goal — a concrete, real-world example of an interaction, told start to finish.
-
-Sommerville suggests a scenario should include:
-- A description of the **starting situation** (state before).
-- The **normal flow** of events.
-- **What can go wrong** and how it's handled.
-- Other **concurrent activities**.
-- The **state when the scenario finishes**.
-
-Example scenario:
-> *Priya opens the app on the metro to reorder her usual groceries. She taps "Reorder last," but one item is out of stock. The app suggests a substitute, she accepts, chooses cash-on-delivery, and schedules evening delivery — all before her stop.*
+> [!EXAM]
+> **A persona is a fictional yet realistic representation of a user archetype who might use your system.** It **embodies key characteristics, needs, goals, and pain points of real users.**
+>
+> **Why personas?**
+> - **Ground the design in real user behavior**
+> - **Help teams empathize with users**
+> - **Drive user-centered requirements**
+>
+> **Example — Library Catalog System:**
+> - **Persona A:** First-year undergraduate student
+> - **Persona B:** Librarian managing inter-library loans
+> - **Persona C:** Faculty member planning a course
 
 > [!INTUITION]
-> **Persona = who** (the character). **Scenario = what they do** (the story). **Use case = the formal interaction** behind the story. They form a chain: a *persona* drives a *scenario*, which is formalised as a *use case*, which yields *requirements* and then *test cases*.
+> **"Fictional yet realistic"** is doing careful work. A persona is invented, but it must be **derived from evidence** about real users — otherwise it is just the team's assumptions given a name and a photograph, which is worse than no persona because it makes guesses feel researched.
+>
+> The three library personas show why more than one is needed. They want **incompatible things**: the first-year wants a simple search that hides complexity; the librarian wants bulk administrative tools; the faculty member wants to assemble reading lists. **A single "user" would have averaged these into somebody who does not exist.**
+>
+> Personas make **conflicting requirements visible** rather than letting them collapse into a vague compromise — which is the same job the elicitation topic gave to *"identifying and negotiating potential conflicts."*
 
-## Ethnography — discovering tacit requirements
-
-**Ethnography** is a **passive** elicitation technique (Topic 7) where an analyst **immerses themselves** in the users' real working environment and **observes** actual work. Its power is capturing **tacit knowledge** — the "how we really do it" that users never think to mention in an interview.
-
-It reveals two things interviews miss:
-1. How people **actually** work versus how processes *say* they should work.
-2. **Cooperation and awareness** — how work depends on informal collaboration between people.
-
-### The Flipkart example
-
-When designing for the Indian e-commerce market, teams observed (ethnographically) that many first-time online shoppers **distrusted prepaid online payment** and had unreliable connectivity. These tacit, contextual facts — never stated in a feature request — drove crucial requirements: **Cash on Delivery (COD)**, lightweight/low-data UIs, and vernacular-language support. No interview question "what payment method do you want?" would have surfaced the deep distrust; **observation did.**
+## User scenarios
 
 > [!EXAM]
-> Ethnography's headline benefit: it uncovers **tacit / implicit requirements** that stakeholders can't articulate, by **observing real work in context**. Limitation: it shows *how things are*, not *how they could be* — so it's combined with other techniques.
+> **A user scenario is a narrative that describes how a persona might interact with the system in a particular situation.**
+>
+> **Structure (similar to user stories):**
+> > **"As a `<persona>`, I want to `<goal>` so that `<benefit>`."**
+>
+> **Example:** *"As a graduate student, I want to filter research articles by citation count so that I can quickly find the most impactful sources."*
+>
+> **Scenarios help identify missing flows, UI features, and exception cases.**
 
-## How it all feeds the requirements process
+> [!TRAP]
+> This is **the same template as the user story** from the Agile topic — *as a `<user>` I want `<function>` so that `<desired result>`* — with one substitution: the role slot is filled by **a named persona** rather than a generic "user."
+>
+> That substitution is the entire point. *"As a user, I want to filter articles"* leaves open who is asking and why. *"As a graduate student"* invokes everything the persona records — their expertise, their goals, their pain points — so the team can judge whether the feature actually serves them.
+>
+> **Personas and user stories are complementary, not alternatives:** the persona supplies the *who*, the story supplies the *what* and *why*.
 
-```
-Ethnography / observation ─┐
-Interviews / workshops    ─┤→ understand users → Personas → Scenarios
-                                                      ↓
-                                              Use cases (UML)
-                                                      ↓
-                                       Functional & non-functional requirements
-                                                      ↓
-                                                  SRS + RTM
-```
+## Requirements discovery
 
-These user-centred techniques sit at the **front** of requirements engineering: they ensure the requirements we elicit, specify and validate are **the ones real users actually need** — closing the loop back to elicitation (Topic 7).
+> [!EXAM]
+> **The process of gathering information about the required and existing systems and distilling the user and system requirements from this information.**
+>
+> - **Interaction is with system stakeholders from managers to external regulators.**
+> - **Systems normally have a range of stakeholders.**
+
+> [!INTUITION]
+> Note the phrase **"required *and existing* systems."** Discovery is not only about the system you intend to build — it is also about the one already in use, whether that is software, a paper process, or a set of habits.
+>
+> That matters because the existing system encodes years of accumulated corrections for problems nobody remembers any more. Replace it without understanding it and you will faithfully re-introduce every problem it was quietly solving.
+>
+> **"From managers to external regulators"** sets the range deliberately wide: the people who *pay* for a system, the people who *use* it, and the people who *constrain* it are usually three different groups who never meet.
+
+## Interviewing
+
+> [!EXAM]
+> **Formal or informal interviews with stakeholders are part of most RE processes.**
+>
+> **Two types:**
+> - **Closed interviews** — based on a **pre-determined list of questions**
+> - **Open interviews** — where **various issues are explored with stakeholders**
+>
+> **Effective interviewing:**
+> - **Be open-minded, avoid pre-conceived ideas about the requirements, and be willing to listen to stakeholders**
+> - **Prompt the interviewee to get discussions going** using a **springboard question, a requirements proposal, or by working together on a prototype system**
+
+> [!EXAM]
+> **Interviews in practice:**
+> - **Normally a mix of closed and open-ended interviewing**
+> - **Good for getting an overall understanding of what stakeholders do and how they might interact with the system**
+> - **Interviewers need to be open-minded without pre-conceived ideas of what the system should do**
+> - **You need to prompt the user to talk about the system by suggesting requirements rather than simply asking them what they want**
+
+> [!TRAP]
+> **"Suggest requirements rather than simply asking them what they want"** looks like it contradicts *"avoid pre-conceived ideas"*, and reconciling the two is the insight.
+>
+> The problem with *"what do you want?"* is that it is **too open to answer**. Faced with a blank page, people either say "I don't know" or describe their current process with minor tweaks.
+>
+> A **proposal** gives them something to react to — and people are far better at criticising a concrete suggestion than at generating one. The discipline is to hold the proposal **loosely**: it is a springboard for their thinking, not a plan you are defending. Suggest, then listen to the correction.
+
+### The two problems with interviews
+
+> [!EXAM]
+> - **Application specialists may use language to describe their work that isn't easy for the requirements engineer to understand.**
+> - **Interviews are not good for understanding domain requirements:**
+>   - **Requirements engineers cannot understand specific domain terminology**
+>   - **Some domain knowledge is so familiar that people find it hard to articulate, or think that it isn't worth articulating**
+
+> [!INTUITION]
+> The second sub-point is the deeper problem and the reason the next technique exists.
+>
+> The first is merely a **vocabulary** gap — annoying, but fixable by asking, and it is why the SRS template carries a *Definitions and acronyms* section.
+>
+> The second is a **tacit knowledge** gap, and **no amount of asking will close it**, because the expert does not know there is anything to say. A nurse will not mention that the ward round happens at 7am and nobody can enter data during it; it is too obvious to be worth stating. You will only discover it by **watching**.
+>
+> **Interviews can only surface what people know they know.**
+
+## Ethnography
+
+> [!EXAM]
+> - **A social scientist spends a considerable time observing and analysing how people actually work.**
+> - **People do not have to explain or articulate their work.**
+> - **Social and organisational factors of importance may be observed.**
+> - **Ethnographic studies have shown that work is usually richer and more complex than suggested by simple system models.**
+
+> [!TRAP]
+> **"People do not have to explain or articulate their work"** is precisely the fix for the tacit-knowledge problem above. Observation bypasses articulation entirely.
+>
+> The cost is in the definition: **"a considerable time."** Ethnography is the most expensive elicitation technique in the unit, which is why the elicitation topic listed it under **active** techniques and why it is reserved for situations where the gap between what people *say* they do and what they *actually* do is likely to be large.
+
+## Case study — how Flipkart used ethnography for last-mile delivery
+
+> [!EXAM]
+> **Problem statement:**
+> - **Flipkart needed to understand why delivery drivers in India faced delays despite optimized routes.**
+> - **Traditional data analytics (GPS tracking, delivery times) didn't explain the bottlenecks.**
+
+> [!EXAM]
+> **The ethnographic approach — three methods:**
+>
+> **1. Field observations** — researchers **rode along with delivery drivers** in cities like **Bangalore and Mumbai**, observing:
+> - **Traffic & road conditions** — unpredictable jams, narrow lanes, poor addressing systems
+> - **Customer behaviors** — recipients not home, **cash-on-delivery (COD) verification** demands, **gated communities with security delays**
+> - **Driver workarounds** — informal strategies such as **calling customers in advance** and **leaving packages with local shopkeepers**
+>
+> **2. Interviews with stakeholders** — **drivers, warehouse managers, and customers.** Discovered that **COD payments caused delays because drivers had to count cash and wait for verification.**
+>
+> **3. Artifact analysis** — **reviewed delivery logs, GPS deviations, and customer feedback to cross-validate findings.**
+
+> [!EXAM]
+> **Outcome & solutions:**
+> - **Dynamic routing adjustments** — algorithms updated to account for **local traffic patterns** (e.g. avoiding school zones at pickup times)
+> - **Cashless COD** — **digital payment confirmations** to reduce cash-handling delays
+> - **Micro-fulfillment centers** — small warehouses **closer to dense urban areas**, placed where drivers faced the most delays
+> - **Local partnerships** — **kirana** (small local stores) used as **pickup points** in hard-to-reach areas
+
+> [!EXAM]
+> **Key takeaways:**
+> - **Data alone isn't enough** — **GPS logs don't show *why* drivers take detours**
+> - **Human insights drive innovation** — ethnography **reveals workarounds that can be formalized** (e.g. digital COD)
+> - **Hyper-local solutions matter** — **what works in Mumbai may fail in Manila**
+
+> [!DERIVE]
+> **Trace one thread through the whole case, because it is the cleanest illustration in the unit.**
+>
+> **Observation:** drivers **leave packages with local shopkeepers** — an informal workaround, invented by drivers, invisible to management and absent from every process document.
+>
+> **Analysis:** they do it because recipients are not home and a second delivery attempt costs more than the shopkeeper's goodwill.
+>
+> **Solution:** **kirana stores become official pickup points.**
+>
+> The company did not invent that solution. **It discovered the solution its own drivers had already invented, and formalised it** — which is exactly the second key takeaway. This is only findable by watching: no driver would report it in an interview, because from their point of view it is a rule-bend, not a best practice.
+
+> [!INTUITION]
+> **"Data alone isn't enough — GPS logs don't show *why*"** is the whole argument for qualitative methods in one line, and it maps onto a distinction the unit keeps returning to.
+>
+> Analytics are excellent at **what** and **how much**: this route took 40 minutes, this delivery failed. They are structurally incapable of **why**, because the reason is not in the data — it is in the gated-community security desk and the cash-counting.
+>
+> Note that Flipkart already **had** the quantitative data and it *"didn't explain the bottlenecks."* Ethnography was not a substitute for analytics; it was what made the analytics interpretable. **The third method, artifact analysis, then cross-validates the observations against the logs** — qualitative insight proposing the explanation, quantitative data confirming its scale.
 
 ---
 
-**Next:** once requirements are set and the system is built, we must check it — **software testing, V&V and terminology**.
+**Next:** checking that what was built matches what was asked for — **software testing, V&V and terminology**.
