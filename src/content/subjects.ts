@@ -77,7 +77,7 @@ export const SUBJECTS: SubjectMeta[] = [
         subtitle:
           'data & DBMS · file-system problems · data abstraction & 3-schema architecture · E-R model · reducing ER to relational · relational algebra · SQL (DDL, constraints, DML)',
       },
-      { unit: 2, title: 'Relational Model and Database Design', subtitle: 'additional basic operations · set operations · null values · aggregate functions · nested subqueries · database modification · join expressions · views · triggers · functions & procedures · CTEs · window & full-text search functions' },
+      { unit: 2, title: 'Relational Model and Database Design', subtitle: 'the decks call this "Advanced SQL" · SELECT/FROM/DISTINCT · WHERE, ORDER BY & LIKE · set operations · NULL & three-valued logic · aggregates · GROUP BY & HAVING · natural & inner joins · outer & cross joins · nested subqueries · ANY/ALL/SOME · subqueries in FROM · correlated subqueries & EXISTS · relational division · CTEs & recursion · CASE · views · users, roles & privileges · triggers · stored functions & procedures · window functions · full-text search' },
       { unit: 3, title: 'Advanced Design Concepts and Implementation', subtitle: 'query processing & optimization strategies · functional dependencies · inference rules · normal forms based on primary keys (1NF/2NF/3NF) · general definitions of 2NF & 3NF · BCNF · higher normal forms' },
       { unit: 4, title: 'Advanced Databases', subtitle: 'database transactions · concurrency control & locking · NoSQL · key-value (Redis) · graph databases (Neo4j) · vector databases · vector search with relational and NoSQL · web app development with Next.js and SQL' },
     ],
