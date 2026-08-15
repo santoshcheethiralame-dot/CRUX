@@ -201,4 +201,94 @@ For each n-ary relationship ($n > 2$), create a new relation $S$ with the primar
 
 ---
 
+## A fully worked mapping — the AIRLINE database
+
+This is the algorithm applied end to end to the standard **AIRLINE** ER diagram. Work through it once and the seven steps stop being a list to memorise.
+
+### Step 1 — Regular (strong) entity types
+
+*Create a relation for each regular entity type, including all simple attributes and designating a primary key.*
+
+| Relation | Primary key |
+|---|---|
+| `AIRPORT (`**`Airport_code`**`, Name, City, State)` | `Airport_code` |
+| `AIRPLANE_TYPE (`**`Type_name`**`, Max_seats, Company)` | `Type_name` |
+| `AIRPLANE (`**`Airplane_id`**`, Total_no_of_seats)` | `Airplane_id` |
+| `FLIGHT (`**`Number`**`, Airline, Weekdays)` | `Number` |
+
+### Step 2 — Weak entity types
+
+*Create a relation for each weak entity, adding the owner's primary key as a foreign key. **Owner's key + partial key = primary key.***
+
+| Weak entity | Relation | Primary key |
+|---|---|---|
+| **FARE** (of FLIGHT via `FARES`) | `FARE (Flight_number, Code, Amount, Restrictions)` | **{Flight_number, Code}** |
+| **FLIGHT_LEG** (of FLIGHT via `LEGS`) | `FLIGHT_LEG (Flight_number, Leg_no, Scheduled_dep_time, Scheduled_arr_time)` | **{Flight_number, Leg_no}** |
+| **LEG_INSTANCE** (of FLIGHT_LEG via `INSTANCE_OF`) | `LEG_INSTANCE (Flight_number, Leg_no, Date, No_of_avail_seats)` | **{Flight_number, Leg_no, Date}** |
+| **SEAT** (of LEG_INSTANCE via `RESERVATION`) | `SEAT (Flight_number, Leg_no, Date, Seat_no, Customer_name, Cphone)` | **{Flight_number, Leg_no, Date, Seat_no}** |
+
+> [!INTUITION]
+> Watch the primary key **grow by one attribute at each level**: `{Number}` → `{Flight_number, Leg_no}` → `{…, Date}` → `{…, Seat_no}`.
+>
+> That is a **chain of weak entities**, each weak on the one above it. A seat only means something for a particular date's instance of a particular leg of a particular flight — and the four-part key says exactly that. **The key length is the depth of the dependency.**
+
+### Steps 3–4 — Binary 1:1 and 1:N
+
+**Step 3:** *There are **no** binary 1:1 relationship types in this diagram.*
+
+**Step 4** — *place the key of the "1" side into the relation on the "N" side as a foreign key, along with any relationship attributes:*
+
+| Relationship | Action |
+|---|---|
+| `TYPE` (AIRPLANE_TYPE 1:N AIRPLANE) | Add `Type_name` to **AIRPLANE** |
+| `DEPARTURE_AIRPORT` (AIRPORT 1:N FLIGHT_LEG) | Add `Departure_airport_code` to **FLIGHT_LEG** |
+| `ARRIVAL_AIRPORT` (AIRPORT 1:N FLIGHT_LEG) | Add `Arrival_airport_code` to **FLIGHT_LEG** |
+| `DEPARTS` (AIRPORT 1:N LEG_INSTANCE) | Add `Departure_airport_code` **and `Dep_time`** to **LEG_INSTANCE** |
+| `ARRIVES` (AIRPORT 1:N LEG_INSTANCE) | Add `Arrival_airport_code` **and `Arr_time`** to **LEG_INSTANCE** |
+| `ASSIGNED` (AIRPLANE 1:N LEG_INSTANCE) | Add `Airplane_id` to **LEG_INSTANCE** |
+
+> [!TRAP]
+> Two things students miss here.
+>
+> **`AIRPORT` appears twice in `FLIGHT_LEG`** — once as departure, once as arrival. Two different relationships to the same entity produce **two separate foreign keys**, which must be **renamed** to tell them apart. This is the ER **role name** becoming a column name.
+>
+> And `DEPARTS`/`ARRIVES` each carry a **relationship attribute** (`Dep_time`, `Arr_time`) that travels **with** the foreign key onto the N-side — exactly as Step 4 specifies.
+
+### Step 5 applied — Binary M:N (CAN_LAND)
+
+*Create a new join relation containing both primary keys as foreign keys; their combination is the composite primary key.*
+
+- `CAN_LAND` (AIRPORT M:N AIRPLANE_TYPE) → **`CAN_LAND (`**`Airport_code`**`, `**`Type_name`**`)`**, PK = **{Airport_code, Type_name}**
+
+### Steps 6–7 — Multivalued attributes and n-ary relationships
+
+*There are **no** multivalued attributes in this diagram (all attributes are single-valued simple or composite), and **no** n-ary relationship types.*
+
+> [!EXAM]
+> **Steps 3, 6 and 7 produce nothing here — and saying so explicitly is part of a full-mark answer.** Walk all seven steps in order and state "none in this diagram" where that is the case; do not silently skip them.
+
+### The final schema
+
+```
+AIRPORT       (Airport_code, Name, City, State)
+AIRPLANE_TYPE (Type_name, Max_seats, Company)
+AIRPLANE      (Airplane_id, Total_no_of_seats, Type_name)
+CAN_LAND      (Airport_code, Type_name)
+FLIGHT        (Number, Airline, Weekdays)
+FARE          (Flight_number, Code, Amount, Restrictions)
+FLIGHT_LEG    (Flight_number, Leg_no, Departure_airport_code,
+               Arrival_airport_code, Scheduled_dep_time, Scheduled_arr_time)
+LEG_INSTANCE  (Flight_number, Leg_no, Date, Departure_airport_code,
+               Arrival_airport_code, Dep_time, Arr_time, Airplane_id,
+               No_of_avail_seats)
+SEAT          (Flight_number, Leg_no, Date, Seat_no, Customer_name, Cphone)
+```
+
+> [!EXAM]
+> **Nine relations from four strong entities.** The extra five are **four weak entities** (each becoming its own relation) and **one M:N relationship** (`CAN_LAND`).
+>
+> That count is a quick sanity check in an exam: **relations = strong entities + weak entities + M:N relationships + n-ary relationships + multivalued attributes.** If your total does not match, you skipped a step.
+
+---
+
 **Next:** querying the tables we have just built — **relational algebra: unary operators**.
