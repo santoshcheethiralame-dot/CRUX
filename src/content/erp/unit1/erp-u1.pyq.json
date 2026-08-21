@@ -1,0 +1,232 @@
+{
+  "subject": "erp",
+  "unit": 1,
+  "title": "Unit 1 — Course Question Bank & Assignments",
+  "items": [
+    {
+      "id": "erp-u1-pyq-01",
+      "topic": "what-is-erp",
+      "year": "Ch.1 QB",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "What is meant by **\"enterprise\"**, **\"resource\"** and **\"planning\"**?",
+      "answer": "**Enterprise** — an organization providing a set of products or services to society; **a business entity**, from mid-size companies to huge conglomerates with multi-crore/billion sales. *Examples: Airtel, Tatas, Birlas, Mahindras, Reliance, IBM, Google, Apple.* An enterprise is **a group of people with a common goal**.\n\n**Resource** — what the enterprise deploys: **human resource, machines, plants, storehouses, material stock**.\n\n**Planning** — what it must decide in advance: **production, forecasts, money, new products, logistics, maintenance**.\n\nRead together: **an organisation deciding in advance how to deploy what it has.**"
+    },
+    {
+      "id": "erp-u1-pyq-02",
+      "topic": "what-is-erp",
+      "year": "Ch.1 QB",
+      "marks": 4,
+      "difficulty": "easy",
+      "q": "Give a **definition of ERP**.",
+      "answer": "**Textbook definition:** *ERP is an **integrated information system** built on a **centralized database** and having a **common computing platform** that helps in **effective usage of enterprise's resources** and facilitates the **flow of information between all business functions** of the enterprise **(and with external stakeholders)**.*\n\nThe five bolded phrases each carry marks — and the final clause about **external stakeholders** is the one most often dropped. It is what **Extended ERP / ERP II** later formalises.\n\n**Gartner's alternative** is worth adding for contrast, because it opens with *\"is a **business strategy**\"* — making the point that ERP is not a software purchase but a decision about how the business will operate."
+    },
+    {
+      "id": "erp-u1-pyq-03",
+      "topic": "four-drivers-epic",
+      "year": "Ch.1 QB",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "What were the **four major drivers** of the ERP revolution in the last four decades?",
+      "answer": "**Remember them as EPIC** — each is a *from → to* shift:\n\n| | Driver |\n|---|---|\n| **E** | **From department to enterprise** |\n| **P** | **From function to processes** |\n| **I** | **From information silos to integrated information system** |\n| **C** | **From departmental database to company-wide integrated database** |\n\n**If asked to *explain* rather than list**, give the chain — each driver is the precondition for the next:\n\nYou cannot manage at **enterprise** level without seeing whole **processes**; you cannot see a whole process without an **integrated system**; and an integrated system is only possible on a **common database**.\n\n*Marks are lost for stating only the destination — always give both halves of each shift.*"
+    },
+    {
+      "id": "erp-u1-pyq-04",
+      "topic": "four-drivers-epic",
+      "year": "Ch.1 QB",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What is the difference between the **department view** and the **enterprise view** of the organisation? / How is a **process approach** different from a **functional approach**?",
+      "answer": "**Department (functional) view** — the organisation is a set of specialised units, each with its own objectives, employees, software, database and reports. Each is measured on **its own targets**.\n\n**Enterprise (process) view** — the organisation is a set of **end-to-end business processes** that cross departments and deliver value to a customer.\n\n| Functional | Process-oriented |\n|---|---|\n| Department-focused | **Customer-focused** |\n| Separate databases | **Shared database** |\n| **Local** optimization | **Enterprise** optimization |\n| Manual communication | Automated workflow |\n| Data duplication | **Single source of truth** |\n| Slow decision making | Real-time decision making |\n| Limited visibility | **End-to-end visibility** |\n\n**The clinching argument:** the customer only ever experiences the **process** — they never experience your org chart. Optimising the org chart optimises something no customer can see.\n\n**The classic failure:** *Production → Quantity, Sales → Variety.* Both departments hit their targets while the enterprise loses — Production makes 50,000 units, Sales can only sell 30,000."
+    },
+    {
+      "id": "erp-u1-pyq-05",
+      "topic": "four-drivers-epic",
+      "year": "Ch.1 QB",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "What are the **three major challenges of information silos**? How is an integrated information system better?",
+      "answer": "**The three challenges — mnemonic DNS:**\n1. **D**uplication of data\n2. **N**o integration between the departmental databases\n3. **S**ystems not able to update all relevant information online\n\n**Why the integrated system is better** — the three stated advantages of a company-wide database:\n- **No data duplication**\n- **Data standardization**\n- **Data tracking**\n\nThese arrive in order and each enables the next: **one copy** makes **one format** possible, which makes **full history tracking** possible — and tracking is what makes **compliance and auditing** feasible.\n\n**Concrete illustration:** Nestlé USA paid **29 different prices for vanilla to the same vendor**, and ran **nine different general ledgers with 28 points of customer entry** — a pure information-silo failure."
+    },
+    {
+      "id": "erp-u1-pyq-06",
+      "topic": "why-organizations-need-erp",
+      "year": "Ch.1 QB",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain the **disadvantages of individual departmental informal systems**.",
+      "answer": "**The enterprise scenario:** purchase-department information is **not available or compatible** with Production's needs, and **does not link to Finance or HR**. A variety of systems creates **IT maintenance nightmares** and **duplication of data and processing infrastructure** — *vendor details stored in multiple systems*. The result: **optimal planning is difficult without integration**, and the estate is **hard to change** because of compatibility issues.\n\n**The ten problems of disintegrated data:** duplicate data entry · data inconsistency · poor communication · delayed information sharing · reduced productivity · increased operational costs · manual reconciliation · difficulty in decision-making · difficulty in compliance and auditing · reduced customer satisfaction.\n\n**Remember them as a chain rather than a list:**\n\n*Duplicate entry → inconsistency → manual reconciliation → delay → bad decisions → unhappy customers.*\n\n**Also note the cascading effect:** a delay in one function hits another — *a design delay in R&D hits product shipment in Logistics.*"
+    },
+    {
+      "id": "erp-u1-pyq-07",
+      "topic": "evolution-mrp-to-erp2",
+      "year": "Ch.1 QB",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "What is **MRP**? How do MRP systems work and what fundamental problem do they solve? How is **closed-loop MRP** different?",
+      "answer": "**MRP = Material Requirement Planning** (1960–70s). It works **backwards from the production schedule and the bill of materials** to compute what parts are needed, in what quantity, and by when — solving the manufacturer's fundamental problem of **having the right materials, in the right quantity, at the right time**, computed rather than guessed. Its stated benefit was **inventory and process time reduction**.\n\n**Closed-loop MRP — the difference:**\n\n> The MRP plan generated **does not consider the feasibility of the plan**, since it **does not consider the capacity available while planning**. In closed-loop MRP the plan is **validated, compared with reality and checked for feasibility**, and **alerts and triggers are reported to the planner** to take appropriate steps if issues are found.\n\n**Why plain MRP produces impossible plans:** it can correctly conclude *\"to ship 1,000 laptops on the 30th, order 1,000 processors on the 5th\"* while saying nothing about whether the factory can **build** 1,000 laptops that month. **MRP assumes infinite capacity.**\n\n**One line: MRP plans as if capacity were unlimited; closed-loop MRP checks the plan against real capacity and raises alerts.**"
+    },
+    {
+      "id": "erp-u1-pyq-08",
+      "topic": "evolution-mrp-to-erp2",
+      "year": "Ch.1 QB",
+      "marks": 5,
+      "difficulty": "easy",
+      "q": "What is **MRP II**? What additional processes does it include over MRP?",
+      "answer": "**MRP II = Manufacturing Resource Planning** (1980s). Note **both** words change from MRP — *Material → Manufacturing*, *Requirement → Resource* — reflecting the widening from *what parts do I need* to *what resources does the whole plant need*.\n\n**Additional processes over MRP:**\n- **Forecasting**\n- **Sales and operations planning**\n- **Integration with accounting and billing**\n\nThe deck's summary: *\"MRP II addresses traditional gaps by incorporating forecasting, sales and operations planning etc.\"*, giving **greater reduction due to integration with accounting, billing**.\n\n**Why it matters in the story:** MRP II is where the plan first acquires a **money dimension**. MRP could say what to buy; MRP II could say what it costs and whether you can afford it. **This is the first cross-functional integration in the whole history**, and it is the template for everything ERP later did."
+    },
+    {
+      "id": "erp-u1-pyq-09",
+      "topic": "benefits-misconceptions",
+      "year": "Ch.1 QB",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "What are the **ten business benefits** of an ERP system?",
+      "answer": "The deck lists twelve; name as many as you can:\n\n1. **Brings best practices**\n2. **Facilitates seamless integration**\n3. **Facilitates inter- & intra-organization communication and collaboration**\n4. **Provides real-time information**\n5. **Support for BPR**\n6. **Automates transaction-oriented processes**\n7. **Brings superior data management and eliminates redundancy**\n8. **Improves key processes** such as Quote to Cash and Order Fulfilment\n9. **Improved customer service**\n10. **Better flexibility**\n11. **Better customer satisfaction**\n12. **Better planning, analysis and decision making**\n\n**Group them into four families to regenerate the list:** **Data** (real-time info, data management, no redundancy) · **Process** (integration, automation, Q2C, BPR) · **People** (communication & collaboration, best practices) · **Outcome** (customer service, satisfaction, flexibility, decision making).\n\n**Add the caveat for full marks:** benefits are really **\"co-benefits\" of ERP + IT + Business Engineering**, though the distinct driving force is ERP — which is why ROI attribution is inherently approximate."
+    },
+    {
+      "id": "erp-u1-pyq-10",
+      "topic": "business-processes",
+      "year": "Ch.1 QB",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "How does ERP **reduce cycle time** of operations? Illustrate with a business process.",
+      "answer": "ERP reduces cycle time because **the order is entered once and every department automatically receives the information relevant to its role** — replacing emails, spreadsheets and re-keying with a shared database and automated workflow.\n\n**Illustrated on Quote to Cash (O2C):**\n\n1. **Quote / Proposal** → Sales Quote\n2. **Quote Approval** *(by the customer)* → Approved Quote\n3. **Sales Order** → Sales Order\n4. **Fulfillment / Delivery** → Goods Delivered\n5. **Invoicing** → Customer Invoice\n6. **Payment Receipt** → Payment Received\n7. **Cash Application** → Cash Applied / Account Closed\n\n**Without ERP**, each handover is a manual re-entry with a queue behind it; the availability check at step 3 may not happen at all, producing a **wrong promise**.\n\n**Why Q2C matters:** **revenue** (faster processing → faster revenue), **customer satisfaction**, **cash flow**, **operational efficiency**, and **visibility** from quotation to payment.\n\n*Note the cycle does not end at delivery — stages 5–7 are about **getting paid**, which is why \"reducing days outstanding\" is a named tangible benefit.*"
+    },
+    {
+      "id": "erp-u1-pyq-11",
+      "topic": "challenges-risks",
+      "year": "Ch.1 QB",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "What are the **three major categories of ERP challenges**? List the items under each.",
+      "answer": "**Mnemonic: \"I See People\" (I-S-P).**\n\n**A) Implementation challenges (6):** Scope changes · Huge budget · Long timeline · Process redesign · Unrealistic expectation · Complex interfaces\n\n**B) Support / maintenance challenges (6):** Getting the right people · Managing multiple vendors · Managing regular updates · Technology obsolescence · Large application portfolio · Realizing benefits\n\n**C) Managing people challenges (4):** Managing change · Managing large project team · Managing employee retention and relocation · Top management support\n\n**They map onto the life cycle:** **I** = phases 1–5, **S** = phase 6, **P** = across all of them.\n\n**Two elaborations worth adding:**\n- *\"Many implementations driven **purely** by BPR have failed\"* — the failure is one of **dosage**, taking on new software *and* new ways of working simultaneously.\n- *\"Resolve issues of co-operation amongst seniors\"* — ERP forces department heads to give up autonomy, and only **top management** can compel that."
+    },
+    {
+      "id": "erp-u1-pyq-12",
+      "topic": "challenges-risks",
+      "year": "Ch.1 QB",
+      "marks": 6,
+      "difficulty": "medium",
+      "q": "Explain the issues related to **ERP maintenance and support**.",
+      "answer": "**The six support/maintenance challenges:** getting the right people · managing multiple vendors · managing regular updates · technology obsolescence · large application portfolio · **realizing benefits**.\n\n**Elaborations:**\n- **Right people for the support job** — the implementation team holds knowledge that exists nowhere else, which is why handover is done in a **staggered manner** and the core team is often **extended for support**.\n- **Vendor management for SLA** — support runs to a service-level agreement.\n- **Upgrades** — of both the **ERP** and the **technology**, and *\"can be difficult if too much customization was done during implementation\"*, requiring **backup, roll back, regression testing and documentation upgrades**.\n- **Maintaining synchronization with other enterprise app life cycles** — your ERP, CRM and SCM are upgraded by different vendors on different schedules, and upgrading one can break its interface to another.\n\n**\"Realizing benefits\" is the entry worth highlighting:** benefits accrue **during operation**, not at go-live — after the project team has disbanded. This is why **business case tracking** at milestones is needed."
+    },
+    {
+      "id": "erp-u1-pyq-13",
+      "topic": "market-players-trends",
+      "year": "Ch.1 QB",
+      "marks": 6,
+      "difficulty": "easy",
+      "q": "Explain some of the **emerging trends** in the ERP market.",
+      "answer": "**The ten trends:** stratification of products (SAP, Oracle & the rest) · mainline ERPs adding functions all the time · niche players under pressure · SME focus · verticalized features · new deployment models (**Cloud ERP**) · **maintenance itself as a sizeable service** · newer types of ERP projects (**migration, consolidation & harmonization, upgrades**) · **embedded AI** · **data, analytics and process intelligence**.\n\n**Group them into four stories:**\n\n| Story | Trends |\n|---|---|\n| **The market is consolidating** | stratification · mainline ERPs adding functions · niche players under pressure |\n| **The market is broadening downward** | SME focus · verticalized features |\n| **The delivery model is changing** | cloud ERP · maintenance as a service |\n| **The work itself is changing** | new project types · embedded AI · analytics & process intelligence |\n\n**Note that the first two pull in opposite directions and both are true:** the top of the market concentrates around SAP and Oracle while the bottom opens to smaller companies — **the middle gets squeezed**.\n\n**Trend 8 has a cause:** most large enterprises already run an ERP, so growth is no longer in first-time implementations but in **changing the one you have**."
+    },
+    {
+      "id": "erp-u1-pyq-14",
+      "topic": "life-cycle-overview",
+      "year": "Ch.2 QB",
+      "marks": 6,
+      "difficulty": "easy",
+      "q": "What is meant by the **ERP life cycle**? What are its phases?",
+      "answer": "**ERP Lifecycle = ERP Implementation Life cycle + ERP Support Life cycle.**\n\n**The six phases in sequence** — *Papa Please Bring Rice For Supper*:\n\n| # | Phase | Also called |\n|---|---|---|\n| 1 | **Pre-Implementation** | Evaluation phase |\n| 2 | **Project Preparation** | — |\n| 3 | **Business Blueprinting** | Design phase |\n| 4 | **Realization** | Build phase |\n| 5 | **Final Preparation and Go Live** | *(Fine Tune)* |\n| 6 | **Support** | Manage phase *(Sustenance)* |\n\n**Each phase has specific activities, deliverables and milestones.** Phases 1–5 are implementation; **phase 6 is support**, and it is half the life cycle rather than an epilogue.\n\n**Why ERP gets its own life cycle:** adaptation **has a very high impact on business operations**, **needs top management commitment & support**, is **complicated and needs special focus**, requires **special teams** and **end user involvement**, and involves **many activities and stakeholders**."
+    },
+    {
+      "id": "erp-u1-pyq-15",
+      "topic": "pre-implementation-preparation",
+      "year": "Ch.2 QB",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "Explain the critical **(a) activities, (b) typical deliverables and (c) milestones** of the **Pre-implementation** and **Project preparation** stages.",
+      "answer": "**PRE-IMPLEMENTATION**\n\n*Activities:* team formation · **feasibility / ROI / business case** · budgeting · requirements collection and prioritization · **scope freezing** (typically at function/module level) · **partner / package selection**.\n\nTwo bodies are formed — the **steering committee** (senior, managerial) and the **implementation team** (technical, product expert). Requirements definition is *\"very tricky, conflicting organization politics\"*, sometimes needing consultants to resolve. The **RFP** is *\"an intense activity\"* where *\"cost is not the only criterion\"*.\n\n*Deliverables:* **scope · high-level plan · selected team + partner + package · contract agreements · budget approvals · contracts drafted, finalized and approved.**\n\n**PROJECT PREPARATION**\n\n*Activities:* team selection (internal and external) · **detailed scope** · **create project mission/vision (charter)** · decide implementation methodology · standards/governance · technical preparation (**solution architecture, hardware sizing and configuration design**) · plan resources and schedules · **kick-off meeting** · orientation training to senior & key people.\n\n*Deliverables:* **detailed plan · vision and mission statements · technical (software) design · hardware sizing & configurations · project plan · resource plan · training plan · project charter.** All must be **agreed by relevant stakeholders** for the milestone.\n\n**The boundary between them:** *Pre-implementation chooses **whether and with whom**; Project preparation chooses **how**.* Pre-implementation ends before commitment — the organisation could still decide not to proceed."
+    },
+    {
+      "id": "erp-u1-pyq-16",
+      "topic": "blueprint-realization",
+      "year": "Ch.2 QB",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "Explain the critical **activities and deliverables** of the **Business Blueprinting** and **Realization** stages.",
+      "answer": "**BUSINESS BLUEPRINTING (Design)** — *\"the key step of reviewing business processes and the upcoming ERP system.\"*\n\n*Activities:* **model As-Is process** · detailed requirements (workshops, current problems, other initiatives) · **Business Process Re-engineering** · **To-Be process** · **gap analysis** · review/audit of blueprint · **core team training**.\n\n*Deliverables:* **current model (As-Is) · detailed requirement · gap document · future To-Be process.**\n\nThe logic is **As-Is + To-Be ⇒ Gap**. The **gap document** is the most consequential deliverable in the life cycle, because every gap must either be **customized** or **absorbed by changing the business** — which is why *gap analysis is \"the most important step of ERP implementation\"*.\n\n**REALIZATION (Build)** — *\"the 'creation' of the new system\"*; designing, building, testing and packaging for deployment.\n\n*Activities:* **configuration** · **gap bridging developments / customization** · **unit + integration testing** · training plan for end users.\n\n*Deliverables:* **configured/modified software with installation scripts · technical documentation on deployment and hardware configuring · quality check documentation · final functional/technical specifications · end user training material · data/system migration document.**\n\n**Customization risks:** **stability** of base functionality · **deviating from best practice** · **maintainability**. Customize heavily and you forfeit *\"brings best practices\"* — benefit #1 — and make every future upgrade harder."
+    },
+    {
+      "id": "erp-u1-pyq-17",
+      "topic": "golive-support",
+      "year": "Ch.2 QB",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "Explain the critical **activities and deliverables** of **Final Preparation & Go Live** and of **Support**.",
+      "answer": "**FINAL PREPARATION AND GO LIVE — the ten final checks:**\n\n1. Stress / volume / system tests\n2. **User acceptance**\n3. **End user training**\n4. **Data migration**\n5. Set up **Help Desk** / resource teams\n6. **Audit by external team**\n7. **Communications to all stakeholders** — cut-over date, *\"clearly specify what to expect and what not to\"*, with agreement and commitment by all\n8. **Contingency plans for the cut-over**\n9. Hardware / network infrastructure availability\n10. **Go / No-Go**\n\n**At cut-over:** switch over to the new system · **execute parallel runs of the old system for a defined period** · Help Desk, hand-holding and escalation management · **typically done in phases/batches** · fine-tune configuration issues.\n\n**Implementation closure:** closure meeting · **final acceptance sign-off** · create a small team to **\"harvest\"** knowledge, re-usable parts and marketing/branding materials.\n\n**SUPPORT** — *\"stabilization, fine tuning and look-ahead\"*: **staggered handover** from implementation to support team · work on open issues · **execute support per SLA** · measure and improve performance · ensure **\"business-class\" operations** (reliability, availability, data backup) · develop hooks and interfaces to second-line applications · manage **upgrades** (backup, roll back, regression testing, documentation).\n\n**Why parallel runs:** cut-over is the least reversible moment in the project. The parallel run is how you **detect** a wrong number, and how the business keeps running if the new system fails."
+    },
+    {
+      "id": "erp-u1-pyq-18",
+      "topic": "methodologies",
+      "year": "Ch.2 QB",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "Why does an ERP implementation need a **methodology**? Who provides one? Give examples.",
+      "answer": "**Definition:** *a methodology is a set of rules, methods and tools to achieve a specific goal in a specific way* — a set of steps carried out in a particular sequence, with **proven activities, deliverables, templates and accelerators**, that provides **guidance, a framework and process check points**.\n\n**Why one is needed:**\n- **ERP adoption has equal emphasis on product and implementation**\n- **Since the product is stable and \"available\", success solely depends on good implementation**\n- **Implementation expert companies command a premium, hence!**\n\nThe argument in full: **everyone buys the same SAP**, so the software cannot be the differentiator — **how it is implemented** is. That is why methodologies carry brand names and why implementation firms charge a premium.\n\n**Who provides them:** ERP vendors and consulting firms. **They were developed through 100s of implementation best practices** — distilled from experience, which is what the *harvest knowledge* step of closure feeds.\n\n| Owner | Methodology |\n|---|---|\n| **SAP** | **ASAP** |\n| **PwC / IBM** | **Ascendant** |\n| **Oracle** | **AIM / Fast Forward** |\n| **Scala / Epicor** | **Signature** |"
+    },
+    {
+      "id": "erp-u1-pyq-19",
+      "topic": "methodologies",
+      "year": "Ch.2 QB",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "What is **ASAP**? What are its objectives, phases and tools? What is **Ascendant**?",
+      "answer": "**ASAP = Accelerated SAP methodology Roadmap**, owned by **SAP**.\n\n**Objectives** — *\"Quick Managers Involve Process Reuse\"*:\n1. **Quick and cost effective implementation**\n2. **Maximize resource utilization**\n3. **Involve users community**\n4. **Process oriented**\n5. **Re-usability**\n\n**Tools:**\n| Tool | Purpose |\n|---|---|\n| **Roadmap composer** | assembles the phase-by-phase roadmap |\n| **Q&A database** | structured requirement capture |\n| **Project IMG** | **Implementation Guide** |\n| **Transports** | **configuration move from dev to deployment** |\n| **BC Sets** | **configuration recorder** |\n\n*Transports and BC Sets are a pair: BC Sets **record** a configuration, Transports **carry** it to the live system — the practical basis of the re-usability objective.*\n\n**ASCENDANT (PwC / IBM)** — an **integrated programme** covering six workstreams: **Project Management · Business · Organization · Application · Architecture · Operations**. **These span all the phases** — Evaluation → Project Preparation → Business blueprint → Realization → Final preparation → Go Live and support → Sustain.\n\n**The key contrast:** **Ascendant is a grid, not a sequence.** Six workstreams run horizontally across seven phases, so the project is always doing all six concerns at once. **ASAP optimises for speed and reuse; Ascendant for coverage and continuity** — and Ascendant has an explicit **Organization** (change-management) stream that ASAP's objectives do not name."
+    },
+    {
+      "id": "erp-u1-pyq-20",
+      "topic": "deployment-strategies",
+      "year": "Ch.2 QB",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "Explain the **four common ERP deployment strategies** with the pros and cons of each.",
+      "answer": "**The grid — locations × modules:**\n\n| Approach | **Locations** | **Modules** |\n|---|---|---|\n| **Big bang** | **All** | **All** |\n| **Rollout** | Selected | All |\n| **Big bang Modular** | **All** | Selected |\n| **Rollout Modular** | Selected | Selected |\n\n*Naming is regular: **Big Bang** = all locations, **Rollout** = selected locations, **Modular** = selected modules.*\n\n**The five-parameter comparison:**\n\n| Parameter | Big bang | Rollout | BB Modular | Rollout Modular |\n|---|---|---|---|---|\n| **Risk** | High | Average | High | **Low** |\n| **Time** | **Low** | Average | Average | High |\n| **Learning scope** | **Low** | High | Average | High |\n| **Change mgmt** | High | Average | High | **Low** |\n| **Resource demand** | High | Average | High | **Low** |\n\n**The governing trade-off: risk and time move in opposite directions.** Big Bang is fastest and riskiest; Rollout Modular is slowest and safest. **Risk, change management and resource demand move together** — all three measure *how much is happening simultaneously*.\n\n**The trap: \"learning scope\" is reversed — High is good.** Big Bang scores **Low** because there is no *later* wave to apply lessons to; Rollout scores **High** precisely because it is staged.\n\n**Also note:** Big Bang Modular is still **High risk** despite fewer modules, because it still hits **all locations at once** — location count drives risk more than module count does."
+    },
+    {
+      "id": "erp-u1-pyq-21",
+      "topic": "types-of-erp-projects",
+      "year": "Ch.2 QB",
+      "marks": 8,
+      "difficulty": "medium",
+      "q": "What are the possible **different types of ERP projects**? Why do different projects need different methodologies?",
+      "answer": "**Not all ERP projects are similar!** Sorted by *what already exists*:\n\n| Type | Description |\n|---|---|\n| **First time implementation** | greenfield — no ERP exists |\n| **ERP Upgrade** | **obsolescence** or **new version functionality** |\n| **Global roll-out** | **global template but country-specific enhancements** |\n| **Migration** | **unhappy with current, OR no longer supported** |\n| **Harmonization / Consolidation** | **reducing many instances / types of ERPs to one** |\n| **Support / Sustain** | ongoing operation |\n\n**Why methodologies must differ** — the work involved is genuinely different:\n\n| Project | As-Is modelling | BPR | Change mgmt | Data conversion | Regression testing |\n|---|---|---|---|---|---|\n| **First-time** | Heavy | Heavy | Heavy | Medium | Low |\n| **Upgrade** | **None** | Low | Low | Low | **Heavy** |\n| **Migration** | Medium | Medium | Medium | **Heavy** | Medium |\n| **Consolidation** | Heavy | Heavy | Heavy | Heavy | Medium |\n\nA methodology built for a greenfield implementation spends months on **As-Is modelling** — **entirely wasted on an upgrade**, where the as-is *is* the system you already run. Conversely an upgrade's emphasis on **regression testing** is barely relevant to a new build.\n\n*This list is also the **emerging trend**: migration, consolidation and upgrades are growing because most large enterprises already own an ERP.*"
+    },
+    {
+      "id": "erp-u1-pyq-22",
+      "topic": "costs",
+      "year": "Ch.3 QB",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "What are the **direct** and **indirect** costs of ERP implementation? Explain each.",
+      "answer": "**The test: does an invoice arrive?** Direct costs have one; indirect costs do not — which is why they are *hidden costs that \"come as a surprise\"*.\n\n**DIRECT COSTS (9)** — grouped as **Iron, Software, People, Overhead**:\n\n| Bucket | Items |\n|---|---|\n| **Iron** | **Hardware** (high-end servers, networking, **development setup**, backup system — sized on **users, transactions, reliability, locations**) · **OS and DB** (business-class, special licensing) |\n| **Software** | **Application licence fee** (priced **per user by user type**) · **Application maintenance (AMC)** · **Complimentary software** (analytics, office extensions, backup, document management) |\n| **People** | **Consulting service** · **Post-implementation support** · **Training** (multi-location, travel) |\n| **Overhead** | **PMO cost** |\n\n**INDIRECT COSTS (2) — \"People and Pause\":**\n- **Internal employee cost** — employees **not part of the implementation team**, whose time goes on providing requirements, reviews and acceptance testing. Invisible to the project budget because nobody bills for it.\n- **Operational disruption cost** — loss of productivity during changeover.\n- Plus **opportunity costs** — the value of what those people and that money would otherwise have produced. The deck itself writes it with a question mark, acknowledging it resists measurement.\n\n**From the sample table (1,914 lakhs total):** the top three lines — **consulting 800, AMC 280, licence 269** — are **70% of the total, and none is hardware.** **AMC (280) exceeds the licence fee (269)**: the recurring cost of owning outgrows the cost of buying."
+    },
+    {
+      "id": "erp-u1-pyq-23",
+      "topic": "benefits-roi",
+      "year": "Ch.3 QB",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "What are the **direct (tangible)** and **intangible** benefits of ERP implementation? How does ERP help with **(a) inventory reduction (b) better customer service (c) material and labour cost reduction (d) reduction in days outstanding**?",
+      "answer": "**TANGIBLE / DIRECT BENEFITS — mnemonic I-C-O-M (\"I COMe out ahead\"):**\n\n**(a) Inventory reduction** — better management of stock **at different locations and quantities** · handle **expiry-dated/perishable** items · manage **slow-moving/dead stock** · manage availability **based on BOM** · control stock levels **based on orders/forecasting**.\n\n**(b) Better customer service and reduced lost sales** — **minimize lost orders** · **availability in full/part check, no wrong promise** · maintain **min stock levels**, avoiding stock-outs · **quicker planning for short demand surges**.\n\n**(c) Material and labour cost reduction** — **consolidated requirements** to help volume transactions · better vendor supply schedule, **no emergency costs** · forecasts support **buying at the best times** · **less overtime, less idle time** · adjust capacity & schedules.\n\n**(d) Reducing days outstanding** — **accurate and timely invoicing → fewer disputes** · tracking of due and overdue invoices, **reminders, \"dunning\"** · **link up with order entry** to manage defaulting customers · reduces **currency fluctuation risk** in cross-border transactions. *Days outstanding is a measure of business health and appears in statutory reports.*\n\n**INTANGIBLE BENEFITS:** easy data entry · **information readily available wherever, whenever, to whoever** · **best practices** from the package · quicker operations (quote-to-cash) · **staff morale** · inter-org collaboration · intra-org communication · better data management · improved customer service. *Also: increased turnover, better corporate image, lower risk on money matters.*\n\n**Key insight:** three of the four tangible benefits release **working capital** rather than adding profit — **ERP's financial case is largely a working-capital case**.\n\n**The twist worth adding:** *when ERP is **mandated by a customer**, an intangible benefit becomes entirely tangible* — its value equals the value of the account."
+    },
+    {
+      "id": "erp-u1-pyq-24",
+      "topic": "benefits-roi",
+      "year": "Ch.3 QB",
+      "marks": 10,
+      "difficulty": "hard",
+      "q": "Build a **business case / ROI analysis** for an ERP implementation. Work through the computation for a company with Rs. 2,000 Cr turnover and an ERP cost of Rs. 19.14 Cr.",
+      "answer": "**Why the business case is hard:** *\"It is easier to calculate **cost** for ERP, as the same can be estimated quickly with estimates from different vendors. **Benefit calculation is always a challenge**, as this is generally based on lots of assumptions and benefits could be intangible and long term.\"* — a precise number on one side, an estimate on the other.\n\n**Parameters, rationale and extent:**\n\n| Parameter | Rationale | Extent |\n|---|---|---|\n| **Labor cost saving** | remove/re-organize activities; same person can do more | **2%** |\n| **Material cost saving** | better negotiated purchase; focus on high-cost material; economies of scale; **JIT** forecasting | **1%** |\n| **Finance cost** | reduced inventory cost; synchronization across stages | **interest @ 12%** |\n| **Debtors** | track regularly — **dunning** | **50 → 45 days** |\n\n**The computation:**\n\n1. **Labour:** 2% of 200 Cr → **4 Cr**\n2. **Material:** 1% of 1,000 Cr → **1 Cr**\n3. **Inventory / finance:** turnover **5 → 6**; value at 5 turns = **400 Cr**, at 6 turns = **333 Cr**; reduction **67 Cr**; @12% → **8 Cr**\n4. **Debt management:** working capital **68.4 → 54.79**; interest on the saved **13.6 @ 12%** → **1.62 Cr**\n\n**Total = 4 + 1 + 8 + 1.62 = 23.62 Crore per year**, against a cost of **19.14 Cr over 6 years**.\n\n**The largest single benefit is item 3 — and note it is not a saving on inventory itself but the *interest no longer paid* on the capital that was tied up in it.**\n\n**Two cautions for full marks:**\n- **Delayed payback:** *average ROI in the first year could be as little as **5%**; ROI takes **3 years** for most (Meta Group)* — while **Year 1 costs are 1,294 of 1,914 lakhs (68%)**. **Costs peak in Year 1; benefits peak from Year 3.**\n- **Track the case:** *\"though cost benefit analysis is done in the beginning, actuals might differ — need to track it at the right milestones\"*, ploughing the learning back during the support phase."
+    },
+    {
+      "id": "erp-u1-pyq-25",
+      "topic": "case-studies",
+      "year": "Assignment",
+      "marks": 10,
+      "difficulty": "medium",
+      "q": "Discuss a real ERP implementation — its objectives, what went wrong, the outcome, and the lessons learned.",
+      "answer": "**NESTLÉ USA — Project BEST (SAP, 1997–2001, $210M)**\n\n*Problem:* after the 1991 reorganisation, divisions remained geographically dispersed — **29 different prices for vanilla to the same vendor**, **nine general ledgers and 28 points of customer entry**, and *\"years of autonomous operation provided an almost insurmountable hurdle.\"* Nestlé was *\"the world's No. 1 food and beverage company — but one of the least efficient.\"*\n\n*Objectives — \"One Nestlé, under SAP\":* transform separate brands into **one highly integrated company** · establish a **common business process architecture** · **standardize master data**.\n\n*What went wrong:* **the new business process confused most employees, then resistance grew into rebellion in 2000.** Reconstructed June 2000, completed 2001.\n\n*Outcome:* more trustworthy demand forecast · forecasting **down to redistribution-centre level** · **forecast accuracy improved by 2%** · higher factory utilization · reduced inventory · **$371 million saved by 2001** against a $210M budget. **A troubled project with a positive return.**\n\n*Lessons — **DUKE**:* **D**on't start with a **deadline** in mind · **U**pdate your budget projection at regular intervals · **E**RP isn't only about the software · **K**eep communication lines open.\n\n**AGILENT — Project Everest (Oracle E-Business Suite, 2000–2004, $220M)**\n\n*Objectives:* **\"One IT\"** organization · supply chain capability · migrating **2,200 legacy applications** inherited from HP.\n\n*What went wrong:* consolidating **2,200 systems to under 20**, *\"confusion meant lost orders and revenue\"* — **$88M reduction in Q3 orders** (of which **$38M lost**, $50M delayed), **$105M lost revenue**, **$70M operating profit**, plus **$35M extra costs**. Root cause: **converting backlog** from legacy systems, *\"especially for our highly configured products.\"*\n\n*Lessons:* implementations are **a lot more than software packages**; **people, processes, policies and culture** all matter; **\"ERP disasters are often caused by a user company itself\"**; study ERP well before implementation.\n\n**The common conclusion:** two companies, two vendors, two decades — **the same lesson**. Nestlé: *\"No major software implementation is really about the software.\"* Agilent: *\"People, processes, policies and culture are all factors.\"* This is the empirical proof that **ERP is a socio-technical system**."
+    }
+  ]
+}

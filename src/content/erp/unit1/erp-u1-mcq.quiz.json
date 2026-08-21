@@ -1,0 +1,372 @@
+{
+  "subject": "erp",
+  "unit": 1,
+  "title": "Unit 1 — Course MCQ Bank",
+  "items": [
+    {
+      "id": "erp-u1-mcq-001",
+      "topic": "evolution-mrp-to-erp2",
+      "q": "Expand **MRP**.",
+      "options": [
+        "Material Resource Planning",
+        "Material Requirement Planning",
+        "Manufacturing Requirement Planning",
+        "Manufacturing Resource Planning"
+      ],
+      "answer": 1,
+      "explain": "**MRP = Material Requirement Planning.** Do not mix it with **MRP II = Manufacturing Resource Planning** — *both* words change between the two, which is exactly the widening from *what parts do I need* to *what resources does the whole plant need*.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-002",
+      "topic": "extended-erp-spaces",
+      "q": "Expand **SCM**.",
+      "options": [
+        "System Configuration Management",
+        "Strategic Cost Management",
+        "Supply Chain Management",
+        "Supplier Collaboration Model"
+      ],
+      "answer": 2,
+      "explain": "**Supply Chain Management** — the oversight of **materials, information and finances** moving from supplier → manufacturer → wholesaler → retailer → consumer. The **S** of the **SPACES** mnemonic.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-003",
+      "topic": "extended-erp-spaces",
+      "q": "Expand **PLM**.",
+      "options": [
+        "Product Lifecycle Management",
+        "Planning and Logistics Module",
+        "Production Line Management",
+        "Project Lifecycle Methodology"
+      ],
+      "answer": 0,
+      "explain": "**Product Lifecycle Management** — manages all data about a product **from initial conception to retirement**. Its curve has four stages: **Introduction → Growth → Maturity → Decline**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-004",
+      "topic": "blueprint-realization",
+      "q": "Expand **BPR**.",
+      "options": [
+        "Business Process Reporting",
+        "Budget Planning and Review",
+        "Baseline Process Reconciliation",
+        "Business Process Re-engineering"
+      ],
+      "answer": 3,
+      "explain": "**Business Process Re-engineering** — it is what brought in the **'process view'** by the 1990s, and it is an activity inside the **Business Blueprinting** phase, sitting between the As-Is model and the To-Be process.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-005",
+      "topic": "methodologies",
+      "q": "Expand **ASAP**.",
+      "options": [
+        "Advanced Systems Analysis Process",
+        "Accelerated SAP",
+        "Applied Solution Architecture Plan",
+        "Automated Sequential Application Planning"
+      ],
+      "answer": 1,
+      "explain": "**Accelerated SAP** — SAP's own implementation methodology roadmap. Its five objectives: **Quick and cost effective · Maximize resource utilization · Involve users · Process oriented · Re-usability**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-006",
+      "topic": "evolution-mrp-to-erp2",
+      "q": "**True or False:** Closed loop MRP checks feasibility of the MRP plan.",
+      "options": ["True", "False"],
+      "answer": 0,
+      "explain": "**True.** Plain MRP **does not consider available capacity**, so its plan may be impossible. **Closed-loop MRP validates the plan, compares it with reality, checks feasibility and raises alerts/triggers** to the planner.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-007",
+      "topic": "what-is-erp",
+      "q": "**True or False:** Enterprise application is a subset of ERP.",
+      "options": ["True", "False"],
+      "answer": 1,
+      "explain": "**False — it is the other way round.** **ERP is a subset of Enterprise Business Systems**, albeit a large one that *'covers all the basic transactions inside the organization and dictates the overall business framework.'* EBS is the family; ERP is a member.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-008",
+      "topic": "pre-implementation-preparation",
+      "q": "**True or False:** Project charter is a deliverable of the Business Blueprinting phase.",
+      "options": ["True", "False"],
+      "answer": 1,
+      "explain": "**False.** The **project charter is a deliverable of Project Preparation (Phase 2).** Business Blueprinting delivers the **As-Is model, detailed requirements, gap document and To-Be process** — no charter.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-009",
+      "topic": "deployment-strategies",
+      "q": "**True or False:** In Big Bang, all ERP modules are implemented at selected locations.",
+      "options": ["True", "False"],
+      "answer": 1,
+      "explain": "**False.** **Big Bang = all modules at ALL locations.** 'Selected locations' makes it a **Rollout**. Read every such statement against the 2×2 grid: *Big Bang* always means all locations, *Rollout* always means selected locations, and *Modular* always means selected modules.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-010",
+      "topic": "types-of-erp-projects",
+      "q": "**True or False:** In an ERP consolidation project, companies migrate from several ERPs to one.",
+      "options": ["True", "False"],
+      "answer": 0,
+      "explain": "**True.** **Harmonization / Consolidation = reducing many instances or types of ERPs to one.** It usually follows mergers and acquisitions, and its hardest part is reconciling **conflicting master data** across the systems.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-011",
+      "topic": "challenges-risks",
+      "q": "Which of the following is **not** part of the ERP implementation?",
+      "options": ["Vendors", "Customers", "Employees", "Consultants"],
+      "answer": 1,
+      "explain": "**Customers.** The implementation involves **vendors** (who supply the package), **consultants** (who implement it) and **employees** (who use it and provide requirements). Customers are *affected by* the outcome but are not participants in the implementation itself.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-012",
+      "topic": "benefits-misconceptions",
+      "q": "Which of the following is **not** a myth of ERP?",
+      "options": [
+        "ERP means more work and procedures",
+        "ERP is the sole responsibility of management",
+        "ERP makes employees redundant",
+        "ERP integrates and automates business processes"
+      ],
+      "answer": 3,
+      "explain": "**'ERP integrates and automates business processes' is TRUE**, so it is not a myth. The other three are myths. Careful with the question's negative phrasing — it asks which statement is *not* false.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-013",
+      "topic": "what-is-erp",
+      "q": "Which one of the following is part of the organization?",
+      "options": ["People", "Resources", "Common goal", "All of the above"],
+      "answer": 3,
+      "explain": "**All of the above.** An enterprise is **a group of people with a common goal**, deploying **resources** to reach it. The word *common* is the operative one — Unit 1 is largely about what goes wrong when departments stop sharing that goal.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-014",
+      "topic": "why-organizations-need-erp",
+      "q": "ERP supports __________ currency value.",
+      "options": ["multiple", "single", "three", "five"],
+      "answer": 0,
+      "explain": "**Multiple.** This follows from the **'Multi' problems** of the modern enterprise — multi-country brings multi-currency, multi-lingual and multi-cultural along with it. A single-currency system is disqualified for any multinational.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-015",
+      "topic": "blueprint-realization",
+      "q": "The most important step of ERP implementation is _________.",
+      "options": ["installing", "training", "gap analysis", "testing"],
+      "answer": 2,
+      "explain": "**Gap analysis.** It is where the difference between the **To-Be** process and what the package does out of the box is established — and therefore where the project's real cost is decided, since every gap must be **customized** (expensive, risky) or **absorbed by changing the business**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-016",
+      "topic": "what-is-erp",
+      "q": "An enterprise is a group of people with ________.",
+      "options": [
+        "a common goal",
+        "a separate goal for each department",
+        "multiple goals",
+        "two or more goals"
+      ],
+      "answer": 0,
+      "explain": "**A common goal.** Departmental goals that drift apart are precisely the problem — *Production → Quantity, Sales → Variety* — and enterprise-level planning is the fix.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-017",
+      "topic": "what-is-erp",
+      "q": "The traditional business system is called a _________.",
+      "options": ["modern system", "advanced method", "effective method", "legacy system"],
+      "answer": 3,
+      "explain": "**Legacy system.** Nestlé had **nine different general ledgers** and Agilent inherited **2,200 legacy applications** from HP — both were replaced by ERP.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-018",
+      "topic": "four-drivers-epic",
+      "q": "_________ approach reduces data redundancy and provides up-to-date information.",
+      "options": ["Legacy system", "Information system", "Integrated data model", "Database"],
+      "answer": 2,
+      "explain": "**Integrated data model.** This is driver **C** of **EPIC** — from departmental databases to one **company-wide integrated database**, whose three stated advantages are **no data duplication, data standardization and data tracking**.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-019",
+      "topic": "what-is-erp",
+      "q": "The main drawback of a legacy system is ________.",
+      "options": ["less effectiveness", "high cost", "no integration", "more modules"],
+      "answer": 2,
+      "explain": "**No integration.** Note the drawback is *not* that legacy systems are old or slow — it is that **they do not talk to each other**, producing information silos: **D**uplication of data, **N**o integration, **S**ystems can't update online.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-020",
+      "topic": "what-is-erp",
+      "q": "An ERP system is for _______.",
+      "options": [
+        "important departments only",
+        "the entire organization",
+        "marketing and sales department",
+        "production department"
+      ],
+      "answer": 1,
+      "explain": "**The entire organization.** ERP *'attempts to integrate all departments and functions across a company onto a single computing system.'* Believing it is only for production is the misconception created by its **MRP → MRP II → ERP** manufacturing origins.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-021",
+      "topic": "costs",
+      "q": "The cost of ERP ________.",
+      "options": [
+        "depends on the package",
+        "depends on available resources",
+        "depends on the technology used",
+        "all the above"
+      ],
+      "answer": 3,
+      "explain": "**All the above.** The cost has nine direct elements plus indirect ones, and licence cost alone scales with **user count and user type** (developers, professional users, ordinary users all priced differently).",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-022",
+      "topic": "methodologies",
+      "q": "The ASAP road-map is a detailed project plan by _______ that describes all activities in an implementation.",
+      "options": ["SAP", "ORACLE", "PeopleSoft", "Baan"],
+      "answer": 0,
+      "explain": "**SAP** — the name literally contains it: **A**ccelerated **SAP**. Oracle's methodology is **AIM / Fast Forward**; PwC/IBM's is **Ascendant**; Scala/Epicor's is **Signature**.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-023",
+      "topic": "pre-implementation-preparation",
+      "q": "The company should conduct a _________ about the implementation and implementation strategies.",
+      "options": ["feasibility study", "survey", "case study", "test"],
+      "answer": 0,
+      "explain": "**Feasibility study.** It is a **Pre-Implementation** activity, listed as *'Feasibility / ROI / Business case'*, and it is what establishes whether the project should proceed at all.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-024",
+      "topic": "life-cycle-overview",
+      "q": "The ERP implementation process has _______ phases.",
+      "options": ["one", "two", "five", "six"],
+      "answer": 3,
+      "explain": "**Six** — *Papa Please Bring Rice For Supper*: **P**re-implementation, **P**roject preparation, **B**usiness blueprinting, **R**ealization, **F**inal preparation & go live, **S**upport.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-025",
+      "topic": "pre-implementation-preparation",
+      "q": "In which phase are roles identified and responsibilities assigned?",
+      "options": ["project planning", "gap analysis", "reengineering", "configuration"],
+      "answer": 0,
+      "explain": "**Project planning / preparation.** Team selection, creating a proper structure, standards and governance, and the **project charter** all belong to this phase — the phase that decides *how the project will be run*.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-026",
+      "topic": "pre-implementation-preparation",
+      "q": "The ________ team normally includes hired consultants and the in-house team.",
+      "options": [
+        "core team",
+        "project management team",
+        "executive committee",
+        "all the above"
+      ],
+      "answer": 3,
+      "explain": "**All the above** — team selection is explicitly **'internal and external'**. Note the two distinct bodies formed in Pre-Implementation: the **steering committee** (senior, managerial) and the **implementation team** (technical, product expert).",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-027",
+      "topic": "golive-support",
+      "q": "In which phase is data conversion carried out?",
+      "options": ["Going live", "Testing", "Training", "Configuration"],
+      "answer": 0,
+      "explain": "**Going live.** Realization produces only the **data / system migration *document***; the actual **data migration** is one of the ten final checks before cut-over. Agilent's worst damage came from exactly this step — *'converting backlog from legacy to new systems'*.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-028",
+      "topic": "golive-support",
+      "q": "Name the phase in which the actual users of the system are given training on how to use it.",
+      "options": [
+        "Gap analysis",
+        "Reengineering",
+        "Implementation team training",
+        "End user training"
+      ],
+      "answer": 3,
+      "explain": "**End user training**, in Final Preparation. Do not confuse it with **core team training**, which happens earlier in **Business Blueprinting** — the core team must understand the package before they can design the To-Be process on it.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-029",
+      "topic": "life-cycle-overview",
+      "q": "_______ is the final phase in the ERP implementation life cycle.",
+      "options": ["Testing", "End user training", "Post implementation", "Going live"],
+      "answer": 2,
+      "explain": "**Post implementation** — the **Support** phase. Remember the equation: **ERP Lifecycle = ERP Implementation Life cycle + ERP Support Life cycle**. Support is half the life cycle, not an epilogue.",
+      "difficulty": "medium",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-030",
+      "topic": "challenges-risks",
+      "q": "________ are the people who will be using the ERP system once it is deployed.",
+      "options": ["Management", "End-user", "Consultant", "Vendor"],
+      "answer": 1,
+      "explain": "**End-users.** Their involvement is listed as a defining feature of ERP adaptation, and their resistance is what turned into **rebellion** at Nestlé in 2000.",
+      "difficulty": "easy",
+      "source": "mcq"
+    },
+    {
+      "id": "erp-u1-mcq-031",
+      "topic": "methodologies",
+      "q": "Most companies use ______ to help with the ERP implementation process.",
+      "options": ["consultants", "vendors", "employees", "end-users"],
+      "answer": 0,
+      "explain": "**Consultants.** Agilent used *roughly 100 Oracle consultants*, and in the sample cost table **consulting is the single largest line — 800 of 1,914 lakhs**. Since the software itself is a commodity, *'success solely depends on good implementation'*.",
+      "difficulty": "easy",
+      "source": "mcq"
+    }
+  ]
+}

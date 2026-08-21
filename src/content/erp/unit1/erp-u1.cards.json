@@ -1,0 +1,223 @@
+{
+  "subject": "erp",
+  "unit": 1,
+  "title": "Unit 1 — Core Recall & Mnemonics",
+  "cards": [
+    {
+      "id": "erp-u1-c01",
+      "topic": "four-drivers-epic",
+      "front": "The **four drivers** of the ERP revolution (mnemonic?)",
+      "back": "**EPIC** — each is a *from → to* shift:\n**E** — from department → **Enterprise**\n**P** — from function → **Process**\n**I** — from information silos → **Integrated** information system\n**C** — from departmental DBs → one **Common** database\n\n*Marks are lost for giving only the destination — always say \"from X to Y\".*"
+    },
+    {
+      "id": "erp-u1-c02",
+      "topic": "life-cycle-overview",
+      "front": "The **six ERP life-cycle phases** in order (mnemonic?)",
+      "back": "**Papa Please Bring Rice For Supper**\n1. **P**re-Implementation *(Evaluation)*\n2. **P**roject Preparation\n3. **B**usiness Blueprinting *(Design)*\n4. **R**ealization *(Build)*\n5. **F**inal Preparation & Go Live\n6. **S**upport *(Manage / Sustain)*\n\n**ERP Lifecycle = Implementation Life cycle + Support Life cycle**"
+    },
+    {
+      "id": "erp-u1-c03",
+      "topic": "extended-erp-spaces",
+      "front": "The **six extended-ERP applications** (mnemonic?)",
+      "back": "**SPACES**\n**S** — SCM (Supply Chain Management)\n**P** — PLM (Product Lifecycle Management)\n**A** — APS (Advanced Planning and Scheduling)\n**C** — CRM (Customer Relationship Management)\n**E** — EAM (Enterprise Asset Management)\n**S** — SRM (Supplier Relationship Management)"
+    },
+    {
+      "id": "erp-u1-c04",
+      "topic": "four-drivers-epic",
+      "front": "The **three challenges of information silos** (mnemonic?)",
+      "back": "**DNS**\n**D** — **Duplication** of data\n**N** — **No integration** between departmental databases\n**S** — **Systems** not able to update all relevant information online\n\n*Stated question-bank answer with an exact count — three.*"
+    },
+    {
+      "id": "erp-u1-c05",
+      "topic": "benefits-roi",
+      "front": "The **four tangible / direct benefits** of ERP (mnemonic?)",
+      "back": "**I-C-O-M** — *\"I COMe out ahead\"*\n**I** — **Inventory** reduction\n**C** — Better **Customer** service & reduced lost sales\n**O** — Reducing days **Outstanding**\n**M** — **Material and labour** cost reduction\n\n*Three of the four release **working capital** — ERP's financial case is largely a working-capital case.*"
+    },
+    {
+      "id": "erp-u1-c06",
+      "topic": "case-studies",
+      "front": "**Nestlé's four lessons** (mnemonic?)",
+      "back": "**DUKE**\n**D** — Don't start a project with a **Deadline** in mind\n**U** — **Update** your budget projection at regular intervals\n**E** — **ERP isn't only about the software**\n**K** — **Keep** the communication lines open\n\n*Jeri Dunn: \"No major software implementation is really about the software.\"*"
+    },
+    {
+      "id": "erp-u1-c07",
+      "topic": "challenges-risks",
+      "front": "The **three categories of ERP challenges** (mnemonic?)",
+      "back": "**I See People (I-S-P)**\n**I** — **Implementation** challenges *(6 items)*\n**S** — **Support / maintenance** challenges *(6 items)*\n**P** — Managing **People** challenges *(4 items)*\n\n*They map onto the life cycle: I = phases 1–5, S = phase 6, P = all of them.*"
+    },
+    {
+      "id": "erp-u1-c08",
+      "topic": "deployment-strategies",
+      "front": "The **four deployment strategies** as a grid",
+      "back": "A **2 × 2** of *locations* × *modules*:\n\n| | **All modules** | **Selected modules** |\n|---|---|---|\n| **All locations** | **Big Bang** | **Big Bang Modular** |\n| **Selected locations** | **Rollout** | **Rollout Modular** |\n\n**Big Bang** = all locations · **Rollout** = selected locations · **Modular** = selected modules"
+    },
+    {
+      "id": "erp-u1-c09",
+      "topic": "deployment-strategies",
+      "front": "Deployment strategies — **risk vs time**",
+      "back": "**Risk and Time move in opposite directions:**\n- **Big Bang** — high risk, **low time**\n- **Rollout** — average / average\n- **Big Bang Modular** — high risk, average time\n- **Rollout Modular** — **low risk**, high time\n\n**Learning scope is the reversed row** — *High is good*, and Big Bang is **Low** because there is no \"later\" to learn into."
+    },
+    {
+      "id": "erp-u1-c10",
+      "topic": "evolution-mrp-to-erp2",
+      "front": "The **evolution ladder** and what each step adds",
+      "back": "**MRP** *(1960–70s)* — materials only\n**Closed-loop MRP** — + **capacity / feasibility check**\n**MRP II** *(1980s)* — + **accounting & billing**, forecasting, S&OP\n**ERP** *(1990s)* — + **every other function**; non-manufacturing too\n**Extended ERP / ERP II** *(2000s)* — + **suppliers & customers** (outside the company)"
+    },
+    {
+      "id": "erp-u1-c11",
+      "topic": "evolution-mrp-to-erp2",
+      "front": "**MRP vs Closed-loop MRP** — the exact difference",
+      "back": "**MRP does not consider the capacity available while planning**, so its plan may be infeasible — it assumes **infinite capacity**.\n\n**Closed-loop MRP** validates the plan, **compares it with reality, checks feasibility**, and reports **alerts and triggers** to the planner.\n\n*One line: MRP plans as if capacity were unlimited; closed-loop MRP checks it.*"
+    },
+    {
+      "id": "erp-u1-c12",
+      "topic": "what-is-erp",
+      "front": "The **textbook definition** of ERP",
+      "back": "**ERP is an integrated information system built on a centralized database and having a common computing platform that helps in effective usage of enterprise's resources and facilitates the flow of information between all business functions of the enterprise (and with external stakeholders).**\n\n*Five mark-bearing phrases — and don't drop the last clause.*"
+    },
+    {
+      "id": "erp-u1-c13",
+      "topic": "what-is-erp",
+      "front": "**E-R-P** — what each word means",
+      "back": "**Enterprise** — an organization providing products/services to society; a business entity *(Airtel, Tatas, Reliance, IBM, Google, Apple)*\n**Resource** — human resource, machines, plants, storehouses, material stock\n**Planning** — production, forecasts, money, new products, logistics, maintenance"
+    },
+    {
+      "id": "erp-u1-c14",
+      "topic": "business-processes",
+      "front": "The **six named business processes**",
+      "back": "**P2P** — Procure to Pay\n**O2C** — Quote / Order to Cash\n**F2S** — Forecast to Stock\n**T2M** — Time to Market\n**H2R** — Hire to Retire\n**F2F** — Farm to Fork\n\n*Every name states its own start and end. **P2P is money out; O2C is money in.***"
+    },
+    {
+      "id": "erp-u1-c15",
+      "topic": "business-processes",
+      "front": "The **seven stages of Quote to Cash**",
+      "back": "1. **Quote / Proposal** → Sales Quote\n2. **Quote Approval** *(by the customer)* → Approved Quote\n3. **Sales Order** → Sales Order\n4. **Fulfillment / Delivery** → Goods Delivered\n5. **Invoicing** → Customer Invoice\n6. **Payment Receipt** → Payment Received\n7. **Cash Application** → Cash Applied / Account Closed\n\n*It does not end at delivery — stages 5–7 are about getting paid.*"
+    },
+    {
+      "id": "erp-u1-c16",
+      "topic": "implementation-types",
+      "front": "The **four ERP implementation types** and the trade-off",
+      "back": "**On-premises · Cloud · Hybrid · Two-tier**\n\nTwo pure types + two mixtures — **Hybrid mixes by *module*, Two-tier mixes by *location*.**\n\n**Control ↑ ⇒ Cost ↑, Flexibility ↓**\n- On-prem: High / High / **Low**\n- Cloud: Low / Low / High\n- Hybrid: Medium / Medium / High\n- Two-tier: Central+Local / Medium / High"
+    },
+    {
+      "id": "erp-u1-c17",
+      "topic": "methodologies",
+      "front": "The **four branded methodologies** and their owners",
+      "back": "**ASAP** → **SAP** *(Accelerated SAP)*\n**Ascendant** → **PwC / IBM**\n**AIM / Fast Forward** → **Oracle**\n**Signature** → **Scala / Epicor**\n\n*Nestlé used SAP; Agilent used Oracle.*"
+    },
+    {
+      "id": "erp-u1-c18",
+      "topic": "methodologies",
+      "front": "**ASAP's five objectives** and **five tools**",
+      "back": "**Objectives** — *\"Quick Managers Involve Process Reuse\"*: Quick & cost effective · Maximize resource utilization · Involve users community · Process oriented · Re-usability\n\n**Tools:** Roadmap composer · Q&A database · **Project IMG** (Implementation Guide) · **Transports** (config dev→deployment) · **BC Sets** (configuration recorder)"
+    },
+    {
+      "id": "erp-u1-c19",
+      "topic": "blueprint-realization",
+      "front": "**Business Blueprinting** — the three documents",
+      "back": "**As-Is** + **To-Be** ⇒ **Gap**\n\nDeliverables: **Current model (As-Is) · Detailed requirement · Gap document · Future To-Be process**\n\n*The **gap document** is where the project's real cost is decided — every gap must be **customized** or **absorbed by changing the business**. Gap analysis is \"the most important step of ERP implementation\".*"
+    },
+    {
+      "id": "erp-u1-c20",
+      "topic": "blueprint-realization",
+      "front": "**Configuration vs Customization**",
+      "back": "**Configuration** — setting options the package already provides. Low risk, survives upgrades.\n**Customization** — **code-level changes** to the base package. High risk.\n\n**Customization risks:** **stability** of base functionality · **deviating from best practice** · **maintainability**\n\n*Customize heavily and you forfeit \"brings best practices\" — the main benefit you paid for.*"
+    },
+    {
+      "id": "erp-u1-c21",
+      "topic": "challenges-risks",
+      "front": "The **Standish** ERP failure statistics (~1998)",
+      "back": "- **10% of ERP implementations succeed**\n- **Cost overruns average 178%** *(≈ 2.78× budget)*\n- **Schedule overruns average 230%** *(≈ 3.3× schedule)*\n- **Implemented functionality averages 41%** of what is desired\n\n*Another survey: **51% of implementers felt unsuccessful**.*"
+    },
+    {
+      "id": "erp-u1-c22",
+      "topic": "challenges-risks",
+      "front": "The **six-step risk management process**",
+      "back": "1. **Identify** risks\n2. **Analyze impact**\n3. **Assess probability**\n4. **Prioritize**\n5. **Mitigation** plan creation\n6. **Contingency** plan creation\n\n**Mitigation acts *before* (reduce probability/impact); contingency acts *after* (cope if it happens).** Parallel runs = mitigation; cut-over contingency plans = contingency."
+    },
+    {
+      "id": "erp-u1-c23",
+      "topic": "costs",
+      "front": "**Direct vs indirect** ERP costs",
+      "back": "**Test: does an invoice arrive?**\n\n**Direct (9):** Hardware · OS & DB · Application licence · Application maintenance (AMC) · Complimentary software · Consulting · Post-implementation support · Training · PMO\n*Buckets: **Iron, Software, People, Overhead***\n\n**Indirect (2) — \"People and Pause\":** Internal employee cost · Operational disruption cost *(+ opportunity costs)*"
+    },
+    {
+      "id": "erp-u1-c24",
+      "topic": "costs",
+      "front": "The **sample cost table** — headline numbers",
+      "back": "**Grand total 1,914 lakhs** over 5–6 years.\nTop three: **Consulting 800 · AMC 280 · Licence 269** = **70%** — and **none of them is hardware**.\n\n**AMC (280) exceeds the licence fee (269)** — owning outgrows buying.\n\n**Cash flow: Year 1 = 1,294 (68% of total)**, then ~122/yr. **Costs peak in Year 1; benefits peak from Year 3.**"
+    },
+    {
+      "id": "erp-u1-c25",
+      "topic": "benefits-roi",
+      "front": "The worked **business case** — the 23.62 Cr computation",
+      "back": "Company with **2,000 Cr turnover**, ERP cost **19.14 Cr**:\n- **Labour** 2% of 200 Cr → **4 Cr**\n- **Material** 1% of 1000 Cr → **1 Cr**\n- **Inventory turnover 5 → 6**: 400 Cr → 333 Cr, reduction **67 Cr**, @12% → **8 Cr**\n- **Debtors** (50 → 45 days): working capital 68.4 → 54.79, 13.6 @12% → **1.62 Cr**\n\n**Total = 23.62 Crore per year.**"
+    },
+    {
+      "id": "erp-u1-c26",
+      "topic": "benefits-misconceptions",
+      "front": "The **four misconceptions** about ERP",
+      "back": "1. *\"ERP is just a computer software system\"* — it is **much beyond h/w, s/w & network**\n2. *\"ERP is only for manufacturing\"* — due to its **MRP → MRP II → ERP** origins\n3. *\"ERP can automate all operations\"* — it moves **data/information**, not material or actual work\n4. *\"ERP is ready-made and deploys quickly\"* — needs **customization, expert consultancy, management commitment**"
+    },
+    {
+      "id": "erp-u1-c27",
+      "topic": "why-organizations-need-erp",
+      "front": "The **Production vs Sales** conflict",
+      "back": "**Production → Quantity** *(large batches, standardized, fewer variations — lowers setup time and cost)*\n**Sales → Variety** *(colours, sizes, models — attracts more customers)*\n\n**Both are doing their jobs correctly; their objectives are simply opposite.** Classic **local optimization defeating global optimization**.\n\n*Pizza version: the kitchen wants one type; customers want four.*"
+    },
+    {
+      "id": "erp-u1-c28",
+      "topic": "why-organizations-need-erp",
+      "front": "The **\"Multi\" problems** of modern enterprises",
+      "back": "**Multi-** Division/Product · Location/Facilities · Country · Currency · Lingual · Cultural · **(mixed) mode manufacturing** — plus **24 × 7 × 365 operations**\n\n*Expanding sequence: grow products → divisions; grow beyond a city → locations; **cross a border and currency, language and culture come free**.*"
+    },
+    {
+      "id": "erp-u1-c29",
+      "topic": "benefits-misconceptions",
+      "front": "**Porter's Value Chain** — primary and support activities",
+      "back": "**Primary — \"In → Make → Out → Sell → Serve\":** Inbound logistics · Operations · Outbound logistics · Marketing & Sales · Service\n\n**Support:** Firm infrastructure · Human Resource Management · Technology development · **Procurement**\n\n*Each activity adds value; worked together, **total value > total cost = margin**. Note Procurement is a **support** activity here, though P2P is a core ERP process.*"
+    },
+    {
+      "id": "erp-u1-c30",
+      "topic": "case-studies",
+      "front": "**Nestlé USA** — the headline numbers",
+      "back": "Project **BEST**, **SAP** + Manugistics, **1997–2001**, **$210M** budget.\n\n**Problem:** **29 different prices for vanilla to the same vendor**; **9 general ledgers, 28 points of customer entry**.\n\n**What happened:** confusion → resistance → **rebellion in 2000**; reconstructed June 2000.\n\n**Outcome:** forecast accuracy **+2%**, **$371 million saved by 2001**."
+    },
+    {
+      "id": "erp-u1-c31",
+      "topic": "case-studies",
+      "front": "**Agilent** — the headline numbers",
+      "back": "**Project Everest**, **Oracle E-Business Suite**, **2000–2004**, **$220M**, ~100 Oracle consultants. Migrating **2,200 legacy applications** from HP.\n\n**Damage:** **$88M** reduction in Q3 orders (**$38M lost**, $50M delayed); **$105M lost revenue**, **$70M operating profit**; extra **$35M** costs. Cause: **backlog conversion** for highly configured products.\n\n**Lesson:** *\"ERP disasters are often caused by a user company itself.\"*"
+    },
+    {
+      "id": "erp-u1-c32",
+      "topic": "extended-erp-spaces",
+      "front": "The **Product Life Cycle** curve",
+      "back": "**Introduction → Growth → Maturity → Decline** *(Revenue and Profit vs Time)*\n\n**Profit lags revenue and peaks earlier** — negative in Introduction, and already falling in Maturity while revenue is still at its peak.\n\n*Implication: start the **next** product during **Maturity**, while the current one still funds it. Shortening **T2M** shifts the whole curve left.*"
+    },
+    {
+      "id": "erp-u1-c33",
+      "topic": "market-players-trends",
+      "front": "ERP **market structure** and the top players",
+      "back": "**\"Stratification of products — SAP, Oracle & the rest.\"**\n\n**SAP and Oracle** are the Tier-1 leaders; then **Microsoft (Dynamics)**, **Infor**, IFS, Epicor, Sage Intacct, Acumatica, Odoo, Unit4, QAD.\n\n*The top concentrates while the bottom opens to SMEs — **the middle (niche players) gets squeezed**.*"
+    },
+    {
+      "id": "erp-u1-c34",
+      "topic": "types-of-erp-projects",
+      "front": "The **six types of ERP project**",
+      "back": "Sorted by *what already exists*:\n- **Nothing** → **First-time implementation**\n- **Same ERP, old** → **Upgrade** *(obsolescence / new functionality)*\n- **Same ERP, only here** → **Global roll-out** *(global template + country enhancements)*\n- **A different ERP** → **Migration** *(unhappy, or no longer supported)*\n- **Too many ERPs** → **Harmonization / Consolidation**\n- **It works** → **Support / Sustain**"
+    },
+    {
+      "id": "erp-u1-c35",
+      "topic": "golive-support",
+      "front": "**Go Live** — the key controls",
+      "back": "**Ten final checks**, ending with **Go / No-Go** *(everything before it is evidence; the switchover can still be refused)*.\n\n**At cut-over:** switch over · **execute parallel runs of the old system for a defined period** · Help Desk & hand-holding · **typically done in phases/batches** · fine-tune configuration.\n\n*Parallel run = insurance: it's how you **detect** a wrong number and how the business survives a failure.*"
+    },
+    {
+      "id": "erp-u1-c36",
+      "topic": "life-cycle-overview",
+      "front": "**Pre-Implementation vs Project Preparation** — the boundary",
+      "back": "**Pre-Implementation** happens **before commitment** — ends with package & partner selected, **budget approved, contracts signed**. The org could still say no.\n\n**Project Preparation** happens **after commitment** — detailed plan, **project charter**, methodology, solution architecture, hardware sizing.\n\n***Phase 1 chooses whether and with whom; Phase 2 chooses how.***"
+    }
+  ]
+}

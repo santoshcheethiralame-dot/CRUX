@@ -152,6 +152,41 @@ export const SUBJECTS: SubjectMeta[] = [
       },
     ],
   },
+  {
+    id: 'erp',
+    name: 'Enterprise Resource Planning',
+    code: 'UE24CS343AB8',
+    color: '#a78bfa',
+    icon: 'ERP',
+    description:
+      'How large organisations run on one integrated system: what ERP is and why it replaced departmental silos, the implementation life cycle and its methodologies, deployment strategies and risks, and the costs, benefits and ROI that justify the investment.',
+    units: [
+      {
+        unit: 1,
+        title: 'ERP Overview, Implementation Life Cycle & Business Case',
+        subtitle:
+          'what ERP is (E-R-P, EBS) · why organisations need it · the four drivers (EPIC) · business processes P2P/O2C/F2S/T2M/H2R/F2F · evolution MRP → MRP II → ERP → ERP II · extended ERP (SPACES) · benefits & misconceptions · implementation types · market players & trends · the six life-cycle phases · ASAP & Ascendant · deployment strategies · challenges & risks · costs, benefits & ROI · Nestlé and Agilent case studies',
+      },
+      {
+        unit: 2,
+        title: 'Change Management & Business Process Re-engineering',
+        subtitle:
+          'managing organisational change · business process re-engineering · as-is and to-be modelling · (material not yet supplied)',
+      },
+      {
+        unit: 3,
+        title: 'Project Team, Package & Partner Selection',
+        subtitle:
+          'project team and management · package selection criteria · consulting partner selection · (material not yet supplied)',
+      },
+      {
+        unit: 4,
+        title: 'Success, Failure & ERP in Industry',
+        subtitle:
+          'critical success factors · reasons for failure · ERP implementations across industries · articles and case studies · (material not yet supplied)',
+      },
+    ],
+  },
   // ── Add the remaining subjects here as their material arrives ──
   // { id: 'xxx', name: '...', code: '...', color: '#...', icon: '...', units: [...] },
 ]
