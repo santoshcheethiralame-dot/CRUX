@@ -169,9 +169,9 @@ export const SUBJECTS: SubjectMeta[] = [
       },
       {
         unit: 2,
-        title: 'Change Management & Business Process Re-engineering',
+        title: 'Change Management, BPR & Business Process Modelling',
         subtitle:
-          'managing organisational change · business process re-engineering · as-is and to-be modelling · (material not yet supplied)',
+          'organizational change & human inertia · why people resist · strategies, communication & training · organizational design & the change team · change activities per phase · ASAP’s six change processes · business processes & Hammer’s definition · need, pros, cons & keys to success · reasons BPR fails · BPR phases & the six team roles · process selection, diagnosis & NVA · redesign principles & the case manager · prototyping, BPR vs TQM · business engineering, benchmarking & best practices · BPM definition, need & rules · AS-IS/TO-BE & the SPAS hierarchy · standards (APQC, SCOR, BPMN, EPC, UML) · modelling software & business modelling',
       },
       {
         unit: 3,

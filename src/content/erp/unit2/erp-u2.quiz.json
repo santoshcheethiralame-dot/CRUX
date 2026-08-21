@@ -1,0 +1,432 @@
+{
+  "subject": "erp",
+  "unit": 2,
+  "title": "Unit 2 — Practice Quiz",
+  "items": [
+    {
+      "id": "erp-u2-q01",
+      "topic": "organizational-change",
+      "q": "In the Gartner survey of 186 ERP implementations, what proportion of **failed** projects did not use performance metrics?",
+      "options": ["25%", "27%", "51%", "70%"],
+      "answer": 3,
+      "explain": "**70% of failed projects did not use performance metrics**, and a separate **27% did not measure at all**. Do not confuse these with the **<25% that deliver hard monetary benefits**. The measurement finding is why *\"results to be measurable\"* is a BPR key to success.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q02",
+      "topic": "organizational-change",
+      "q": "An organization is described in the deck as an integration of which three things?",
+      "options": [
+        "People, Process & Technology",
+        "Plan, Process & Performance",
+        "People, Product & Profit",
+        "Policy, Process & Platform"
+      ],
+      "answer": 0,
+      "explain": "**People, Process & Technology** — the classic triangle, with the goal of aligning all three being to **realize benefits**. Change one corner and you are obliged to change the other two, which is why an ERP rollout cannot be a purely technical project.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "erp-u2-q03",
+      "topic": "why-people-resist",
+      "q": "Which question is listed **first** in both the deck and the QnA as a reason people resist change?",
+      "options": [
+        "Will my job remain?",
+        "Can I cope with new technologies?",
+        "What's in it for me?",
+        "What will be my new role?"
+      ],
+      "answer": 2,
+      "explain": "**\"What's in it for me?\" (WIIFM).** It is worth noting the question is *reasonable*: the twelve ERP benefits accrue to the **organization**, while the individual clerk gets more fields to fill in. The resistance reflects a genuine asymmetry, which is why the remedy is **incentives and new roles**, not persuasion.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "erp-u2-q04",
+      "topic": "strategies-to-handle-change",
+      "q": "In the two-level strategy for handling change, what is named as the **key** for the second level (getting motivated and committed)?",
+      "options": ["Communication", "Training", "Organizational design", "Help desk"],
+      "answer": 2,
+      "explain": "**Organizational design** is the key to Level 2; **communication** is the key to Level 1. The levels are a ladder — Level 1 removes fear, Level 2 builds commitment — and **you cannot skip to Level 2, because a frightened employee cannot be motivated**.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q05",
+      "topic": "organizational-design-change-team",
+      "q": "Which is stated as the **basic objective of Organizational Design**?",
+      "options": [
+        "To reduce headcount in line with the new process",
+        "The architecture of the organization needs to be aligned with the new process and technology",
+        "To flatten the reporting hierarchy",
+        "To define job descriptions for every role"
+      ],
+      "answer": 1,
+      "explain": "**\"The architecture of the organization needs to be aligned with the new process and technology.\"** The word *architecture* is deliberate — you cannot install a new process into an incompatible structure any more than you can add a floor to a building not designed to carry it.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q06",
+      "topic": "organizational-design-change-team",
+      "q": "The Core Change Team is drawn primarily from which function?",
+      "options": [
+        "IT and technical architecture",
+        "HR, OD professionals and/or the consulting team",
+        "Finance and the PMO",
+        "Line management at each site"
+      ],
+      "answer": 1,
+      "explain": "**HR, OD professionals and/or consulting team** — dedicated resources, ideally a **mix of long and short-term employees**. Note the **Extended** Change Team is the one drawn part-time from **line management**. Both are *generally not part of the primary implementation team*.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q07",
+      "topic": "change-across-phases",
+      "q": "When do change management actions happen in an ERP project?",
+      "options": ["At the beginning", "At the end", "Somewhere in between", "All throughout"],
+      "answer": 3,
+      "explain": "**All throughout.** The deck poses this as an explicit question. Change management is a **workstream, not a phase** — the same structure as Ascendant's **Organization** workstream running across all seven phases.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "erp-u2-q08",
+      "topic": "change-across-phases",
+      "q": "Which phase does the deck call **critical from a change management perspective**?",
+      "options": ["Project Preparation", "Business Blueprinting", "Realization", "Go Live"],
+      "answer": 3,
+      "explain": "**Go Live** — *\"some people may literally **feel helpless** if applications they are used to is withdrawn.\"* A competent, fluent employee becomes a beginner overnight, which is why *\"address the impact of withdrawal of legacy systems\"* is a listed activity and why the **parallel run** is a change-management instrument as much as a technical safeguard.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q09",
+      "topic": "asap-six-processes",
+      "q": "In ASAP's six change management processes, which one is described as **spanning across the other five**?",
+      "options": ["Assessment", "Sponsorship", "Communications", "Knowledge transfer"],
+      "answer": 2,
+      "explain": "**Communications** — *\"communication spans across the other 5, but has its own focus as well.\"* Every other process produces something that must be communicated, yet the strategy, framework and channels are work in their own right, which is why a **point person** is assigned to it.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q10",
+      "topic": "asap-six-processes",
+      "q": "ASAP defines **Assessment** as which of the following?",
+      "options": [
+        "Uncovering and prioritizing risks",
+        "Gaining and demonstrating leadership support",
+        "Capturing and sharing lessons learned",
+        "Aligning jobs and processes with the new business environment"
+      ],
+      "answer": 0,
+      "explain": "**Uncovering and prioritizing risks** — and specifically *\"identify and prioritize handling of **perception**.\"* It is risk assessment applied to **people**, running the same identify → analyse → prioritize shape as Unit 1's risk management. The other three options are Sponsorship, Knowledge Transfer and Organizational Optimization respectively.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q11",
+      "topic": "bpr-defined",
+      "q": "Hammer's definition of reengineering names four measures of performance. Which set is correct?",
+      "options": [
+        "Cost, quality, service, and speed",
+        "Cost, time, risk, and scope",
+        "Quality, productivity, morale, and profit",
+        "Speed, accuracy, compliance, and cost"
+      ],
+      "answer": 0,
+      "explain": "**Cost, quality, service, and speed.** The full definition: *\"a **fundamental rethinking** and **radical redesign** of business processes to achieve **dramatic improvements** in critical, contemporary measures of performance — such as cost, quality, service, and speed.\"*",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q12",
+      "topic": "bpr-defined",
+      "q": "Which of the four business process principles is the one that makes BPR possible?",
+      "options": [
+        "It has a number of steps",
+        "Each step has specific input and output",
+        "Each step can be run by a separate organizational entity",
+        "Each step should add value to the whole process"
+      ],
+      "answer": 3,
+      "explain": "**\"Each step should add value to the whole process.\"** It is a **test you can apply** — a step that adds no value is a candidate for elimination — and it generates the whole **Value Added / Non-Value Added / Waste** classification in the diagnosis phase.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "erp-u2-q13",
+      "topic": "need-for-bpr",
+      "q": "According to the deck, which kind of organization is a **potential candidate for BPR**?",
+      "options": [
+        "One that has recently restructured",
+        "One that has been running stable for a while without much organizational change",
+        "One that is losing money",
+        "One that has just implemented an ERP"
+      ],
+      "answer": 1,
+      "explain": "**\"Any organization which has been running stable for a while without much organizational changes is a potential candidate for BPR.\"** Counter-intuitive but logical: four of the five forces driving BPR are **external**, so a process decays as the world moves even when nobody does anything wrong. **Stability is the warning sign.**",
+      "difficulty": "hard"
+    },
+    {
+      "id": "erp-u2-q14",
+      "topic": "need-for-bpr",
+      "q": "What does the deck identify as the fatal flaw in 1990s **downsizing**?",
+      "options": [
+        "It was too expensive to implement",
+        "It required IT that did not yet exist",
+        "The value of resources, especially human, was under-estimated",
+        "It was applied only to manufacturing companies"
+      ],
+      "answer": 2,
+      "explain": "**\"Value of resources, especially Human, was under-estimated, and the indirect impact on company image and credibility.\"** Downsizing correctly diagnosed **accumulated non-value-adding activity** but applied the wrong instrument — it removed **people** when the problem was **process**. That gap is what BPR filled.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "erp-u2-q15",
+      "topic": "bpr-pros-cons-success",
+      "q": "Within what timeframe do the BPR keys to success say you should **show early success**?",
+      "options": ["Within one month", "Within three to six months", "Within one year", "By the first go-live"],
+      "answer": 1,
+      "explain": "**Within the first three to six months.** This is a hard constraint, not a morale exercise — BPR's own con is that it *\"can take long time\"*, and an initiative showing nothing for two years **loses its sponsor**, which triggers failure reason 8. It is why *\"potential for quick results\"* is a process-selection factor.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q16",
+      "topic": "why-bpr-fails",
+      "q": "\"Too much AS IS analysis (paralysis)\" is a reason BPR fails. What is the correct depth for AS-IS modelling?",
+      "options": [
+        "Fully detailed, since it is the baseline for measurement",
+        "High level only — why the process exists, what it does, its high-level objective",
+        "As detailed as the TO-BE model",
+        "It should be skipped entirely"
+      ],
+      "answer": 1,
+      "explain": "**High level only** — *\"no need of much detailed analysis as anyway the process will not be used in future.\"* The rule is **AS-IS shallow, TO-BE deep**. But *shallow on detail* does not mean careless: the **rules and assumptions** must still be documented, because they are what diagnosis interrogates.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q17",
+      "topic": "why-bpr-fails",
+      "q": "Which proverb does the deck use to warn against automating an unchanged process?",
+      "options": [
+        "Garbage in, garbage out",
+        "Old process + new technology = costly old process",
+        "One can take the horse to the water",
+        "Comparing apples to oranges"
+      ],
+      "answer": 1,
+      "explain": "**\"Old process + new technology = costly old process.\"** Automating an unchanged bad process makes it **faster and more expensive**, not better — which is failure reason 5, *little change in process, not redesign*. (The other three quotes are all from this course too, but address data quality, motivation and benchmarking respectively.)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q18",
+      "topic": "bpr-phases-team",
+      "q": "Which BPR team role is described as the **\"conscience keeper of the leader\"**?",
+      "options": ["Process Owner", "Reengineering Coordinator", "Change Coordinator", "Steering Committee"],
+      "answer": 2,
+      "explain": "**The Change Coordinator.** The Leader drives toward *radical* and *dramatic* outcomes and is therefore most likely to push past what the organisation can absorb; the Change Coordinator **tests and reports periodically the reactions of the rest of the folks**. Note the **Reengineering** Coordinator handles the *\"hard\"* part — the two coordinators split the technical and human sides.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q19",
+      "topic": "bpr-phases-team",
+      "q": "Which duty belongs to the **Process Owner** rather than the Leader?",
+      "options": [
+        "Identifies the key business processes of the organization",
+        "Establishes measures of performance and rewards",
+        "Supports and protects radically new ideas",
+        "Articulates and communicates the need to reengineer"
+      ],
+      "answer": 2,
+      "explain": "**\"Supports and protects radically new ideas\"** is the Process Owner's. A radical proposal is fragile and needs shielding long enough to be evaluated, or the organisation regresses to tinkering. The other three are the **Leader's** duties — and note the Leader is described as **the Project Manager**.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "erp-u2-q20",
+      "topic": "selection-diagnosis",
+      "q": "Which is **not** one of the three decision factors for selecting a process to reengineer?",
+      "options": [
+        "Based on benchmarking",
+        "Unsatisfactory / troubled processes",
+        "Potential for quick results",
+        "Lowest implementation cost"
+      ],
+      "answer": 3,
+      "explain": "**Lowest implementation cost** is not a stated factor. The three are **benchmarking** (an external yardstick), **unsatisfactory/troubled** (internal), and **potential for quick results** (political — it operationalises the *show early success in 3–6 months* key).",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q21",
+      "topic": "selection-diagnosis",
+      "q": "The deck cautions that non-value-adding activities should not simply be deleted. Why?",
+      "options": [
+        "They are required by the ERP package",
+        "They may have some value, such as management information, which must be retained or transferred",
+        "Removing them requires steering committee approval",
+        "They are the only steps the customer sees"
+      ],
+      "answer": 1,
+      "explain": "*\"Even though most of these do not add value, they **may have some value such as management information**. One needs to separate this and **retain / transfer this in some other step**.\"* An inspection may be the only place a quality metric is captured; a reconciliation may be statutory. **Non-value-adding is not the same as useless.**",
+      "difficulty": "hard"
+    },
+    {
+      "id": "erp-u2-q22",
+      "topic": "redesign-principles",
+      "q": "In the Case Manager example, how many departments does the single case manager replace?",
+      "options": ["Two", "Three", "Four", "Six"],
+      "answer": 2,
+      "explain": "**Four** — *Financing, Credit checking, Approval, Issuance* collapse into one **Case manager**. With them go **three hand-offs**, their queues, and the reconciliation between four departments' records. It is only possible because **IT** gives one person the information those four used to hold.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q23",
+      "topic": "redesign-principles",
+      "q": "Why must the six levers of process redesign be moved in stages rather than all at once?",
+      "options": [
+        "Because the steering committee approves them one at a time",
+        "Because they are interdependent, so the system must stabilize between shifts",
+        "Because the ERP can only be configured incrementally",
+        "Because each lever belongs to a different department"
+      ],
+      "answer": 1,
+      "explain": "**They are interdependent.** *\"Set the levers in 1-2-2 state, stabilize the system; shift to higher levels 3-4-4… stabilize there.\"* Multi-skilling needs training; a flattened hierarchy needs the new roles to exist; process-level measurement needs the process to be running. Same staged logic as the **Rollout** deployment strategy.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "erp-u2-q24",
+      "topic": "prototyping-bpr-vs-tqm",
+      "q": "In the BPR vs TQM comparison, what is TQM's **starting point**?",
+      "options": ["Clean slate", "The existing process", "A benchmark company's process", "The ERP best practice"],
+      "answer": 1,
+      "explain": "**The existing process** — whereas BPR starts from a **clean slate**. This row follows directly from *fundamental rethinking*: a change that starts from the existing process cannot be a fundamental rethink. Remember the graph: **TQM is a slope, BPR is a step**, and every row of the table follows from that shape.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q25",
+      "topic": "prototyping-bpr-vs-tqm",
+      "q": "What is named as BPR's **primary enabler** in the comparison with TQM?",
+      "options": ["Statistical control", "Information Technology", "Top management support", "Benchmarking"],
+      "answer": 1,
+      "explain": "**Information Technology** — TQM's primary enabler is **statistical control**. This is why *BE = BPR + IT*, and why IT is called *disruptive*: it removes the constraints (information locked in one place, expertise locked in one person) that shaped the old processes.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q26",
+      "topic": "business-engineering-benchmarking",
+      "q": "What is the stated risk of doing a **full-blown BPR before** ERP implementation that most directly creates gaps?",
+      "options": [
+        "It takes a long time and cost",
+        "There is no guarantee the best-designed processes will be supported by the ERP solution",
+        "Business dynamics may change over three to four years",
+        "Change management becomes difficult"
+      ],
+      "answer": 1,
+      "explain": "**No guarantee the ERP will support the designed processes.** Every difference then becomes a **gap** that must be closed by **customization** — the central risk of Realization. Full-blown BPR before ERP manufactures exactly the problem gap analysis is meant to minimise. The other three are real risks too, but this is the one that produces gaps.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "erp-u2-q27",
+      "topic": "business-engineering-benchmarking",
+      "q": "Which company is paired with **Vendor Managed Inventory (VMI)** in the benchmarking exemplars?",
+      "options": ["Toyota", "Motorola", "Wal-Mart", "Hewlett Packard"],
+      "answer": 2,
+      "explain": "**Wal-Mart — VMI.** The set to memorise: **Toyota — Just-in-Time (JIT)**, **Motorola — Six Sigma**, **Wal-Mart — VMI**. Toyota's **Kanban/JIT** and Wal-Mart's **VMI** are also named as best practices that arrived inside ERP packages *from leading corporations*.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "erp-u2-q28",
+      "topic": "bpm-definition-need",
+      "q": "Which thumb rule of process modelling most directly prevents reproducing the existing hand-offs?",
+      "options": [
+        "Each process should have specific inputs and outputs",
+        "Focus on goals more than means",
+        "Assume no organizational structure or boundaries",
+        "Processes should relate to customers and their needs"
+      ],
+      "answer": 2,
+      "explain": "**\"Assume no organizational structure or boundaries\"** (with *\"think outside all constraints\"*). If you draw the To-Be process **as departments currently exist**, you reproduce the current hand-offs, because the boundaries generate them. **The org chart must not be an input to the process design.**",
+      "difficulty": "hard"
+    },
+    {
+      "id": "erp-u2-q29",
+      "topic": "asis-tobe-hierarchy",
+      "q": "Place these in the correct order of the business process hierarchy, from Level 1 to Level 4.",
+      "options": [
+        "Process → Scenario → Step → Activity",
+        "Scenario → Process → Activity → Step",
+        "Activity → Step → Process → Scenario",
+        "Scenario → Activity → Process → Step"
+      ],
+      "answer": 1,
+      "explain": "**Scenario → Process → Activity → Step (SPAS).** The deck's worked example: **Supply Chain Management → Order Management → Delivery Scheduling → Calculation of Delivery Date.** The hierarchy exists because *\"business processes can be many\"* — 40 to 100 even in a medium-sized company.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "erp-u2-q30",
+      "topic": "bpm-standards",
+      "q": "SCOR is based on five distinct management processes. Which is the correct set?",
+      "options": [
+        "Plan, Source, Make, Deliver, Return",
+        "Plan, Buy, Build, Ship, Bill",
+        "Source, Make, Store, Deliver, Support",
+        "Forecast, Procure, Produce, Distribute, Service"
+      ],
+      "answer": 0,
+      "explain": "**Plan · Source · Make · Deliver · Return.** *Source → Make → Deliver* is the physical flow, **Return** is the reverse flow, and **Plan** sits *above* the other four. The four operational processes **repeat at every link** of the chain, from **suppliers' supplier to customer's customer**.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q31",
+      "topic": "bpm-standards",
+      "q": "BPMN maps to which execution language?",
+      "options": ["UML", "BPEL", "EPC", "SCOR"],
+      "answer": 1,
+      "explain": "**BPEL — Business Process Execution Language.** This is the most consequential fact about BPMN: a diagram is not only a picture but can be **mapped to constructs of an execution language and run**, which closes the gap between *business process design* and *implementation* — and means the model cannot go stale.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q32",
+      "topic": "bpm-standards",
+      "q": "Which organization has maintained **BPMN** since 2005?",
+      "options": [
+        "Object Management Group (OMG)",
+        "IDS Scheer",
+        "American Productivity and Quality Council",
+        "Rational Software"
+      ],
+      "answer": 0,
+      "explain": "**OMG** — BPMN was developed by **BPMI**, which merged with OMG in **2005**. Keep the three straight: **EPC → IDS Scheer → ARIS → SAP**; **BPMN → BPMI, then OMG → BPEL**; **UML → Rational Software → RUP** (and UML is for *software object modelling*, not business processes).",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q33",
+      "topic": "modelling-software-business-modelling",
+      "q": "Roughly how many processes does the deck say even a **medium sized** company has?",
+      "options": ["10–20", "40–100", "200–500", "1000+"],
+      "answer": 1,
+      "explain": "**40–100.** This is the number that justifies both **tools** (*\"designing the processes is both tedious and error prone\"*) and the **SPAS hierarchy** (*\"business processes can be many, hence…\"*). Flat, that many processes cannot be navigated or kept consistent.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "erp-u2-q34",
+      "topic": "modelling-software-business-modelling",
+      "q": "What distinguishes a specialist tool such as ARIS from Visio for process modelling?",
+      "options": [
+        "ARIS produces higher-resolution diagrams",
+        "ARIS has basic business-process knowledge, while Visio's semantic support is very limited",
+        "Visio cannot draw decision boxes",
+        "ARIS is the only tool that can export to an ERP"
+      ],
+      "answer": 1,
+      "explain": "*\"Even the simple tool Visio can be used to create business process models, **but the semantic support is very limited** — it is used only from a diagramming point. But the niche products such as **ARIS have basic BP knowledge**.\"* Visio draws boxes; ARIS understands that a box is a *process* and can therefore **validate** the model.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "erp-u2-q35",
+      "topic": "modelling-software-business-modelling",
+      "q": "What does a **Business Model** show that a Business Process Model does not?",
+      "options": [
+        "The steps and data flows of a process",
+        "Which organizational entity runs each step",
+        "The future application landscape, including where legacy applications will remain",
+        "The value-added and non-value-added classification"
+      ],
+      "answer": 2,
+      "explain": "**The future application landscape** — *which processes ERP will take care of, **where legacy applications will remain**, and how data will flow between ERP modules and those legacy applications.* BPM models **one process**; BM models **the whole enterprise as one large system**, and it is the only artefact that shows the **boundary of the ERP**.",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "subject": "erp",
+  "unit": 2,
+  "title": "Unit 2 — Core Recall & Mnemonics",
+  "cards": [
+    {
+      "id": "erp-u2-c01",
+      "topic": "asap-six-processes",
+      "front": "**ASAP's six change management processes** (mnemonic?)",
+      "back": "**A SOCKS**\n**A** — **Assessment** *(uncovering and prioritizing risks)*\n**S** — **Sponsorship** *(gaining & demonstrating leadership support)*\n**O** — **Organizational optimization** *(aligning jobs and processes with the new environment)*\n**C** — **Communications** *(designing and delivering key messages)*\n**K** — **Knowledge transfer** *(capturing and sharing lessons learned)*\n**S** — **Skills development** *(org change management training)*\n\n*Communications **spans the other five** but has its own focus as well.*"
+    },
+    {
+      "id": "erp-u2-c02",
+      "topic": "bpr-defined",
+      "front": "**Hammer's definition of reengineering** + the three concepts",
+      "back": "> *\"A **fundamental rethinking** and **radical redesign** of business processes to achieve **dramatic improvements** in critical, contemporary measures of performance — such as **cost, quality, service, and speed**.\"*\n\n**Mnemonic: BPR is FRD**\n**F**undamental rethinking → how you *think*\n**R**adical redesign → what you *design*\n**D**ramatic improvements → what you *achieve*"
+    },
+    {
+      "id": "erp-u2-c03",
+      "topic": "bpr-phases-team",
+      "front": "**The six BPR phases** (mnemonic?)",
+      "back": "**\"Select The Doctor, Redesign, Prototype, Implement\"**\n1. **S**election of process to be redesigned\n2. **T**eam — have the reengineering team in place\n3. **D**iagnosis — process diagnosis\n4. **R**edesign — process redesign\n5. **P**rototyping\n6. **I**mplementation — full scale\n\n*Diagnosis **before** redesign is non-negotiable — prescribing before diagnosing is failure reason 5.*"
+    },
+    {
+      "id": "erp-u2-c04",
+      "topic": "asis-tobe-hierarchy",
+      "front": "**The four-level process hierarchy** (mnemonic?)",
+      "back": "**SPAS**\n**S**cenario (L1) → **P**rocess (L2) → **A**ctivity (L3) → **S**tep (L4)\n\n**Worked example:**\nSupply Chain Management → Order Management → Delivery Scheduling → Calculation of Delivery Date\n\n*Needed because a medium-sized company has **40–100 processes**.*"
+    },
+    {
+      "id": "erp-u2-c05",
+      "topic": "bpm-standards",
+      "front": "**SCOR's five management processes**",
+      "back": "$$\\textbf{Plan} \\cdot \\textbf{Source} \\cdot \\textbf{Make} \\cdot \\textbf{Deliver} \\cdot \\textbf{Return}$$\n\n**Source → Make → Deliver** is the physical flow; **Return** is the reverse flow; **Plan** sits *above* all four.\n\nSpans **Suppliers' Supplier → Supplier → Your Company → Customer → Customer's Customer**, with the four operational processes **repeating at every link**."
+    },
+    {
+      "id": "erp-u2-c06",
+      "topic": "asis-tobe-hierarchy",
+      "front": "**AS-IS vs TO-BE modelling** — how much detail?",
+      "back": "**AS-IS shallow, TO-BE deep.**\n\n**AS-IS** — *\"no need of much detailed analysis as anyway the process will not be used in future.\"* High level only: **why the process exists · what it does · its high-level objective**.\n\n**TO-BE** — *\"needs to be detailed so that every step is clear to users\"*: **all input–output relationships, data flows, organization roles**.\n\n*Getting this backwards is BPR failure reason 1 — **As-Is analysis paralysis**.*"
+    },
+    {
+      "id": "erp-u2-c07",
+      "topic": "why-bpr-fails",
+      "front": "**The eight reasons BPR fails** (grouping?)",
+      "back": "**Analysis · People · Execution (A-P-E)**\n\n**Analysis:** too much AS-IS analysis (paralysis) · poor scoping\n**People:** ignore people concerns · not putting best people in project · no top management support\n**Execution:** little change — not redesign · copying another BPR design blindly · large scale implementation without prototyping\n\n*The **people** family is the largest.*"
+    },
+    {
+      "id": "erp-u2-c08",
+      "topic": "prototyping-bpr-vs-tqm",
+      "front": "**BPR vs TQM** — the nine parameters",
+      "back": "| Parameter | TQM | BPR |\n|---|---|---|\n| Level of change | **Incremental** | **Radical** |\n| Starting point | **Existing process** | **Clean slate** |\n| Frequency | **Continuous** | **One-time** |\n| Time required | Short term | Long term |\n| Participation | **Bottom up** | **Top down** |\n| Typical scope | Narrow | Broad |\n| Risk | Moderate | **High** |\n| Primary enabler | **Statistical control** | **IT** |\n| Type of change | Cultural | **Cultural / Structural** |\n\n*Graph: TQM is a **slope**, BPR is a **step**. Every row follows from that shape.*"
+    },
+    {
+      "id": "erp-u2-c09",
+      "topic": "why-people-resist",
+      "front": "**Why do people resist change?** (grouping?)",
+      "back": "**Three fears — Job, System, Payoff (J-S-P):**\n\n**Fear for the job** — *What will be my new role? Will my job remain? Do I go back to my old place?*\n**Fear of the system** — *Will I be able to operate it? Can I cope with new technology?*\n**Doubt about the payoff** — ***What's in it for me?*** *Will my new skill be valued later?*\n\n*Lead with **WIIFM** — and note the resistance is **rational**: the org gets the benefits, the individual gets more work.*"
+    },
+    {
+      "id": "erp-u2-c10",
+      "topic": "strategies-to-handle-change",
+      "front": "**The two-level strategy to handle change**",
+      "back": "**Level 1 — Handle fear and uncertainty** *(key: **communication**)*\n**Communicate · Training · Power users and ERP champions · Round-the-clock help desk · Leadership support**\n\n**Level 2 — Getting motivated and committed** *(key: **organizational design**)*\n**Involve employees in decisions · design incentive schemes and performance measures · design new and more interesting roles**\n\n*You cannot skip to Level 2 — **a frightened employee cannot be motivated**.*"
+    },
+    {
+      "id": "erp-u2-c11",
+      "topic": "selection-diagnosis",
+      "front": "**The seven Non-Value-Adding (NVA) activities**",
+      "back": "**Four kinds of waste:**\n**Logistics** — **Storing** items · **Moving** material\n**Control** — **Checks & controls** · **Inspection**\n**Failure** — **Reworking** · **Reconciliation**\n**Urgency** — **Expediting**\n\n*Caution: NVA ≠ useless. Some have value such as **management information** — **retain or transfer** that into another step rather than deleting.*"
+    },
+    {
+      "id": "erp-u2-c12",
+      "topic": "redesign-principles",
+      "front": "**The Case Manager** concept",
+      "back": "**Case Manager is a Single Point Of Contact (SPOC) for a process.**\n\n**Before:** Credit request → Financing → Credit checking → Approval → Issuance → Credit decision\n**After:** Credit request → **Case manager** → Credit decision\n\nFour departments become one role — **three hand-offs, their queues and their reconciliations all vanish.**\n\n*Only possible because **IT** gives one person the information four departments used to hold.*"
+    },
+    {
+      "id": "erp-u2-c13",
+      "topic": "business-engineering-benchmarking",
+      "front": "**Business Engineering** — the equation",
+      "back": "$$\\textbf{BE} = \\textbf{BPR} + \\textbf{IT}$$\n\n**IT changes the rules of business — disruptive:**\n- Data available **anywhere to anybody** with control\n- Software enables **even a non-expert to do an expert job**\n- **Decision support tools for everybody**\n- **Plans get revised instantaneously**\n\n*Caveat: **\"BPR is possible without IT also!\"** — the equation is a scoping statement for this course.*"
+    },
+    {
+      "id": "erp-u2-c14",
+      "topic": "business-engineering-benchmarking",
+      "front": "**BPR + ERP** — why the middle path?",
+      "back": "**Risks of full-blown BPR before ERP:**\n- takes long time and cost\n- **no guarantee the best-designed processes will be supported by the ERP**\n- may take 3–4 years, by which time business dynamics change\n\n**The middle path:** follow the **best practice processes that come with the ERP**, and do a **limited BPR** where it gives **competitive advantage**.\n\n**Rule: standardise where you don't compete; differentiate where you do.**\n\n*Proverb: **\"Old process + new technology = costly old process.\"***"
+    },
+    {
+      "id": "erp-u2-c15",
+      "topic": "organizational-change",
+      "front": "**The Gartner ERP survey figures**",
+      "back": "From **186 ERP implementations** surveyed by the **Gartner Group**:\n- **< 25% deliver hard monetary benefits**\n- **70% of failed projects did not use performance metrics**\n- **27% did not measure** at all\n\n*Organizational change is difficult because of **\"human\" elements**, mostly — the deck's name for it is **\"Human Inertia.\"***"
+    },
+    {
+      "id": "erp-u2-c16",
+      "topic": "organizational-design-change-team",
+      "front": "**Core vs Extended Change Team**",
+      "back": "**Core Change Team** — **implements** organizational change management steps; reports to **Project Sponsor and Manager**; **dedicated** resources from **HR, OD professionals and/or consulting**; ideally a **mix of long and short-term employees**.\n\n**Extended Change Team** — **introduces and conducts risk assessments, communicates, implements action plans**; **part-time** members from **line management or consulting**.\n\n**Change Team Lead** — must **know the organization well and be well-respected**; becomes the **symbolic face** of the programme.\n\n*Both teams are generally **not part of the primary implementation team**.*"
+    },
+    {
+      "id": "erp-u2-c17",
+      "topic": "bpr-phases-team",
+      "front": "**The six BPR team roles**",
+      "back": "**2 leaders, 2 doers, 2 coordinators:**\n\n**Leaders** — **Leader** *(= the Project Manager; identifies key processes, appoints process owners, establishes measures and rewards)* · **Steering Committee** *(settles inter-process disputes, priority, resources)*\n\n**Doers** — **Process Owner** *(SME; appoints the team, **supports and protects radically new ideas**, manages the process afterwards)* · **Reengineering Team** *(redesigns, **sells the design to the people**, continues to implementation)*\n\n**Coordinators** — **Reengineering Coordinator** *(the \"hard\" part)* · **Change Coordinator** *(**\"conscience keeper of the leader\"**)*"
+    },
+    {
+      "id": "erp-u2-c18",
+      "topic": "bpm-definition-need",
+      "front": "**Business Process Modelling** — definition",
+      "back": "> *\"A process model is a **visual representation** of different activities and steps of the process, **data flows** of inputs and outputs for different steps of the process.\"*\n\nIt can also show **which organizational entity runs the process**. It is a **design representation** of a business process.\n\n**Also known as:** Process Modelling · Process Mapping\n\n*Key benefit: **bridges the gap between IT people and business users who generally do not speak the same language.***"
+    },
+    {
+      "id": "erp-u2-c19",
+      "topic": "bpm-standards",
+      "front": "**BPMN, EPC, UML** — who owns what?",
+      "back": "**EPC** (Event Driven Process Chains) → **IDS Scheer** → **ARIS** framework → originally to illustrate **SAP** processes\n\n**BPMN** (Business Process Model and Notation) → developed by **BPMI**, maintained by **OMG** since the **2005** merger → maps to **BPEL** (Business Process Execution Language)\n\n**UML** → **Rational Software** (three OO methodologists) → **Rational Unified Process**; for **software object modelling**, not business processes"
+    },
+    {
+      "id": "erp-u2-c20",
+      "topic": "bpm-standards",
+      "front": "**The five dimensions of a process model**",
+      "back": "**G-R-I-O-A**, in maturity order:\n**G**raphical — the pictorial representation\n**R**esource — define all resources so they can be associated\n**I**nformation — a view of data and how it is used\n**O**rganization — definition and structure of organization units\n**A**nalysis — key process metrics and attributes defined and analyzed\n\n*Graphics (what happens) → Resources (what it needs) → Information (what data flows) → Organization (who does it) → Analysis (how well it performs).*"
+    },
+    {
+      "id": "erp-u2-c21",
+      "topic": "modelling-software-business-modelling",
+      "front": "**Business Modelling (BM)** vs **BPM**",
+      "back": "**BPM models one process**; **BM models the whole enterprise as one large system.**\n\n**BM definition:** *\"a visual representation of an enterprise's business as **one large system** showing different **subsystems**, what processes they support, the **interconnection** between them, and how **data flows** between them.\"*\n\n**BM's distinctive contribution:** it shows the **future application landscape** — *which processes ERP takes, **where legacy applications will remain**, and how data flows between them.*"
+    },
+    {
+      "id": "erp-u2-c22",
+      "topic": "change-across-phases",
+      "front": "**Change management across the ERP phases**",
+      "back": "**Set up → Communicate → Sustain → Close**\n\n**Project Preparation** — change management plan · identify **change sponsors for all locations** · assign core team roles · create extended team\n**Business Blueprinting** — **change communication framework** · conduct change management training\n**Realization** — **sustain** sponsorship & communications · team building · knowledge transfer\n**Go Live & Closing** — resolve open issues · **address impact of withdrawal of legacy systems** · lessons learned · **disband and recognize**\n\n*Answer to \"when?\" — **all throughout**.*"
+    },
+    {
+      "id": "erp-u2-c23",
+      "topic": "redesign-principles",
+      "front": "**The six levers of process redesign**",
+      "back": "1. **Roles and responsibilities** — change or new emerge\n2. **Measurements and incentives** — **at process level rather than individual functional**\n3. **Information Technology**\n4. **Organizational structure** — **flattened hierarchy**\n5. **Skills** — **multi-skilling**\n\n*They are **interdependent**, so you switch over in stages: \"set the levers in 1-2-2 state, stabilize, shift to 3-4-4, stabilize…\"*"
+    },
+    {
+      "id": "erp-u2-c24",
+      "topic": "bpr-pros-cons-success",
+      "front": "**BPR keys to success** — the six",
+      "back": "1. **Leadership and top management commitment**\n2. **Prototype every process** before large scale implementation\n3. **Show early success within the first three to six months**\n4. **Results to be measurable**\n5. **Communicate effectively to manage change**\n6. **Proper change management**\n\n*Four of the six map directly onto a named **reason for failure** — the two lists are the same content read from opposite ends.*\n\n*Deck's note: **\"Leadership must believe in the new system.\"***"
+    },
+    {
+      "id": "erp-u2-c25",
+      "topic": "business-engineering-benchmarking",
+      "front": "**Benchmarking** — definition, types and exemplars",
+      "back": "> *\"The process of **comparing one's business processes and performance metrics to industry bests** and/or best practices from other industries.\"*\n\n**Five types:** **Process · Financial · Competitiveness · Product · Functional**\n\n**Steps:** identify focus area → identify leaders/competition/standards → identify measures/best practices → align & implement\n\n**Exemplars:** **Toyota — JIT** · **Motorola — Six Sigma** · **Wal-Mart — VMI**\n\n*Pitfall: **\"comparing apples to oranges.\"***"
+    },
+    {
+      "id": "erp-u2-c26",
+      "topic": "selection-diagnosis",
+      "front": "**Common process problems** and why they exist",
+      "back": "**Problems:** no **end-to-end ownership** · **too many hand-offs** · **wrong measurements (task rather than process performance)** · **sequential execution** · many audits/reconciliations that add no customer value · very few steps are value-adding\n\n**Why they arose:**\n1. **Non-availability of technology in the beginning**\n2. **Process copied from another company / parent org**\n3. **Brought in as a temporary measure, never reviewed**\n4. **Process there to suit some set of individuals**\n\n*\"Many of these are problems **because one is looking at it**. Else they continue to be the way of working!\"*"
+    },
+    {
+      "id": "erp-u2-c27",
+      "topic": "bpr-defined",
+      "front": "**Business process** — definition and principles",
+      "back": "> *\"A business process is a **set of logically related tasks** that use the **resources of an organization** to achieve a **defined business outcome**.\"*\n\n- Has a **clear beginning and end**, and **clearly identified inputs and outputs**\n- Is **cross-functional**, not restricted within a single function\n\n**Four principles:** it has a number of **steps** · each step has **specific input and output** · each step can be run by a **separate organizational entity** · **each step should add value** to the whole process"
+    },
+    {
+      "id": "erp-u2-c28",
+      "topic": "organizational-design-change-team",
+      "front": "**Organizational Design** — objective and content",
+      "back": "**Objective (learn verbatim):**\n> *\"**The architecture of the organization needs to be aligned with the new process and technology.**\"*\n\n**Means:** new/defined **roles and responsibilities** · new/defined **reporting structure** · **job descriptions** · new/defined **performance measures and incentive systems**\n\n**The cascade:**\n$$\\textbf{New technology} \\rightarrow \\textbf{new processes} \\rightarrow \\textbf{new roles} \\rightarrow \\textbf{new structure} \\rightarrow \\textbf{new measures \\& incentives}$$\n\n*The last step is the one organisations stop short of.*"
+    }
+  ]
+}
