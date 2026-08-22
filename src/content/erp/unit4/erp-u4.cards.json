@@ -1,0 +1,313 @@
+{
+  "subject": "erp",
+  "unit": 4,
+  "title": "Unit 4 — Core Recall & Mnemonics",
+  "cards": [
+    {
+      "id": "erp-u4-c01",
+      "topic": "procurement-overview-cycle",
+      "front": "**The procurement cycle** — the eight-stage version",
+      "back": "$$\\textbf{Requirement Determination} \\rightarrow \\textbf{Source of Supply Determination} \\rightarrow \\textbf{Vendor Selection} \\rightarrow \\textbf{Order Processing}$$\n$$\\rightarrow \\textbf{Purchase Order Monitoring} \\rightarrow \\textbf{Goods Receipt} \\rightarrow \\textbf{Invoice Verification} \\rightarrow \\textbf{Payment Processing}$$\n\n**Read it as four questions:** *what do we need · who will supply it · order it and chase it · did it arrive and do we owe them.*\n\n**Three of the eight stages are about settling up** — GR, invoice verification, payment. That is where the money moves and where the controls concentrate.\n\n*(Shorter versions exist with 7 steps and 5 stages — the eight-stage diagram is the one to draw, since the others collapse out of it.)*"
+    },
+    {
+      "id": "erp-u4-c02",
+      "topic": "erp-support-procurement",
+      "front": "**Three-way matching** — which three documents, and why three rather than two?",
+      "back": "| Document | Created by | Answers |\n|---|---|---|\n| **Purchase Order** | **you** | *what did we agree to buy, at what price?* |\n| **Goods Receipt** | **your warehouse** | *what actually arrived?* |\n| **Invoice** | **the vendor** | *what are they charging us for?* |\n\n**Match quantity against the GR; match price against the PO.** Fail either → **the invoice is blocked**.\n\n> **Why three:** PO + invoice agreeing proves **nothing was delivered**. GR + invoice agreeing proves **nothing about the agreed price**. Only all three close both gaps.\n\n**Separation of duties makes it work** — buyer raises the PO, storekeeper posts the GR, vendor sends the invoice. **No one person can create a payment for goods that never arrived.**"
+    },
+    {
+      "id": "erp-u4-c03",
+      "topic": "erp-support-procurement",
+      "front": "**ERS — Evaluated Receipt Settlement**",
+      "back": "**Pay the vendor from the GR and the PO alone — without waiting for an invoice.**\n\n> **ERS is three-way matching with the third document deleted.**\n\nIf **PO price × GR quantity** already gives the correct amount, the invoice adds **no information** — only a document to type in and a chance of a mismatch. So remove it.\n\n**What it costs:** total agreement on prices, and enough trust that neither party needs the invoice as evidence. **That is why it sits at level 2 of the maturity model, not level 1** — it is not a feature you switch on, it is a relationship you have to have first."
+    },
+    {
+      "id": "erp-u4-c04",
+      "topic": "procurement-functionalities",
+      "front": "**PR vs PO** — what is the difference?",
+      "back": "| | **Purchase Requisition** | **Purchase Order** |\n|---|---|---|\n| Direction | **internal** — a request to your own purchasing dept | **external** — a request to the **vendor** |\n| Commits the company? | **no** | **yes, legally** |\n| Names a vendor? | not necessarily | **always** |\n\n> **The PR is where a human approves; the PO is where money is committed.**\n\nThat is why **MRP produces requisitions, not orders** — *MRP proposes, a human confirms* — and why the approval workflow sits between them.\n\n**PO definition:** *\"a formal request/document to a vendor to supply certain goods or services under conditions stated in the order.\"* A **blanket PO** covers many deliveries over a long validity, used for **consumables** — same economics as lot sizing."
+    },
+    {
+      "id": "erp-u4-c05",
+      "topic": "procurement-functionalities",
+      "front": "**Contract types** — the two axes",
+      "back": "| Axis | Types |\n|---|---|\n| **What it fixes** | **Quantity contract** *(10,000 units)* · **Value contract** *(₹50 lakh)* |\n| **Who may release against it** | **Central / plant-independent** · **Plant specific** |\n\n**Which unit you use depends on which side is predictable.** For **services** — where *\"price comparison is complex\"* — **value is the only meaningful unit.**\n\n**Central contracts are how a multi-plant company buys as one company** — negotiate once at group volume, let every plant draw on it. *(The procurement answer to Nestlé's 29 vanilla records.)*"
+    },
+    {
+      "id": "erp-u4-c06",
+      "topic": "procurement-functionalities",
+      "front": "**Quota arrangement** — why deliberately not buy everything from the cheapest vendor?",
+      "back": "**A quota splits a material's requirement across approved vendors in fixed proportions** — *60% to A, 40% to B* — and the system allocates automatically.\n\n**Three reasons to accept a higher average price:**\n- **Supply risk** — a single source is a single point of failure\n- **Negotiating position** — a vendor supplying 100% has all the leverage\n- **Capacity** — no one vendor may be able to supply the whole volume\n\n> **The quota is the price of not being hostage to one supplier.**\n\nAnd ERP's contribution: **once the percentages are set, allocation happens without anyone deciding it order by order.**"
+    },
+    {
+      "id": "erp-u4-c07",
+      "topic": "procurement-types",
+      "front": "**Material vs service procurement** — the three differences and the four challenges",
+      "back": "| **Material** | **Service** |\n|---|---|\n| **can be inventorized** | **cannot be inventorized** |\n| **specifications clearly defined** | **difficult to define a service specification** |\n| **price comparison is simple** | **price comparison is difficult** — *may differ by time of purchase, ambience* |\n\n**Challenges of service procurement:** cannot be inventorized · difficult to specify · price comparison complex · **goods receipt is replaced by service entry and acceptance**\n\n> **All four descend from one fact: a service does not exist as an object.**\n\n$$\\textbf{Service Entry Sheet} \\rightarrow \\textbf{Acceptance} \\rightarrow \\textbf{Invoice Verification}$$\n\n**Acceptance is a judgement where goods receipt was a measurement** — which is why service procurement is harder to control."
+    },
+    {
+      "id": "erp-u4-c08",
+      "topic": "procurement-types",
+      "front": "**Direct vs indirect items** — the six-row table",
+      "back": "| | **Direct** | **Indirect** |\n|---|---|---|\n| **Demand** | driven by **end-item market demand** | **past consumption trend** |\n| **Dept involvement** | **higher** — collaborate on component design | **lower** — off-the-shelf |\n| **Share of spend** | **significant by value** | **small — low value items** |\n| **Planning** | **MRP or APS** | **consumption based**; manual PRs |\n| **Who procures** | **always the procurement team** | **also the end user**, via **E-Procurement / Portal** |\n| **Back-end integration** | **higher** — delivery schedule releases | **lower** |\n\n> **Direct items go into the product; indirect items keep the company running.**\n\n**This is dependent vs independent demand:** direct = **MRP**, indirect = **CBP**."
+    },
+    {
+      "id": "erp-u4-c09",
+      "topic": "commodity-item-strategy",
+      "front": "**Auctions vs hedging** — the two ERP tools for commodity procurement",
+      "back": "| | **Auction** | **Hedging** |\n|---|---|---|\n| Problem solved | *what is the **best price right now**?* | *how do I stop **future price moves** hurting me?* |\n| Market used | **physical** — real suppliers | **futures** — financial contracts |\n| Effect | **discovers** the price | **fixes** the price |\n\n> **Auction = price discovery. Hedging = price certainty.**\n\n**Hedging:** *\"taking a position in the futures market opposite to the one in the physical market.\"* You will **buy** copper, so a rise hurts → hold futures that **gain** when copper rises.\n\n$$\\textbf{physical loss} + \\textbf{futures gain} \\approx 0$$\n\n**You have not made money — you have removed uncertainty.**\n\n**A commodity is defined by being *not branded*** — so there is nothing to compete on except price."
+    },
+    {
+      "id": "erp-u4-c10",
+      "topic": "commodity-item-strategy",
+      "front": "**The item strategy matrix** — four quadrants and their drivers",
+      "back": "Plotted on **Strategic Impact** × **Financial Impact**:\n\n| Item group | Position | **Driver** |\n|---|---|---|\n| **MRO** *(indirect goods/services)* | low / low | **\"Purchase admin cost should be low\"** |\n| **Commodities** *(raw material)* | low strategic / **high financial** | **\"Price is right\"** |\n| **Critical Items** *(spares)* | **high strategic** / low financial | **\"Should never be out of stock\"** |\n| **Production Items** *(components)* | high / high | **\"Need closer collaboration with vendor\"** |\n\n**The two axes are genuinely independent** — a commodity is a huge budget line but strategically dull; a critical spare costs ₹2,000 and stops the plant.\n\n> **Read the matrix as a routing table**: each driver points to a different tool — blanket POs, auctions, safety stock, delivery schedules.\n\n*(**MRO = Maintenance, Repair and Operation supplies**.)*"
+    },
+    {
+      "id": "erp-u4-c11",
+      "topic": "procurement-maturity-master-kpis",
+      "front": "**The procurement maturity model** — three levels",
+      "back": "| Level | The vendor is… | Contents |\n|---|---|---|\n| **1 Basic** | **someone you send orders to** | basic planning, **mostly manual PRs & POs**, PO processes, vendor payment, GR, quality inspection |\n| **2 Matured** | **someone you share information with** | **optimum planning (MRP/APS)**, **e-procurement**, **ERS**, **basic supplier collaboration** for forecast & inventory |\n| **3 Innovative** | **someone you build products with** | **sourcing optimization**, **SRM**, **auctions and reverse auctions**, **advanced collaboration for product development**, **advanced supplier analytics**, exception management |\n\n> **Transact → share → co-create.**\n\n**The reliable test: does it need the vendor's cooperation?** If yes, level 2 or above.\n\n⚠️ **E-procurement is level 2 but auctions are level 3** — buying through a portal is automation; running a competitive auction is a **strategy**."
+    },
+    {
+      "id": "erp-u4-c12",
+      "topic": "procurement-maturity-master-kpis",
+      "front": "**Procurement master data and KPIs**",
+      "back": "**Four master data objects — what · who · on-what-terms · services:**\n**Material Master · Vendor Master · Terms and Conditions Master · Service Master / Service Catalog**\n\n**Six KPIs, in three pairs:**\n\n| Pair | KPIs |\n|---|---|\n| **Money** | **Cost Savings** · **Procurement ROI** *(savings ÷ operating costs)* |\n| **Process** | **Procurement Cycle Time** *(requisition → PO)* · **Contract Compliance** |\n| **Partners & spend** | **Supplier Performance** · **Purchasing Analysis** *(incl. ABC analysis)* |\n\n> **Save · run · watch.**\n\n**Cycle time stops at PO, not at delivery** — that is the part procurement controls. **A well-chosen KPI stops at the edge of the team's authority.**"
+    },
+    {
+      "id": "erp-u4-c13",
+      "topic": "inventory-pyramid-transactions",
+      "front": "**The inventory management pyramid** — three levels and their annotation",
+      "back": "$$\\textbf{Transactions \\& Inv Control (Lose)} \\rightarrow \\textbf{Inventory Planning (Maintain)} \\rightarrow \\textbf{Strategic IM (Gain)}$$\n\n| Level | Contents |\n|---|---|\n| **Strategic Inventory Optimization** | deployment strategy · channel integration with suppliers · **VMI, CPFR, JIT, cross docking** |\n| **Inventory Planning** | **inventory models** · quantitative determination of **safety stock, cycle stock, cost** |\n| **Inventory Control** | record all transactions · **cycle counting** · tracking · **valuation** |\n\n> **Accurate records are table stakes; strategy is advantage.**\n\n⚠️ **The question bank asks for THREE levels** — the pyramid merges transactions and control into one base. *(The slide text elsewhere lists **four process groups** — same thing, different cut.)*\n\n**Strictly dependent upward:** you cannot run a model on figures that are wrong."
+    },
+    {
+      "id": "erp-u4-c14",
+      "topic": "inventory-pyramid-transactions",
+      "front": "**The four inventory transaction processes**",
+      "back": "| Process | Effect on stock |\n|---|---|\n| **Goods Receipt** | **in** |\n| **Goods Issue** | **out** |\n| **Stock Transfer** | **sideways** — total unchanged |\n| **Reservations** | **none physically** — but the stock is **promised** |\n\n> **In · out · sideways · spoken for.**\n\n**GR:** ASN from supplier → receive → damage identification → unload/unpack → **capture lot #** → reconcile PO/schedule/GR → returns · **bar codes, RFID**\n\n**GI:** create ASN to customer → pack and load → post → **receive POD**\n\n> **Your goods issue is your customer's goods receipt** — the literal meaning of a supply *chain*.\n\n⚠️ **Stock transfer \"to Company\" crosses a legal entity** — so it *is* a sale for accounting and tax, needing transfer pricing and consolidation elimination."
+    },
+    {
+      "id": "erp-u4-c15",
+      "topic": "inventory-control-abc",
+      "front": "**Cycle counting vs physical inventory**",
+      "back": "| | **Physical inventory** | **Cycle counting** |\n|---|---|---|\n| Frequency | **once a year**, everything | **continuously**, a few items |\n| Operations | **stop** | **carry on** |\n| Error found after | **up to 12 months** | **days or weeks** |\n| Effort allocation | **uniform** | **by ABC class** |\n\n**Two wins:** errors surface **early**, and effort is allocated **by value rather than evenly**.\n\n$$\\textbf{count frequency} \\propto \\textbf{value at risk}$$\n\nIf **A items are 13.3% of items but 60.5% of value**, counting them monthly and C items annually **catches most of the error for a fraction of the effort.**\n\n**Why control exists at all:** *\"to match System Inv is a challenge\"* — breakage, pilferage, mis-picks, unrecorded issues."
+    },
+    {
+      "id": "erp-u4-c16",
+      "topic": "inventory-control-abc",
+      "front": "**ABC classification** — the figures and the criterion",
+      "back": "| Class | **% of value** | **% of items** |\n|---|---|---|\n| **A** *(very important)* | **60.5%** | **13.3%** |\n| **B** *(moderately important)* | **25%** | **26.7%** |\n| **C** *(least important)* | **14.5%** | **60%** |\n\n**Criterion: annual value of *consumption*** — *consumption per period × price per unit*. **Not unit price alone.**\n\n$$\\underbrace{13.3\\%}_{\\text{of items}} \\text{ carry } \\underbrace{60.5\\%}_{\\text{of value}} \\qquad \\underbrace{60\\%}_{\\text{of items}} \\text{ carry } \\underbrace{14.5\\%}_{\\text{of value}}$$\n\n**Roughly an order of magnitude difference in value-per-item** — Pareto, measured.\n\n⚠️ **A cheap item consumed constantly can be class A; an expensive item bought once a year can be class C.**"
+    },
+    {
+      "id": "erp-u4-c17",
+      "topic": "inventory-control-abc",
+      "front": "**The six inventory classification systems** *(image-only slide — no text layer)*",
+      "back": "| Scheme | **Full form** | **Criterion** |\n|---|---|---|\n| **ABC** | **Always Better Control** | **Usage Value** *(consumption × price)* |\n| **GOLF** | **Govt, ordinary, local, foreign** | **Source of procurement** |\n| **SOS** | **Seasonal, off seasonal** | **Seasonality** |\n| **HML** | **High, Medium, Low** | **Unit price — does NOT take consumption into account** |\n| **FSND** | **Fast, slow, non-monetary, material demands** | **Issues from store** |\n| **SDE** | **Scarce, difficult, easy** | **Procurement difficulties** |\n\n**Six schemes, six different questions about the same item** — each serving a different department.\n\n⚠️ **ABC vs HML is the pair most often confused** — the table itself flags it. **A gold-plated bolt bought twice a year is H under HML and C under ABC.**\n\n*(Industry usually reads FSND as **FSN — Fast, Slow, Non-moving**; the criterion column is the reliable part. **Non-moving items are the obsolescence risk.**)*"
+    },
+    {
+      "id": "erp-u4-c18",
+      "topic": "inventory-control-abc",
+      "front": "**Moving average price vs standard price**",
+      "back": "| | **Moving average** | **Standard price** |\n|---|---|---|\n| Stock value | **recalculated on every receipt** | **fixed** at a planned price |\n| Price differences | **absorbed into stock value** | **posted to a variance account** |\n| Best for | **commodities** — genuinely variable costs | **production components** — stable costing |\n\n**Standard price is what makes the price-variance posting exist:**\n> **Inventory 245.00 · Goods Received 275.00 · Price Variance 30.00** — received at 275, valued at the standard 245, **30 to variance**.\n\n**Why you want the variance:** product cost stays **comparable month to month**, and purchasing performance shows up **visibly** instead of being hidden inside the stock value.\n\n*(Standard price lives in the **Material Master** — the Costing / Accounting view.)*"
+    },
+    {
+      "id": "erp-u4-c19",
+      "topic": "inventory-planning-models",
+      "front": "**The four inventory models** — when and how much?",
+      "back": "Every model answers two questions: **WHEN do we order?** and **HOW MUCH?**\n\n| Model | **When** | **How much** |\n|---|---|---|\n| **Q model (EOQ)** | at the **reorder point** — *variable timing* | **fixed quantity** |\n| **P model (periodic)** | at **fixed intervals** | **variable** — top up to target $M$ |\n| **Min-max** | at **min** | up to **max** |\n| **Two-bin** | **first bin empties** | **one bin's worth** |\n\n> **Q fixes the quantity and lets timing float. P fixes the timing and lets quantity float.**\n\nThe deck states it: P is *\"opposite of Q model — qty differs, freq is constant.\"*\n\n**The practical argument for P is consolidation** — review every item from one vendor on the same day, place **one order, one delivery**. **Its cost:** P needs **more safety stock**, covering the review period *plus* the lead time."
+    },
+    {
+      "id": "erp-u4-c20",
+      "topic": "inventory-planning-models",
+      "front": "**EOQ and the reorder point** — the formulas and the reasoning",
+      "back": "$$\\textbf{Total annual cost} = \\textbf{annual ordering cost} + \\textbf{annual holding cost}$$\n\n**Ordering cost** $\\propto 1/Q$ — bigger lots, fewer orders, fixed cost spread thinner.\n**Holding cost** $\\propto Q$ — bigger lots, more average stock.\n\n> **One falls, one rises — their sum has a minimum, and that is the EOQ.**\n\n$$\\textbf{Reorder Point} = \\textbf{Daily Demand} \\times \\textbf{Lead Time} = D \\times LT$$\n\n**Reorder while you still have enough to survive the lead time.** 50/day × 6 days = **300**.\n\n⚠️ **It assumes demand and lead time are certain.** Real systems add:\n$$\\textbf{ROP} = (D \\times LT) + \\textbf{safety stock}$$"
+    },
+    {
+      "id": "erp-u4-c21",
+      "topic": "inventory-planning-models",
+      "front": "**The two drivers of inventory planning** — and why they conflict",
+      "back": "**(i) Never have a stock out**\n- finished goods → **customer dissatisfaction, lost sales**\n- raw materials → **production loss**\n\n**(ii) Never carry excess inventory**\n- **increases cost of operation** · **chance of obsolescence** · **heavy markdown**\n\n$$\\textbf{Never stock out} \\Rightarrow \\text{hold more} \\qquad \\textbf{Never carry excess} \\Rightarrow \\text{hold less}$$\n\n> **You cannot satisfy both, so the models exist to find the least-bad point.**\n\n**\"Heavy markdown\" is the sharpest cost** — excess stock is eventually **sold below cost to clear it**, turning a working-capital problem into a realised loss.\n\n**Same trade-off as Level vs Chase (S&OP) and central vs local stock (DRP).**"
+    },
+    {
+      "id": "erp-u4-c22",
+      "topic": "strategic-inventory-kpis",
+      "front": "**The four strategic inventory processes** — and what makes them \"strategic\"",
+      "back": "1. **Inventory collaboration** — **VMI**; **Wal-Mart and P&G**\n2. **Deciding inventory based on service levels** — *critical items, high service ⇒ high inventory*\n3. **Best practices** — **cross docking** *(Wal-Mart; SAP, Oracle, Manhattan Associates)*\n4. **Lean inventory management** — reduce waste, **Kanban or JIT**\n\n> **Planning optimises within the rules; strategy changes the rules.**\n\n| Process | What it changes |\n|---|---|\n| **VMI** | **who decides** the replenishment |\n| **Service levels** | **the target itself** |\n| **Cross docking** | **whether stock is held at all** |\n| **Lean / JIT** | **how much waste the chain carries** |\n\n**Nobody sets 100% service level** — that would need infinite stock. **Accepting some stock-outs is the correct policy.**"
+    },
+    {
+      "id": "erp-u4-c23",
+      "topic": "strategic-inventory-kpis",
+      "front": "**The nine inventory KPIs**",
+      "back": "| Measure | Definition |\n|---|---|\n| **Stock outs** | # incidents of stock not available when required |\n| **Inventory Turn** | **Annual sales / Average inventory level** |\n| **Inventory Carrying Cost** | Σ all costs of finished goods |\n| **SKU turnover** | # SKU cycles / turns |\n| **Inventory Ageing** | Total gross inventory % for specific periods |\n| **Cycle Counting Accuracy** | variance between physical and perpetual inventory |\n| **Shrinkage** | **breakage, pilferage, deterioration** |\n| **Storage space utilization** | volume of storage / total capacity, % |\n| **Obsolescence % of Total Inventory** | obsolete & scrap / gross inventory value |\n\n**Eight of the nine watch the *excess* side** — because **stock-outs are loud and excess inventory is silent.** You need instruments for the failure you cannot hear.\n\n⚠️ **Shrinkage = what you lost. Cycle counting accuracy = how well you know what you have.** You can have low shrinkage and terrible accuracy — **and then the planning layer runs on wrong numbers.**"
+    },
+    {
+      "id": "erp-u4-c24",
+      "topic": "package-selection-process",
+      "front": "**The 75–80% good-fit rule**",
+      "back": "> **\"No package will meet 100% of the company's needs. Objective is to find a package that is a good-fit (75–80% match) to business requirements and supports long term goals.\"**\n\n**Why not 100%:** a package matching everything would have to be **built for you** — and then it is not a package. **The economics of ERP is shared development cost, which needs standard software.**\n\n**Why not 50%:** the gap must be closed by **customization** (expensive, blocks upgrades) or **BPR** (which people resist).\n\n$$\\textbf{fit} \\uparrow \\Rightarrow \\textbf{customization} \\downarrow \\text{ and } \\textbf{organizational change} \\downarrow$$\n\n**Three named benefits:** lower user resistance · reduced training needs · less organizational adaptation.\n\n**Gap analysis** = the gap between **process, data and user interface requirements** and **ERP offerings**."
+    },
+    {
+      "id": "erp-u4-c25",
+      "topic": "package-selection-process",
+      "front": "**The two-step selection process** — and why two steps",
+      "back": "**Step 1 — Screening:** start with many packages, **shortlist two to a maximum of three** on a set of criteria.\n**Step 2 — Final selection:** compare those two or three against **the list of requirements (100s)**, then contract.\n\n$$\\textbf{screening: many packages} \\times \\textbf{few criteria} \\longrightarrow \\textbf{selection: few packages} \\times \\textbf{many criteria}$$\n\n> **Cheap criteria eliminate cheaply; expensive criteria are spent only on survivors.**\n\n**Same economics as RCCP vs CRP and ABC-driven cycle counting** — match the cost of the check to the size of the remaining decision.\n\n**Why the shortlist is 2–3:** small enough that detailed comparison is affordable; **large enough to retain negotiating leverage** right up to signature.\n\n**Who:** a committee of **department heads plus CIO/CFO**, sometimes with consultants who know the packages."
+    },
+    {
+      "id": "erp-u4-c26",
+      "topic": "package-selection-criteria",
+      "front": "**The ten package selection criteria** — grouped",
+      "back": "| Question | Criteria |\n|---|---|\n| **Does it do the job?** | **Functionality Fit · Industry Experience · Technology Maturity · Integration with 3rd party apps** |\n| **Will the vendor still be here in ten years?** | **Financial Viability · Product Strategy & Vision · Installed Base · Partnerships** |\n| **What will it cost, and who helps us?** | **Package Cost / TCO · Customer Service & Support · Local Presence · Consulting Partnerships** |\n\n> **Fit · survival · support.**\n\n**Roughly half concern the vendor as an institution, not the product** — because *\"ERP package procurement is not a one-time transaction… help of the ERP vendor is needed throughout the package life cycle.\"*\n\n**You are not buying a product; you are entering a decade-long dependency.**"
+    },
+    {
+      "id": "erp-u4-c27",
+      "topic": "package-selection-criteria",
+      "front": "**Why financial viability and installed base matter** — with the deck's evidence",
+      "back": "$$\\textbf{JD Edwards, PeopleSoft, Siebel, Retek} \\longrightarrow \\textbf{Oracle}$$\n$$\\textbf{Manugistics} \\longrightarrow \\textbf{JD Edwards} \\qquad \\textbf{BAAN, Commerce One} \\longrightarrow \\textit{gone}$$\n\n| Outcome | Consequence for you |\n|---|---|\n| **Vendor acquired** | product **merged, sunset or maintenance-only** |\n| **Vendor fails** | **no support, patches or compliance updates** — on the system running your company |\n\n> **The switching cost is what makes this catastrophic. Choosing the vendor is a lock-in decision, so vendor survival is a selection criterion.**\n\n**Installed base is the evidence:** revenue, proven product, **available consultants**, and a customer base the vendor cannot abandon.\n\n⚠️ **It must be the *relevant* base** — hence *geography specific, industry domain specific, MNC*."
+    },
+    {
+      "id": "erp-u4-c28",
+      "topic": "package-selection-criteria",
+      "front": "**TCO** and the **VED** requirement categories",
+      "back": "**TCO = Total Cost of Ownership** = **initial capital + AMC + scaling # users**\n\n**Two of the three are recurring** — so a package cheaper today can cost more over ten years.\n\n⚠️ **The sharpest evaluation question on the deck's own list:** ***\"Is the customization cost included in the ERP cost?\"*** Almost always **no**.\n\n---\n\n**Final selection is a two-dimensional grid:**\n$$\\textbf{how well it matches} \\times \\textbf{how much that requirement matters}$$\n\n| | **Full match** | **Partial** | **No match** |\n|---|---|---|---|\n| **Vital** | fine | **serious problem** | **eliminate the package** |\n| **Essential** | fine | manageable | costly gap |\n| **Desirable** | bonus | fine | fine |\n\n**A count of matches is misleading** — 900 of 1,000 looks excellent until one of the misses is **Vital**."
+    },
+    {
+      "id": "erp-u4-c29",
+      "topic": "selection-exceptions-rfp-contract",
+      "front": "**Why companies skip the traditional selection process** — four reasons",
+      "back": "1. **Pressure from major customers** to be on their platform\n2. **Same ERP for all companies in the group** — integration and consolidation\n3. **Price dominant** — especially for **SMB**\n4. **Industry specific functionality**\n\n> **Three of the four are perfectly rational: a constraint outside the evaluation outweighs everything inside it.**\n\n**Reason 2 is the direct answer to Nestlé** — nine general ledgers arose because divisions chose independently. **Standardising the package is how a group stops that recurring.**\n\n⚠️ **Reason 4 is better described as one criterion dominating all others** — *industry experience* IS one of the criteria. When only one package supports your industry's core process, the weighted comparison has one possible outcome."
+    },
+    {
+      "id": "erp-u4-c30",
+      "topic": "selection-exceptions-rfp-contract",
+      "front": "**The ERP vendor contract** — the ten clauses, and the three that hurt if omitted",
+      "back": "**Payment terms · IP/copyright · deliverables · training · maintenance · upgrades and their cost · installation help · prerequisites (hardware, OS, database) · vendor audits · licence cancellation costs**\n\n| When they bite | Clauses |\n|---|---|\n| **At purchase** | payment · deliverables · IP |\n| **During implementation** | installation · prerequisites · training · **vendor audits** |\n| **For years after** | maintenance · **upgrades and cost** |\n| **At the end** | **licence cancellation** |\n\n**Only three of ten concern the purchase itself.**\n\n⚠️ **The three that hurt:** **upgrade cost** *(no price protection = a negotiation you cannot walk away from)*; **licence cancellation** *(negotiate the exit while you still have leverage)*; **vendor audits** — *final blueprint audit* and *audit before go live*, which are **the vendor checking YOUR implementation**, and you want that agreed in advance."
+    },
+    {
+      "id": "erp-u4-c31",
+      "topic": "erp-package-market",
+      "front": "**The three ERP package market tiers**",
+      "back": "| Tier | Players | Typical customer |\n|---|---|---|\n| **1** | **SAP, Oracle** | **large enterprises, MNCs, multi-country** |\n| **2** | **Microsoft Dynamics, JD Edwards, PeopleSoft, Infor, IFS, Epicor, Lawson, QAD** | **mid-market, large single-country** |\n| **3** | **small and local players** | **small businesses** |\n\n> **Tiers segment by customer size, not by quality.**\n\n**A Tier 1 package is frequently the wrong choice for a small company** — *price becomes the dominant factor for SMB*, and TCO grows with the tier. **The reverse also holds:** Tier 3 will not support multi-country statutory reporting.\n\n**Evidence, from the image-only comparison table:** industry-specific software — **SAP 25 industries · Oracle 23 · Microsoft Dynamics AX 4.** **Breadth of industry coverage is what Tier 1 is selling.**"
+    },
+    {
+      "id": "erp-u4-c32",
+      "topic": "erp-package-market",
+      "front": "**Preconfigured templates** — why they exist for SMBs",
+      "back": "**A package that arrives already configured for a typical company in an industry** — chart of accounts, org structure, standard processes — instead of a blank system.\n\n**Configuration effort is roughly fixed; its value scales with company size:**\n\n$$\\text{large firm: } \\frac{\\text{config cost}}{\\text{benefit}} \\text{ small} \\qquad \\text{small firm: } \\frac{\\text{config cost}}{\\text{benefit}} \\text{ large}$$\n\n> **The template collapses that ratio by making configuration a product rather than a project.**\n\n**What you give up is choice** — it embeds *someone else's* view of the process. **Fine for an SMB with no strong opinion; unacceptable where the process is the competitive advantage.**\n\n**The idea returns in Unit 5:** industry best-practice configurations are the enabling condition for **SaaS ERP**, where customization is forbidden outright."
+    },
+    {
+      "id": "erp-u4-c33",
+      "topic": "partner-selection",
+      "front": "**The ten consulting partner selection criteria** — and how they differ from package criteria",
+      "back": "**Industry Experience · Process Consulting Experience · Client Reference & Satisfaction · End-to-End Service · Quality of Project Management · Quality of Tools and Methodologies · Presence in Different Geographies · Global Delivery Capability · Reputation and Branding · Price and Value for Money**\n\n> **Know · work · reach · reputation.**\n\n| | **Package criteria** | **Partner criteria** |\n|---|---|---|\n| Dominant concern | **will the vendor survive?** | **can these people deliver?** |\n\n**You buy a package for a decade, so you assess the vendor as an institution. You buy a partner for a project, so you assess capability to execute.**\n\n⚠️ **\"Presence in different geographies\" ≠ \"global delivery capability\"** — being in many places is not the same as being able to **work across** them."
+    },
+    {
+      "id": "erp-u4-c34",
+      "topic": "partner-selection",
+      "front": "**The RFP process** — steps, and the three details that matter",
+      "back": "**RFI (optional) → RFP Preparation → RFP Release *(conference call · common meeting · media advertisement)* → Response Collection → Evaluation → Partner Selection → Contract Negotiations → Partner Finalization → Contract Signing → Kick off**\n\n**① RFI shortlists; RFP selects** — the same screening-then-selection economics as package selection.\n\n**② Release is not just sending the document** — conference call and common meeting exist so **every bidder hears the same clarifications**; media advertisement makes the process **open**, which is why it is mandatory in the public sector.\n\n**③ Selection and finalization are separate, with negotiation between:**\n$$\\textbf{Selection} \\rightarrow \\textbf{Negotiations} \\rightarrow \\textbf{Finalization} \\rightarrow \\textbf{Signing}$$\n**If negotiations fail you can still turn to the runner-up.**\n\n**Bids are evaluated on two dimensions: Technical and Financial** — clear the technical bar first, compete on price second."
+    },
+    {
+      "id": "erp-u4-c35",
+      "topic": "inhouse-offshore-consulting-market",
+      "front": "**In-house vs external implementation**",
+      "back": "| **In-house has** | **External has** |\n|---|---|\n| **better process knowledge** | **product expertise** |\n| **better industry knowledge** | **methods and tools** |\n| *\"no money goes outside\"* | **implementation experience** · **ERP project management skill** |\n\n**Cons of in-house:** lack of methods and tools · no implementation experience · **high chances of failure** · *\"implementation is not their core competency\"* · **\"may not be cost effective if all internal costs are factored\"**\n\n⚠️ **The deck contradicts its own \"no money goes outside\" pro** — and that IS the point. **The saving is visible (no invoice); the cost is invisible** (senior staff off their day jobs, longer timeline, rework).\n\n> **Where it works: ROLLOUTS** — consultants proved the template at site one, so site two is **repetition, not design**."
+    },
+    {
+      "id": "erp-u4-c36",
+      "topic": "inhouse-offshore-consulting-market",
+      "front": "**The phase-wise offshoring table** — and the rule behind it",
+      "back": "| Phase | **On-site** | **Offshore** | Offshored activity |\n|---|---|---|---|\n| **Project Preparation** | **100%** | **0%** | — |\n| **Business Blueprint** | 90% | **10%** | PoC / demo scenarios, partial documentation |\n| **Realization** | 30% | **70%** | **configuration, testing, development** |\n| **Final Prep & Go Live** | 50% | **50%** | data migration, training content |\n| **Support** | 20% | **80%** | issue resolution, utility jobs, change requests |\n\n$$\\textbf{offshore \\%} \\propto \\frac{1}{\\textbf{customer contact required}}$$\n\n> **Work that is *specified* can be offshored; work that is *discovered* cannot.**\n\n**The dip at Go Live** (70% → 50%) is because go-live needs **training, hand-holding and physical presence**.\n\n**Difficult to offshore:** blueprinting · **integration testing** · **UAT** · end user training · change management. *(**Unit testing IS offshorable** — that split is examinable.)*\n\n**ODC** = Offshore Development Center · **GDC** = Global Delivery Center"
+    },
+    {
+      "id": "erp-u4-c37",
+      "topic": "project-scope-levers",
+      "front": "**The nine levers of ERP project scope**",
+      "back": "| Lever | The question |\n|---|---|\n| **Location** | which **sites, plants, countries**? |\n| **Business** | which **legal entities / business units**? |\n| **Process** | which **business processes** — P2P, O2C, H2R? |\n| **Application** | which **modules** — FI, MM, SD, PP, HR? |\n| **Interface** | which **other systems**? |\n| **Report** | which **reports**? |\n| **Data Migration** | which **data objects**, and how much history? |\n| **User** | **how many users**, which roles? |\n| **Technology** | which **platform, OS, database, landscape**? |\n\n> **A lever is something you can pull to make the project bigger or smaller.** When over budget you have **nine choices, not nine hundred**.\n\n**The instruction is the point:** *\"identify in-scope and **out-of-scope** items clearly (and get sign off).\"* **An unstated exclusion is an assumed inclusion.**\n\n⚠️ **Process scope is horizontal; application scope is vertical.** Scope by process, verify by application."
+    },
+    {
+      "id": "erp-u4-c38",
+      "topic": "project-scope-levers",
+      "front": "**Data migration objects** — master vs transaction, and the principle",
+      "back": "**Master data objects:** Material · Customer · Vendor · Asset · **Chart of Accounts** · Cost/Profit Centres & Cost Elements · Pricing Condition · **BOM, Routing, Work Centres** · Plant Maintenance · Quality Management · Warehouse\n\n**Transaction data objects:** **GL balances & open items** · customer **open** items · vendor **open** items · budget values · loans and advances · **open** internal orders · stock balances · **material in transit (high seas, on port)** · **open** service contracts & orders · **open** contracts & POs · **open** sales contracts & orders\n\n> **The word \"open\" appears seven times, and it is the whole principle.**\n\n$$\\textbf{migrate} = \\textbf{the state the business is in}, \\text{ not } \\textbf{the story of how it got there}$$\n\n**Master data can be loaded weeks ahead; open transaction data only at the last moment** — which is why **cutover** is its own minutely-planned phase."
+    },
+    {
+      "id": "erp-u4-c39",
+      "topic": "project-plan-charter",
+      "front": "**The six component plans**, and where the resource plan comes from",
+      "back": "1. **Activity, Deliverables and Milestone plan**\n2. **Resource plan**\n3. **Training Plan**\n4. **Testing Plan**\n5. **Data Migration Plan**\n6. **Change Management Plan**\n\n**Five of the six are named after the things that most often go wrong** — *lack of planning* (39%), *inadequate co-ordination of resources* (26%), *no quality control* (34%), *clean data*, *inadequate change management*.\n\n**Resource plan has four dimensions:** **when** (month) · **where** (site or offshore) · **whose** (consulting or core team) · **ramp up / ramp down**.\n\n> **\"Resource Plan is derived from Project Plan\"** — you plan the work, then compute the people. **Staffing to availability rather than to plan is how *aggressive time frame* becomes unachievable.**"
+    },
+    {
+      "id": "erp-u4-c40",
+      "topic": "project-plan-charter",
+      "front": "**The project charter** — what it fixes, and the section that carries most weight",
+      "back": "A **major deliverable of Project Preparation**, presented formally at the **Kick Off Meeting**.\n\n| Section | Fixes |\n|---|---|\n| overview, business case, benefits | **why** |\n| scope, deliverables, goals | **what** |\n| stakeholders, organisation and roles | **who decides** |\n| implementation strategy, plan, standards | **how** |\n| **assumptions, constraints, risk assessment** | **what could go wrong** |\n\n> **\"Assumptions and Constraints\" carries the most weight in practice.**\n\nEvery estimate rests on assumptions — *the data is clean*, *the core team is full-time*. **Writing them down converts a later argument (\"you should have known\") into a fact (\"this assumption failed, here is the impact\").**\n\n**Milestones must be *completed deliverables*, not dates:** *\"to-be design **completed**\"*, not *\"blueprinting going well.\"*"
+    },
+    {
+      "id": "erp-u4-c41",
+      "topic": "risk-management",
+      "front": "**Risk impact levels and the five-step approach**",
+      "back": "| Level | Meaning |\n|---|---|\n| **Negligible** | minor inconvenience |\n| **Marginal** | degradation of **secondary** mission |\n| **Critical** | serious threat to **primary objective** |\n| **Catastrophic** | **failure of primary mission** |\n\n> **\"Identify all critical and catastrophic threats and deal with them proactively\"** — you are explicitly told **not** to actively mitigate the lower two.\n\n**Five steps:** find risks → **assess probability** → **analyze impact** → prioritize → **mitigate the TOP risks**\n\n$$\\textbf{risk exposure} \\approx \\textbf{probability} \\times \\textbf{impact}$$\n\n**Steps 2 and 3 are separate because neither factor alone tells you what to do.**\n\n**Mitigation remedies named:** appropriate selection team · right selection process · adequate budget · adequate time. **Three of four are \"do not rush the selection.\"**"
+    },
+    {
+      "id": "erp-u4-c42",
+      "topic": "risk-management",
+      "front": "**The three-tier risk taxonomy** *(image-only slide)*",
+      "back": "$$\\textbf{every project} \\subset \\textbf{technology project} \\subset \\textbf{ERP project}$$\n\n**Every project:** low user involvement · poor project team skills · low top management support · poor project monitoring · ineffective PM techniques · scarcity of resources · changing external environment · **attrition**\n\n**Technology project:** inadequate management of IT issues · **scope creep** · volatile IT system · instable vendor\n\n**ERP project:** implementation strategy · **inadequate selection** · ineffective communication system · **inadequate change management** · ineffective vendor and consultant · inadequate training · **inadequate BPR** · inappropriate implementation strategy · complexity of the ERP system · **inadequate legacy system management**\n\n> **An ERP project carries all twenty-two, not just its own ten** — which is why they fail more often.\n\n**Nine of the ten ERP-specific risks are things this course teaches you to prevent.** Only *\"complexity of the ERP system\"* is inherent."
+    },
+    {
+      "id": "erp-u4-c43",
+      "topic": "requirements-project-teams",
+      "front": "**The four fundamentals of requirements management**",
+      "back": "1. **Granularity depends on the organization** — and on what level it is defined at\n2. **\"Requirements mean different things to different people\"** — state them clearly\n3. **Requirement should be verifiable**\n4. **Prioritization is important**\n\n> **③ is the strongest: a requirement you cannot test cannot be accepted or rejected** — so it gets argued about at UAT, when it is most expensive.\n\n| Not verifiable | Verifiable |\n|---|---|\n| *\"must be user friendly\"* | *\"a GR postable in under 6 keystrokes\"* |\n| *\"reports should be fast\"* | *\"stock overview returns in under 5 seconds\"* |\n\n**Five requirement types:** **Business · Functional · Legal · User · Maintainability**\n\n**Legal requirements are automatically Vital** — you cannot descope a statutory return. **Maintainability is the one teams forget**, and forgetting it is how you get *\"customizing the software too much.\"*"
+    },
+    {
+      "id": "erp-u4-c44",
+      "topic": "requirements-project-teams",
+      "front": "**The two-team structure and the core team's five responsibilities**",
+      "back": "**Consulting team brings product knowledge and implementation experience; core team brings business knowledge.** *\"Successful knowledge transfer from each other only ensures that the project is successful.\"*\n\n**Core team responsibilities:**\n1. **Business inputs during TO-BE process design**\n2. **Configuring the system**\n3. **Validation of data before loading**\n4. **Testing**\n5. **Training end users — using Train the Trainer**\n\n**Each exists because only the business side can do it** — only they know a genuine duplicate from two real customers; only they know what a correct result looks like.\n\n**Train the Trainer:** consultants train the core team, the core team trains the end users. **It scales, transfers ownership, and leaves the knowledge inside the company.**\n\n⚠️ ***\"For projects to succeed the core team need to be full time\"*** — the success factor most often violated."
+    },
+    {
+      "id": "erp-u4-c45",
+      "topic": "csf-success-failure",
+      "front": "**The ranked failure percentages** — and the annotation that matters",
+      "back": "| Reason | % |\n|---|---|\n| **Poor communication between relevant parties** | **57%** |\n| **Lack of planning of scheduling, resources and activities** | **39%** |\n| **No quality control** | **34%** |\n| **Milestones not being set** | **29%** |\n| **Inadequate co-ordination of resources** | **26%** |\n| **Costs getting out of hand** *(**a symptom not a cause**)* | **20%** |\n| **Mismanagement of progress** *(overlaps with communication)* | **17%** |\n| Overall poor management · suppliers overstretched · supplier under-resourced | 13% · 12% · 11% |\n\n**① Communication leads by a wide margin — the #1 cause of ERP failure is not technical.**\n\n**② \"Costs getting out of hand\" is flagged as a symptom** — costs rise *because* scope changed or rework was needed. **Treating the overrun as the problem leads to cutting testing and training, which makes the real causes worse.**\n\n$$\\underbrace{\\text{top five}}_{\\textbf{generic project management}} \\gg \\underbrace{\\text{supplier problems}}_{\\text{12\\% + 11\\%}}$$"
+    },
+    {
+      "id": "erp-u4-c46",
+      "topic": "csf-success-failure",
+      "front": "**Success and failure are the same list with the signs flipped** — show it",
+      "back": "| Success factor | Failure twin |\n|---|---|\n| well-thought package selection | **poor ERP package selection** |\n| realistic documented expectations | **unrealistic expectations** |\n| proper ROI justification | **investment without ROI justification** |\n| top management support | **top management support lacking** |\n| best brains with the consultants | **core team lacks right resource** |\n| **user acceptance** | **user acceptance issues** |\n| handling employee resistance | **employees resist** |\n| training at every level | **training issues** |\n| **communication** | **poor communication** |\n| **business project, not IT project** | **project viewed as an IT project** |\n| **minimize customization** | **customizing too much** |\n| adequate time per activity | **too tight schedule** |\n| **full-time core team** | **high turnover of team members** |\n\n> **There is no separate theory of failure: projects fail by the absence of the things that make them succeed.**\n\n**The most quotable line:** *\"**without user acceptance, even if the system goes LIVE, it will never be used by end users.**\"* **Go-live is not success.**"
+    },
+    {
+      "id": "erp-u4-c47",
+      "topic": "csf-success-failure",
+      "front": "**The four documented ERP failures**",
+      "back": "| Company | Package / Partner | What happened |\n|---|---|---|\n| **W. L. Gore** | **PeopleSoft** / **Deloitte & Touche** | Oct 1997 live; **faulty. \"Deloitte & Touche not experts\"** |\n| **FoxMeyer Drug Co.** | **SAP America** / **Anderson Consulting** | **Bankruptcy 1998** — *\"could not handle the huge volume of transactions; integration problems\"* |\n| **Cleveland State University** | **PeopleSoft** / **Kaludis Consulting** | *\"full of bugs; extra hardware\"* |\n| **Hershey** | **SAP R/3, 1999** / **IBM** | *\"bugs\"* |\n\n> **Every case names a Tier 1 package and a Tier 1–2 firm. Choosing famous names is not a defence.**\n\n**FoxMeyer is the one to know in detail** — a drug distributor's business *is* high-volume transaction processing, so a system that cannot process the volume is **no system**. **Catastrophic: failure of primary mission.**\n\n**Hershey's 1999 go-live near peak season** is the cutover-timing cautionary tale."
+    },
+    {
+      "id": "erp-u4-c48",
+      "topic": "change-cutover-golive-sla",
+      "front": "**The change request process and the three-environment cycle**",
+      "back": "1. **User requests a change**\n2. **Impact analyzed and change approved**\n3. **Made in DEVELOPMENT, transported to QUALITY**\n4. **All documents (process and config) updated**\n5. **Tested in quality, transported to PRODUCTION**\n\n$$\\textbf{Development} \\xrightarrow{\\textbf{Approval}} \\textbf{Test} \\xrightarrow{\\textbf{Approval}} \\textbf{Production}$$\n\n| Environment | Why separate |\n|---|---|\n| **Development** | mistakes must be **free** |\n| **Quality / Test** | testing needs **stable, complete** data |\n| **Production** | **nothing untested may ever touch it** |\n\n**\"Transported\" is precise** — the same object moves forward, so **what was tested is exactly what goes live**.\n\n⚠️ **Step 4 comes BEFORE the final transport. Documentation is a precondition for going live, not a follow-up task.**\n\n**Three needs for change:** a **vendor patch** (outside) · a **new business requirement** (inside) · **continuous improvement** (from operating it)."
+    },
+    {
+      "id": "erp-u4-c49",
+      "topic": "change-cutover-golive-sla",
+      "front": "**Cutover and go-live**",
+      "back": "**Cutover** — *\"the final stage of ERP Realization before the company moves on to the new system.\"* Transactions stop in the old system briefly and move to the new one.\n\n> **It is important to understand the criticality of the transaction before planning the cutover.**\n\n**Customer ordering and invoicing** must not stop — **revenue loss**. **Maintenance orders and new purchase contracts** can be deferred a week.\n\n⚠️ **\"Typically every department believes their transactions are most critical\"** — so it **must be a senior management decision**.\n\n---\n\n**Go Live** — the day you move off the legacy system.\n\n$$\\textbf{go-live criterion} = \\textbf{zero critical open items} + \\textbf{a dated closure plan for the rest}$$\n\n**\"It's OK to have such issues\"** — waiting for zero means never going live. But **an undocumented open issue is a defect that has been forgotten.**\n\n**Go Live audit:** integration testing · training · **UAT signoff** · data migration · **support help desk** · period-end procedures · critical open items. **Five of seven are readiness, not correctness.**"
+    },
+    {
+      "id": "erp-u4-c50",
+      "topic": "change-cutover-golive-sla",
+      "front": "**SLA parameters and priority levels**",
+      "back": "**Service Contract** = a long-term agreement specifying services for a period.\n**SLA** = *\"contracts that assure the customer performance of certain services within a predefined period of time.\"*\n\n| Measures | Parameters |\n|---|---|\n| **How reliable is the system?** | **Downtime** *(breakdowns/year)* · **Availability** *(% uptime)* |\n| **How responsive is support?** | **Response time** · **Service window** · **Solution time** |\n\n⚠️ **Response time and solution time are deliberately separate.** *\"We called back in 15 minutes\"* satisfies response while the problem stays unsolved for a week. **An SLA with response time and no solution time is much weaker than it looks.**\n\n**P1/P2 → 24×7 on call, on rotation. P3/P4 → next business day.**\n\n**Service Level Reports (SLR)** monthly check adherence — *\"how you define success: define measures\"* applied to the support phase."
+    },
+    {
+      "id": "erp-u4-c51",
+      "topic": "change-cutover-golive-sla",
+      "front": "**Why heavy customization eventually forces a replacement**",
+      "back": "> ***\"If a large amount of customization has taken place, the ERP system may not be able to evolve. It is a strong indicator for the organization to start looking for an alternative.\"***\n\n$$\\textbf{customization} \\uparrow \\Rightarrow \\textbf{upgrade cost} \\uparrow \\Rightarrow \\textbf{upgrades stop} \\Rightarrow \\textbf{system frozen} \\Rightarrow \\textbf{replace it}$$\n\n**The mechanism:** every vendor upgrade must be re-tested against every modification, and modifications break as the standard code changes. Past a threshold, **upgrading costs more than it is worth** — so you stop, and the system stops receiving **statutory updates, security patches and new functionality.**\n\n**It slowly becomes the legacy system you replaced.**\n\n> **That closes the loop back to the 75–80% good-fit rule** — which avoided the customization that would have forced this outcome.\n\n**Preparedness for the future** needs three things to keep up: **your people (trained), the system, and the vendor.**"
+    }
+  ]
+}

@@ -159,7 +159,7 @@ export const SUBJECTS: SubjectMeta[] = [
     color: '#a78bfa',
     icon: 'ERP',
     description:
-      'How large organisations run on one integrated system: what ERP is and why it replaced departmental silos, the implementation life cycle and its methodologies, deployment strategies and risks, and the costs, benefits and ROI that justify the investment.',
+      'How large organisations run on one integrated system: what ERP is and why it replaced departmental silos, the implementation life cycle, change management and BPR, the functional modules from HCM and finance to production, procurement and inventory, how packages and partners are selected and projects run, and the ERP II world of CRM, SCM, analytics and the cloud.',
     units: [
       {
         unit: 1,
@@ -181,9 +181,15 @@ export const SUBJECTS: SubjectMeta[] = [
       },
       {
         unit: 4,
-        title: 'Success, Failure & ERP in Industry',
+        title: 'Procurement & Inventory, Selection & Project Management',
         subtitle:
-          'critical success factors · reasons for failure · ERP implementations across industries · articles and case studies · (material not yet supplied)',
+          'procurement definition & the eight-stage cycle · ERP support and three-way matching · PR, contracts, quota, source list, RFQ & PO · material vs service, direct vs indirect · commodity procurement, auctions & hedging · the item strategy matrix · procurement maturity, master data & KPIs · the inventory management pyramid · transaction & control processes · ABC and the six classification systems · Q, P, min-max & two-bin models with EOQ · strategic inventory, VMI & cross-docking · package selection process & the 75–80% good-fit rule · screening criteria, TCO & VED · selection exceptions, RFP & vendor contract · the ERP package market & its three tiers · consulting partner selection & the RFP method · in-house vs external, offshoring & consulting tiers · the nine levers of project scope · project plan, standards & charter · risk management & the three-tier risk taxonomy · requirements management & project teams · CSFs, success & failure with the ranked failure table · change requests, cutover, go-live & SLAs',
+      },
+      {
+        unit: 5,
+        title: 'ERP II — CRM, SCM, DW-BI & Emerging Trends',
+        subtitle:
+          'CRM concept, benefits & the sales funnel · SFA, e-commerce & call centre · marketing, field service & PRM · CRM analytics & the vendor quadrant · PLM, its drivers & the EBOM/MBOM handover · SCM definition, the three flows & SCOR · strategic, tactical & operational planning · SCP vs SCE and ERP vs SCP · SCP modules, network design & demand planning · production scheduling, GATP & transport optimization · collaborative planning & VMI · CPFR’s nine steps & the bullwhip effect · the data warehouse & its three-tier architecture · star schema, granularity, refresh & ETL · OLTP vs OLAP, roll-up, slice & dice · data marts, ODS, data mining, analytics & BI · ERP for manufacturing industries · ERP for service industries · cloud, SaaS & hosted ERP · SOA, RFID, mobile, EAI & the journey to ERP II',
       },
     ],
   },

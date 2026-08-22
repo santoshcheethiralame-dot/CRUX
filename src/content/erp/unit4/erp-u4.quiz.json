@@ -1,0 +1,927 @@
+{
+  "subject": "erp",
+  "unit": 4,
+  "title": "Unit 4 — Practice Quiz",
+  "items": [
+    {
+      "id": "erp-u4-q01",
+      "topic": "procurement-overview-cycle",
+      "q": "Complete the deck's definition: *\"Procurement is the process of ______ materials from vendor, ______ it and finally ______ the vendor for the accepted materials.\"*",
+      "options": [
+        "sourcing … inspecting … paying",
+        "planning … receiving … invoicing",
+        "ordering … storing … settling",
+        "requisitioning … valuing … reconciling"
+      ],
+      "answer": 0,
+      "explain": "**Sourcing · inspecting · paying.** Note the second definition the deck also gives — *\"procurement management is a **strategic approach to optimizing organizational spend**\"* — which is the same function described at **level 3 of the maturity model** rather than level 1.",
+      "difficulty": "easy",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q02",
+      "topic": "procurement-overview-cycle",
+      "q": "Why is procurement called a **fundamental module** of any ERP system? *(select all that apply)*",
+      "options": [
+        "It is a requirement for almost every organization",
+        "It is a transaction intensive process",
+        "It is a widely used module",
+        "It is the only module that posts to the general ledger"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "**Universal, transaction-intensive and widely used** — the classic ERP case, since high volume and rule-governed work is exactly what automation pays for.\n\n⚠️ Option D is false: **every** module posts to the GL. That was Unit 3's point about Financial Management being the one module that receives input from all the others.",
+      "difficulty": "easy",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q03",
+      "topic": "procurement-overview-cycle",
+      "q": "In the deck's **eight-stage procurement cycle diagram**, which stage comes immediately after **Order Processing**?",
+      "options": [
+        "Purchase Order Monitoring",
+        "Goods Receipt",
+        "Vendor Selection",
+        "Invoice Verification"
+      ],
+      "answer": 0,
+      "explain": "**Purchase Order Monitoring** — chasing the order after it is placed.\n\nThe full cycle: **Requirement Determination → Source of Supply Determination → Vendor Selection → Order Processing → Purchase Order Monitoring → Goods Receipt → Invoice Verification → Payment Processing.**\n\n**Draw the eight-stage version** — every shorter version of the cycle collapses out of it.",
+      "difficulty": "medium",
+      "source": "D3 deck (image-only diagram)"
+    },
+    {
+      "id": "erp-u4-q04",
+      "topic": "erp-support-procurement",
+      "q": "**Three-way matching** matches the invoice against which two documents?",
+      "options": [
+        "Goods Receipt and Purchase Order",
+        "Purchase Requisition and Purchase Order",
+        "Goods Receipt and Delivery Schedule",
+        "Contract and Source List"
+      ],
+      "answer": 0,
+      "explain": "**GR and PO** — *\"auto matching of invoices with **GR qty** and **P.O. price**.\"*\n\n**Match quantity against the GR; match price against the PO.** Why three and not two: **PO + invoice agreeing proves nothing was delivered**; **GR + invoice agreeing proves nothing about the agreed price.** Only all three close both gaps.",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q05",
+      "topic": "erp-support-procurement",
+      "q": "**ERS — Evaluated Receipt Settlement** — what does it eliminate, and at which maturity level does it sit?",
+      "options": [
+        "The vendor's invoice; level 2 (matured processes)",
+        "The purchase order; level 1 (basic processes)",
+        "The goods receipt; level 3 (innovative processes)",
+        "The purchase requisition; level 2 (matured processes)"
+      ],
+      "answer": 0,
+      "explain": "**ERS pays from the GR and the PO alone — no invoice.** If **PO price × GR quantity** already gives the right amount, the invoice adds no information, only a document to match.\n\n**It is level 2, not level 1**, because it is not a feature you switch on — it needs total price agreement and enough trust that neither party requires the invoice as evidence.",
+      "difficulty": "hard",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q06",
+      "topic": "erp-support-procurement",
+      "q": "Distinguish a **blocked** invoice from a **parked** invoice.",
+      "options": [
+        "Blocked = complete but held for a variance or inspection; parked = entered but incomplete",
+        "Blocked = entered but incomplete; parked = complete but held for approval",
+        "Blocked = rejected outright; parked = paid but not posted",
+        "They are two names for the same status"
+      ],
+      "answer": 0,
+      "explain": "**Blocked = complete but disputed. Parked = incomplete.**\n\nBlocking reasons the deck names: **quality inspection, amount variances, manual blocking/releasing.** Parking is saving an incomplete invoice without posting it.\n\nCorrections *after* posting use **credit memos** (reduce what you owe) and **debit memos** (increase it).",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q07",
+      "topic": "procurement-functionalities",
+      "q": "What is the difference between a **quantity contract** and a **value contract**?",
+      "options": [
+        "A quantity contract commits to a quantity; a value contract commits to a spend",
+        "A quantity contract is plant-specific; a value contract is central",
+        "A quantity contract covers goods; a value contract covers only services",
+        "A quantity contract is short-term; a value contract is long-term"
+      ],
+      "answer": 0,
+      "explain": "**Quantity contract = *we will buy 10,000 units*. Value contract = *we will spend ₹50 lakh*.** Each is exhausted when its own measure is used up.\n\n**Which you use depends on which side is predictable.** For **services** — where *\"price comparison is complex\"* and no two units are alike — **value is the only meaningful unit**.\n\n⚠️ The **central vs plant-specific** split is a *separate* axis: who may release against the contract.",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q08",
+      "topic": "procurement-functionalities",
+      "q": "A **source list** holds suppliers in three states, material-wise. Which are they?",
+      "options": [
+        "Allowed · Preferred · Blocked",
+        "Approved · Pending · Rejected",
+        "Primary · Secondary · Reserve",
+        "Active · Inactive · Archived"
+      ],
+      "answer": 0,
+      "explain": "**Allowed / Preferred / Blocked**, and its purpose is **control, not convenience**.\n\n**\"Blocked\" is the important state** — a vendor whose quality failed or whose certification lapsed must not be orderable, and relying on every buyer to remember that is not a control.\n\nNote **\"material wise\"**: a vendor can be preferred for one material and blocked for another.",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q09",
+      "topic": "procurement-functionalities",
+      "q": "What are the three types of **delivery schedule**, and why is a delivery schedule needed?",
+      "options": [
+        "Forecast, Detailed, Firm — so the supplier can plan capacity and materials properly",
+        "Weekly, Monthly, Quarterly — so orders can be consolidated",
+        "Draft, Approved, Released — so approvals can be tracked",
+        "Standard, Expedited, Emergency — so priorities are clear"
+      ],
+      "answer": 0,
+      "explain": "**Forecast · Detailed · Firm** — *\"for better planning by the supplier.\"*\n\n**They are Unit 3's time fences published outward to the vendor.** Without them the supplier sees only firm orders arriving with your lead time and must guess about everything beyond — guessing badly means **excess stock at their end (which you pay for in the price)** or **stock-outs at yours**.",
+      "difficulty": "hard",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q10",
+      "topic": "procurement-types",
+      "q": "In **service procurement**, goods receipt is replaced by what?",
+      "options": [
+        "Service entry and acceptance",
+        "Invoice verification",
+        "A service master record",
+        "A value contract"
+      ],
+      "answer": 0,
+      "explain": "**Service entry sheet → acceptance → invoice verification.** Nothing physically arrives at a gate, so there is nothing to receive, inspect or put away.\n\n**Acceptance is a judgement where goods receipt was a measurement** — which is exactly why service procurement is harder to control.",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q11",
+      "topic": "procurement-types",
+      "q": "Which statements describe **indirect items** rather than direct items? *(select all that apply)*",
+      "options": [
+        "Demand is driven by past consumption trend, not end-item demand",
+        "Planning is consumption based",
+        "Procurement can be done by the end user through E-Procurement or a Portal",
+        "Procurement department must collaborate with the supplier to design the component"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "The first three are the indirect column. **Option D is the *direct* item row** — collaboration on component design.\n\n**This is Unit 3's dependent vs independent demand exactly:** direct = dependent = **MRP**; indirect = independent = **CBP**.\n\nAnd the self-service row is a deliberate decision to stop controlling something: **a buyer's time spent negotiating a ₹500 order costs more than the order.**",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q12",
+      "topic": "commodity-item-strategy",
+      "q": "**Hedging** for commodity procurement means",
+      "options": [
+        "taking a position in the futures market opposite to the one in the physical market, to limit price-change risk",
+        "buying from multiple suppliers in fixed proportions to reduce supply risk",
+        "running a reverse auction to force the price down",
+        "signing a long-term fixed-price contract with one supplier"
+      ],
+      "answer": 0,
+      "explain": "**Opposite position in futures.** You are going to *buy* copper, so a price **rise** hurts — take a futures position that **gains** when copper rises.\n\n$$\\textbf{physical loss} + \\textbf{futures gain} \\approx 0$$\n\n**You have not made money — you have removed uncertainty.** ⚠️ Option B is a **quota arrangement**; option C is a **reverse auction**. **Auction = price discovery; hedging = price certainty.**",
+      "difficulty": "hard",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q13",
+      "topic": "commodity-item-strategy",
+      "q": "In the item strategy matrix, which driver belongs to **Critical Items (e.g. spares)**?",
+      "options": [
+        "\"Should never be out of stock\"",
+        "\"Price is right\"",
+        "\"Purchase admin cost should be low\"",
+        "\"Need closer collaboration with vendor\""
+      ],
+      "answer": 0,
+      "explain": "**Critical items sit at high strategic impact, low financial impact** — a ₹2,000 spare whose absence stops the plant.\n\nThe other three: **Commodities** → *price is right* · **MRO** → *purchase admin cost should be low* · **Production items** → *need closer collaboration with vendor*.\n\n**The two axes are genuinely independent** — that is why the off-diagonal quadrants exist.",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q14",
+      "topic": "procurement-maturity-master-kpis",
+      "q": "Which items belong to **Level 3 (Innovative Processes)** of the procurement maturity model? *(select all that apply)*",
+      "options": [
+        "Sourcing optimization",
+        "Auctions and reverse auctions",
+        "Advanced supplier analytics",
+        "E-procurement"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "**E-procurement is level 2**, not 3 — buying through a portal is automation; **running a competitive auction is a sourcing strategy.**\n\nThe three levels as relationships: **level 1 the vendor is someone you send orders to · level 2 someone you share information with · level 3 someone you build products with.** **Transact → share → co-create.**",
+      "difficulty": "hard",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q15",
+      "topic": "procurement-maturity-master-kpis",
+      "q": "Name the four **master data objects for ERP procurement**.",
+      "options": [
+        "Material Master · Vendor Master · Terms and Conditions Master · Service Master / Service Catalog",
+        "Material Master · Customer Master · Contract Master · Pricing Master",
+        "Vendor Master · Purchase Info Record · Source List · Quota Arrangement",
+        "Material Master · BOM · Work Center · Routing"
+      ],
+      "answer": 0,
+      "explain": "**What · who · on-what-terms · and the awkward fourth one.**\n\n⚠️ Option D is the **production** master data from Unit 3 (*\"My BOM Works Right\"*). Option C lists procurement *functionalities*, not master data.\n\n**The Service Master exists precisely because** *\"sometimes it is difficult to define a service specification during procurement\"* — specify once, reuse.",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q16",
+      "topic": "procurement-maturity-master-kpis",
+      "q": "**Procurement Cycle Time** is defined as the average time between which two events?",
+      "options": [
+        "Requisition submission and PO placement",
+        "PO placement and goods receipt",
+        "Requisition submission and vendor payment",
+        "Goods receipt and invoice verification"
+      ],
+      "answer": 0,
+      "explain": "**Requisition → PO.** The boundary is deliberate: that is the part **procurement actually controls**. The vendor's lead time is not theirs to shorten.\n\n**A well-chosen KPI stops at the edge of the team's authority.**\n\nAnd **Procurement ROI** is the subtle companion — *\"ratio of savings made by operating costs\"* — because savings alone can always be increased by hiring more negotiators.",
+      "difficulty": "hard",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q17",
+      "topic": "inventory-pyramid-transactions",
+      "q": "How many levels does the **inventory management pyramid** have, and what are they?",
+      "options": [
+        "Three — Inventory Control · Inventory Planning · Strategic Inventory Optimization",
+        "Four — Transaction · Control · Planning · Strategic",
+        "Three — Transaction · Planning · Strategic",
+        "Five — one for each inventory model"
+      ],
+      "answer": 0,
+      "explain": "**Three levels** — the question bank asks for three, and **the pyramid merges transactions and control into one base level.**\n\nThe deck's own annotation confirms it: **Transactions & Inv Control (Lose) → Inventory Planning (Maintain) → Strategic IM Processes (Gain).**\n\n⚠️ The slide *text* elsewhere lists **four process groups** — same thing, different cut. **Three pyramid levels, four process groups.**",
+      "difficulty": "hard",
+      "source": "D3 deck (image-only pyramid)"
+    },
+    {
+      "id": "erp-u4-q18",
+      "topic": "inventory-pyramid-transactions",
+      "q": "The pyramid levels are annotated **Lose · Maintain · Gain**. What does that mean?",
+      "options": [
+        "Control done badly loses money; planning keeps you competitive; strategy is where you beat competitors",
+        "Each level loses, maintains or gains inventory value",
+        "It ranks the levels by implementation cost",
+        "It describes whether ERP support is weak, adequate or strong"
+      ],
+      "answer": 0,
+      "explain": "**Accurate records are table stakes; strategy is advantage.**\n\n- **Control = Lose** — doing it well wins nothing; doing it badly loses money to shrinkage and wrong counts\n- **Planning = Maintain** — correct models keep you level with peers\n- **Strategic = Gain** — VMI, CPFR, cross-docking are where you beat competitors\n\nAnd the ordering is **strictly dependent upward**: you cannot run a model on figures that are wrong.",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q19",
+      "topic": "inventory-pyramid-transactions",
+      "q": "Which are the **four inventory transaction processes**? *(select all that apply)*",
+      "options": ["Goods Receipt", "Goods Issue", "Reservations", "Stock Transfer"],
+      "answer": [0, 1, 2, 3],
+      "explain": "All four — **in · out · sideways · spoken for.**\n\n**Reservation is the odd and interesting one:** it moves no goods at all. It changes **availability**, not **quantity** — and that distinction between physical stock and available stock is what makes an **ATP check** meaningful.",
+      "difficulty": "easy",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q20",
+      "topic": "inventory-control-abc",
+      "q": "In the deck's ABC figures, **A items** account for what share of value and of items?",
+      "options": [
+        "60.5% of value, 13.3% of items",
+        "80% of value, 20% of items",
+        "60% of value, 25% of items",
+        "50% of value, 10% of items"
+      ],
+      "answer": 0,
+      "explain": "**A = 60.5% of value, 13.3% of items · B = 25% / 26.7% · C = 14.5% / 60%.**\n\nRoughly an **order of magnitude** difference in value-per-item between an A and a C — the Pareto principle measured.\n\n⚠️ Note the criterion: **annual value of *consumption*** (consumption per period × unit price), **not unit price alone**.",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q21",
+      "topic": "inventory-control-abc",
+      "q": "Match the classification scheme to its criterion. Which pairing is **correct**?",
+      "options": [
+        "HML — unit price, i.e. does not take consumption into account",
+        "ABC — source of procurement",
+        "SDE — seasonality",
+        "GOLF — issues from store"
+      ],
+      "answer": 0,
+      "explain": "The full table *(from a slide with **no text layer at all**)*: **ABC** *(Always Better Control)* — usage value · **GOLF** *(Govt, ordinary, local, foreign)* — source of procurement · **SOS** *(Seasonal, off seasonal)* — seasonality · **HML** *(High, Medium, Low)* — **unit price** · **FSND** — issues from store · **SDE** *(Scarce, difficult, easy)* — procurement difficulties.\n\n**ABC and HML are the pair most often confused** — a gold-plated bolt bought twice a year is **H under HML and C under ABC**.",
+      "difficulty": "hard",
+      "source": "D3 deck (image-only table)"
+    },
+    {
+      "id": "erp-u4-q22",
+      "topic": "inventory-control-abc",
+      "q": "Which two **stock valuation methods** does the deck name, and where does the standard price live?",
+      "options": [
+        "Moving average price and standard price — the standard price is held in the Material Master",
+        "FIFO and LIFO — both held in the Vendor Master",
+        "Moving average price and replacement cost — held in the Costing view of the BOM",
+        "Standard price and net realisable value — held in the General Ledger"
+      ],
+      "answer": 0,
+      "explain": "**Moving average** recalculates stock value on every receipt; **standard price** is fixed and differences post to a **variance account**.\n\nThat is exactly the Unit 3 SAP GL document: **Inventory 245.00 · Goods Received 275.00 · Price Variance 30.00** — received at 275, valued at the standard 245, **30 to variance**.\n\n**Why you want the variance:** product cost stays comparable month to month, and purchasing performance becomes visible instead of hidden in the stock value.",
+      "difficulty": "hard",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q23",
+      "topic": "inventory-planning-models",
+      "q": "The **Q model** and the **P model** are opposites. Which describes the **P model**?",
+      "options": [
+        "Fixed review interval, variable order quantity",
+        "Fixed order quantity, variable timing",
+        "Fixed minimum and maximum stock levels",
+        "Order when the first of two bins empties"
+      ],
+      "answer": 0,
+      "explain": "**P = periodic review: frequency constant, quantity differs.** The deck states it outright — *\"opposite of Q model — qty differs, freq is constant.\"*\n\n**Q fixes the quantity and lets timing float; P fixes the timing and lets quantity float.**\n\n$$Q = M - (\\textbf{stock on hand at review})$$\n\n**The practical argument for P is consolidation** — review every item from one vendor on the same day and place **one order, one delivery**.",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q24",
+      "topic": "inventory-planning-models",
+      "q": "State the **reorder point** formula from the deck, and say what it assumes.",
+      "options": [
+        "ROP = Daily Demand × Lead Time — it assumes both demand and lead time are certain",
+        "ROP = Annual Demand / Order Quantity — it assumes constant ordering cost",
+        "ROP = (Max − Min) / 2 — it assumes a symmetric consumption pattern",
+        "ROP = Annual Sales / Average Inventory — it assumes steady turnover"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{ROP} = D \\times LT$$\n\n**Reorder while you still have enough stock to survive the lead time.** 50 units/day, 6-day lead time → reorder at **300**.\n\n⚠️ It assumes **certainty**, which is why real systems add safety stock: $$\\textbf{ROP} = (D \\times LT) + \\textbf{safety stock}$$\n\n**Option B is the ordering-cost term of EOQ; option D is Inventory Turn.**",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q25",
+      "topic": "inventory-planning-models",
+      "q": "On the **EOQ cost curve**, why does total cost have a minimum?",
+      "options": [
+        "Ordering cost falls as order quantity rises while holding cost rises — their sum has a trough",
+        "Both costs fall until a capacity limit is reached",
+        "Holding cost is fixed and ordering cost falls, so total cost falls to a floor",
+        "Demand variability creates a minimum-variance point"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{Total annual cost} = \\textbf{annual ordering cost} + \\textbf{annual holding cost}$$\n\n**Ordering cost** $\\propto 1/Q$ — bigger lots mean fewer orders, spreading the fixed cost per order. **Holding cost** $\\propto Q$ — bigger lots mean more average stock.\n\n**One term falls, the other rises, so the sum has a minimum — the EOQ.** This is Unit 3's lot sizing with the arithmetic written down.",
+      "difficulty": "medium",
+      "source": "D3 deck (image-only chart)"
+    },
+    {
+      "id": "erp-u4-q26",
+      "topic": "inventory-planning-models",
+      "q": "The **two-bin model** is described as ideal for class C items. Why?",
+      "options": [
+        "It needs no system, counting or calculation — an empty bin is the reorder signal",
+        "It holds the least total inventory of any model",
+        "It gives the most accurate reorder point",
+        "It allows the largest order quantities"
+      ],
+      "answer": 0,
+      "explain": "**Its genius is that it needs no system at all.** For **class C items**, running a planning calculation would cost more than the stock being planned.\n\n**The second bin is literally the safety stock and lead-time cover.** And it is a **pull system** — consumption triggers replenishment, nobody schedules it. **Two-bin is Kanban with bins instead of cards.**",
+      "difficulty": "medium",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q27",
+      "topic": "strategic-inventory-kpis",
+      "q": "**Cross docking** eliminates which warehouse steps, and what does it cost you in exchange?",
+      "options": [
+        "Put-away, storage and picking — in exchange you lose the buffer that absorbs a late truck",
+        "Goods receipt and quality inspection — in exchange you lose traceability",
+        "Picking and packing — in exchange you need more warehouse space",
+        "Goods issue and shipping — in exchange you need more vehicles"
+      ],
+      "answer": 0,
+      "explain": "**Inbound dock → straight across → outbound truck.** The warehouse becomes a **sorting hub rather than a store**, and what it eliminates is not just handling but **inventory itself**.\n\n⚠️ **The cost is slack.** It only works if inbound and outbound schedules are tightly synchronised — **one late truck stalls the flow, because there is no buffer stock.** Which is why it sits at the strategic level and needs *\"channel integration with suppliers.\"*",
+      "difficulty": "hard",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q28",
+      "topic": "strategic-inventory-kpis",
+      "q": "**Inventory Turn** is defined as",
+      "options": [
+        "Annual sales / Average inventory level",
+        "Average inventory level / Annual sales",
+        "Obsolete and scrap inventory / Gross inventory value",
+        "Volume of storage / total storage capacity"
+      ],
+      "answer": 0,
+      "explain": "A turn of **12** means roughly **one month of stock on hand**; a turn of 4 means three months. **Higher is generally better** — same sales supported by less tied-up cash.\n\n⚠️ **But not unboundedly.** Push turns up far enough and the **stock-outs** KPI starts rising. **The two are meant to be read against each other**, which is the point of measuring both.\n\nOption C is **obsolescence**; option D is **storage space utilization**.",
+      "difficulty": "easy",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q29",
+      "topic": "strategic-inventory-kpis",
+      "q": "Distinguish **shrinkage** from **cycle counting accuracy**.",
+      "options": [
+        "Shrinkage is the value actually lost; cycle counting accuracy is how well you know what you have",
+        "Shrinkage is theft only; cycle counting accuracy includes theft and damage",
+        "They measure the same thing at different frequencies",
+        "Shrinkage applies to finished goods; cycle counting accuracy applies to raw materials"
+      ],
+      "answer": 0,
+      "explain": "**Shrinkage** = *costs of breakage, pilferage, deterioration.* **Cycle counting accuracy** = variance between the physical count and the perpetual record.\n\n⚠️ **You can have low shrinkage and terrible accuracy** — nothing is being lost, but your records are a mess. **That is dangerous in its own right**, because the planning layer is running on wrong numbers. **The Lose level of the pyramid, stated as a metric.**",
+      "difficulty": "hard",
+      "source": "D3 deck"
+    },
+    {
+      "id": "erp-u4-q30",
+      "topic": "package-selection-process",
+      "q": "What level of fit does the deck say a package should achieve, and why not 100%?",
+      "options": [
+        "75–80% — no package meets 100% of a company's needs, and a package built for you would not be a package",
+        "90–95% — anything less requires unacceptable customization",
+        "50–60% — the rest is expected to be customized",
+        "100% — anything less should disqualify the package"
+      ],
+      "answer": 0,
+      "explain": "**\"No package will meet 100% of the company's needs. Objective is to find a package that is a good-fit (75–80% match).\"**\n\n**Why not 100%:** the economics of ERP is that **development cost is shared across thousands of customers** — which only works if the software is standard.\n\nThe three named benefits — **lower user resistance, reduced training needs, less organizational adaptation** — all follow from **less customization and less forced BPR**.",
+      "difficulty": "medium",
+      "source": "D4 deck"
+    },
+    {
+      "id": "erp-u4-q31",
+      "topic": "package-selection-process",
+      "q": "Why is package selection a **two-step** process rather than one?",
+      "options": [
+        "Cheap criteria eliminate cheaply; expensive criteria are spent only on survivors",
+        "Regulators require a documented two-stage process",
+        "Vendors will not demo until they are shortlisted",
+        "The budget for evaluation is released in two tranches"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{screening: many packages} \\times \\textbf{few criteria} \\;\\longrightarrow\\; \\textbf{selection: few packages} \\times \\textbf{many criteria}$$\n\nThe final evaluation compares against *\"the list of requirements (**100s**)\"* — running that against twenty packages is unaffordable.\n\n**Same economics as RCCP vs CRP and ABC-driven cycle counting: match the cost of the check to the size of the remaining decision.** The shortlist is deliberately **\"two to a maximum of three\"** — small enough to evaluate, large enough to retain negotiating leverage.",
+      "difficulty": "hard",
+      "source": "D4 deck"
+    },
+    {
+      "id": "erp-u4-q32",
+      "topic": "package-selection-criteria",
+      "q": "Why are **financial viability** and **installed base** important package selection criteria?",
+      "options": [
+        "Because switching ERP is prohibitively costly, so vendor survival is itself a risk you are buying",
+        "Because larger vendors always have better functionality",
+        "Because auditors require a solvency check on all IT suppliers",
+        "Because licence costs fall as installed base grows"
+      ],
+      "answer": 0,
+      "explain": "The deck answers with acquisitions: **JD Edwards, PeopleSoft, Siebel, Retek → Oracle** · **Manugistics → JD Edwards** · **BAAN, Commerce One → gone.**\n\n**You cannot change ERP the way you change a text editor** — implementation, migration, retraining and process redesign all have to be paid again. **Choosing the vendor is a lock-in decision.**\n\n**Installed base is the evidence**, and it must be the *relevant* base — **geography specific, industry domain specific, MNC**.",
+      "difficulty": "medium",
+      "source": "D4 deck"
+    },
+    {
+      "id": "erp-u4-q33",
+      "topic": "package-selection-criteria",
+      "q": "**TCO** for an ERP package comprises which components?",
+      "options": [
+        "Initial capital · AMC · scaling number of users",
+        "Licence cost only",
+        "Licence cost and hardware cost",
+        "Implementation cost and training cost"
+      ],
+      "answer": 0,
+      "explain": "**Two of the three are recurring** — AMC forever, and every new hire is a new licence. **So a package that is cheaper today can be more expensive over ten years.**\n\n⚠️ And the sharpest question on the deck's own evaluation list: ***\"Is the customization cost included in the ERP cost?\"*** Almost always **no** — which is how the cheapest package at selection becomes the most expensive by go-live.",
+      "difficulty": "medium",
+      "source": "D4 deck"
+    },
+    {
+      "id": "erp-u4-q34",
+      "topic": "package-selection-criteria",
+      "q": "In final package selection, requirements are categorised **Vital, Essential and Desirable**, and matches as **full, partial or none**. Why two dimensions?",
+      "options": [
+        "A package matching 900 of 1,000 requirements may still be disqualified if a Vital one is a No-match",
+        "Because vendors score the two dimensions separately",
+        "Because functional and technical requirements are evaluated by different teams",
+        "Because partial matches are priced differently from full matches"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{how well it matches} \\times \\textbf{how much that requirement matters}$$\n\n**A one-dimensional count of matches is misleading.** *Vital* means the business cannot operate without it, so a **No-match there is disqualifying regardless of total score** — while a package missing 200 *Desirable* requirements may be the right choice.\n\n**VED is the requirements counterpart of ABC for inventory and impact levels for risk.**",
+      "difficulty": "hard",
+      "source": "D4 deck"
+    },
+    {
+      "id": "erp-u4-q35",
+      "topic": "selection-exceptions-rfp-contract",
+      "q": "Which are stated reasons why companies **do not** follow the traditional package-selection process? *(select all that apply)*",
+      "options": [
+        "Pressure from major customers to be on the same platform as them",
+        "Same ERP for all companies in the group, to solve integration / consolidation problems",
+        "Price becomes the dominant factor, especially for SMB",
+        "The board mandates an open-source solution"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "Plus a fourth the deck lists: **industry specific functionality.**\n\n**Three of the four are perfectly rational** — a constraint outside the evaluation outweighs everything inside it. **Group standardisation is the direct answer to Unit 1's Nestlé problem** (nine general ledgers), which arose precisely because divisions chose independently.\n\n⚠️ Reason 4 is better described as **one criterion dominating all others**, since industry experience *is* one of the criteria.",
+      "difficulty": "medium",
+      "source": "D4 deck"
+    },
+    {
+      "id": "erp-u4-q36",
+      "topic": "selection-exceptions-rfp-contract",
+      "q": "Which clause is the one companies most often omit from an ERP vendor contract and most expensive to lack?",
+      "options": [
+        "License cancellation costs",
+        "Payment terms",
+        "List of deliverables along with software",
+        "Software installation help"
+      ],
+      "answer": 0,
+      "explain": "**You negotiate the exit while you still have leverage** — before signing, while they still want the deal. Afterwards you have none.\n\nThe other two that hurt: **\"how future upgrades will be provided *and at what cost*\"** (without it, every mandatory upgrade is a negotiation you cannot walk away from), and **the vendor's implementation audits** — *final blueprint audit* and *audit before go live*, which are the **vendor checking your implementation** and which you actually want agreed in advance.",
+      "difficulty": "hard",
+      "source": "D4 deck"
+    },
+    {
+      "id": "erp-u4-q37",
+      "topic": "erp-package-market",
+      "q": "Which vendors does the deck place in **Tier 1** of the ERP package market?",
+      "options": ["SAP and Oracle", "SAP, Oracle and Microsoft Dynamics", "IBM and Accenture", "Infor, IFS and Epicor"],
+      "answer": 0,
+      "explain": "**Tier 1: SAP, Oracle.** **Tier 2: Microsoft Dynamics, JD Edwards, PeopleSoft, Infor, IFS, Epicor, Lawson** *(and QAD)*. **Tier 3: small and local players.**\n\n⚠️ Option C is **Tier 1 of the *consulting* market** — IBM, Accenture, SAP.\n\n**The tiers segment by customer size, not quality.** A Tier 1 package is frequently the *wrong* choice for a small company.",
+      "difficulty": "easy",
+      "source": "D4 deck"
+    },
+    {
+      "id": "erp-u4-q38",
+      "topic": "erp-package-market",
+      "q": "Why do **preconfigured templates** exist for the SMB segment?",
+      "options": [
+        "Configuration effort is roughly fixed while its value scales with company size, so for small firms the consulting bill exceeds the licence",
+        "SMBs are legally required to use standard configurations",
+        "Templates are the only way to support multi-country statutory reporting",
+        "Vendors cannot sell licences to SMBs without them"
+      ],
+      "answer": 0,
+      "explain": "$$\\text{large firm: } \\frac{\\text{config cost}}{\\text{benefit}} \\text{ small} \\qquad \\text{small firm: } \\frac{\\text{config cost}}{\\text{benefit}} \\text{ large}$$\n\n**The template collapses that ratio by making configuration a product rather than a project.**\n\n**What you give up is choice** — the template embeds someone else's view of the process. **This same idea returns in Unit 5 as the enabling condition for SaaS ERP**, where customization is forbidden outright.",
+      "difficulty": "medium",
+      "source": "D4 deck"
+    },
+    {
+      "id": "erp-u4-q39",
+      "topic": "partner-selection",
+      "q": "The deck names two ways of selecting a vendor. Which does it say ERP vendors are generally selected by?",
+      "options": [
+        "Competitive bidding only",
+        "Two-phase acquisition only",
+        "Direct nomination by the steering committee",
+        "Reverse auction"
+      ],
+      "answer": 0,
+      "explain": "**Competitive bidding** — *\"the vendors bid and the most competitive one is awarded the contract, **provided he fulfills the requirements**.\"* Note the qualifier: bids clear a **technical threshold first** and compete on price second.\n\n**Two-phase acquisition** evaluates on **actual work delivered** in a second phase — better evidence, higher price. **It is rarely used because few firms will do substantial unpaid work.**",
+      "difficulty": "medium",
+      "source": "D1 deck"
+    },
+    {
+      "id": "erp-u4-q40",
+      "topic": "partner-selection",
+      "q": "In the RFP process, what is the purpose of the optional **RFI** step?",
+      "options": [
+        "A cheap request for basic information to cut a long list down to a shortlist before full proposals are written",
+        "A formal request for the vendor's financial statements",
+        "A post-selection information pack sent to the winning bidder",
+        "A regulatory filing required for public sector procurement"
+      ],
+      "answer": 0,
+      "explain": "**RFI shortlists; RFP selects** — the same two-step screening-then-selection economics as package selection.\n\nTwo other details in the process worth knowing: **release includes conference call, common meeting and media advertisement** so **every bidder hears the same clarifications** (and the process is open, not invitation-only); and **Partner Selection → Contract Negotiations → Partner Finalization → Contract Signing** are separate steps, so if negotiations fail you can still turn to the runner-up.",
+      "difficulty": "hard",
+      "source": "D1 deck"
+    },
+    {
+      "id": "erp-u4-q41",
+      "topic": "inhouse-offshore-consulting-market",
+      "q": "Where does the deck say an **in-house implementation team** may actually work?",
+      "options": [
+        "Rollouts, where the first site was done by consultants and subsequent sites by the in-house team",
+        "First-time implementations at a single site",
+        "Any project where the core team is full-time",
+        "Public sector implementations"
+      ],
+      "answer": 0,
+      "explain": "**Rollouts** — *\"implementation in the first site had been done by the consulting team and subsequent rollout by the in-house team.\"* **The hard part — the blueprint — has already been paid for; site two is repetition, not design.**\n\n⚠️ Note the deck contradicts the in-house team's own headline advantage: *\"no money goes outside\"* is listed as a pro, but *\"overall may not work out to be cost effective **if all internal costs are factored**\"* is a con. **The saving is visible; the cost is invisible.**",
+      "difficulty": "medium",
+      "source": "D1 deck"
+    },
+    {
+      "id": "erp-u4-q42",
+      "topic": "inhouse-offshore-consulting-market",
+      "q": "In the phase-wise offshoring table, which phase has the **highest** offshore percentage, and which has **0%**?",
+      "options": [
+        "Support at 80%; Project Preparation at 0%",
+        "Realization at 70%; Business Blueprint at 0%",
+        "Final Preparation at 50%; Support at 0%",
+        "Business Blueprint at 90%; Realization at 0%"
+      ],
+      "answer": 0,
+      "explain": "**Preparation 0% · Blueprint 10% · Realization 70% · Go Live 50% · Support 80%.**\n\n$$\\textbf{offshore \\%} \\;\\propto\\; \\frac{1}{\\textbf{customer contact required}}$$\n\n**The dip at Go Live is the informative point** — it falls from 70% back to 50% because go-live needs **training, hand-holding and physical presence**.\n\n**The general rule: work that is *specified* can be offshored; work that is *discovered* cannot.**",
+      "difficulty": "hard",
+      "source": "D1 deck"
+    },
+    {
+      "id": "erp-u4-q43",
+      "topic": "inhouse-offshore-consulting-market",
+      "q": "Which activities does the deck list as **difficult to offshore** (hence done on-site)? *(select all that apply)*",
+      "options": [
+        "Business blueprinting",
+        "Integration testing and UAT",
+        "End user training and change management activities",
+        "Unit testing and volume testing"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "**Unit and volume testing are on the \"commonly offshored\" list** — that split is examinable.\n\n- **Unit testing** checks *does this do what the spec says?* — self-contained\n- **Integration testing** needs cross-module business judgement\n- **UAT** is by definition **the business users deciding** — it cannot be offshored because **the people doing it are the customer**\n\n*(Configuration and data migration sit in the middle — offshorable \"to a limited extent\".)*",
+      "difficulty": "hard",
+      "source": "D1 deck"
+    },
+    {
+      "id": "erp-u4-q44",
+      "topic": "project-scope-levers",
+      "q": "How many **levers of ERP project scope** does the deck name, and what instruction accompanies them?",
+      "options": [
+        "Nine — \"identify in-scope and out-of-scope items clearly (and get sign off)\"",
+        "Five — \"agree the scope with the steering committee\"",
+        "Nine — \"freeze the scope before blueprinting begins\"",
+        "Seven — \"prioritize the scope as Vital, Essential and Desirable\""
+      ],
+      "answer": 0,
+      "explain": "**Location · Business · Process · Application · Interface · Report · Data Migration · User · Technology.**\n\n**A lever is something you can pull to make the project bigger or smaller** — which is the practical value: when over budget, **you have nine choices, not nine hundred.**\n\n**Writing down what is *out* of scope is harder and more valuable than what is in** — because *\"frequent change in scope\"* is a named risk, and **an unstated exclusion is an assumed inclusion.**",
+      "difficulty": "medium",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q45",
+      "topic": "project-scope-levers",
+      "q": "Distinguish **process scope** from **application scope**.",
+      "options": [
+        "Process scope is horizontal — a business process end to end; application scope is vertical — which modules are implemented",
+        "Process scope covers manufacturing; application scope covers finance",
+        "Process scope is defined by the client; application scope by the consultant",
+        "They are the same thing described at two levels of detail"
+      ],
+      "answer": 0,
+      "explain": "**Procure-to-Pay runs through MM and FI** — that is process scope. ***FI, CO, MM, SD*** — that is application scope.\n\n⚠️ **You can implement a module without implementing every process that uses it.** A project scoped as *\"MM and FI\"* may quietly omit **service procurement** even though both its modules are in.\n\n**Scope by process, verify by application** — or you find the gap at integration testing.",
+      "difficulty": "hard",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q46",
+      "topic": "project-scope-levers",
+      "q": "In data migration, the transaction-data object list uses one word repeatedly. What is it, and what principle does it encode?",
+      "options": [
+        "\"Open\" — you migrate what is unfinished, not history",
+        "\"Balance\" — you migrate only monetary totals",
+        "\"Master\" — all transaction data derives from master data",
+        "\"Current\" — you migrate only the current financial year"
+      ],
+      "answer": 0,
+      "explain": "**Open items, open orders, open contracts, open internal orders…**\n\n$$\\textbf{migrate} = \\textbf{the state the business is in}, \\text{ not } \\textbf{the story of how it got there}$$\n\nA delivered and paid PO affects nothing going forward; **an open PO must move**, because goods will still arrive against it.\n\n**\"Material in Transit — High Seas, On Port\"** is the vivid case: owned, payable, on a ship, on nobody's shelf. **Miss it and both stock and payables are wrong on day one.**",
+      "difficulty": "hard",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q47",
+      "topic": "project-plan-charter",
+      "q": "Which are component plans of an **ERP project plan**? *(select all that apply)*",
+      "options": [
+        "Activity, Deliverables and Milestone plan",
+        "Resource plan",
+        "Training, Testing and Data Migration plans",
+        "Marketing plan"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "Six in all — the three above plus the **Change Management Plan**.\n\n**Five of the six are named after the things that most often go wrong:** *lack of planning* (39% of failures), *inadequate co-ordination of resources* (26%), *no quality control* (34%), *clean data*, and *inadequate change management*.\n\n**\"Resource Plan is derived from Project Plan\"** — getting that direction backwards is how *aggressive time frame* becomes an unachievable schedule.",
+      "difficulty": "medium",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q48",
+      "topic": "project-plan-charter",
+      "q": "The **Project Charter** is a major deliverable of which phase, and where is it presented?",
+      "options": [
+        "Project Preparation — presented at the Kick Off Meeting",
+        "Business Blueprint — presented at the blueprint sign-off",
+        "Realization — presented at the go-live audit",
+        "Final Preparation — presented at cutover planning"
+      ],
+      "answer": 0,
+      "explain": "**Project Preparation → Kick Off Meeting.**\n\nThe charter fixes **why** (overview, business case, benefits), **what** (scope, deliverables, goals), **who decides** (stakeholders, organisation and roles), **how** (strategy, plan, standards), and **what could go wrong** (assumptions, constraints, risk assessment).\n\n**\"Assumptions and Constraints\" carries the most weight in practice** — writing them down converts a later argument into a documented fact.",
+      "difficulty": "medium",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q49",
+      "topic": "project-plan-charter",
+      "q": "Three of the four stated **kick-off meeting goals** are change management rather than project management. Which is the odd one out?",
+      "options": [
+        "Explain the high level project plan, implementation strategy, timeline, goals and deliverables",
+        "Introduce project team members and explain their roles",
+        "Outline key Organizational Change Management goals and objectives",
+        "Create excitement about the project"
+      ],
+      "answer": 0,
+      "explain": "**Only the plan explanation is project management.** The kick-off is announced to *\"the whole organization\"* — most of that audience will never touch the plan. **What they need is to know this is happening, that leadership is behind it, and who to talk to.**\n\n⚠️ **\"Create excitement\" is a real objective, not decoration.** Whether people arrive at a disruptive change curious or resentful is substantially set on day one — and **poor communication is the 57% failure cause.**",
+      "difficulty": "hard",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q50",
+      "topic": "risk-management",
+      "q": "The four **risk impact levels**, from least to most severe, are",
+      "options": [
+        "Negligible → Marginal → Critical → Catastrophic",
+        "Low → Medium → High → Severe",
+        "Minor → Moderate → Major → Total",
+        "P4 → P3 → P2 → P1"
+      ],
+      "answer": 0,
+      "explain": "**Negligible** *(minor inconvenience)* → **Marginal** *(degradation of secondary mission)* → **Critical** *(serious threat to primary objective)* → **Catastrophic** *(failure of primary mission)*.\n\n**The instruction attached is where the value is:** *\"identify all **critical and catastrophic** threats… and deal with them proactively\"* — you are explicitly told **not** to actively mitigate the lower two.\n\n*(P1–P4 is the **SLA severity** scale, not the risk impact scale.)*",
+      "difficulty": "medium",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q51",
+      "topic": "risk-management",
+      "q": "The deck's risk taxonomy has three nested tiers. Which risks belong to the **ERP-specific** tier? *(select all that apply)*",
+      "options": [
+        "Inadequate business process reengineering",
+        "Inadequate change management",
+        "Inadequate legacy system management",
+        "Attrition"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "**Attrition is in the *every project* tier**, alongside low user involvement, poor team skills, low top management support, poor monitoring, ineffective PM techniques, scarcity of resources and changing external environment.\n\n$$\\textbf{every project} \\subset \\textbf{technology project} \\subset \\textbf{ERP project}$$\n\n**An ERP project carries all twenty-two risks** — which is why they fail more often. *(This whole taxonomy exists **only as an image**; the slide has no text.)*",
+      "difficulty": "hard",
+      "source": "D2 deck (image-only taxonomy)"
+    },
+    {
+      "id": "erp-u4-q52",
+      "topic": "risk-management",
+      "q": "Why are **probability** and **impact** separate steps in the five-step risk approach?",
+      "options": [
+        "Because risk exposure is roughly probability × impact, and neither factor alone tells you what to do",
+        "Because they are assessed by different teams",
+        "Because impact is objective and probability is subjective",
+        "Because probability determines the budget and impact determines the schedule"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{risk exposure} \\approx \\textbf{probability} \\times \\textbf{impact}$$\n\n**A catastrophic risk that is nearly impossible and a marginal risk that is certain need completely different responses.**\n\nThe five steps: **find → assess probability → analyze impact → prioritize → mitigate the top risks.** Note step 5 says *\"for **top** risk elements\"*, not all. **Same algorithm as MRP's exception messages and ABC-driven cycle counting.**",
+      "difficulty": "medium",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q53",
+      "topic": "requirements-project-teams",
+      "q": "Which fundamental of requirements management prevents arguments at UAT?",
+      "options": [
+        "\"Requirement should be verifiable\"",
+        "\"Granularity depends on the organization\"",
+        "\"Prioritization of requirements is important\"",
+        "\"Requirements mean different things to different people\""
+      ],
+      "answer": 0,
+      "explain": "**A requirement you cannot test cannot be accepted or rejected** — so it will be argued about at UAT, when it is most expensive.\n\n| Not verifiable | Verifiable |\n|---|---|\n| *\"the system must be user friendly\"* | *\"a GR must be postable in under 6 keystrokes\"* |\n\n**Same discipline as milestones** — *\"to-be design completed\"* rather than *\"blueprinting going well.\"* **State it so its truth is checkable.**",
+      "difficulty": "medium",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q54",
+      "topic": "requirements-project-teams",
+      "q": "Which are the **five core team responsibilities**? *(select all that apply)*",
+      "options": [
+        "Provide business inputs during TO-BE process design",
+        "Validate data before loading into the new system",
+        "Train the end users, using Train the Trainer",
+        "Negotiate the licence contract with the package vendor"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "Plus **configuring the system** and **testing**. Contract negotiation belongs to the **selection committee**, not the core team.\n\n**Each responsibility exists because only the business side can do it** — only they know a genuine duplicate from two real customers, and only they know what a correct test result looks like.\n\n⚠️ ***\"For projects to succeed the core team need to be full time\"*** is the success factor most often violated — and *\"ERP core team do not have the right resource\"* is the corresponding failure.",
+      "difficulty": "medium",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q55",
+      "topic": "requirements-project-teams",
+      "q": "Three roles appear in the project structure **\"both from consulting and core team side\"**. Which are they?",
+      "options": [
+        "Project Manager, Module Lead, Module Team Member",
+        "Project Sponsor, Steering Committee, Process Owner",
+        "Integration Manager, Data Manager, Training Manager",
+        "Industry SME, Change Manager, Technical Lead"
+      ],
+      "answer": 0,
+      "explain": "**The whole delivery spine is mirrored** — every level has someone who knows the package paired with someone who knows the business.\n\nOption C are the **four cross-cutting roles** *(with Change Manager)* — they exist because integration, data, training and change **span every module**, and anything spanning modules is nobody's job unless someone owns it. **Each corresponds to a sub-plan of the project plan.**\n\n**The Process Owner is explicitly \"from the business side\"** — they own a *process*, not a module, and they own the benefits afterwards.",
+      "difficulty": "hard",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q56",
+      "topic": "csf-success-failure",
+      "q": "What is the **most cited reason** for ERP implementation project failure, and at what percentage?",
+      "options": [
+        "Poor communication between relevant parties — 57%",
+        "Lack of planning of scheduling, resources and activities — 39%",
+        "Costs getting out of hand — 20%",
+        "No quality control — 34%"
+      ],
+      "answer": 0,
+      "explain": "**57%** — nearly half again the second place, and the deck notes that *\"mismanagement of progress\" (17%) **overlaps with poor communication***, so the true figure is higher.\n\n**The number one cause of ERP failure is not technical.**\n\nAnd the top five — communication, planning, quality control, milestones, coordination — are all **generic project-management failures**, i.e. exactly the *\"risk associated with every project\"* tier.",
+      "difficulty": "easy",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q57",
+      "topic": "csf-success-failure",
+      "q": "The deck annotates one failure reason as *\"a symptom not a cause.\"* Which one, and why does it matter?",
+      "options": [
+        "Costs getting out of hand — treating it as the problem leads to cutting testing and training, which worsens the actual causes",
+        "Poor communication — it is really a symptom of poor management",
+        "Milestones not being set — it is a symptom of poor planning",
+        "Supplier under-resourced — it is a symptom of poor partner selection"
+      ],
+      "answer": 0,
+      "explain": "**Costs do not rise spontaneously** — they rise because scope changed, the schedule slipped, or rework was needed.\n\n⚠️ **Treating the cost overrun as the problem leads to the wrong remedy.** Cutting testing and training reduces spend while making the underlying causes worse.\n\nThat is a genuinely sophisticated annotation and worth repeating in an answer.",
+      "difficulty": "hard",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q58",
+      "topic": "csf-success-failure",
+      "q": "Which ERP failure ended in **bankruptcy**, and what was the stated cause?",
+      "options": [
+        "FoxMeyer Drug Co., 1998 — could not handle the huge volume of transactions and had integration problems",
+        "Hershey, 1999 — bugs in SAP R/3 implemented by IBM",
+        "W. L. Gore, 1997 — Deloitte & Touche not experts",
+        "Cleveland State University — full of bugs, extra hardware"
+      ],
+      "answer": 0,
+      "explain": "**FoxMeyer / SAP America / Anderson Consulting — bankruptcy 1998.**\n\nA drug distributor's entire business *is* high-volume transaction processing, so a system that cannot process the volume is **not a degraded system, it is no system.** In the risk vocabulary: **catastrophic — failure of primary mission.**\n\n⚠️ **All four cases name a Tier 1 package and a Tier 1 or 2 firm.** Choosing famous names is not a defence.",
+      "difficulty": "medium",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q59",
+      "topic": "change-cutover-golive-sla",
+      "q": "In the change cycle, a change moves through which three environments?",
+      "options": [
+        "Development → Quality/Test → Production, with an approval gate before each transport",
+        "Sandbox → Development → Production, with one approval",
+        "Development → Production → Archive",
+        "Test → Development → Production, with no formal gates"
+      ],
+      "answer": 0,
+      "explain": "**The word the deck uses is \"transported\", and it is precise:** the same object is **moved forward**, so what was tested is exactly what goes live. **Re-doing a change in production is the failure this design prevents.**\n\n⚠️ **Step 4 is placed *before* the final transport:** *\"all documents (process and config docs) are updated with the change.\"* **Documentation is a precondition for going live, not a follow-up task.**",
+      "difficulty": "medium",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q60",
+      "topic": "change-cutover-golive-sla",
+      "q": "Why does the deck say cutover planning **needs to be a senior management decision**?",
+      "options": [
+        "Because typically every department believes their transactions are the most critical",
+        "Because only senior management can authorise the budget",
+        "Because the go-live date affects the financial year-end",
+        "Because consultants are not permitted to decide cutover timing"
+      ],
+      "answer": 0,
+      "explain": "**Ask each department and all of them will say they cannot stop.** Somebody with authority over all of them has to rank transaction criticality.\n\nThe deck's own examples are precise: **customer ordering and invoicing lose revenue if stopped**; **maintenance orders and new purchase contracts can be deferred a week.**\n\n**Hershey's 1999 go-live near its peak season is the counter-example that made this famous.**",
+      "difficulty": "medium",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q61",
+      "topic": "change-cutover-golive-sla",
+      "q": "The deck says *\"it's OK to have such issues\"* at go-live. Under what two conditions?",
+      "options": [
+        "No critical issues pending, and a detailed list with an agreed time frame and named owners",
+        "Fewer than ten issues, and vendor sign-off",
+        "All issues logged in the risk register, and steering committee approval",
+        "Issues resolved within the hyper-care period, whatever their severity"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{go-live criterion} = \\textbf{zero critical open items} + \\textbf{a dated closure plan for the rest}$$\n\n**Waiting for zero open issues means never going live.** But **an undocumented open issue is not an open issue — it is a defect that has been forgotten.**\n\n**And note what the go-live audit checks: five of its seven items are *readiness*, not correctness** — training, UAT signoff, data migration, **support help desk**, period-end procedures.",
+      "difficulty": "hard",
+      "source": "D2 deck"
+    },
+    {
+      "id": "erp-u4-q62",
+      "topic": "change-cutover-golive-sla",
+      "q": "In an SLA, what is the difference between **response time** and **solution time**?",
+      "options": [
+        "Response time is how fast they get back to you; solution time is the maximum period allowed to actually fix the problem",
+        "Response time applies to P1 issues; solution time to P3 and P4",
+        "Response time is measured in hours; solution time in business days",
+        "They are the same measure under two names"
+      ],
+      "answer": 0,
+      "explain": "**This is where SLAs are gamed.** *\"We called you back within 15 minutes\"* satisfies **response time** while the problem remains unsolved for a week.\n\n⚠️ **A support contract with a response-time SLA and no solution-time SLA is much weaker than it looks.**\n\nThe other parameters: **service window** (support hours), **downtime** (breakdowns per year), **availability** (% uptime). **P1/P2 get 24×7 on call; P3/P4 wait for the next business day**, and **Service Level Reports (SLR)** check adherence monthly.",
+      "difficulty": "hard",
+      "source": "D2 deck"
+    }
+  ]
+}

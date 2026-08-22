@@ -1,0 +1,857 @@
+{
+  "subject": "erp",
+  "unit": 5,
+  "title": "Unit 5 — Practice Quiz",
+  "items": [
+    {
+      "id": "erp-u5-q01",
+      "topic": "crm-concept-benefits",
+      "q": "The deck says **\"CRM is not just about technology.\"** What else does it involve?",
+      "options": [
+        "Strategy and redesign of business processes",
+        "A larger sales team and more field visits",
+        "A dedicated data warehouse and BI licence",
+        "Outsourcing the call centre"
+      ],
+      "answer": 0,
+      "explain": "**\"It involves strategy and redesign of business processes.\"**\n\n**This is exactly Unit 2's argument about ERP itself:** buying the software achieves nothing unless the underlying processes change. **A company that installs a CRM but keeps its sales people hoarding contacts in personal notebooks has bought a database nobody fills in.**\n\n**ERP without BPR fails; CRM without process redesign fails — for the same reason.**",
+      "difficulty": "easy",
+      "source": "D7 deck"
+    },
+    {
+      "id": "erp-u5-q02",
+      "topic": "crm-concept-benefits",
+      "q": "CRM's stated goal is a four-stage life cycle. Which is it?",
+      "options": [
+        "Find, attract and win new customers · retain them · get feedback to better design products and processes",
+        "Advertise · sell · invoice · collect",
+        "Segment · target · position · measure",
+        "Acquire · configure · deliver · support"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{find} \\rightarrow \\textbf{attract and win} \\rightarrow \\textbf{retain} \\rightarrow \\textbf{learn from}$$\n\n**The application areas are that life cycle with software attached** — Marketing finds, SFA wins, Call Centre and Field Service retain, CRM Analytics learns.\n\n**The last stage is the one people forget.** *\"Getting feedback… to better design the company's product and customer facing processes\"* means **CRM is an input to product design** — which is what makes it a *strategy* rather than a sales tool.",
+      "difficulty": "medium",
+      "source": "D7 deck"
+    },
+    {
+      "id": "erp-u5-q03",
+      "topic": "crm-concept-benefits",
+      "q": "Put the sales funnel stages in order.",
+      "options": [
+        "Leads → Prospects → Opportunities → Customer → Account → Repeat Sales",
+        "Prospects → Leads → Customer → Opportunities → Account",
+        "Contacts → Leads → Accounts → Opportunities → Customer",
+        "Opportunities → Leads → Prospects → Account → Customer"
+      ],
+      "answer": 0,
+      "explain": "**A sequence of increasing commitment:** a **lead** is a name; a **prospect** is a *qualified* lead; an **opportunity** is a specific potential sale with a value and close date; a **customer** has a **Sales Order**; an **account** is an ongoing relationship where support tickets are **cases**.\n\n**The Customer → Account transition is where CRM stops being about selling** — the goal changes from *win* to *retain*. **That is the boundary between the sales applications and the service applications.**",
+      "difficulty": "medium",
+      "source": "D7 deck"
+    },
+    {
+      "id": "erp-u5-q04",
+      "topic": "crm-sfa-ecommerce-callcentre",
+      "q": "Which are typical areas of **Sales Force Automation**? *(select all that apply)*",
+      "options": [
+        "Contact management",
+        "Lead / Opportunity management",
+        "Territory management and sales performance management",
+        "Campaign management and loyalty marketing"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "Plus **sales forecasting and pipeline** and **quote generation**. ⚠️ **Option D is Marketing Management**, not SFA.\n\n**The most important consequence is stated obliquely:** *\"tracking sales performance, based on which they are provided **incentive / compensation**.\"*\n\n> **That is why salespeople actually use the system.** An SFA that only helps management see the pipeline gets filled in badly; **one that computes commission gets filled in accurately and on time.**",
+      "difficulty": "medium",
+      "source": "D7 deck"
+    },
+    {
+      "id": "erp-u5-q05",
+      "topic": "crm-sfa-ecommerce-callcentre",
+      "q": "Which capability of a **call centre application** does the question bank single out as most valuable, and what delivers it?",
+      "options": [
+        "Previous records of the caller — delivered by CTI, which opens the record as the phone rings",
+        "Predefined escalation route — delivered by ACD",
+        "Knowledge base — delivered by IVR",
+        "Self-service capability — delivered by web integration"
+      ],
+      "answer": 0,
+      "explain": "**Without it, every call starts from zero** — the customer re-explains their problem to a third person, and the company appears not to be one company. **It is the single customer view arriving in the two seconds before the agent says hello.**\n\n**CTI = Computer Technology Integration** — it links the telephone system to the customer database so the screen and the call arrive together.\n\n*(The eight capabilities: predefined escalation route · previous records · time zones and languages · managing call assignments · knowledge base · self service · workflow · field service management.)*",
+      "difficulty": "hard",
+      "source": "D7 deck / U5 QnA"
+    },
+    {
+      "id": "erp-u5-q06",
+      "topic": "crm-sfa-ecommerce-callcentre",
+      "q": "What does a call-centre **knowledge base** ultimately enable?",
+      "options": [
+        "Self-service — once a solution is written down, any agent can reuse it, and it can then be exposed to customers directly",
+        "Automatic call distribution to the least busy agent",
+        "Voice logging for compliance",
+        "Multi-language support"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{one agent solves it} \\rightarrow \\textbf{knowledge base} \\rightarrow \\textbf{every agent solves it} \\rightarrow \\textbf{self-service: the customer solves it}$$\n\n**Each arrow removes cost and reduces waiting.**\n\n**Same principle as ESS in HCM and employee e-procurement for indirect items:** *move the transaction to the person who has the need.*",
+      "difficulty": "medium",
+      "source": "D7 deck"
+    },
+    {
+      "id": "erp-u5-q07",
+      "topic": "crm-marketing-field-prm",
+      "q": "In **field service**, four constraints must all be satisfied for a visit to succeed. Which are they?",
+      "options": [
+        "Skill, availability, location and the right spare part on the van",
+        "Skill, cost, contract level and warranty status",
+        "Availability, language, seniority and territory",
+        "Location, vehicle capacity, route and fuel"
+      ],
+      "answer": 0,
+      "explain": "**Any three can be satisfied while the fourth fails — and the visit still achieves nothing.** An engineer with the skill, the time and the location but **not the part** has to come back tomorrow, doubling the cost.\n\n**That is why \"managing spares / service parts\" sits in a customer-relationship module** — the inventory is **distributed across vans**, and the service level it supports is **first-time fix rate**.\n\n**And \"reverse logistics\" is the distinctive direction:** the faulty part must come **back**.",
+      "difficulty": "hard",
+      "source": "D7 deck"
+    },
+    {
+      "id": "erp-u5-q08",
+      "topic": "crm-marketing-field-prm",
+      "q": "Why does **PRM** exist as a separate application from CRM?",
+      "options": [
+        "Because the partner is an independent business you cannot instruct — you can only make it attractive for them to sell your product",
+        "Because partners require a different database technology",
+        "Because partner data is subject to different privacy law",
+        "Because partners buy at wholesale rather than retail prices"
+      ],
+      "answer": 0,
+      "explain": "| | **Direct selling (CRM)** | **Channel selling (PRM)** |\n|---|---|---|\n| Who meets the customer | **your** salesperson | **the partner's** |\n| Who controls them | you — employees | **nobody** — independent business |\n\n**Every PRM capability is a lever:** distributing leads · special partner discounts · partner training and service · partner performance management.\n\n⚠️ **\"Managing channel inventory\" is the hardest and most valuable** — **sold to the channel ≠ sold to the customer**, and mistaking channel stocking for real demand is how the **bullwhip effect** starts.",
+      "difficulty": "hard",
+      "source": "D7 deck"
+    },
+    {
+      "id": "erp-u5-q09",
+      "topic": "crm-analytics-vendors",
+      "q": "Which type of CRM analytics is described as using **predictive analytics**?",
+      "options": [
+        "Marketing analytics — for customer segmentation, targeting and campaign ROI",
+        "Sales analytics — dashboards displaying KPIs",
+        "Customer service analytics — visibility into call centre performance",
+        "All three equally"
+      ],
+      "answer": 0,
+      "explain": "**Only marketing analytics is described as predictive**, and that is not accidental: **marketing must commit budget in advance of knowing the outcome**, so a prediction has direct value. Sales analytics reports on deals that already exist; service analytics watches a queue already forming.\n\n**\"Measure the effectiveness (ROI) of a campaign\" is the thing CRM makes possible that was previously impossible** — *half of advertising is wasted and nobody knows which half* is a **measurement** problem.",
+      "difficulty": "medium",
+      "source": "D7 deck"
+    },
+    {
+      "id": "erp-u5-q10",
+      "topic": "crm-analytics-vendors",
+      "q": "In the deck's **2018 CRM vendor quadrant**, which vendors are the Leaders?",
+      "options": [
+        "Pipedrive, HubSpot, Salesforce, Zoho",
+        "SAP, Oracle, Microsoft, Adobe",
+        "Oracle CRM On Demand, amoCRM, Gold-Vision, Bpm'online",
+        "Highrise, Base, Hatchbuck, Vtiger"
+      ],
+      "answer": 0,
+      "explain": "The quadrant plots **Value Score** against **Capability Score**: **Leaders** *(high both)* · **Masters** *(high value, lower capability)* · **Pacesetters** *(high capability, lower value)* · **Contenders**.\n\n⚠️ **Oracle CRM On Demand is a Pacesetter** — capable but judged expensive for what it delivers, which is exactly what *\"Price and **Value** for Money\"* meant as a criterion.\n\n> **Salesforce leading rather than SAP or Oracle is the whole story** — CRM is where the specialists beat the suites, because it sits at the **edge** of the enterprise and needs far less core integration.",
+      "difficulty": "medium",
+      "source": "D7 deck (image-only quadrant)"
+    },
+    {
+      "id": "erp-u5-q11",
+      "topic": "plm",
+      "q": "**PLM** manages product data from when to when, and why is it described as cross-functional?",
+      "options": [
+        "From initial conception to retirement — because R&D, Engineering, Marketing, Production, Quality, Sales and Service all touch the product",
+        "From design release to first shipment — because engineering and manufacturing must agree",
+        "From order to delivery — because sales and logistics must coordinate",
+        "From patent filing to expiry — because legal and R&D must coordinate"
+      ],
+      "answer": 0,
+      "explain": "*\"PLM manages all data and information about a product **from its initial conception to retirement**\"*, and **PLM processes are cross functional — R&D, Engineering, Marketing, Production, Quality, Sales and Service.**\n\n$$\\textbf{one product} \\times \\textbf{seven functions} \\Rightarrow \\textbf{seven partial views, unless something unifies them}$$\n\n**PLM is to a *product* what HCM is to an *employee* and CRM is to a *customer*** — the same architectural idea, three times.",
+      "difficulty": "medium",
+      "source": "U5 QnA Ch.15"
+    },
+    {
+      "id": "erp-u5-q12",
+      "topic": "plm",
+      "q": "Which are stated **business drivers for a PLM application**? *(select all that apply)*",
+      "options": [
+        "Product variants and growing product lines",
+        "Shorter product development cycles and reduced engineering resources",
+        "Regulatory compliance pressure and documentation control",
+        "Falling raw material prices"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "Plus **cost reduction pressure · collaboration with local and global partners · process and data integration between R&D, Production, Supply · innovation focus · intellectual asset management**.\n\n**The first group is a squeeze from both ends and is the strongest argument for PLM:** more variants, more products, less time, **fewer engineers**. **Those four cannot all be satisfied by working harder** — the only way is to stop re-designing what already exists, which requires knowing what exists.\n\n⚠️ *(The source list repeats \"product variants and growing product lines\" at both ends — treat it as **ten distinct drivers**.)*",
+      "difficulty": "medium",
+      "source": "U5 QnA Ch.15"
+    },
+    {
+      "id": "erp-u5-q13",
+      "topic": "plm",
+      "q": "What is the difference between an **EBOM** and an **MBOM**, and why does it matter to PLM?",
+      "options": [
+        "EBOM is structured by function as engineering designs it; MBOM by assembly sequence as the factory needs it, including packaging and consumables — PLM owns the engineering side and hands over to ERP",
+        "EBOM is the estimated BOM; MBOM is the measured BOM after production",
+        "EBOM covers electronics; MBOM covers mechanical parts",
+        "EBOM is a draft; MBOM is the approved version of the same list"
+      ],
+      "answer": 0,
+      "explain": "**EBOM ≠ MBOM, and reconciling them is a real problem in practice.**\n\nThat handover is the honest answer to *\"what are the differences of a PLM application from an ERP application?\"* — **PLM manages the product *before and around* it is made; ERP manages *making and selling* it.** PLM's world is designs, revisions, documents and approvals; ERP's is orders, stock, costs and postings. **The BOM is where they meet**, and the same part carries **one identity in design and another in production**.",
+      "difficulty": "hard",
+      "source": "D3 deck / U5 QnBank"
+    },
+    {
+      "id": "erp-u5-q14",
+      "topic": "scm-definition-scor",
+      "q": "What are the **five basic components** of the SCOR model?",
+      "options": [
+        "Plan, Source, Make, Deliver, Return",
+        "Plan, Buy, Build, Ship, Bill",
+        "Forecast, Procure, Produce, Distribute, Service",
+        "Source, Store, Move, Sell, Support"
+      ],
+      "answer": 0,
+      "explain": "**SCOR = Supply Chain Operational Reference.** The diagram draws the five repeating along the chain: **Suppliers' Supplier → Supplier → Your Company → Customer → Customer's Customer**, with **Plan** sitting above and spanning further.\n\n**Two features carry the meaning:** ① **the same five processes repeat at every link** — your *Deliver* is your customer's *Source*, which is what makes it a **reference model**; ② **Return is a first-class process**, because reverse logistics is a real and expensive flow.\n\n*(The deck's own aside: \"Have we seen this slide earlier? — **BPM!**\" — SCOR is one of Unit 2's process-modelling standards.)*",
+      "difficulty": "easy",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q15",
+      "topic": "scm-definition-scor",
+      "q": "SCM tracks three flows. In which directions do they move?",
+      "options": [
+        "Material downstream, money upstream, information both ways",
+        "All three downstream, from supplier to customer",
+        "Material and money downstream, information upstream",
+        "Material upstream, money and information downstream"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{goods flow down} \\qquad \\textbf{money flows up} \\qquad \\textbf{information flows both ways}$$\n\n**Information is the one that can be improved almost for free, and that is the whole leverage of modern SCM.** Moving material faster costs money; **moving information faster costs almost nothing once systems are connected — and better information substitutes directly for inventory.**\n\n**VMI replaces buffer stock with shared consumption data; CPFR replaces two forecasts with one; cross-docking replaces storage with synchronised schedules. Every one trades inventory for information.**",
+      "difficulty": "medium",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q16",
+      "topic": "strategic-tactical-operational",
+      "q": "Which planning tools belong to the **strategic** level of supply chain planning?",
+      "options": [
+        "Network Design and Long Term Planning (LTP)",
+        "S&OP, MPS and MRP",
+        "Detailed scheduling, transportation planning and route scheduling",
+        "Vendor schedules and distribution plans"
+      ],
+      "answer": 0,
+      "explain": "**Strategic (yearly/quarterly)** — *\"what is my long term capacity management strategy? what is my most optimized network design?\"* → **Network Design, LTP**\n\n**Tactical (monthly/weekly)** → **S&OP, MPS, MRP** · **Operational (daily/hourly)** → **detailed scheduling, transportation planning, route scheduling**\n\n⚠️ **The whole MRP II ladder from Unit 3 sits inside *one* of SCM's three levels** — which is the implicit argument for why SCP exists. **MRP II has no strategic level at all.**",
+      "difficulty": "medium",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q17",
+      "topic": "strategic-tactical-operational",
+      "q": "What separates strategic from tactical and operational decisions, beyond time horizon?",
+      "options": [
+        "Reversibility — strategic decisions are \"difficult to reverse without substantial cost for the change\"",
+        "The number of people involved in making them",
+        "Whether they are made by software or by humans",
+        "Whether they affect revenue or only cost"
+      ],
+      "answer": 0,
+      "explain": "The QnA gives it away for the strategic level, and it is the insight the exam wants.\n\n| Level | Decision | Cost of changing your mind |\n|---|---|---|\n| **Strategic** | build a factory in Pune | **enormous** |\n| **Tactical** | produce 8,000 units next month | moderate |\n| **Operational** | send truck 4 via this route | **negligible** |\n\n**Time horizon and reversibility go together for a physical reason: the longer the horizon, the more concrete the commitment.** A factory is bricks; a route is a line on a map.",
+      "difficulty": "hard",
+      "source": "U5 QnA Ch.16"
+    },
+    {
+      "id": "erp-u5-q18",
+      "topic": "scp-vs-sce-vs-erp",
+      "q": "In the SCP-versus-SCE table, the **Applications** row is asymmetric. What does it say, and why?",
+      "options": [
+        "Planning: ERP or SCP solutions. Execution: ERP only — because execution must post to the ledger, respect authorisations and leave an audit trail",
+        "Planning: SCP only. Execution: ERP only — because they are entirely separate markets",
+        "Both rows say ERP — SCP solutions are only add-ons",
+        "Planning: ERP only. Execution: ERP or SCE solutions"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{Planning: ERP } \\textit{or} \\textbf{ SCP solutions} \\qquad \\textbf{Execution: ERP } \\textit{only}$$\n\n> **Specialist planners exist; specialist executors do not.**\n\nThe deck's note names the reason: *\"planning software need not worry about **access control, transaction management, workflow execution** — these are the must/should features of execution software such as ERP.\"*\n\n**Same level-dependent conclusion as Unit 4's inventory pyramid:** the lower the level, the stronger the case for integrated ERP.",
+      "difficulty": "hard",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q19",
+      "topic": "scp-vs-sce-vs-erp",
+      "q": "In the ERP-vs-SCP comparison, which row describes **SCP**?",
+      "options": [
+        "Simultaneous planning of material and capacity, on finite capacity",
+        "Sequential planning of material and capacity, assuming infinite capacity",
+        "Cannot handle prioritization rules",
+        "Replanning takes a long time"
+      ],
+      "answer": 0,
+      "explain": "**Every row of that table is one of MRP's seven limitations from Unit 3, answered:**\n\n| MRP limitation | SCP row |\n|---|---|\n| *\"assumes capacity is infinite\"* | **finite capacity planning** |\n| *\"cannot consider constraints\"* | **constraint based planning** |\n| *\"cannot do any optimization\"* | **Advanced Planning and Optimization** |\n| *\"cannot replan fast enough\"* | **replanning can be very quick** |\n\n**MRP plans material first, then checks capacity — which is why closed-loop MRP loops back. SCP plans both in one pass, so the loop disappears because the constraint was inside the calculation from the start.**",
+      "difficulty": "hard",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q20",
+      "topic": "scp-modules-network-demand",
+      "q": "In the deck's network-design trade-off, what were the two networks' savings and service levels?",
+      "options": [
+        "Cost-optimal: $6m savings, 40% next day. Service-optimal: $3m savings, 80% next day",
+        "Cost-optimal: $3m savings, 80% next day. Service-optimal: $6m savings, 40% next day",
+        "Cost-optimal: $6m savings, 80% next day. Service-optimal: $3m savings, 40% next day",
+        "Both saved $6m at different service levels"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{Doubling next-day service } (40\\% \\rightarrow 80\\%) \\textbf{ costs } \\$3\\text{m of the }\\$6\\text{m saving}$$\n\n**There is no \"right\" answer between the two networks** — the cost-optimal network **consolidates into few large facilities**; the service-optimal one **spreads into many local ones**.\n\n**Same trade-off as DRP's competing objectives, Level vs Chase, and service-level-based inventory. Four appearances of one structure.**\n\n**What the optimiser provides is not the answer but the curve** — choosing a point on it is a business decision.",
+      "difficulty": "hard",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q21",
+      "topic": "scp-modules-network-demand",
+      "q": "What is **\"like modelling\"** in demand planning, and what problem does it solve?",
+      "options": [
+        "Forecasting a product with no history by borrowing the history of a similar one — it makes new-product planning possible",
+        "Grouping similar customers to forecast them together",
+        "Matching forecast shapes across regions",
+        "Using a competitor's sales as a proxy for your own"
+      ],
+      "answer": 0,
+      "explain": "**A new phone model has no sales history; the previous model does.**\n\n**Launch and phase-out are the two moments when history is the worst possible guide**, which is why both need their own capability — *\"planning for new products\"* and *\"planning for Discontinuation / Phase out.\"*\n\n⚠️ **Phase-out is the one people forget:** a forecast that extrapolates a dying product's history will **over-order right up to the end**, leaving exactly the obsolete stock the *inventory obsolescence* KPI measures.\n\n*(SCM tools support like modelling; **ERP demand planning does not.**)*",
+      "difficulty": "hard",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q22",
+      "topic": "scp-modules-network-demand",
+      "q": "Distinguish **consensus forecasting** from **collaborative forecasting**.",
+      "options": [
+        "Consensus reconciles sales, marketing, finance and production inside one company; collaborative reconciles your forecast with your customer's, across companies",
+        "Consensus uses statistical models; collaborative uses expert judgement",
+        "Consensus is monthly; collaborative is weekly",
+        "They are two names for the same capability"
+      ],
+      "answer": 0,
+      "explain": "**Consensus is S&OP's arbitration made into software** — Unit 3's *\"joint plan developed by the Sales and Marketing team together.\"*\n\n**Collaborative forecasting crosses the company boundary** — and is what becomes **CPFR**.\n\n**Both are SCM-tool capabilities that ERP demand planning lacks:** *\"does not support collaborative forecasting\"* is an explicit row in the comparison table.",
+      "difficulty": "medium",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q23",
+      "topic": "production-gatp-transportation",
+      "q": "What is the difference between **available-to-promise (ATP)** and **capable-to-promise (CTP)**?",
+      "options": [
+        "ATP asks whether stock or a planned receipt exists; CTP asks whether we could produce it in time, given components and capacity",
+        "ATP is for finished goods; CTP is for components",
+        "ATP is instantaneous; CTP runs overnight",
+        "ATP is an ERP feature; CTP is a manual process"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{ATP: is there stock or a planned receipt?} \\qquad \\textbf{CTP: could we produce it?}$$\n\n**CTP requires exactly what SCP has and ERP lacks — finite capacity and multi-level component visibility.** The deck calls it *\"multi-level component **and capacity** check.\"* **You cannot promise to make something without knowing whether the machine is free.**\n\n**GATP's six capabilities are an escalating search:** alternate location → alternate product → **capable-to-promise** → rule-based → calendars. **ERP's ATP looks up a number; GATP conducts a search.**",
+      "difficulty": "hard",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q24",
+      "topic": "production-gatp-transportation",
+      "q": "Match the transport optimisation area to its business need. Which pairing is **correct**?",
+      "options": [
+        "Route optimization — minimize vehicle travel distance",
+        "Route optimization — minimize number of vehicles used",
+        "Optimum truck load building — minimize vehicle travel distance",
+        "Transport planning and vehicle scheduling — minimize unloading labour"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{how many vehicles} \\qquad \\textbf{how far each travels} \\qquad \\textbf{how well each is packed}$$\n\n- **Transport planning and vehicle scheduling** → **minimize number of vehicles used**\n- **Route optimization** → **minimize vehicle travel distance**\n- **Optimum truck load building** → **minimize unloading labour, and so the truck does not run empty**\n\n**Load building and routing are coupled through drop sequence** — the last delivery is loaded first, deepest in the truck. **You cannot decide the packing until you know the route.**",
+      "difficulty": "medium",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q25",
+      "topic": "production-gatp-transportation",
+      "q": "Why does the deck call route optimization **\"one of the most complex problems in computer science\"**? *(select all that apply)*",
+      "options": [
+        "It must respect vehicle capacity, distance/duration/stopover limits and drop sequence",
+        "It must respect stacking constraints — light materials must not sit below heavy ones",
+        "It must respect access restrictions such as border crossings allowed only at certain times",
+        "It requires real-time GPS tracking of every vehicle"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "It is the **vehicle routing problem** — a generalisation of the travelling salesman problem — and capacity, time windows, stacking rules and access restrictions make it dramatically harder.\n\n⚠️ **The access-restriction example is the best illustration of why shortest-path alone is insufficient:** the shortest route may be **unusable at the hour the truck arrives**. **So the optimiser is scheduling in time, not just routing in space.**\n\n*(Other constraints named: depot location, handling resources, maximum storage time, vehicle types, opening hours of locations.)*",
+      "difficulty": "hard",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q26",
+      "topic": "collaborative-vmi",
+      "q": "The single most examinable fact about **VMI** is that the customer does **not** do what?",
+      "options": [
+        "Generate a purchase order — the supplier drives replenishment and creates the order",
+        "Receive the goods — the supplier delivers straight to the shelf",
+        "Pay for the goods until they are sold",
+        "Hold any inventory at all"
+      ],
+      "answer": 0,
+      "explain": "**\"In VMI, the customer does not generate a P.O.\"** — that inverts the entire procurement cycle from Unit 4.\n\n| | **Normal** | **VMI** |\n|---|---|---|\n| Who decides what to order | **customer** | **supplier** |\n| What the customer sends | **a purchase order** | **stock, sales and promotion data** |\n\n**Why it is better:** the supplier sees **actual consumption** rather than **a filtered order signal** distorted by the retailer's own batching and safety stock. **That is why \"eliminating bullwhip effect\" is the first benefit listed.**\n\n*(The customer keeps a veto — *\"review the order, if required make changes.\"*)*",
+      "difficulty": "medium",
+      "source": "U5 QnA Ch.16"
+    },
+    {
+      "id": "erp-u5-q27",
+      "topic": "collaborative-vmi",
+      "q": "Which are the **two stated difficulties** of VMI?",
+      "options": [
+        "Unstable pricing / sudden demand surges are hard to handle, and VMI requires a critical volume of business",
+        "Suppliers resist it, and EDI standards are incompatible",
+        "It increases inventory, and it raises administration cost",
+        "It requires the same ERP at both ends, and it is illegal in some jurisdictions"
+      ],
+      "answer": 0,
+      "explain": "**① VMI works by extrapolating consumption.** A price change or demand spike **breaks the extrapolation** — and because the customer is no longer ordering, **there is no signal that the world changed** except the data itself, arriving after the fact. *(Which is why **planned future promotions** is one of the three EDI feeds.)*\n\n**② Setup costs both parties real integration effort.** The **saving is proportional to volume while the setup cost is fixed** — which is why VMI is a Wal-Mart-and-P&G story rather than a universal practice.",
+      "difficulty": "hard",
+      "source": "U5 QnA Ch.16"
+    },
+    {
+      "id": "erp-u5-q28",
+      "topic": "collaborative-vmi",
+      "q": "The collaboration evolution chart plots evolution against which vertical axis?",
+      "options": [
+        "Collaboration / trust",
+        "Cost of integration",
+        "Number of trading partners",
+        "Data volume exchanged"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{Paper based updates} \\rightarrow \\textbf{Portals} \\rightarrow \\textbf{Collaborative Forecasting, VMI} \\rightarrow \\textbf{CPFR}$$\n\n**Technology was never the constraint — EDI existed for decades. Trust was.** A supplier who can see your daily sales can also infer your margins, your promotions and your relationships with their competitors.\n\nThe deck's own note: *\"many of these may look trivial in the current age of on-line access… **but it was a big deal not too long ago.** Also, businesses won't embrace technology so quickly.\"*",
+      "difficulty": "medium",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q29",
+      "topic": "cpfr-bullwhip-vendors",
+      "q": "What problem did **CPFR** originate to solve, per the deck?",
+      "options": [
+        "That the company and their supplier do not work with the same forecast numbers",
+        "That suppliers were slow to deliver",
+        "That retailers held too much safety stock",
+        "That EDI formats were incompatible between trading partners"
+      ],
+      "answer": 0,
+      "explain": "CPFR *\"started as a vision for some of the large retailers like **Wal-Mart in the 1990s**, who found the biggest problem of supply chain is that **the company and their supplier do not work with the same forecast numbers**.\"*\n\n**Both parties forecast the same future demand and get different answers, because each sees only part of the picture** — the retailer sees **actual sales**, the supplier sees **their own capacity**.\n\n$$\\textbf{two forecasts} \\Rightarrow \\textbf{two plans} \\Rightarrow \\textbf{one is wrong, and both pay}$$\n\n**CPFR's answer is not a better algorithm — it is a *single* forecast.**",
+      "difficulty": "medium",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q30",
+      "topic": "cpfr-bullwhip-vendors",
+      "q": "The **nine steps of CPFR** follow a repeating pattern. What is it?",
+      "options": [
+        "Agree (2 steps), then create → identify exceptions → resolve exceptions TWICE (sales forecast, then order forecast), then generate order",
+        "Plan, do, check, act, repeated twice, then close",
+        "Three phases of three steps each: forecast, agree, replenish",
+        "Nine independent steps with no repeating structure"
+      ],
+      "answer": 0,
+      "explain": "> ### **Agree, then forecast twice, then order.**\n\n**Steps 3–5 and 6–8 are the same three steps applied to two different forecasts** — which is why nine steps are easier to remember than they look.\n\n**Sales forecast = what the end consumer will buy. Order forecast = what the retailer will order from the supplier.** They are **not the same number** — a retailer selling 1,000/week may order 4,000 monthly. **The sales forecast is smooth; the order forecast is lumpy — and that gap is where the bullwhip is born.**\n\n**VICS = Voluntary Intra Industry Commerce Standards.**",
+      "difficulty": "hard",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q31",
+      "topic": "cpfr-bullwhip-vendors",
+      "q": "Four of CPFR's nine steps concern exceptions. Why do they matter so much?",
+      "options": [
+        "Because the point of a joint forecast is that disagreement is detected and resolved before it becomes two different plans",
+        "Because exceptions are the only steps that can be automated",
+        "Because regulators require exception logging",
+        "Because they replace the need for a joint business plan"
+      ],
+      "answer": 0,
+      "explain": "**An exception is a divergence beyond an agreed tolerance** — *your forecast says 1,200, mine says 800.*\n\n> **Without steps 4–5 and 7–8, CPFR would just be two forecasts exchanged by email. The exception process is what makes it a single forecast.**\n\n**Same discipline as MRP's exception messages** — *\"prioritize the messages → take action\"* — applied across a company boundary.\n\n**And step 1 comes first for a reason:** *\"develop collaboration arrangement\"* is where the parties agree **what tolerance counts as an exception.**",
+      "difficulty": "hard",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q32",
+      "topic": "cpfr-bullwhip-vendors",
+      "q": "Why does the **bullwhip effect** amplify as you move upstream? *(select all that apply)*",
+      "options": [
+        "Order batching — a smooth demand becomes a spiky order",
+        "Safety stock adjustment — a 10% demand rise triggers a larger order increase",
+        "Each link can only see the orders from the link below it, not actual consumption",
+        "Upstream suppliers have longer production runs"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "Plus **lead-time reaction**, **promotions and forward buying**, and **shortage gaming**.\n\n> **Every cause has the same root: each link sees only orders, not consumption.**\n\n**Which is exactly why VMI eliminates it** — the supplier receives **POS data and stock levels**, not orders, so the distorting filter is removed. **And CPFR attacks it from the other side with a shared forecast.**\n\n$$\\textbf{small change in consumer demand} \\xrightarrow{\\text{each link amplifies}} \\textbf{large swing at the manufacturer}$$",
+      "difficulty": "hard",
+      "source": "D5 deck"
+    },
+    {
+      "id": "erp-u5-q33",
+      "topic": "data-warehouse",
+      "q": "Name the **four characteristics** of a data warehouse.",
+      "options": [
+        "Subject-oriented, integrated, time-variant, non-volatile",
+        "Normalized, indexed, partitioned, replicated",
+        "Structured, cleansed, consistent, current",
+        "Relational, dimensional, historical, secure"
+      ],
+      "answer": 0,
+      "explain": "**Mnemonic: SITN** — and **each is a deliberate rejection of how an operational system works.**\n\n| Characteristic | OLTP | Warehouse |\n|---|---|---|\n| **Subject-oriented** | organised by **process** | by **subject** — sales, product, customer |\n| **Integrated** | one application | **many sources reconciled** |\n| **Time-variant** | **current** state | **5–10 years** of history |\n| **Non-volatile** | **updated constantly** | **write once, read many** |\n\n**Non-volatile is the most important:** if a warehouse overwrote, **last year's report would silently change every time someone corrected a record today.**",
+      "difficulty": "easy",
+      "source": "N1 deck"
+    },
+    {
+      "id": "erp-u5-q34",
+      "topic": "data-warehouse",
+      "q": "What are the **two stated disadvantages** of data warehousing, and what causes each?",
+      "options": [
+        "Data latency (caused by non-volatility and batch loading) and no unstructured data reporting (caused by the schema)",
+        "High cost and slow queries",
+        "Poor security and difficult administration",
+        "Vendor lock-in and licence cost"
+      ],
+      "answer": 0,
+      "explain": "**Both follow directly from characteristics you were just told were advantages — and saying so is the mark-earning observation.**\n\n$$\\textbf{non-volatile + batch load} \\Rightarrow \\textbf{latency}$$\n\n**Which is why an ODS exists** — *\"a near real time integrated view of current data.\"*\n\n**Unstructured data — emails, documents, images, call recordings, social media — does not fit facts-and-dimensions tables**, and it is exactly the data the CRM chapter said could be valuable.\n\n*(Advantages: **common data model, clean data, better performance of source system, facilitates reporting**, plus storage over a longer period.)*",
+      "difficulty": "hard",
+      "source": "N1 deck"
+    },
+    {
+      "id": "erp-u5-q35",
+      "topic": "star-schema-etl",
+      "q": "In the deck's worked star schema, the **SALES** fact table contains which columns?",
+      "options": [
+        "Product_Code, Period_Code, Store_Code, Units_Sold, Dollars_Sold, Dollars_Cost",
+        "Product_Code, Description, Color, Size",
+        "Store_Code, Store_Name, City, Telephone, Manager",
+        "Period_Code, Year, Quarter, Month, Day"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{fact table} = \\textbf{foreign keys pointing outward} + \\textbf{numbers to add up}$$\n\nOptions B, C and D are the three **dimension** tables — **PRODUCT, STORE and PERIOD**.\n\n**The test:** **facts are things you would *add up*** (units, dollars); **dimensions are things you would *group by* or *filter on*** (product, month, store).\n\n**Notice STORE contains Store_Name, Telephone, Manager** — descriptive and unaggregatable. **Putting them in the dimension keeps the fact table narrow, and a narrow fact table is a fast one at a billion rows.**",
+      "difficulty": "medium",
+      "source": "N1 deck (image-only diagram)"
+    },
+    {
+      "id": "erp-u5-q36",
+      "topic": "star-schema-etl",
+      "q": "Why is the star schema **deliberately denormalised**?",
+      "options": [
+        "Because warehouse data is non-volatile, so the reason for normalising (preventing update anomalies) evaporates — leaving only the benefit of avoiding joins",
+        "Because relational databases cannot enforce normalisation at scale",
+        "Because dimension tables are too small to normalise",
+        "Because OLAP servers require flat tables"
+      ],
+      "answer": 0,
+      "explain": "| | **OLTP — normalized** | **Warehouse — star schema** |\n|---|---|---|\n| Goal | **avoid update anomalies** | **avoid joins** |\n| Because | data changes constantly | **data is non-volatile** |\n\n**Normalisation exists to prevent inconsistency when data is updated — and warehouse data is not updated. So you may trade storage for query speed freely.**\n\nThis is exactly what the OLTP/OLAP table says: *\"OLTP database design is **highly normalized**… OLAP is **denormalized with limited tables**.\"* **The two designs are opposite because their workloads are opposite.**",
+      "difficulty": "hard",
+      "source": "N1 deck"
+    },
+    {
+      "id": "erp-u5-q37",
+      "topic": "star-schema-etl",
+      "q": "In **ETL**, which step is described as doing the real work, and why?",
+      "options": [
+        "Transform — it manufactures Integrated, Consistent, Subject-oriented and Time-variant from raw source data",
+        "Extract — because source systems are the hardest to read",
+        "Load — because target systems enforce constraints",
+        "All three equally"
+      ],
+      "answer": 0,
+      "explain": "*\"After extraction, the data need to be **transformed or modified depending on specific business logic** so that it can be sent to the target repository.\"*\n\n| Transform does | Delivering |\n|---|---|\n| reconciling customer IDs across systems | **Integrated · Uniqueness** |\n| standardising formats, units, currencies | **Consistency and Standardization** |\n| restructuring process data into subjects | **Subject-oriented** |\n| stamping records with a load date | **Time-variant** |\n\n**Extract and Load are plumbing; Transform is where the warehouse's promises are kept.**\n\n**Four usage areas:** data migrations · master data management · data warehousing and reporting · **compliance**.",
+      "difficulty": "medium",
+      "source": "N1 deck / U5 QnA"
+    },
+    {
+      "id": "erp-u5-q38",
+      "topic": "oltp-olap",
+      "q": "Which characteristics belong to **OLAP** rather than OLTP? *(select all that apply)*",
+      "options": [
+        "Database design is typically denormalized with limited tables",
+        "Data is consolidated for a period of time",
+        "Data reveals multi-dimensional views of business activities",
+        "Highly normalized, following ER diagrams and data modeling"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "**Option D is OLTP.** Its other characteristics: *manages ongoing transactional data* · *is the source of the data origin* · *involves RDBMS*.\n\n**The whole comparison follows from one difference in workload:**\n\n$$\\textbf{OLTP: many users, tiny operations, constant writes} \\qquad \\textbf{OLAP: few users, huge queries, rare writes}$$\n\n⚠️ **And OLAP characteristic ② states the dependency: *\"OLAP database is formed from various databases which are OLTP in nature.\"*** **OLAP has no data of its own** — which is why latency is unavoidable.",
+      "difficulty": "medium",
+      "source": "N1 deck / U5 QnA"
+    },
+    {
+      "id": "erp-u5-q39",
+      "topic": "oltp-olap",
+      "q": "Distinguish **slice** from **dice** in OLAP.",
+      "options": [
+        "Slice fixes ONE dimension to one value; dice restricts SEVERAL dimensions to sub-ranges",
+        "Slice removes a dimension; dice adds one",
+        "Slice aggregates upward; dice drills downward",
+        "Slice is for time dimensions; dice is for all others"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{A slice cuts one flat plane out of the cube; a dice cuts a smaller cube out of the cube.}$$\n\nOn the deck's CPG example — **Product** *(detergent, food, personal care, healthcare)* × **Sales Channel** *(retail, wholesale, export)* × **Regions** *(APAC, Americas, Europe)* — **\"the Food slice\"** fixes Product = Food. **A dice would take *food and personal care, in APAC and Europe, retail only*.**\n\n**The five OLAP functionalities:** roll up/roll down · slice and dice · multidimensional data cube · **pivot** · sort.",
+      "difficulty": "hard",
+      "source": "N1 deck"
+    },
+    {
+      "id": "erp-u5-q40",
+      "topic": "oltp-olap",
+      "q": "Match the OLAP type to its storage approach. Which is **correct**?",
+      "options": [
+        "HOLAP — summaries in a cube, detail left relational",
+        "ROLAP — data pre-aggregated into a multidimensional cube",
+        "MOLAP — data stays in relational tables, cubes computed on the fly",
+        "HOLAP — everything stored twice, in both forms"
+      ],
+      "answer": 0,
+      "explain": "| Type | Storage | Trade-off |\n|---|---|---|\n| **ROLAP** — **Relational** | relational tables, cubes on the fly | **scales to huge volumes**, slower |\n| **MOLAP** — **Multidimensional** | pre-aggregated cube | **very fast**, limited size |\n| **HOLAP** — **Hybrid** | **summaries in a cube, detail relational** | fast at summary, drills to detail |\n\n**HOLAP is the granularity trade-off implemented as an architecture** — the summarised side's speed and the detailed side's answerability, **both at once**.",
+      "difficulty": "hard",
+      "source": "N1 deck"
+    },
+    {
+      "id": "erp-u5-q41",
+      "topic": "datamart-ods-mining-bi",
+      "q": "An **ODS** reverses which characteristics of a data warehouse? *(select all that apply)*",
+      "options": [
+        "Non-volatile — the ODS has an overwrite function (add, change, delete)",
+        "Time-variant — the ODS stores only very recent information",
+        "Subject-oriented — the ODS uses flat, transparent tables with no fact and dimension tables",
+        "Integrated — the ODS draws from a single source"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "⚠️ **Integrated is the one they SHARE** — *\"an ODS consolidates data from multiple source systems.\"*\n\n$$\\textbf{Warehouse: \"what has been happening over years?\"} \\qquad \\textbf{ODS: \"what is true right now, across all systems?\"}$$\n\n**The ODS is the answer to data latency**, the warehouse's stated disadvantage.\n\n**\"Overwrite function\" is listed as an *advantage*** — the same property is a virtue or a defect depending on the question. **For history you must never overwrite; for current state you must.**",
+      "difficulty": "hard",
+      "source": "N1 deck"
+    },
+    {
+      "id": "erp-u5-q42",
+      "topic": "datamart-ods-mining-bi",
+      "q": "What are the **four properties** of a pattern identified by data mining?",
+      "options": [
+        "Valid, novel, potentially useful, ultimately understandable",
+        "Accurate, complete, timely, unique",
+        "Significant, repeatable, measurable, actionable",
+        "Descriptive, predictive, prescriptive, diagnostic"
+      ],
+      "answer": 0,
+      "explain": "**Each rules out a specific failure:** **valid** rules out statistical noise · **novel** rules out what you already knew · **potentially useful** rules out what you cannot act on · **understandable** rules out what nobody can interpret.\n\n> **Novelty is what distinguishes mining from reporting: reporting answers questions you asked; mining finds patterns you did not know to ask about.**\n\n⚠️ **Validity is the deck's own caution answered** — search a large dataset and you will find patterns by chance. **That is why \"Results validation\" is a named step** *(the three steps: **Data Preparation → Model Construction → Results validation**)*.\n\n*(Option B is the **quality data** properties list.)*",
+      "difficulty": "hard",
+      "source": "N1 deck"
+    },
+    {
+      "id": "erp-u5-q43",
+      "topic": "datamart-ods-mining-bi",
+      "q": "What does **BI** add on top of OLAP, analytics and data mining?",
+      "options": [
+        "Pushing rather than pulling — alerts, dashboards, scorecards, workflow and data delivery",
+        "Faster query execution on the same cubes",
+        "The ability to store unstructured data",
+        "Direct write-back to the source systems"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{BI} \\supset \\{\\textbf{OLAP}, \\textbf{Analytics}, \\textbf{Data Mining}, \\textbf{Reporting}\\}$$\n\n**OLAP waits for someone to ask a question. Alerts, dashboards, scorecards, workflow and data delivery bring the answer to the person without them asking** — and route it onward when action is needed.\n\n**That is the difference between a tool and a system:** *\"correct problems **before** they affect customer satisfaction\"* requires **being told**, not having to look.\n\n**And the vendor list is an acquisition story:** **Business Objects → SAP · Cognos → IBM · Hyperion → Oracle.**",
+      "difficulty": "medium",
+      "source": "N1 deck"
+    },
+    {
+      "id": "erp-u5-q44",
+      "topic": "erp-manufacturing-industries",
+      "q": "Which processes are named as **common across industries**? *(select all that apply)*",
+      "options": [
+        "Financial and management accounting, corporate governance",
+        "HR processes — recruitment, payroll, talent management",
+        "Global trade — import procedure, documentation, customs",
+        "Oil exploration and product promotion"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "Plus **corporate services like travel management**, **quality management**, and **warehouse and transport management**.\n\n⚠️ **Option D is the deck's own example of processes that DIFFER** — *\"an oil and gas company needs **exploration**… that is not important for a consumer goods company. **Product promotion** is important for a consumer goods company… however that may not make any sense for a petroleum company where prices in countries like India are mostly dictated by government.\"*\n\n$$\\textbf{common} = \\textbf{how a company runs itself} \\qquad \\textbf{specific} = \\textbf{what the company actually does}$$",
+      "difficulty": "medium",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q45",
+      "topic": "erp-manufacturing-industries",
+      "q": "**Just in sequence (JIS)** deliveries, named as an automotive-specific process, differ from JIT how?",
+      "options": [
+        "Parts arrive in the order the assembly line will use them, not merely at the right time",
+        "Parts arrive earlier, giving the line a buffer",
+        "Parts are delivered by the manufacturer rather than the supplier",
+        "Parts are sequenced by value rather than by need"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{JIT: the right parts at the right time} \\qquad \\textbf{JIS: in the order the line will use them}$$\n\nOn a line building **multiple models mixed together**, the seats for car 47 must arrive **immediately before car 47 reaches the seat station** — not a pallet of assorted seats.\n\n> **The supplier must sequence their delivery to your production sequence** — which requires them to see your line schedule in near real time. **That is the deepest possible supply-chain collaboration, beyond VMI and CPFR.**",
+      "difficulty": "hard",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q46",
+      "topic": "erp-manufacturing-industries",
+      "q": "**E-Pedigree**, a pharma-specific process, exists to defeat what?",
+      "options": [
+        "Counterfeit medicines entering the legitimate supply chain",
+        "Patent infringement by generic manufacturers",
+        "Price gouging by distributors",
+        "Expired stock being resold"
+      ],
+      "answer": 0,
+      "explain": "**An electronic record of every custody transfer a drug pack has undergone**, from manufacturer to pharmacy. **It is a legal requirement, not a business choice.**\n\n> **That is batch management from Unit 3 taken to its logical end.** Batch tracking answered *\"which batch is this?\"*; **e-pedigree answers *\"who has held this specific pack, and when?\"*** — the same **Farm to Fork** traceability at pharmaceutical stakes.\n\n**Every pharma process on the list exists because of regulation or intellectual property** — and *\"secrecy of formulation\"* is the one that constrains the ERP's own design.",
+      "difficulty": "medium",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q47",
+      "topic": "erp-service-industries",
+      "q": "Why does retail need **store clustering**?",
+      "options": [
+        "Because per-store assortment planning is intractable at 800 stores and a single national assortment ignores real differences",
+        "Because stores must be grouped for tax purposes",
+        "Because POS systems can only serve one cluster at a time",
+        "Because warehouses serve stores in fixed groups"
+      ],
+      "answer": 0,
+      "explain": "**Clustering groups similar stores so assortment and space decisions are made per cluster** — a few dozen decisions instead of 800.\n\n> **Same \"match the resolution to the decision\" principle as ABC classification, rough-cut capacity planning and data granularity.**\n\n**Retail's processes are all about *what to stock, where, and at what price*, because a retailer makes nothing** — category management, assortment management, space management, merchandise budgeting, promotion planning and markdowns.",
+      "difficulty": "medium",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q48",
+      "topic": "erp-service-industries",
+      "q": "In the healthcare provider's \"Manage Resources\" list, one entry is unlike any other inventory item. Which, and why?",
+      "options": [
+        "Organs and blood — perishable in hours, non-substitutable, and impossible to reorder",
+        "Beds — because they cannot be moved between wards",
+        "Medications — because they require batch tracking",
+        "Operation theatres — because they are booked rather than stocked"
+      ],
+      "answer": 0,
+      "explain": "**They have a stock level, a location, an expiry and a matching requirement** — but **no procurement lead time applies and no EOQ can be calculated.**\n\n> **It is the extreme case of the critical-item quadrant — *\"should never be out of stock\"* — with no way to guarantee supply.**\n\n**And the provider/payer split is the structural insight:** the provider's processes are **beds, theatres, tests, treatments**; the payer's are **claims, relationships, communication**. ***\"Payer Relationship Management\" is literally CRM where the customer is an insurer.***",
+      "difficulty": "hard",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q49",
+      "topic": "erp-service-industries",
+      "q": "Why do banking ERPs form a separate product category with their own vendors?",
+      "options": [
+        "Because in a bank the financial transaction IS the product — there is no factory, the ledger is the operation",
+        "Because banking regulation forbids general-purpose ERP",
+        "Because banks require real-time processing that SAP cannot provide",
+        "Because banks do not need HR or procurement modules"
+      ],
+      "answer": 0,
+      "explain": "**In a manufacturer, FI-CO *records* what production and sales did. In a bank, the financial transaction *is* the product.**\n\n**Hence: Finacle (Infosys) · FLEXCUBE (Oracle) · IS-Banking (SAP) · BaNCS (TCS)** — two of the four Indian.\n\n**Note that \"Treasury management\" appears here as a *core banking process*** while in Unit 3 it was one of four categories of the finance module for an ordinary company. **Same function, utterly different weight** — for a manufacturer treasury manages spare cash; **for a bank, interest rate, FX and credit risk management are the business.**",
+      "difficulty": "medium",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q50",
+      "topic": "cloud-saas-hosted",
+      "q": "What is the deck's stated **criticism** of cloud computing?",
+      "options": [
+        "Companies save on upfront capital but may pay more in operating expenses — so where capital expense is small, cloud may not make financial sense",
+        "Cloud providers cannot guarantee data residency",
+        "Cloud systems cannot scale beyond a certain user count",
+        "Cloud contracts always cost more than on-premise licences"
+      ],
+      "answer": 0,
+      "explain": "**A genuine argument, not a hedge.** Cloud converts **CapEx into OpEx** — you stop buying hardware and start paying rent. **Rent never stops.**\n\n> **Cloud wins where demand is variable or unpredictable; ownership wins where it is steady and large.**\n\n**And the strongest advantage is stated as a full sentence:** *\"individual companies need not design the hardware based on **peak load**.\"*\n\n$$\\textbf{on-premise capacity} = \\textbf{peak demand} \\qquad \\textbf{cloud capacity} = \\textbf{current demand}$$",
+      "difficulty": "medium",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q51",
+      "topic": "cloud-saas-hosted",
+      "q": "Which SaaS characteristic generates all the others?",
+      "options": [
+        "One-to-many delivery — one instance of the software serving many customers",
+        "Per-user subscription pricing",
+        "Network based access to business software",
+        "Central maintenance rather than at each customer site"
+      ],
+      "answer": 0,
+      "explain": "$$\\textbf{one instance of the software} \\longrightarrow \\textbf{many customers}$$\n\n| Because it is one-to-many… | …this follows |\n|---|---|\n| maintenance happens once | **\"managed from a central location\"** |\n| everyone is on the same version | **\"faster releases — the whole community benefits\"** |\n| hardware is shared | **\"multi-tenant efficiency — never idle\"** |\n| **you cannot change shared code** | **customization is impossible** |\n\n**The last row is not a limitation of the technology — it is a direct consequence of the model.** Which is why *\"SaaS became popular for applications that are more standard across industries.\"*",
+      "difficulty": "hard",
+      "source": "D6 deck / U5 QnA"
+    },
+    {
+      "id": "erp-u5-q52",
+      "topic": "cloud-saas-hosted",
+      "q": "Which row of the **SaaS vs Hosted ERP** table describes **hosted ERP**?",
+      "options": [
+        "Single tenant · licence fee · customer owns the licence · customization possible · customer decides upgrades",
+        "Multi tenant · subscription · vendor owns the licence · no customization · vendor decides upgrades",
+        "Multi tenant · licence fee · customer owns the licence · customization possible",
+        "Single tenant · subscription · vendor owns the licence · no customization"
+      ],
+      "answer": 0,
+      "explain": "**All seven rows follow from row one — multi-tenant versus single-tenant.**\n\n| Because SaaS is multi-tenant… | Because hosting is single-tenant… |\n|---|---|\n| **no customization** | **customization possible** — it is your instance |\n| **vendor decides upgrades** | **customer decides**, or never upgrades |\n| **vendor hosts and maintains** | **a service provider** hosts your copy |\n\n⚠️ **The upgrade row has the sharpest consequence:** under SaaS you **cannot refuse an upgrade** — unsettling, but it also means **you can never fall into the *\"customization ⇒ the system cannot evolve\"* death spiral.**",
+      "difficulty": "medium",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q53",
+      "topic": "cloud-saas-hosted",
+      "q": "Per the Panorama Consulting 2013 figures the deck cites, what share of ERP was still **on-premise**?",
+      "options": ["61%", "45%", "78%", "33%"],
+      "answer": 0,
+      "explain": "**On-Premise 61% · SaaS 14% · Cloud ERP 12% · Other 13%.** **The emerging trends were, at the time, genuinely emerging.**\n\n**Why ERP resisted SaaS longer than CRM — three stated issues:** **security of customer specific data** · **ensuring high availability, as ERP is the heart of business operations** · **each customer needs specific customization, and it is difficult to stick to a standard solution.**\n\n**The third is a contradiction, not a difficulty** — and the deck's resolution is *\"offering **industry best-practice configurations** as well as the ability for the customer to do further **configuration**.\"* **Configuration, not code.**",
+      "difficulty": "medium",
+      "source": "D6 deck (image-only chart)"
+    },
+    {
+      "id": "erp-u5-q54",
+      "topic": "soa-rfid-mobile-eai",
+      "q": "Which are **SOA principles** per the deck? *(select all that apply)*",
+      "options": [
+        "Re-usability and modularity",
+        "Composability, componentization and interoperability",
+        "Loose coupling and standards-compliance",
+        "Normalization and referential integrity"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "**Seven principles, three ideas:** *break it into pieces* (modularity, componentization) · *make the pieces fit* (composability, interoperability, standards-compliance) · *keep them independent* (loose coupling, re-usability).\n\n**Loose coupling is load-bearing:** a service can be **changed or replaced without breaking its callers**, because they depend on its *interface*, not its internals.\n\n**A service is defined as a business function:** *\"each of these services is actually a business function\"* — *check credit*, *create sales order* — which is why it is *\"understood both by business executives and IT staff.\"*",
+      "difficulty": "medium",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q55",
+      "topic": "soa-rfid-mobile-eai",
+      "q": "What is described as **RFID's most talked about advantage** over bar codes?",
+      "options": [
+        "It does not require line of sight between reader and tag",
+        "Tags are cheaper than printed labels",
+        "Tags are more durable in harsh environments",
+        "Readers are cheaper than laser scanners"
+      ],
+      "answer": 0,
+      "explain": "**No line of sight means an entire pallet can be read as it passes through a doorway** — *\"items kept deep inside boxes\"* — instead of being unpacked and scanned one by one.\n\n**The other two advantages:** tags hold **hundreds of characters vs 12–15 digits**; tags are **rewritable thousands of times** so data can be **added at each supply-chain node** — which is exactly what **e-pedigree** requires.\n\n$$\\textbf{bar code: an identifier} \\qquad \\textbf{RFID tag: a travelling record}$$\n\n⚠️ **Disadvantages: standards immaturity (temporary) and tag cost (structural).**",
+      "difficulty": "medium",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q56",
+      "topic": "soa-rfid-mobile-eai",
+      "q": "For $n$ systems, how many interfaces does point-to-point integration require versus an EAI hub?",
+      "options": [
+        "n(n−1)/2 for point-to-point; n for a hub",
+        "n for point-to-point; n(n−1)/2 for a hub",
+        "n² for point-to-point; 2n for a hub",
+        "Both require n interfaces; the hub is simply faster"
+      ],
+      "answer": 0,
+      "explain": "| Systems | **Point-to-point** | **Hub** |\n|---|---|---|\n| 5 | **10** | **5** |\n| 10 | **45** | **10** |\n| 20 | **190** | **20** |\n\n**The gap widens quadratically**, and maintenance widens with it: in point-to-point, **changing one system's format means changing every interface that touches it.**\n\n**EAI is what makes ERP II possible** — *\"ERPs now can be integrated with best-of-breed vendors seamlessly **with one interface**\"* is a named driver, and *\"with one interface\"* is precisely the hub model.",
+      "difficulty": "hard",
+      "source": "D6 deck"
+    },
+    {
+      "id": "erp-u5-q57",
+      "topic": "soa-rfid-mobile-eai",
+      "q": "What are the **three major drivers** for the journey from ERP to ERP II?",
+      "options": [
+        "ERPs extending outside the organization · accessible anywhere anytime · integrable with best-of-breed vendors with one interface",
+        "Falling hardware costs · rising licence fees · shorter implementation times",
+        "Regulatory pressure · globalisation · consolidation of vendors",
+        "Better forecasting · finite capacity planning · optimization algorithms"
+      ],
+      "answer": 0,
+      "explain": "**The three drivers are the three technologies of the topic, one each:**\n\n| Driver | Technology |\n|---|---|\n| **extending outside the organization** | **SOA and web services** |\n| **accessed from anywhere anytime** | **mobile, internet, cloud** |\n| **integrated with best-of-breed, one interface** | **EAI** |\n\n$$\\textbf{ERP: internal resource optimization} \\longrightarrow \\textbf{ERP II: process integration and external collaboration}$$\n\n**\"Collaborative commerce with suppliers and customers is the heart of ERP II\"** — and this unit showed exactly what that means: **VMI and CPFR** with suppliers, **CRM and e-commerce** with customers, **SCM** across the network, **DW-BI** to understand it.",
+      "difficulty": "medium",
+      "source": "D6 deck"
+    }
+  ]
+}
