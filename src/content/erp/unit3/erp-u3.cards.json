@@ -1,0 +1,277 @@
+{
+  "subject": "erp",
+  "unit": 3,
+  "title": "Unit 3 — Core Recall & Mnemonics",
+  "cards": [
+    {
+      "id": "erp-u3-c01",
+      "topic": "hcm-overview",
+      "front": "**The ten areas of the HCM wheel** — and the mnemonic that orders them",
+      "back": "**Walk the employee's life through the wheel — it is H2R in order:**\n\n| Stage | Area |\n|---|---|\n| Before they join | **Recruitment** |\n| The day they join | **Personnel Management** |\n| Every day after | **Time, Leave, Attendance** · **Workforce Scheduling** |\n| Every month | **Benefits and Payroll** · **Compensation Management** |\n| Every year | **Talent / Performance Management** · **Learning Management** |\n| Throughout | **Employee Self Service** · **Employee Health & Safety** |\n\n**Recruit → record → schedule → pay → develop**, with **ESS** as the channel and **EHS** as the duty of care underneath.\n\nThe deck labels the whole wheel **the Hire-to-Retire process.**"
+    },
+    {
+      "id": "erp-u3-c02",
+      "topic": "hcm-overview",
+      "front": "**Why are strategic HR processes automated last?**",
+      "back": "**Because the underlying judgement cannot be encoded.**\n\nA system can *record* a performance rating and *route* it for approval — but it cannot *form* the opinion. So the software adds proportionally less, and it goes last.\n\n| | First wave | Last wave |\n|---|---|---|\n| Processes | payroll, records, time, leave | performance, compensation planning, learning |\n| Character | **transaction-intensive**, rule-governed | **strategic**, judgement-based |\n\n**Being rule-governed is what makes something both *operational* and *automatable*** — which is why the two classifications line up exactly."
+    },
+    {
+      "id": "erp-u3-c03",
+      "topic": "recruitment-management",
+      "front": "**Three common examples of recruitment analytics**",
+      "back": "1. **Cost per hire**\n2. **Time to fill vacant positions**\n3. **Onboarding efficiency**\n\nThey measure **money, speed and quality** of the hiring process. *(Attrition is a retention metric — it comes after recruitment ends.)*"
+    },
+    {
+      "id": "erp-u3-c04",
+      "topic": "talent-performance-learning",
+      "front": "**Succession planning** — which area does it belong to? And why is it confusable?",
+      "back": "**Talent Management — NOT Learning Management.**\n\nThe MCQ bank states it as a True/False: *\"Succession planning is a part of learning management\"* → **FALSE.**\n\n**Learning management delivers training; succession planning identifies who replaces whom** — a talent decision, not a training activity.\n\n⚠️ What makes the boundary slippery: **skill training also sits under Talent Management.**"
+    },
+    {
+      "id": "erp-u3-c05",
+      "topic": "talent-performance-learning",
+      "front": "**360-degree appraisal** — what is it, and why does it exist?",
+      "back": "**Feedback from all directions** — manager, peers, subordinates, sometimes customers — rather than only from the person above you.\n\n**Why it exists:** in knowledge work your manager sees only a fraction of what you do, while your peers see the rest. **The measurement problem is a visibility problem**, and 360 solves it by widening the set of observers.\n\n*\"360 degree performance evaluation is a part of the ERP performance management module\"* → **TRUE.**"
+    },
+    {
+      "id": "erp-u3-c06",
+      "topic": "talent-performance-learning",
+      "front": "**The eight areas of ERP Learning Management** — mnemonic?",
+      "back": "**Walk one employee through one course:**\n\n**Browse** the catalog → **register** → consume the **content** → **collaborate** → be **assessed** → have **progress tracked** → someone pays the **financials** → management reads the **reports**.\n\n*(Course catalog · Registration · Content Management · Training Collaboration · Training Assessment · Tracking Training Progress · Supporting Training Financials · Reports)*\n\n**Only two of the eight are about learning content itself** — the rest is administration. That is the honest shape of an LMS inside an ERP: its value is **managing training at scale**, not teaching."
+    },
+    {
+      "id": "erp-u3-c07",
+      "topic": "personnel-management-ess",
+      "front": "**Employee Self Service** — what does an employee do themselves, and what is the underlying principle?",
+      "back": "**Benefits · maintenance of personal data · leave application · accessing pay slip and payroll data · registering for a new training** — *\"employees maintain all these data and do all these transactions themselves.\"*\n\nThe **employee portal** is *\"a personalizable portal designed for employee communications, content management, and integration to self-service applications.\"*\n\n**The principle:** the person who knows your new address is **you**. Routing that change through an HR clerk adds a delay, a transcription error and a cost — and produces data no fresher than the day you got round to telling them. **Self-service moves data entry to the person with the knowledge.**"
+    },
+    {
+      "id": "erp-u3-c08",
+      "topic": "hr-analytics-strategic-ehs",
+      "front": "**Strategic vs operational HR** — the reliable test",
+      "back": "**Strategic processes contain the words \"design\" or \"planning\":**\n*performance management process **design*** · *compensation **planning*** · ***planning** job roles* · *recruitment process **design*** · *workforce **planning***\n\n**Operational processes are the running of the thing:**\nrecords · leave · time · tax · **payroll** · benefits administration\n\n> **Design it or plan it = strategic. Run it every month = operational.**\n\n⚠️ The three T/F traps: *planning job roles is strategic* (**TRUE**) · *payroll is strategic* (**FALSE**) · *succession planning is part of learning management* (**FALSE**)."
+    },
+    {
+      "id": "erp-u3-c09",
+      "topic": "hr-analytics-strategic-ehs",
+      "front": "**EHS** — expansion, and the caution attached to it",
+      "back": "**The deck expands EHS as Employee Health and Safety.** Answer that in an exam.\n\n⚠️ **Industry more commonly reads EHS as \"Environment, Health and Safety\"** — and the deck's own sub-areas (**industrial hygiene, occupational health, hazardous substances**) actually belong to that broader reading. Know both; give the deck's."
+    },
+    {
+      "id": "erp-u3-c10",
+      "topic": "financial-management-overview",
+      "front": "**The four broad categories under the financial module** — and the question each answers",
+      "back": "| Category | Question | Audience |\n|---|---|---|\n| **Financial Accounting** | *What happened?* — the statutory record | **outside** — regulators, shareholders, auditors |\n| **Management Accounting** | *Where did the money go, was it worth it?* | **inside** — managers |\n| **Financial SCM** | *Will the customer actually pay us?* | **customers** |\n| **Treasury** | *Do we have cash, what is it doing?* | **banks and markets** |\n\nThe first two are the classic **external vs internal** accounting split. FA is **legally mandated and format-constrained**; MA is **discretionary and shaped to whatever the business needs to decide.**"
+    },
+    {
+      "id": "erp-u3-c11",
+      "topic": "financial-management-overview",
+      "front": "**Why is Finance almost always in the first implementation wave?**",
+      "back": "**Because every transaction anywhere in the enterprise eventually becomes a number in Finance.**\n\nHire someone → **payroll cost**. Raise a purchase order → **a payable**. Run a production order → **a cost**. Ship an order → **revenue and a receivable**.\n\n**No other module receives input from all the others.**\n\nHence: *\"FM is a highly integrated ERP module — other areas of ERP transactions have financial implications\"*, and **the General Ledger is the single point where the whole enterprise's activity is visible in one currency.** *(Which is exactly why Nestlé's **nine different general ledgers** were so damaging.)*"
+    },
+    {
+      "id": "erp-u3-c12",
+      "topic": "financial-accounting",
+      "front": "**AP vs AR** — which direction is which?",
+      "back": "**Mnemonic: A**c**c**ounts **P**ayable = we **P**ay. **A**ccounts **R**eceivable = we **R**eceive.\n\n| | Meaning | Cycle it ends |\n|---|---|---|\n| **AP** | money **we owe suppliers** | **Procure-to-Pay** — *automates the Invoice-to-Payment cycle* |\n| **AR** | money **customers owe us** | **Order-to-Cash** — *payment receipt, credit checks, risk management, customer service* |\n\n**GL = General Ledger** — the book everything posts into: **trial balance, balance sheets, audit reports.**"
+    },
+    {
+      "id": "erp-u3-c13",
+      "topic": "fscm-treasury",
+      "front": "**FSCM** — the three C's",
+      "back": "**Collection · Credit · Dispute**\n\nOr, as three questions in sequence: ***\"Can they pay, will they pay, why haven't they paid?\"***\n\n- **Credit management** — *can* they pay? *(decided before you ship)*\n- **Collections management** — *will* they pay? *(chasing what is due)*\n- **Dispute management** — *why haven't they paid?* *(resolving the reason)*\n\nFSCM is the **cash side of the customer relationship** — the money half of what CRM handles as the relationship half."
+    },
+    {
+      "id": "erp-u3-c14",
+      "topic": "mrp2-five-levels",
+      "front": "**The five levels of MRP II** — mnemonic and what each plans",
+      "back": "> ### **Business Says Make More Products**\n\n| | Level | Plans | Capacity check |\n|---|---|---|---|\n| **B** | **Business Plan** | long-term goals, product lines, markets — agreed by **Marketing, Production, Finance and Engineering** | **RP** |\n| **S** | **S&OP** | **product groups** per period — by **Sales and Marketing** together | **RP** |\n| **M** | **MPS** | **finished products** per period (typically weekly); **ATP** and delivery promise | **RCCP** |\n| **M** | **MRP** | **components** — how much (from **BOM**) and when (from **lead times**) | **CRP** |\n| **P** | **PAC** | the **implementation phase** — purchasing + production activity control | **CC** |\n\n**Each level is more detailed and shorter-horizon than the one above it.**"
+    },
+    {
+      "id": "erp-u3-c15",
+      "topic": "mrp2-five-levels",
+      "front": "**Purchasing vs Production Activity Control** — the level-5 split",
+      "back": "> *\"While **purchasing controls flow of materials from vendor to factory**, **production activity control plans and controls flow of work through the factory**.\"*\n\n**Materials coming in · work moving through.**\n\nLevel 5 is *\"the **implementation phase** of production planning and control systems\"* — **the boundary where planning becomes execution.**"
+    },
+    {
+      "id": "erp-u3-c16",
+      "topic": "sales-operations-planning",
+      "front": "**Level vs Chase** — the two S&OP strategies",
+      "back": "The same variation, absorbed in two different places:\n\n| | **Level** | **Chase** |\n|---|---|---|\n| Production rate | **constant** | **follows demand** |\n| Variation absorbed in | **inventory** | **capacity** |\n| Cost paid | **holding stock** | **overtime, hiring/firing, subcontracting** |\n\n**Two quantities that move differently cannot match by themselves** — so you buy the mismatch either as stock or as flexible capacity.\n\nThe same trade-off reappears in **capacity planning** and again in **DRP** *(central stock = efficient; local stock = responsive)*."
+    },
+    {
+      "id": "erp-u3-c17",
+      "topic": "mps-atp",
+      "front": "**How is MPS expressed** in make-to-stock vs make-to-order?",
+      "back": "| Operation | MPS expressed in |\n|---|---|\n| **Continuous (make-to-stock)** | **end-items** |\n| **Assemble-to-order** | **modules** |\n| **Job shop (make-to-order)** | **customer orders** |\n\n**The logic is what you can name in advance.** Making for stock, you know the **product** but not the buyer → schedule **end-items**. Making to order, the **order itself** is the unit — every one is different.\n\n**Customer specific products = make-to-order.** Push it further and you get **engineer-to-order**, where *\"every new order has a unique BOM\"* — which is why **MRP does not fit there.**"
+    },
+    {
+      "id": "erp-u3-c18",
+      "topic": "mps-atp",
+      "front": "**MPS vs MRP** — the one distinction three exam questions all pivot on",
+      "back": "**MPS lives at the finished-product level. MRP lives at the component level.**\n\n| | MPS | MRP |\n|---|---|---|\n| Specifies | **what product** is to be made, and when | **what components** to make or buy, and when |\n| Contains | quantities and delivery dates of **final products** | quantity and timing of **planned order releases** |\n\n**Sub-assemblies appear only once MRP explodes the BOM.** Every wrong option in those MCQs is a component-level statement offered for an MPS question, or vice versa."
+    },
+    {
+      "id": "erp-u3-c19",
+      "topic": "mrp-bom-requirements",
+      "front": "**The three MRP inputs** — and the question each answers",
+      "back": "| Input | Question |\n|---|---|\n| **Master Production Schedule** | *What must we build, and when?* |\n| **Bill of Material** | *What goes into it?* |\n| **Inventory Status Records** | *What do we already have?* |\n\n**Demand · structure · stock.** Take any one away and MRP has nothing to compute.\n\n*(The deck also lists **Item Master** alongside them.)*"
+    },
+    {
+      "id": "erp-u3-c20",
+      "topic": "mrp-bom-requirements",
+      "front": "**MRP's two outputs** — and why each is two-stage",
+      "back": "**They split by *make or buy*:**\n\n$$\\textbf{Buy it} \\rightarrow \\textbf{Purchase Requisition} \\rightarrow \\textbf{Purchase Order} \\rightarrow \\text{supplier}$$\n$$\\textbf{Make it} \\rightarrow \\textbf{Planned Order} \\rightarrow \\textbf{Production Order} \\rightarrow \\text{shop floor}$$\n\n**Why the intermediate stage exists:** so a **planner can review and approve** before the company commits money or machine time. **MRP proposes, a human confirms.**\n\nThe PO end of this is exactly where **Procure-to-Pay** begins — **MRP generates the demand that P2P fulfils.**"
+    },
+    {
+      "id": "erp-u3-c21",
+      "topic": "mrp-bom-requirements",
+      "front": "**BOM vs routing** — what does each define?",
+      "back": "> **BOM = ingredients. Routing = method.** A recipe needs both.\n\n| | Defines | Drives |\n|---|---|---|\n| **BOM** | which components, **how many per parent** | **material requirements** and **product costing** |\n| **Routing** | the **operation sequence**, times, work centres | **capacity** and **conversion cost** |\n\n⚠️ In the MCQ *\"a bill of materials lists the…\"*, the wrong option **\"operations required to produce an item\"** is the routing.\n\n**BOM is \"the most important master data for MRP and product costing.\"** Its other names: **Product Structure**. Its types: **CADBOM · EBOM · MBOM.**"
+    },
+    {
+      "id": "erp-u3-c22",
+      "topic": "mrp-bom-requirements",
+      "front": "**Low-level code** — what is it, and why must it be the *deepest* occurrence?",
+      "back": "**The code that drives MRP's planning sequence** — an item's code is **the lowest (deepest) level at which it occurs anywhere in the BOM.**\n\nIn the worked example, **C appears at both level 1 and level 3 → its code is 3.**\n\n**Why deepest:** C is used directly in **A** (level 1) *and* inside **D** (level 3). Planned at level 1, MRP would compute C's requirement from A alone — then later discover **D also needs C**, after C's order was already placed.\n\n> **Rule: plan an item only once, and only after all its demand is known.**\n\nSame logic as **topological ordering** — you cannot compute a node until all its predecessors are done."
+    },
+    {
+      "id": "erp-u3-c23",
+      "topic": "mrp-bom-requirements",
+      "front": "**The gross/net cascade** — reproduce the worked example *(order for 25 A; on hand A=3, B=7, C=16, D=4, E=6)*",
+      "back": "$$\\textbf{Net} = \\textbf{Gross} - \\textbf{On hand}$$\n\n| Step | Item | Gross | On hand | **Net** |\n|---|---|---|---|---|\n| 0 | **A** | 25 | 3 | **22** |\n| 1 | **B** *(1 per A)* | 22 | 7 | **15** |\n| 2 | **D** *(1 per B)* | 15 | 4 | **11** |\n| 3 | **C** *(1 per A **and** D)* | **22 + 11 = 33** | 16 | **17** |\n| 4 | **E** *(1 per D)* | 11 | 6 | **5** |\n\n**Two mechanisms at once:**\n1. **Net at one level becomes gross at the next** — that is what the BOM \"converts (explodes).\"\n2. **C sums demand from both parents** — and is planned last *because* its low-level code is 3."
+    },
+    {
+      "id": "erp-u3-c24",
+      "topic": "mrp-bom-requirements",
+      "front": "**MRP vs CBP** — dependent and independent demand",
+      "back": "| **MRP** | **CBP (Consumption Based Planning)** |\n|---|---|\n| **production items** | **consumables, spares, office supplies** |\n| driven by **finished goods requirement** | driven by **past consumption and forecast** |\n| **needs a BOM explosion** | **no BOM explosion** |\n\n**The distinction is dependent vs independent demand.**\n\n**MRP handles dependent demand** — how many wheels you need is *derived* from how many bicycles you build. It is **computed, not forecast**.\n\n**CBP handles independent demand** — office stationery has no BOM relationship to anything you sell, so it can only be **forecast from history**. Hence **no BOM to explode**, and hence its fit for **class B and C items**.\n\nCBP approaches: **reorder point · forecast based · time-phased.**"
+    },
+    {
+      "id": "erp-u3-c25",
+      "topic": "mrp-concepts",
+      "front": "**Backward scheduling** — the requisition-date formula and the three subtractions",
+      "back": "$$\\textbf{PR date} = \\textbf{MRP date} - \\textbf{GR processing time} - \\textbf{Vendor lead time} - \\textbf{Purchasing processing time}$$\n\n| Subtract | Because |\n|---|---|\n| **Goods Receipt processing** | material at the gate is not yet usable — receive, inspect, put away |\n| **Vendor lead time** | the supplier needs time to deliver after being ordered |\n| **Purchasing processing** | your own team needs time to turn a requisition into an order |\n\n**The most-forgotten is the first.**\n\n**Backward asks \"when must I start to finish on time?\"; forward asks \"if I start now, when will I finish?\"**"
+    },
+    {
+      "id": "erp-u3-c26",
+      "topic": "mrp-concepts",
+      "front": "**Time fences** — the four zones",
+      "back": "> ### **Frozen · Firm · Full · Open** — *the further away, the freer you are*\n\n| Zone | To due date | Change |\n|---|---|---|\n| **Frozen** | **1–2 weeks** | **none** |\n| **Firm** | **2–4 weeks** | **± 5%** |\n| **Full** | **4–6 weeks** | **± 10%** |\n| **Open** | **6+ weeks** | **± 20%** |\n\n**The logic is commitment.** Material within two weeks is already ordered, delivered, possibly on the machine — changing it wastes money already spent. Six weeks out, nothing is committed.\n\n**This is the mechanism that reconciles manufacturing's need for a stable schedule with sales' need for flexibility** — stability near in, flexibility far out."
+    },
+    {
+      "id": "erp-u3-c27",
+      "topic": "mrp-concepts",
+      "front": "**Lot sizing** — the two families, and why not simply order exactly what you need?",
+      "back": "| Family | Procedures |\n|---|---|\n| **Static** — fix the **quantity** | lot-for-lot · replenish to maximum stock level · fixed lot size |\n| **Periodic** — fix the **interval** | daily · weekly · monthly · planning calendar |\n\n**Ordering exactly what you need *is* lot-for-lot** — minimal inventory, but constant small orders.\n\n**Every order carries a fixed cost regardless of size** — a delivery, a setup, paperwork. So *\"lot sizing is primarily for **optimizing** — transportation / packing costs and other overheads.\"*\n\n**It trades ordering cost against inventory holding cost.**"
+    },
+    {
+      "id": "erp-u3-c28",
+      "topic": "closed-loop-capacity",
+      "front": "**MRP's seven limitations** — grouped so they are reproducible",
+      "back": "| Kind | Limitations |\n|---|---|\n| **What it cannot see** | ① projects requirements only ② **cannot consider actual capacity, constraints, vendor limits** |\n| **What it cannot do** | ③ **no optimization** ⑤ **cannot replan fast enough** |\n| **What it demands of you** | ④ **very high data accuracy** ⑥ **high user discipline** |\n| **Where it does not fit** | ⑦ **project / engineer-to-order** — *every new order has a unique BOM* |\n\n**④ and ⑥ are the ones that bite in practice** — this is *\"Garbage In, Garbage Out\"* landing in production planning. **An MRP run on a wrong BOM confidently orders the wrong parts.**\n\nThe deck's own balance: *\"many of the limitations are drawbacks **in comparison to other products**; in some cases **there may not be better alternatives**. These are **pointers for improvement**.\"*"
+    },
+    {
+      "id": "erp-u3-c29",
+      "topic": "closed-loop-capacity",
+      "front": "**\"MRP is an infinite planning tool\"** — what does that mean, and what closes the loop?",
+      "back": "**MRP does not consider available capacity while planning — it assumes capacity is infinite.**\n\nIt works **backwards from the schedule** through the BOM and lead times. That arithmetic is perfectly correct and says **nothing about whether the factory can do the work** — it will happily demand 300 machine-hours in a week from a plant with 120.\n\n**Closing the loop:**\n$$\\textbf{S\\&OP} \\rightarrow \\textbf{MPS} \\rightarrow \\textbf{MRP} \\rightarrow \\textbf{CRP} \\rightarrow \\textbf{Realistic?}$$\n**No** → feed back **to MPS** and re-run · **Yes** → execute.\n\n⚠️ **The correction is applied at MPS, not at MRP.** If capacity cannot support the plan, you **build fewer finished products** — which changes what sales can promise. **The constraint propagates upward.**"
+    },
+    {
+      "id": "erp-u3-c30",
+      "topic": "closed-loop-capacity",
+      "front": "**The four levels of capacity planning** — each paired with the planning level it checks",
+      "back": "$$\\begin{aligned}\\textbf{S\\&OP} &\\longleftrightarrow \\textbf{RP} \\text{ — Resource Planning} \\\\ \\textbf{MPS} &\\longleftrightarrow \\textbf{RCCP} \\text{ — Rough Cut Capacity Planning} \\\\ \\textbf{MRP} &\\longleftrightarrow \\textbf{CRP} \\text{ — Capacity Requirement Planning} \\\\ \\textbf{PAC} &\\longleftrightarrow \\textbf{CC} \\text{ — Capacity Control}\\end{aligned}$$\n\n**Every planning level has a matching capacity check, and the checks get finer as you descend** — RP asks a rough question about whole plants over months; CC manages machine loading on a shift.\n\n**\"Rough Cut\" is named honestly** — at MPS level you check only the **critical resources**, because the plan is not detailed enough to justify more."
+    },
+    {
+      "id": "erp-u3-c31",
+      "topic": "closed-loop-capacity",
+      "front": "**Why is the capacity mismatch structural rather than a planning failure?**",
+      "back": "**Capacity is fixed in the short run** — you cannot buy half a machine or hire a skilled operator for one afternoon. **Demand is continuously variable.**\n\n**Two quantities that move differently cannot match by themselves.**\n\nSo the mismatch always costs you one of two things: **idle capacity you are paying for**, or **demand you cannot serve**.\n\nThe listed strategies — **overtime, outsourcing, subcontracting** — are all ways of **buying short-term capacity at a premium** rather than owning it year-round. *(The same Level vs Chase trade-off from S&OP.)*\n\n⚠️ And the deck is candid: **\"ERP's support for capacity management is a little indirect\"** — which is exactly the market **APS** fills."
+    },
+    {
+      "id": "erp-u3-c32",
+      "topic": "master-data-pp",
+      "front": "**The four master data elements for PP** — mnemonic and the question each answers",
+      "back": "> ### **My BOM Works Right**\n\n| Word | Element | Question |\n|---|---|---|\n| **M**y | **Material Master** | **what** is it? |\n| **BOM** | **Bill of Material** | **what goes into** it? |\n| **W**orks | **Work Center** | **where** is it made? |\n| **R**ight | **Routing** | **in what order**? |\n\n**What · what-from · where · in-what-order.**\n\n**BOM and Routing are a pair** — the BOM is the *ingredients*, the routing is the *method*."
+    },
+    {
+      "id": "erp-u3-c33",
+      "topic": "master-data-pp",
+      "front": "**The material master's four data segments** — and why the segmentation exists at all",
+      "back": "| Segment | Examples |\n|---|---|\n| **General Data** | material number, description, units of measure, weight, volume, product hierarchy |\n| **Plant Specific** | MRP profile, production costs, planning data, valuation |\n| **Storage Location Specific** | quantities, special stock, warehouse attributes |\n| **Sales Specific** | delivering plant, sales text, sales units, shipping data, division |\n\n**Why:** the same material means different things in different places. **Weight** is the same everywhere; the **MRP profile** may differ between plants; **stock** obviously differs by location; the **sales unit** may differ by channel *(singly in retail, by the case to wholesalers)*.\n\nSo the record is **one general core plus per-plant, per-location and per-sales-org extensions** — which lets a multi-plant company hold **one material number** enterprise-wide while recording local differences. **Data standardization done properly**, as against Nestlé's 29 vanilla records."
+    },
+    {
+      "id": "erp-u3-c34",
+      "topic": "master-data-pp",
+      "front": "**Why is a purchase clerk allowed to see cost price when the works manager is not?**",
+      "back": "> *\"Information required for purchase is not required for work scheduling. So a **purchase clerk might have access to 'sensitive' information such as cost price, but the works manager may not** — even though in the org structure he is 'superior'.\"*\n\n> ### **Access follows the job, not the rank.**\n\nThat is what a **material master \"view\"** is for: *what one function needs to see*. It is the material-master version of **role-based access**, and the practical form of Unit 1's *\"flat org structure / employee empowerment / **controlled access**.\"*"
+    },
+    {
+      "id": "erp-u3-c35",
+      "topic": "master-data-pp",
+      "front": "**The routing example** — and the three jobs one small table is doing",
+      "back": "| Operation | Time | Work Center | Function | Cost Center |\n|---|---|---|---|---|\n| **10** | **20 min** | **W1** | Assembly | **100** |\n| **20** | **15 min** | **W2** | **Painting** | **200** |\n| **30** | **10 min** | **W3** | **Finishing** | **300** |\n\n- **Sequencing** — 10, 20, 30 set the order. *(They step by ten so an operation can be inserted between two without renumbering.)*\n- **Scheduling** — **45 minutes** of work content per unit.\n- **Costing** — each work centre is **linked to a cost centre**, so time converts directly into cost.\n\n$$\\textbf{Routing} \\times \\textbf{quantity} \\rightarrow \\textbf{load per work centre} \\rightarrow \\textbf{capacity check} + \\textbf{cost}$$\n\n**This is where CRP gets its numbers from.**"
+    },
+    {
+      "id": "erp-u3-c36",
+      "topic": "production-scenarios-drp",
+      "front": "**The three production scenarios** — characteristics and examples",
+      "back": "| Scenario | Characteristics | Examples |\n|---|---|---|\n| **Process Industry** | **batch management, recipe, PI sheets, ERP↔PLC interface** | chemical, oil and gas, pharmaceutical, petrochemical |\n| **Repetitive Manufacturing** | **less complex, more stable, long periods same product; material staging, back flushing** | consumer goods (FMCG), electronics |\n| **Kanban / JIT** | **JIT, Kanban** — electronic kanban card, kanban quantity calculation | industries using Kanban or JIT |\n\n**They sit on a spectrum of how discrete the product is:** process makes what you **measure**; repetitive makes identical units **continuously**; Kanban makes discrete units **pulled by consumption**.\n\n**Recipe ⟺ BOM in process industry.** **Batch management exists because \"chemical properties may differ\"** — two batches are **not interchangeable**."
+    },
+    {
+      "id": "erp-u3-c37",
+      "topic": "production-scenarios-drp",
+      "front": "**Back flushing** — what it does, why it suits repetitive manufacturing, and what it costs",
+      "back": "**It inverts the normal flow.** Instead of issuing materials then producing, you **record the finished goods and work backwards through the BOM** to deduct what must have been consumed.\n\n$$\\textbf{1,000 units produced} \\times \\textbf{BOM} \\rightarrow \\textbf{components auto-deducted}$$\n\n**Why repetitive:** the product is *\"less complex, more stable, the same for long periods\"*, so the BOM is reliable. Recording every component issue on a fast line would be pure transaction overhead.\n\n⚠️ **The trade-off:** it assumes the BOM is exactly right. **Scrap, rework and substitutions are invisible**, so inventory drifts and must be corrected by physical counts. **It buys speed with accuracy.**"
+    },
+    {
+      "id": "erp-u3-c38",
+      "topic": "production-scenarios-drp",
+      "front": "**Kanban vs MRP** — push and pull",
+      "back": "| | **MRP** | **Kanban** |\n|---|---|---|\n| Direction | **Push** — a central plan tells each stage what to make | **Pull** — a stage makes only what the next stage consumed |\n| Trigger | the **schedule** | **an empty bin / a returned card** |\n| Needs | accurate BOM, stock, lead times | **stable, level demand** |\n\nThe card *\"triggers delivery **from demand source to supply source**\"* — **the demand end initiates.**\n\n**Origin:** **Toyota**, meaning **\"visual sign\" / \"visual card\"**; in the **1940s** they were paper notes on a physical board, used *\"to create a transparent work process and reduce production waste.\"*"
+    },
+    {
+      "id": "erp-u3-c39",
+      "topic": "production-scenarios-drp",
+      "front": "**DRP** — definition, the translation chain, and why it is \"an extension of MRP logic\"",
+      "back": "**A time-phased finished-goods replenishment plan for all levels of a distribution network.**\n\n$$\\textbf{LDC} \\rightarrow \\textbf{CDC} \\rightarrow \\textbf{CWH} \\rightarrow \\textbf{Factory}$$\n\n⚠️ **DRP is NOT part of the MRP II flow** — the five levels are BP, S&OP, MPS, MRP, PAC. Requirements translate **inward from the customer end toward the factory**.\n\n**Why \"an extension of MRP logic\":** its inputs are MRP's inputs with the **network substituted for the BOM** —\n\n| MRP | DRP |\n|---|---|\n| MPS | **forecast of demand per SKU** |\n| BOM | **the distribution network** |\n| inventory status | **inventory + in transit + safety stock** |\n| lead times | **replenishment lead time** |\n| → purchase requisitions | → **stock transport requisitions** |\n\n**DRP explodes a network the way MRP explodes a BOM.**"
+    },
+    {
+      "id": "erp-u3-c40",
+      "topic": "production-scenarios-drp",
+      "front": "**DRP's objectives** — and the tension inside them",
+      "back": "1. **Improve customer service levels** — anticipate demand at distribution centers, **provide finished products at the correct location**\n2. **Provide an accurate requirements plan for manufacturing**\n3. **Optimize the distribution of available stock**\n4. **Minimize finished goods inventory in the network**\n\n**Objectives 1 and 4 are in tension.** *Correct location* wants stock **close to the customer**, spread across many warehouses. *Minimize inventory* wants it **concentrated centrally**.\n\n> **Stock held centrally is more efficient; stock held locally is more responsive.**\n\nDRP is the calculation that decides where the line falls — the same **service vs cost** trade-off S&OP balances at the production end.\n\n⚠️ **SKU = Stock Keeping Unit** *(the deck's note glosses it as \"Semi Knocked down Unit\" — that is wrong).*"
+    },
+    {
+      "id": "erp-u3-c41",
+      "topic": "erp-modules-evolution",
+      "front": "**The twelve ERP modules** — grouped by what they touch",
+      "back": "| Group | Modules |\n|---|---|\n| **Inward — supply side** | **SRM · PIM [MM] · Warehouse & Transportation** |\n| **Inside — making it** | **PPE [PP] · Quality Management · Maintenance/EAM · PLM** |\n| **Outward — demand side** | **Sales & Service [SD] · CRM · SCP [SCM]** |\n| **Across — the whole enterprise** | **Financial Management [FI-CO] · HCM [HR]** |\n\n**Money and people are not the property of any one function** — which is why **FI and HR are the two you cannot leave out.**\n\n**SAP names:** **FI-CO** = Financial Accounting & Controlling · **MM** = Materials Management · **SD** = Sales and Distribution · **PP** = Production Planning."
+    },
+    {
+      "id": "erp-u3-c42",
+      "topic": "erp-modules-evolution",
+      "front": "**The \"earlier vs now\" tables** — what single pattern runs through all of them?",
+      "back": "> ### **Transaction → decision.**\n\n| Function | Earlier was… | Now is… |\n|---|---|---|\n| **SCM** | *recording* where stock is | **deciding** what to make, how to route — **optimization** |\n| **Fin Mgmt** | *recording* what was paid and owed | **budgeting, consolidation, compliance (SOX)** |\n| **SRM** | *paying* the vendor | **choosing** the vendor — auctions, **supplier analytics** |\n| **CRM** | *invoicing* the customer | **winning** the customer — **opportunity management** |\n\n**Every \"earlier\" entry is a transaction that already happened; every \"now\" entry is a decision about what should happen** — the same **data → information → insight** shift.\n\nTwo other threads in the \"now\" column: **self-service** *(supplier self service, ESS)* and **mobile** *(mobile asset tracking, mobile sales service)*."
+    },
+    {
+      "id": "erp-u3-c43",
+      "topic": "erp-modules-evolution",
+      "front": "**Why does the overlap between ERP and niche apps never close?**",
+      "back": "> *\"**ERP functionalities are getting comprehensive to include the niche functionalities at each newer version, but the specialized products are getting specialized further and maintain independent identity.**\"*\n\n**Both sides are running.** ERP absorbs what the specialists proved valuable; the specialists move further into depth ERP will not follow.\n\nSo *\"they may co-exist within an enterprise\"* is **the normal state, not bad architecture** — and it creates a real decision: *\"a company has to carefully weigh whether to go for an enterprise app critical to its business, or an integrated ERP. **It is not an easy decision.**\"*\n\n**Sharpest illustration:** **EAM and SRM had word-for-word identical \"earlier\" columns** — *Procurement · Vendor payment · Vendor rating.*"
+    },
+    {
+      "id": "erp-u3-c44",
+      "topic": "erp-modules-evolution",
+      "front": "**ERP history** — the four decades, and the one-word test for each",
+      "back": "$$\\textbf{Materials} \\rightarrow \\textbf{the Factory} \\rightarrow \\textbf{the Enterprise} \\rightarrow \\textbf{the Network}$$\n\n| Decade | Stage | Test |\n|---|---|---|\n| **1960–70s** | **MRP** — Material Requirement Planning; *first application of computing to manufacturing* | can I get the **parts**? |\n| **1980s** | **MRP II** — Manufacturing Resource Planning; integration with **accounting, billing** | can the **factory** do it, at what cost? |\n| **1990s** | **ERP** — all processes integrated; **supports non-manufacturing too** | is the **enterprise** integrated? |\n| **2000s** | **Extended ERP / ERP II** — **suppliers and clients** | is the **network** optimised? |\n\n**Each expansion is the previous one's limitation resolved.**\n\n⚠️ **\"Supports non-manufacturing too\" is the moment the word \"Manufacturing\" left the name.**"
+    },
+    {
+      "id": "erp-u3-c45",
+      "topic": "erp-modules-evolution",
+      "front": "**PPE chapter summary** — and the tension in its last two bullets",
+      "back": "- **PPE is one of the central ERP capabilities**\n- **Has brought in many structured concepts leading to standardization**\n- **This is also the place where a lot of \"customization\" is needed** based on type of industry\n- **Proper adaptation of ERP in PPE can result in significant competitive advantage at the core of the company**\n\n**Bullets 2 and 3 pull against each other**, and that is the closing idea. PPE **standardized** production planning — *\"MRP II is a 'standard'; all ERPs support it\"* — yet it is **where the most customization is needed**, because a chemical plant, an FMCG line and a Kanban cell genuinely plan differently.\n\n> **So the advantage in bullet 4 comes from the fit, not from the software.** Everyone can buy the same package; the advantage is adapting it properly."
+    }
+  ]
+}

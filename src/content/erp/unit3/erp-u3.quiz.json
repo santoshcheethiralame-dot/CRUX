@@ -1,0 +1,667 @@
+{
+  "subject": "erp",
+  "unit": 3,
+  "title": "Unit 3 — Practice Quiz",
+  "items": [
+    {
+      "id": "erp-u3-q01",
+      "topic": "hcm-overview",
+      "q": "**HCM** stands for _______.",
+      "options": [
+        "Human Capital Management",
+        "Human Cost Management",
+        "Holistic Capability Model",
+        "Human Career Management"
+      ],
+      "answer": 0,
+      "explain": "**Human Capital Management** — the module SAP calls **[HR]**. The word *capital* is deliberate: it frames employees as an **asset to be developed**, not a cost to be minimised, which is why the chapter summary says HCM *\"brings in a holistic treatment of employees.\"*",
+      "difficulty": "easy",
+      "source": "MCQ bank I.1"
+    },
+    {
+      "id": "erp-u3-q02",
+      "topic": "hr-analytics-strategic-ehs",
+      "q": "**EHS** stands for ________, *as the deck expands it*.",
+      "options": [
+        "Employee Health and Safety",
+        "Environment, Health and Safety",
+        "Employee Handling System",
+        "Enterprise Health Services"
+      ],
+      "answer": 0,
+      "explain": "The deck expands EHS as **Employee Health and Safety**, and that is the answer to give here. ⚠️ Be aware that **industry more commonly reads EHS as \"Environment, Health and Safety\"** — the deck's own sub-areas (industrial hygiene, occupational health, hazardous substances) belong to that broader reading. **Answer the deck.**",
+      "difficulty": "medium",
+      "source": "MCQ bank I.2"
+    },
+    {
+      "id": "erp-u3-q03",
+      "topic": "hr-analytics-strategic-ehs",
+      "q": "**HR processes can be grouped as ________ and ________.**",
+      "options": [
+        "Strategic (core) and Operational (routine)",
+        "Internal and External",
+        "Manual and Automated",
+        "Direct and Indirect"
+      ],
+      "answer": 0,
+      "explain": "**Strategic / core** processes versus **operational / routine** processes. The reliable test: **strategic processes contain \"design\" or \"planning\"** — *performance management process **design***, *compensation **planning***, *workforce **planning***. **Operational processes are the running of the thing** — records, leave, time, tax, payroll.",
+      "difficulty": "easy",
+      "source": "MCQ bank I.3"
+    },
+    {
+      "id": "erp-u3-q04",
+      "topic": "recruitment-management",
+      "q": "**Interviewing** is a part of the ERP ___________ management module.",
+      "options": ["Recruitment", "Performance", "Personnel", "Talent"],
+      "answer": 0,
+      "explain": "**Recruitment management.** The recruitment flow runs **requisition → sourcing → screening → interviewing → offer → onboarding**, and interviewing sits squarely inside it. Do not drift toward *talent management* — that starts once the person is already an employee.",
+      "difficulty": "easy",
+      "source": "MCQ bank I.4"
+    },
+    {
+      "id": "erp-u3-q05",
+      "topic": "time-attendance-scheduling",
+      "q": "**Labour tracking** is a part of the ERP ________ module.",
+      "options": [
+        "Time and Attendance",
+        "Payroll",
+        "Personnel Management",
+        "Workforce Scheduling"
+      ],
+      "answer": 0,
+      "explain": "**Time and Attendance.** Labour tracking is the recording of *hours worked against what* — which is also the link into costing, since those hours become **activity cost** at the work centre's linked cost centre.",
+      "difficulty": "medium",
+      "source": "MCQ bank I.5"
+    },
+    {
+      "id": "erp-u3-q06",
+      "topic": "talent-performance-learning",
+      "q": "**True or False:** *\"360-degree performance evaluation is a part of the ERP performance management module.\"*",
+      "options": ["True", "False"],
+      "answer": 0,
+      "explain": "**TRUE.** Performance management explicitly lists *\"performance measurements — direct / indirect inputs, **360 degree appraisals**.\"* **360-degree means feedback from all directions** — manager, peers, subordinates, sometimes customers — because in knowledge work your manager sees only a fraction of what you do.",
+      "difficulty": "easy",
+      "source": "MCQ bank II.1"
+    },
+    {
+      "id": "erp-u3-q07",
+      "topic": "talent-performance-learning",
+      "q": "**True or False:** *\"Succession planning is a part of learning management.\"*",
+      "options": ["True", "False"],
+      "answer": 1,
+      "explain": "**FALSE — succession planning belongs to Talent Management.** The two are adjacent and easy to confuse: **learning management delivers training**; **succession planning identifies who replaces whom** — a talent decision, not a training activity. *Skill training* also appearing under Talent Management is what makes the boundary slippery.",
+      "difficulty": "medium",
+      "source": "MCQ bank II.2"
+    },
+    {
+      "id": "erp-u3-q08",
+      "topic": "personnel-management-ess",
+      "q": "**True or False:** *\"Employee self service is a part of personnel management.\"*",
+      "options": ["True", "False"],
+      "answer": 0,
+      "explain": "**TRUE.** ESS is treated as part of the **personnel management** area, even though the HCM wheel draws *Employee Self Service* as its own segment. The employee portal — leave application, pay slip access, personal data maintenance — is personnel administration handed to the employee.",
+      "difficulty": "medium",
+      "source": "MCQ bank II.3"
+    },
+    {
+      "id": "erp-u3-q09",
+      "topic": "hr-analytics-strategic-ehs",
+      "q": "**True or False:** *\"Planning job roles is a strategic HR process.\"*",
+      "options": ["True", "False"],
+      "answer": 0,
+      "explain": "**TRUE.** It contains the word **planning** — the reliable marker for the strategic column. **Design it or plan it = strategic; run it every month = operational.**",
+      "difficulty": "easy",
+      "source": "MCQ bank II.4"
+    },
+    {
+      "id": "erp-u3-q10",
+      "topic": "compensation-benefits-payroll",
+      "q": "**True or False:** *\"Payroll is a strategic HR process.\"*",
+      "options": ["True", "False"],
+      "answer": 1,
+      "explain": "**FALSE — payroll is operational / routine.** ⚠️ Note the deliberate pairing with the previous question: **compensation *planning* is strategic, but *payroll* is operational.** High volume, objective rules, run every month — which is also exactly why payroll was in the **first wave** of HR automation.",
+      "difficulty": "medium",
+      "source": "MCQ bank II.5"
+    },
+    {
+      "id": "erp-u3-q11",
+      "topic": "erp-modules-evolution",
+      "q": "**True or False:** *\"MRP stands for Management Resources Planning.\"*",
+      "options": ["True", "False"],
+      "answer": 1,
+      "explain": "**FALSE.** **MRP = Material Requirement Planning.** The confusable neighbour is **MRP II = Manufacturing Resource Planning** — and note it is *Manufacturing*, not *Material*, and *Resource*, not *Requirement*. **Neither one is \"Management.\"**",
+      "difficulty": "easy",
+      "source": "MCQ bank II.6"
+    },
+    {
+      "id": "erp-u3-q12",
+      "topic": "personnel-management-ess",
+      "q": "Which of these are things an **employee** does for themselves under **ESS**, per the deck? *(select all that apply)*",
+      "options": [
+        "Maintenance of personal data",
+        "Leave application",
+        "Accessing pay slip and payroll data",
+        "Approving the departmental budget"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "The deck's ESS list: **benefits, maintenance of personal data, leave application, accessing pay slip and payroll data, registering for a new training** — and *\"employees maintain all these data and do all these transactions themselves.\"* **Budget approval is a manager/finance action, not self-service.**\n\nThe principle: **the person who knows your new address is you** — self-service moves data entry to whoever holds the knowledge.",
+      "difficulty": "easy",
+      "source": "QnA Ch.7 Q2"
+    },
+    {
+      "id": "erp-u3-q13",
+      "topic": "recruitment-management",
+      "q": "Which of the following are given as **common examples of recruitment analytics**? *(select all that apply)*",
+      "options": [
+        "Cost per hire",
+        "Time to fill vacant positions",
+        "Onboarding efficiency",
+        "Employee attrition rate"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "The QnA names exactly three: **cost per hire · time to fill vacant positions · onboarding efficiency.** Notice they measure **money, speed and quality of the hiring process** — attrition is a *retention* metric, measured after recruitment ends.",
+      "difficulty": "medium",
+      "source": "QnA Ch.7 Q1"
+    },
+    {
+      "id": "erp-u3-q14",
+      "topic": "financial-management-overview",
+      "q": "What are the **four broad categories of applications** under the financial module?",
+      "options": [
+        "Financial Accounting · Management Accounting · Financial SCM · Treasury Applications",
+        "Accounts Payable · Accounts Receivable · General Ledger · Payroll",
+        "Budgeting · Costing · Auditing · Reporting",
+        "FI · CO · MM · SD"
+      ],
+      "answer": 0,
+      "explain": "**Financial Accounting · Management Accounting · Financial Supply Chain Management · Treasury.** \n\nThe cleanest way to hold them: **FA looks outward** (statutory, for regulators and investors), **MA looks inward** (for managers), **FSCM manages the cash cycle with customers and suppliers**, and **Treasury manages the money itself.**",
+      "difficulty": "medium",
+      "source": "QnA Ch.8 Q1"
+    },
+    {
+      "id": "erp-u3-q15",
+      "topic": "financial-accounting",
+      "q": "Expand **AR**, **AP** and **GL**.",
+      "options": [
+        "Accounts Receivable · Accounts Payable · General Ledger",
+        "Annual Return · Advance Payment · Gross Ledger",
+        "Asset Register · Asset Payable · General Ledger",
+        "Accounts Receivable · Advance Payable · Group Ledger"
+      ],
+      "answer": 0,
+      "explain": "**AR = Accounts Receivable** (money customers owe you) · **AP = Accounts Payable** (money you owe suppliers) · **GL = General Ledger** (the book everything posts into — *trial balance, balance sheets, audit reports*).\n\n**Direction check:** *Receivable = incoming, Payable = outgoing.* AR is the tail of **Order-to-Cash**; AP is the tail of **Procure-to-Pay**.",
+      "difficulty": "easy",
+      "source": "MCQ bank I.10–12"
+    },
+    {
+      "id": "erp-u3-q16",
+      "topic": "financial-accounting",
+      "q": "Which of the following fall under **Financial Accounting**, per the QnA? *(select all that apply)*",
+      "options": [
+        "Accounts Payable — automating the Invoice-to-Payment cycle",
+        "Accounts Receivable / Collection Management",
+        "Accounting GL — trial balance, balance sheets, audit reports",
+        "Product cost planning and profitability analysis"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "The QnA's areas under financial accounting: **AP (Invoice-to-Payment), AR / collection management (payment receipt, credit checks, risk management, customer service), and GL (trial balance, balance sheets, audit reports).**\n\n**Product costing and profitability analysis are Management Accounting** — inward-facing, for managers, not statutory.",
+      "difficulty": "medium",
+      "source": "QnA Ch.8 Q2"
+    },
+    {
+      "id": "erp-u3-q17",
+      "topic": "mrp2-five-levels",
+      "q": "Expand **MRP**, **MRP II**, **SOP** and **MPS**.",
+      "options": [
+        "Material Requirement Planning · Manufacturing Resource Planning · Sales and Operations Planning · Master Production Scheduling",
+        "Material Resource Planning · Manufacturing Requirement Planning · Standard Operating Procedure · Master Production Schedule",
+        "Manufacturing Requirement Planning · Material Resource Planning · Sales Order Planning · Material Planning Schedule",
+        "Material Requirement Planning · Material Resource Planning · Sales and Operations Planning · Master Planning Schedule"
+      ],
+      "answer": 0,
+      "explain": "**MRP = Material Requirement Planning** · **MRP II = Manufacturing Resource Planning** · **SOP (S&OP) = Sales and Operations Planning** · **MPS = Master Production Scheduling.**\n\n⚠️ **SOP here is NOT \"Standard Operating Procedure\"** — a genuine trap given how common that expansion is elsewhere.",
+      "difficulty": "medium",
+      "source": "MCQ bank I.6–9"
+    },
+    {
+      "id": "erp-u3-q18",
+      "topic": "mrp2-five-levels",
+      "q": "Put the **five levels of MRP II** in order, from longest horizon to execution.",
+      "options": [
+        "Business Plan → S&OP → MPS → MRP → Purchasing and Production Activity Control",
+        "S&OP → Business Plan → MPS → MRP → PAC",
+        "Business Plan → MPS → S&OP → MRP → PAC",
+        "MPS → Business Plan → S&OP → PAC → MRP"
+      ],
+      "answer": 0,
+      "explain": "**Business Says Make More Products** — **B**usiness Plan → **S**&OP → **M**PS → **M**RP → **P**AC.\n\nEach level is **more detailed and shorter-horizon** than the one above it: the business plan is agreed jointly by *Marketing, Production, Finance and Engineering*; S&OP plans **product groups**; MPS plans **finished products**; MRP plans **components**; PAC is the **implementation phase**.",
+      "difficulty": "easy",
+      "source": "QnA Ch.9 Q1"
+    },
+    {
+      "id": "erp-u3-q19",
+      "topic": "mrp2-five-levels",
+      "q": "**Purchasing and Production Activity Control** — what distinguishes the two halves?",
+      "options": [
+        "Purchasing controls flow of materials from vendor to factory; production activity control plans and controls flow of work through the factory",
+        "Purchasing controls the budget; PAC controls the schedule",
+        "Purchasing is strategic; PAC is operational",
+        "Purchasing handles finished goods; PAC handles raw materials"
+      ],
+      "answer": 0,
+      "explain": "Word for word from the QnA: *\"While **purchasing controls flow of materials from vendor to factory**, **production activity control plans and controls flow of work through the factory**.\"*\n\n**Materials coming in, work moving through.** Note the level-5 framing — this is *\"the **implementation phase** of production planning and control systems\"*, the boundary where **planning becomes execution**.",
+      "difficulty": "medium",
+      "source": "QnA Ch.9 Q1"
+    },
+    {
+      "id": "erp-u3-q20",
+      "topic": "sales-operations-planning",
+      "q": "**S&OP** is a joint plan developed by which team, and it plans at what level of detail?",
+      "options": [
+        "Sales and Marketing together — quantities of different **product groups** per period",
+        "Production and Engineering together — quantities of **individual finished products** per period",
+        "Finance alone — revenue targets per quarter",
+        "Sales alone — customer orders per week"
+      ],
+      "answer": 0,
+      "explain": "*\"This is a joint plan developed by **Sales and Marketing team together**. This plan details the quantities of different **product groups** that need to be produced in each period.\"*\n\n**Product groups, not products** — that is the level-2 signature, and the distinction from **MPS**, which plans *finished products*. S&OP also does a **capacity availability check through Resource Planning (RP)**.",
+      "difficulty": "medium",
+      "source": "QnA Ch.9 Q1"
+    },
+    {
+      "id": "erp-u3-q21",
+      "topic": "mps-atp",
+      "q": "A **master production schedule** specifies",
+      "options": [
+        "what product is to be made, and when",
+        "what component is to be made, and when",
+        "the financial resources required for production",
+        "the labor hours required for production"
+      ],
+      "answer": 0,
+      "explain": "**What product, and when.** ⚠️ Option B is the trap — **components are MRP's job, not MPS's.** MPS plans **finished products**; MRP explodes those into components.",
+      "difficulty": "easy",
+      "source": "MCQ bank III.1"
+    },
+    {
+      "id": "erp-u3-q22",
+      "topic": "mps-atp",
+      "q": "The ______ is the MRP input detailing **which end items are to be produced, when they are needed, and in what quantities**.",
+      "options": [
+        "master production schedule",
+        "gross requirements",
+        "inventory records",
+        "assembly time chart"
+      ],
+      "answer": 0,
+      "explain": "The **master production schedule**. Remember MRP's three inputs as three questions: **MPS** = *what must we build, and when?* · **BOM** = *what goes into it?* · **inventory records** = *what do we already have?*",
+      "difficulty": "easy",
+      "source": "MCQ bank III.2"
+    },
+    {
+      "id": "erp-u3-q23",
+      "topic": "mps-atp",
+      "q": "A **master production schedule** contains information about",
+      "options": [
+        "quantities and required delivery dates of **final products**",
+        "quantities and required delivery dates of all sub-assemblies",
+        "inventory on hand for each sub-assembly",
+        "inventory on hand for each final product"
+      ],
+      "answer": 0,
+      "explain": "**Final products.** Three MPS questions in a row all pivot on the same distinction: **MPS lives at the finished-product level.** Sub-assemblies appear only once **MRP explodes the BOM**.",
+      "difficulty": "medium",
+      "source": "MCQ bank III.3"
+    },
+    {
+      "id": "erp-u3-q24",
+      "topic": "mps-atp",
+      "q": "In **continuous (make-to-stock)** operations, the master production schedule is usually expressed in terms of ______; in **job shop (make-to-order)** operations, in terms of ______.",
+      "options": [
+        "end-items … customer orders",
+        "customer orders … end-items",
+        "modules … kits",
+        "kits … modules"
+      ],
+      "answer": 0,
+      "explain": "**MTS → end-items · MTO → customer orders.** \n\nThe logic is *what you can name in advance*: making for stock, you know the **product** but not the buyer, so you schedule **end-items**. Making to order, the **order itself** is the unit — every one is different. *(Assemble-to-order sits between them and is expressed in **modules**.)*",
+      "difficulty": "medium",
+      "source": "MCQ bank III.4–5"
+    },
+    {
+      "id": "erp-u3-q25",
+      "topic": "mps-atp",
+      "q": "**Customer specific products** are also known as __________.",
+      "options": ["Make-to-order", "Make-to-stock", "Goods", "Expected products"],
+      "answer": 0,
+      "explain": "**Make-to-order.** *Customer specific* is the giveaway — the product does not exist until a specific customer asks for it. Push it further and you get **engineer-to-order**, where *\"every new order has a unique Bill of Material\"* — which is precisely why **MRP is not appropriate** there.",
+      "difficulty": "easy",
+      "source": "MCQ bank III.17"
+    },
+    {
+      "id": "erp-u3-q26",
+      "topic": "mrp-bom-requirements",
+      "q": "The ______ is the MRP input which lists the **assemblies, sub-assemblies, parts and raw materials needed to produce one unit** of finished product.",
+      "options": [
+        "bill of materials",
+        "net requirements chart",
+        "inventory records",
+        "assembly time chart"
+      ],
+      "answer": 0,
+      "explain": "The **bill of materials**. Note the phrase **\"one unit\"** — a BOM is *per unit*, which is why you multiply it by the schedule quantity. *\"In a sense, BOM is like a **recipe** for a dish!\"*",
+      "difficulty": "easy",
+      "source": "MCQ bank III.6"
+    },
+    {
+      "id": "erp-u3-q27",
+      "topic": "mrp-bom-requirements",
+      "q": "A **bill of materials** lists the",
+      "options": [
+        "components, ingredients, and materials required to produce an item",
+        "operations required to produce an item",
+        "times needed to perform all phases of production",
+        "production schedules for all products"
+      ],
+      "answer": 0,
+      "explain": "**Components, ingredients and materials.** ⚠️ Option B — *operations required* — is the **routing**, not the BOM. Hold the pair: **BOM = ingredients; routing = method.** A recipe needs both.",
+      "difficulty": "medium",
+      "source": "MCQ bank III.7"
+    },
+    {
+      "id": "erp-u3-q28",
+      "topic": "mrp-bom-requirements",
+      "q": "The **bill of materials** contains information necessary to",
+      "options": [
+        "convert (explode) net requirements at one level into gross requirements at the next level",
+        "convert gross requirements into net requirements",
+        "calculate quantities on hand and on order",
+        "place an order to replenish the item"
+      ],
+      "answer": 0,
+      "explain": "**Net at one level → gross at the next.** ⚠️ Option B is the near-miss: **gross → net is done by subtracting inventory on hand**, which needs the *inventory records*, not the BOM.\n\nIn the worked example: A's **net = 22**, so B's **gross = 22**. The BOM supplies the multiplier that carries requirement downward.",
+      "difficulty": "hard",
+      "source": "MCQ bank III.8"
+    },
+    {
+      "id": "erp-u3-q29",
+      "topic": "mrp-bom-requirements",
+      "q": "**\"Exploding\" the bill of materials** means",
+      "options": [
+        "converting the bill of materials into components and raw material requirements",
+        "determining the net requirements for all the components",
+        "identifying the lead time of all the components",
+        "determining the various components' quantities that are already on hand"
+      ],
+      "answer": 0,
+      "explain": "**Converting the BOM into components and raw material requirements** — *\"break up the end product (parent) sequentially into its lower level components (children) down to fundamental components.\"*\n\n⚠️ Option B is deliberately close: **netting is a separate step** from exploding. Explosion produces the **gross** requirement; subtracting stock produces the **net**.",
+      "difficulty": "medium",
+      "source": "MCQ bank III.9"
+    },
+    {
+      "id": "erp-u3-q30",
+      "topic": "mrp-bom-requirements",
+      "q": "A **material requirements plan** contains information with regard to all of the following **except**",
+      "options": [
+        "the capacity needed to provide the projected output rate",
+        "quantities and required delivery dates of all sub-assemblies",
+        "quantities and required delivery dates of final products",
+        "inventory on hand for each final product"
+      ],
+      "answer": 0,
+      "explain": "**Capacity is the exception — MRP plans materials, not capacity.** This *is* its stated limitation: MRP is an **infinite planning tool** that *\"assumes capacity is infinite.\"* Checking capacity is a separate step called **CRP**, which is why **closed-loop MRP** exists at all.",
+      "difficulty": "hard",
+      "source": "MCQ bank III.10"
+    },
+    {
+      "id": "erp-u3-q31",
+      "topic": "mrp-bom-requirements",
+      "q": "A **major strength of MRP** is its capability",
+      "options": [
+        "for timely and accurate replanning",
+        "to reduce lead times",
+        "to minimize labor hours used in production",
+        "to maximize production throughput"
+      ],
+      "answer": 0,
+      "explain": "**Timely and accurate replanning.** This connects to the **planning horizon**: because MRP only plans a window, it must be **re-run as the window slides forward**. It is not a plan made once but a plan continually recomputed — and being able to redo it quickly and correctly is the strength.",
+      "difficulty": "medium",
+      "source": "MCQ bank III.11"
+    },
+    {
+      "id": "erp-u3-q32",
+      "topic": "mrp-bom-requirements",
+      "q": "A **material requirements plan** specifies",
+      "options": [
+        "the quantity and timing of planned order releases",
+        "the quantities of the product families that need to be produced",
+        "the capacity needed to provide the projected output rate",
+        "the costs associated with alternative plans"
+      ],
+      "answer": 0,
+      "explain": "**Quantity and timing of planned order releases.** ⚠️ Option B — *product families* — is **S&OP's** level, not MRP's. Option C is the capacity exception again.\n\nMRP's outputs split by *make or buy*: **Purchase Requisitions** for bought items, **Planned Orders** for in-house items.",
+      "difficulty": "medium",
+      "source": "MCQ bank III.12"
+    },
+    {
+      "id": "erp-u3-q33",
+      "topic": "mrp-concepts",
+      "q": "In the deck's **backward scheduling** formula, the purchase requisition date is the MRP date **minus** which three things? *(select all that apply)*",
+      "options": [
+        "GR (Goods Receipt) processing time",
+        "Vendor lead time",
+        "Purchasing processing time",
+        "Machine setup time"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "$$\\textbf{PR date} = \\textbf{MRP date} - \\textbf{GR processing time} - \\textbf{Vendor lead time} - \\textbf{Purchasing processing time}$$\n\n**Three delays, three subtractions.** The most-forgotten is the **first** — material arriving at the gate is not yet usable; it must be received, inspected and put away.",
+      "difficulty": "hard",
+      "source": "E3 deck"
+    },
+    {
+      "id": "erp-u3-q34",
+      "topic": "mrp-concepts",
+      "q": "In the **time fences** table, which zone allows **no change at all**, and how far from the due date is it?",
+      "options": [
+        "Frozen — 1 to 2 weeks",
+        "Firm — 2 to 4 weeks",
+        "Full — 4 to 6 weeks",
+        "Open — 6+ weeks"
+      ],
+      "answer": 0,
+      "explain": "**Frozen, 1–2 weeks: no change.** Then **Firm** (2–4 wks, ±5%), **Full** (4–6 wks, ±10%), **Open** (6+ wks, ±20%).\n\n**Mnemonic — Frozen, Firm, Full, Open: the further away, the freer you are.** The logic is **commitment** — material within two weeks is already ordered, delivered and possibly on the machine.",
+      "difficulty": "medium",
+      "source": "E3 deck"
+    },
+    {
+      "id": "erp-u3-q35",
+      "topic": "closed-loop-capacity",
+      "q": "Match the **capacity technique** to the **planning level it checks**. Which pairing is correct?",
+      "options": [
+        "RCCP ↔ MPS",
+        "RCCP ↔ MRP",
+        "CRP ↔ S&OP",
+        "Resource Planning ↔ PAC"
+      ],
+      "answer": 0,
+      "explain": "**Every planning level has a matching capacity check:**\n\n$$\\textbf{S\\&OP} \\leftrightarrow \\textbf{RP} \\quad \\textbf{MPS} \\leftrightarrow \\textbf{RCCP} \\quad \\textbf{MRP} \\leftrightarrow \\textbf{CRP} \\quad \\textbf{PAC} \\leftrightarrow \\textbf{CC}$$\n\n**\"Rough Cut\" is named honestly** — at MPS level you check only the **critical resources**, because the plan itself is not detailed enough to justify more.",
+      "difficulty": "hard",
+      "source": "E3 deck"
+    },
+    {
+      "id": "erp-u3-q36",
+      "topic": "closed-loop-capacity",
+      "q": "The __________ planning features of most ERP systems offer **both rough cut and detailed** capacity planning.",
+      "options": ["capacity", "production", "marketing", "test"],
+      "answer": 0,
+      "explain": "**Capacity.** *Rough cut* = **RCCP** at MPS level; *detailed* = **CRP** at MRP level. But note the deck's candour: *\"ERP's support for capacity management is a little indirect\"* — it **evaluates** and **presents** the conflict; resolving it (overtime, subcontract, re-sequence) is largely a **human decision**.",
+      "difficulty": "easy",
+      "source": "MCQ bank III.18"
+    },
+    {
+      "id": "erp-u3-q37",
+      "topic": "closed-loop-capacity",
+      "q": "In **closed-loop MRP**, if the capacity check says the plan is **not realistic**, where is the correction applied?",
+      "options": [
+        "Back at MPS — change the finished-goods plan and re-run MRP",
+        "At MRP — reduce the component quantities",
+        "At PAC — re-sequence the shop floor",
+        "At the Business Plan — revise the long-term goals"
+      ],
+      "answer": 0,
+      "explain": "**Back at MPS.** The deck: *\"If the plan is not executable, then the production plan for finished goods needs to be **changed at the master production schedule (MPS) stage**, and a **fresh MRP run** is needed.\"*\n\n**The constraint propagates upward** — if capacity cannot support the plan, you build fewer finished products, which changes what sales can promise. The word *\"loop\"* is literal: output feeds back to input.",
+      "difficulty": "hard",
+      "source": "E3 deck"
+    },
+    {
+      "id": "erp-u3-q38",
+      "topic": "master-data-pp",
+      "q": "Which are the **four critical master data elements** for production planning? *(select all that apply)*",
+      "options": ["Material Master", "Bill of Material", "Work Center", "Routing"],
+      "answer": [0, 1, 2, 3],
+      "explain": "All four — mnemonic **\"My BOM Works Right\"**.\n\nThey answer four different questions: **Material Master** = *what is it?* · **BOM** = *what goes into it?* · **Work Center** = *where is it made?* · **Routing** = *in what order?*\n\n**What · what-from · where · in-what-order.**",
+      "difficulty": "easy",
+      "source": "E3 deck"
+    },
+    {
+      "id": "erp-u3-q39",
+      "topic": "master-data-pp",
+      "q": "The **work center** is closely linked to which object in the finance module?",
+      "options": ["Cost center", "Profit center", "General ledger account", "Company code"],
+      "answer": 0,
+      "explain": "**Cost center.** This is the **integration point between production and finance**: the work centre is where work physically happens, the cost centre is where cost is recorded — two views of the same organisational unit.\n\nWithout that link, manufacturing knows how long things took and finance knows what things cost, and **nobody can connect the two.**",
+      "difficulty": "medium",
+      "source": "E3 deck"
+    },
+    {
+      "id": "erp-u3-q40",
+      "topic": "production-scenarios-drp",
+      "q": "In **process industry**, what plays the role that the **BOM** plays in discrete manufacturing?",
+      "options": ["The recipe", "The routing", "The batch record", "The characteristic"],
+      "answer": 0,
+      "explain": "**Recipe ⟺ BOM in process industry.** Same role — what goes in, in what quantity — different name and different tolerances.\n\nThe scenario's other distinctive requirement is **batch management**, and it exists because *\"chemical properties may differ\"* between batches: two batches of the same material are **not interchangeable**.",
+      "difficulty": "medium",
+      "source": "E3 deck"
+    },
+    {
+      "id": "erp-u3-q41",
+      "topic": "production-scenarios-drp",
+      "q": "**Back flushing** — which production scenario is it associated with, and what does it do?",
+      "options": [
+        "Repetitive manufacturing — record finished goods, then deduct BOM-consumed quantities automatically",
+        "Process industry — record each batch's chemical properties for traceability",
+        "Kanban / JIT — trigger delivery from demand source to supply source",
+        "Engineer-to-order — rebuild the BOM for each new order"
+      ],
+      "answer": 0,
+      "explain": "**Repetitive manufacturing.** Back flushing **inverts the normal flow**: instead of issuing materials then producing, you **record the finished goods and work backwards through the BOM** to deduct what must have been consumed.\n\n⚠️ **The trade-off:** it assumes the BOM is exactly right, so **scrap, rework and substitutions are invisible** to it. It buys speed with accuracy.",
+      "difficulty": "hard",
+      "source": "E3 deck"
+    },
+    {
+      "id": "erp-u3-q42",
+      "topic": "production-scenarios-drp",
+      "q": "The term **Kanban** was originally conceived by which company, and what does it literally mean?",
+      "options": [
+        "Toyota — \"visual sign\" or \"visual card\"",
+        "Honda — \"pull signal\"",
+        "Toyota — \"just in time\"",
+        "Sony — \"work board\""
+      ],
+      "answer": 0,
+      "explain": "**Toyota**, and it literally means **\"visual sign\" or \"visual card\"**. In the **1940s** the cards were **paper notes pinned on a physical board**, used *\"to create a transparent work process and reduce production waste.\"*\n\nRecall from Unit 2 that **Kanban/JIT by Toyota** is one of the named **best practices** embedded in ERP packages, alongside **Wal-Mart's VMI**.",
+      "difficulty": "easy",
+      "source": "E3 deck"
+    },
+    {
+      "id": "erp-u3-q43",
+      "topic": "production-scenarios-drp",
+      "q": "**Distribution Resource Planning (DRP)** is",
+      "options": [
+        "a time-phased stock replenishment plan for all levels of a distribution network",
+        "a transportation plan to ship materials to warehouses",
+        "a shipping plan from a central warehouse to retail warehouses",
+        "material requirements planning with feedback loop from distribution centers"
+      ],
+      "answer": 0,
+      "explain": "**A time-phased stock replenishment plan for all levels of a distribution network.** The key words are **time-phased** and **all levels** — the other options each capture only one slice.\n\n**DRP is not part of the MRP II flow**, but it is *\"an extension of MRP logic to the distribution network\"*: requirements translate inward, **LDC → CDC → CWH → Factory**.",
+      "difficulty": "medium",
+      "source": "MCQ bank III.16"
+    },
+    {
+      "id": "erp-u3-q44",
+      "topic": "erp-modules-evolution",
+      "q": "**MRP II** is accurately described as",
+      "options": [
+        "MRP augmented by other resource modules",
+        "MRP software designed for services",
+        "MRP with a new set of computer programs that execute on micro-computers",
+        "usually employed to isolate manufacturing operations from other aspects of an organization"
+      ],
+      "answer": 0,
+      "explain": "**MRP augmented by other resource modules** — *\"not just production, but considers other functions such as **capacity, financial, HR, supply chain, billing**.\"*\n\n⚠️ Option D is the **exact opposite** of the truth: MRP II **integrates** manufacturing with the rest of the organisation. Option C is a hardware red herring — the change was in **scope**, not in the computer.",
+      "difficulty": "medium",
+      "source": "MCQ bank III.13"
+    },
+    {
+      "id": "erp-u3-q45",
+      "topic": "erp-modules-evolution",
+      "q": "**Enterprise Resource Planning (ERP) II** is",
+      "options": [
+        "an advanced MRP II system that ties in customers and suppliers",
+        "severely limited by current MRP computer systems",
+        "not related to MRP",
+        "not currently practical"
+      ],
+      "answer": 0,
+      "explain": "**Ties in customers and suppliers** — the 2000s row: *\"Extended ERP, ERP II — focussed on clients, **optimizing the whole business network, including suppliers and clients**.\"*\n\n**Each decade adds one ring outward:** $$\\textbf{Materials} \\rightarrow \\textbf{Factory} \\rightarrow \\textbf{Enterprise} \\rightarrow \\textbf{Network}$$",
+      "difficulty": "medium",
+      "source": "MCQ bank III.14"
+    },
+    {
+      "id": "erp-u3-q46",
+      "topic": "erp-modules-evolution",
+      "q": "The extension of MRP which reaches **labor hours and machine hours, order entry, purchasing, and direct interface with customers and suppliers** is",
+      "options": [
+        "Enterprise Resource Planning",
+        "MRP II",
+        "the master production schedule",
+        "closed-loop MRP"
+      ],
+      "answer": 0,
+      "explain": "**ERP.** ⚠️ This question and the MRP II one are neighbours in the bank and easy to swap — the discriminator is **\"direct interface with customers and suppliers\"**, which reaches **outside the company**. MRP II stops at the factory wall; **ERP crosses it.**",
+      "difficulty": "hard",
+      "source": "MCQ bank III.15"
+    },
+    {
+      "id": "erp-u3-q47",
+      "topic": "erp-modules-evolution",
+      "q": "Match SAP's module names: **FI-CO**, **MM**, **SD**, **PP**.",
+      "options": [
+        "Financial Accounting & Controlling · Materials Management · Sales and Distribution · Production Planning",
+        "Financial Integration & Costing · Maintenance Management · Service Delivery · Product Planning",
+        "Finance & Compliance · Module Management · Supplier Data · Purchase Planning",
+        "Fixed Income & Cash Ops · Materials Master · Sales Desk · Plant Production"
+      ],
+      "answer": 0,
+      "explain": "**FI-CO** = Financial Accounting + Controlling (the **external/internal split**, which is why the name is hyphenated) · **MM** = Materials Management · **SD** = Sales and Distribution · **PP** = Production Planning.\n\nThe deck's caveat: *\"different ERPs may have different sets of modules, **but the core functionality of production, Finance, Warehouse, Inventory, Asset Management will be there in some form or the other**.\"*",
+      "difficulty": "medium",
+      "source": "E3 deck"
+    },
+    {
+      "id": "erp-u3-q48",
+      "topic": "erp-modules-evolution",
+      "q": "In the *earlier vs now* table, **EAM** and **SRM** share an identical \"earlier\" column. What was it?",
+      "options": [
+        "Procurement · Vendor payment · Vendor rating",
+        "Warehouse mgmt · Distribution · Inventory mgmt",
+        "Sales · Order Mgmt · Service · Invoice",
+        "Quality Mgmt · Product Dev Project mgmt"
+      ],
+      "answer": 0,
+      "explain": "**Procurement · Vendor payment · Vendor rating** — word for word the same for both, which is the sharpest illustration of the deck's repeated point that there is *\"lots of overlap in functionality.\"*\n\nHence the real decision: *\"a company has to carefully weigh whether to go for an enterprise app that is critical to its business, or go for an integrated ERP. **It is not an easy decision.**\"*",
+      "difficulty": "hard",
+      "source": "E3 deck"
+    }
+  ]
+}

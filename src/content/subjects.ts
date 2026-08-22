@@ -175,9 +175,9 @@ export const SUBJECTS: SubjectMeta[] = [
       },
       {
         unit: 3,
-        title: 'Project Team, Package & Partner Selection',
+        title: 'ERP Functional Modules — HCM, Finance & Production',
         subtitle:
-          'project team and management · package selection criteria · consulting partner selection · (material not yet supplied)',
+          'HCM areas & order of automation · recruitment · time, attendance & workforce scheduling · compensation, benefits & payroll · talent, performance & learning · personnel management & ESS · HR analytics, strategic vs operational, EHS · financial application categories · financial accounting (GL, AR, AP) · management accounting · financial SCM & treasury · emerging areas & financial statements · MRP II’s five planning levels · S&OP · MPS & available-to-promise · MRP, BOM & gross/net requirements · low-level code, lot sizing, time fences · closed-loop MRP & capacity planning · master data for PP · production scenarios, Kanban & DRP · the twelve ERP modules & four decades of evolution',
       },
       {
         unit: 4,
