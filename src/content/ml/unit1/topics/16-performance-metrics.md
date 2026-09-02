@@ -159,14 +159,20 @@ Note the useful identities: **TPR + FNR = 1** and **TNR + FPR = 1**.
 **The metric grid** — where each one lives on the matrix:
 
 ```
-                        PREDICTED
-                    POS         NEG
-  ACTUAL POS  │     TP      │  FN (Type II) │ → Sensitivity = TP/(TP+FN)
-  ACTUAL NEG  │ FP (Type I) │     TN        │ → Specificity = TN/(TN+FP)
-              └─────────────┴───────────────┘
-                    ↓             ↓
-              Precision =     NPV =            Accuracy = (TP+TN)/total
-              TP/(TP+FP)      TN/(TN+FN)
+                            PREDICTED
+                  ┌───────────────┬───────────────┐
+                  │      POS      │      NEG      │
+   ┌──────────────┼───────────────┼───────────────┤
+   │ ACTUAL  POS  │      TP       │      FN       │ ─→ Sensitivity / Recall
+   │              │               │  (Type II)    │      = TP / (TP + FN)
+   ├──────────────┼───────────────┼───────────────┤
+   │ ACTUAL  NEG  │      FP       │      TN       │ ─→ Specificity
+   │              │   (Type I)    │               │      = TN / (TN + FP)
+   └──────────────┴───────────────┴───────────────┘
+                          │               │
+                          ▼               ▼
+                     Precision           NPV                Accuracy
+                   = TP / (TP+FP)    = TN / (TN+FN)    = (TP+TN) / all
 ```
 
 > [!EXAM]

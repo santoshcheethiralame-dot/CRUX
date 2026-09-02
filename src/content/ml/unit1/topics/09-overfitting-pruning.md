@@ -60,15 +60,19 @@ Trace the tree: *Sunny → Humidity → Normal → **Yes***. **Leads to an error
 ## The two curves
 
 ```
-Mean Average Error
-   │╲                                    ← validation error
-   │ ╲     ╭──────────╮
-   │  ╲___╱            ╲______  Validation
-   │  ╲
-   │   ╲______________________  Training
-   └────────────┬─────────────────→  Tree Depth
-    Underfitting │  Overfitting
-              optimum
+  Error
+    │
+    │ ╲                                        ╱
+    │  ╲                                     ╱      VALIDATION error
+    │   ╲___                             ___╱       (unseen data) — turns
+    │        ╲____                  ____╱            UP once the tree starts
+    │             ╲_____  ●  _____╱                  memorising noise
+    │                     ┊
+    │ ╲___                ┊
+    │      ╲_____         ┊                         TRAINING error
+    │            ╲________┊________________         falls all the way to 0
+    └─────────────────────┴───────────────────→   Tree depth
+       underfitting    optimum    overfitting
 ```
 
 - **Training error decreases monotonically** as the tree grows.

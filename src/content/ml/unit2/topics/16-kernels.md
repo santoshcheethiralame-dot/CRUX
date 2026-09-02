@@ -28,6 +28,26 @@ The obvious objection: computing $\phi(\mathbf{x})$ explicitly is expensive, and
 
 ## The kernel trick
 
+```
+   1-D — no single threshold separates these:
+
+        o   o   o   x   x   x   x   o   o   o
+        ─────────────────────────────────────────→  x
+
+   lift with  φ(x) = (x, x²)  →  in 2-D a straight line now works:
+
+     x²  │  o                                   o
+         │      o                           o
+         │          o                   o
+         │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─   ← separating line
+         │              x           x
+         │                  x   x
+         └───────────────────────────────────────→  x
+
+   The trick: we never actually compute φ(x). The dual only ever needs
+   φ(xi)·φ(xj), and the kernel K(xi,xj) returns that number directly.
+```
+
 Recall the dual depends on the data **only through inner products $\mathbf{x}_i^T\mathbf{x}_j$**. After mapping, it would depend only on $\phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j)$.
 
 > [!EXAM]

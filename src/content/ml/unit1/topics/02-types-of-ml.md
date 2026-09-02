@@ -126,11 +126,13 @@ Examples from the slides:
 RL is learning **what to do — how to map situations to actions**. The algorithm (the **agent**) evaluates a current situation (the **state**), takes an **action**, and receives **feedback** from the environment after each act. Positive feedback is a **reward**; negative feedback is a **punishment**. The learner must **discover which action yields the maximum reward** — it is never told which action to take.
 
 ```
-            ┌──────────── action a_t ────────────┐
-            │                                    ▼
-        AGENT                              ENVIRONMENT
-            ▲                                    │
-            └──── state s_t+1 , reward r_t+1 ────┘
+          ┌─────────── action  a_t ────────────┐
+          │                                    ▼
+      ┌───┴───┐                        ┌───────────────┐
+      │ AGENT │                        │  ENVIRONMENT  │
+      └───▲───┘                        └───────┬───────┘
+          │                                    │
+          └──── state s_t+1 , reward r_t+1 ────┘
 ```
 
 ### The agent–environment interface (formal)

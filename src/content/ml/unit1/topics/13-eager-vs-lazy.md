@@ -14,13 +14,18 @@ tags: [eager, lazy, instance-based, memory-based, knn]
 ## The two pictures
 
 ```
-EAGER                                    LAZY
-────────────────────────────────         ────────────────────────────────
-Training data ──► MODEL                  Training data ──► store in memory
+EAGER                                  LAZY
+──────────────────────────────────     ──────────────────────────────────
+TRAINING                               TRAINING
+  training data ──→ build MODEL          training data ──→ just stored
+                    (data discarded)                       (no model built)
 
-Test query ──► MODEL ──► Prediction      Test query ─┐
-                                                     ├─► Prediction
-                                         Training data ┘
+QUERY                                  QUERY
+  x ──→ MODEL ──→ prediction             x ───────────┐
+                                                      ├──→ compare ──→ prediction
+  (training data no longer needed)       stored data ─┘
+
+cost:  slow to train, fast to answer   cost:  no training, slow to answer
 ```
 
 - **Eager:** *creates a model using the training data, which is used across all test queries.*

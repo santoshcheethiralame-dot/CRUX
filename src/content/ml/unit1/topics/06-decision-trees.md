@@ -50,11 +50,14 @@ tags: [decision-trees, terminology, disjunction-of-conjunctions, ID3, CART, if-t
 Take the classic PlayTennis tree:
 
 ```
-                  Outlook
-        sunny /      | overcast    \ rain
-        Humidity     yes           Wind
-     high/   \normal          strong/   \weak
-      no      yes               no       yes
+Outlook ?
+├── sunny ─────→ Humidity ?
+│                ├── high   ─────→ No
+│                └── normal ─────→ Yes
+├── overcast ────────────────────→ Yes
+└── rain ──────→ Wind ?
+                 ├── strong ─────→ No
+                 └── weak   ─────→ Yes
 ```
 
 Read every **root-to-leaf path that ends in "yes"**, AND the tests along it, then OR the paths together:
@@ -76,15 +79,22 @@ Each **path is a conjunction**; the **set of paths is a disjunction**.
 The loan-application tree from the slides is a good multi-way example — note that **Income Range** has three branches and **years in job** has three:
 
 ```
-                        Income Range
-            <30K /         30–70K |            \ >70K
-        Govt job?                No. years         Criminal record?
-      yes/    \no          <1 /  1–5 |  \ >5      yes/       \no
-   Approve   Reject     Reject       |  Approve  Reject   Approve with
-                              Credit card                double premium
-                             outstanding balance
-                         high/    medium|    \low
-                       Reject    Approve      Approve with premium
+Income Range ?
+├── < 30K ──────→ Govt job ?
+│                 ├── yes ───────→ Approve
+│                 └── no  ───────→ Reject
+│
+├── 30–70K ─────→ No. of years in current job ?
+│                 ├── < 1 ───────→ Reject
+│                 ├── 1–5 ───────→ Credit-card outstanding balance ?
+│                 │                ├── high   ──→ Reject
+│                 │                ├── medium ──→ Approve
+│                 │                └── low    ──→ Approve with premium
+│                 └── > 5 ───────→ Approve
+│
+└── > 70K ──────→ Criminal record ?
+                  ├── yes ───────→ Reject
+                  └── no  ───────→ Approve with double premium
 ```
 
 Points worth noticing: an attribute may reappear at different depths in different sub-trees; different branches may use entirely different attributes; and leaves may carry more than two outcomes ("Approve", "Reject", "Approve with premium", "Approve with double premium").

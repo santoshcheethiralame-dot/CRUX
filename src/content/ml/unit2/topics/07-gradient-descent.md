@@ -81,6 +81,22 @@ We have a loss $\mathcal{L}(w, b)$ and want the weights that minimise it. Trying
 
 ## The update rule
 
+```
+  Loss  L(w)
+    │╲                                              ╱
+    │ ●  w0        each step moves DOWNHILL       ╱
+    │  ╲           by  η · (∂L/∂w)              ╱
+    │   ●  w1                                 ╱
+    │    ╲                                  ╱
+    │     ●  w2                           ╱
+    │      ╲___                       ___╱
+    │          ╲____   ●   _______╱
+    │                  w*                        the slope ∂L/∂w is
+    └──────────────────┴─────────────────────→   ZERO at the minimum,
+                    minimum                       so the steps die out
+                                                  on their own
+```
+
 > [!NOTE]
 > We would like to move in the direction of the gradient **only by a small step $\eta$ (eta) to avoid overshooting the minimum value**. $\eta$ is also called the **learning rate**. So the final equations become:
 >

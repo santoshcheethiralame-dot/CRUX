@@ -70,10 +70,13 @@ Note the loop that is implicit between 5 and 6: you evaluate, tune, and re-evalu
 ## The pipeline and the three-way split
 
 ```
-                     ┌──────────── 80% ────────────┐
-   Dataset  ──split──┤        Training data        ├─→ ML algorithm ─→ MODEL
-                     └──────────── 20% ────────────┘                     │
-                                Test data ─────────────────────────────→ ├─→ Prediction
+                 ┌───────────────────┐
+        ┌──80%──→│   Training data   │──→  ML algorithm  ──┐
+        │        └───────────────────┘                     │
+Dataset─┤                                                  ▼
+        │        ┌───────────────────┐              ┌─────────────┐
+        └──20%──→│     Test data     │─────────────→│    MODEL    │──→ Prediction
+                 └───────────────────┘   evaluate   └─────────────┘
 ```
 
 The two-way split (train / test) is the version you'll draw most often, but the honest version is a **three-way split**:

@@ -105,15 +105,18 @@ Consider the entity set `course`, recording all courses offered. Some courses ha
 We indicate roles by **labelling the lines** that connect diamonds to rectangles:
 
 ```
-              Course_ID
-        ┌───────────────────────┐          course_ID  Department
-        │                       │              \        /
-    ◇◇◇◇◇◇◇◇                    │          ┌─────────────┐
-   ◇ prereq ◇                   └──────────│   Course    │── Course_name
-    ◇◇◇◇◇◇◇◇                               └─────────────┘
-        │                       ┌───────────────┘
-        └───────────────────────┘
-              Prereq_ID
+                        ┌──────────────┐
+                        │    COURSE    │
+                        └───┬──────┬───┘
+        role: course_id     │      │     role: prereq_id
+                            │      │
+                            │      │      the SAME entity set
+              ┌─────────────┘      └─────────────┐   plays both roles
+              │                                  │
+              └────────<   prereq   >────────────┘
+                        (relationship)
+
+   attributes of COURSE:  __course_ID__ · Course_name · Department
 ```
 
 The role indicators **`course_id`** and **`prereq_id`** distinguish the two ends.
@@ -123,14 +126,17 @@ The role indicators **`course_id`** and **`prereq_id`** distinguish the two ends
 An `EMPLOYEE` entity set relates to itself through `SUPERVISES`, with roles **(AS SUPERVISOR)** on the `1` side and **(AS SUPERVISEE)** on the `N` side.
 
 ```
-        ┌─────────────────────────────────┐
-        │          EMPLOYEE               │
-        └──┬───────────────────────────┬──┘
-    (AS SUPERVISOR)              (AS SUPERVISEE)
-           │                            │
-         1 │        ◇◇◇◇◇◇◇◇◇◇◇         │ N
-           └───────◇ SUPERVISES ◇────────┘
-                    ◇◇◇◇◇◇◇◇◇◇◇
+           ┌──────────────────────────────────┐
+           │             EMPLOYEE             │
+           └────┬────────────────────────┬────┘
+                │                        │
+        (AS SUPERVISOR)           (AS SUPERVISEE)
+              1 │                        │ N
+                │                        │
+                └───<   SUPERVISES   >───┘
+
+   one employee supervises N employees, and each of those has
+   exactly 1 supervisor — a 1:N relationship of EMPLOYEE with itself
 ```
 
 > [!EXAM]

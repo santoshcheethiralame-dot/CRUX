@@ -55,13 +55,16 @@ A weak entity has **no key of its own**. What it has instead is a **discriminato
 > | (and) participation of the weak entity | **double line** — total |
 
 ```
-   ┌──────────────┐        ╱╲╱╲          ╔══════════════╗
-   │  Identifying │═══════╱ ID ╲════════ ║ Weak Entity  ║
-   │    entity    │       ╲relat╱   ══   ║              ║
-   └──────────────┘        ╲╱╲╱          ╚══════════════╝
-        (strong)      (double diamond)      (double rectangle)
-              1                    N
-                                        ↑ total participation
+   ┌──────────────────┐                            ╔══════════════════╗
+   │   IDENTIFYING    │                            ║   WEAK ENTITY    ║
+   │      ENTITY      │══<< identifying rel'ship >>║                  ║
+   │     (strong)     │                            ║                  ║
+   └──────────────────┘                            ╚══════════════════╝
+      single rectangle         double diamond          double rectangle
+              1                                                N
+
+   the double line ══ on the weak side = TOTAL participation
+   (a weak entity cannot exist without its owner)
 ```
 
 The slides note the cardinality is **one-to-many / many-to-one**, where **many = the weak entity** and **one = the identifying entity** — one course has many sections, each section belongs to one course.
@@ -69,12 +72,19 @@ The slides note the cardinality is **one-to-many / many-to-one**, where **many =
 ### The worked example
 
 ```
-                          ╱╲╱╲                         Sec_ID (dashed underline)
-  Title                  ╱      ╲                      Semester
-  Credits ── Course ════╱ sec_course ╲════ Section ──  Year
-  Dept_name             ╲          ╱        (weak)     Building
-  course_ID (key)        ╲╱╲╱╲╱                        room_no
-                    identifying relationship           time_slot_id
+   ┌──────────────────┐                        ╔══════════════════╗
+   │      COURSE      │══<< sec_course >>══════║     SECTION      ║
+   │    (strong)      │                        ║      (weak)      ║
+   └────────┬─────────┘         1        N     ╚═════════┬════════╝
+            │                                            │
+   ┌────────┼────────┬───────────┐        ┌────────┬─────┼──────┬──────────┐
+   │        │        │           │        │        │     │      │          │
+__course_ID__  Title  Credits  Dept_name  ¦Sec_ID¦ Semester Year Building room_no
+
+   ¦Sec_ID¦  = the DISCRIMINATOR (partial key), drawn with a DASHED underline
+
+   full key of SECTION  =  course_ID  +  Sec_ID  +  Semester  +  Year
+                           ╰owner's key╯   ╰────── discriminator ──────╯
 ```
 
 > [!NOTE]

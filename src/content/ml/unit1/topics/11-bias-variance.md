@@ -24,14 +24,16 @@ In plain terms:
 ## The dartboard
 
 ```
-                    Low Variance          High Variance
-                 ┌────────────────────┬────────────────────┐
-    High Bias    │  tight cluster,    │   scattered AND    │
-                 │  far off-centre    │   off-centre       │
-                 ├────────────────────┼────────────────────┤
-    Low  Bias    │  tight cluster ON  │   scattered AROUND │
-                 │  the bullseye ✅   │   the bullseye     │
-                 └────────────────────┴────────────────────┘
+                     Low Variance           High Variance
+                  ┌─────────────────────┬─────────────────────┐
+     High Bias    │  tight cluster,     │  scattered AND      │
+                  │  far off-centre     │  off-centre         │
+                  │  (underfit)         │  (worst of both)    │
+                  ├─────────────────────┼─────────────────────┤
+     Low  Bias    │  tight cluster ON   │  scattered AROUND   │
+                  │  the bullseye       │  the bullseye       │
+                  │  << THE GOAL >>     │  (overfit)          │
+                  └─────────────────────┴─────────────────────┘
 ```
 
 > [!INTUITION]
@@ -114,14 +116,18 @@ Restated as the slides put it:
 ## The bias–variance trade-off
 
 ```
-Error
-  │ ╲                                       ╱  Total error
-  │  ╲___                             ____╱
-  │      ╲___                    ____╱          Variance ↗
-  │          ╲___          ____╱
-  │              ╲___ ● ___╱                     Bias² ↘
-  └────────────────┬──────────────────→  Model Complexity
-              optimum
+  Error
+    │ ╲                                        ╱
+    │  ╲                                     ╱     TOTAL  =  Bias² + Variance
+    │   ╲___                             ___╱
+    │       ╲____                   ____╱
+    │            ╲_____   ●   _____╱
+    │                     ┊
+    │ ╲___                ┊         ______        VARIANCE  rises with complexity
+    │      ╲______        ┊   _____╱
+    │             ╲_______┊__╱                    BIAS²     falls with complexity
+    └─────────────────────┴────────────────────→  Model complexity
+       too simple      optimum      too complex
 ```
 
 Reading the curve, in the slides' four beats:

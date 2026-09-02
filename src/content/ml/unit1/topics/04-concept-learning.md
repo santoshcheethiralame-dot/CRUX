@@ -92,14 +92,19 @@ $$\boxed{\text{$d$ binary features } \Rightarrow 2^{2^{d}} \text{ concepts}}$$
 > **Make an assumption about the nature of the concept. The assumption reduces the space of concepts we are going to look at. This reduction of the concept space is what we call *inductive bias*. The shrunken space is called the *hypothesis space*.**
 
 ```
-        ┌──────────── CONCEPT SPACE (all 2^(2^d) labellings) ────────────┐
-        │                                                                │
-        │        ┌──── HYPOTHESIS SPACE H (what we're willing to  ────┐  │
-        │        │      consider — imposed by inductive bias)        │  │
-        │        │        ┌── VERSION SPACE (consistent with D) ──┐  │  │
-        │        │        └───────────────────────────────────────┘  │  │
-        │        └────────────────────────────────────────────────────┘  │
-        └────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────┐
+│ CONCEPT SPACE — every possible labelling of the instances      │
+│ (there are 2^(2^d) of them for d boolean attributes)           │
+│                                                                │
+│   ┌──────────────────────────────────────────────────────────┐ │
+│   │ HYPOTHESIS SPACE  H — what we are willing to consider    │ │
+│   │ (the restriction imposed by inductive bias)              │ │
+│   │                                                          │ │
+│   │   ┌────────────────────────────────────────────────────┐ │ │
+│   │   │ VERSION SPACE — the hypotheses consistent with D   │ │ │
+│   │   └────────────────────────────────────────────────────┘ │ │
+│   └──────────────────────────────────────────────────────────┘ │
+└────────────────────────────────────────────────────────────────┘
 ```
 
 ### Our bias: conjunctive concepts

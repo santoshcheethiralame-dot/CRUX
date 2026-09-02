@@ -57,6 +57,25 @@ The separating (median) hyperplane sits between two parallel **gutters** touchin
 
 ## Calculating the width of the canal
 
+```
+    class −1                    ┊         │         ┊              class +1
+                                ┊         │         ┊
+        o           o           ⊙         │         ⊗          x
+                                ┊         │         ┊
+            o                   ┊         │         ⊗      x        x
+                                ┊         │         ┊
+        o         o             ⊙         │         ┊          x
+                                ┊         │         ┊
+                       w·x+b = −1    w·x+b = 0   w·x+b = +1
+                                ┊         │         ┊
+                                ┊←───── margin ────→┊
+                                ┊    =  2/‖w‖       ┊
+
+   ⊙ ⊗  = the SUPPORT VECTORS — the only points touching the gutters.
+          Move any other point and nothing changes; move one of these
+          and the whole boundary moves.
+```
+
 > [!DERIVE]
 > The margin is the distance between the two gutters, measured along the **unit normal** $\hat{\mathbf{w}} = \mathbf{w}/\lVert\mathbf{w}\rVert$:
 >

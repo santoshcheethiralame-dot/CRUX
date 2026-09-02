@@ -62,6 +62,32 @@ tags: [boosting, sequential, instance-weights, voting-right, adaboost, bias-redu
 
 ## Boosting vs bagging
 
+```
+   BAGGING — parallel, models are independent
+
+              ┌── bootstrap sample 1 ──→ model 1 ──┐
+              │                                    │
+       D ─────┼── bootstrap sample 2 ──→ model 2 ──┼──→ majority vote ──→ y
+              │                                    │    (equal weight)
+              └── bootstrap sample 3 ──→ model 3 ──┘
+
+       all three could be trained at the same time on three machines
+
+
+   BOOSTING — sequential, each model depends on the last
+
+       D ──→ model 1
+                │  re-weight: the points model 1 got WRONG
+                ▼  now matter more
+              model 2
+                │  re-weight again
+                ▼
+              model 3  ──→ weighted vote ──→ y
+                            (better models get a bigger say)
+
+       cannot be parallelised — model 2 needs model 1's mistakes first
+```
+
 > [!NOTE]
 > - In the case of **Bagging**, **any element has the same probability to appear in a new dataset**.
 > - However, for **Boosting**, **the observations are weighted and therefore some of them will take part in the new sets more often.**

@@ -35,16 +35,21 @@ tags: [degree, binary, ternary, n-ary, proj-guide, supply, descriptive-attribute
 We relate the three entity sets through a **ternary relationship set `proj_guide`**:
 
 ```
-    name  Salary                                   ID    name
-       \  /                                          \   /
-   ┌────────────┐        ◇◇◇◇◇◇◇◇◇◇◇◇         ┌────────────┐
-ID─│ Instructor │───────◇ Proj_Guide ◇────────│  Student   │─ tot_credits
-   └────────────┘        ◇◇◇◇◇◇◇◇◇◇◇◇         └────────────┘
-                              │
-                        ┌───────────┐
-                        │  Project  │── name, Department
-                        └───────────┘
-                        (Project_ID)
+   __ID__  name  Salary                     __ID__  name  tot_credits
+        │    │      │                            │     │       │
+        └────┼──────┘                            └─────┼───────┘
+             │                                         │
+      ┌──────┴───────┐                         ┌───────┴──────┐
+      │  INSTRUCTOR  │────<  Proj_Guide  >─────│   STUDENT    │
+      └──────────────┘           │             └──────────────┘
+                                 │
+                        ┌────────┴────────┐
+                        │     PROJECT     │
+                        └────────┬────────┘
+                                 │
+                    ┌────────────┼────────────┐
+                    │            │            │
+             __Project_ID__     name      Department
 ```
 
 An instance of `proj_guide` indicates that **a particular student is guided by a particular instructor on a particular project**.
@@ -94,12 +99,21 @@ Neither. A grade exists **only if the student enrolled** in that course, so it i
 > A relationship may have attributes, called **descriptive attributes**. An attribute of a relationship set is represented in an E-R diagram by an **oval connected to the relationship's diamond**.
 
 ```
-   name  student_ID                Grade  ← descriptive attribute
-      \    /                         │
-  ┌──────────┐               ◇◇◇◇◇◇◇◇◇◇◇          ┌──────────┐
-  │ Student  │──────────────◇  Enrolls  ◇─────────│  Course  │
-  └──────────┘               ◇◇◇◇◇◇◇◇◇◇◇          └──────────┘
-      Major                                    course_ID, Course_name, Department
+   __student_ID__  name  Major                       Grade
+             │       │      │                          │   ← descriptive
+             └───────┼──────┘                          │     attribute: it
+                     │                                 │     belongs to the
+             ┌───────┴───────┐                         │     RELATIONSHIP,
+             │    STUDENT    │────<  Enrolls  >────────┘     not to either
+             └───────────────┘            │                  entity
+                                          │
+                                 ┌────────┴────────┐
+                                 │     COURSE      │
+                                 └────────┬────────┘
+                                          │
+                        ┌─────────────────┼─────────────────┐
+                        │                 │                 │
+                 __course_ID__      Course_name         Department
 ```
 
 `Quantity` on the `SUPPLY` diamond above is a second example.

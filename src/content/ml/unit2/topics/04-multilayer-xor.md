@@ -21,6 +21,21 @@ The two figures make the contrast: on the left, a straight line cleanly divides 
 
 ### Why XOR is impossible for one perceptron
 
+Plot all three functions on the unit square — $x_1$ across, $x_2$ up:
+
+```
+        AND                     OR                     XOR
+   x2                      x2                     x2
+    │   0     1             │   1     1            │   1     0
+    │        ╱              │  ╲                   │
+    │   0   ╱ 0             │   ╲ 0     1          │   0     1
+    └──────╱──── x1         └────╲─────── x1       └──────────── x1
+
+   one line works          one line works        NO straight line
+   (cut off the 1)         (cut off the 0)       can do it — the two
+                                                 1s sit on a diagonal
+```
+
 | $x_1$ | $x_2$ | XOR |
 |---|---|---|
 | 0 | 0 | 0 |
@@ -57,6 +72,26 @@ The two figures make the contrast: on the left, a straight line cleanly divides 
 > - The **final layer containing one output neuron is called the output layer**.
 > - The **red and blue edges are the layer-1 weights**; **$w_1, w_2, w_3, w_4$ are the layer-2 weights**.
 > - Every hidden perceptron has **bias $= -2$**.
+
+```
+   INPUT           HIDDEN LAYER  (bias = −2 on each)        OUTPUT
+
+                    ┌──────────────────┐
+              ┌────→│  h1  ↔  (−1,−1)  │────w1────┐
+              │     └──────────────────┘          │
+              │     ┌──────────────────┐          │
+     x1 ──────┼────→│  h2  ↔  (−1, 1)  │────w2────┤    ┌─────────┐
+              │     └──────────────────┘          ├───→│    y    │──→
+     x2 ──────┼────→┌──────────────────┐          │    └─────────┘
+              │     │  h3  ↔  ( 1,−1)  │────w3────┤
+              │     └──────────────────┘          │
+              │     ┌──────────────────┐          │
+              └────→│  h4  ↔  ( 1, 1)  │────w4────┘
+                    └──────────────────┘
+
+   exactly ONE hidden unit fires per input pattern  →  one-hot encoding
+   so choosing w1..w4 just means "pick which patterns output 1"
+```
 
 Each hidden perceptron is labelled with the input combination it responds to:
 

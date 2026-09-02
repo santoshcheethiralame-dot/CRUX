@@ -26,6 +26,16 @@ That single slide answers **three of the MP neuron's five limitations** at once:
 
 ## The model
 
+```
+   x0 = 1 ──w0──┐          w0 is the bias (= −θ)
+                │
+   x1 ──────w1──┤      ┌──────────────────┐
+                ├─────→│   z = Σ wi · xi  │──→ z ──→ step(z) ──→ y ∈ {0, 1}
+   x2 ──────w2──┤      └──────────────────┘             ▲
+                │                                       │
+   xn ──────wn──┘                            fires when  z ≥ 0
+```
+
 $$y = \begin{cases} 1 & \text{if } \sum_{i=0}^{n} w_i x_i \geq 0 \\[4pt] 0 & \text{if } \sum_{i=0}^{n} w_i x_i < 0 \end{cases}$$
 
 The sum starts at $i = 0$, not $i = 1$, and that is the whole trick:

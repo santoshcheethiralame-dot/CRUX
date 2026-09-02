@@ -86,12 +86,20 @@ $$A : E \to P(V)$$
 Composite attributes may form a **hierarchy** — inside `Address`, the component `Street` divides further into `Street No`, `Street Name`, `Apartment No`:
 
 ```
-                    City   State   Country   Postal_Code
-                      \      |       /        /
-   Apartment No ─┐            Address
-   Street Name ──┼── Street ──/  |
-   Street No ────┘               |
-                              Student
+                          ┌───────────┐
+                          │  STUDENT  │
+                          └─────┬─────┘
+                                │
+                             Address                 ← composite
+                                │
+            ┌─────────┬─────────┼──────────┬───────────────┐
+            │         │         │          │               │
+          Street     City     State     Country      Postal_Code
+            │
+            │                                      ← Street is itself
+    ┌───────┼───────────────┐                        composite, so the
+    │       │               │                        hierarchy nests
+ Street_No  Street_Name  Apartment_No
 ```
 
 ### Single-valued vs Multivalued

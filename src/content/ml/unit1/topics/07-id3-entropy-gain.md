@@ -291,11 +291,14 @@ Mood splits Sunny perfectly, and it collapses neatly into **bored → No, not bo
 ### Final tree — the second dataset
 
 ```
-                   weather
-      sunny /         | cloudy        \ rainy
-          mood        yes             alone
-   not bored/ \bored              no /    \ yes
-      yes      no                yes       no
+weather ?
+├── sunny ──────→ mood ?
+│                 ├── not bored ──→ Yes
+│                 └── bored     ──→ No
+├── cloudy ──────────────────────→ Yes
+└── rainy ──────→ alone ?
+                  ├── no  ───────→ Yes
+                  └── yes ───────→ No
 ```
 
 > [!INTUITION]

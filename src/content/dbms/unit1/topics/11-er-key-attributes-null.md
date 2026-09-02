@@ -67,17 +67,32 @@ The lecture's own trigger: in `Student → Name → {First_name, Middle_name, La
 Requirements: every instructor has a **unique ID**, plus **name, address, phone number, date of birth, age, and department**. An instructor belongs to **only one department** but may have **multiple phone numbers**. `Address` subdivides into **street, city, state, zip**, and `street` again into **street_no, street_name, apt_number**. `Name` subdivides into **first, middle, last**.
 
 ```
-   First_name ┐                          City   State   Zip
-  Middle_name ┼── Name ──┐                 \      |     /        ┌─ Apartment No
-   Last_name  ┘          │                   Address ── Street ──┼─ Street Name
-                         │                     │                 └─ Street No
-                    ┌────┴──────┐              │
-             ID ────│ Instructor│──────────────┘
-                    └──┬─────┬──┘
-             ╔═════════╧═╗  ┌┴──────────┐  ┌ ─ ─ ─ ┐
-             ║ Phone_no  ║  │Date_of_   │    Age      Department
-             ╚═══════════╝  │  Birth    │  └ ─ ─ ─ ┘
-              multivalued   └───────────┘   derived
+                        ┌──────────────┐
+                        │  INSTRUCTOR  │
+                        └──────┬───────┘
+                               │
+   ┌──────┬────────┬───────────┼──────────────┬───────────┬────────────┐
+   │      │        │           │              │           │            │
+ __ID__  Name   Address  ((Phone_no))  Date_of_Birth  ((Age))    Department
+  key   compos-  compos-  multivalued      stored      derived   simple,
+        ite      ite                                             single-valued
+
+
+   Name  expands to:              Address  expands to:
+
+        Name                           Address
+          │                               │
+   ┌──────┼───────┐            ┌──────┬───┴───┬──────┐
+   │      │       │            │      │       │      │
+ First  Middle  Last         Street  City   State   Zip
+ _name  _name   _name          │
+          │              ┌─────┼──────────┐
+   may be NULL —         │     │          │
+   "not applicable"  Street_No Street_Name Apartment_No
+
+
+   NOTATION   __x__  underlined = key      ((x)) double oval = multivalued
+              ((x))  dashed oval = derived  (Age is computed from DoB)
 ```
 
 Every construct in the taxonomy appears exactly once:
@@ -97,14 +112,23 @@ Every construct in the taxonomy appears exactly once:
 *You are designing a database for a Smart City Infrastructure Management System. Model the Environmental Sensor entity: each sensor must be uniquely identified; has a **Type** (temperature, humidity, pollution); is installed at a specific **Location**; collects **multiple Data readings**, each containing a **Date-Time** and a **Value**; and has a **Last Calibration Date**.*
 
 ```
-                              ╔══════╗── Date-time
-      Type    Location        ║ Data ║
-        \       |             ╚══╤═══╝── Value
-         \      |                │
-        ┌──────────────────────────────┐
-   ID ──│    ENVIRONMENTAL SENSOR      │── Last_Calibration_Date
-        └──────────────────────────────┘
-   (Sensor_ID, underlined)
+                  ┌─────────────────────────┐
+                  │   ENVIRONMENTAL SENSOR  │
+                  └────────────┬────────────┘
+                               │
+      ┌────────────┬───────────┼───────────┬────────────────────────┐
+      │            │           │           │                        │
+  __Sensor_ID__   Type     Location   ((  Data  ))        Last_Calibration_Date
+      key                             multivalued
+                                       composite
+                                            │
+                                    ┌───────┴───────┐
+                                    │               │
+                                Date_Time         Value
+
+   __x__     underlined  = key attribute
+   (( x ))   double oval = multivalued  — one sensor holds MANY readings,
+                           and each reading is itself composite
 ```
 
 > [!EXAM]
